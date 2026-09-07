@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MenuExpress - Menús Digitales Zapopan</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, sans-serif; }
+    body { background: #0f172a; color: white; padding: 30px 20px; text-align: center; }
+    h1 { font-size: 1.8rem; margin-bottom: 8px; color: #f59e0b; }
+    p { color: #94a3b8; font-size: 0.95rem; margin-bottom: 25px; }
+    .grid { display: flex; flex-direction: column; gap: 14px; max-width: 450px; margin: 0 auto; }
+    .card { background: #1e293b; border: 1px solid #334155; border-radius: 16px; padding: 18px; text-decoration: none; color: white; display: flex; align-items: center; justify-content: space-between; transition: transform 0.2s; }
+    .card:active { transform: scale(0.98); }
+    .card-title { font-size: 1.1rem; font-weight: 700; text-align: left; }
+    .card-desc { font-size: 0.8rem; color: #94a3b8; text-align: left; margin-top: 3px; }
+    .btn { background: #ea580c; color: white; font-weight: 700; padding: 8px 14px; border-radius: 10px; font-size: 0.82rem; }
+  </style>
+</head>
+<body>
+  <h1>📱 Menús Digitales Oficiales</h1>
+  <p>Selecciona un negocio para ver su menú y ordenar por WhatsApp:</p>
+  <div class="grid">
+    <a href="charly/" class="card">
+      <div><div class="card-title">🍔 Hamburguesas El Charly</div><div class="card-desc">Santa Margarita</div></div>
+      <span class="btn">Ver Menú</span>
+    </a>
+    <a href="dangels/" class="card">
+      <div><div class="card-title">🍗 d'ANGEL'S Wings & Snacks</div><div class="card-desc">Marina Vallarta</div></div>
+      <span class="btn">Ver Menú</span>
+    </a>
+    <a href="tacos-moy/" class="card">
+      <div><div class="card-title">🌮 Tacos Moy (Barbacoa)</div><div class="card-desc">Santa Margarita</div></div>
+      <span class="btn">Ver Menú</span>
+    </a>
+    <a href="carnales/" class="card">
+      <div><div class="card-title">🍲 Tacos y Birria Los Carnales</div><div class="card-desc">Santa Margarita</div></div>
+      <span class="btn">Ver Menú</span>
+    </a>
+  </div>
+</body>
+</html>

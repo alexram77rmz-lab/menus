@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Cartel Imprimible / Digital - Hamburguesas El Charly</title>
+  <style>
+    @page { size: letter; margin: 10mm; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background: #f1f5f9; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+    .stand-card {
+      background: white;
+      width: 440px;
+      border-radius: 28px;
+      padding: 36px 28px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+      border: 2px solid #e2e8f0;
+    }
+    .badge {
+      display: inline-block;
+      background: #ea580c;
+      color: white;
+      padding: 6px 18px;
+      border-radius: 30px;
+      font-weight: 800;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    h1 { font-size: 1.85rem; color: #0f172a; font-weight: 900; margin-bottom: 6px; }
+    p.subtitle { font-size: 0.95rem; color: #64748b; margin-bottom: 24px; }
+    .qr-container {
+      background: white;
+      padding: 16px;
+      border-radius: 20px;
+      display: inline-block;
+      border: 3px dashed #cbd5e1;
+      margin-bottom: 20px;
+    }
+    .qr-container img { width: 240px; height: 240px; display: block; }
+    .action-text { font-size: 1.15rem; font-weight: 800; color: #1e293b; margin-bottom: 14px; }
+    .google-badge {
+      background: #fef3c7;
+      border: 1px solid #fde68a;
+      color: #b45309;
+      padding: 8px 12px;
+      border-radius: 12px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    @media print {
+      body { background: white; padding: 0; }
+      .stand-card { box-shadow: none; border: 1px solid #cbd5e1; margin: 0 auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="stand-card">
+    <div class="badge">Menú Interactivo & Reseñas</div>
+    <h1>Hamburguesas El Charly</h1>
+    <p class="subtitle">Más de 30 años de tradición en Santa Margarita · Hamburguesas gigantes, pizzas y snacks</p>
+
+    <div class="qr-container">
+      <img src="data:image/png;base64,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qhMAAK46AQDgqhMAAK46AQDgqhMAAK46AQDgqhMAAK46AQDgqn+BS9rmK9vyhbZ5Y1v439A2X9iWr2zLU23zxrY81TZ/Tds8tS1vbMtf0zZ/zQkAAFedAABw1QkAAFedAABw1QkAAFedAABw1QkAAFedAABw1QkAAFedAABw1QkAAFedAABw1b/8UdvCt7aF99rmqW15o22+sC1vtM1T2/KVtvlrtuUv2pan2uapbflK2zy1LU9tC++dAABw1QkAAFedAABw1QkAAFedAABw1QkAAFedAABw1QkAAFedAABw1QkAAFedAABw1QkAAFd1/5GPtA3f25Zf1TZvbMsva5untuWptvmLtuUrbUOyLW+0zRe25Stt84VteaNtSLbll50AAHDVCQAAV50AAHDVCQAAV50AAHDVCQAAV50AAHDVCQAAV50AAHDVCQAAV50AAHDVCQAAV50AAHBV9x8BAOCaEwAArjoBAOCqEwAArjoBAOCqEwAArjoBAOCqEwAArjoBAOCqEwAArjoBAOCqEwAArjoBAOCqEwAArjoBAOCqEwAArjoBAOCqEwAArjoBAOCqEwAArjoBAOCqEwAArjoBAOCqEwAArjoBAOCqEwAArvr/AXda1LRW/MZFAAAAAElFTkSuQmCC" alt="Código QR">
+    </div>
+
+    <div class="action-text">📱 Escanea con tu celular para ver el menú, pedir y calificar</div>
+
+    <div class="google-badge">
+      ⭐ Déjanos tu opinión en Google Maps y síguenos en redes
+    </div>
+
+    <p style="margin-top: 10px; font-size: 0.85rem; font-weight: 700; color: #334155;">🕒 Hoy Domingo: 7:00 PM - 12:00 AM · Para comer aquí y para llevar</p>
+    <p style="margin-top: 4px; font-size: 0.8rem; color: #64748b;">📍 Av. Santa Margarita #230, La Tuzanía, 45130 Zapopan, Jal.</p>
+  </div>
+</body>
+</html>

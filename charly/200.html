@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Hamburguesas El Charly - Menú Digital & Reseñas</title>
+  <meta name="description" content="Más de 30 años de tradición en Santa Margarita · Hamburguesas gigantes, pizzas y snacks">
+  
+  <!-- OpenGraph para WhatsApp, Telegram y Redes Sociales -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Hamburguesas El Charly 📱 Menú Digital Oficial">
+  <meta property="og:description" content="Más de 30 años de tradición en Santa Margarita · Hamburguesas gigantes, pizzas y snacks">
+  <meta property="og:image" content="https://alexram77rmz-lab.github.io/menus/charly/codigo_qr_para_imprimir.png">
+  <meta property="og:url" content="https://alexram77rmz-lab.github.io/menus/charly">
+  <meta name="theme-color" content="#ea580c">
+  <style>
+    :root {
+      --primary: #ea580c;
+      --accent: #facc15;
+      --text: #0f172a;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --radius: 16px;
+      --shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.08);
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      padding-bottom: 120px;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary), #0f172a);
+      color: white;
+      padding: 24px 20px 20px;
+      border-bottom-left-radius: 26px;
+      border-bottom-right-radius: 26px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+      text-align: center;
+      position: relative;
+    }
+    .badge-schedule {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      backdrop-filter: blur(6px);
+      cursor: pointer;
+    }
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #fbbf24;
+      display: inline-block;
+    }
+    .badge-dot.open { background: #22c55e; }
+    .badge-dot.closed { background: #ef4444; }
+
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+    .slogan {
+      font-size: 0.92rem;
+      opacity: 0.92;
+      margin-bottom: 14px;
+      line-height: 1.35;
+    }
+    .quick-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .action-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.18);
+      color: white;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      backdrop-filter: blur(8px);
+      cursor: pointer;
+      border: none;
+    }
+    .pill-google {
+      background: #f59e0b;
+      color: #0f172a;
+      box-shadow: 0 2px 10px rgba(245, 158, 11, 0.35);
+    }
+
+    
+    .delivery-bar {
+      background: #eff6ff;
+      border-bottom: 1px solid #bfdbfe;
+      color: #1e40af;
+      padding: 10px 16px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-align: center;
+    }
+    
+
+    /* Caja de Reseñas de Google */
+    .review-callout {
+      max-width: 600px;
+      margin: 14px auto 0;
+      padding: 0 20px;
+    }
+    .review-card {
+      background: linear-gradient(135deg, #fffbeb, #fef3c7);
+      border: 1px solid #fde68a;
+      border-radius: 16px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);
+    }
+    .review-text {
+      font-size: 0.82rem;
+      color: #78350f;
+    }
+    .review-text strong {
+      display: block;
+      font-size: 0.92rem;
+      margin-bottom: 2px;
+    }
+    .review-btn {
+      background: #d97706;
+      color: white;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 12px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    /* Buscador */
+    .search-box {
+      max-width: 600px;
+      margin: 14px auto;
+      padding: 0 20px;
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      padding: 14px 20px 14px 44px;
+      border: none;
+      border-radius: 16px;
+      background: white;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      font-size: 0.92rem;
+      outline: none;
+    }
+    .search-icon {
+      position: absolute;
+      left: 36px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #94a3b8;
+    }
+
+    /* Categorías */
+    .categories-bar {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 4px 20px 14px;
+      max-width: 600px;
+      margin: 0 auto;
+      scrollbar-width: none;
+    }
+    .categories-bar::-webkit-scrollbar { display: none; }
+    .cat-btn {
+      white-space: nowrap;
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: 1px solid #e2e8f0;
+      background: white;
+      font-weight: 600;
+      font-size: 0.82rem;
+      color: #64748b;
+      cursor: pointer;
+    }
+    .cat-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    /* Items */
+    .menu-container {
+      padding: 0 20px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .category-section { margin-bottom: 24px; }
+    .category-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #0f172a;
+    }
+    .item-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 15px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow);
+      border: 1px solid #f1f5f9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .item-info { flex: 1; }
+    .item-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: #b45309;
+      background: #fef3c7;
+      padding: 2px 7px;
+      border-radius: 6px;
+      margin-bottom: 4px;
+    }
+    .item-name {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 3px;
+    }
+    .item-desc {
+      font-size: 0.8rem;
+      color: #64748b;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .item-price {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .item-stepper {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #f1f5f9;
+      padding: 4px;
+      border-radius: 12px;
+    }
+    .step-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      border: none;
+      background: white;
+      font-weight: bold;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    }
+    .step-count {
+      min-width: 18px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    /* Sección de Horarios Completa */
+    .schedule-card {
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      margin: 25px auto 15px;
+      border: 1px solid #e2e8f0;
+      box-shadow: var(--shadow);
+      text-align: left;
+    }
+    .schedule-card h3 {
+      font-size: 1.05rem;
+      color: #0f172a;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .schedule-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #f1f5f9;
+      font-size: 0.85rem;
+    }
+    .schedule-row:last-child { border-bottom: none; }
+    .schedule-day { font-weight: 700; color: #334155; }
+    .schedule-time { color: #64748b; }
+
+    /* Footer Social */
+    .social-footer {
+      max-width: 600px;
+      margin: 20px auto 10px;
+      padding: 20px;
+      text-align: center;
+      background: white;
+      border-radius: 20px;
+      border: 1px solid #e2e8f0;
+    }
+    .social-footer h4 {
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+      color: #1e293b;
+    }
+    .social-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .soc-btn {
+      padding: 8px 14px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f1f5f9;
+      color: #334155;
+    }
+
+    /* Barra Carrito */
+    .cart-bar {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      max-width: 560px;
+      margin: 0 auto;
+      background: #0f172a;
+      color: white;
+      padding: 14px 20px;
+      border-radius: 20px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      cursor: pointer;
+      transform: translateY(140px);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .cart-bar.visible { transform: translateY(0); }
+    .cart-pill {
+      background: var(--primary);
+      color: white;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-right: 8px;
+    }
+    .cart-total { font-size: 1.15rem; font-weight: 800; }
+    .cart-action { font-weight: 700; font-size: 0.95rem; color: #38bdf8; }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
+      z-index: 200;
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-sheet {
+      background: white;
+      width: 100%;
+      max-width: 580px;
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+      padding: 24px;
+      max-height: 85vh;
+      overflow-y: auto;
+      animation: slideUp 0.25s ease-out;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .modal-close {
+      background: #f1f5f9;
+      border: none;
+      font-size: 1.2rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .order-item-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px dashed #e2e8f0;
+      font-size: 0.92rem;
+    }
+    .form-group { margin-top: 14px; }
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #475569;
+      margin-bottom: 6px;
+    }
+    .form-control {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      outline: none;
+    }
+    .type-selector, .pay-selector {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+    .type-selector.three-col { grid-template-columns: repeat(3, 1fr); }
+    .type-btn, .pay-btn {
+      padding: 10px 6px;
+      border: 1px solid #e2e8f0;
+      background: #f8fafc;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+    }
+    .type-btn.active, .pay-btn.active {
+      background: #eff6ff;
+      border-color: #3b82f6;
+      color: #1d4ed8;
+      font-weight: 700;
+    }
+    .btn-whatsapp {
+      width: 100%;
+      background: #25d366;
+      color: white;
+      border: none;
+      padding: 16px;
+      border-radius: 16px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      margin-top: 20px;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="delivery-bar">🍔 ¡Ordena por WhatsApp para llevar sin hacer fila o para comer aquí!</div>
+
+  <header>
+    <div class="badge-schedule" onclick="scrollToSchedule()">
+      <span class="badge-dot open"></span>
+      <span id="headerScheduleText">Hoy Domingo: 7:00 PM - 12:00 AM · Para comer aquí y para llevar</span>
+    </div>
+    <h1>Hamburguesas El Charly</h1>
+    <p class="slogan">Más de 30 años de tradición en Santa Margarita · Hamburguesas gigantes, pizzas y snacks</p>
+
+    <div class="quick-actions">
+      <a href="https://www.google.com/maps/search/?api=1&query=Hamburguesas+El+Charly+Av+Santa+Margarita+230+Zapopan" target="_blank" class="action-pill pill-google">
+        ⭐ Califícanos en Google
+      </a>
+      
+        <a href="https://wa.me/523320597452" target="_blank" class="action-pill">
+          💬 WhatsApp
+        </a>
+      
+      <button onclick="shareMenu()" class="action-pill">
+        📤 Compartir Menú
+      </button>
+    </div>
+  </header>
+
+  <!-- Tarjeta de Reseñas de Google Maps -->
+  <div class="review-callout">
+    <div class="review-card">
+      <div class="review-text">
+        <strong>¿Te gustó la comida? ⭐⭐⭐⭐⭐</strong>
+        Déjanos tu opinión en Google Maps y ayúdanos a crecer.
+      </div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Hamburguesas+El+Charly+Av+Santa+Margarita+230+Zapopan" target="_blank" class="review-btn">
+        Calificar ➔
+      </a>
+    </div>
+  </div>
+
+  <div class="search-box">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="searchInput" class="search-input" placeholder="Buscar hamburguesa mexicana, camarón, pizza, lonche cubano...">
+  </div>
+
+  <div class="categories-bar" id="categoryBar">
+    <button class="cat-btn active" onclick="filterCategory('all', this)">Todos</button>
+    
+      <button class="cat-btn" onclick="filterCategory('Hamburguesas Gigantes', this)">
+        🍔 Hamburguesas Gigantes
+      </button>
+    
+      <button class="cat-btn" onclick="filterCategory('Pizzas, Lonches & Burritas', this)">
+        🍕 Pizzas, Lonches & Burritas
+      </button>
+    
+      <button class="cat-btn" onclick="filterCategory('Alitas, Papas & Antojos', this)">
+        🍟 Alitas, Papas & Antojos
+      </button>
+    
+      <button class="cat-btn" onclick="filterCategory('Biónicos & Bebidas', this)">
+        🍓 Biónicos & Bebidas
+      </button>
+    
+  </div>
+
+  <main class="menu-container">
+    
+      <section class="category-section" data-category="Hamburguesas Gigantes">
+        <h2 class="category-title">🍔 Hamburguesas Gigantes</h2>
+        
+          <div class="item-card" data-name="hamburguesa mexicana charly" data-desc="carne de res al carbón, aguacate fresco, chorizo frito dorado, queso derretido y tocino crujiente.">
+            <div class="item-info">
+              <span class="item-badge">La Más Vendida ⭐</span>
+              <div class="item-name">Hamburguesa Mexicana Charly</div>
+              <p class="item-desc">Carne de res al carbón, aguacate fresco, chorizo frito dorado, queso derretido y tocino crujiente.</p>
+              <div class="item-price">$115.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Hamburguesas_Gigantes_0', 'Hamburguesa Mexicana Charly', 115, -1)">-</button>
+              <span class="step-count" id="count_Hamburguesas_Gigantes_0">0</span>
+              <button class="step-btn" onclick="updateQty('Hamburguesas_Gigantes_0', 'Hamburguesa Mexicana Charly', 115, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="hamburguesa mar y tierra" data-desc="carne jugosa de res combinada con camarones sazonados al ajillo, queso fundido y aderezo especial.">
+            <div class="item-info">
+              <span class="item-badge">Especialidad 🦐</span>
+              <div class="item-name">Hamburguesa Mar y Tierra</div>
+              <p class="item-desc">Carne jugosa de res combinada con camarones sazonados al ajillo, queso fundido y aderezo especial.</p>
+              <div class="item-price">$145.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Hamburguesas_Gigantes_1', 'Hamburguesa Mar y Tierra', 145, -1)">-</button>
+              <span class="step-count" id="count_Hamburguesas_Gigantes_1">0</span>
+              <button class="step-btn" onclick="updateQty('Hamburguesas_Gigantes_1', 'Hamburguesa Mar y Tierra', 145, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="hamburguesa doble carne y tocino" data-desc="para gran apetito: doble carne de res seleccionada, doble porción de tocino y queso americano.">
+            <div class="item-info">
+              <span class="item-badge">Monstruosa 🤤</span>
+              <div class="item-name">Hamburguesa Doble Carne y Tocino</div>
+              <p class="item-desc">Para gran apetito: doble carne de res seleccionada, doble porción de tocino y queso americano.</p>
+              <div class="item-price">$135.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Hamburguesas_Gigantes_2', 'Hamburguesa Doble Carne y Tocino', 135, -1)">-</button>
+              <span class="step-count" id="count_Hamburguesas_Gigantes_2">0</span>
+              <button class="step-btn" onclick="updateQty('Hamburguesas_Gigantes_2', 'Hamburguesa Doble Carne y Tocino', 135, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="hamburguesa de pollo crispy" data-desc="pechuga de pollo empanizada extra crujiente con aderezo de la casa, lechuga y jitomate.">
+            <div class="item-info">
+              
+              <div class="item-name">Hamburguesa de Pollo Crispy</div>
+              <p class="item-desc">Pechuga de pollo empanizada extra crujiente con aderezo de la casa, lechuga y jitomate.</p>
+              <div class="item-price">$95.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Hamburguesas_Gigantes_3', 'Hamburguesa de Pollo Crispy', 95, -1)">-</button>
+              <span class="step-count" id="count_Hamburguesas_Gigantes_3">0</span>
+              <button class="step-btn" onclick="updateQty('Hamburguesas_Gigantes_3', 'Hamburguesa de Pollo Crispy', 95, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="hamburguesa clásica con queso" data-desc="nuestra receta tradicional con queso derretido, lechuga fresca, jitomate y cebolla asada.">
+            <div class="item-info">
+              
+              <div class="item-name">Hamburguesa Clásica con Queso</div>
+              <p class="item-desc">Nuestra receta tradicional con queso derretido, lechuga fresca, jitomate y cebolla asada.</p>
+              <div class="item-price">$85.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Hamburguesas_Gigantes_4', 'Hamburguesa Clásica con Queso', 85, -1)">-</button>
+              <span class="step-count" id="count_Hamburguesas_Gigantes_4">0</span>
+              <button class="step-btn" onclick="updateQty('Hamburguesas_Gigantes_4', 'Hamburguesa Clásica con Queso', 85, 1)">+</button>
+            </div>
+          </div>
+          
+      </section>
+    
+      <section class="category-section" data-category="Pizzas, Lonches & Burritas">
+        <h2 class="category-title">🍕 Pizzas, Lonches & Burritas</h2>
+        
+          <div class="item-card" data-name="lonche cubano especial" data-desc="bolillo tapatío doradito con pierna de cerdo, jamón, salchicha, queso fundido y aguacate fresco.">
+            <div class="item-info">
+              <span class="item-badge">Súper Llenador 🥖</span>
+              <div class="item-name">Lonche Cubano Especial</div>
+              <p class="item-desc">Bolillo tapatío doradito con pierna de cerdo, jamón, salchicha, queso fundido y aguacate fresco.</p>
+              <div class="item-price">$85.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Pizzas__Lonches___Burritas_0', 'Lonche Cubano Especial', 85, -1)">-</button>
+              <span class="step-count" id="count_Pizzas__Lonches___Burritas_0">0</span>
+              <button class="step-btn" onclick="updateQty('Pizzas__Lonches___Burritas_0', 'Lonche Cubano Especial', 85, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="pizza individual especial" data-desc="masa crujiente horneada al momento con queso mozzarella, pepperoni, jamón, tocino y champiñones.">
+            <div class="item-info">
+              <span class="item-badge">Receta Casera 🍕</span>
+              <div class="item-name">Pizza Individual Especial</div>
+              <p class="item-desc">Masa crujiente horneada al momento con queso mozzarella, pepperoni, jamón, tocino y champiñones.</p>
+              <div class="item-price">$95.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Pizzas__Lonches___Burritas_1', 'Pizza Individual Especial', 95, -1)">-</button>
+              <span class="step-count" id="count_Pizzas__Lonches___Burritas_1">0</span>
+              <button class="step-btn" onclick="updateQty('Pizzas__Lonches___Burritas_1', 'Pizza Individual Especial', 95, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="burrita especial de carne con queso" data-desc="tortilla de harina gigante rellena de carne al carbón, frijolitos y abundante queso fundido.">
+            <div class="item-info">
+              
+              <div class="item-name">Burrita Especial de Carne con Queso</div>
+              <p class="item-desc">Tortilla de harina gigante rellena de carne al carbón, frijolitos y abundante queso fundido.</p>
+              <div class="item-price">$80.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Pizzas__Lonches___Burritas_2', 'Burrita Especial de Carne con Queso', 80, -1)">-</button>
+              <span class="step-count" id="count_Pizzas__Lonches___Burritas_2">0</span>
+              <button class="step-btn" onclick="updateQty('Pizzas__Lonches___Burritas_2', 'Burrita Especial de Carne con Queso', 80, 1)">+</button>
+            </div>
+          </div>
+          
+      </section>
+    
+      <section class="category-section" data-category="Alitas, Papas & Antojos">
+        <h2 class="category-title">🍟 Alitas, Papas & Antojos</h2>
+        
+          <div class="item-card" data-name="orden de alitas crujientes (10 pzas)" data-desc="bañadas en salsa bbq o búfalo con bastones de verdura y aderezo ranch.">
+            <div class="item-info">
+              <span class="item-badge">Para Picar 🔥</span>
+              <div class="item-name">Orden de Alitas Crujientes (10 pzas)</div>
+              <p class="item-desc">Bañadas en salsa BBQ o Búfalo con bastones de verdura y aderezo ranch.</p>
+              <div class="item-price">$135.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Alitas__Papas___Antojos_0', 'Orden de Alitas Crujientes (10 pzas)', 135, -1)">-</button>
+              <span class="step-count" id="count_Alitas__Papas___Antojos_0">0</span>
+              <button class="step-btn" onclick="updateQty('Alitas__Papas___Antojos_0', 'Orden de Alitas Crujientes (10 pzas)', 135, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="hot dog especial con tocino y queso" data-desc="salchicha envuelta en tocino dorado, cebollitas asadas, jitomate y queso derretido.">
+            <div class="item-info">
+              <span class="item-badge">Clásico 🌭</span>
+              <div class="item-name">Hot Dog Especial con Tocino y Queso</div>
+              <p class="item-desc">Salchicha envuelta en tocino dorado, cebollitas asadas, jitomate y queso derretido.</p>
+              <div class="item-price">$55.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Alitas__Papas___Antojos_1', 'Hot Dog Especial con Tocino y Queso', 55, -1)">-</button>
+              <span class="step-count" id="count_Alitas__Papas___Antojos_1">0</span>
+              <button class="step-btn" onclick="updateQty('Alitas__Papas___Antojos_1', 'Hot Dog Especial con Tocino y Queso', 55, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="papas loaded con queso y tocino" data-desc="papas crujientes bañadas en queso cheddar líquido con trocitos de tocino crujiente y jalapeños.">
+            <div class="item-info">
+              <span class="item-badge">Para Compartir 👥</span>
+              <div class="item-name">Papas Loaded con Queso y Tocino</div>
+              <p class="item-desc">Papas crujientes bañadas en queso cheddar líquido con trocitos de tocino crujiente y jalapeños.</p>
+              <div class="item-price">$85.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Alitas__Papas___Antojos_2', 'Papas Loaded con Queso y Tocino', 85, -1)">-</button>
+              <span class="step-count" id="count_Alitas__Papas___Antojos_2">0</span>
+              <button class="step-btn" onclick="updateQty('Alitas__Papas___Antojos_2', 'Papas Loaded con Queso y Tocino', 85, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="papas a la francesa sazonadas" data-desc="corte delgado sazonadas con paprika y sal de ajo.">
+            <div class="item-info">
+              
+              <div class="item-name">Papas a la Francesa Sazonadas</div>
+              <p class="item-desc">Corte delgado sazonadas con paprika y sal de ajo.</p>
+              <div class="item-price">$55.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Alitas__Papas___Antojos_3', 'Papas a la Francesa Sazonadas', 55, -1)">-</button>
+              <span class="step-count" id="count_Alitas__Papas___Antojos_3">0</span>
+              <button class="step-btn" onclick="updateQty('Alitas__Papas___Antojos_3', 'Papas a la Francesa Sazonadas', 55, 1)">+</button>
+            </div>
+          </div>
+          
+      </section>
+    
+      <section class="category-section" data-category="Biónicos & Bebidas">
+        <h2 class="category-title">🍓 Biónicos & Bebidas</h2>
+        
+          <div class="item-card" data-name="biónico especial charly" data-desc="fruta fresca de temporada picada al momento con nuestra crema dulce secreta, granola y pasas.">
+            <div class="item-info">
+              <span class="item-badge">Postre Favorito 🍨</span>
+              <div class="item-name">Biónico Especial Charly</div>
+              <p class="item-desc">Fruta fresca de temporada picada al momento con nuestra crema dulce secreta, granola y pasas.</p>
+              <div class="item-price">$65.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Bi_nicos___Bebidas_0', 'Biónico Especial Charly', 65, -1)">-</button>
+              <span class="step-count" id="count_Bi_nicos___Bebidas_0">0</span>
+              <button class="step-btn" onclick="updateQty('Bi_nicos___Bebidas_0', 'Biónico Especial Charly', 65, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="refresco de vidrio bien frío (355ml)" data-desc="coca-cola original, sidral mundet, sprite o fanta.">
+            <div class="item-info">
+              
+              <div class="item-name">Refresco de Vidrio Bien Frío (355ml)</div>
+              <p class="item-desc">Coca-Cola Original, Sidral Mundet, Sprite o Fanta.</p>
+              <div class="item-price">$28.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Bi_nicos___Bebidas_1', 'Refresco de Vidrio Bien Frío (355ml)', 28, -1)">-</button>
+              <span class="step-count" id="count_Bi_nicos___Bebidas_1">0</span>
+              <button class="step-btn" onclick="updateQty('Bi_nicos___Bebidas_1', 'Refresco de Vidrio Bien Frío (355ml)', 28, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="agua fresca natural (1 litro)" data-desc="horchata o jamaica bien helada.">
+            <div class="item-info">
+              
+              <div class="item-name">Agua Fresca Natural (1 Litro)</div>
+              <p class="item-desc">Horchata o Jamaica bien helada.</p>
+              <div class="item-price">$38.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Bi_nicos___Bebidas_2', 'Agua Fresca Natural (1 Litro)', 38, -1)">-</button>
+              <span class="step-count" id="count_Bi_nicos___Bebidas_2">0</span>
+              <button class="step-btn" onclick="updateQty('Bi_nicos___Bebidas_2', 'Agua Fresca Natural (1 Litro)', 38, 1)">+</button>
+            </div>
+          </div>
+          
+      </section>
+    
+
+    <!-- Tarjeta de Horarios Detallada por Día -->
+    <div class="schedule-card" id="scheduleSection">
+      <h3>🕒 Horarios de Atención</h3>
+      
+        <div class="schedule-row">
+          <span class="schedule-day">Lunes a Domingo</span>
+          <span class="schedule-time">7:00 PM - 12:00 AM (Medianoche)</span>
+        </div>
+      
+    </div>
+
+    <!-- Contacto y Ubicación -->
+    <div class="social-footer">
+      <h4>Hamburguesas El Charly</h4>
+      <div class="social-buttons">
+        <a href="https://wa.me/523320597452" target="_blank" class="soc-btn" style="color: #16a34a;">💬 WhatsApp</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Hamburguesas+El+Charly+Av+Santa+Margarita+230+Zapopan" target="_blank" class="soc-btn" style="color: #f59e0b;">📍 Google Maps</a>
+      </div>
+      <p style="margin-top: 14px; font-size: 0.82rem; color: #64748b;">📍 Av. Santa Margarita #230, La Tuzanía, 45130 Zapopan, Jal.</p>
+    </div>
+  </main>
+
+  <!-- Barra flotante de carrito -->
+  <div class="cart-bar" id="cartBar" onclick="openCheckout()">
+    <div style="display: flex; align-items: center;">
+      <span class="cart-pill" id="cartCount">0</span>
+      <span class="cart-total" id="cartTotal">$0.00 MXN</span>
+    </div>
+    <div class="cart-action">
+      <span>Ver Pedido</span> ➔
+    </div>
+  </div>
+
+  <!-- Modal Checkout -->
+  <div class="modal-overlay" id="checkoutModal">
+    <div class="modal-sheet">
+      <div class="modal-header">
+        <h3 class="modal-title">Tu Pedido</h3>
+        <button class="modal-close" onclick="closeCheckout()">✕</button>
+      </div>
+
+      <div id="orderItemsList"></div>
+
+      <div style="display: flex; justify-content: space-between; font-weight: 800; font-size: 1.15rem; margin: 16px 0; padding-top: 10px; border-top: 2px solid #e2e8f0;">
+        <span>Total a Pagar:</span>
+        <span id="modalTotal" style="color: var(--primary);">$0.00 MXN</span>
+      </div>
+
+      <div class="form-group">
+        <label>¿Cómo deseas tu pedido?</label>
+        <div class="type-selector three-col">
+          <div class="type-btn active" id="btnDomicilio" onclick="setOrderType('A Domicilio 🛵')">A Domicilio 🛵</div>
+          <div class="type-btn " id="btnLlevar" onclick="setOrderType('Para Llevar 🥡')">Para Llevar 🥡</div>
+          <div class="type-btn" id="btnLocal" onclick="setOrderType('Comer Aquí 🍽️')">Comer Aquí 🍽️</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Método de Pago:</label>
+        <div class="pay-selector">
+          <div class="pay-btn active" id="btnEfectivo" onclick="setPaymentMethod('Efectivo 💵')">Efectivo 💵</div>
+          <div class="pay-btn" id="btnTransf" onclick="setPaymentMethod('Transferencia SPEI 💳')">Transferencia 💳</div>
+        </div>
+      </div>
+
+      <div class="form-group" id="cambioGroup">
+        <label>¿Con cuánto vas a pagar? (para llevar tu cambio):</label>
+        <input type="text" id="custCambio" class="form-control" placeholder="Ej. Pago con billete de $200 o $500">
+      </div>
+
+      <div class="form-group">
+        <label>Tu Nombre:</label>
+        <input type="text" id="custName" class="form-control" placeholder="Ej. Carlos">
+      </div>
+
+      
+      <div class="form-group" id="addrGroup">
+        <label>Dirección de entrega (calle, número y colonia):</label>
+        <input type="text" id="custAddr" class="form-control" placeholder="Ej. Marina Vallarta #..., Col. Sta Margarita">
+      </div>
+      
+
+      <div class="form-group">
+        <label>Instrucciones especiales / Ingredientes al gusto:</label>
+        <input type="text" id="custNotes" class="form-control" placeholder="Ej. Bien doradito, salsa aparte, sin cebolla...">
+      </div>
+
+      <button class="btn-whatsapp" onclick="sendOrderWhatsApp()">
+        <span>Enviar Pedido por WhatsApp</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.969.54 1.861.855 2.796.855 3.18 0 5.767-2.587 5.767-5.766.001-3.18-2.585-5.766-5.767-5.766zm9.969 5.766c0 5.518-4.482 10-10 10-1.748 0-3.414-.452-4.887-1.258l-5.113 1.338 1.365-4.992c-.933-1.536-1.465-3.328-1.465-5.088 0-5.518 4.482-10 10-10 5.518 0 10 4.482 10 10z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const phone = "523320597452";
+    const businessName = "Hamburguesas El Charly";
+    const hasDelivery = true;
+    let cart = {};
+    let orderType = hasDelivery ? 'A Domicilio 🛵' : 'Para Llevar 🥡';
+    let paymentMethod = 'Efectivo 💵';
+
+    function scrollToSchedule() {
+      const el = document.getElementById('scheduleSection');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function updateQty(id, name, price, delta) {
+      if (!cart[id]) cart[id] = { name, price, qty: 0 };
+      cart[id].qty += delta;
+      if (cart[id].qty <= 0) {
+        delete cart[id];
+        document.getElementById('count_' + id).innerText = 0;
+      } else {
+        document.getElementById('count_' + id).innerText = cart[id].qty;
+      }
+      renderCartBar();
+    }
+
+    function renderCartBar() {
+      let totalQty = 0;
+      let totalMoney = 0;
+      for (const key in cart) {
+        totalQty += cart[key].qty;
+        totalMoney += cart[key].qty * cart[key].price;
+      }
+      const bar = document.getElementById('cartBar');
+      if (totalQty > 0) {
+        bar.classList.add('visible');
+        document.getElementById('cartCount').innerText = totalQty + (totalQty === 1 ? ' platillo' : ' platillos');
+        document.getElementById('cartTotal').innerText = '$' + totalMoney.toFixed(2) + ' MXN';
+      } else {
+        bar.classList.remove('visible');
+      }
+    }
+
+    function openCheckout() {
+      const list = document.getElementById('orderItemsList');
+      list.innerHTML = '';
+      let totalMoney = 0;
+
+      for (const key in cart) {
+        const item = cart[key];
+        const sub = item.qty * item.price;
+        totalMoney += sub;
+        list.innerHTML += `
+          <div class="order-item-row">
+            <div><strong>${item.qty}x</strong> ${item.name}</div>
+            <div style="font-weight: 700;">$${sub.toFixed(2)}</div>
+          </div>
+        `;
+      }
+      document.getElementById('modalTotal').innerText = '$' + totalMoney.toFixed(2) + ' MXN';
+      document.getElementById('checkoutModal').classList.add('active');
+    }
+
+    function closeCheckout() {
+      document.getElementById('checkoutModal').classList.remove('active');
+    }
+
+    function setOrderType(type) {
+      orderType = type;
+      if (document.getElementById('btnDomicilio')) {
+        document.getElementById('btnDomicilio').className = 'type-btn' + (type.includes('Domicilio') ? ' active' : '');
+      }
+      document.getElementById('btnLlevar').className = 'type-btn' + (type.includes('Llevar') ? ' active' : '');
+      document.getElementById('btnLocal').className = 'type-btn' + (type.includes('Aquí') ? ' active' : '');
+      const addrEl = document.getElementById('addrGroup');
+      if (addrEl) {
+        addrEl.style.display = type.includes('Domicilio') ? 'block' : 'none';
+      }
+    }
+
+    function setPaymentMethod(method) {
+      paymentMethod = method;
+      document.getElementById('btnEfectivo').className = 'pay-btn' + (method.includes('Efectivo') ? ' active' : '');
+      document.getElementById('btnTransf').className = 'pay-btn' + (method.includes('Transferencia') ? ' active' : '');
+      document.getElementById('cambioGroup').style.display = method.includes('Efectivo') ? 'block' : 'none';
+    }
+
+    function sendOrderWhatsApp() {
+      const name = document.getElementById('custName').value.trim() || 'Cliente';
+      const addrEl = document.getElementById('custAddr');
+      const addr = addrEl ? addrEl.value.trim() : '';
+      const notes = document.getElementById('custNotes').value.trim();
+      const cambio = document.getElementById('custCambio').value.trim();
+
+      let totalMoney = 0;
+      let msg = '👋 ¡Hola ' + businessName + '! Quiero hacer el siguiente pedido:\n\n';
+
+      for (const key in cart) {
+        const item = cart[key];
+        const sub = item.qty * item.price;
+        totalMoney += sub;
+        msg += '• ' + item.qty + 'x ' + item.name + ' ($' + sub.toFixed(2) + ')\n';
+      }
+
+      msg += '\n💰 *Total:* $' + totalMoney.toFixed(2) + ' MXN\n';
+      msg += '📍 *Tipo:* ' + orderType + '\n';
+      msg += '💳 *Pago:* ' + paymentMethod;
+      if (paymentMethod.includes('Efectivo') && cambio) {
+        msg += ' (' + cambio + ')';
+      }
+      msg += '\n👤 *Cliente:* ' + name + '\n';
+      if (orderType.includes('Domicilio') && addr) {
+        msg += '🏠 *Dirección:* ' + addr + '\n';
+      }
+      if (notes) {
+        msg += '📝 *Notas:* ' + notes + '\n';
+      }
+      msg += '\n¿Me confirman tiempo de espera? ¡Muchas gracias!';
+
+      const waUrl = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(msg);
+      window.open(waUrl, '_blank');
+    }
+
+    function shareMenu() {
+      const shareUrl = window.location.href;
+      if (navigator.share) {
+        navigator.share({
+          title: businessName + ' - Menú Digital',
+          text: '¡Checa el menú y promociones de ' + businessName + '!',
+          url: shareUrl
+        }).catch(() => {});
+      } else {
+        const waShare = 'https://api.whatsapp.com/send?text=' + encodeURIComponent('¡Hola! Checa el menú digital de ' + businessName + ' y pide directo: ' + shareUrl);
+        window.open(waShare, '_blank');
+      }
+    }
+
+    function filterCategory(catName, btn) {
+      document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const sections = document.querySelectorAll('.category-section');
+      sections.forEach(sec => {
+        if (catName === 'all' || sec.getAttribute('data-category') === catName) {
+          sec.style.display = 'block';
+        } else {
+          sec.style.display = 'none';
+        }
+      });
+    }
+
+    document.getElementById('searchInput').addEventListener('input', function(e) {
+      const q = e.target.value.toLowerCase();
+      document.querySelectorAll('.item-card').forEach(card => {
+        const name = card.getAttribute('data-name');
+        const desc = card.getAttribute('data-desc');
+        if (name.includes(q) || desc.includes(q)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
