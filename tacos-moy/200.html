@@ -865,7 +865,7 @@
         <label>Método de Pago:</label>
         <div class="pay-selector">
           <div class="pay-btn active" id="btnEfectivo" onclick="setPaymentMethod('Efectivo 💵')">Efectivo 💵</div>
-          <div class="pay-btn" id="btnTransf" onclick="setPaymentMethod('Transferencia SPEI 💳')">Transferencia 💳</div>
+          <div class="pay-btn" id="btnAltPay" onclick="setPaymentMethod('Transferencia SPEI 💳')">Transferencia 💳</div>
         </div>
       </div>
 
@@ -982,7 +982,10 @@
     function setPaymentMethod(method) {
       paymentMethod = method;
       document.getElementById('btnEfectivo').className = 'pay-btn' + (method.includes('Efectivo') ? ' active' : '');
-      document.getElementById('btnTransf').className = 'pay-btn' + (method.includes('Transferencia') ? ' active' : '');
+      const altBtn = document.getElementById('btnAltPay') || document.getElementById('btnTransf');
+      if (altBtn) {
+        altBtn.className = 'pay-btn' + (!method.includes('Efectivo') ? ' active' : '');
+      }
       document.getElementById('cambioGroup').style.display = method.includes('Efectivo') ? 'block' : 'none';
     }
 

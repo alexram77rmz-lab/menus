@@ -542,7 +542,7 @@
 
   <div class="search-box">
     <span class="search-icon">🔍</span>
-    <input type="text" id="searchInput" class="search-input" placeholder="Buscar alitas, boneless, papas, hamburguesas, salchipulpos...">
+    <input type="text" id="searchInput" class="search-input" placeholder="Buscar alitas, boneless, hot dogs, papas, hamburguesas, salchipulpos...">
   </div>
 
   <div class="categories-bar" id="categoryBar">
@@ -556,16 +556,12 @@
         🔥 Boneless
       </button>
     
-      <button class="cat-btn" onclick="filterCategory('Hamburguesas', this)">
-        🍔 Hamburguesas
+      <button class="cat-btn" onclick="filterCategory('Hot Dogs & Hamburguesas', this)">
+        🌭 Hot Dogs & Hamburguesas
       </button>
     
-      <button class="cat-btn" onclick="filterCategory('Papas a la Francesa', this)">
-        🍟 Papas a la Francesa
-      </button>
-    
-      <button class="cat-btn" onclick="filterCategory('Dedos de Queso & Botanas', this)">
-        🧀 Dedos de Queso & Botanas
+      <button class="cat-btn" onclick="filterCategory('Papas & Botanas', this)">
+        🍟 Papas & Botanas
       </button>
     
       <button class="cat-btn" onclick="filterCategory('Bebidas', this)">
@@ -628,20 +624,48 @@
           
       </section>
     
-      <section class="category-section" data-category="Hamburguesas">
-        <h2 class="category-title">🍔 Hamburguesas</h2>
+      <section class="category-section" data-category="Hot Dogs & Hamburguesas">
+        <h2 class="category-title">🌭 Hot Dogs & Hamburguesas</h2>
         
+          <div class="item-card" data-name="hot dog con papas a la francesa" data-desc="hot dog clásico con salchicha doradita, aderezos y acompañado de papas fritas crujientes.">
+            <div class="item-info">
+              <span class="item-badge">Combo Económico 🌭🍟</span>
+              <div class="item-name">Hot Dog con Papas a la Francesa</div>
+              <p class="item-desc">Hot dog clásico con salchicha doradita, aderezos y acompañado de papas fritas crujientes.</p>
+              <div class="item-price">$65.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Hot_Dogs___Hamburguesas_0', 'Hot Dog con Papas a la Francesa', 65, -1)">-</button>
+              <span class="step-count" id="count_Hot_Dogs___Hamburguesas_0">0</span>
+              <button class="step-btn" onclick="updateQty('Hot_Dogs___Hamburguesas_0', 'Hot Dog con Papas a la Francesa', 65, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="hot dog sencillo" data-desc="hot dog tradicional con salchicha, jitomate, cebolla y aderezos al gusto.">
+            <div class="item-info">
+              
+              <div class="item-name">Hot Dog Sencillo</div>
+              <p class="item-desc">Hot dog tradicional con salchicha, jitomate, cebolla y aderezos al gusto.</p>
+              <div class="item-price">$35.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Hot_Dogs___Hamburguesas_1', 'Hot Dog Sencillo', 35, -1)">-</button>
+              <span class="step-count" id="count_Hot_Dogs___Hamburguesas_1">0</span>
+              <button class="step-btn" onclick="updateQty('Hot_Dogs___Hamburguesas_1', 'Hot Dog Sencillo', 35, 1)">+</button>
+            </div>
+          </div>
+          
           <div class="item-card" data-name="hamburguesa con papas a la francesa" data-desc="hamburguesa jugosa con carne selecta, queso derretido, vegetales frescos y aderezos, acompañada de su buena orden de papas fritas.">
             <div class="item-info">
-              <span class="item-badge">Combo Completo 🍟</span>
+              <span class="item-badge">Combo Completo 🍔🍟</span>
               <div class="item-name">Hamburguesa con Papas a la Francesa</div>
               <p class="item-desc">Hamburguesa jugosa con carne selecta, queso derretido, vegetales frescos y aderezos, acompañada de su buena orden de papas fritas.</p>
               <div class="item-price">$100.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Hamburguesas_0', 'Hamburguesa con Papas a la Francesa', 100, -1)">-</button>
-              <span class="step-count" id="count_Hamburguesas_0">0</span>
-              <button class="step-btn" onclick="updateQty('Hamburguesas_0', 'Hamburguesa con Papas a la Francesa', 100, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Hot_Dogs___Hamburguesas_2', 'Hamburguesa con Papas a la Francesa', 100, -1)">-</button>
+              <span class="step-count" id="count_Hot_Dogs___Hamburguesas_2">0</span>
+              <button class="step-btn" onclick="updateQty('Hot_Dogs___Hamburguesas_2', 'Hamburguesa con Papas a la Francesa', 100, 1)">+</button>
             </div>
           </div>
           
@@ -653,17 +677,31 @@
               <div class="item-price">$70.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Hamburguesas_1', 'Hamburguesa Sencilla', 70, -1)">-</button>
-              <span class="step-count" id="count_Hamburguesas_1">0</span>
-              <button class="step-btn" onclick="updateQty('Hamburguesas_1', 'Hamburguesa Sencilla', 70, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Hot_Dogs___Hamburguesas_3', 'Hamburguesa Sencilla', 70, -1)">-</button>
+              <span class="step-count" id="count_Hot_Dogs___Hamburguesas_3">0</span>
+              <button class="step-btn" onclick="updateQty('Hot_Dogs___Hamburguesas_3', 'Hamburguesa Sencilla', 70, 1)">+</button>
             </div>
           </div>
           
       </section>
     
-      <section class="category-section" data-category="Papas a la Francesa">
-        <h2 class="category-title">🍟 Papas a la Francesa</h2>
+      <section class="category-section" data-category="Papas & Botanas">
+        <h2 class="category-title">🍟 Papas & Botanas</h2>
         
+          <div class="item-card" data-name="papas gajo sazonadas" data-desc="porción de papas gajo crujientes sazonadas con páprika, finas hierbas y aderezo especial de la casa.">
+            <div class="item-info">
+              <span class="item-badge">Crujientes 🥔</span>
+              <div class="item-name">Papas Gajo Sazonadas</div>
+              <p class="item-desc">Porción de papas gajo crujientes sazonadas con páprika, finas hierbas y aderezo especial de la casa.</p>
+              <div class="item-price">$75.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Papas___Botanas_0', 'Papas Gajo Sazonadas', 75, -1)">-</button>
+              <span class="step-count" id="count_Papas___Botanas_0">0</span>
+              <button class="step-btn" onclick="updateQty('Papas___Botanas_0', 'Papas Gajo Sazonadas', 75, 1)">+</button>
+            </div>
+          </div>
+          
           <div class="item-card" data-name="papas a la francesa con parmesano" data-desc="orden de papas crujientes bañadas con abundante queso parmesano rallado y sazonador especial.">
             <div class="item-info">
               <span class="item-badge">Con Parmesano 🧀</span>
@@ -672,9 +710,9 @@
               <div class="item-price">$70.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Papas_a_la_Francesa_0', 'Papas a la Francesa con Parmesano', 70, -1)">-</button>
-              <span class="step-count" id="count_Papas_a_la_Francesa_0">0</span>
-              <button class="step-btn" onclick="updateQty('Papas_a_la_Francesa_0', 'Papas a la Francesa con Parmesano', 70, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Papas___Botanas_1', 'Papas a la Francesa con Parmesano', 70, -1)">-</button>
+              <span class="step-count" id="count_Papas___Botanas_1">0</span>
+              <button class="step-btn" onclick="updateQty('Papas___Botanas_1', 'Papas a la Francesa con Parmesano', 70, 1)">+</button>
             </div>
           </div>
           
@@ -686,17 +724,12 @@
               <div class="item-price">$65.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Papas_a_la_Francesa_1', 'Papas a la Francesa (Orden Sencilla)', 65, -1)">-</button>
-              <span class="step-count" id="count_Papas_a_la_Francesa_1">0</span>
-              <button class="step-btn" onclick="updateQty('Papas_a_la_Francesa_1', 'Papas a la Francesa (Orden Sencilla)', 65, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Papas___Botanas_2', 'Papas a la Francesa (Orden Sencilla)', 65, -1)">-</button>
+              <span class="step-count" id="count_Papas___Botanas_2">0</span>
+              <button class="step-btn" onclick="updateQty('Papas___Botanas_2', 'Papas a la Francesa (Orden Sencilla)', 65, 1)">+</button>
             </div>
           </div>
           
-      </section>
-    
-      <section class="category-section" data-category="Dedos de Queso & Botanas">
-        <h2 class="category-title">🧀 Dedos de Queso & Botanas</h2>
-        
           <div class="item-card" data-name="dedos de queso (orden)" data-desc="palitos de queso crujientes por fuera con queso mozzarella derretido por dentro y aderezo especial.">
             <div class="item-info">
               <span class="item-badge">Queso Fundido 🤤</span>
@@ -705,9 +738,9 @@
               <div class="item-price">$85.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Dedos_de_Queso___Botanas_0', 'Dedos de Queso (Orden)', 85, -1)">-</button>
-              <span class="step-count" id="count_Dedos_de_Queso___Botanas_0">0</span>
-              <button class="step-btn" onclick="updateQty('Dedos_de_Queso___Botanas_0', 'Dedos de Queso (Orden)', 85, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Papas___Botanas_3', 'Dedos de Queso (Orden)', 85, -1)">-</button>
+              <span class="step-count" id="count_Papas___Botanas_3">0</span>
+              <button class="step-btn" onclick="updateQty('Papas___Botanas_3', 'Dedos de Queso (Orden)', 85, 1)">+</button>
             </div>
           </div>
           
@@ -719,9 +752,9 @@
               <div class="item-price">$70.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Dedos_de_Queso___Botanas_1', 'Salchipulpos (Orden Completa)', 70, -1)">-</button>
-              <span class="step-count" id="count_Dedos_de_Queso___Botanas_1">0</span>
-              <button class="step-btn" onclick="updateQty('Dedos_de_Queso___Botanas_1', 'Salchipulpos (Orden Completa)', 70, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Papas___Botanas_4', 'Salchipulpos (Orden Completa)', 70, -1)">-</button>
+              <span class="step-count" id="count_Papas___Botanas_4">0</span>
+              <button class="step-btn" onclick="updateQty('Papas___Botanas_4', 'Salchipulpos (Orden Completa)', 70, 1)">+</button>
             </div>
           </div>
           
@@ -733,9 +766,9 @@
               <div class="item-price">$40.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Dedos_de_Queso___Botanas_2', 'Salchipulpos (1/2 Orden)', 40, -1)">-</button>
-              <span class="step-count" id="count_Dedos_de_Queso___Botanas_2">0</span>
-              <button class="step-btn" onclick="updateQty('Dedos_de_Queso___Botanas_2', 'Salchipulpos (1/2 Orden)', 40, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Papas___Botanas_5', 'Salchipulpos (1/2 Orden)', 40, -1)">-</button>
+              <span class="step-count" id="count_Papas___Botanas_5">0</span>
+              <button class="step-btn" onclick="updateQty('Papas___Botanas_5', 'Salchipulpos (1/2 Orden)', 40, 1)">+</button>
             </div>
           </div>
           
@@ -747,9 +780,9 @@
               <div class="item-price">$70.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Dedos_de_Queso___Botanas_3', 'Salchitacos (Orden)', 70, -1)">-</button>
-              <span class="step-count" id="count_Dedos_de_Queso___Botanas_3">0</span>
-              <button class="step-btn" onclick="updateQty('Dedos_de_Queso___Botanas_3', 'Salchitacos (Orden)', 70, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Papas___Botanas_6', 'Salchitacos (Orden)', 70, -1)">-</button>
+              <span class="step-count" id="count_Papas___Botanas_6">0</span>
+              <button class="step-btn" onclick="updateQty('Papas___Botanas_6', 'Salchitacos (Orden)', 70, 1)">+</button>
             </div>
           </div>
           
@@ -855,7 +888,7 @@
         <label>Método de Pago:</label>
         <div class="pay-selector">
           <div class="pay-btn active" id="btnEfectivo" onclick="setPaymentMethod('Efectivo 💵')">Efectivo 💵</div>
-          <div class="pay-btn" id="btnTransf" onclick="setPaymentMethod('Transferencia SPEI 💳')">Transferencia 💳</div>
+          <div class="pay-btn" id="btnAltPay" onclick="setPaymentMethod('Tarjeta 💳 (Llevar terminal)')">Tarjeta 💳 (Terminal)</div>
         </div>
       </div>
 
@@ -972,7 +1005,10 @@
     function setPaymentMethod(method) {
       paymentMethod = method;
       document.getElementById('btnEfectivo').className = 'pay-btn' + (method.includes('Efectivo') ? ' active' : '');
-      document.getElementById('btnTransf').className = 'pay-btn' + (method.includes('Transferencia') ? ' active' : '');
+      const altBtn = document.getElementById('btnAltPay') || document.getElementById('btnTransf');
+      if (altBtn) {
+        altBtn.className = 'pay-btn' + (!method.includes('Efectivo') ? ' active' : '');
+      }
       document.getElementById('cambioGroup').style.display = method.includes('Efectivo') ? 'block' : 'none';
     }
 
