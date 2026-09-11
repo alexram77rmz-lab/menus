@@ -523,7 +523,7 @@
 </head>
 <body>
 
-  <div class="delivery-bar">🥢 Servicio para Llevar y Comedor · Ordena al 33 1426 9510 (¡Próximamente a Domicilio!)</div>
+  <div class="delivery-bar">🛵 ¡Servicio a Domicilio en zona cercana y Para Llevar! · Pedidos al 33 1426 9510</div>
 
   <header>
     
@@ -1198,9 +1198,9 @@
 
       <div class="form-group">
         <label>¿Cómo deseas tu pedido?</label>
-        <div class="type-selector ">
-          
-          <div class="type-btn active" id="btnLlevar" onclick="setOrderType('Para Llevar 🥡')">Para Llevar 🥡</div>
+        <div class="type-selector three-col">
+          <div class="type-btn active" id="btnDomicilio" onclick="setOrderType('A Domicilio 🛵')">A Domicilio 🛵</div>
+          <div class="type-btn " id="btnLlevar" onclick="setOrderType('Para Llevar 🥡')">Para Llevar 🥡</div>
           <div class="type-btn" id="btnLocal" onclick="setOrderType('Comer Aquí 🍽️')">Comer Aquí 🍽️</div>
         </div>
       </div>
@@ -1224,6 +1224,11 @@
       </div>
 
       
+      <div class="form-group" id="addrGroup">
+        <label>Dirección de entrega (calle, número y colonia):</label>
+        <input type="text" id="custAddr" class="form-control" placeholder="Ej. Cuitláhuac #..., Col. La Villa">
+      </div>
+      
 
       <div class="form-group">
         <label>Instrucciones especiales / Ingredientes al gusto:</label>
@@ -1242,7 +1247,7 @@
   <script>
     const phone = "523314269510";
     const businessName = "KYUTAI RICE BALLS";
-    const hasDelivery = false;
+    const hasDelivery = true;
     let cart = {};
     let orderType = hasDelivery ? 'A Domicilio 🛵' : 'Para Llevar 🥡';
     let paymentMethod = 'Efectivo 💵';
