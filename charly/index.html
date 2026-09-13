@@ -571,21 +571,21 @@
   </div>
 
   <div class="categories-bar" id="categoryBar">
-    <button class="cat-btn active" onclick="filterCategory('all', this)">Todos</button>
+    <button class="cat-btn active" data-cat-target="all" onclick="filterCategory('all', this)">Todos</button>
     
-      <button class="cat-btn" onclick="filterCategory('Hamburguesas Gigantes', this)">
+      <button class="cat-btn" data-cat-target="Hamburguesas Gigantes" onclick="filterCategory('Hamburguesas Gigantes', this)">
         🍔 Hamburguesas Gigantes
       </button>
     
-      <button class="cat-btn" onclick="filterCategory('Pizzas, Lonches & Burritas', this)">
+      <button class="cat-btn" data-cat-target="Pizzas, Lonches & Burritas" onclick="filterCategory('Pizzas, Lonches & Burritas', this)">
         🍕 Pizzas, Lonches & Burritas
       </button>
     
-      <button class="cat-btn" onclick="filterCategory('Alitas, Papas & Antojos', this)">
+      <button class="cat-btn" data-cat-target="Alitas, Papas & Antojos" onclick="filterCategory('Alitas, Papas & Antojos', this)">
         🍟 Alitas, Papas & Antojos
       </button>
     
-      <button class="cat-btn" onclick="filterCategory('Biónicos & Bebidas', this)">
+      <button class="cat-btn" data-cat-target="Biónicos & Bebidas" onclick="filterCategory('Biónicos & Bebidas', this)">
         🍓 Biónicos & Bebidas
       </button>
     
@@ -596,7 +596,8 @@
       <section class="category-section" data-category="Hamburguesas Gigantes">
         <h2 class="category-title">🍔 Hamburguesas Gigantes</h2>
         
-          <div class="item-card" data-name="hamburguesa mexicana charly" data-desc="carne de res al carbón, aguacate fresco, chorizo frito dorado, queso derretido y tocino crujiente.">
+        
+          <div class="item-card" data-name="hamburguesa mexicana charly" data-desc="carne de res al carbón, aguacate fresco, chorizo frito dorado, queso derretido y tocino crujiente." data-category="hamburguesas gigantes">
             <div class="item-info">
               <span class="item-badge">La Más Vendida ⭐</span>
               <div class="item-name">Hamburguesa Mexicana Charly</div>
@@ -610,7 +611,7 @@
             </div>
           </div>
           
-          <div class="item-card" data-name="hamburguesa mar y tierra" data-desc="carne jugosa de res combinada con camarones sazonados al ajillo, queso fundido y aderezo especial.">
+          <div class="item-card" data-name="hamburguesa mar y tierra" data-desc="carne jugosa de res combinada con camarones sazonados al ajillo, queso fundido y aderezo especial." data-category="hamburguesas gigantes">
             <div class="item-info">
               <span class="item-badge">Especialidad 🦐</span>
               <div class="item-name">Hamburguesa Mar y Tierra</div>
@@ -624,7 +625,7 @@
             </div>
           </div>
           
-          <div class="item-card" data-name="hamburguesa doble carne y tocino" data-desc="para gran apetito: doble carne de res seleccionada, doble porción de tocino y queso americano.">
+          <div class="item-card" data-name="hamburguesa doble carne y tocino" data-desc="para gran apetito: doble carne de res seleccionada, doble porción de tocino y queso americano." data-category="hamburguesas gigantes">
             <div class="item-info">
               <span class="item-badge">Monstruosa 🤤</span>
               <div class="item-name">Hamburguesa Doble Carne y Tocino</div>
@@ -638,7 +639,7 @@
             </div>
           </div>
           
-          <div class="item-card" data-name="hamburguesa de pollo crispy" data-desc="pechuga de pollo empanizada extra crujiente con aderezo de la casa, lechuga y jitomate.">
+          <div class="item-card" data-name="hamburguesa de pollo crispy" data-desc="pechuga de pollo empanizada extra crujiente con aderezo de la casa, lechuga y jitomate." data-category="hamburguesas gigantes">
             <div class="item-info">
               
               <div class="item-name">Hamburguesa de Pollo Crispy</div>
@@ -652,7 +653,7 @@
             </div>
           </div>
           
-          <div class="item-card" data-name="hamburguesa clásica con queso" data-desc="nuestra receta tradicional con queso derretido, lechuga fresca, jitomate y cebolla asada.">
+          <div class="item-card" data-name="hamburguesa clásica con queso" data-desc="nuestra receta tradicional con queso derretido, lechuga fresca, jitomate y cebolla asada." data-category="hamburguesas gigantes">
             <div class="item-info">
               
               <div class="item-name">Hamburguesa Clásica con Queso</div>
@@ -671,7 +672,8 @@
       <section class="category-section" data-category="Pizzas, Lonches & Burritas">
         <h2 class="category-title">🍕 Pizzas, Lonches & Burritas</h2>
         
-          <div class="item-card" data-name="lonche cubano especial" data-desc="bolillo tapatío doradito con pierna de cerdo, jamón, salchicha, queso fundido y aguacate fresco.">
+        
+          <div class="item-card" data-name="lonche cubano especial" data-desc="bolillo tapatío doradito con pierna de cerdo, jamón, salchicha, queso fundido y aguacate fresco." data-category="pizzas, lonches & burritas">
             <div class="item-info">
               <span class="item-badge">Súper Llenador 🥖</span>
               <div class="item-name">Lonche Cubano Especial</div>
@@ -685,7 +687,7 @@
             </div>
           </div>
           
-          <div class="item-card" data-name="pizza individual especial" data-desc="masa crujiente horneada al momento con queso mozzarella, pepperoni, jamón, tocino y champiñones.">
+          <div class="item-card" data-name="pizza individual especial" data-desc="masa crujiente horneada al momento con queso mozzarella, pepperoni, jamón, tocino y champiñones." data-category="pizzas, lonches & burritas">
             <div class="item-info">
               <span class="item-badge">Receta Casera 🍕</span>
               <div class="item-name">Pizza Individual Especial</div>
@@ -699,7 +701,7 @@
             </div>
           </div>
           
-          <div class="item-card" data-name="burrita especial de carne con queso" data-desc="tortilla de harina gigante rellena de carne al carbón, frijolitos y abundante queso fundido.">
+          <div class="item-card" data-name="burrita especial de carne con queso" data-desc="tortilla de harina gigante rellena de carne al carbón, frijolitos y abundante queso fundido." data-category="pizzas, lonches & burritas">
             <div class="item-info">
               
               <div class="item-name">Burrita Especial de Carne con Queso</div>
@@ -718,7 +720,8 @@
       <section class="category-section" data-category="Alitas, Papas & Antojos">
         <h2 class="category-title">🍟 Alitas, Papas & Antojos</h2>
         
-          <div class="item-card" data-name="orden de alitas crujientes (10 pzas)" data-desc="bañadas en salsa bbq o búfalo con bastones de verdura y aderezo ranch.">
+        
+          <div class="item-card" data-name="orden de alitas crujientes (10 pzas)" data-desc="bañadas en salsa bbq o búfalo con bastones de verdura y aderezo ranch." data-category="alitas, papas & antojos">
             <div class="item-info">
               <span class="item-badge">Para Picar 🔥</span>
               <div class="item-name">Orden de Alitas Crujientes (10 pzas)</div>
@@ -732,7 +735,7 @@
             </div>
           </div>
           
-          <div class="item-card" data-name="hot dog especial con tocino y queso" data-desc="salchicha envuelta en tocino dorado, cebollitas asadas, jitomate y queso derretido.">
+          <div class="item-card" data-name="hot dog especial con tocino y queso" data-desc="salchicha envuelta en tocino dorado, cebollitas asadas, jitomate y queso derretido." data-category="alitas, papas & antojos">
             <div class="item-info">
               <span class="item-badge">Clásico 🌭</span>
               <div class="item-name">Hot Dog Especial con Tocino y Queso</div>
@@ -746,7 +749,7 @@
             </div>
           </div>
           
-          <div class="item-card" data-name="papas loaded con queso y tocino" data-desc="papas crujientes bañadas en queso cheddar líquido con trocitos de tocino crujiente y jalapeños.">
+          <div class="item-card" data-name="papas loaded con queso y tocino" data-desc="papas crujientes bañadas en queso cheddar líquido con trocitos de tocino crujiente y jalapeños." data-category="alitas, papas & antojos">
             <div class="item-info">
               <span class="item-badge">Para Compartir 👥</span>
               <div class="item-name">Papas Loaded con Queso y Tocino</div>
@@ -760,7 +763,7 @@
             </div>
           </div>
           
-          <div class="item-card" data-name="papas a la francesa sazonadas" data-desc="corte delgado sazonadas con paprika y sal de ajo.">
+          <div class="item-card" data-name="papas a la francesa sazonadas" data-desc="corte delgado sazonadas con paprika y sal de ajo." data-category="alitas, papas & antojos">
             <div class="item-info">
               
               <div class="item-name">Papas a la Francesa Sazonadas</div>
@@ -779,7 +782,8 @@
       <section class="category-section" data-category="Biónicos & Bebidas">
         <h2 class="category-title">🍓 Biónicos & Bebidas</h2>
         
-          <div class="item-card" data-name="biónico especial charly" data-desc="fruta fresca de temporada picada al momento con nuestra crema dulce secreta, granola y pasas.">
+        
+          <div class="item-card" data-name="biónico especial charly" data-desc="fruta fresca de temporada picada al momento con nuestra crema dulce secreta, granola y pasas." data-category="biónicos & bebidas">
             <div class="item-info">
               <span class="item-badge">Postre Favorito 🍨</span>
               <div class="item-name">Biónico Especial Charly</div>
@@ -793,7 +797,7 @@
             </div>
           </div>
           
-          <div class="item-card" data-name="refresco de vidrio bien frío (355ml)" data-desc="coca-cola original, sidral mundet, sprite o fanta.">
+          <div class="item-card" data-name="refresco de vidrio bien frío (355ml)" data-desc="coca-cola original, sidral mundet, sprite o fanta." data-category="biónicos & bebidas">
             <div class="item-info">
               
               <div class="item-name">Refresco de Vidrio Bien Frío (355ml)</div>
@@ -807,7 +811,7 @@
             </div>
           </div>
           
-          <div class="item-card" data-name="agua fresca natural (1 litro)" data-desc="horchata o jamaica bien helada.">
+          <div class="item-card" data-name="agua fresca natural (1 litro)" data-desc="horchata o jamaica bien helada." data-category="biónicos & bebidas">
             <div class="item-info">
               
               <div class="item-name">Agua Fresca Natural (1 Litro)</div>
@@ -1062,28 +1066,92 @@
     function filterCategory(catName, btn) {
       document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+      
+      const searchEl = document.getElementById('searchInput');
+      if (searchEl && searchEl.value) {
+        searchEl.value = '';
+      }
+      const noRes = document.getElementById('noSearchResults');
+      if (noRes) noRes.style.display = 'none';
+
       const sections = document.querySelectorAll('.category-section');
       sections.forEach(sec => {
         if (catName === 'all' || sec.getAttribute('data-category') === catName) {
           sec.style.display = 'block';
+          sec.querySelectorAll('.item-card').forEach(card => card.style.display = 'flex');
         } else {
           sec.style.display = 'none';
         }
       });
     }
 
-    document.getElementById('searchInput').addEventListener('input', function(e) {
-      const q = e.target.value.toLowerCase();
-      document.querySelectorAll('.item-card').forEach(card => {
-        const name = card.getAttribute('data-name');
-        const desc = card.getAttribute('data-desc');
-        if (name.includes(q) || desc.includes(q)) {
-          card.style.display = 'flex';
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+      searchInput.addEventListener('input', function(e) {
+        const rawQ = e.target.value;
+        const q = rawQ.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").trim();
+        const allSections = document.querySelectorAll('.category-section');
+        const activeCatBtn = document.querySelector('.cat-btn.active');
+        const activeCategory = activeCatBtn ? (activeCatBtn.getAttribute('data-cat-target') || 'all') : 'all';
+
+        let noRes = document.getElementById('noSearchResults');
+
+        if (!q) {
+          allSections.forEach(sec => {
+            const secCat = sec.getAttribute('data-category');
+            if (activeCategory === 'all' || secCat === activeCategory) {
+              sec.style.display = 'block';
+              sec.querySelectorAll('.item-card').forEach(c => c.style.display = 'flex');
+            } else {
+              sec.style.display = 'none';
+            }
+          });
+          if (noRes) noRes.style.display = 'none';
+          return;
+        }
+
+        let totalMatches = 0;
+        allSections.forEach(sec => {
+          let sectionMatches = 0;
+          const secCat = (sec.getAttribute('data-category') || '').toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+
+          sec.querySelectorAll('.item-card').forEach(card => {
+            const name = (card.getAttribute('data-name') || '').normalize("NFD").replace(/[̀-ͯ]/g, "");
+            const desc = (card.getAttribute('data-desc') || '').normalize("NFD").replace(/[̀-ͯ]/g, "");
+            const cat = (card.getAttribute('data-category') || '').normalize("NFD").replace(/[̀-ͯ]/g, "");
+
+            if (name.includes(q) || desc.includes(q) || cat.includes(q) || secCat.includes(q)) {
+              card.style.display = 'flex';
+              sectionMatches++;
+              totalMatches++;
+            } else {
+              card.style.display = 'none';
+            }
+          });
+
+          if (sectionMatches > 0) {
+            sec.style.display = 'block';
+          } else {
+            sec.style.display = 'none';
+          }
+        });
+
+        if (!noRes) {
+          noRes = document.createElement('div');
+          noRes.id = 'noSearchResults';
+          noRes.style.cssText = 'text-align: center; padding: 36px 20px; color: #64748b; font-size: 0.95rem; font-weight: 600; line-height: 1.5;';
+          const menuContainer = document.querySelector('.menu-container');
+          if (menuContainer) menuContainer.prepend(noRes);
+        }
+
+        if (totalMatches === 0) {
+          noRes.innerHTML = '🔍 No se encontraron platillos con "<strong>' + rawQ + '</strong>".<br><span style="font-size:0.84rem;font-weight:normal;opacity:0.85;">Intenta buscar por ingrediente o categoría.</span>';
+          noRes.style.display = 'block';
         } else {
-          card.style.display = 'none';
+          noRes.style.display = 'none';
         }
       });
-    });
+    }
   </script>
 </body>
 </html>

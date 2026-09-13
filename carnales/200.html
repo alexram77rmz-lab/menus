@@ -571,21 +571,21 @@
   </div>
 
   <div class="categories-bar" id="categoryBar">
-    <button class="cat-btn active" onclick="filterCategory('all', this)">Todos</button>
+    <button class="cat-btn active" data-cat-target="all" onclick="filterCategory('all', this)">Todos</button>
     
-      <button class="cat-btn" onclick="filterCategory('Quesabirrias & Tacos', this)">
+      <button class="cat-btn" data-cat-target="Quesabirrias & Tacos" onclick="filterCategory('Quesabirrias & Tacos', this)">
         🌮 Quesabirrias & Tacos
       </button>
     
-      <button class="cat-btn" onclick="filterCategory('Platos en Consomé Caliente', this)">
+      <button class="cat-btn" data-cat-target="Platos en Consomé Caliente" onclick="filterCategory('Platos en Consomé Caliente', this)">
         🍲 Platos en Consomé Caliente
       </button>
     
-      <button class="cat-btn" onclick="filterCategory('Birria por Kilo (Para la Familia)', this)">
+      <button class="cat-btn" data-cat-target="Birria por Kilo (Para la Familia)" onclick="filterCategory('Birria por Kilo (Para la Familia)', this)">
         🥩 Birria por Kilo (Para la Familia)
       </button>
     
-      <button class="cat-btn" onclick="filterCategory('Bebidas', this)">
+      <button class="cat-btn" data-cat-target="Bebidas" onclick="filterCategory('Bebidas', this)">
         🥤 Bebidas
       </button>
     
@@ -596,7 +596,8 @@
       <section class="category-section" data-category="Quesabirrias & Tacos">
         <h2 class="category-title">🌮 Quesabirrias & Tacos</h2>
         
-          <div class="item-card" data-name="quesabirria especial los carnales" data-desc="doble tortilla dorada a la plancha con costra de queso manchego derretido, abundante birria suavecita y su vasito de consomé para chopear.">
+        
+          <div class="item-card" data-name="quesabirria especial los carnales" data-desc="doble tortilla dorada a la plancha con costra de queso manchego derretido, abundante birria suavecita y su vasito de consomé para chopear." data-category="quesabirrias & tacos">
             <div class="item-info">
               <span class="item-badge">La Más Vendida ⭐</span>
               <div class="item-name">Quesabirria Especial Los Carnales</div>
@@ -610,7 +611,7 @@
             </div>
           </div>
           
-          <div class="item-card" data-name="taco dorado de birria con queso" data-desc="tortilla crujiente bañada en grasita de birria, queso fundido, carne de res jugosa y cebolla morada con limón.">
+          <div class="item-card" data-name="taco dorado de birria con queso" data-desc="tortilla crujiente bañada en grasita de birria, queso fundido, carne de res jugosa y cebolla morada con limón." data-category="quesabirrias & tacos">
             <div class="item-info">
               <span class="item-badge">Crujiente 🤤</span>
               <div class="item-name">Taco Dorado de Birria con Queso</div>
@@ -624,7 +625,7 @@
             </div>
           </div>
           
-          <div class="item-card" data-name="taco blando de birria tradicional" data-desc="doble tortilla suave calientita con birria recién salida de la olla, cilantro fresco y salsas de la casa.">
+          <div class="item-card" data-name="taco blando de birria tradicional" data-desc="doble tortilla suave calientita con birria recién salida de la olla, cilantro fresco y salsas de la casa." data-category="quesabirrias & tacos">
             <div class="item-info">
               
               <div class="item-name">Taco Blando de Birria Tradicional</div>
@@ -638,7 +639,7 @@
             </div>
           </div>
           
-          <div class="item-card" data-name="taco de lengua en birria" data-desc="lengua suavecita cocida a fuego lento en consomé con especias.">
+          <div class="item-card" data-name="taco de lengua en birria" data-desc="lengua suavecita cocida a fuego lento en consomé con especias." data-category="quesabirrias & tacos">
             <div class="item-info">
               <span class="item-badge">Especialidad 🥩</span>
               <div class="item-name">Taco de Lengua en Birria</div>
@@ -657,7 +658,8 @@
       <section class="category-section" data-category="Platos en Consomé Caliente">
         <h2 class="category-title">🍲 Platos en Consomé Caliente</h2>
         
-          <div class="item-card" data-name="plato grande de birria en consomé" data-desc="porción generosa de carne suave de res bañada en consomé hirviendo con tortillas hechas a mano y limones.">
+        
+          <div class="item-card" data-name="plato grande de birria en consomé" data-desc="porción generosa de carne suave de res bañada en consomé hirviendo con tortillas hechas a mano y limones." data-category="platos en consomé caliente">
             <div class="item-info">
               <span class="item-badge">Para Almorzar Bien 👑</span>
               <div class="item-name">Plato Grande de Birria en Consomé</div>
@@ -671,7 +673,7 @@
             </div>
           </div>
           
-          <div class="item-card" data-name="plato mediano de birria" data-desc="carne suave con consomé caliente, cebollita picada, cilantro y chile de árbol.">
+          <div class="item-card" data-name="plato mediano de birria" data-desc="carne suave con consomé caliente, cebollita picada, cilantro y chile de árbol." data-category="platos en consomé caliente">
             <div class="item-info">
               
               <div class="item-name">Plato Mediano de Birria</div>
@@ -685,7 +687,7 @@
             </div>
           </div>
           
-          <div class="item-card" data-name="consomé especial (medio litro)" data-desc="caldo concentrado con garbanzo, arroz y especias tradicionales.">
+          <div class="item-card" data-name="consomé especial (medio litro)" data-desc="caldo concentrado con garbanzo, arroz y especias tradicionales." data-category="platos en consomé caliente">
             <div class="item-info">
               
               <div class="item-name">Consomé Especial (Medio Litro)</div>
@@ -704,7 +706,8 @@
       <section class="category-section" data-category="Birria por Kilo (Para la Familia)">
         <h2 class="category-title">🥩 Birria por Kilo (Para la Familia)</h2>
         
-          <div class="item-card" data-name="1 kg de birria con consomé completo" data-desc="rinde para 4 a 5 personas. incluye 1 litro de consomé hirviendo, tortillas calientes, salsas y verduras.">
+        
+          <div class="item-card" data-name="1 kg de birria con consomé completo" data-desc="rinde para 4 a 5 personas. incluye 1 litro de consomé hirviendo, tortillas calientes, salsas y verduras." data-category="birria por kilo (para la familia)">
             <div class="item-info">
               <span class="item-badge">Familiar 👨‍👩‍👧‍👦</span>
               <div class="item-name">1 Kg de Birria con Consomé Completo</div>
@@ -718,7 +721,7 @@
             </div>
           </div>
           
-          <div class="item-card" data-name="1/2 kg de birria con consomé" data-desc="ideal para 2 o 3 personas con consomé y guarniciones completas.">
+          <div class="item-card" data-name="1/2 kg de birria con consomé" data-desc="ideal para 2 o 3 personas con consomé y guarniciones completas." data-category="birria por kilo (para la familia)">
             <div class="item-info">
               
               <div class="item-name">1/2 Kg de Birria con Consomé</div>
@@ -737,7 +740,8 @@
       <section class="category-section" data-category="Bebidas">
         <h2 class="category-title">🥤 Bebidas</h2>
         
-          <div class="item-card" data-name="refresco de vidrio bien frío (355ml)" data-desc="coca-cola original, fanta, sprite o mundet.">
+        
+          <div class="item-card" data-name="refresco de vidrio bien frío (355ml)" data-desc="coca-cola original, fanta, sprite o mundet." data-category="bebidas">
             <div class="item-info">
               
               <div class="item-name">Refresco de Vidrio Bien Frío (355ml)</div>
@@ -751,7 +755,7 @@
             </div>
           </div>
           
-          <div class="item-card" data-name="agua fresca de horchata o jamaica (1l)" data-desc="preparada al día con canela y hielo.">
+          <div class="item-card" data-name="agua fresca de horchata o jamaica (1l)" data-desc="preparada al día con canela y hielo." data-category="bebidas">
             <div class="item-info">
               
               <div class="item-name">Agua Fresca de Horchata o Jamaica (1L)</div>
@@ -1011,28 +1015,92 @@
     function filterCategory(catName, btn) {
       document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+      
+      const searchEl = document.getElementById('searchInput');
+      if (searchEl && searchEl.value) {
+        searchEl.value = '';
+      }
+      const noRes = document.getElementById('noSearchResults');
+      if (noRes) noRes.style.display = 'none';
+
       const sections = document.querySelectorAll('.category-section');
       sections.forEach(sec => {
         if (catName === 'all' || sec.getAttribute('data-category') === catName) {
           sec.style.display = 'block';
+          sec.querySelectorAll('.item-card').forEach(card => card.style.display = 'flex');
         } else {
           sec.style.display = 'none';
         }
       });
     }
 
-    document.getElementById('searchInput').addEventListener('input', function(e) {
-      const q = e.target.value.toLowerCase();
-      document.querySelectorAll('.item-card').forEach(card => {
-        const name = card.getAttribute('data-name');
-        const desc = card.getAttribute('data-desc');
-        if (name.includes(q) || desc.includes(q)) {
-          card.style.display = 'flex';
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+      searchInput.addEventListener('input', function(e) {
+        const rawQ = e.target.value;
+        const q = rawQ.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").trim();
+        const allSections = document.querySelectorAll('.category-section');
+        const activeCatBtn = document.querySelector('.cat-btn.active');
+        const activeCategory = activeCatBtn ? (activeCatBtn.getAttribute('data-cat-target') || 'all') : 'all';
+
+        let noRes = document.getElementById('noSearchResults');
+
+        if (!q) {
+          allSections.forEach(sec => {
+            const secCat = sec.getAttribute('data-category');
+            if (activeCategory === 'all' || secCat === activeCategory) {
+              sec.style.display = 'block';
+              sec.querySelectorAll('.item-card').forEach(c => c.style.display = 'flex');
+            } else {
+              sec.style.display = 'none';
+            }
+          });
+          if (noRes) noRes.style.display = 'none';
+          return;
+        }
+
+        let totalMatches = 0;
+        allSections.forEach(sec => {
+          let sectionMatches = 0;
+          const secCat = (sec.getAttribute('data-category') || '').toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+
+          sec.querySelectorAll('.item-card').forEach(card => {
+            const name = (card.getAttribute('data-name') || '').normalize("NFD").replace(/[̀-ͯ]/g, "");
+            const desc = (card.getAttribute('data-desc') || '').normalize("NFD").replace(/[̀-ͯ]/g, "");
+            const cat = (card.getAttribute('data-category') || '').normalize("NFD").replace(/[̀-ͯ]/g, "");
+
+            if (name.includes(q) || desc.includes(q) || cat.includes(q) || secCat.includes(q)) {
+              card.style.display = 'flex';
+              sectionMatches++;
+              totalMatches++;
+            } else {
+              card.style.display = 'none';
+            }
+          });
+
+          if (sectionMatches > 0) {
+            sec.style.display = 'block';
+          } else {
+            sec.style.display = 'none';
+          }
+        });
+
+        if (!noRes) {
+          noRes = document.createElement('div');
+          noRes.id = 'noSearchResults';
+          noRes.style.cssText = 'text-align: center; padding: 36px 20px; color: #64748b; font-size: 0.95rem; font-weight: 600; line-height: 1.5;';
+          const menuContainer = document.querySelector('.menu-container');
+          if (menuContainer) menuContainer.prepend(noRes);
+        }
+
+        if (totalMatches === 0) {
+          noRes.innerHTML = '🔍 No se encontraron platillos con "<strong>' + rawQ + '</strong>".<br><span style="font-size:0.84rem;font-weight:normal;opacity:0.85;">Intenta buscar por ingrediente o categoría.</span>';
+          noRes.style.display = 'block';
         } else {
-          card.style.display = 'none';
+          noRes.style.display = 'none';
         }
       });
-    });
+    }
   </script>
 </body>
 </html>

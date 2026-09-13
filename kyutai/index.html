@@ -575,45 +575,45 @@
 
   <div class="search-box">
     <span class="search-icon">🔍</span>
-    <input type="text" id="searchInput" class="search-input" placeholder="Buscar sushi, kyutai, yakimeshi, kushiage, bebidas, postres...">
+    <input type="text" id="searchInput" class="search-input" placeholder="Buscar sushi, maki, camarón, surimi, pollo, bites...">
   </div>
 
   <div class="categories-bar" id="categoryBar">
-    <button class="cat-btn active" onclick="filterCategory('all', this)">Todos</button>
+    <button class="cat-btn active" data-cat-target="all" onclick="filterCategory('all', this)">Todos</button>
     
-      <button class="cat-btn" onclick="filterCategory('Sushi', this)">
+      <button class="cat-btn" data-cat-target="Sushi" onclick="filterCategory('Sushi', this)">
         🍣 Sushi
       </button>
     
-      <button class="cat-btn" onclick="filterCategory('Kyutai (Especialidad)', this)">
+      <button class="cat-btn" data-cat-target="Kyutai (Especialidad)" onclick="filterCategory('Kyutai (Especialidad)', this)">
         🍙 Kyutai (Especialidad)
       </button>
     
-      <button class="cat-btn" onclick="filterCategory('Kyutai Bites', this)">
+      <button class="cat-btn" data-cat-target="Kyutai Bites" onclick="filterCategory('Kyutai Bites', this)">
         ⚪ Kyutai Bites
       </button>
     
-      <button class="cat-btn" onclick="filterCategory('Yakimeshi (Arroz Frito)', this)">
+      <button class="cat-btn" data-cat-target="Yakimeshi (Arroz Frito)" onclick="filterCategory('Yakimeshi (Arroz Frito)', this)">
         🍚 Yakimeshi (Arroz Frito)
       </button>
     
-      <button class="cat-btn" onclick="filterCategory('Kushiage (Brochetas Empanizadas)', this)">
+      <button class="cat-btn" data-cat-target="Kushiage (Brochetas Empanizadas)" onclick="filterCategory('Kushiage (Brochetas Empanizadas)', this)">
         🍢 Kushiage (Brochetas Empanizadas)
       </button>
     
-      <button class="cat-btn" onclick="filterCategory('Rollos Primavera', this)">
+      <button class="cat-btn" data-cat-target="Rollos Primavera" onclick="filterCategory('Rollos Primavera', this)">
         🥢 Rollos Primavera
       </button>
     
-      <button class="cat-btn" onclick="filterCategory('Postres', this)">
+      <button class="cat-btn" data-cat-target="Postres" onclick="filterCategory('Postres', this)">
         🍨 Postres
       </button>
     
-      <button class="cat-btn" onclick="filterCategory('Bebidas', this)">
+      <button class="cat-btn" data-cat-target="Bebidas" onclick="filterCategory('Bebidas', this)">
         🥤 Bebidas
       </button>
     
-      <button class="cat-btn" onclick="filterCategory('Extras & Toppings', this)">
+      <button class="cat-btn" data-cat-target="Extras & Toppings" onclick="filterCategory('Extras & Toppings', this)">
         🧂 Extras & Toppings
       </button>
     
@@ -623,88 +623,173 @@
     
       <section class="category-section" data-category="Sushi">
         <h2 class="category-title">🍣 Sushi</h2>
+        <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">🥢 Elige tu rollo favorito preparado al momento. Selecciona con Camarón fresco o Surimi selecto:</p>
         
-          <div class="item-card" data-name="maki" data-desc="alga por fuera, arroz, camarón o surimi, aguacate, philadelphia, pepino y zanahoria.">
+          <div class="item-card" data-name="maki (camarón)" data-desc="alga por fuera, arroz, camarón fresco, aguacate, queso philadelphia, pepino y zanahoria." data-category="sushi">
             <div class="item-info">
-              
-              <div class="item-name">Maki</div>
-              <p class="item-desc">Alga por fuera, arroz, camarón o surimi, aguacate, philadelphia, pepino y zanahoria.</p>
+              <span class="item-badge">Con Camarón 🍤</span>
+              <div class="item-name">Maki (Camarón)</div>
+              <p class="item-desc">Alga por fuera, arroz, camarón fresco, aguacate, queso philadelphia, pepino y zanahoria.</p>
               <div class="item-price">$80.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Sushi_0', 'Maki', 80, -1)">-</button>
+              <button class="step-btn" onclick="updateQty('Sushi_0', 'Maki (Camarón)', 80, -1)">-</button>
               <span class="step-count" id="count_Sushi_0">0</span>
-              <button class="step-btn" onclick="updateQty('Sushi_0', 'Maki', 80, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Sushi_0', 'Maki (Camarón)', 80, 1)">+</button>
             </div>
           </div>
           
-          <div class="item-card" data-name="urakami ajonjolí" data-desc="arroz y ajonjolí por fuera, alga por dentro, camarón o surimi, aguacate, philadelphia, pepino y zanahoria.">
+          <div class="item-card" data-name="maki (surimi)" data-desc="alga por fuera, arroz, surimi selecto, aguacate, queso philadelphia, pepino y zanahoria." data-category="sushi">
             <div class="item-info">
-              
-              <div class="item-name">Urakami Ajonjolí</div>
-              <p class="item-desc">Arroz y ajonjolí por fuera, alga por dentro, camarón o surimi, aguacate, philadelphia, pepino y zanahoria.</p>
+              <span class="item-badge">Con Surimi 🦀</span>
+              <div class="item-name">Maki (Surimi)</div>
+              <p class="item-desc">Alga por fuera, arroz, surimi selecto, aguacate, queso philadelphia, pepino y zanahoria.</p>
               <div class="item-price">$80.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Sushi_1', 'Urakami Ajonjolí', 80, -1)">-</button>
+              <button class="step-btn" onclick="updateQty('Sushi_1', 'Maki (Surimi)', 80, -1)">-</button>
               <span class="step-count" id="count_Sushi_1">0</span>
-              <button class="step-btn" onclick="updateQty('Sushi_1', 'Urakami Ajonjolí', 80, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Sushi_1', 'Maki (Surimi)', 80, 1)">+</button>
             </div>
           </div>
           
-          <div class="item-card" data-name="urakami empanizado" data-desc="arroz crujiente empanizado, alga por dentro, camarón o surimi, aguacate, philadelphia, pepino y zanahoria.">
+          <div class="item-card" data-name="urakami ajonjolí (camarón)" data-desc="arroz y ajonjolí por fuera, alga por dentro, camarón fresco, aguacate, queso philadelphia, pepino y zanahoria." data-category="sushi">
             <div class="item-info">
-              <span class="item-badge">Crujiente ⭐</span>
-              <div class="item-name">Urakami Empanizado</div>
-              <p class="item-desc">Arroz crujiente empanizado, alga por dentro, camarón o surimi, aguacate, philadelphia, pepino y zanahoria.</p>
+              <span class="item-badge">Con Camarón 🍤</span>
+              <div class="item-name">Urakami Ajonjolí (Camarón)</div>
+              <p class="item-desc">Arroz y ajonjolí por fuera, alga por dentro, camarón fresco, aguacate, queso philadelphia, pepino y zanahoria.</p>
+              <div class="item-price">$80.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Sushi_2', 'Urakami Ajonjolí (Camarón)', 80, -1)">-</button>
+              <span class="step-count" id="count_Sushi_2">0</span>
+              <button class="step-btn" onclick="updateQty('Sushi_2', 'Urakami Ajonjolí (Camarón)', 80, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="urakami ajonjolí (surimi)" data-desc="arroz y ajonjolí por fuera, alga por dentro, surimi selecto, aguacate, queso philadelphia, pepino y zanahoria." data-category="sushi">
+            <div class="item-info">
+              <span class="item-badge">Con Surimi 🦀</span>
+              <div class="item-name">Urakami Ajonjolí (Surimi)</div>
+              <p class="item-desc">Arroz y ajonjolí por fuera, alga por dentro, surimi selecto, aguacate, queso philadelphia, pepino y zanahoria.</p>
+              <div class="item-price">$80.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Sushi_3', 'Urakami Ajonjolí (Surimi)', 80, -1)">-</button>
+              <span class="step-count" id="count_Sushi_3">0</span>
+              <button class="step-btn" onclick="updateQty('Sushi_3', 'Urakami Ajonjolí (Surimi)', 80, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="urakami empanizado (camarón)" data-desc="empanizado crujiente dorado por fuera, alga por dentro, camarón fresco, aguacate, queso philadelphia, pepino y zanahoria." data-category="sushi">
+            <div class="item-info">
+              <span class="item-badge">Crujiente 🍤⭐</span>
+              <div class="item-name">Urakami Empanizado (Camarón)</div>
+              <p class="item-desc">Empanizado crujiente dorado por fuera, alga por dentro, camarón fresco, aguacate, queso philadelphia, pepino y zanahoria.</p>
               <div class="item-price">$85.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Sushi_2', 'Urakami Empanizado', 85, -1)">-</button>
-              <span class="step-count" id="count_Sushi_2">0</span>
-              <button class="step-btn" onclick="updateQty('Sushi_2', 'Urakami Empanizado', 85, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Sushi_4', 'Urakami Empanizado (Camarón)', 85, -1)">-</button>
+              <span class="step-count" id="count_Sushi_4">0</span>
+              <button class="step-btn" onclick="updateQty('Sushi_4', 'Urakami Empanizado (Camarón)', 85, 1)">+</button>
             </div>
           </div>
           
-          <div class="item-card" data-name="urakami philadelphia" data-desc="queso philadelphia por fuera, arroz, alga por dentro, camarón o surimi, aguacate, philadelphia, pepino y zanahoria.">
+          <div class="item-card" data-name="urakami empanizado (surimi)" data-desc="empanizado crujiente dorado por fuera, alga por dentro, surimi selecto, aguacate, queso philadelphia, pepino y zanahoria." data-category="sushi">
             <div class="item-info">
-              <span class="item-badge">Favorito 🧀</span>
-              <div class="item-name">Urakami Philadelphia</div>
-              <p class="item-desc">Queso Philadelphia por fuera, arroz, alga por dentro, camarón o surimi, aguacate, philadelphia, pepino y zanahoria.</p>
+              <span class="item-badge">Crujiente 🦀⭐</span>
+              <div class="item-name">Urakami Empanizado (Surimi)</div>
+              <p class="item-desc">Empanizado crujiente dorado por fuera, alga por dentro, surimi selecto, aguacate, queso philadelphia, pepino y zanahoria.</p>
+              <div class="item-price">$85.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Sushi_5', 'Urakami Empanizado (Surimi)', 85, -1)">-</button>
+              <span class="step-count" id="count_Sushi_5">0</span>
+              <button class="step-btn" onclick="updateQty('Sushi_5', 'Urakami Empanizado (Surimi)', 85, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="urakami philadelphia (camarón)" data-desc="abundante queso philadelphia por fuera, alga por dentro, camarón fresco, aguacate, pepino y zanahoria." data-category="sushi">
+            <div class="item-info">
+              <span class="item-badge">Philadelphia 🧀🍤</span>
+              <div class="item-name">Urakami Philadelphia (Camarón)</div>
+              <p class="item-desc">Abundante queso Philadelphia por fuera, alga por dentro, camarón fresco, aguacate, pepino y zanahoria.</p>
               <div class="item-price">$90.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Sushi_3', 'Urakami Philadelphia', 90, -1)">-</button>
-              <span class="step-count" id="count_Sushi_3">0</span>
-              <button class="step-btn" onclick="updateQty('Sushi_3', 'Urakami Philadelphia', 90, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Sushi_6', 'Urakami Philadelphia (Camarón)', 90, -1)">-</button>
+              <span class="step-count" id="count_Sushi_6">0</span>
+              <button class="step-btn" onclick="updateQty('Sushi_6', 'Urakami Philadelphia (Camarón)', 90, 1)">+</button>
             </div>
           </div>
           
-          <div class="item-card" data-name="urakami philadelphia empanizado" data-desc="queso philadelphia por fuera con empanizado crujiente, arroz, alga por dentro, camarón o surimi, aguacate, philadelphia, pepino y zanahoria.">
+          <div class="item-card" data-name="urakami philadelphia (surimi)" data-desc="abundante queso philadelphia por fuera, alga por dentro, surimi selecto, aguacate, pepino y zanahoria." data-category="sushi">
             <div class="item-info">
-              <span class="item-badge">Especial ⭐</span>
-              <div class="item-name">Urakami Philadelphia Empanizado</div>
-              <p class="item-desc">Queso Philadelphia por fuera con empanizado crujiente, arroz, alga por dentro, camarón o surimi, aguacate, philadelphia, pepino y zanahoria.</p>
-              <div class="item-price">$95.00 MXN</div>
+              <span class="item-badge">Philadelphia 🧀🦀</span>
+              <div class="item-name">Urakami Philadelphia (Surimi)</div>
+              <p class="item-desc">Abundante queso Philadelphia por fuera, alga por dentro, surimi selecto, aguacate, pepino y zanahoria.</p>
+              <div class="item-price">$90.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Sushi_4', 'Urakami Philadelphia Empanizado', 95, -1)">-</button>
-              <span class="step-count" id="count_Sushi_4">0</span>
-              <button class="step-btn" onclick="updateQty('Sushi_4', 'Urakami Philadelphia Empanizado', 95, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Sushi_7', 'Urakami Philadelphia (Surimi)', 90, -1)">-</button>
+              <span class="step-count" id="count_Sushi_7">0</span>
+              <button class="step-btn" onclick="updateQty('Sushi_7', 'Urakami Philadelphia (Surimi)', 90, 1)">+</button>
             </div>
           </div>
           
-          <div class="item-card" data-name="urakami avocado" data-desc="delicioso aguacate fresco por fuera, arroz, alga por dentro, camarón o surimi, philadelphia, pepino y zanahoria.">
+          <div class="item-card" data-name="urakami philadelphia empanizado (camarón)" data-desc="queso philadelphia por fuera con empanizado súper crujiente, alga por dentro, camarón fresco, aguacate, pepino y zanahoria." data-category="sushi">
             <div class="item-info">
-              <span class="item-badge">Con Aguacate 🥑</span>
-              <div class="item-name">Urakami Avocado</div>
-              <p class="item-desc">Delicioso aguacate fresco por fuera, arroz, alga por dentro, camarón o surimi, philadelphia, pepino y zanahoria.</p>
+              <span class="item-badge">Especial ⭐🍤</span>
+              <div class="item-name">Urakami Philadelphia Empanizado (Camarón)</div>
+              <p class="item-desc">Queso Philadelphia por fuera con empanizado súper crujiente, alga por dentro, camarón fresco, aguacate, pepino y zanahoria.</p>
               <div class="item-price">$95.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Sushi_5', 'Urakami Avocado', 95, -1)">-</button>
-              <span class="step-count" id="count_Sushi_5">0</span>
-              <button class="step-btn" onclick="updateQty('Sushi_5', 'Urakami Avocado', 95, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Sushi_8', 'Urakami Philadelphia Empanizado (Camarón)', 95, -1)">-</button>
+              <span class="step-count" id="count_Sushi_8">0</span>
+              <button class="step-btn" onclick="updateQty('Sushi_8', 'Urakami Philadelphia Empanizado (Camarón)', 95, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="urakami philadelphia empanizado (surimi)" data-desc="queso philadelphia por fuera con empanizado súper crujiente, alga por dentro, surimi selecto, aguacate, pepino y zanahoria." data-category="sushi">
+            <div class="item-info">
+              <span class="item-badge">Especial ⭐🦀</span>
+              <div class="item-name">Urakami Philadelphia Empanizado (Surimi)</div>
+              <p class="item-desc">Queso Philadelphia por fuera con empanizado súper crujiente, alga por dentro, surimi selecto, aguacate, pepino y zanahoria.</p>
+              <div class="item-price">$95.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Sushi_9', 'Urakami Philadelphia Empanizado (Surimi)', 95, -1)">-</button>
+              <span class="step-count" id="count_Sushi_9">0</span>
+              <button class="step-btn" onclick="updateQty('Sushi_9', 'Urakami Philadelphia Empanizado (Surimi)', 95, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="urakami avocado (camarón)" data-desc="láminas de aguacate fresco por fuera, alga por dentro, camarón fresco, queso philadelphia, pepino y zanahoria." data-category="sushi">
+            <div class="item-info">
+              <span class="item-badge">Con Aguacate 🥑🍤</span>
+              <div class="item-name">Urakami Avocado (Camarón)</div>
+              <p class="item-desc">Láminas de aguacate fresco por fuera, alga por dentro, camarón fresco, queso philadelphia, pepino y zanahoria.</p>
+              <div class="item-price">$95.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Sushi_10', 'Urakami Avocado (Camarón)', 95, -1)">-</button>
+              <span class="step-count" id="count_Sushi_10">0</span>
+              <button class="step-btn" onclick="updateQty('Sushi_10', 'Urakami Avocado (Camarón)', 95, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="urakami avocado (surimi)" data-desc="láminas de aguacate fresco por fuera, alga por dentro, surimi selecto, queso philadelphia, pepino y zanahoria." data-category="sushi">
+            <div class="item-info">
+              <span class="item-badge">Con Aguacate 🥑🦀</span>
+              <div class="item-name">Urakami Avocado (Surimi)</div>
+              <p class="item-desc">Láminas de aguacate fresco por fuera, alga por dentro, surimi selecto, queso philadelphia, pepino y zanahoria.</p>
+              <div class="item-price">$95.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Sushi_11', 'Urakami Avocado (Surimi)', 95, -1)">-</button>
+              <span class="step-count" id="count_Sushi_11">0</span>
+              <button class="step-btn" onclick="updateQty('Sushi_11', 'Urakami Avocado (Surimi)', 95, 1)">+</button>
             </div>
           </div>
           
@@ -712,74 +797,131 @@
     
       <section class="category-section" data-category="Kyutai (Especialidad)">
         <h2 class="category-title">🍙 Kyutai (Especialidad)</h2>
+        <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">🍙 Gran bola de arroz rellena y empanizada súper crujiente. Elige tu relleno favorito:</p>
         
-          <div class="item-card" data-name="kyutai vegetariana" data-desc="gran bola de arroz rellena y empanizada con champiñones, pimiento y queso manchego derretido.">
+          <div class="item-card" data-name="kyutai de arroz rellena - pollo" data-desc="gran bola de arroz rellena de jugosa pechuga de pollo y queso manchego derretido, empanizada súper crujiente." data-category="kyutai (especialidad)">
             <div class="item-info">
-              
-              <div class="item-name">Kyutai Vegetariana</div>
-              <p class="item-desc">Gran bola de arroz rellena y empanizada con champiñones, pimiento y queso manchego derretido.</p>
-              <div class="item-price">$70.00 MXN</div>
-            </div>
-            <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Kyutai__Especialidad__0', 'Kyutai Vegetariana', 70, -1)">-</button>
-              <span class="step-count" id="count_Kyutai__Especialidad__0">0</span>
-              <button class="step-btn" onclick="updateQty('Kyutai__Especialidad__0', 'Kyutai Vegetariana', 70, 1)">+</button>
-            </div>
-          </div>
-          
-          <div class="item-card" data-name="kyutai pollo, res ó camarón" data-desc="gran bola de arroz rellena y empanizada con pollo, res ó camarón a elegir y queso manchego derretido.">
-            <div class="item-info">
-              
-              <div class="item-name">Kyutai Pollo, Res ó Camarón</div>
-              <p class="item-desc">Gran bola de arroz rellena y empanizada con pollo, res ó camarón a elegir y queso manchego derretido.</p>
+              <span class="item-badge">De Pollo 🍗</span>
+              <div class="item-name">Kyutai de Arroz Rellena - Pollo</div>
+              <p class="item-desc">Gran bola de arroz rellena de jugosa pechuga de pollo y queso manchego derretido, empanizada súper crujiente.</p>
               <div class="item-price">$80.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Kyutai__Especialidad__1', 'Kyutai Pollo, Res ó Camarón', 80, -1)">-</button>
-              <span class="step-count" id="count_Kyutai__Especialidad__1">0</span>
-              <button class="step-btn" onclick="updateQty('Kyutai__Especialidad__1', 'Kyutai Pollo, Res ó Camarón', 80, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Kyutai__Especialidad__0', 'Kyutai de Arroz Rellena - Pollo', 80, -1)">-</button>
+              <span class="step-count" id="count_Kyutai__Especialidad__0">0</span>
+              <button class="step-btn" onclick="updateQty('Kyutai__Especialidad__0', 'Kyutai de Arroz Rellena - Pollo', 80, 1)">+</button>
             </div>
           </div>
           
-          <div class="item-card" data-name="kyutai dos quesos y carne" data-desc="gran bola de arroz rellena y empanizada con pollo, res ó camarón, doble queso (manchego y gouda derretido).">
+          <div class="item-card" data-name="kyutai de arroz rellena - res" data-desc="gran bola de arroz rellena de carne de res sazonada y queso manchego derretido, empanizada súper crujiente." data-category="kyutai (especialidad)">
+            <div class="item-info">
+              <span class="item-badge">De Res 🥩</span>
+              <div class="item-name">Kyutai de Arroz Rellena - Res</div>
+              <p class="item-desc">Gran bola de arroz rellena de carne de res sazonada y queso manchego derretido, empanizada súper crujiente.</p>
+              <div class="item-price">$80.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Kyutai__Especialidad__1', 'Kyutai de Arroz Rellena - Res', 80, -1)">-</button>
+              <span class="step-count" id="count_Kyutai__Especialidad__1">0</span>
+              <button class="step-btn" onclick="updateQty('Kyutai__Especialidad__1', 'Kyutai de Arroz Rellena - Res', 80, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="kyutai de arroz rellena - camarón" data-desc="gran bola de arroz rellena de camarón selecto y queso manchego derretido, empanizada súper crujiente." data-category="kyutai (especialidad)">
+            <div class="item-info">
+              <span class="item-badge">De Camarón 🍤</span>
+              <div class="item-name">Kyutai de Arroz Rellena - Camarón</div>
+              <p class="item-desc">Gran bola de arroz rellena de camarón selecto y queso manchego derretido, empanizada súper crujiente.</p>
+              <div class="item-price">$80.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Kyutai__Especialidad__2', 'Kyutai de Arroz Rellena - Camarón', 80, -1)">-</button>
+              <span class="step-count" id="count_Kyutai__Especialidad__2">0</span>
+              <button class="step-btn" onclick="updateQty('Kyutai__Especialidad__2', 'Kyutai de Arroz Rellena - Camarón', 80, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="kyutai dos quesos - pollo" data-desc="gran bola de arroz rellena de pechuga de pollo con doble queso derretido (manchego y gouda), empanizada crujiente." data-category="kyutai (especialidad)">
             <div class="item-info">
               <span class="item-badge">Doble Queso 🧀</span>
-              <div class="item-name">Kyutai Dos Quesos y Carne</div>
-              <p class="item-desc">Gran bola de arroz rellena y empanizada con pollo, res ó camarón, doble queso (manchego y gouda derretido).</p>
+              <div class="item-name">Kyutai Dos Quesos - Pollo</div>
+              <p class="item-desc">Gran bola de arroz rellena de pechuga de pollo con doble queso derretido (manchego y gouda), empanizada crujiente.</p>
               <div class="item-price">$85.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Kyutai__Especialidad__2', 'Kyutai Dos Quesos y Carne', 85, -1)">-</button>
-              <span class="step-count" id="count_Kyutai__Especialidad__2">0</span>
-              <button class="step-btn" onclick="updateQty('Kyutai__Especialidad__2', 'Kyutai Dos Quesos y Carne', 85, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Kyutai__Especialidad__3', 'Kyutai Dos Quesos - Pollo', 85, -1)">-</button>
+              <span class="step-count" id="count_Kyutai__Especialidad__3">0</span>
+              <button class="step-btn" onclick="updateQty('Kyutai__Especialidad__3', 'Kyutai Dos Quesos - Pollo', 85, 1)">+</button>
             </div>
           </div>
           
-          <div class="item-card" data-name="kyutai mixta" data-desc="gran bola de arroz empanizada rellena de pollo, res, camarón y abundante queso manchego.">
+          <div class="item-card" data-name="kyutai dos quesos - res" data-desc="gran bola de arroz rellena de carne de res con doble queso derretido (manchego y gouda), empanizada crujiente." data-category="kyutai (especialidad)">
+            <div class="item-info">
+              <span class="item-badge">Doble Queso 🧀</span>
+              <div class="item-name">Kyutai Dos Quesos - Res</div>
+              <p class="item-desc">Gran bola de arroz rellena de carne de res con doble queso derretido (manchego y gouda), empanizada crujiente.</p>
+              <div class="item-price">$85.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Kyutai__Especialidad__4', 'Kyutai Dos Quesos - Res', 85, -1)">-</button>
+              <span class="step-count" id="count_Kyutai__Especialidad__4">0</span>
+              <button class="step-btn" onclick="updateQty('Kyutai__Especialidad__4', 'Kyutai Dos Quesos - Res', 85, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="kyutai dos quesos - camarón" data-desc="gran bola de arroz rellena de camarón con doble queso derretido (manchego y gouda), empanizada crujiente." data-category="kyutai (especialidad)">
+            <div class="item-info">
+              <span class="item-badge">Doble Queso 🧀</span>
+              <div class="item-name">Kyutai Dos Quesos - Camarón</div>
+              <p class="item-desc">Gran bola de arroz rellena de camarón con doble queso derretido (manchego y gouda), empanizada crujiente.</p>
+              <div class="item-price">$85.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Kyutai__Especialidad__5', 'Kyutai Dos Quesos - Camarón', 85, -1)">-</button>
+              <span class="step-count" id="count_Kyutai__Especialidad__5">0</span>
+              <button class="step-btn" onclick="updateQty('Kyutai__Especialidad__5', 'Kyutai Dos Quesos - Camarón', 85, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="kyutai vegetariana" data-desc="gran bola de arroz rellena de champiñones, pimiento y abundante queso manchego derretido, empanizada crujiente." data-category="kyutai (especialidad)">
+            <div class="item-info">
+              <span class="item-badge">Vegetariana 🥦</span>
+              <div class="item-name">Kyutai Vegetariana</div>
+              <p class="item-desc">Gran bola de arroz rellena de champiñones, pimiento y abundante queso manchego derretido, empanizada crujiente.</p>
+              <div class="item-price">$70.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Kyutai__Especialidad__6', 'Kyutai Vegetariana', 70, -1)">-</button>
+              <span class="step-count" id="count_Kyutai__Especialidad__6">0</span>
+              <button class="step-btn" onclick="updateQty('Kyutai__Especialidad__6', 'Kyutai Vegetariana', 70, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="kyutai mixta (pollo, res y camarón)" data-desc="gran bola de arroz rellena de la combinación perfecta: pollo, res, camarón y queso manchego derretido." data-category="kyutai (especialidad)">
             <div class="item-info">
               <span class="item-badge">Mixta 👑</span>
-              <div class="item-name">Kyutai Mixta</div>
-              <p class="item-desc">Gran bola de arroz empanizada rellena de pollo, res, camarón y abundante queso manchego.</p>
+              <div class="item-name">Kyutai Mixta (Pollo, Res y Camarón)</div>
+              <p class="item-desc">Gran bola de arroz rellena de la combinación perfecta: pollo, res, camarón y queso manchego derretido.</p>
               <div class="item-price">$85.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Kyutai__Especialidad__3', 'Kyutai Mixta', 85, -1)">-</button>
-              <span class="step-count" id="count_Kyutai__Especialidad__3">0</span>
-              <button class="step-btn" onclick="updateQty('Kyutai__Especialidad__3', 'Kyutai Mixta', 85, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Kyutai__Especialidad__7', 'Kyutai Mixta (Pollo, Res y Camarón)', 85, -1)">-</button>
+              <span class="step-count" id="count_Kyutai__Especialidad__7">0</span>
+              <button class="step-btn" onclick="updateQty('Kyutai__Especialidad__7', 'Kyutai Mixta (Pollo, Res y Camarón)', 85, 1)">+</button>
             </div>
           </div>
           
-          <div class="item-card" data-name="kyutai especial (mixto, philadelphia y aguacate)" data-desc="la reina de la casa: bola de arroz empanizada rellena de pollo, res, camarón, queso manchego, philadelphia y aguacate.">
+          <div class="item-card" data-name="kyutai especial (mixto, philadelphia y aguacate)" data-desc="la reina de la casa: gran bola de arroz empanizada rellena de pollo, res, camarón, queso manchego, philadelphia y aguacate fresco." data-category="kyutai (especialidad)">
             <div class="item-info">
               <span class="item-badge">La Más Pedida ⭐</span>
               <div class="item-name">Kyutai Especial (Mixto, Philadelphia y Aguacate)</div>
-              <p class="item-desc">La reina de la casa: bola de arroz empanizada rellena de pollo, res, camarón, queso manchego, philadelphia y aguacate.</p>
+              <p class="item-desc">La reina de la casa: gran bola de arroz empanizada rellena de pollo, res, camarón, queso manchego, philadelphia y aguacate fresco.</p>
               <div class="item-price">$90.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Kyutai__Especialidad__4', 'Kyutai Especial (Mixto, Philadelphia y Aguacate)', 90, -1)">-</button>
-              <span class="step-count" id="count_Kyutai__Especialidad__4">0</span>
-              <button class="step-btn" onclick="updateQty('Kyutai__Especialidad__4', 'Kyutai Especial (Mixto, Philadelphia y Aguacate)', 90, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Kyutai__Especialidad__8', 'Kyutai Especial (Mixto, Philadelphia y Aguacate)', 90, -1)">-</button>
+              <span class="step-count" id="count_Kyutai__Especialidad__8">0</span>
+              <button class="step-btn" onclick="updateQty('Kyutai__Especialidad__8', 'Kyutai Especial (Mixto, Philadelphia y Aguacate)', 90, 1)">+</button>
             </div>
           </div>
           
@@ -787,46 +929,131 @@
     
       <section class="category-section" data-category="Kyutai Bites">
         <h2 class="category-title">⚪ Kyutai Bites</h2>
+        <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">⚪ Mini bolas de arroz rellenas de queso manchego empanizadas. Elige tu cubierta favorita:</p>
         
-          <div class="item-card" data-name="kyutai bites - orden grande (12 pzas)" data-desc="12 mini bolas de arroz rellenas de queso manchego, empanizadas y cubiertas de sabor a elegir: queso-jalapeño, takis o cheddar.">
+          <div class="item-card" data-name="kyutai bites takis - grande (12 pzas)" data-desc="12 mini bolas de arroz rellenas de queso manchego empanizadas con cubierta de takis fuego crujiente." data-category="kyutai bites">
             <div class="item-info">
-              <span class="item-badge">Para Compartir 👑</span>
-              <div class="item-name">Kyutai Bites - Orden Grande (12 pzas)</div>
-              <p class="item-desc">12 mini bolas de arroz rellenas de queso manchego, empanizadas y cubiertas de sabor a elegir: queso-jalapeño, Takis o cheddar.</p>
+              <span class="item-badge">Takis Fuego 🔥</span>
+              <div class="item-name">Kyutai Bites Takis - Grande (12 pzas)</div>
+              <p class="item-desc">12 mini bolas de arroz rellenas de queso manchego empanizadas con cubierta de Takis Fuego crujiente.</p>
               <div class="item-price">$80.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Kyutai_Bites_0', 'Kyutai Bites - Orden Grande (12 pzas)', 80, -1)">-</button>
+              <button class="step-btn" onclick="updateQty('Kyutai_Bites_0', 'Kyutai Bites Takis - Grande (12 pzas)', 80, -1)">-</button>
               <span class="step-count" id="count_Kyutai_Bites_0">0</span>
-              <button class="step-btn" onclick="updateQty('Kyutai_Bites_0', 'Kyutai Bites - Orden Grande (12 pzas)', 80, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Kyutai_Bites_0', 'Kyutai Bites Takis - Grande (12 pzas)', 80, 1)">+</button>
             </div>
           </div>
           
-          <div class="item-card" data-name="kyutai bites - orden mediana (8 pzas)" data-desc="8 mini bolas de arroz rellenas de queso manchego, empanizadas y cubiertas de sabor a elegir: queso-jalapeño, takis o cheddar.">
+          <div class="item-card" data-name="kyutai bites cheddar - grande (12 pzas)" data-desc="12 mini bolas de arroz rellenas de queso manchego empanizadas con cubierta de queso cheddar." data-category="kyutai bites">
             <div class="item-info">
-              
-              <div class="item-name">Kyutai Bites - Orden Mediana (8 pzas)</div>
-              <p class="item-desc">8 mini bolas de arroz rellenas de queso manchego, empanizadas y cubiertas de sabor a elegir: queso-jalapeño, Takis o cheddar.</p>
+              <span class="item-badge">Cheddar 🧀</span>
+              <div class="item-name">Kyutai Bites Cheddar - Grande (12 pzas)</div>
+              <p class="item-desc">12 mini bolas de arroz rellenas de queso manchego empanizadas con cubierta de Queso Cheddar.</p>
+              <div class="item-price">$80.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Kyutai_Bites_1', 'Kyutai Bites Cheddar - Grande (12 pzas)', 80, -1)">-</button>
+              <span class="step-count" id="count_Kyutai_Bites_1">0</span>
+              <button class="step-btn" onclick="updateQty('Kyutai_Bites_1', 'Kyutai Bites Cheddar - Grande (12 pzas)', 80, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="kyutai bites queso-jalapeño - grande (12 pzas)" data-desc="12 mini bolas de arroz rellenas de queso manchego empanizadas con cubierta de queso-jalapeño." data-category="kyutai bites">
+            <div class="item-info">
+              <span class="item-badge">Jalapeño 🌶️</span>
+              <div class="item-name">Kyutai Bites Queso-Jalapeño - Grande (12 pzas)</div>
+              <p class="item-desc">12 mini bolas de arroz rellenas de queso manchego empanizadas con cubierta de Queso-Jalapeño.</p>
+              <div class="item-price">$80.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Kyutai_Bites_2', 'Kyutai Bites Queso-Jalapeño - Grande (12 pzas)', 80, -1)">-</button>
+              <span class="step-count" id="count_Kyutai_Bites_2">0</span>
+              <button class="step-btn" onclick="updateQty('Kyutai_Bites_2', 'Kyutai Bites Queso-Jalapeño - Grande (12 pzas)', 80, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="kyutai bites takis - mediana (8 pzas)" data-desc="8 mini bolas de arroz rellenas de queso manchego empanizadas con cubierta de takis fuego crujiente." data-category="kyutai bites">
+            <div class="item-info">
+              <span class="item-badge">Takis Fuego 🔥</span>
+              <div class="item-name">Kyutai Bites Takis - Mediana (8 pzas)</div>
+              <p class="item-desc">8 mini bolas de arroz rellenas de queso manchego empanizadas con cubierta de Takis Fuego crujiente.</p>
               <div class="item-price">$60.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Kyutai_Bites_1', 'Kyutai Bites - Orden Mediana (8 pzas)', 60, -1)">-</button>
-              <span class="step-count" id="count_Kyutai_Bites_1">0</span>
-              <button class="step-btn" onclick="updateQty('Kyutai_Bites_1', 'Kyutai Bites - Orden Mediana (8 pzas)', 60, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Kyutai_Bites_3', 'Kyutai Bites Takis - Mediana (8 pzas)', 60, -1)">-</button>
+              <span class="step-count" id="count_Kyutai_Bites_3">0</span>
+              <button class="step-btn" onclick="updateQty('Kyutai_Bites_3', 'Kyutai Bites Takis - Mediana (8 pzas)', 60, 1)">+</button>
             </div>
           </div>
           
-          <div class="item-card" data-name="kyutai bites - orden chica (5 pzas)" data-desc="5 mini bolas de arroz rellenas de queso manchego, empanizadas y cubiertas de sabor a elegir: queso-jalapeño, takis o cheddar.">
+          <div class="item-card" data-name="kyutai bites cheddar - mediana (8 pzas)" data-desc="8 mini bolas de arroz rellenas de queso manchego empanizadas con cubierta de queso cheddar." data-category="kyutai bites">
             <div class="item-info">
-              
-              <div class="item-name">Kyutai Bites - Orden Chica (5 pzas)</div>
-              <p class="item-desc">5 mini bolas de arroz rellenas de queso manchego, empanizadas y cubiertas de sabor a elegir: queso-jalapeño, Takis o cheddar.</p>
+              <span class="item-badge">Cheddar 🧀</span>
+              <div class="item-name">Kyutai Bites Cheddar - Mediana (8 pzas)</div>
+              <p class="item-desc">8 mini bolas de arroz rellenas de queso manchego empanizadas con cubierta de Queso Cheddar.</p>
+              <div class="item-price">$60.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Kyutai_Bites_4', 'Kyutai Bites Cheddar - Mediana (8 pzas)', 60, -1)">-</button>
+              <span class="step-count" id="count_Kyutai_Bites_4">0</span>
+              <button class="step-btn" onclick="updateQty('Kyutai_Bites_4', 'Kyutai Bites Cheddar - Mediana (8 pzas)', 60, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="kyutai bites queso-jalapeño - mediana (8 pzas)" data-desc="8 mini bolas de arroz rellenas de queso manchego empanizadas con cubierta de queso-jalapeño." data-category="kyutai bites">
+            <div class="item-info">
+              <span class="item-badge">Jalapeño 🌶️</span>
+              <div class="item-name">Kyutai Bites Queso-Jalapeño - Mediana (8 pzas)</div>
+              <p class="item-desc">8 mini bolas de arroz rellenas de queso manchego empanizadas con cubierta de Queso-Jalapeño.</p>
+              <div class="item-price">$60.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Kyutai_Bites_5', 'Kyutai Bites Queso-Jalapeño - Mediana (8 pzas)', 60, -1)">-</button>
+              <span class="step-count" id="count_Kyutai_Bites_5">0</span>
+              <button class="step-btn" onclick="updateQty('Kyutai_Bites_5', 'Kyutai Bites Queso-Jalapeño - Mediana (8 pzas)', 60, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="kyutai bites takis - chica (5 pzas)" data-desc="5 mini bolas de arroz rellenas de queso manchego empanizadas con cubierta de takis fuego crujiente." data-category="kyutai bites">
+            <div class="item-info">
+              <span class="item-badge">Takis Fuego 🔥</span>
+              <div class="item-name">Kyutai Bites Takis - Chica (5 pzas)</div>
+              <p class="item-desc">5 mini bolas de arroz rellenas de queso manchego empanizadas con cubierta de Takis Fuego crujiente.</p>
               <div class="item-price">$40.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Kyutai_Bites_2', 'Kyutai Bites - Orden Chica (5 pzas)', 40, -1)">-</button>
-              <span class="step-count" id="count_Kyutai_Bites_2">0</span>
-              <button class="step-btn" onclick="updateQty('Kyutai_Bites_2', 'Kyutai Bites - Orden Chica (5 pzas)', 40, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Kyutai_Bites_6', 'Kyutai Bites Takis - Chica (5 pzas)', 40, -1)">-</button>
+              <span class="step-count" id="count_Kyutai_Bites_6">0</span>
+              <button class="step-btn" onclick="updateQty('Kyutai_Bites_6', 'Kyutai Bites Takis - Chica (5 pzas)', 40, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="kyutai bites cheddar - chica (5 pzas)" data-desc="5 mini bolas de arroz rellenas de queso manchego empanizadas con cubierta de queso cheddar." data-category="kyutai bites">
+            <div class="item-info">
+              <span class="item-badge">Cheddar 🧀</span>
+              <div class="item-name">Kyutai Bites Cheddar - Chica (5 pzas)</div>
+              <p class="item-desc">5 mini bolas de arroz rellenas de queso manchego empanizadas con cubierta de Queso Cheddar.</p>
+              <div class="item-price">$40.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Kyutai_Bites_7', 'Kyutai Bites Cheddar - Chica (5 pzas)', 40, -1)">-</button>
+              <span class="step-count" id="count_Kyutai_Bites_7">0</span>
+              <button class="step-btn" onclick="updateQty('Kyutai_Bites_7', 'Kyutai Bites Cheddar - Chica (5 pzas)', 40, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="kyutai bites queso-jalapeño - chica (5 pzas)" data-desc="5 mini bolas de arroz rellenas de queso manchego empanizadas con cubierta de queso-jalapeño." data-category="kyutai bites">
+            <div class="item-info">
+              <span class="item-badge">Jalapeño 🌶️</span>
+              <div class="item-name">Kyutai Bites Queso-Jalapeño - Chica (5 pzas)</div>
+              <p class="item-desc">5 mini bolas de arroz rellenas de queso manchego empanizadas con cubierta de Queso-Jalapeño.</p>
+              <div class="item-price">$40.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Kyutai_Bites_8', 'Kyutai Bites Queso-Jalapeño - Chica (5 pzas)', 40, -1)">-</button>
+              <span class="step-count" id="count_Kyutai_Bites_8">0</span>
+              <button class="step-btn" onclick="updateQty('Kyutai_Bites_8', 'Kyutai Bites Queso-Jalapeño - Chica (5 pzas)', 40, 1)">+</button>
             </div>
           </div>
           
@@ -834,60 +1061,75 @@
     
       <section class="category-section" data-category="Yakimeshi (Arroz Frito)">
         <h2 class="category-title">🍚 Yakimeshi (Arroz Frito)</h2>
+        <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">🍚 Arroz frito tradicional al wok con vegetales frescos. Elige tu proteína favorita:</p>
         
-          <div class="item-card" data-name="yakimeshi vegetariano" data-desc="tradicional arroz frito japonés con zanahoria, calabaza, brócoli, champiñones, pimiento y cebolla.">
+          <div class="item-card" data-name="yakimeshi de pollo" data-desc="arroz frito tradicional japonés al wok con vegetales selectos y jugoso pollo." data-category="yakimeshi (arroz frito)">
             <div class="item-info">
-              
+              <span class="item-badge">De Pollo 🍗</span>
+              <div class="item-name">Yakimeshi de Pollo</div>
+              <p class="item-desc">Arroz frito tradicional japonés al wok con vegetales selectos y jugoso pollo.</p>
+              <div class="item-price">$75.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Yakimeshi__Arroz_Frito__0', 'Yakimeshi de Pollo', 75, -1)">-</button>
+              <span class="step-count" id="count_Yakimeshi__Arroz_Frito__0">0</span>
+              <button class="step-btn" onclick="updateQty('Yakimeshi__Arroz_Frito__0', 'Yakimeshi de Pollo', 75, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="yakimeshi de res" data-desc="arroz frito tradicional japonés al wok con vegetales selectos y carne de res sazonada." data-category="yakimeshi (arroz frito)">
+            <div class="item-info">
+              <span class="item-badge">De Res 🥩</span>
+              <div class="item-name">Yakimeshi de Res</div>
+              <p class="item-desc">Arroz frito tradicional japonés al wok con vegetales selectos y carne de res sazonada.</p>
+              <div class="item-price">$75.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Yakimeshi__Arroz_Frito__1', 'Yakimeshi de Res', 75, -1)">-</button>
+              <span class="step-count" id="count_Yakimeshi__Arroz_Frito__1">0</span>
+              <button class="step-btn" onclick="updateQty('Yakimeshi__Arroz_Frito__1', 'Yakimeshi de Res', 75, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="yakimeshi de camarón" data-desc="arroz frito sazonado al wok con vegetales frescos y camarón selecto." data-category="yakimeshi (arroz frito)">
+            <div class="item-info">
+              <span class="item-badge">De Camarón 🍤</span>
+              <div class="item-name">Yakimeshi de Camarón</div>
+              <p class="item-desc">Arroz frito sazonado al wok con vegetales frescos y camarón selecto.</p>
+              <div class="item-price">$80.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Yakimeshi__Arroz_Frito__2', 'Yakimeshi de Camarón', 80, -1)">-</button>
+              <span class="step-count" id="count_Yakimeshi__Arroz_Frito__2">0</span>
+              <button class="step-btn" onclick="updateQty('Yakimeshi__Arroz_Frito__2', 'Yakimeshi de Camarón', 80, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="yakimeshi mixto (pollo, res y camarón)" data-desc="arroz frito completo con vegetales frescos, pollo, res y camarón." data-category="yakimeshi (arroz frito)">
+            <div class="item-info">
+              <span class="item-badge">Completo 🍤👑</span>
+              <div class="item-name">Yakimeshi Mixto (Pollo, Res y Camarón)</div>
+              <p class="item-desc">Arroz frito completo con vegetales frescos, pollo, res y camarón.</p>
+              <div class="item-price">$85.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Yakimeshi__Arroz_Frito__3', 'Yakimeshi Mixto (Pollo, Res y Camarón)', 85, -1)">-</button>
+              <span class="step-count" id="count_Yakimeshi__Arroz_Frito__3">0</span>
+              <button class="step-btn" onclick="updateQty('Yakimeshi__Arroz_Frito__3', 'Yakimeshi Mixto (Pollo, Res y Camarón)', 85, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="yakimeshi vegetariano" data-desc="tradicional arroz frito japonés con zanahoria, calabaza, brócoli, champiñones, pimiento y cebolla." data-category="yakimeshi (arroz frito)">
+            <div class="item-info">
+              <span class="item-badge">Vegetariano 🥦</span>
               <div class="item-name">Yakimeshi Vegetariano</div>
               <p class="item-desc">Tradicional arroz frito japonés con zanahoria, calabaza, brócoli, champiñones, pimiento y cebolla.</p>
               <div class="item-price">$70.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Yakimeshi__Arroz_Frito__0', 'Yakimeshi Vegetariano', 70, -1)">-</button>
-              <span class="step-count" id="count_Yakimeshi__Arroz_Frito__0">0</span>
-              <button class="step-btn" onclick="updateQty('Yakimeshi__Arroz_Frito__0', 'Yakimeshi Vegetariano', 70, 1)">+</button>
-            </div>
-          </div>
-          
-          <div class="item-card" data-name="yakimeshi pollo ó res" data-desc="arroz frito con vegetales frescos y proteína a elegir: pollo ó res.">
-            <div class="item-info">
-              
-              <div class="item-name">Yakimeshi Pollo ó Res</div>
-              <p class="item-desc">Arroz frito con vegetales frescos y proteína a elegir: pollo ó res.</p>
-              <div class="item-price">$75.00 MXN</div>
-            </div>
-            <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Yakimeshi__Arroz_Frito__1', 'Yakimeshi Pollo ó Res', 75, -1)">-</button>
-              <span class="step-count" id="count_Yakimeshi__Arroz_Frito__1">0</span>
-              <button class="step-btn" onclick="updateQty('Yakimeshi__Arroz_Frito__1', 'Yakimeshi Pollo ó Res', 75, 1)">+</button>
-            </div>
-          </div>
-          
-          <div class="item-card" data-name="yakimeshi camarón" data-desc="arroz frito sazonado al wok con vegetales frescos y camarón selecto.">
-            <div class="item-info">
-              
-              <div class="item-name">Yakimeshi Camarón</div>
-              <p class="item-desc">Arroz frito sazonado al wok con vegetales frescos y camarón selecto.</p>
-              <div class="item-price">$80.00 MXN</div>
-            </div>
-            <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Yakimeshi__Arroz_Frito__2', 'Yakimeshi Camarón', 80, -1)">-</button>
-              <span class="step-count" id="count_Yakimeshi__Arroz_Frito__2">0</span>
-              <button class="step-btn" onclick="updateQty('Yakimeshi__Arroz_Frito__2', 'Yakimeshi Camarón', 80, 1)">+</button>
-            </div>
-          </div>
-          
-          <div class="item-card" data-name="yakimeshi mixto" data-desc="arroz frito completo con vegetales, pollo, res y camarón.">
-            <div class="item-info">
-              <span class="item-badge">Completo 🍤</span>
-              <div class="item-name">Yakimeshi Mixto</div>
-              <p class="item-desc">Arroz frito completo con vegetales, pollo, res y camarón.</p>
-              <div class="item-price">$85.00 MXN</div>
-            </div>
-            <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Yakimeshi__Arroz_Frito__3', 'Yakimeshi Mixto', 85, -1)">-</button>
-              <span class="step-count" id="count_Yakimeshi__Arroz_Frito__3">0</span>
-              <button class="step-btn" onclick="updateQty('Yakimeshi__Arroz_Frito__3', 'Yakimeshi Mixto', 85, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Yakimeshi__Arroz_Frito__4', 'Yakimeshi Vegetariano', 70, -1)">-</button>
+              <span class="step-count" id="count_Yakimeshi__Arroz_Frito__4">0</span>
+              <button class="step-btn" onclick="updateQty('Yakimeshi__Arroz_Frito__4', 'Yakimeshi Vegetariano', 70, 1)">+</button>
             </div>
           </div>
           
@@ -895,10 +1137,11 @@
     
       <section class="category-section" data-category="Kushiage (Brochetas Empanizadas)">
         <h2 class="category-title">🍢 Kushiage (Brochetas Empanizadas)</h2>
+        <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">🍢 Brochetas crujientes empanizadas por pieza con queso derretido:</p>
         
-          <div class="item-card" data-name="kushiage quesos" data-desc="brocheta crujiente empanizada por pieza rellena de queso manchego y queso gouda derretido.">
+          <div class="item-card" data-name="kushiage quesos" data-desc="brocheta crujiente empanizada por pieza rellena de queso manchego y queso gouda derretido." data-category="kushiage (brochetas empanizadas)">
             <div class="item-info">
-              
+              <span class="item-badge">Doble Queso 🧀</span>
               <div class="item-name">Kushiage Quesos</div>
               <p class="item-desc">Brocheta crujiente empanizada por pieza rellena de queso manchego y queso Gouda derretido.</p>
               <div class="item-price">$40.00 MXN</div>
@@ -910,7 +1153,7 @@
             </div>
           </div>
           
-          <div class="item-card" data-name="kushiage queso y plátano macho" data-desc="brocheta crujiente empanizada por pieza rellena de queso manchego y plátano macho dulce.">
+          <div class="item-card" data-name="kushiage queso y plátano macho" data-desc="brocheta crujiente empanizada por pieza rellena de queso manchego y plátano macho dulce." data-category="kushiage (brochetas empanizadas)">
             <div class="item-info">
               
               <div class="item-name">Kushiage Queso y Plátano Macho</div>
@@ -924,9 +1167,9 @@
             </div>
           </div>
           
-          <div class="item-card" data-name="kushiage queso y camarón" data-desc="brocheta crujiente empanizada por pieza rellena de queso manchego y camarón selecto.">
+          <div class="item-card" data-name="kushiage queso y camarón" data-desc="brocheta crujiente empanizada por pieza rellena de queso manchego y camarón selecto." data-category="kushiage (brochetas empanizadas)">
             <div class="item-info">
-              
+              <span class="item-badge">Con Camarón 🍤</span>
               <div class="item-name">Kushiage Queso y Camarón</div>
               <p class="item-desc">Brocheta crujiente empanizada por pieza rellena de queso manchego y camarón selecto.</p>
               <div class="item-price">$40.00 MXN</div>
@@ -938,17 +1181,17 @@
             </div>
           </div>
           
-          <div class="item-card" data-name="kushiage mixta" data-desc="brocheta crujiente empanizada por pieza rellena de queso manchego, camarón y plátano macho.">
+          <div class="item-card" data-name="kushiage mixta (queso, camarón y plátano)" data-desc="brocheta crujiente empanizada por pieza rellena de queso manchego, camarón y plátano macho." data-category="kushiage (brochetas empanizadas)">
             <div class="item-info">
               <span class="item-badge">Deliciosa ⭐</span>
-              <div class="item-name">Kushiage Mixta</div>
+              <div class="item-name">Kushiage Mixta (Queso, Camarón y Plátano)</div>
               <p class="item-desc">Brocheta crujiente empanizada por pieza rellena de queso manchego, camarón y plátano macho.</p>
               <div class="item-price">$40.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Kushiage__Brochetas_Empanizadas__3', 'Kushiage Mixta', 40, -1)">-</button>
+              <button class="step-btn" onclick="updateQty('Kushiage__Brochetas_Empanizadas__3', 'Kushiage Mixta (Queso, Camarón y Plátano)', 40, -1)">-</button>
               <span class="step-count" id="count_Kushiage__Brochetas_Empanizadas__3">0</span>
-              <button class="step-btn" onclick="updateQty('Kushiage__Brochetas_Empanizadas__3', 'Kushiage Mixta', 40, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Kushiage__Brochetas_Empanizadas__3', 'Kushiage Mixta (Queso, Camarón y Plátano)', 40, 1)">+</button>
             </div>
           </div>
           
@@ -956,8 +1199,9 @@
     
       <section class="category-section" data-category="Rollos Primavera">
         <h2 class="category-title">🥢 Rollos Primavera</h2>
+        <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">🥢 Rollos dorados crujientes por pieza con relleno fresco:</p>
         
-          <div class="item-card" data-name="rollo primavera vegetariano" data-desc="rollo crujiente dorado por pieza, relleno de queso philadelphia, zanahoria y col fresca.">
+          <div class="item-card" data-name="rollo primavera vegetariano" data-desc="rollo crujiente dorado por pieza, relleno de queso philadelphia, zanahoria y col fresca." data-category="rollos primavera">
             <div class="item-info">
               
               <div class="item-name">Rollo Primavera Vegetariano</div>
@@ -971,7 +1215,7 @@
             </div>
           </div>
           
-          <div class="item-card" data-name="rollo primavera vegetales y carne" data-desc="rollo crujiente dorado por pieza, relleno de carne selecta, queso philadelphia, zanahoria y col.">
+          <div class="item-card" data-name="rollo primavera vegetales y carne" data-desc="rollo crujiente dorado por pieza, relleno de carne selecta, queso philadelphia, zanahoria y col." data-category="rollos primavera">
             <div class="item-info">
               <span class="item-badge">Crujiente 🥟</span>
               <div class="item-name">Rollo Primavera Vegetales y Carne</div>
@@ -989,8 +1233,9 @@
     
       <section class="category-section" data-category="Postres">
         <h2 class="category-title">🍨 Postres</h2>
+        <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">🍨 El toque dulce perfecto para cerrar tu comida:</p>
         
-          <div class="item-card" data-name="galletas oreo fritas (6 piezas)" data-desc="deliciosas 6 piezas de galletas oreo capeadas y fritas al momento, espolvoreadas con azúcar glass.">
+          <div class="item-card" data-name="galletas oreo fritas (6 piezas)" data-desc="deliciosas 6 piezas de galletas oreo capeadas y fritas al momento, espolvoreadas con azúcar glass." data-category="postres">
             <div class="item-info">
               <span class="item-badge">Favorito Dulce 🤤</span>
               <div class="item-name">Galletas Oreo Fritas (6 piezas)</div>
@@ -1004,7 +1249,7 @@
             </div>
           </div>
           
-          <div class="item-card" data-name="plátano macho frito (6 piezas)" data-desc="6 bocados de plátano macho frito doraditos con su toque dulce.">
+          <div class="item-card" data-name="plátano macho frito (6 piezas)" data-desc="6 bocados de plátano macho frito doraditos con su toque dulce." data-category="postres">
             <div class="item-info">
               
               <div class="item-name">Plátano Macho Frito (6 piezas)</div>
@@ -1022,46 +1267,33 @@
     
       <section class="category-section" data-category="Bebidas">
         <h2 class="category-title">🥤 Bebidas</h2>
+        <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">🥤 Bebidas bien frías para acompañar:</p>
         
-          <div class="item-card" data-name="té arizona (460ml)" data-desc="lata de té frío arizona (varios sabores disponibles).">
+          <div class="item-card" data-name="nestea / jaztea té frío (500ml)" data-desc="té frío refrescante bien frío (500ml)." data-category="bebidas">
             <div class="item-info">
-              
-              <div class="item-name">Té AriZona (460ml)</div>
-              <p class="item-desc">Lata de té frío AriZona (varios sabores disponibles).</p>
+              <span class="item-badge">Té Frío 🍃</span>
+              <div class="item-name">Nestea / Jaztea Té Frío (500ml)</div>
+              <p class="item-desc">Té frío refrescante bien frío (500ml).</p>
               <div class="item-price">$25.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Bebidas_0', 'Té AriZona (460ml)', 25, -1)">-</button>
+              <button class="step-btn" onclick="updateQty('Bebidas_0', 'Nestea / Jaztea Té Frío (500ml)', 25, -1)">-</button>
               <span class="step-count" id="count_Bebidas_0">0</span>
-              <button class="step-btn" onclick="updateQty('Bebidas_0', 'Té AriZona (460ml)', 25, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Bebidas_0', 'Nestea / Jaztea Té Frío (500ml)', 25, 1)">+</button>
             </div>
           </div>
           
-          <div class="item-card" data-name="jaztea (500ml)" data-desc="botella de té verde de jazmín tradicional refrescante bien frío (500ml).">
+          <div class="item-card" data-name="refresco de lata (330ml)" data-desc="de la familia coca-cola bien frío en lata (pregunta por sabores disponibles)." data-category="bebidas">
             <div class="item-info">
-              
-              <div class="item-name">Jaztea (500ml)</div>
-              <p class="item-desc">Botella de té verde de jazmín tradicional refrescante bien frío (500ml).</p>
-              <div class="item-price">$25.00 MXN</div>
-            </div>
-            <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Bebidas_1', 'Jaztea (500ml)', 25, -1)">-</button>
-              <span class="step-count" id="count_Bebidas_1">0</span>
-              <button class="step-btn" onclick="updateQty('Bebidas_1', 'Jaztea (500ml)', 25, 1)">+</button>
-            </div>
-          </div>
-          
-          <div class="item-card" data-name="refresco (330ml)" data-desc="de la familia coca-cola bien frío en lata (pregunta por sabores disponibles).">
-            <div class="item-info">
-              
-              <div class="item-name">Refresco (330ml)</div>
+              <span class="item-badge">Bien Frío 🧊</span>
+              <div class="item-name">Refresco de Lata (330ml)</div>
               <p class="item-desc">De la familia Coca-Cola bien frío en lata (pregunta por sabores disponibles).</p>
               <div class="item-price">$25.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Bebidas_2', 'Refresco (330ml)', 25, -1)">-</button>
-              <span class="step-count" id="count_Bebidas_2">0</span>
-              <button class="step-btn" onclick="updateQty('Bebidas_2', 'Refresco (330ml)', 25, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Bebidas_1', 'Refresco de Lata (330ml)', 25, -1)">-</button>
+              <span class="step-count" id="count_Bebidas_1">0</span>
+              <button class="step-btn" onclick="updateQty('Bebidas_1', 'Refresco de Lata (330ml)', 25, 1)">+</button>
             </div>
           </div>
           
@@ -1069,8 +1301,9 @@
     
       <section class="category-section" data-category="Extras & Toppings">
         <h2 class="category-title">🧂 Extras & Toppings</h2>
+        <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">🧂 Porciones adicionales para personalizar tus platillos:</p>
         
-          <div class="item-card" data-name="queso extra (50g)" data-desc="porción extra a elegir: philadelphia, manchego ó cheddar.">
+          <div class="item-card" data-name="queso extra (50g)" data-desc="porción extra a elegir: philadelphia, manchego ó cheddar." data-category="extras & toppings">
             <div class="item-info">
               
               <div class="item-name">Queso Extra (50g)</div>
@@ -1084,7 +1317,7 @@
             </div>
           </div>
           
-          <div class="item-card" data-name="proteína extra (50g)" data-desc="50 gramos extra de camarón, res ó pollo para complementar tu platillo.">
+          <div class="item-card" data-name="proteína extra (50g)" data-desc="50 gramos extra de camarón, res ó pollo para complementar tu platillo." data-category="extras & toppings">
             <div class="item-info">
               
               <div class="item-name">Proteína Extra (50g)</div>
@@ -1098,7 +1331,7 @@
             </div>
           </div>
           
-          <div class="item-card" data-name="salsa anguila extra (2 oz)" data-desc="porción de salsa dulce de anguila clásica.">
+          <div class="item-card" data-name="salsa anguila extra (2 oz)" data-desc="porción de salsa dulce de anguila clásica." data-category="extras & toppings">
             <div class="item-info">
               
               <div class="item-name">Salsa Anguila Extra (2 oz)</div>
@@ -1112,7 +1345,7 @@
             </div>
           </div>
           
-          <div class="item-card" data-name="salsa sriracha extra (2 oz)" data-desc="porción de salsa picante sriracha.">
+          <div class="item-card" data-name="salsa sriracha extra (2 oz)" data-desc="porción de salsa picante sriracha." data-category="extras & toppings">
             <div class="item-info">
               
               <div class="item-name">Salsa Sriracha Extra (2 oz)</div>
@@ -1126,7 +1359,7 @@
             </div>
           </div>
           
-          <div class="item-card" data-name="salsa tampico extra (2 oz)" data-desc="porción de aderezo cremoso tampico de la casa.">
+          <div class="item-card" data-name="salsa tampico extra (2 oz)" data-desc="porción de aderezo cremoso tampico de la casa." data-category="extras & toppings">
             <div class="item-info">
               
               <div class="item-name">Salsa Tampico Extra (2 oz)</div>
@@ -1386,28 +1619,92 @@
     function filterCategory(catName, btn) {
       document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+      
+      const searchEl = document.getElementById('searchInput');
+      if (searchEl && searchEl.value) {
+        searchEl.value = '';
+      }
+      const noRes = document.getElementById('noSearchResults');
+      if (noRes) noRes.style.display = 'none';
+
       const sections = document.querySelectorAll('.category-section');
       sections.forEach(sec => {
         if (catName === 'all' || sec.getAttribute('data-category') === catName) {
           sec.style.display = 'block';
+          sec.querySelectorAll('.item-card').forEach(card => card.style.display = 'flex');
         } else {
           sec.style.display = 'none';
         }
       });
     }
 
-    document.getElementById('searchInput').addEventListener('input', function(e) {
-      const q = e.target.value.toLowerCase();
-      document.querySelectorAll('.item-card').forEach(card => {
-        const name = card.getAttribute('data-name');
-        const desc = card.getAttribute('data-desc');
-        if (name.includes(q) || desc.includes(q)) {
-          card.style.display = 'flex';
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+      searchInput.addEventListener('input', function(e) {
+        const rawQ = e.target.value;
+        const q = rawQ.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").trim();
+        const allSections = document.querySelectorAll('.category-section');
+        const activeCatBtn = document.querySelector('.cat-btn.active');
+        const activeCategory = activeCatBtn ? (activeCatBtn.getAttribute('data-cat-target') || 'all') : 'all';
+
+        let noRes = document.getElementById('noSearchResults');
+
+        if (!q) {
+          allSections.forEach(sec => {
+            const secCat = sec.getAttribute('data-category');
+            if (activeCategory === 'all' || secCat === activeCategory) {
+              sec.style.display = 'block';
+              sec.querySelectorAll('.item-card').forEach(c => c.style.display = 'flex');
+            } else {
+              sec.style.display = 'none';
+            }
+          });
+          if (noRes) noRes.style.display = 'none';
+          return;
+        }
+
+        let totalMatches = 0;
+        allSections.forEach(sec => {
+          let sectionMatches = 0;
+          const secCat = (sec.getAttribute('data-category') || '').toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+
+          sec.querySelectorAll('.item-card').forEach(card => {
+            const name = (card.getAttribute('data-name') || '').normalize("NFD").replace(/[̀-ͯ]/g, "");
+            const desc = (card.getAttribute('data-desc') || '').normalize("NFD").replace(/[̀-ͯ]/g, "");
+            const cat = (card.getAttribute('data-category') || '').normalize("NFD").replace(/[̀-ͯ]/g, "");
+
+            if (name.includes(q) || desc.includes(q) || cat.includes(q) || secCat.includes(q)) {
+              card.style.display = 'flex';
+              sectionMatches++;
+              totalMatches++;
+            } else {
+              card.style.display = 'none';
+            }
+          });
+
+          if (sectionMatches > 0) {
+            sec.style.display = 'block';
+          } else {
+            sec.style.display = 'none';
+          }
+        });
+
+        if (!noRes) {
+          noRes = document.createElement('div');
+          noRes.id = 'noSearchResults';
+          noRes.style.cssText = 'text-align: center; padding: 36px 20px; color: #64748b; font-size: 0.95rem; font-weight: 600; line-height: 1.5;';
+          const menuContainer = document.querySelector('.menu-container');
+          if (menuContainer) menuContainer.prepend(noRes);
+        }
+
+        if (totalMatches === 0) {
+          noRes.innerHTML = '🔍 No se encontraron platillos con "<strong>' + rawQ + '</strong>".<br><span style="font-size:0.84rem;font-weight:normal;opacity:0.85;">Intenta buscar por ingrediente o categoría.</span>';
+          noRes.style.display = 'block';
         } else {
-          card.style.display = 'none';
+          noRes.style.display = 'none';
         }
       });
-    });
+    }
   </script>
 </body>
 </html>
