@@ -266,7 +266,29 @@
       align-items: center;
       gap: 12px;
     }
-    .item-info { flex: 1; }
+    .item-img-wrap {
+      width: 78px;
+      height: 78px;
+      border-radius: 12px;
+      overflow: hidden;
+      flex-shrink: 0;
+      position: relative;
+      background: #f1f5f9;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      border: 1px solid #e2e8f0;
+      cursor: pointer;
+    }
+    .item-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.2s ease;
+    }
+    .item-card:hover .item-img {
+      transform: scale(1.06);
+    }
+    .item-info { flex: 1; min-width: 0; }
     .item-badge {
       display: inline-block;
       font-size: 0.7rem;
@@ -604,6 +626,7 @@
         
         
           <div class="item-card" data-name="quesabirria especial los carnales" data-desc="doble tortilla dorada a la plancha con costra de queso manchego derretido, abundante birria suavecita y su vasito de consomé para chopear." data-category="quesabirrias & tacos">
+            
             <div class="item-info">
               <span class="item-badge">La Más Vendida ⭐</span>
               <div class="item-name">Quesabirria Especial Los Carnales</div>
@@ -618,6 +641,7 @@
           </div>
           
           <div class="item-card" data-name="taco dorado de birria con queso" data-desc="tortilla crujiente bañada en grasita de birria, queso fundido, carne de res jugosa y cebolla morada con limón." data-category="quesabirrias & tacos">
+            
             <div class="item-info">
               <span class="item-badge">Crujiente 🤤</span>
               <div class="item-name">Taco Dorado de Birria con Queso</div>
@@ -632,6 +656,7 @@
           </div>
           
           <div class="item-card" data-name="taco blando de birria tradicional" data-desc="doble tortilla suave calientita con birria recién salida de la olla, cilantro fresco y salsas de la casa." data-category="quesabirrias & tacos">
+            
             <div class="item-info">
               
               <div class="item-name">Taco Blando de Birria Tradicional</div>
@@ -646,6 +671,7 @@
           </div>
           
           <div class="item-card" data-name="taco de lengua en birria" data-desc="lengua suavecita cocida a fuego lento en consomé con especias." data-category="quesabirrias & tacos">
+            
             <div class="item-info">
               <span class="item-badge">Especialidad 🥩</span>
               <div class="item-name">Taco de Lengua en Birria</div>
@@ -666,6 +692,7 @@
         
         
           <div class="item-card" data-name="plato grande de birria en consomé" data-desc="porción generosa de carne suave de res bañada en consomé hirviendo con tortillas hechas a mano y limones." data-category="platos en consomé caliente">
+            
             <div class="item-info">
               <span class="item-badge">Para Almorzar Bien 👑</span>
               <div class="item-name">Plato Grande de Birria en Consomé</div>
@@ -680,6 +707,7 @@
           </div>
           
           <div class="item-card" data-name="plato mediano de birria" data-desc="carne suave con consomé caliente, cebollita picada, cilantro y chile de árbol." data-category="platos en consomé caliente">
+            
             <div class="item-info">
               
               <div class="item-name">Plato Mediano de Birria</div>
@@ -694,6 +722,7 @@
           </div>
           
           <div class="item-card" data-name="consomé especial (medio litro)" data-desc="caldo concentrado con garbanzo, arroz y especias tradicionales." data-category="platos en consomé caliente">
+            
             <div class="item-info">
               
               <div class="item-name">Consomé Especial (Medio Litro)</div>
@@ -714,6 +743,7 @@
         
         
           <div class="item-card" data-name="1 kg de birria con consomé completo" data-desc="rinde para 4 a 5 personas. incluye 1 litro de consomé hirviendo, tortillas calientes, salsas y verduras." data-category="birria por kilo (para la familia)">
+            
             <div class="item-info">
               <span class="item-badge">Familiar 👨‍👩‍👧‍👦</span>
               <div class="item-name">1 Kg de Birria con Consomé Completo</div>
@@ -728,6 +758,7 @@
           </div>
           
           <div class="item-card" data-name="1/2 kg de birria con consomé" data-desc="ideal para 2 o 3 personas con consomé y guarniciones completas." data-category="birria por kilo (para la familia)">
+            
             <div class="item-info">
               
               <div class="item-name">1/2 Kg de Birria con Consomé</div>
@@ -748,6 +779,7 @@
         
         
           <div class="item-card" data-name="refresco de vidrio bien frío (355ml)" data-desc="coca-cola original, fanta, sprite o mundet." data-category="bebidas">
+            
             <div class="item-info">
               
               <div class="item-name">Refresco de Vidrio Bien Frío (355ml)</div>
@@ -762,6 +794,7 @@
           </div>
           
           <div class="item-card" data-name="agua fresca de horchata o jamaica (1l)" data-desc="preparada al día con canela y hielo." data-category="bebidas">
+            
             <div class="item-info">
               
               <div class="item-name">Agua Fresca de Horchata o Jamaica (1L)</div>
@@ -888,7 +921,29 @@
     </div>
   </div>
 
+  <!-- Modal Zoom Imagen Platillo -->
+  <div class="modal-overlay" id="imgZoomModal" onclick="closeImgZoom()" style="display: none; align-items: center; justify-content: center; z-index: 10000; background: rgba(0,0,0,0.85); backdrop-filter: blur(4px);">
+    <div style="max-width: 90%; max-height: 85vh; text-align: center; position: relative;" onclick="event.stopPropagation()">
+      <button onclick="closeImgZoom()" style="position: absolute; top: -14px; right: -14px; background: white; border: none; width: 32px; height: 32px; border-radius: 50%; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">✕</button>
+      <img id="zoomedImg" src="" style="max-width: 100%; max-height: 70vh; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); object-fit: contain; display: block; margin: 0 auto;">
+      <div id="zoomedTitle" style="color: white; font-weight: 700; margin-top: 12px; font-size: 1.1rem; text-shadow: 0 2px 6px rgba(0,0,0,0.8);"></div>
+    </div>
+  </div>
+
   <script>
+    function zoomItemImg(src, title) {
+      const modal = document.getElementById('imgZoomModal');
+      if (modal) {
+        document.getElementById('zoomedImg').src = src;
+        document.getElementById('zoomedTitle').innerText = title || '';
+        modal.style.display = 'flex';
+      }
+    }
+    function closeImgZoom() {
+      const modal = document.getElementById('imgZoomModal');
+      if (modal) modal.style.display = 'none';
+    }
+
     const phone = "523312345678";
     const businessName = "Tacos y Birria Los Carnales";
     const hasDelivery = true;

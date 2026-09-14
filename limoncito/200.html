@@ -266,7 +266,29 @@
       align-items: center;
       gap: 12px;
     }
-    .item-info { flex: 1; }
+    .item-img-wrap {
+      width: 78px;
+      height: 78px;
+      border-radius: 12px;
+      overflow: hidden;
+      flex-shrink: 0;
+      position: relative;
+      background: #f1f5f9;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      border: 1px solid #e2e8f0;
+      cursor: pointer;
+    }
+    .item-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.2s ease;
+    }
+    .item-card:hover .item-img {
+      transform: scale(1.06);
+    }
+    .item-info { flex: 1; min-width: 0; }
     .item-badge {
       display: inline-block;
       font-size: 0.7rem;
@@ -585,7 +607,7 @@
 
   <div class="search-box">
     <span class="search-icon">🔍</span>
-    <input type="text" id="searchInput" class="search-input" placeholder="Buscar sushi, aguachile, ceviche, zarandeado, camarones, tostadas...">
+    <input type="text" id="searchInput" class="search-input" placeholder="Buscar aguachile, sushi, ceviche, coctel, almeja, roll...">
   </div>
 
   <div class="categories-bar" id="categoryBar">
@@ -599,12 +621,32 @@
         🍋 Ceviches & Tostadas
       </button>
     
-      <button class="cat-btn" data-cat-target="Especialidades Calientes & Zarandeados" onclick="filterCategory('Especialidades Calientes & Zarandeados', this)">
-        🔥 Especialidades Calientes & Zarandeados
+      <button class="cat-btn" data-cat-target="Cocteles Especiales" onclick="filterCategory('Cocteles Especiales', this)">
+        🍹 Cocteles Especiales
       </button>
     
-      <button class="cat-btn" data-cat-target="Bebidas & Cervezas" onclick="filterCategory('Bebidas & Cervezas', this)">
-        🥤 Bebidas & Cervezas
+      <button class="cat-btn" data-cat-target="Rollos Empanizados (Sushi)" onclick="filterCategory('Rollos Empanizados (Sushi)', this)">
+        🍣 Rollos Empanizados (Sushi)
+      </button>
+    
+      <button class="cat-btn" data-cat-target="Rollos Fríos (Sushi)" onclick="filterCategory('Rollos Fríos (Sushi)', this)">
+        🍱 Rollos Fríos (Sushi)
+      </button>
+    
+      <button class="cat-btn" data-cat-target="Entradas & Botanas" onclick="filterCategory('Entradas & Botanas', this)">
+        🍟 Entradas & Botanas
+      </button>
+    
+      <button class="cat-btn" data-cat-target="Ostras & Conchas Frescas" onclick="filterCategory('Ostras & Conchas Frescas', this)">
+        🦪 Ostras & Conchas Frescas
+      </button>
+    
+      <button class="cat-btn" data-cat-target="Bebidas & Coctelería" onclick="filterCategory('Bebidas & Coctelería', this)">
+        🥤 Bebidas & Coctelería
+      </button>
+    
+      <button class="cat-btn" data-cat-target="Extras Mariscos & Sushi" onclick="filterCategory('Extras Mariscos & Sushi', this)">
+        🥑 Extras Mariscos & Sushi
       </button>
     
   </div>
@@ -615,45 +657,228 @@
         <h2 class="category-title">🌶️ Aguachiles (Estilo Culichi)</h2>
         <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">🌶️ Preparados al momento con camarón fresco de la más alta calidad y salsas artesanales:</p>
         
-          <div class="item-card" data-name="aguachile negro especial" data-desc="camarón fresco curtido al limón con nuestra salsa negra especial de la casa, pepino, cebolla morada y aguacate." data-category="aguachiles (estilo culichi)">
-            <div class="item-info">
-              <span class="item-badge">Especialidad ⭐</span>
-              <div class="item-name">Aguachile Negro Especial</div>
-              <p class="item-desc">Camarón fresco curtido al limón con nuestra salsa negra especial de la casa, pepino, cebolla morada y aguacate.</p>
-              <div class="item-price">$220.00 MXN</div>
-            </div>
-            <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__0', 'Aguachile Negro Especial', 220, -1)">-</button>
-              <span class="step-count" id="count_Aguachiles__Estilo_Culichi__0">0</span>
-              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__0', 'Aguachile Negro Especial', 220, 1)">+</button>
-            </div>
-          </div>
-          
-          <div class="item-card" data-name="aguachile verde tradicional" data-desc="camarón fresco curtido al limón con salsa verde de serrano tatemado, cilantro, pepino y cebolla morada." data-category="aguachiles (estilo culichi)">
+          <div class="item-card" data-name="aguachile verde (1 orden)" data-desc="camarón fresco, pepino, cebolla morada y salsa verde de la casa." data-category="aguachiles (estilo culichi)">
+            
             <div class="item-info">
               <span class="item-badge">El Favorito 🟢</span>
-              <div class="item-name">Aguachile Verde Tradicional</div>
-              <p class="item-desc">Camarón fresco curtido al limón con salsa verde de serrano tatemado, cilantro, pepino y cebolla morada.</p>
-              <div class="item-price">$210.00 MXN</div>
+              <div class="item-name">Aguachile Verde (1 Orden)</div>
+              <p class="item-desc">Camarón fresco, pepino, cebolla morada y salsa verde de la casa.</p>
+              <div class="item-price">$215.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__1', 'Aguachile Verde Tradicional', 210, -1)">-</button>
-              <span class="step-count" id="count_Aguachiles__Estilo_Culichi__1">0</span>
-              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__1', 'Aguachile Verde Tradicional', 210, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__0', 'Aguachile Verde (1 Orden)', 215, -1)">-</button>
+              <span class="step-count" id="count_Aguachiles__Estilo_Culichi__0">0</span>
+              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__0', 'Aguachile Verde (1 Orden)', 215, 1)">+</button>
             </div>
           </div>
           
-          <div class="item-card" data-name="aguachile rojo" data-desc="camarón fresco curtido con salsa roja de chile de árbol y chiltepín sonorense con su toque bravo." data-category="aguachiles (estilo culichi)">
+          <div class="item-card" data-name="aguachile verde (1/2 orden)" data-desc="media porción de camarón con pepino, cebolla y salsa verde de la casa." data-category="aguachiles (estilo culichi)">
+            
             <div class="item-info">
-              <span class="item-badge">Picante 🔴🔥</span>
-              <div class="item-name">Aguachile Rojo</div>
-              <p class="item-desc">Camarón fresco curtido con salsa roja de chile de árbol y chiltepín sonorense con su toque bravo.</p>
-              <div class="item-price">$210.00 MXN</div>
+              
+              <div class="item-name">Aguachile Verde (1/2 Orden)</div>
+              <p class="item-desc">Media porción de camarón con pepino, cebolla y salsa verde de la casa.</p>
+              <div class="item-price">$150.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__2', 'Aguachile Rojo', 210, -1)">-</button>
+              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__1', 'Aguachile Verde (1/2 Orden)', 150, -1)">-</button>
+              <span class="step-count" id="count_Aguachiles__Estilo_Culichi__1">0</span>
+              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__1', 'Aguachile Verde (1/2 Orden)', 150, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="aguachile verde (tostada)" data-desc="tostada crujiente con camarón curtido al limón y salsa verde de la casa." data-category="aguachiles (estilo culichi)">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Aguachile Verde (Tostada)</div>
+              <p class="item-desc">Tostada crujiente con camarón curtido al limón y salsa verde de la casa.</p>
+              <div class="item-price">$90.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__2', 'Aguachile Verde (Tostada)', 90, -1)">-</button>
               <span class="step-count" id="count_Aguachiles__Estilo_Culichi__2">0</span>
-              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__2', 'Aguachile Rojo', 210, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__2', 'Aguachile Verde (Tostada)', 90, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="aguachile rojo (1 orden)" data-desc="camarón fresco curtido, pepino, cebolla morada y salsa roja de chile de árbol." data-category="aguachiles (estilo culichi)">
+            
+            <div class="item-info">
+              <span class="item-badge">Picante 🔴🔥</span>
+              <div class="item-name">Aguachile Rojo (1 Orden)</div>
+              <p class="item-desc">Camarón fresco curtido, pepino, cebolla morada y salsa roja de chile de árbol.</p>
+              <div class="item-price">$215.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__3', 'Aguachile Rojo (1 Orden)', 215, -1)">-</button>
+              <span class="step-count" id="count_Aguachiles__Estilo_Culichi__3">0</span>
+              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__3', 'Aguachile Rojo (1 Orden)', 215, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="aguachile rojo (1/2 orden)" data-desc="media porción de camarón con salsa roja de la casa y vegetales frescos." data-category="aguachiles (estilo culichi)">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Aguachile Rojo (1/2 Orden)</div>
+              <p class="item-desc">Media porción de camarón con salsa roja de la casa y vegetales frescos.</p>
+              <div class="item-price">$150.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__4', 'Aguachile Rojo (1/2 Orden)', 150, -1)">-</button>
+              <span class="step-count" id="count_Aguachiles__Estilo_Culichi__4">0</span>
+              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__4', 'Aguachile Rojo (1/2 Orden)', 150, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="aguachile rojo (tostada)" data-desc="tostada crujiente con camarón y salsa roja de chile de árbol." data-category="aguachiles (estilo culichi)">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Aguachile Rojo (Tostada)</div>
+              <p class="item-desc">Tostada crujiente con camarón y salsa roja de chile de árbol.</p>
+              <div class="item-price">$90.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__5', 'Aguachile Rojo (Tostada)', 90, -1)">-</button>
+              <span class="step-count" id="count_Aguachiles__Estilo_Culichi__5">0</span>
+              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__5', 'Aguachile Rojo (Tostada)', 90, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="aguachile negro (1 orden)" data-desc="camarón fresco curtido con salsa negra especial de la casa, pepino y cebolla morada." data-category="aguachiles (estilo culichi)">
+            
+            <div class="item-info">
+              <span class="item-badge">Especialidad ⭐</span>
+              <div class="item-name">Aguachile Negro (1 Orden)</div>
+              <p class="item-desc">Camarón fresco curtido con salsa negra especial de la casa, pepino y cebolla morada.</p>
+              <div class="item-price">$215.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__6', 'Aguachile Negro (1 Orden)', 215, -1)">-</button>
+              <span class="step-count" id="count_Aguachiles__Estilo_Culichi__6">0</span>
+              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__6', 'Aguachile Negro (1 Orden)', 215, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="aguachile negro (1/2 orden)" data-desc="media porción de camarón con salsa negra especial de la casa." data-category="aguachiles (estilo culichi)">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Aguachile Negro (1/2 Orden)</div>
+              <p class="item-desc">Media porción de camarón con salsa negra especial de la casa.</p>
+              <div class="item-price">$150.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__7', 'Aguachile Negro (1/2 Orden)', 150, -1)">-</button>
+              <span class="step-count" id="count_Aguachiles__Estilo_Culichi__7">0</span>
+              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__7', 'Aguachile Negro (1/2 Orden)', 150, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="aguachile negro (tostada)" data-desc="tostada con camarón bañado en salsa negra artesanal." data-category="aguachiles (estilo culichi)">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Aguachile Negro (Tostada)</div>
+              <p class="item-desc">Tostada con camarón bañado en salsa negra artesanal.</p>
+              <div class="item-price">$90.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__8', 'Aguachile Negro (Tostada)', 90, -1)">-</button>
+              <span class="step-count" id="count_Aguachiles__Estilo_Culichi__8">0</span>
+              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__8', 'Aguachile Negro (Tostada)', 90, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="aguachile culichi (1 orden)" data-desc="camarón, pepino, cebolla con auténtica salsa de chile chiltepín molcajeteado de la casa." data-category="aguachiles (estilo culichi)">
+            
+            <div class="item-info">
+              <span class="item-badge">Sinaloa 100% 🔥</span>
+              <div class="item-name">Aguachile Culichi (1 Orden)</div>
+              <p class="item-desc">Camarón, pepino, cebolla con auténtica salsa de chile chiltepín molcajeteado de la casa.</p>
+              <div class="item-price">$230.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__9', 'Aguachile Culichi (1 Orden)', 230, -1)">-</button>
+              <span class="step-count" id="count_Aguachiles__Estilo_Culichi__9">0</span>
+              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__9', 'Aguachile Culichi (1 Orden)', 230, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="aguachile culichi (1/2 orden)" data-desc="media porción con salsa de chile chiltepín molcajeteado de la casa." data-category="aguachiles (estilo culichi)">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Aguachile Culichi (1/2 Orden)</div>
+              <p class="item-desc">Media porción con salsa de chile chiltepín molcajeteado de la casa.</p>
+              <div class="item-price">$160.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__10', 'Aguachile Culichi (1/2 Orden)', 160, -1)">-</button>
+              <span class="step-count" id="count_Aguachiles__Estilo_Culichi__10">0</span>
+              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__10', 'Aguachile Culichi (1/2 Orden)', 160, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="aguachile culichi (tostada)" data-desc="tostada con camarón y salsa de chile chiltepín molcajeteado." data-category="aguachiles (estilo culichi)">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Aguachile Culichi (Tostada)</div>
+              <p class="item-desc">Tostada con camarón y salsa de chile chiltepín molcajeteado.</p>
+              <div class="item-price">$105.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__11', 'Aguachile Culichi (Tostada)', 105, -1)">-</button>
+              <span class="step-count" id="count_Aguachiles__Estilo_Culichi__11">0</span>
+              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__11', 'Aguachile Culichi (Tostada)', 105, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="tostiaguachile (1 orden)" data-desc="cama de tostitos crujientes acompañada de aguachile negro con salsas de la casa." data-category="aguachiles (estilo culichi)">
+            
+            <div class="item-info">
+              <span class="item-badge">Botana Top ⭐</span>
+              <div class="item-name">Tostiaguachile (1 Orden)</div>
+              <p class="item-desc">Cama de Tostitos crujientes acompañada de aguachile negro con salsas de la casa.</p>
+              <div class="item-price">$235.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__12', 'Tostiaguachile (1 Orden)', 235, -1)">-</button>
+              <span class="step-count" id="count_Aguachiles__Estilo_Culichi__12">0</span>
+              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__12', 'Tostiaguachile (1 Orden)', 235, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="tostiaguachile (1/2 orden)" data-desc="media orden de tostitos con aguachile negro y salsas de la casa." data-category="aguachiles (estilo culichi)">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Tostiaguachile (1/2 Orden)</div>
+              <p class="item-desc">Media orden de Tostitos con aguachile negro y salsas de la casa.</p>
+              <div class="item-price">$175.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__13', 'Tostiaguachile (1/2 Orden)', 175, -1)">-</button>
+              <span class="step-count" id="count_Aguachiles__Estilo_Culichi__13">0</span>
+              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__13', 'Tostiaguachile (1/2 Orden)', 175, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="sashimi de atún" data-desc="láminas de atún fresco en una salsa de aceite de ajonjolí con salsa de soya." data-category="aguachiles (estilo culichi)">
+            
+            <div class="item-info">
+              <span class="item-badge">Fresco 🐟</span>
+              <div class="item-name">Sashimi de Atún</div>
+              <p class="item-desc">Láminas de atún fresco en una salsa de aceite de ajonjolí con salsa de soya.</p>
+              <div class="item-price">$190.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__14', 'Sashimi de Atún', 190, -1)">-</button>
+              <span class="step-count" id="count_Aguachiles__Estilo_Culichi__14">0</span>
+              <button class="step-btn" onclick="updateQty('Aguachiles__Estilo_Culichi__14', 'Sashimi de Atún', 190, 1)">+</button>
             </div>
           </div>
           
@@ -661,129 +886,1187 @@
     
       <section class="category-section" data-category="Ceviches & Tostadas">
         <h2 class="category-title">🍋 Ceviches & Tostadas</h2>
-        <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">🍋 Frescura marina en cada bocado servido con tostadas horneadas:</p>
+        <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">🍋 Frescura marina en cada bocado servido con tostadas horneadas y salsas de la casa:</p>
         
-          <div class="item-card" data-name="ceviche de camarón" data-desc="camarón picado curtido al limón con jitomate, pepino, cebolla morada, cilantro y aguacate." data-category="ceviches & tostadas">
-            <div class="item-info">
-              <span class="item-badge">Fresco 🦐</span>
-              <div class="item-name">Ceviche de Camarón</div>
-              <p class="item-desc">Camarón picado curtido al limón con jitomate, pepino, cebolla morada, cilantro y aguacate.</p>
-              <div class="item-price">$180.00 MXN</div>
-            </div>
-            <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_0', 'Ceviche de Camarón', 180, -1)">-</button>
-              <span class="step-count" id="count_Ceviches___Tostadas_0">0</span>
-              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_0', 'Ceviche de Camarón', 180, 1)">+</button>
-            </div>
-          </div>
-          
-          <div class="item-card" data-name="ceviche de pescado sierra" data-desc="carne de pescado fresca marinada al limón con vegetales finamente picados y sazón sinaloense." data-category="ceviches & tostadas">
+          <div class="item-card" data-name="ceviche de pescado (1 orden)" data-desc="pescado en cubos curtido, tomate, cebolla, pepino, cilantro, coronado con aguacate y salsas de la casa." data-category="ceviches & tostadas">
+            
             <div class="item-info">
               <span class="item-badge">Clásico 🐟</span>
-              <div class="item-name">Ceviche de Pescado Sierra</div>
-              <p class="item-desc">Carne de pescado fresca marinada al limón con vegetales finamente picados y sazón sinaloense.</p>
-              <div class="item-price">$160.00 MXN</div>
+              <div class="item-name">Ceviche de Pescado (1 Orden)</div>
+              <p class="item-desc">Pescado en cubos curtido, tomate, cebolla, pepino, cilantro, coronado con aguacate y salsas de la casa.</p>
+              <div class="item-price">$190.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_1', 'Ceviche de Pescado Sierra', 160, -1)">-</button>
+              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_0', 'Ceviche de Pescado (1 Orden)', 190, -1)">-</button>
+              <span class="step-count" id="count_Ceviches___Tostadas_0">0</span>
+              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_0', 'Ceviche de Pescado (1 Orden)', 190, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="ceviche de pescado (1/2 orden)" data-desc="media orden de ceviche de pescado fresco con aguacate y salsas de la casa." data-category="ceviches & tostadas">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Ceviche de Pescado (1/2 Orden)</div>
+              <p class="item-desc">Media orden de ceviche de pescado fresco con aguacate y salsas de la casa.</p>
+              <div class="item-price">$130.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_1', 'Ceviche de Pescado (1/2 Orden)', 130, -1)">-</button>
               <span class="step-count" id="count_Ceviches___Tostadas_1">0</span>
-              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_1', 'Ceviche de Pescado Sierra', 160, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_1', 'Ceviche de Pescado (1/2 Orden)', 130, 1)">+</button>
             </div>
           </div>
           
-          <div class="item-card" data-name="ceviche mixto" data-desc="generosa porción de camarón, pulpo y pescado con vegetales frescos y aguacate." data-category="ceviches & tostadas">
+          <div class="item-card" data-name="tostada de ceviche de pescado" data-desc="tostada individual de ceviche de pescado fresco con aguacate." data-category="ceviches & tostadas">
+            
             <div class="item-info">
-              <span class="item-badge">Completo 👑</span>
-              <div class="item-name">Ceviche Mixto</div>
-              <p class="item-desc">Generosa porción de camarón, pulpo y pescado con vegetales frescos y aguacate.</p>
-              <div class="item-price">$230.00 MXN</div>
+              
+              <div class="item-name">Tostada de Ceviche de Pescado</div>
+              <p class="item-desc">Tostada individual de ceviche de pescado fresco con aguacate.</p>
+              <div class="item-price">$70.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_2', 'Ceviche Mixto', 230, -1)">-</button>
+              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_2', 'Tostada de Ceviche de Pescado', 70, -1)">-</button>
               <span class="step-count" id="count_Ceviches___Tostadas_2">0</span>
-              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_2', 'Ceviche Mixto', 230, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_2', 'Tostada de Ceviche de Pescado', 70, 1)">+</button>
             </div>
           </div>
           
-      </section>
-    
-      <section class="category-section" data-category="Especialidades Calientes & Zarandeados">
-        <h2 class="category-title">🔥 Especialidades Calientes & Zarandeados</h2>
-        <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">🔥 Al carbón y a las brasas con el auténtico adobo sinaloense:</p>
-        
-          <div class="item-card" data-name="camarones zarandeados a las brasas" data-desc="camarones abiertos en mariposa bañados en adobo zarandeado al carbón, servidos con arroz, ensalada y tortillas." data-category="especialidades calientes & zarandeados">
+          <div class="item-card" data-name="ceviche de camarón (1 orden)" data-desc="camarón crudo o cocido, tomate, cebolla, pepino, cilantro, coronado con aguacate y salsas de la casa." data-category="ceviches & tostadas">
+            
             <div class="item-info">
-              <span class="item-badge">A las Brasas ⭐</span>
-              <div class="item-name">Camarones Zarandeados a las Brasas</div>
-              <p class="item-desc">Camarones abiertos en mariposa bañados en adobo zarandeado al carbón, servidos con arroz, ensalada y tortillas.</p>
+              <span class="item-badge">El Favorito 🦐</span>
+              <div class="item-name">Ceviche de Camarón (1 Orden)</div>
+              <p class="item-desc">Camarón crudo o cocido, tomate, cebolla, pepino, cilantro, coronado con aguacate y salsas de la casa.</p>
+              <div class="item-price">$220.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_3', 'Ceviche de Camarón (1 Orden)', 220, -1)">-</button>
+              <span class="step-count" id="count_Ceviches___Tostadas_3">0</span>
+              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_3', 'Ceviche de Camarón (1 Orden)', 220, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="ceviche de camarón (1/2 orden)" data-desc="media orden de ceviche de camarón fresco coronado con aguacate." data-category="ceviches & tostadas">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Ceviche de Camarón (1/2 Orden)</div>
+              <p class="item-desc">Media orden de ceviche de camarón fresco coronado con aguacate.</p>
+              <div class="item-price">$155.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_4', 'Ceviche de Camarón (1/2 Orden)', 155, -1)">-</button>
+              <span class="step-count" id="count_Ceviches___Tostadas_4">0</span>
+              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_4', 'Ceviche de Camarón (1/2 Orden)', 155, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="tostada de ceviche de camarón" data-desc="tostada individual con generosa porción de camarón y aguacate." data-category="ceviches & tostadas">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Tostada de Ceviche de Camarón</div>
+              <p class="item-desc">Tostada individual con generosa porción de camarón y aguacate.</p>
+              <div class="item-price">$99.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_5', 'Tostada de Ceviche de Camarón', 99, -1)">-</button>
+              <span class="step-count" id="count_Ceviches___Tostadas_5">0</span>
+              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_5', 'Tostada de Ceviche de Camarón', 99, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="ceviche camarón con pulpo (1 orden)" data-desc="camarón crudo o cocido con pulpo tierno, tomate, cebolla, pepino, cilantro, aguacate y salsas." data-category="ceviches & tostadas">
+            
+            <div class="item-info">
+              <span class="item-badge">Mixto Especial ⭐</span>
+              <div class="item-name">Ceviche Camarón con Pulpo (1 Orden)</div>
+              <p class="item-desc">Camarón crudo o cocido con pulpo tierno, tomate, cebolla, pepino, cilantro, aguacate y salsas.</p>
               <div class="item-price">$260.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Especialidades_Calientes___Zarandeados_0', 'Camarones Zarandeados a las Brasas', 260, -1)">-</button>
-              <span class="step-count" id="count_Especialidades_Calientes___Zarandeados_0">0</span>
-              <button class="step-btn" onclick="updateQty('Especialidades_Calientes___Zarandeados_0', 'Camarones Zarandeados a las Brasas', 260, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_6', 'Ceviche Camarón con Pulpo (1 Orden)', 260, -1)">-</button>
+              <span class="step-count" id="count_Ceviches___Tostadas_6">0</span>
+              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_6', 'Ceviche Camarón con Pulpo (1 Orden)', 260, 1)">+</button>
             </div>
           </div>
           
-          <div class="item-card" data-name="camarones al mojo de ajo" data-desc="salteados en mantequilla con abundante ajo dorado, acompañados de arroz y ensalada fresca." data-category="especialidades calientes & zarandeados">
+          <div class="item-card" data-name="ceviche camarón con pulpo (1/2 orden)" data-desc="media orden de camarón y pulpo con vegetales y aguacate." data-category="ceviches & tostadas">
+            
             <div class="item-info">
               
-              <div class="item-name">Camarones al Mojo de Ajo</div>
-              <p class="item-desc">Salteados en mantequilla con abundante ajo dorado, acompañados de arroz y ensalada fresca.</p>
-              <div class="item-price">$230.00 MXN</div>
+              <div class="item-name">Ceviche Camarón con Pulpo (1/2 Orden)</div>
+              <p class="item-desc">Media orden de camarón y pulpo con vegetales y aguacate.</p>
+              <div class="item-price">$190.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Especialidades_Calientes___Zarandeados_1', 'Camarones al Mojo de Ajo', 230, -1)">-</button>
-              <span class="step-count" id="count_Especialidades_Calientes___Zarandeados_1">0</span>
-              <button class="step-btn" onclick="updateQty('Especialidades_Calientes___Zarandeados_1', 'Camarones al Mojo de Ajo', 230, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_7', 'Ceviche Camarón con Pulpo (1/2 Orden)', 190, -1)">-</button>
+              <span class="step-count" id="count_Ceviches___Tostadas_7">0</span>
+              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_7', 'Ceviche Camarón con Pulpo (1/2 Orden)', 190, 1)">+</button>
             </div>
           </div>
           
-          <div class="item-card" data-name="camarones a la diabla" data-desc="bañados en salsa diabla cremosa y picosita de chiles secos, servidos con arroz y tortillas." data-category="especialidades calientes & zarandeados">
+          <div class="item-card" data-name="tostada camarón con pulpo" data-desc="tostada mixta de camarón fresco y pulpo tierno con aguacate." data-category="ceviches & tostadas">
+            
             <div class="item-info">
-              <span class="item-badge">Picositos 🌶️</span>
-              <div class="item-name">Camarones a la Diabla</div>
-              <p class="item-desc">Bañados en salsa diabla cremosa y picosita de chiles secos, servidos con arroz y tortillas.</p>
+              
+              <div class="item-name">Tostada Camarón con Pulpo</div>
+              <p class="item-desc">Tostada mixta de camarón fresco y pulpo tierno con aguacate.</p>
+              <div class="item-price">$110.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_8', 'Tostada Camarón con Pulpo', 110, -1)">-</button>
+              <span class="step-count" id="count_Ceviches___Tostadas_8">0</span>
+              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_8', 'Tostada Camarón con Pulpo', 110, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="ceviche camarón tropical (1 orden)" data-desc="camarón crudo o cocido, mango dulce, cebolla, jícama, pepino, cilantro, coronado con aguacate y salsas." data-category="ceviches & tostadas">
+            
+            <div class="item-info">
+              <span class="item-badge">Tropical 🥭</span>
+              <div class="item-name">Ceviche Camarón Tropical (1 Orden)</div>
+              <p class="item-desc">Camarón crudo o cocido, mango dulce, cebolla, jícama, pepino, cilantro, coronado con aguacate y salsas.</p>
               <div class="item-price">$230.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Especialidades_Calientes___Zarandeados_2', 'Camarones a la Diabla', 230, -1)">-</button>
-              <span class="step-count" id="count_Especialidades_Calientes___Zarandeados_2">0</span>
-              <button class="step-btn" onclick="updateQty('Especialidades_Calientes___Zarandeados_2', 'Camarones a la Diabla', 230, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_9', 'Ceviche Camarón Tropical (1 Orden)', 230, -1)">-</button>
+              <span class="step-count" id="count_Ceviches___Tostadas_9">0</span>
+              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_9', 'Ceviche Camarón Tropical (1 Orden)', 230, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="ceviche camarón tropical (1/2 orden)" data-desc="media orden de camarón con mango, jícama y aguacate." data-category="ceviches & tostadas">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Ceviche Camarón Tropical (1/2 Orden)</div>
+              <p class="item-desc">Media orden de camarón con mango, jícama y aguacate.</p>
+              <div class="item-price">$170.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_10', 'Ceviche Camarón Tropical (1/2 Orden)', 170, -1)">-</button>
+              <span class="step-count" id="count_Ceviches___Tostadas_10">0</span>
+              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_10', 'Ceviche Camarón Tropical (1/2 Orden)', 170, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="tostada camarón tropical" data-desc="tostada de camarón con toque tropical de mango y jícama." data-category="ceviches & tostadas">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Tostada Camarón Tropical</div>
+              <p class="item-desc">Tostada de camarón con toque tropical de mango y jícama.</p>
+              <div class="item-price">$99.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_11', 'Tostada Camarón Tropical', 99, -1)">-</button>
+              <span class="step-count" id="count_Ceviches___Tostadas_11">0</span>
+              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_11', 'Tostada Camarón Tropical', 99, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="ceviche medallón tropical (1 orden)" data-desc="medallón de atún fresco en cubos, mango, cebolla, jícama, pepino, cilantro, coronado con aguacate." data-category="ceviches & tostadas">
+            
+            <div class="item-info">
+              <span class="item-badge">Atún Fresco 🐟</span>
+              <div class="item-name">Ceviche Medallón Tropical (1 Orden)</div>
+              <p class="item-desc">Medallón de atún fresco en cubos, mango, cebolla, jícama, pepino, cilantro, coronado con aguacate.</p>
+              <div class="item-price">$240.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_12', 'Ceviche Medallón Tropical (1 Orden)', 240, -1)">-</button>
+              <span class="step-count" id="count_Ceviches___Tostadas_12">0</span>
+              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_12', 'Ceviche Medallón Tropical (1 Orden)', 240, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="ceviche medallón tropical (1/2 orden)" data-desc="media orden de medallón de atún con mango, jícama y aguacate." data-category="ceviches & tostadas">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Ceviche Medallón Tropical (1/2 Orden)</div>
+              <p class="item-desc">Media orden de medallón de atún con mango, jícama y aguacate.</p>
+              <div class="item-price">$185.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_13', 'Ceviche Medallón Tropical (1/2 Orden)', 185, -1)">-</button>
+              <span class="step-count" id="count_Ceviches___Tostadas_13">0</span>
+              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_13', 'Ceviche Medallón Tropical (1/2 Orden)', 185, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="tostada medallón tropical" data-desc="tostada de atún fresco con mango, jícama y aguacate." data-category="ceviches & tostadas">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Tostada Medallón Tropical</div>
+              <p class="item-desc">Tostada de atún fresco con mango, jícama y aguacate.</p>
+              <div class="item-price">$105.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_14', 'Tostada Medallón Tropical', 105, -1)">-</button>
+              <span class="step-count" id="count_Ceviches___Tostadas_14">0</span>
+              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_14', 'Tostada Medallón Tropical', 105, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="tosticeviche" data-desc="cama de tostitos acompañada de un ceviche fresco con salsas artesanales de la casa." data-category="ceviches & tostadas">
+            
+            <div class="item-info">
+              <span class="item-badge">Top 🌟</span>
+              <div class="item-name">Tosticeviche</div>
+              <p class="item-desc">Cama de Tostitos acompañada de un ceviche fresco con salsas artesanales de la casa.</p>
+              <div class="item-price">$240.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_15', 'Tosticeviche', 240, -1)">-</button>
+              <span class="step-count" id="count_Ceviches___Tostadas_15">0</span>
+              <button class="step-btn" onclick="updateQty('Ceviches___Tostadas_15', 'Tosticeviche', 240, 1)">+</button>
             </div>
           </div>
           
       </section>
     
-      <section class="category-section" data-category="Bebidas & Cervezas">
-        <h2 class="category-title">🥤 Bebidas & Cervezas</h2>
-        <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">🥤 Para acompañar tus mariscos bien frías:</p>
+      <section class="category-section" data-category="Cocteles Especiales">
+        <h2 class="category-title">🍹 Cocteles Especiales</h2>
+        <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">🍹 Servidos fríos con el auténtico jugo sazonado de la casa y marisco fresco:</p>
         
-          <div class="item-card" data-name="refresco (355ml)" data-desc="coca-cola y variedad de sabores bien fríos." data-category="bebidas & cervezas">
+          <div class="item-card" data-name="coctel tumba tontos (1 orden)" data-desc="callo de hacha, camarón crudo y pulpo mezclados en jugo de la casa con chile chiltepín, tomate, cebolla, pepino y aguacate." data-category="cocteles especiales">
+            
             <div class="item-info">
-              
-              <div class="item-name">Refresco (355ml)</div>
-              <p class="item-desc">Coca-Cola y variedad de sabores bien fríos.</p>
-              <div class="item-price">$30.00 MXN</div>
+              <span class="item-badge">La Joya de la Casa 👑</span>
+              <div class="item-name">Coctel Tumba Tontos (1 Orden)</div>
+              <p class="item-desc">Callo de hacha, camarón crudo y pulpo mezclados en jugo de la casa con chile chiltepín, tomate, cebolla, pepino y aguacate.</p>
+              <div class="item-price">$340.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Bebidas___Cervezas_0', 'Refresco (355ml)', 30, -1)">-</button>
-              <span class="step-count" id="count_Bebidas___Cervezas_0">0</span>
-              <button class="step-btn" onclick="updateQty('Bebidas___Cervezas_0', 'Refresco (355ml)', 30, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Cocteles_Especiales_0', 'Coctel Tumba Tontos (1 Orden)', 340, -1)">-</button>
+              <span class="step-count" id="count_Cocteles_Especiales_0">0</span>
+              <button class="step-btn" onclick="updateQty('Cocteles_Especiales_0', 'Coctel Tumba Tontos (1 Orden)', 340, 1)">+</button>
             </div>
           </div>
           
-          <div class="item-card" data-name="agua fresca natural (1l)" data-desc="preparada del día bien fría." data-category="bebidas & cervezas">
+          <div class="item-card" data-name="coctel limoncito (1 orden)" data-desc="camarones cocidos, pulpo y callo de almeja mezclados en jugo de la casa, tomate, cebolla, pepino y aguacate." data-category="cocteles especiales">
+            
+            <div class="item-info">
+              <span class="item-badge">Especialidad ⭐</span>
+              <div class="item-name">Coctel Limoncito (1 Orden)</div>
+              <p class="item-desc">Camarones cocidos, pulpo y callo de almeja mezclados en jugo de la casa, tomate, cebolla, pepino y aguacate.</p>
+              <div class="item-price">$290.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Cocteles_Especiales_1', 'Coctel Limoncito (1 Orden)', 290, -1)">-</button>
+              <span class="step-count" id="count_Cocteles_Especiales_1">0</span>
+              <button class="step-btn" onclick="updateQty('Cocteles_Especiales_1', 'Coctel Limoncito (1 Orden)', 290, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="coctel de camarón (grande)" data-desc="camarones cocidos mezclados en jugo de la casa, tomate, cebolla, pepino y coronado con aguacate." data-category="cocteles especiales">
+            
+            <div class="item-info">
+              <span class="item-badge">Grande 🦐</span>
+              <div class="item-name">Coctel de Camarón (Grande)</div>
+              <p class="item-desc">Camarones cocidos mezclados en jugo de la casa, tomate, cebolla, pepino y coronado con aguacate.</p>
+              <div class="item-price">$215.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Cocteles_Especiales_2', 'Coctel de Camarón (Grande)', 215, -1)">-</button>
+              <span class="step-count" id="count_Cocteles_Especiales_2">0</span>
+              <button class="step-btn" onclick="updateQty('Cocteles_Especiales_2', 'Coctel de Camarón (Grande)', 215, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="coctel de camarón (chico)" data-desc="porción chica de coctel de camarón con vegetales frescos y aguacate." data-category="cocteles especiales">
+            
             <div class="item-info">
               
-              <div class="item-name">Agua Fresca Natural (1L)</div>
+              <div class="item-name">Coctel de Camarón (Chico)</div>
+              <p class="item-desc">Porción chica de coctel de camarón con vegetales frescos y aguacate.</p>
+              <div class="item-price">$150.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Cocteles_Especiales_3', 'Coctel de Camarón (Chico)', 150, -1)">-</button>
+              <span class="step-count" id="count_Cocteles_Especiales_3">0</span>
+              <button class="step-btn" onclick="updateQty('Cocteles_Especiales_3', 'Coctel de Camarón (Chico)', 150, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="coctel camarón y pulpo (grande)" data-desc="camarones cocidos con pulpo mezclados en jugo de la casa, tomate, cebolla, pepino y aguacate." data-category="cocteles especiales">
+            
+            <div class="item-info">
+              <span class="item-badge">Grande Mixto 🐙</span>
+              <div class="item-name">Coctel Camarón y Pulpo (Grande)</div>
+              <p class="item-desc">Camarones cocidos con pulpo mezclados en jugo de la casa, tomate, cebolla, pepino y aguacate.</p>
+              <div class="item-price">$250.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Cocteles_Especiales_4', 'Coctel Camarón y Pulpo (Grande)', 250, -1)">-</button>
+              <span class="step-count" id="count_Cocteles_Especiales_4">0</span>
+              <button class="step-btn" onclick="updateQty('Cocteles_Especiales_4', 'Coctel Camarón y Pulpo (Grande)', 250, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="coctel camarón y pulpo (chico)" data-desc="porción chica de coctel mixto de camarón y pulpo con aguacate." data-category="cocteles especiales">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Coctel Camarón y Pulpo (Chico)</div>
+              <p class="item-desc">Porción chica de coctel mixto de camarón y pulpo con aguacate.</p>
+              <div class="item-price">$190.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Cocteles_Especiales_5', 'Coctel Camarón y Pulpo (Chico)', 190, -1)">-</button>
+              <span class="step-count" id="count_Cocteles_Especiales_5">0</span>
+              <button class="step-btn" onclick="updateQty('Cocteles_Especiales_5', 'Coctel Camarón y Pulpo (Chico)', 190, 1)">+</button>
+            </div>
+          </div>
+          
+      </section>
+    
+      <section class="category-section" data-category="Rollos Empanizados (Sushi)">
+        <h2 class="category-title">🍣 Rollos Empanizados (Sushi)</h2>
+        <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">🍣 Rollos de sushi empanizados calientitos con el auténtico sazón de Culiacán:</p>
+        
+          <div class="item-card" data-name="mar y tierra" data-desc="por dentro: camarón, carne de res, pepino, philadelphia y aguacate." data-category="rollos empanizados (sushi)">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Mar y Tierra</div>
+              <p class="item-desc">Por dentro: Camarón, carne de res, pepino, Philadelphia y aguacate.</p>
+              <div class="item-price">$149.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Rollos_Empanizados__Sushi__0', 'Mar y Tierra', 149, -1)">-</button>
+              <span class="step-count" id="count_Rollos_Empanizados__Sushi__0">0</span>
+              <button class="step-btn" onclick="updateQty('Rollos_Empanizados__Sushi__0', 'Mar y Tierra', 149, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="cielo, mar y tierra" data-desc="por dentro: pollo, res, camarón, philadelphia, pepino y aguacate." data-category="rollos empanizados (sushi)">
+            
+            <div class="item-info">
+              <span class="item-badge">El Más Pedido ⭐</span>
+              <div class="item-name">Cielo, Mar y Tierra</div>
+              <p class="item-desc">Por dentro: Pollo, res, camarón, Philadelphia, pepino y aguacate.</p>
+              <div class="item-price">$180.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Rollos_Empanizados__Sushi__1', 'Cielo, Mar y Tierra', 180, -1)">-</button>
+              <span class="step-count" id="count_Rollos_Empanizados__Sushi__1">0</span>
+              <button class="step-btn" onclick="updateQty('Rollos_Empanizados__Sushi__1', 'Cielo, Mar y Tierra', 180, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="cordon blue" data-desc="por dentro: pollo, tocino, aguacate, philadelphia. por fuera: tocino y queso gratinado." data-category="rollos empanizados (sushi)">
+            
+            <div class="item-info">
+              <span class="item-badge">Gratinado 🧀</span>
+              <div class="item-name">Cordon Blue</div>
+              <p class="item-desc">Por dentro: Pollo, tocino, aguacate, Philadelphia. Por fuera: Tocino y queso gratinado.</p>
+              <div class="item-price">$180.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Rollos_Empanizados__Sushi__2', 'Cordon Blue', 180, -1)">-</button>
+              <span class="step-count" id="count_Rollos_Empanizados__Sushi__2">0</span>
+              <button class="step-btn" onclick="updateQty('Rollos_Empanizados__Sushi__2', 'Cordon Blue', 180, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="camarón blue" data-desc="por dentro: camarón, pepino, philadelphia. por fuera: tocino y queso gratinado." data-category="rollos empanizados (sushi)">
+            
+            <div class="item-info">
+              <span class="item-badge">Gratinado 🧀</span>
+              <div class="item-name">Camarón Blue</div>
+              <p class="item-desc">Por dentro: Camarón, pepino, Philadelphia. Por fuera: Tocino y queso gratinado.</p>
+              <div class="item-price">$180.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Rollos_Empanizados__Sushi__3', 'Camarón Blue', 180, -1)">-</button>
+              <span class="step-count" id="count_Rollos_Empanizados__Sushi__3">0</span>
+              <button class="step-btn" onclick="updateQty('Rollos_Empanizados__Sushi__3', 'Camarón Blue', 180, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="camaroncito roll" data-desc="por dentro: camarón, philadelphia, pepino. por fuera: aguacate, mayonesa y salsa anguila." data-category="rollos empanizados (sushi)">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Camaroncito Roll</div>
+              <p class="item-desc">Por dentro: Camarón, Philadelphia, pepino. Por fuera: Aguacate, mayonesa y salsa anguila.</p>
+              <div class="item-price">$130.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Rollos_Empanizados__Sushi__4', 'Camaroncito Roll', 130, -1)">-</button>
+              <span class="step-count" id="count_Rollos_Empanizados__Sushi__4">0</span>
+              <button class="step-btn" onclick="updateQty('Rollos_Empanizados__Sushi__4', 'Camaroncito Roll', 130, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="rolcito" data-desc="por dentro: camarón, philadelphia y pepino. por fuera: ensalada de surimi y salsa anguila." data-category="rollos empanizados (sushi)">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Rolcito</div>
+              <p class="item-desc">Por dentro: Camarón, Philadelphia y pepino. Por fuera: Ensalada de surimi y salsa anguila.</p>
+              <div class="item-price">$160.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Rollos_Empanizados__Sushi__5', 'Rolcito', 160, -1)">-</button>
+              <span class="step-count" id="count_Rollos_Empanizados__Sushi__5">0</span>
+              <button class="step-btn" onclick="updateQty('Rollos_Empanizados__Sushi__5', 'Rolcito', 160, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="sushito roll" data-desc="por dentro: pollo, res, pepino. por fuera: aguacate y salsa anguila." data-category="rollos empanizados (sushi)">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Sushito Roll</div>
+              <p class="item-desc">Por dentro: Pollo, res, pepino. Por fuera: Aguacate y salsa anguila.</p>
+              <div class="item-price">$160.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Rollos_Empanizados__Sushi__6', 'Sushito Roll', 160, -1)">-</button>
+              <span class="step-count" id="count_Rollos_Empanizados__Sushi__6">0</span>
+              <button class="step-btn" onclick="updateQty('Rollos_Empanizados__Sushi__6', 'Sushito Roll', 160, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="cangrejito" data-desc="por dentro: surimi, pepino, philadelphia. por fuera: ensalada de surimi y salsa anguila." data-category="rollos empanizados (sushi)">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Cangrejito</div>
+              <p class="item-desc">Por dentro: Surimi, pepino, Philadelphia. Por fuera: Ensalada de surimi y salsa anguila.</p>
+              <div class="item-price">$130.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Rollos_Empanizados__Sushi__7', 'Cangrejito', 130, -1)">-</button>
+              <span class="step-count" id="count_Rollos_Empanizados__Sushi__7">0</span>
+              <button class="step-btn" onclick="updateQty('Rollos_Empanizados__Sushi__7', 'Cangrejito', 130, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="crispy chicken" data-desc="por dentro: aguacate, pepino, philadelphia. por fuera: topping de pollo teriyaki, salsa anguila y ajonjolí." data-category="rollos empanizados (sushi)">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Crispy Chicken</div>
+              <p class="item-desc">Por dentro: Aguacate, pepino, Philadelphia. Por fuera: Topping de pollo teriyaki, salsa anguila y ajonjolí.</p>
+              <div class="item-price">$160.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Rollos_Empanizados__Sushi__8', 'Crispy Chicken', 160, -1)">-</button>
+              <span class="step-count" id="count_Rollos_Empanizados__Sushi__8">0</span>
+              <button class="step-btn" onclick="updateQty('Rollos_Empanizados__Sushi__8', 'Crispy Chicken', 160, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="culichi roll" data-desc="por dentro: res, philadelphia, aguacate y pepino. por fuera: gratinado de chipotle y tocino." data-category="rollos empanizados (sushi)">
+            
+            <div class="item-info">
+              <span class="item-badge">Chipotle & Tocino 🔥</span>
+              <div class="item-name">Culichi Roll</div>
+              <p class="item-desc">Por dentro: Res, Philadelphia, aguacate y pepino. Por fuera: Gratinado de chipotle y tocino.</p>
+              <div class="item-price">$180.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Rollos_Empanizados__Sushi__9', 'Culichi Roll', 180, -1)">-</button>
+              <span class="step-count" id="count_Rollos_Empanizados__Sushi__9">0</span>
+              <button class="step-btn" onclick="updateQty('Rollos_Empanizados__Sushi__9', 'Culichi Roll', 180, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="mexicanito roll" data-desc="por dentro: res, pepino, philadelphia. por fuera: aguacate, philadelphia y ensalada de surimi." data-category="rollos empanizados (sushi)">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Mexicanito Roll</div>
+              <p class="item-desc">Por dentro: Res, pepino, Philadelphia. Por fuera: Aguacate, Philadelphia y ensalada de surimi.</p>
+              <div class="item-price">$160.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Rollos_Empanizados__Sushi__10', 'Mexicanito Roll', 160, -1)">-</button>
+              <span class="step-count" id="count_Rollos_Empanizados__Sushi__10">0</span>
+              <button class="step-btn" onclick="updateQty('Rollos_Empanizados__Sushi__10', 'Mexicanito Roll', 160, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="greñudo roll" data-desc="por dentro: camarón, aguacate, philadelphia, pepino. por fuera: ensalada de cangrejo y camarón empanizado." data-category="rollos empanizados (sushi)">
+            
+            <div class="item-info">
+              <span class="item-badge">Especial ⭐</span>
+              <div class="item-name">Greñudo Roll</div>
+              <p class="item-desc">Por dentro: Camarón, aguacate, Philadelphia, pepino. Por fuera: Ensalada de cangrejo y camarón empanizado.</p>
+              <div class="item-price">$180.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Rollos_Empanizados__Sushi__11', 'Greñudo Roll', 180, -1)">-</button>
+              <span class="step-count" id="count_Rollos_Empanizados__Sushi__11">0</span>
+              <button class="step-btn" onclick="updateQty('Rollos_Empanizados__Sushi__11', 'Greñudo Roll', 180, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="el patrón" data-desc="por dentro: philadelphia, pepino, camarón tempura. por fuera: alga, topping de kanikama y atún spicy, salsa de anguila y ajonjolí." data-category="rollos empanizados (sushi)">
+            
+            <div class="item-info">
+              <span class="item-badge">VIP 👑</span>
+              <div class="item-name">El Patrón</div>
+              <p class="item-desc">Por dentro: Philadelphia, pepino, camarón tempura. Por fuera: Alga, topping de kanikama y atún spicy, salsa de anguila y ajonjolí.</p>
+              <div class="item-price">$199.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Rollos_Empanizados__Sushi__12', 'El Patrón', 199, -1)">-</button>
+              <span class="step-count" id="count_Rollos_Empanizados__Sushi__12">0</span>
+              <button class="step-btn" onclick="updateQty('Rollos_Empanizados__Sushi__12', 'El Patrón', 199, 1)">+</button>
+            </div>
+          </div>
+          
+      </section>
+    
+      <section class="category-section" data-category="Rollos Fríos (Sushi)">
+        <h2 class="category-title">🍱 Rollos Fríos (Sushi)</h2>
+        <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">🍱 Rollos de sushi naturales y frescos estilo Sinaloa:</p>
+        
+          <div class="item-card" data-name="enchilocito" data-desc="por dentro: medallón de atún, pepino y salsa macha. por fuera: aguacate y medallón de atún." data-category="rollos fríos (sushi)">
+            
+            <div class="item-info">
+              <span class="item-badge">Salsa Macha 🌶️</span>
+              <div class="item-name">Enchilocito</div>
+              <p class="item-desc">Por dentro: Medallón de atún, pepino y salsa macha. Por fuera: Aguacate y medallón de atún.</p>
+              <div class="item-price">$180.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Rollos_Fr_os__Sushi__0', 'Enchilocito', 180, -1)">-</button>
+              <span class="step-count" id="count_Rollos_Fr_os__Sushi__0">0</span>
+              <button class="step-btn" onclick="updateQty('Rollos_Fr_os__Sushi__0', 'Enchilocito', 180, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="aguachile roll" data-desc="por dentro: camarón tempura, philadelphia y pepino. por fuera: aguacate y aguachile fresco." data-category="rollos fríos (sushi)">
+            
+            <div class="item-info">
+              <span class="item-badge">Súper Especial ⭐</span>
+              <div class="item-name">Aguachile Roll</div>
+              <p class="item-desc">Por dentro: Camarón tempura, Philadelphia y pepino. Por fuera: Aguacate y aguachile fresco.</p>
+              <div class="item-price">$250.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Rollos_Fr_os__Sushi__1', 'Aguachile Roll', 250, -1)">-</button>
+              <span class="step-count" id="count_Rollos_Fr_os__Sushi__1">0</span>
+              <button class="step-btn" onclick="updateQty('Rollos_Fr_os__Sushi__1', 'Aguachile Roll', 250, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="flaming roll" data-desc="por dentro: camarón tempura y ensalada de surimi. por fuera: forrado de cheeto flaming, salsa anguila y spicy." data-category="rollos fríos (sushi)">
+            
+            <div class="item-info">
+              <span class="item-badge">Flaming Hot 🔥</span>
+              <div class="item-name">Flaming Roll</div>
+              <p class="item-desc">Por dentro: Camarón tempura y ensalada de surimi. Por fuera: Forrado de Cheeto Flaming, salsa anguila y spicy.</p>
+              <div class="item-price">$140.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Rollos_Fr_os__Sushi__2', 'Flaming Roll', 140, -1)">-</button>
+              <span class="step-count" id="count_Rollos_Fr_os__Sushi__2">0</span>
+              <button class="step-btn" onclick="updateQty('Rollos_Fr_os__Sushi__2', 'Flaming Roll', 140, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="culiacancito hot" data-desc="por dentro: camarón, carne de res, philadelphia y pepino. por fuera: aguacate, ensalada de surimi y salsa macha." data-category="rollos fríos (sushi)">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Culiacancito Hot</div>
+              <p class="item-desc">Por dentro: Camarón, carne de res, Philadelphia y pepino. Por fuera: Aguacate, ensalada de surimi y salsa macha.</p>
+              <div class="item-price">$160.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Rollos_Fr_os__Sushi__3', 'Culiacancito Hot', 160, -1)">-</button>
+              <span class="step-count" id="count_Rollos_Fr_os__Sushi__3">0</span>
+              <button class="step-btn" onclick="updateQty('Rollos_Fr_os__Sushi__3', 'Culiacancito Hot', 160, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="philadelphia" data-desc="por dentro: pollo, aguacate y pepino. por fuera: philadelphia y camarón." data-category="rollos fríos (sushi)">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Philadelphia</div>
+              <p class="item-desc">Por dentro: Pollo, aguacate y pepino. Por fuera: Philadelphia y camarón.</p>
+              <div class="item-price">$150.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Rollos_Fr_os__Sushi__4', 'Philadelphia', 150, -1)">-</button>
+              <span class="step-count" id="count_Rollos_Fr_os__Sushi__4">0</span>
+              <button class="step-btn" onclick="updateQty('Rollos_Fr_os__Sushi__4', 'Philadelphia', 150, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="mazatlán" data-desc="por dentro: medallón de atún, salmón y pepino. por fuera: aguacate y sriracha." data-category="rollos fríos (sushi)">
+            
+            <div class="item-info">
+              <span class="item-badge">Salmón & Atún 🐟</span>
+              <div class="item-name">Mazatlán</div>
+              <p class="item-desc">Por dentro: Medallón de atún, salmón y pepino. Por fuera: Aguacate y sriracha.</p>
+              <div class="item-price">$189.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Rollos_Fr_os__Sushi__5', 'Mazatlán', 189, -1)">-</button>
+              <span class="step-count" id="count_Rollos_Fr_os__Sushi__5">0</span>
+              <button class="step-btn" onclick="updateQty('Rollos_Fr_os__Sushi__5', 'Mazatlán', 189, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="marinero roll" data-desc="por dentro: camarón, pulpo y pepino. por fuera: aguacate y sriracha." data-category="rollos fríos (sushi)">
+            
+            <div class="item-info">
+              <span class="item-badge">Camarón & Pulpo 🐙</span>
+              <div class="item-name">Marinero Roll</div>
+              <p class="item-desc">Por dentro: Camarón, pulpo y pepino. Por fuera: Aguacate y sriracha.</p>
+              <div class="item-price">$189.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Rollos_Fr_os__Sushi__6', 'Marinero Roll', 189, -1)">-</button>
+              <span class="step-count" id="count_Rollos_Fr_os__Sushi__6">0</span>
+              <button class="step-btn" onclick="updateQty('Rollos_Fr_os__Sushi__6', 'Marinero Roll', 189, 1)">+</button>
+            </div>
+          </div>
+          
+      </section>
+    
+      <section class="category-section" data-category="Entradas & Botanas">
+        <h2 class="category-title">🍟 Entradas & Botanas</h2>
+        <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">🍟 Para botanear y comenzar el festín culichi:</p>
+        
+          <div class="item-card" data-name="culichi pepper" data-desc="chile caribe empanizado relleno de surimi y philadelphia, coronado con salsa anguila y aderezo de chipotle." data-category="entradas & botanas">
+            
+            <div class="item-info">
+              <span class="item-badge">Recomendado ⭐</span>
+              <div class="item-name">Culichi Pepper</div>
+              <p class="item-desc">Chile caribe empanizado relleno de surimi y Philadelphia, coronado con salsa anguila y aderezo de chipotle.</p>
+              <div class="item-price">$110.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Entradas___Botanas_0', 'Culichi Pepper', 110, -1)">-</button>
+              <span class="step-count" id="count_Entradas___Botanas_0">0</span>
+              <button class="step-btn" onclick="updateQty('Entradas___Botanas_0', 'Culichi Pepper', 110, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="orden boneless" data-desc="trozos de pechuga de pollo empanizada bañados en tu salsa a elegir." data-category="entradas & botanas">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Orden Boneless</div>
+              <p class="item-desc">Trozos de pechuga de pollo empanizada bañados en tu salsa a elegir.</p>
+              <div class="item-price">$180.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Entradas___Botanas_1', 'Orden Boneless', 180, -1)">-</button>
+              <span class="step-count" id="count_Entradas___Botanas_1">0</span>
+              <button class="step-btn" onclick="updateQty('Entradas___Botanas_1', 'Orden Boneless', 180, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="orden alitas" data-desc="alitas de pollo fritas y bañadas con salsa a elegir." data-category="entradas & botanas">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Orden Alitas</div>
+              <p class="item-desc">Alitas de pollo fritas y bañadas con salsa a elegir.</p>
+              <div class="item-price">$190.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Entradas___Botanas_2', 'Orden Alitas', 190, -1)">-</button>
+              <span class="step-count" id="count_Entradas___Botanas_2">0</span>
+              <button class="step-btn" onclick="updateQty('Entradas___Botanas_2', 'Orden Alitas', 190, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="orden de nuggets" data-desc="nuggets de pollo crujientes fritos acompañados de aderezos." data-category="entradas & botanas">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Orden de Nuggets</div>
+              <p class="item-desc">Nuggets de pollo crujientes fritos acompañados de aderezos.</p>
+              <div class="item-price">$110.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Entradas___Botanas_3', 'Orden de Nuggets', 110, -1)">-</button>
+              <span class="step-count" id="count_Entradas___Botanas_3">0</span>
+              <button class="step-btn" onclick="updateQty('Entradas___Botanas_3', 'Orden de Nuggets', 110, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="guacamole especial" data-desc="guacamole con tomate, cebolla, chile serrano, cilantro con camarón y pulpo coronado con filete de pescado frito." data-category="entradas & botanas">
+            
+            <div class="item-info">
+              <span class="item-badge">Especialidad 🥑</span>
+              <div class="item-name">Guacamole Especial</div>
+              <p class="item-desc">Guacamole con tomate, cebolla, chile serrano, cilantro con camarón y pulpo coronado con filete de pescado frito.</p>
+              <div class="item-price">$250.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Entradas___Botanas_4', 'Guacamole Especial', 250, -1)">-</button>
+              <span class="step-count" id="count_Entradas___Botanas_4">0</span>
+              <button class="step-btn" onclick="updateQty('Entradas___Botanas_4', 'Guacamole Especial', 250, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="paté de camarón (1/4 orden)" data-desc="el tradicional paté de camarón al estilo limoncito culichi servido con galletas saladas." data-category="entradas & botanas">
+            
+            <div class="item-info">
+              <span class="item-badge">Tradicional 🦐</span>
+              <div class="item-name">Paté de Camarón (1/4 Orden)</div>
+              <p class="item-desc">El tradicional paté de camarón al estilo Limoncito Culichi servido con galletas saladas.</p>
+              <div class="item-price">$120.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Entradas___Botanas_5', 'Paté de Camarón (1/4 Orden)', 120, -1)">-</button>
+              <span class="step-count" id="count_Entradas___Botanas_5">0</span>
+              <button class="step-btn" onclick="updateQty('Entradas___Botanas_5', 'Paté de Camarón (1/4 Orden)', 120, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="papas a la francesa" data-desc="papas fritas crujientes sazonadas." data-category="entradas & botanas">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Papas a la Francesa</div>
+              <p class="item-desc">Papas fritas crujientes sazonadas.</p>
+              <div class="item-price">$100.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Entradas___Botanas_6', 'Papas a la Francesa', 100, -1)">-</button>
+              <span class="step-count" id="count_Entradas___Botanas_6">0</span>
+              <button class="step-btn" onclick="updateQty('Entradas___Botanas_6', 'Papas a la Francesa', 100, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="la gilbertona" data-desc="tostada con paté de camarón, medallón de atún en cubos, camarón tempura con aderezo especial de la casa y cebolla frita." data-category="entradas & botanas">
+            
+            <div class="item-info">
+              <span class="item-badge">Famosa 🌟</span>
+              <div class="item-name">La Gilbertona</div>
+              <p class="item-desc">Tostada con paté de camarón, medallón de atún en cubos, camarón tempura con aderezo especial de la casa y cebolla frita.</p>
+              <div class="item-price">$195.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Entradas___Botanas_7', 'La Gilbertona', 195, -1)">-</button>
+              <span class="step-count" id="count_Entradas___Botanas_7">0</span>
+              <button class="step-btn" onclick="updateQty('Entradas___Botanas_7', 'La Gilbertona', 195, 1)">+</button>
+            </div>
+          </div>
+          
+      </section>
+    
+      <section class="category-section" data-category="Ostras & Conchas Frescas">
+        <h2 class="category-title">🦪 Ostras & Conchas Frescas</h2>
+        <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">🦪 Conchas y mariscos frescos de bahía (sujeto a disponibilidad):</p>
+        
+          <div class="item-card" data-name="ostiones frescos (6 piezas)" data-desc="media docena de ostiones frescos en su concha servidos con limón y salsas." data-category="ostras & conchas frescas">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Ostiones Frescos (6 piezas)</div>
+              <p class="item-desc">Media docena de ostiones frescos en su concha servidos con limón y salsas.</p>
+              <div class="item-price">$100.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Ostras___Conchas_Frescas_0', 'Ostiones Frescos (6 piezas)', 100, -1)">-</button>
+              <span class="step-count" id="count_Ostras___Conchas_Frescas_0">0</span>
+              <button class="step-btn" onclick="updateQty('Ostras___Conchas_Frescas_0', 'Ostiones Frescos (6 piezas)', 100, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="ostiones frescos (10 piezas)" data-desc="orden completa de 10 ostiones frescos en su concha." data-category="ostras & conchas frescas">
+            
+            <div class="item-info">
+              <span class="item-badge">10 Pzas ⭐</span>
+              <div class="item-name">Ostiones Frescos (10 piezas)</div>
+              <p class="item-desc">Orden completa de 10 ostiones frescos en su concha.</p>
+              <div class="item-price">$150.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Ostras___Conchas_Frescas_1', 'Ostiones Frescos (10 piezas)', 150, -1)">-</button>
+              <span class="step-count" id="count_Ostras___Conchas_Frescas_1">0</span>
+              <button class="step-btn" onclick="updateQty('Ostras___Conchas_Frescas_1', 'Ostiones Frescos (10 piezas)', 150, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="almeja chocolata (6 piezas)" data-desc="media docena de almejas chocolatas frescas preparadas." data-category="ostras & conchas frescas">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Almeja Chocolata (6 piezas)</div>
+              <p class="item-desc">Media docena de almejas chocolatas frescas preparadas.</p>
+              <div class="item-price">$120.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Ostras___Conchas_Frescas_2', 'Almeja Chocolata (6 piezas)', 120, -1)">-</button>
+              <span class="step-count" id="count_Ostras___Conchas_Frescas_2">0</span>
+              <button class="step-btn" onclick="updateQty('Ostras___Conchas_Frescas_2', 'Almeja Chocolata (6 piezas)', 120, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="almeja chocolata (10 piezas)" data-desc="orden completa de 10 almejas chocolatas frescas preparadas." data-category="ostras & conchas frescas">
+            
+            <div class="item-info">
+              <span class="item-badge">10 Pzas ⭐</span>
+              <div class="item-name">Almeja Chocolata (10 piezas)</div>
+              <p class="item-desc">Orden completa de 10 almejas chocolatas frescas preparadas.</p>
+              <div class="item-price">$150.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Ostras___Conchas_Frescas_3', 'Almeja Chocolata (10 piezas)', 150, -1)">-</button>
+              <span class="step-count" id="count_Ostras___Conchas_Frescas_3">0</span>
+              <button class="step-btn" onclick="updateQty('Ostras___Conchas_Frescas_3', 'Almeja Chocolata (10 piezas)', 150, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="almeja reyna (pieza)" data-desc="almeja reyna fresca grande preparada con salsas de la casa." data-category="ostras & conchas frescas">
+            
+            <div class="item-info">
+              <span class="item-badge">Pieza Grande 👑</span>
+              <div class="item-name">Almeja Reyna (Pieza)</div>
+              <p class="item-desc">Almeja Reyna fresca grande preparada con salsas de la casa.</p>
+              <div class="item-price">$150.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Ostras___Conchas_Frescas_4', 'Almeja Reyna (Pieza)', 150, -1)">-</button>
+              <span class="step-count" id="count_Ostras___Conchas_Frescas_4">0</span>
+              <button class="step-btn" onclick="updateQty('Ostras___Conchas_Frescas_4', 'Almeja Reyna (Pieza)', 150, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="patas de mula (6 piezas)" data-desc="media docena de patas de mula frescas con limón y salsas." data-category="ostras & conchas frescas">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Patas de Mula (6 piezas)</div>
+              <p class="item-desc">Media docena de patas de mula frescas con limón y salsas.</p>
+              <div class="item-price">$100.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Ostras___Conchas_Frescas_5', 'Patas de Mula (6 piezas)', 100, -1)">-</button>
+              <span class="step-count" id="count_Ostras___Conchas_Frescas_5">0</span>
+              <button class="step-btn" onclick="updateQty('Ostras___Conchas_Frescas_5', 'Patas de Mula (6 piezas)', 100, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="patas de mula (10 piezas)" data-desc="orden completa de 10 patas de mula frescas con limón y salsas." data-category="ostras & conchas frescas">
+            
+            <div class="item-info">
+              <span class="item-badge">10 Pzas ⭐</span>
+              <div class="item-name">Patas de Mula (10 piezas)</div>
+              <p class="item-desc">Orden completa de 10 patas de mula frescas con limón y salsas.</p>
+              <div class="item-price">$150.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Ostras___Conchas_Frescas_6', 'Patas de Mula (10 piezas)', 150, -1)">-</button>
+              <span class="step-count" id="count_Ostras___Conchas_Frescas_6">0</span>
+              <button class="step-btn" onclick="updateQty('Ostras___Conchas_Frescas_6', 'Patas de Mula (10 piezas)', 150, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="vergazo" data-desc="orden de pulpo, camarón cocido, camarón crudo, callito de hacha, callito de filete, cebolla y salsas de la casa. (se añade ostión y pata de mula sujeto a disponibilidad)." data-category="ostras & conchas frescas">
+            
+            <div class="item-info">
+              <span class="item-badge">Bomba Marina 💣</span>
+              <div class="item-name">Vergazo</div>
+              <p class="item-desc">Orden de pulpo, camarón cocido, camarón crudo, callito de hacha, callito de filete, cebolla y salsas de la casa. (Se añade ostión y pata de mula sujeto a disponibilidad).</p>
+              <div class="item-price">$160.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Ostras___Conchas_Frescas_7', 'Vergazo', 160, -1)">-</button>
+              <span class="step-count" id="count_Ostras___Conchas_Frescas_7">0</span>
+              <button class="step-btn" onclick="updateQty('Ostras___Conchas_Frescas_7', 'Vergazo', 160, 1)">+</button>
+            </div>
+          </div>
+          
+      </section>
+    
+      <section class="category-section" data-category="Bebidas & Coctelería">
+        <h2 class="category-title">🥤 Bebidas & Coctelería</h2>
+        <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">🥤 Bebidas bien frías para acompañar tus mariscos y sushis:</p>
+        
+          <div class="item-card" data-name="refrescos (355ml)" data-desc="coca-cola, fanta, sprite, sidral mundet o fresca bien fríos." data-category="bebidas & coctelería">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Refrescos (355ml)</div>
+              <p class="item-desc">Coca-Cola, Fanta, Sprite, Sidral Mundet o Fresca bien fríos.</p>
+              <div class="item-price">$35.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Bebidas___Cocteler_a_0', 'Refrescos (355ml)', 35, -1)">-</button>
+              <span class="step-count" id="count_Bebidas___Cocteler_a_0">0</span>
+              <button class="step-btn" onclick="updateQty('Bebidas___Cocteler_a_0', 'Refrescos (355ml)', 35, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="agua fresca natural" data-desc="preparada del día bien fría." data-category="bebidas & coctelería">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Agua Fresca Natural</div>
               <p class="item-desc">Preparada del día bien fría.</p>
+              <div class="item-price">$45.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Bebidas___Cocteler_a_1', 'Agua Fresca Natural', 45, -1)">-</button>
+              <span class="step-count" id="count_Bebidas___Cocteler_a_1">0</span>
+              <button class="step-btn" onclick="updateQty('Bebidas___Cocteler_a_1', 'Agua Fresca Natural', 45, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="agua mineral" data-desc="agua mineral bien fría." data-category="bebidas & coctelería">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Agua Mineral</div>
+              <p class="item-desc">Agua mineral bien fría.</p>
+              <div class="item-price">$35.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Bebidas___Cocteler_a_2', 'Agua Mineral', 35, -1)">-</button>
+              <span class="step-count" id="count_Bebidas___Cocteler_a_2">0</span>
+              <button class="step-btn" onclick="updateQty('Bebidas___Cocteler_a_2', 'Agua Mineral', 35, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="vaso preparado" data-desc="vaso escarchado con chamoy de la casa, jugo de camarón y salsa de la casa." data-category="bebidas & coctelería">
+            
+            <div class="item-info">
+              <span class="item-badge">Preparado 🧂</span>
+              <div class="item-name">Vaso Preparado</div>
+              <p class="item-desc">Vaso escarchado con chamoy de la casa, jugo de camarón y salsa de la casa.</p>
+              <div class="item-price">$30.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Bebidas___Cocteler_a_3', 'Vaso Preparado', 30, -1)">-</button>
+              <span class="step-count" id="count_Bebidas___Cocteler_a_3">0</span>
+              <button class="step-btn" onclick="updateQty('Bebidas___Cocteler_a_3', 'Vaso Preparado', 30, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="michelada" data-desc="cerveza preparada con salsas negras de la casa, chamoy, limón y sal." data-category="bebidas & coctelería">
+            
+            <div class="item-info">
+              <span class="item-badge">Michelada 🍺</span>
+              <div class="item-name">Michelada</div>
+              <p class="item-desc">Cerveza preparada con salsas negras de la casa, chamoy, limón y sal.</p>
+              <div class="item-price">$89.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Bebidas___Cocteler_a_4', 'Michelada', 89, -1)">-</button>
+              <span class="step-count" id="count_Bebidas___Cocteler_a_4">0</span>
+              <button class="step-btn" onclick="updateQty('Bebidas___Cocteler_a_4', 'Michelada', 89, 1)">+</button>
+            </div>
+          </div>
+          
+      </section>
+    
+      <section class="category-section" data-category="Extras Mariscos & Sushi">
+        <h2 class="category-title">🥑 Extras Mariscos & Sushi</h2>
+        <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">🥑 Complementa tus platillos y rollos a tu gusto:</p>
+        
+          <div class="item-card" data-name="extra callo de hacha" data-desc="porción extra de callo de hacha fresco." data-category="extras mariscos & sushi">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Extra Callo de Hacha</div>
+              <p class="item-desc">Porción extra de callo de hacha fresco.</p>
+              <div class="item-price">$150.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Extras_Mariscos___Sushi_0', 'Extra Callo de Hacha', 150, -1)">-</button>
+              <span class="step-count" id="count_Extras_Mariscos___Sushi_0">0</span>
+              <button class="step-btn" onclick="updateQty('Extras_Mariscos___Sushi_0', 'Extra Callo de Hacha', 150, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="extra pulpo" data-desc="porción extra de pulpo tierno." data-category="extras mariscos & sushi">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Extra Pulpo</div>
+              <p class="item-desc">Porción extra de pulpo tierno.</p>
+              <div class="item-price">$99.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Extras_Mariscos___Sushi_1', 'Extra Pulpo', 99, -1)">-</button>
+              <span class="step-count" id="count_Extras_Mariscos___Sushi_1">0</span>
+              <button class="step-btn" onclick="updateQty('Extras_Mariscos___Sushi_1', 'Extra Pulpo', 99, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="extra medallón de atún" data-desc="porción extra de medallón de atún fresco." data-category="extras mariscos & sushi">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Extra Medallón de Atún</div>
+              <p class="item-desc">Porción extra de medallón de atún fresco.</p>
+              <div class="item-price">$89.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Extras_Mariscos___Sushi_2', 'Extra Medallón de Atún', 89, -1)">-</button>
+              <span class="step-count" id="count_Extras_Mariscos___Sushi_2">0</span>
+              <button class="step-btn" onclick="updateQty('Extras_Mariscos___Sushi_2', 'Extra Medallón de Atún', 89, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="extra camarón" data-desc="porción extra de camarón." data-category="extras mariscos & sushi">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Extra Camarón</div>
+              <p class="item-desc">Porción extra de camarón.</p>
+              <div class="item-price">$69.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Extras_Mariscos___Sushi_3', 'Extra Camarón', 69, -1)">-</button>
+              <span class="step-count" id="count_Extras_Mariscos___Sushi_3">0</span>
+              <button class="step-btn" onclick="updateQty('Extras_Mariscos___Sushi_3', 'Extra Camarón', 69, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="extra gratinado blue" data-desc="queso gratinado con tocino para tus rollos." data-category="extras mariscos & sushi">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Extra Gratinado Blue</div>
+              <p class="item-desc">Queso gratinado con tocino para tus rollos.</p>
+              <div class="item-price">$50.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Extras_Mariscos___Sushi_4', 'Extra Gratinado Blue', 50, -1)">-</button>
+              <span class="step-count" id="count_Extras_Mariscos___Sushi_4">0</span>
+              <button class="step-btn" onclick="updateQty('Extras_Mariscos___Sushi_4', 'Extra Gratinado Blue', 50, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="extra callo de almeja" data-desc="porción extra de callo de almeja." data-category="extras mariscos & sushi">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Extra Callo de Almeja</div>
+              <p class="item-desc">Porción extra de callo de almeja.</p>
               <div class="item-price">$40.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Bebidas___Cervezas_1', 'Agua Fresca Natural (1L)', 40, -1)">-</button>
-              <span class="step-count" id="count_Bebidas___Cervezas_1">0</span>
-              <button class="step-btn" onclick="updateQty('Bebidas___Cervezas_1', 'Agua Fresca Natural (1L)', 40, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Extras_Mariscos___Sushi_5', 'Extra Callo de Almeja', 40, -1)">-</button>
+              <span class="step-count" id="count_Extras_Mariscos___Sushi_5">0</span>
+              <button class="step-btn" onclick="updateQty('Extras_Mariscos___Sushi_5', 'Extra Callo de Almeja', 40, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="extra ensalada de surimi" data-desc="porción extra de ensalada de surimi." data-category="extras mariscos & sushi">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Extra Ensalada de Surimi</div>
+              <p class="item-desc">Porción extra de ensalada de surimi.</p>
+              <div class="item-price">$30.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Extras_Mariscos___Sushi_6', 'Extra Ensalada de Surimi', 30, -1)">-</button>
+              <span class="step-count" id="count_Extras_Mariscos___Sushi_6">0</span>
+              <button class="step-btn" onclick="updateQty('Extras_Mariscos___Sushi_6', 'Extra Ensalada de Surimi', 30, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="extra salsa de anguila" data-desc="porción extra de salsa de anguila." data-category="extras mariscos & sushi">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Extra Salsa de Anguila</div>
+              <p class="item-desc">Porción extra de salsa de anguila.</p>
+              <div class="item-price">$30.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Extras_Mariscos___Sushi_7', 'Extra Salsa de Anguila', 30, -1)">-</button>
+              <span class="step-count" id="count_Extras_Mariscos___Sushi_7">0</span>
+              <button class="step-btn" onclick="updateQty('Extras_Mariscos___Sushi_7', 'Extra Salsa de Anguila', 30, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="extra mango" data-desc="porción extra de mango picado." data-category="extras mariscos & sushi">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Extra Mango</div>
+              <p class="item-desc">Porción extra de mango picado.</p>
+              <div class="item-price">$29.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Extras_Mariscos___Sushi_8', 'Extra Mango', 29, -1)">-</button>
+              <span class="step-count" id="count_Extras_Mariscos___Sushi_8">0</span>
+              <button class="step-btn" onclick="updateQty('Extras_Mariscos___Sushi_8', 'Extra Mango', 29, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="extra aguacate" data-desc="porción extra de aguacate fresco." data-category="extras mariscos & sushi">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Extra Aguacate</div>
+              <p class="item-desc">Porción extra de aguacate fresco.</p>
+              <div class="item-price">$29.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Extras_Mariscos___Sushi_9', 'Extra Aguacate', 29, -1)">-</button>
+              <span class="step-count" id="count_Extras_Mariscos___Sushi_9">0</span>
+              <button class="step-btn" onclick="updateQty('Extras_Mariscos___Sushi_9', 'Extra Aguacate', 29, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="extra ensalada de verduras" data-desc="porción extra de ensalada de verduras." data-category="extras mariscos & sushi">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Extra Ensalada de Verduras</div>
+              <p class="item-desc">Porción extra de ensalada de verduras.</p>
+              <div class="item-price">$22.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Extras_Mariscos___Sushi_10', 'Extra Ensalada de Verduras', 22, -1)">-</button>
+              <span class="step-count" id="count_Extras_Mariscos___Sushi_10">0</span>
+              <button class="step-btn" onclick="updateQty('Extras_Mariscos___Sushi_10', 'Extra Ensalada de Verduras', 22, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="extra arroz" data-desc="porción de arroz al vapor." data-category="extras mariscos & sushi">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Extra Arroz</div>
+              <p class="item-desc">Porción de arroz al vapor.</p>
+              <div class="item-price">$19.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Extras_Mariscos___Sushi_11', 'Extra Arroz', 19, -1)">-</button>
+              <span class="step-count" id="count_Extras_Mariscos___Sushi_11">0</span>
+              <button class="step-btn" onclick="updateQty('Extras_Mariscos___Sushi_11', 'Extra Arroz', 19, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="extra jícama" data-desc="porción extra de jícama picada." data-category="extras mariscos & sushi">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Extra Jícama</div>
+              <p class="item-desc">Porción extra de jícama picada.</p>
+              <div class="item-price">$19.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Extras_Mariscos___Sushi_12', 'Extra Jícama', 19, -1)">-</button>
+              <span class="step-count" id="count_Extras_Mariscos___Sushi_12">0</span>
+              <button class="step-btn" onclick="updateQty('Extras_Mariscos___Sushi_12', 'Extra Jícama', 19, 1)">+</button>
             </div>
           </div>
           
@@ -895,7 +2178,29 @@
     </div>
   </div>
 
+  <!-- Modal Zoom Imagen Platillo -->
+  <div class="modal-overlay" id="imgZoomModal" onclick="closeImgZoom()" style="display: none; align-items: center; justify-content: center; z-index: 10000; background: rgba(0,0,0,0.85); backdrop-filter: blur(4px);">
+    <div style="max-width: 90%; max-height: 85vh; text-align: center; position: relative;" onclick="event.stopPropagation()">
+      <button onclick="closeImgZoom()" style="position: absolute; top: -14px; right: -14px; background: white; border: none; width: 32px; height: 32px; border-radius: 50%; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">✕</button>
+      <img id="zoomedImg" src="" style="max-width: 100%; max-height: 70vh; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); object-fit: contain; display: block; margin: 0 auto;">
+      <div id="zoomedTitle" style="color: white; font-weight: 700; margin-top: 12px; font-size: 1.1rem; text-shadow: 0 2px 6px rgba(0,0,0,0.8);"></div>
+    </div>
+  </div>
+
   <script>
+    function zoomItemImg(src, title) {
+      const modal = document.getElementById('imgZoomModal');
+      if (modal) {
+        document.getElementById('zoomedImg').src = src;
+        document.getElementById('zoomedTitle').innerText = title || '';
+        modal.style.display = 'flex';
+      }
+    }
+    function closeImgZoom() {
+      const modal = document.getElementById('imgZoomModal');
+      if (modal) modal.style.display = 'none';
+    }
+
     const phone = "523314384699";
     const businessName = "EL LIMONCITO CULICHI";
     const hasDelivery = false;

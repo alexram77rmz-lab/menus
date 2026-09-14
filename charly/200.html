@@ -266,7 +266,29 @@
       align-items: center;
       gap: 12px;
     }
-    .item-info { flex: 1; }
+    .item-img-wrap {
+      width: 78px;
+      height: 78px;
+      border-radius: 12px;
+      overflow: hidden;
+      flex-shrink: 0;
+      position: relative;
+      background: #f1f5f9;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      border: 1px solid #e2e8f0;
+      cursor: pointer;
+    }
+    .item-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.2s ease;
+    }
+    .item-card:hover .item-img {
+      transform: scale(1.06);
+    }
+    .item-info { flex: 1; min-width: 0; }
     .item-badge {
       display: inline-block;
       font-size: 0.7rem;
@@ -604,6 +626,7 @@
         
         
           <div class="item-card" data-name="hamburguesa mexicana charly" data-desc="carne de res al carbón, aguacate fresco, chorizo frito dorado, queso derretido y tocino crujiente." data-category="hamburguesas gigantes">
+            
             <div class="item-info">
               <span class="item-badge">La Más Vendida ⭐</span>
               <div class="item-name">Hamburguesa Mexicana Charly</div>
@@ -618,6 +641,7 @@
           </div>
           
           <div class="item-card" data-name="hamburguesa mar y tierra" data-desc="carne jugosa de res combinada con camarones sazonados al ajillo, queso fundido y aderezo especial." data-category="hamburguesas gigantes">
+            
             <div class="item-info">
               <span class="item-badge">Especialidad 🦐</span>
               <div class="item-name">Hamburguesa Mar y Tierra</div>
@@ -632,6 +656,7 @@
           </div>
           
           <div class="item-card" data-name="hamburguesa doble carne y tocino" data-desc="para gran apetito: doble carne de res seleccionada, doble porción de tocino y queso americano." data-category="hamburguesas gigantes">
+            
             <div class="item-info">
               <span class="item-badge">Monstruosa 🤤</span>
               <div class="item-name">Hamburguesa Doble Carne y Tocino</div>
@@ -646,6 +671,7 @@
           </div>
           
           <div class="item-card" data-name="hamburguesa de pollo crispy" data-desc="pechuga de pollo empanizada extra crujiente con aderezo de la casa, lechuga y jitomate." data-category="hamburguesas gigantes">
+            
             <div class="item-info">
               
               <div class="item-name">Hamburguesa de Pollo Crispy</div>
@@ -660,6 +686,7 @@
           </div>
           
           <div class="item-card" data-name="hamburguesa clásica con queso" data-desc="nuestra receta tradicional con queso derretido, lechuga fresca, jitomate y cebolla asada." data-category="hamburguesas gigantes">
+            
             <div class="item-info">
               
               <div class="item-name">Hamburguesa Clásica con Queso</div>
@@ -680,6 +707,7 @@
         
         
           <div class="item-card" data-name="lonche cubano especial" data-desc="bolillo tapatío doradito con pierna de cerdo, jamón, salchicha, queso fundido y aguacate fresco." data-category="pizzas, lonches & burritas">
+            
             <div class="item-info">
               <span class="item-badge">Súper Llenador 🥖</span>
               <div class="item-name">Lonche Cubano Especial</div>
@@ -694,6 +722,7 @@
           </div>
           
           <div class="item-card" data-name="pizza individual especial" data-desc="masa crujiente horneada al momento con queso mozzarella, pepperoni, jamón, tocino y champiñones." data-category="pizzas, lonches & burritas">
+            
             <div class="item-info">
               <span class="item-badge">Receta Casera 🍕</span>
               <div class="item-name">Pizza Individual Especial</div>
@@ -708,6 +737,7 @@
           </div>
           
           <div class="item-card" data-name="burrita especial de carne con queso" data-desc="tortilla de harina gigante rellena de carne al carbón, frijolitos y abundante queso fundido." data-category="pizzas, lonches & burritas">
+            
             <div class="item-info">
               
               <div class="item-name">Burrita Especial de Carne con Queso</div>
@@ -728,6 +758,7 @@
         
         
           <div class="item-card" data-name="orden de alitas crujientes (10 pzas)" data-desc="bañadas en salsa bbq o búfalo con bastones de verdura y aderezo ranch." data-category="alitas, papas & antojos">
+            
             <div class="item-info">
               <span class="item-badge">Para Picar 🔥</span>
               <div class="item-name">Orden de Alitas Crujientes (10 pzas)</div>
@@ -742,6 +773,7 @@
           </div>
           
           <div class="item-card" data-name="hot dog especial con tocino y queso" data-desc="salchicha envuelta en tocino dorado, cebollitas asadas, jitomate y queso derretido." data-category="alitas, papas & antojos">
+            
             <div class="item-info">
               <span class="item-badge">Clásico 🌭</span>
               <div class="item-name">Hot Dog Especial con Tocino y Queso</div>
@@ -756,6 +788,7 @@
           </div>
           
           <div class="item-card" data-name="papas loaded con queso y tocino" data-desc="papas crujientes bañadas en queso cheddar líquido con trocitos de tocino crujiente y jalapeños." data-category="alitas, papas & antojos">
+            
             <div class="item-info">
               <span class="item-badge">Para Compartir 👥</span>
               <div class="item-name">Papas Loaded con Queso y Tocino</div>
@@ -770,6 +803,7 @@
           </div>
           
           <div class="item-card" data-name="papas a la francesa sazonadas" data-desc="corte delgado sazonadas con paprika y sal de ajo." data-category="alitas, papas & antojos">
+            
             <div class="item-info">
               
               <div class="item-name">Papas a la Francesa Sazonadas</div>
@@ -790,6 +824,7 @@
         
         
           <div class="item-card" data-name="biónico especial charly" data-desc="fruta fresca de temporada picada al momento con nuestra crema dulce secreta, granola y pasas." data-category="biónicos & bebidas">
+            
             <div class="item-info">
               <span class="item-badge">Postre Favorito 🍨</span>
               <div class="item-name">Biónico Especial Charly</div>
@@ -804,6 +839,7 @@
           </div>
           
           <div class="item-card" data-name="refresco de vidrio bien frío (355ml)" data-desc="coca-cola original, sidral mundet, sprite o fanta." data-category="biónicos & bebidas">
+            
             <div class="item-info">
               
               <div class="item-name">Refresco de Vidrio Bien Frío (355ml)</div>
@@ -818,6 +854,7 @@
           </div>
           
           <div class="item-card" data-name="agua fresca natural (1 litro)" data-desc="horchata o jamaica bien helada." data-category="biónicos & bebidas">
+            
             <div class="item-info">
               
               <div class="item-name">Agua Fresca Natural (1 Litro)</div>
@@ -939,7 +976,29 @@
     </div>
   </div>
 
+  <!-- Modal Zoom Imagen Platillo -->
+  <div class="modal-overlay" id="imgZoomModal" onclick="closeImgZoom()" style="display: none; align-items: center; justify-content: center; z-index: 10000; background: rgba(0,0,0,0.85); backdrop-filter: blur(4px);">
+    <div style="max-width: 90%; max-height: 85vh; text-align: center; position: relative;" onclick="event.stopPropagation()">
+      <button onclick="closeImgZoom()" style="position: absolute; top: -14px; right: -14px; background: white; border: none; width: 32px; height: 32px; border-radius: 50%; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">✕</button>
+      <img id="zoomedImg" src="" style="max-width: 100%; max-height: 70vh; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); object-fit: contain; display: block; margin: 0 auto;">
+      <div id="zoomedTitle" style="color: white; font-weight: 700; margin-top: 12px; font-size: 1.1rem; text-shadow: 0 2px 6px rgba(0,0,0,0.8);"></div>
+    </div>
+  </div>
+
   <script>
+    function zoomItemImg(src, title) {
+      const modal = document.getElementById('imgZoomModal');
+      if (modal) {
+        document.getElementById('zoomedImg').src = src;
+        document.getElementById('zoomedTitle').innerText = title || '';
+        modal.style.display = 'flex';
+      }
+    }
+    function closeImgZoom() {
+      const modal = document.getElementById('imgZoomModal');
+      if (modal) modal.style.display = 'none';
+    }
+
     const phone = "523320597452";
     const businessName = "Hamburguesas El Charly";
     const hasDelivery = true;

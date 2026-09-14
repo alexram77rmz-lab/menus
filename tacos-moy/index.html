@@ -266,7 +266,29 @@
       align-items: center;
       gap: 12px;
     }
-    .item-info { flex: 1; }
+    .item-img-wrap {
+      width: 78px;
+      height: 78px;
+      border-radius: 12px;
+      overflow: hidden;
+      flex-shrink: 0;
+      position: relative;
+      background: #f1f5f9;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      border: 1px solid #e2e8f0;
+      cursor: pointer;
+    }
+    .item-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.2s ease;
+    }
+    .item-card:hover .item-img {
+      transform: scale(1.06);
+    }
+    .item-info { flex: 1; min-width: 0; }
     .item-badge {
       display: inline-block;
       font-size: 0.7rem;
@@ -604,6 +626,7 @@
         
         
           <div class="item-card" data-name="taco de barbacoa suave o doradito" data-desc="carne de res jugosa y sazonada en tortilla doble caliente con cebollita y cilantro." data-category="tacos & quesadillas">
+            
             <div class="item-info">
               <span class="item-badge">El Rey de la Casa 👑</span>
               <div class="item-name">Taco de Barbacoa Suave o Doradito</div>
@@ -618,6 +641,7 @@
           </div>
           
           <div class="item-card" data-name="taco de birria de res" data-desc="carne suavecita bañada en consomé tradicional con especias de la casa." data-category="tacos & quesadillas">
+            
             <div class="item-info">
               <span class="item-badge">Más Vendido 🔥</span>
               <div class="item-name">Taco de Birria de Res</div>
@@ -632,6 +656,7 @@
           </div>
           
           <div class="item-card" data-name="taco de lengua" data-desc="lengua de res cocida a fuego lento, textura ultrasuave que se deshace en la boca." data-category="tacos & quesadillas">
+            
             <div class="item-info">
               <span class="item-badge">Especialidad ⭐</span>
               <div class="item-name">Taco de Lengua</div>
@@ -646,6 +671,7 @@
           </div>
           
           <div class="item-card" data-name="taco de labio" data-desc="labio suave y jugoso, ideal para conocedores con limón y salsa picante." data-category="tacos & quesadillas">
+            
             <div class="item-info">
               
               <div class="item-name">Taco de Labio</div>
@@ -660,6 +686,7 @@
           </div>
           
           <div class="item-card" data-name="taco con queso gratinado (cualquier carne)" data-desc="costra de queso fundido dorado con tu carne favorita (barbacoa, birria o lengua)." data-category="tacos & quesadillas">
+            
             <div class="item-info">
               <span class="item-badge">Favorito ❤️</span>
               <div class="item-name">Taco con Queso Gratinado (Cualquier Carne)</div>
@@ -674,6 +701,7 @@
           </div>
           
           <div class="item-card" data-name="quesadilla especial" data-desc="tortilla de maíz o harina con abundante queso manchego fundido." data-category="tacos & quesadillas">
+            
             <div class="item-info">
               
               <div class="item-name">Quesadilla Especial</div>
@@ -694,6 +722,7 @@
         
         
           <div class="item-card" data-name="lonche tradicional de barbacoa o birria" data-desc="bolillo crujiente untado con frijolitos, abundante carne jugosa, aguacate, jitomate y crema." data-category="lonches & órdenes">
+            
             <div class="item-info">
               <span class="item-badge">Delicioso 🤤</span>
               <div class="item-name">Lonche Tradicional de Barbacoa o Birria</div>
@@ -708,6 +737,7 @@
           </div>
           
           <div class="item-card" data-name="lonche de lengua con queso" data-desc="bolillo tapatío doradito con lengua selecta y queso gratinado." data-category="lonches & órdenes">
+            
             <div class="item-info">
               <span class="item-badge">Gourmet 🌟</span>
               <div class="item-name">Lonche de Lengua con Queso</div>
@@ -722,6 +752,7 @@
           </div>
           
           <div class="item-card" data-name="orden de carne en consomé (individual)" data-desc="plato hondo de carne suave con caldito caliente, cebolla, cilantro y tortillas." data-category="lonches & órdenes">
+            
             <div class="item-info">
               
               <div class="item-name">Orden de Carne en Consomé (Individual)</div>
@@ -742,6 +773,7 @@
         
         
           <div class="item-card" data-name="1 kg de barbacoa o birria" data-desc="incluye consomé caliente, salsas de la casa, limones, verduras y tortillas suficientes." data-category="carne por kilo (para la familia)">
+            
             <div class="item-info">
               <span class="item-badge">Familiar 👨‍👩‍👧‍👦</span>
               <div class="item-name">1 Kg de Barbacoa o Birria</div>
@@ -756,6 +788,7 @@
           </div>
           
           <div class="item-card" data-name="1/2 kg de barbacoa o birria" data-desc="ideal para 2 o 3 personas. incluye consomé, tortillas y guarniciones." data-category="carne por kilo (para la familia)">
+            
             <div class="item-info">
               
               <div class="item-name">1/2 Kg de Barbacoa o Birria</div>
@@ -770,6 +803,7 @@
           </div>
           
           <div class="item-card" data-name="1 kg de lengua o labio" data-desc="kilo de carne selecta con consomé, salsas y tortillas." data-category="carne por kilo (para la familia)">
+            
             <div class="item-info">
               
               <div class="item-name">1 Kg de Lengua o Labio</div>
@@ -790,6 +824,7 @@
         
         
           <div class="item-card" data-name="consomé especial (vaso 1/2 litro)" data-desc="caldo concentrado con garbanzo, arroz, cebollita y cilantro." data-category="bebidas & consomé">
+            
             <div class="item-info">
               
               <div class="item-name">Consomé Especial (Vaso 1/2 Litro)</div>
@@ -804,6 +839,7 @@
           </div>
           
           <div class="item-card" data-name="refresco de vidrio (355ml)" data-desc="coca-cola original, fanta, sprite o mundet bien helados." data-category="bebidas & consomé">
+            
             <div class="item-info">
               
               <div class="item-name">Refresco de Vidrio (355ml)</div>
@@ -818,6 +854,7 @@
           </div>
           
           <div class="item-card" data-name="agua fresca del día (1 litro)" data-desc="horchata o jamaica casera." data-category="bebidas & consomé">
+            
             <div class="item-info">
               
               <div class="item-name">Agua Fresca del Día (1 Litro)</div>
@@ -944,7 +981,29 @@
     </div>
   </div>
 
+  <!-- Modal Zoom Imagen Platillo -->
+  <div class="modal-overlay" id="imgZoomModal" onclick="closeImgZoom()" style="display: none; align-items: center; justify-content: center; z-index: 10000; background: rgba(0,0,0,0.85); backdrop-filter: blur(4px);">
+    <div style="max-width: 90%; max-height: 85vh; text-align: center; position: relative;" onclick="event.stopPropagation()">
+      <button onclick="closeImgZoom()" style="position: absolute; top: -14px; right: -14px; background: white; border: none; width: 32px; height: 32px; border-radius: 50%; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">✕</button>
+      <img id="zoomedImg" src="" style="max-width: 100%; max-height: 70vh; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); object-fit: contain; display: block; margin: 0 auto;">
+      <div id="zoomedTitle" style="color: white; font-weight: 700; margin-top: 12px; font-size: 1.1rem; text-shadow: 0 2px 6px rgba(0,0,0,0.8);"></div>
+    </div>
+  </div>
+
   <script>
+    function zoomItemImg(src, title) {
+      const modal = document.getElementById('imgZoomModal');
+      if (modal) {
+        document.getElementById('zoomedImg').src = src;
+        document.getElementById('zoomedTitle').innerText = title || '';
+        modal.style.display = 'flex';
+      }
+    }
+    function closeImgZoom() {
+      const modal = document.getElementById('imgZoomModal');
+      if (modal) modal.style.display = 'none';
+    }
+
     const phone = "523310742709";
     const businessName = "Tacos Moy (Santa Margarita)";
     const hasDelivery = true;

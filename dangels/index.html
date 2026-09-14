@@ -266,7 +266,29 @@
       align-items: center;
       gap: 12px;
     }
-    .item-info { flex: 1; }
+    .item-img-wrap {
+      width: 78px;
+      height: 78px;
+      border-radius: 12px;
+      overflow: hidden;
+      flex-shrink: 0;
+      position: relative;
+      background: #f1f5f9;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      border: 1px solid #e2e8f0;
+      cursor: pointer;
+    }
+    .item-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.2s ease;
+    }
+    .item-card:hover .item-img {
+      transform: scale(1.06);
+    }
+    .item-info { flex: 1; min-width: 0; }
     .item-badge {
       display: inline-block;
       font-size: 0.7rem;
@@ -608,6 +630,7 @@
         
         
           <div class="item-card" data-name="alitas - orden grande (10 pzas)" data-desc="10 piezas de alitas crujientes doradas al punto. salsas a elegir: bbq, buffalo, mango habanero, extra hot, pimienta limón o parmesano. incluye aderezo." data-category="alitas (sabor celestial)">
+            
             <div class="item-info">
               <span class="item-badge">La Más Pedida ⭐</span>
               <div class="item-name">Alitas - Orden Grande (10 pzas)</div>
@@ -622,6 +645,7 @@
           </div>
           
           <div class="item-card" data-name="alitas - orden chica (5 pzas)" data-desc="5 piezas de alitas crujientes bañadas en tu salsa favorita (bbq, buffalo, mango habanero, extra hot, pimienta limón o parmesano)." data-category="alitas (sabor celestial)">
+            
             <div class="item-info">
               
               <div class="item-name">Alitas - Orden Chica (5 pzas)</div>
@@ -642,6 +666,7 @@
         
         
           <div class="item-card" data-name="boneless (orden de 400 gramos)" data-desc="generosa porción de 400g de pechuga de pollo selecta empanizada súper crujiente, bañada en tu salsa favorita: bbq, buffalo, mango habanero, extra hot, pimienta limón o parmesano." data-category="boneless">
+            
             <div class="item-info">
               <span class="item-badge">400 Gramos 👑</span>
               <div class="item-name">Boneless (Orden de 400 gramos)</div>
@@ -662,6 +687,7 @@
         
         
           <div class="item-card" data-name="hot dog con papas a la francesa" data-desc="hot dog clásico con salchicha doradita, aderezos y acompañado de papas fritas crujientes." data-category="hot dogs & hamburguesas">
+            
             <div class="item-info">
               <span class="item-badge">Combo Económico 🌭🍟</span>
               <div class="item-name">Hot Dog con Papas a la Francesa</div>
@@ -676,6 +702,7 @@
           </div>
           
           <div class="item-card" data-name="hot dog sencillo" data-desc="hot dog tradicional con salchicha, jitomate, cebolla y aderezos al gusto." data-category="hot dogs & hamburguesas">
+            
             <div class="item-info">
               
               <div class="item-name">Hot Dog Sencillo</div>
@@ -690,6 +717,7 @@
           </div>
           
           <div class="item-card" data-name="hamburguesa con papas a la francesa" data-desc="hamburguesa jugosa con carne selecta, queso derretido, vegetales frescos y aderezos, acompañada de su buena orden de papas fritas." data-category="hot dogs & hamburguesas">
+            
             <div class="item-info">
               <span class="item-badge">Combo Completo 🍔🍟</span>
               <div class="item-name">Hamburguesa con Papas a la Francesa</div>
@@ -704,6 +732,7 @@
           </div>
           
           <div class="item-card" data-name="hamburguesa sencilla" data-desc="carne jugosa a la plancha con queso derretido, lechuga, jitomate, cebolla y aderezos de la casa." data-category="hot dogs & hamburguesas">
+            
             <div class="item-info">
               
               <div class="item-name">Hamburguesa Sencilla</div>
@@ -724,6 +753,7 @@
         
         
           <div class="item-card" data-name="papas gajo sazonadas" data-desc="porción de papas gajo crujientes con el sazón de la casa y aderezos." data-category="papas & botanas">
+            
             <div class="item-info">
               <span class="item-badge">Crujientes 🥔</span>
               <div class="item-name">Papas Gajo Sazonadas</div>
@@ -738,6 +768,7 @@
           </div>
           
           <div class="item-card" data-name="papas a la francesa con parmesano" data-desc="orden de papas crujientes bañadas con abundante queso parmesano rallado y sazonador especial." data-category="papas & botanas">
+            
             <div class="item-info">
               <span class="item-badge">Con Parmesano 🧀</span>
               <div class="item-name">Papas a la Francesa con Parmesano</div>
@@ -752,6 +783,7 @@
           </div>
           
           <div class="item-card" data-name="papas a la francesa con pimienta-limón" data-desc="orden de papas crujientes espolvoreadas con sazonador especial de pimienta-limón y aderezos." data-category="papas & botanas">
+            
             <div class="item-info">
               <span class="item-badge">Pimienta-Limón 🍋</span>
               <div class="item-name">Papas a la Francesa con Pimienta-Limón</div>
@@ -766,6 +798,7 @@
           </div>
           
           <div class="item-card" data-name="papas a la francesa (orden sencilla)" data-desc="papas a la francesa clásicas bien doraditas con sal y cátsup." data-category="papas & botanas">
+            
             <div class="item-info">
               
               <div class="item-name">Papas a la Francesa (Orden Sencilla)</div>
@@ -780,6 +813,7 @@
           </div>
           
           <div class="item-card" data-name="dedos de queso (orden)" data-desc="palitos de queso crujientes por fuera con queso mozzarella derretido por dentro y aderezo especial." data-category="papas & botanas">
+            
             <div class="item-info">
               <span class="item-badge">Queso Fundido 🤤</span>
               <div class="item-name">Dedos de Queso (Orden)</div>
@@ -794,6 +828,7 @@
           </div>
           
           <div class="item-card" data-name="salchipulpos (orden completa)" data-desc="salchichas en corte pulpo doraditas con sazón especial, limón y salsas." data-category="papas & botanas">
+            
             <div class="item-info">
               <span class="item-badge">Favorito 🐙</span>
               <div class="item-name">Salchipulpos (Orden Completa)</div>
@@ -808,6 +843,7 @@
           </div>
           
           <div class="item-card" data-name="salchipulpos (1/2 orden)" data-desc="media porción de salchipulpos dorados para botanear." data-category="papas & botanas">
+            
             <div class="item-info">
               
               <div class="item-name">Salchipulpos (1/2 Orden)</div>
@@ -822,6 +858,7 @@
           </div>
           
           <div class="item-card" data-name="salchitacos (orden)" data-desc="orden de salchitacos en tortilla de maíz bien doraditos con crema y salsa de la casa." data-category="papas & botanas">
+            
             <div class="item-info">
               <span class="item-badge">Crujientes 🌮</span>
               <div class="item-name">Salchitacos (Orden)</div>
@@ -842,6 +879,7 @@
         
         
           <div class="item-card" data-name="refresco de lata bien frío (355ml)" data-desc="coca-cola original, sprite, fanta o manzanita." data-category="bebidas">
+            
             <div class="item-info">
               
               <div class="item-name">Refresco de Lata Bien Frío (355ml)</div>
@@ -856,6 +894,7 @@
           </div>
           
           <div class="item-card" data-name="agua fresca natural (1l)" data-desc="preparada al día bien fría con hielo." data-category="bebidas">
+            
             <div class="item-info">
               
               <div class="item-name">Agua Fresca Natural (1L)</div>
@@ -982,7 +1021,29 @@
     </div>
   </div>
 
+  <!-- Modal Zoom Imagen Platillo -->
+  <div class="modal-overlay" id="imgZoomModal" onclick="closeImgZoom()" style="display: none; align-items: center; justify-content: center; z-index: 10000; background: rgba(0,0,0,0.85); backdrop-filter: blur(4px);">
+    <div style="max-width: 90%; max-height: 85vh; text-align: center; position: relative;" onclick="event.stopPropagation()">
+      <button onclick="closeImgZoom()" style="position: absolute; top: -14px; right: -14px; background: white; border: none; width: 32px; height: 32px; border-radius: 50%; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">✕</button>
+      <img id="zoomedImg" src="" style="max-width: 100%; max-height: 70vh; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); object-fit: contain; display: block; margin: 0 auto;">
+      <div id="zoomedTitle" style="color: white; font-weight: 700; margin-top: 12px; font-size: 1.1rem; text-shadow: 0 2px 6px rgba(0,0,0,0.8);"></div>
+    </div>
+  </div>
+
   <script>
+    function zoomItemImg(src, title) {
+      const modal = document.getElementById('imgZoomModal');
+      if (modal) {
+        document.getElementById('zoomedImg').src = src;
+        document.getElementById('zoomedTitle').innerText = title || '';
+        modal.style.display = 'flex';
+      }
+    }
+    function closeImgZoom() {
+      const modal = document.getElementById('imgZoomModal');
+      if (modal) modal.style.display = 'none';
+    }
+
     const phone = "523318592070";
     const businessName = "D'ANGEL'S WINGS & SNACKS";
     const hasDelivery = true;

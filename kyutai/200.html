@@ -266,7 +266,29 @@
       align-items: center;
       gap: 12px;
     }
-    .item-info { flex: 1; }
+    .item-img-wrap {
+      width: 78px;
+      height: 78px;
+      border-radius: 12px;
+      overflow: hidden;
+      flex-shrink: 0;
+      position: relative;
+      background: #f1f5f9;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      border: 1px solid #e2e8f0;
+      cursor: pointer;
+    }
+    .item-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.2s ease;
+    }
+    .item-card:hover .item-img {
+      transform: scale(1.06);
+    }
+    .item-info { flex: 1; min-width: 0; }
     .item-badge {
       display: inline-block;
       font-size: 0.7rem;
@@ -632,6 +654,7 @@
         <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">🥢 Elige tu rollo favorito preparado al momento. Selecciona con Camarón fresco o Surimi selecto:</p>
         
           <div class="item-card" data-name="maki (camarón)" data-desc="alga por fuera, arroz, camarón fresco, aguacate, queso philadelphia, pepino y zanahoria." data-category="sushi">
+            
             <div class="item-info">
               <span class="item-badge">Con Camarón 🍤</span>
               <div class="item-name">Maki (Camarón)</div>
@@ -646,6 +669,7 @@
           </div>
           
           <div class="item-card" data-name="maki (surimi)" data-desc="alga por fuera, arroz, surimi selecto, aguacate, queso philadelphia, pepino y zanahoria." data-category="sushi">
+            
             <div class="item-info">
               <span class="item-badge">Con Surimi 🦀</span>
               <div class="item-name">Maki (Surimi)</div>
@@ -660,6 +684,7 @@
           </div>
           
           <div class="item-card" data-name="urakami ajonjolí (camarón)" data-desc="arroz y ajonjolí por fuera, alga por dentro, camarón fresco, aguacate, queso philadelphia, pepino y zanahoria." data-category="sushi">
+            
             <div class="item-info">
               <span class="item-badge">Con Camarón 🍤</span>
               <div class="item-name">Urakami Ajonjolí (Camarón)</div>
@@ -674,6 +699,7 @@
           </div>
           
           <div class="item-card" data-name="urakami ajonjolí (surimi)" data-desc="arroz y ajonjolí por fuera, alga por dentro, surimi selecto, aguacate, queso philadelphia, pepino y zanahoria." data-category="sushi">
+            
             <div class="item-info">
               <span class="item-badge">Con Surimi 🦀</span>
               <div class="item-name">Urakami Ajonjolí (Surimi)</div>
@@ -688,6 +714,7 @@
           </div>
           
           <div class="item-card" data-name="urakami empanizado (camarón)" data-desc="empanizado crujiente dorado por fuera, alga por dentro, camarón fresco, aguacate, queso philadelphia, pepino y zanahoria." data-category="sushi">
+            
             <div class="item-info">
               <span class="item-badge">Crujiente 🍤⭐</span>
               <div class="item-name">Urakami Empanizado (Camarón)</div>
@@ -702,6 +729,7 @@
           </div>
           
           <div class="item-card" data-name="urakami empanizado (surimi)" data-desc="empanizado crujiente dorado por fuera, alga por dentro, surimi selecto, aguacate, queso philadelphia, pepino y zanahoria." data-category="sushi">
+            
             <div class="item-info">
               <span class="item-badge">Crujiente 🦀⭐</span>
               <div class="item-name">Urakami Empanizado (Surimi)</div>
@@ -716,6 +744,7 @@
           </div>
           
           <div class="item-card" data-name="urakami philadelphia (camarón)" data-desc="abundante queso philadelphia por fuera, alga por dentro, camarón fresco, aguacate, pepino y zanahoria." data-category="sushi">
+            
             <div class="item-info">
               <span class="item-badge">Philadelphia 🧀🍤</span>
               <div class="item-name">Urakami Philadelphia (Camarón)</div>
@@ -730,6 +759,7 @@
           </div>
           
           <div class="item-card" data-name="urakami philadelphia (surimi)" data-desc="abundante queso philadelphia por fuera, alga por dentro, surimi selecto, aguacate, pepino y zanahoria." data-category="sushi">
+            
             <div class="item-info">
               <span class="item-badge">Philadelphia 🧀🦀</span>
               <div class="item-name">Urakami Philadelphia (Surimi)</div>
@@ -744,6 +774,7 @@
           </div>
           
           <div class="item-card" data-name="urakami philadelphia empanizado (camarón)" data-desc="queso philadelphia por fuera con empanizado súper crujiente, alga por dentro, camarón fresco, aguacate, pepino y zanahoria." data-category="sushi">
+            
             <div class="item-info">
               <span class="item-badge">Especial ⭐🍤</span>
               <div class="item-name">Urakami Philadelphia Empanizado (Camarón)</div>
@@ -758,6 +789,7 @@
           </div>
           
           <div class="item-card" data-name="urakami philadelphia empanizado (surimi)" data-desc="queso philadelphia por fuera con empanizado súper crujiente, alga por dentro, surimi selecto, aguacate, pepino y zanahoria." data-category="sushi">
+            
             <div class="item-info">
               <span class="item-badge">Especial ⭐🦀</span>
               <div class="item-name">Urakami Philadelphia Empanizado (Surimi)</div>
@@ -772,6 +804,7 @@
           </div>
           
           <div class="item-card" data-name="urakami avocado (camarón)" data-desc="láminas de aguacate fresco por fuera, alga por dentro, camarón fresco, queso philadelphia, pepino y zanahoria." data-category="sushi">
+            
             <div class="item-info">
               <span class="item-badge">Con Aguacate 🥑🍤</span>
               <div class="item-name">Urakami Avocado (Camarón)</div>
@@ -786,6 +819,7 @@
           </div>
           
           <div class="item-card" data-name="urakami avocado (surimi)" data-desc="láminas de aguacate fresco por fuera, alga por dentro, surimi selecto, queso philadelphia, pepino y zanahoria." data-category="sushi">
+            
             <div class="item-info">
               <span class="item-badge">Con Aguacate 🥑🦀</span>
               <div class="item-name">Urakami Avocado (Surimi)</div>
@@ -806,6 +840,7 @@
         <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">🍙 Gran bola de arroz rellena y empanizada súper crujiente. Elige tu relleno favorito:</p>
         
           <div class="item-card" data-name="kyutai de arroz rellena - pollo" data-desc="gran bola de arroz rellena de jugosa pechuga de pollo y queso manchego derretido, empanizada súper crujiente." data-category="kyutai (especialidad)">
+            
             <div class="item-info">
               <span class="item-badge">De Pollo 🍗</span>
               <div class="item-name">Kyutai de Arroz Rellena - Pollo</div>
@@ -820,6 +855,7 @@
           </div>
           
           <div class="item-card" data-name="kyutai de arroz rellena - res" data-desc="gran bola de arroz rellena de carne de res sazonada y queso manchego derretido, empanizada súper crujiente." data-category="kyutai (especialidad)">
+            
             <div class="item-info">
               <span class="item-badge">De Res 🥩</span>
               <div class="item-name">Kyutai de Arroz Rellena - Res</div>
@@ -834,6 +870,7 @@
           </div>
           
           <div class="item-card" data-name="kyutai de arroz rellena - camarón" data-desc="gran bola de arroz rellena de camarón selecto y queso manchego derretido, empanizada súper crujiente." data-category="kyutai (especialidad)">
+            
             <div class="item-info">
               <span class="item-badge">De Camarón 🍤</span>
               <div class="item-name">Kyutai de Arroz Rellena - Camarón</div>
@@ -848,6 +885,7 @@
           </div>
           
           <div class="item-card" data-name="kyutai dos quesos - pollo" data-desc="gran bola de arroz rellena de pechuga de pollo con doble queso derretido (manchego y gouda), empanizada crujiente." data-category="kyutai (especialidad)">
+            
             <div class="item-info">
               <span class="item-badge">Doble Queso 🧀</span>
               <div class="item-name">Kyutai Dos Quesos - Pollo</div>
@@ -862,6 +900,7 @@
           </div>
           
           <div class="item-card" data-name="kyutai dos quesos - res" data-desc="gran bola de arroz rellena de carne de res con doble queso derretido (manchego y gouda), empanizada crujiente." data-category="kyutai (especialidad)">
+            
             <div class="item-info">
               <span class="item-badge">Doble Queso 🧀</span>
               <div class="item-name">Kyutai Dos Quesos - Res</div>
@@ -876,6 +915,7 @@
           </div>
           
           <div class="item-card" data-name="kyutai dos quesos - camarón" data-desc="gran bola de arroz rellena de camarón con doble queso derretido (manchego y gouda), empanizada crujiente." data-category="kyutai (especialidad)">
+            
             <div class="item-info">
               <span class="item-badge">Doble Queso 🧀</span>
               <div class="item-name">Kyutai Dos Quesos - Camarón</div>
@@ -890,6 +930,7 @@
           </div>
           
           <div class="item-card" data-name="kyutai vegetariana" data-desc="gran bola de arroz rellena de champiñones, pimiento y abundante queso manchego derretido, empanizada crujiente." data-category="kyutai (especialidad)">
+            
             <div class="item-info">
               <span class="item-badge">Vegetariana 🥦</span>
               <div class="item-name">Kyutai Vegetariana</div>
@@ -904,6 +945,7 @@
           </div>
           
           <div class="item-card" data-name="kyutai mixta (pollo, res y camarón)" data-desc="gran bola de arroz rellena de la combinación perfecta: pollo, res, camarón y queso manchego derretido." data-category="kyutai (especialidad)">
+            
             <div class="item-info">
               <span class="item-badge">Mixta 👑</span>
               <div class="item-name">Kyutai Mixta (Pollo, Res y Camarón)</div>
@@ -918,6 +960,7 @@
           </div>
           
           <div class="item-card" data-name="kyutai especial (mixto, philadelphia y aguacate)" data-desc="la reina de la casa: gran bola de arroz empanizada rellena de pollo, res, camarón, queso manchego, philadelphia y aguacate fresco." data-category="kyutai (especialidad)">
+            
             <div class="item-info">
               <span class="item-badge">La Más Pedida ⭐</span>
               <div class="item-name">Kyutai Especial (Mixto, Philadelphia y Aguacate)</div>
@@ -938,6 +981,7 @@
         <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">⚪ Mini bolas de arroz rellenas de queso manchego empanizadas. Elige tu cubierta favorita:</p>
         
           <div class="item-card" data-name="kyutai bites takis - grande (12 pzas)" data-desc="12 mini bolas de arroz rellenas de queso manchego empanizadas con cubierta de takis fuego crujiente." data-category="kyutai bites">
+            
             <div class="item-info">
               <span class="item-badge">Takis Fuego 🔥</span>
               <div class="item-name">Kyutai Bites Takis - Grande (12 pzas)</div>
@@ -952,6 +996,7 @@
           </div>
           
           <div class="item-card" data-name="kyutai bites cheddar - grande (12 pzas)" data-desc="12 mini bolas de arroz rellenas de queso manchego empanizadas con cubierta de queso cheddar." data-category="kyutai bites">
+            
             <div class="item-info">
               <span class="item-badge">Cheddar 🧀</span>
               <div class="item-name">Kyutai Bites Cheddar - Grande (12 pzas)</div>
@@ -966,6 +1011,7 @@
           </div>
           
           <div class="item-card" data-name="kyutai bites queso-jalapeño - grande (12 pzas)" data-desc="12 mini bolas de arroz rellenas de queso manchego empanizadas con cubierta de queso-jalapeño." data-category="kyutai bites">
+            
             <div class="item-info">
               <span class="item-badge">Jalapeño 🌶️</span>
               <div class="item-name">Kyutai Bites Queso-Jalapeño - Grande (12 pzas)</div>
@@ -980,6 +1026,7 @@
           </div>
           
           <div class="item-card" data-name="kyutai bites takis - mediana (8 pzas)" data-desc="8 mini bolas de arroz rellenas de queso manchego empanizadas con cubierta de takis fuego crujiente." data-category="kyutai bites">
+            
             <div class="item-info">
               <span class="item-badge">Takis Fuego 🔥</span>
               <div class="item-name">Kyutai Bites Takis - Mediana (8 pzas)</div>
@@ -994,6 +1041,7 @@
           </div>
           
           <div class="item-card" data-name="kyutai bites cheddar - mediana (8 pzas)" data-desc="8 mini bolas de arroz rellenas de queso manchego empanizadas con cubierta de queso cheddar." data-category="kyutai bites">
+            
             <div class="item-info">
               <span class="item-badge">Cheddar 🧀</span>
               <div class="item-name">Kyutai Bites Cheddar - Mediana (8 pzas)</div>
@@ -1008,6 +1056,7 @@
           </div>
           
           <div class="item-card" data-name="kyutai bites queso-jalapeño - mediana (8 pzas)" data-desc="8 mini bolas de arroz rellenas de queso manchego empanizadas con cubierta de queso-jalapeño." data-category="kyutai bites">
+            
             <div class="item-info">
               <span class="item-badge">Jalapeño 🌶️</span>
               <div class="item-name">Kyutai Bites Queso-Jalapeño - Mediana (8 pzas)</div>
@@ -1022,6 +1071,7 @@
           </div>
           
           <div class="item-card" data-name="kyutai bites takis - chica (5 pzas)" data-desc="5 mini bolas de arroz rellenas de queso manchego empanizadas con cubierta de takis fuego crujiente." data-category="kyutai bites">
+            
             <div class="item-info">
               <span class="item-badge">Takis Fuego 🔥</span>
               <div class="item-name">Kyutai Bites Takis - Chica (5 pzas)</div>
@@ -1036,6 +1086,7 @@
           </div>
           
           <div class="item-card" data-name="kyutai bites cheddar - chica (5 pzas)" data-desc="5 mini bolas de arroz rellenas de queso manchego empanizadas con cubierta de queso cheddar." data-category="kyutai bites">
+            
             <div class="item-info">
               <span class="item-badge">Cheddar 🧀</span>
               <div class="item-name">Kyutai Bites Cheddar - Chica (5 pzas)</div>
@@ -1050,6 +1101,7 @@
           </div>
           
           <div class="item-card" data-name="kyutai bites queso-jalapeño - chica (5 pzas)" data-desc="5 mini bolas de arroz rellenas de queso manchego empanizadas con cubierta de queso-jalapeño." data-category="kyutai bites">
+            
             <div class="item-info">
               <span class="item-badge">Jalapeño 🌶️</span>
               <div class="item-name">Kyutai Bites Queso-Jalapeño - Chica (5 pzas)</div>
@@ -1070,6 +1122,7 @@
         <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">🍚 Arroz frito tradicional al wok con vegetales frescos. Elige tu proteína favorita:</p>
         
           <div class="item-card" data-name="yakimeshi de pollo" data-desc="arroz frito tradicional japonés al wok con vegetales selectos y jugoso pollo." data-category="yakimeshi (arroz frito)">
+            
             <div class="item-info">
               <span class="item-badge">De Pollo 🍗</span>
               <div class="item-name">Yakimeshi de Pollo</div>
@@ -1084,6 +1137,7 @@
           </div>
           
           <div class="item-card" data-name="yakimeshi de res" data-desc="arroz frito tradicional japonés al wok con vegetales selectos y carne de res sazonada." data-category="yakimeshi (arroz frito)">
+            
             <div class="item-info">
               <span class="item-badge">De Res 🥩</span>
               <div class="item-name">Yakimeshi de Res</div>
@@ -1098,6 +1152,7 @@
           </div>
           
           <div class="item-card" data-name="yakimeshi de camarón" data-desc="arroz frito sazonado al wok con vegetales frescos y camarón selecto." data-category="yakimeshi (arroz frito)">
+            
             <div class="item-info">
               <span class="item-badge">De Camarón 🍤</span>
               <div class="item-name">Yakimeshi de Camarón</div>
@@ -1112,6 +1167,7 @@
           </div>
           
           <div class="item-card" data-name="yakimeshi mixto (pollo, res y camarón)" data-desc="arroz frito completo con vegetales frescos, pollo, res y camarón." data-category="yakimeshi (arroz frito)">
+            
             <div class="item-info">
               <span class="item-badge">Completo 🍤👑</span>
               <div class="item-name">Yakimeshi Mixto (Pollo, Res y Camarón)</div>
@@ -1126,6 +1182,7 @@
           </div>
           
           <div class="item-card" data-name="yakimeshi vegetariano" data-desc="tradicional arroz frito japonés con zanahoria, calabaza, brócoli, champiñones, pimiento y cebolla." data-category="yakimeshi (arroz frito)">
+            
             <div class="item-info">
               <span class="item-badge">Vegetariano 🥦</span>
               <div class="item-name">Yakimeshi Vegetariano</div>
@@ -1146,6 +1203,7 @@
         <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">🍢 Brochetas crujientes empanizadas por pieza con queso derretido:</p>
         
           <div class="item-card" data-name="kushiage quesos" data-desc="brocheta crujiente empanizada por pieza rellena de queso manchego y queso gouda derretido." data-category="kushiage (brochetas empanizadas)">
+            
             <div class="item-info">
               <span class="item-badge">Doble Queso 🧀</span>
               <div class="item-name">Kushiage Quesos</div>
@@ -1160,6 +1218,7 @@
           </div>
           
           <div class="item-card" data-name="kushiage queso y plátano macho" data-desc="brocheta crujiente empanizada por pieza rellena de queso manchego y plátano macho dulce." data-category="kushiage (brochetas empanizadas)">
+            
             <div class="item-info">
               
               <div class="item-name">Kushiage Queso y Plátano Macho</div>
@@ -1174,6 +1233,7 @@
           </div>
           
           <div class="item-card" data-name="kushiage queso y camarón" data-desc="brocheta crujiente empanizada por pieza rellena de queso manchego y camarón selecto." data-category="kushiage (brochetas empanizadas)">
+            
             <div class="item-info">
               <span class="item-badge">Con Camarón 🍤</span>
               <div class="item-name">Kushiage Queso y Camarón</div>
@@ -1188,6 +1248,7 @@
           </div>
           
           <div class="item-card" data-name="kushiage mixta (queso, camarón y plátano)" data-desc="brocheta crujiente empanizada por pieza rellena de queso manchego, camarón y plátano macho." data-category="kushiage (brochetas empanizadas)">
+            
             <div class="item-info">
               <span class="item-badge">Deliciosa ⭐</span>
               <div class="item-name">Kushiage Mixta (Queso, Camarón y Plátano)</div>
@@ -1208,6 +1269,7 @@
         <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">🥢 Rollos dorados crujientes por pieza con relleno fresco:</p>
         
           <div class="item-card" data-name="rollo primavera vegetariano" data-desc="rollo crujiente dorado por pieza, relleno de queso philadelphia, zanahoria y col fresca." data-category="rollos primavera">
+            
             <div class="item-info">
               
               <div class="item-name">Rollo Primavera Vegetariano</div>
@@ -1222,6 +1284,7 @@
           </div>
           
           <div class="item-card" data-name="rollo primavera vegetales y carne" data-desc="rollo crujiente dorado por pieza, relleno de carne selecta, queso philadelphia, zanahoria y col." data-category="rollos primavera">
+            
             <div class="item-info">
               <span class="item-badge">Crujiente 🥟</span>
               <div class="item-name">Rollo Primavera Vegetales y Carne</div>
@@ -1242,6 +1305,7 @@
         <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">🍨 El toque dulce perfecto para cerrar tu comida:</p>
         
           <div class="item-card" data-name="galletas oreo fritas (6 piezas)" data-desc="deliciosas 6 piezas de galletas oreo capeadas y fritas al momento, espolvoreadas con azúcar glass." data-category="postres">
+            
             <div class="item-info">
               <span class="item-badge">Favorito Dulce 🤤</span>
               <div class="item-name">Galletas Oreo Fritas (6 piezas)</div>
@@ -1256,6 +1320,7 @@
           </div>
           
           <div class="item-card" data-name="plátano macho frito (6 piezas)" data-desc="6 bocados de plátano macho frito doraditos con su toque dulce." data-category="postres">
+            
             <div class="item-info">
               
               <div class="item-name">Plátano Macho Frito (6 piezas)</div>
@@ -1276,6 +1341,7 @@
         <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">🥤 Bebidas bien frías para acompañar:</p>
         
           <div class="item-card" data-name="nestea / jaztea té frío (500ml)" data-desc="té frío refrescante bien frío (500ml)." data-category="bebidas">
+            
             <div class="item-info">
               <span class="item-badge">Té Frío 🍃</span>
               <div class="item-name">Nestea / Jaztea Té Frío (500ml)</div>
@@ -1290,6 +1356,7 @@
           </div>
           
           <div class="item-card" data-name="refresco de lata (330ml)" data-desc="de la familia coca-cola bien frío en lata (pregunta por sabores disponibles)." data-category="bebidas">
+            
             <div class="item-info">
               <span class="item-badge">Bien Frío 🧊</span>
               <div class="item-name">Refresco de Lata (330ml)</div>
@@ -1310,6 +1377,7 @@
         <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">🧂 Porciones adicionales para personalizar tus platillos:</p>
         
           <div class="item-card" data-name="queso extra (50g)" data-desc="porción extra a elegir: philadelphia, manchego ó cheddar." data-category="extras & toppings">
+            
             <div class="item-info">
               
               <div class="item-name">Queso Extra (50g)</div>
@@ -1324,6 +1392,7 @@
           </div>
           
           <div class="item-card" data-name="proteína extra (50g)" data-desc="50 gramos extra de camarón, res ó pollo para complementar tu platillo." data-category="extras & toppings">
+            
             <div class="item-info">
               
               <div class="item-name">Proteína Extra (50g)</div>
@@ -1338,6 +1407,7 @@
           </div>
           
           <div class="item-card" data-name="salsa anguila extra (2 oz)" data-desc="porción de salsa dulce de anguila clásica." data-category="extras & toppings">
+            
             <div class="item-info">
               
               <div class="item-name">Salsa Anguila Extra (2 oz)</div>
@@ -1352,6 +1422,7 @@
           </div>
           
           <div class="item-card" data-name="salsa sriracha extra (2 oz)" data-desc="porción de salsa picante sriracha." data-category="extras & toppings">
+            
             <div class="item-info">
               
               <div class="item-name">Salsa Sriracha Extra (2 oz)</div>
@@ -1366,6 +1437,7 @@
           </div>
           
           <div class="item-card" data-name="salsa tampico extra (2 oz)" data-desc="porción de aderezo cremoso tampico de la casa." data-category="extras & toppings">
+            
             <div class="item-info">
               
               <div class="item-name">Salsa Tampico Extra (2 oz)</div>
@@ -1492,7 +1564,29 @@
     </div>
   </div>
 
+  <!-- Modal Zoom Imagen Platillo -->
+  <div class="modal-overlay" id="imgZoomModal" onclick="closeImgZoom()" style="display: none; align-items: center; justify-content: center; z-index: 10000; background: rgba(0,0,0,0.85); backdrop-filter: blur(4px);">
+    <div style="max-width: 90%; max-height: 85vh; text-align: center; position: relative;" onclick="event.stopPropagation()">
+      <button onclick="closeImgZoom()" style="position: absolute; top: -14px; right: -14px; background: white; border: none; width: 32px; height: 32px; border-radius: 50%; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">✕</button>
+      <img id="zoomedImg" src="" style="max-width: 100%; max-height: 70vh; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); object-fit: contain; display: block; margin: 0 auto;">
+      <div id="zoomedTitle" style="color: white; font-weight: 700; margin-top: 12px; font-size: 1.1rem; text-shadow: 0 2px 6px rgba(0,0,0,0.8);"></div>
+    </div>
+  </div>
+
   <script>
+    function zoomItemImg(src, title) {
+      const modal = document.getElementById('imgZoomModal');
+      if (modal) {
+        document.getElementById('zoomedImg').src = src;
+        document.getElementById('zoomedTitle').innerText = title || '';
+        modal.style.display = 'flex';
+      }
+    }
+    function closeImgZoom() {
+      const modal = document.getElementById('imgZoomModal');
+      if (modal) modal.style.display = 'none';
+    }
+
     const phone = "523314269510";
     const businessName = "KYUTAI RICE BALLS";
     const hasDelivery = true;
