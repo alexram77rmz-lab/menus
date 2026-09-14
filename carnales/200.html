@@ -837,9 +837,16 @@
         <label>¿Cómo deseas tu pedido?</label>
         <div class="type-selector three-col">
           <div class="type-btn active" id="btnDomicilio" onclick="setOrderType('A Domicilio 🛵')">A Domicilio 🛵</div>
-          <div class="type-btn " id="btnLlevar" onclick="setOrderType('Para Llevar 🥡')">Para Llevar 🥡</div>
-          <div class="type-btn" id="btnLocal" onclick="setOrderType('Comer Aquí 🍽️')">Comer Aquí 🍽️</div>
+          
+            <div class="type-btn " id="btnLlevar" onclick="setOrderType('Para Llevar 🥡')">Para Llevar 🥡</div>
+            <div class="type-btn" id="btnLocal" onclick="setOrderType('Comer Aquí 🍽️')">Comer Aquí 🍽️</div>
+          
         </div>
+      </div>
+
+      <div class="form-group" id="tableGroup" style="display: none;">
+        <label>Número de Mesa (opcional):</label>
+        <input type="text" id="custTable" class="form-control" placeholder="Ej. Mesa 3 o En Barra">
       </div>
 
       <div class="form-group">
@@ -885,8 +892,9 @@
     const phone = "523312345678";
     const businessName = "Tacos y Birria Los Carnales";
     const hasDelivery = true;
+    const tableMode = false;
     let cart = {};
-    let orderType = hasDelivery ? 'A Domicilio 🛵' : 'Para Llevar 🥡';
+    let orderType = tableMode ? 'En Mesa 🍽️' : (hasDelivery ? 'A Domicilio 🛵' : 'Para Llevar 🥡');
     let paymentMethod = 'Efectivo 💵';
 
     function scrollToSchedule() {
@@ -924,15 +932,14 @@
     }
 
     function openCheckout() {
-      const list = document.getElementById('orderItemsList');
-      list.innerHTML = '';
+      const listEl = document.getElementById('orderItemsList');
+      listEl.innerHTML = '';
       let totalMoney = 0;
-
       for (const key in cart) {
         const item = cart[key];
         const sub = item.qty * item.price;
         totalMoney += sub;
-        list.innerHTML += `
+        listEl.innerHTML += `
           <div class="order-item-row">
             <div><strong>${item.qty}x</strong> ${item.name}</div>
             <div style="font-weight: 700;">$${sub.toFixed(2)}</div>
@@ -953,10 +960,14 @@
         document.getElementById('btnDomicilio').className = 'type-btn' + (type.includes('Domicilio') ? ' active' : '');
       }
       document.getElementById('btnLlevar').className = 'type-btn' + (type.includes('Llevar') ? ' active' : '');
-      document.getElementById('btnLocal').className = 'type-btn' + (type.includes('Aquí') ? ' active' : '');
+      document.getElementById('btnLocal').className = 'type-btn' + (type.includes('Aquí') || type.includes('Mesa') ? ' active' : '');
       const addrEl = document.getElementById('addrGroup');
       if (addrEl) {
         addrEl.style.display = type.includes('Domicilio') ? 'block' : 'none';
+      }
+      const tableEl = document.getElementById('tableGroup');
+      if (tableEl) {
+        tableEl.style.display = (type.includes('Aquí') || type.includes('Mesa')) ? 'block' : 'none';
       }
     }
 
@@ -974,6 +985,8 @@
       const name = document.getElementById('custName').value.trim() || 'Cliente';
       const addrEl = document.getElementById('custAddr');
       const addr = addrEl ? addrEl.value.trim() : '';
+      const tableEl = document.getElementById('custTable');
+      const tableNum = tableEl ? tableEl.value.trim() : '';
       const notes = document.getElementById('custNotes').value.trim();
       const cambio = document.getElementById('custCambio').value.trim();
 
@@ -989,6 +1002,9 @@
 
       msg += '\n💰 *Total:* $' + totalMoney.toFixed(2) + ' MXN\n';
       msg += '📍 *Tipo:* ' + orderType + '\n';
+      if ((orderType.includes('Mesa') || orderType.includes('Aquí')) && tableNum) {
+        msg += '🪑 *Mesa:* ' + tableNum + '\n';
+      }
       msg += '💳 *Pago:* ' + paymentMethod;
       if (paymentMethod.includes('Efectivo') && cambio) {
         msg += ' (' + cambio + ')';
