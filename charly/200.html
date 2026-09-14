@@ -948,6 +948,24 @@
     let orderType = tableMode ? 'En Mesa 🍽️' : (hasDelivery ? 'A Domicilio 🛵' : 'Para Llevar 🥡');
     let paymentMethod = 'Efectivo 💵';
 
+    // Detección automática si el QR incluye ?mesa=1 o ?m=1
+    const urlParams = new URLSearchParams(window.location.search);
+    const tableParam = urlParams.get('mesa') || urlParams.get('m');
+
+    function initTableParam() {
+      if (tableParam) {
+        const tableInput = document.getElementById('custTable');
+        if (tableInput && !tableInput.value) {
+          tableInput.value = isNaN(tableParam) ? tableParam : 'Mesa ' + tableParam;
+        }
+      }
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initTableParam);
+    } else {
+      initTableParam();
+    }
+
     function scrollToSchedule() {
       const el = document.getElementById('scheduleSection');
       if (el) el.scrollIntoView({ behavior: 'smooth' });
