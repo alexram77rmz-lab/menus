@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>LOS PINCHES PREPARADOS - Menú Digital & Reseñas</title>
+  <meta name="description" content="Mariscos frescos, los mejores preparados, mariscocos y aguachiles al gusto">
+  
+  <!-- OpenGraph para WhatsApp, Telegram y Redes Sociales -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="LOS PINCHES PREPARADOS 📱 Menú Digital Oficial">
+  <meta property="og:description" content="Mariscos frescos, los mejores preparados, mariscocos y aguachiles al gusto">
+  <meta property="og:image" content="https://alexram77rmz-lab.github.io/menus/preparados/codigo_qr_para_imprimir.png">
+  <meta property="og:url" content="https://alexram77rmz-lab.github.io/menus/preparados">
+  <meta name="theme-color" content="#0284c7">
+  <style>
+    :root {
+      --primary: #0284c7;
+      --accent: #f59e0b;
+      --text: #0f172a;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --radius: 16px;
+      --shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.08);
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      padding-bottom: 120px;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary), #0f172a);
+      color: white;
+      padding: 24px 20px 20px;
+      border-bottom-left-radius: 26px;
+      border-bottom-right-radius: 26px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+      text-align: center;
+      position: relative;
+    }
+    .badge-schedule {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      backdrop-filter: blur(6px);
+      cursor: pointer;
+    }
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #fbbf24;
+      display: inline-block;
+    }
+    .badge-dot.open { background: #22c55e; }
+    .badge-dot.closed { background: #ef4444; }
+
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+    .slogan {
+      font-size: 0.92rem;
+      opacity: 0.92;
+      margin-bottom: 14px;
+      line-height: 1.35;
+    }
+    .quick-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .action-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.18);
+      color: white;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      backdrop-filter: blur(8px);
+      cursor: pointer;
+      border: none;
+    }
+    .pill-google {
+      background: #f59e0b;
+      color: #0f172a;
+      box-shadow: 0 2px 10px rgba(245, 158, 11, 0.35);
+    }
+    .pill-instagram {
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888) !important;
+      color: #ffffff !important;
+      box-shadow: 0 2px 10px rgba(220, 39, 67, 0.35);
+    }
+    .pill-facebook {
+      background: #1877f2 !important;
+      color: #ffffff !important;
+      box-shadow: 0 2px 10px rgba(24, 119, 242, 0.35);
+    }
+    .pill-waiter {
+      background: linear-gradient(135deg, #6366f1, #4f46e5) !important;
+      color: #ffffff !important;
+      box-shadow: 0 2px 10px rgba(99, 102, 241, 0.4);
+    }
+    .brand-logo-wrap {
+      margin-bottom: 14px;
+      display: flex;
+      justify-content: center;
+    }
+    .brand-logo {
+      width: 95px;
+      height: 95px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: white;
+      padding: 3px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+      border: 3px solid rgba(255,255,255,0.9);
+      display: block;
+    }
+
+    
+    .delivery-bar {
+      background: #eff6ff;
+      border-bottom: 1px solid #bfdbfe;
+      color: #1e40af;
+      padding: 10px 16px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-align: center;
+    }
+    
+
+    /* Caja de Reseñas de Google */
+    .review-callout {
+      max-width: 600px;
+      margin: 14px auto 0;
+      padding: 0 20px;
+    }
+    .review-card {
+      background: linear-gradient(135deg, #fffbeb, #fef3c7);
+      border: 1px solid #fde68a;
+      border-radius: 16px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);
+    }
+    .review-text {
+      font-size: 0.82rem;
+      color: #78350f;
+    }
+    .review-text strong {
+      display: block;
+      font-size: 0.92rem;
+      margin-bottom: 2px;
+    }
+    .review-btn {
+      background: #d97706;
+      color: white;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 12px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    /* Buscador */
+    .search-box {
+      max-width: 600px;
+      margin: 14px auto;
+      padding: 0 20px;
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      padding: 14px 20px 14px 44px;
+      border: none;
+      border-radius: 16px;
+      background: white;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      font-size: 0.92rem;
+      outline: none;
+    }
+    .search-icon {
+      position: absolute;
+      left: 36px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #94a3b8;
+    }
+
+    /* Categorías */
+    .categories-bar {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 4px 20px 14px;
+      max-width: 600px;
+      margin: 0 auto;
+      scrollbar-width: none;
+    }
+    .categories-bar::-webkit-scrollbar { display: none; }
+    .cat-btn {
+      white-space: nowrap;
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: 1px solid #e2e8f0;
+      background: white;
+      font-weight: 600;
+      font-size: 0.82rem;
+      color: #64748b;
+      cursor: pointer;
+    }
+    .cat-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    /* Items */
+    .menu-container {
+      padding: 0 20px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .category-section { margin-bottom: 24px; }
+    .category-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #0f172a;
+    }
+    .item-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 15px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow);
+      border: 1px solid #f1f5f9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .item-img-wrap {
+      width: 78px;
+      height: 78px;
+      border-radius: 12px;
+      overflow: hidden;
+      flex-shrink: 0;
+      position: relative;
+      background: #f1f5f9;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      border: 1px solid #e2e8f0;
+      cursor: pointer;
+    }
+    .item-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.2s ease;
+    }
+    .item-card:hover .item-img {
+      transform: scale(1.06);
+    }
+    .item-info { flex: 1; min-width: 0; }
+    .item-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: #b45309;
+      background: #fef3c7;
+      padding: 2px 7px;
+      border-radius: 6px;
+      margin-bottom: 4px;
+    }
+    .item-name {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 3px;
+    }
+    .item-desc {
+      font-size: 0.8rem;
+      color: #64748b;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .item-price {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .item-stepper {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #f1f5f9;
+      padding: 4px;
+      border-radius: 12px;
+    }
+    .step-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      border: none;
+      background: white;
+      font-weight: bold;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    }
+    .step-count {
+      min-width: 18px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    /* Sección de Horarios Completa */
+    .schedule-card {
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      margin: 25px auto 15px;
+      border: 1px solid #e2e8f0;
+      box-shadow: var(--shadow);
+      text-align: left;
+    }
+    .schedule-card h3 {
+      font-size: 1.05rem;
+      color: #0f172a;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .schedule-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #f1f5f9;
+      font-size: 0.85rem;
+    }
+    .schedule-row:last-child { border-bottom: none; }
+    .schedule-day { font-weight: 700; color: #334155; }
+    .schedule-time { color: #64748b; }
+
+    /* Footer Social */
+    .social-footer {
+      max-width: 600px;
+      margin: 20px auto 10px;
+      padding: 20px;
+      text-align: center;
+      background: white;
+      border-radius: 20px;
+      border: 1px solid #e2e8f0;
+    }
+    .social-footer h4 {
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+      color: #1e293b;
+    }
+    .social-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .soc-btn {
+      padding: 8px 14px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f1f5f9;
+      color: #334155;
+    }
+
+    /* Barra Carrito */
+    .cart-bar {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      max-width: 560px;
+      margin: 0 auto;
+      background: #0f172a;
+      color: white;
+      padding: 14px 20px;
+      border-radius: 20px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      cursor: pointer;
+      transform: translateY(140px);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .cart-bar.visible { transform: translateY(0); }
+    .cart-pill {
+      background: var(--primary);
+      color: white;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-right: 8px;
+    }
+    .cart-total { font-size: 1.15rem; font-weight: 800; }
+    .cart-action { font-weight: 700; font-size: 0.95rem; color: #38bdf8; }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
+      z-index: 200;
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-sheet {
+      background: white;
+      width: 100%;
+      max-width: 580px;
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+      padding: 24px 24px 36px 24px;
+      max-height: 85vh;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+      animation: slideUp 0.25s ease-out;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .modal-close {
+      background: #f1f5f9;
+      border: none;
+      font-size: 1.2rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .order-item-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px dashed #e2e8f0;
+      font-size: 0.92rem;
+    }
+    .form-group { margin-top: 14px; }
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #475569;
+      margin-bottom: 6px;
+    }
+    .form-control {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      outline: none;
+    }
+    .type-selector, .pay-selector {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+    .type-selector.three-col { grid-template-columns: repeat(3, 1fr); }
+    .type-btn, .pay-btn {
+      padding: 10px 6px;
+      border: 1px solid #e2e8f0;
+      background: #f8fafc;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+    }
+    .type-btn.active, .pay-btn.active {
+      background: #eff6ff;
+      border-color: #3b82f6;
+      color: #1d4ed8;
+      font-weight: 700;
+    }
+    .btn-whatsapp {
+      width: 100%;
+      background: #25d366;
+      color: white;
+      border: none;
+      padding: 16px;
+      border-radius: 16px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      margin-top: 20px;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="delivery-bar">🦐 ¡Ordena para disfrutar en mesa, recoger o a domicilio por WhatsApp!</div>
+
+  <header>
+    
+    <div class="badge-schedule" onclick="scrollToSchedule()">
+      <span class="badge-dot open"></span>
+      <span id="headerScheduleText">Miércoles a Lunes: 2:00 PM - 10:00 PM</span>
+    </div>
+    <h1>LOS PINCHES PREPARADOS</h1>
+    <p class="slogan">Mariscos frescos, los mejores preparados, mariscocos y aguachiles al gusto</p>
+
+    <div class="quick-actions">
+      
+      
+      <a href="https://www.google.com/maps/search/?api=1&query=Los+Pinches+Preparados+Av+Acueducto+915+Zapopan" target="_blank" class="action-pill pill-google">
+        ⭐ Califícanos en Google
+      </a>
+      
+        <a href="https://wa.me/523313205523" target="_blank" class="action-pill">
+          💬 WhatsApp
+        </a>
+      
+      
+        <button onclick="openWaiterModal()" class="action-pill pill-waiter">
+          🛎️ Llamar al Mesero
+        </button>
+      
+      <button onclick="shareMenu()" class="action-pill">
+        📤 Compartir Menú
+      </button>
+    </div>
+  </header>
+
+  <!-- Tarjeta de Reseñas / Ubicación -->
+  <div class="review-callout">
+    <div class="review-card">
+      <div class="review-text">
+        
+          <strong>¿Te gustó la comida? ⭐⭐⭐⭐⭐</strong>
+          Déjanos tu opinión en Google Maps y ayúdanos a crecer.
+        
+      </div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Los+Pinches+Preparados+Av+Acueducto+915+Zapopan" target="_blank" class="review-btn">
+        Calificar ➔
+      </a>
+    </div>
+  </div>
+
+  <div class="search-box">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="searchInput" class="search-input" placeholder="Buscar mariscoco, aguachile, michelada, ceviche, botana...">
+  </div>
+
+  <div class="categories-bar" id="categoryBar">
+    <button class="cat-btn active" data-cat-target="all" onclick="filterCategory('all', this)">Todos</button>
+    
+      <button class="cat-btn" data-cat-target="Especialidades de la Casa" onclick="filterCategory('Especialidades de la Casa', this)">
+        🥥 Especialidades de la Casa
+      </button>
+    
+      <button class="cat-btn" data-cat-target="Aguachiles & Ceviches" onclick="filterCategory('Aguachiles & Ceviches', this)">
+        🦐 Aguachiles & Ceviches
+      </button>
+    
+      <button class="cat-btn" data-cat-target="Bebidas Preparadas & Micheladas" onclick="filterCategory('Bebidas Preparadas & Micheladas', this)">
+        🍺 Bebidas Preparadas & Micheladas
+      </button>
+    
+      <button class="cat-btn" data-cat-target="Tostadas & Antojos" onclick="filterCategory('Tostadas & Antojos', this)">
+        🌮 Tostadas & Antojos
+      </button>
+    
+      <button class="cat-btn" data-cat-target="Refrescos & Bebidas" onclick="filterCategory('Refrescos & Bebidas', this)">
+        🥤 Refrescos & Bebidas
+      </button>
+    
+  </div>
+
+  <main class="menu-container">
+    
+      <section class="category-section" data-category="Especialidades de la Casa">
+        <h2 class="category-title">🥥 Especialidades de la Casa</h2>
+        
+        
+          <div class="item-card" data-name="el famoso mariscoco preparado" data-desc="coco tierno natural relleno de camarón cocido y crudo, pulpo suave, pepino, bañado en clamato especial, limón y salsas negras de la casa." data-category="especialidades de la casa">
+            
+            <div class="item-info">
+              <span class="item-badge">El Favorito ⭐</span>
+              <div class="item-name">El Famoso Mariscoco Preparado</div>
+              <p class="item-desc">Coco tierno natural relleno de camarón cocido y crudo, pulpo suave, pepino, bañado en clamato especial, limón y salsas negras de la casa.</p>
+              <div class="item-price">$220.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Especialidades_de_la_Casa_0', 'El Famoso Mariscoco Preparado', 220, -1)">-</button>
+              <span class="step-count" id="count_Especialidades_de_la_Casa_0">0</span>
+              <button class="step-btn" onclick="updateQty('Especialidades_de_la_Casa_0', 'El Famoso Mariscoco Preparado', 220, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="botana especial los pinches" data-desc="generosa charola de mariscos frescos (camarón cocido, camarón curtido, pulpo y atún) con pepino, cebollita morada, aguacate y aderezo especial de la casa." data-category="especialidades de la casa">
+            
+            <div class="item-info">
+              <span class="item-badge">Para Compartir 🤤</span>
+              <div class="item-name">Botana Especial Los Pinches</div>
+              <p class="item-desc">Generosa charola de mariscos frescos (camarón cocido, camarón curtido, pulpo y atún) con pepino, cebollita morada, aguacate y aderezo especial de la casa.</p>
+              <div class="item-price">$260.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Especialidades_de_la_Casa_1', 'Botana Especial Los Pinches', 260, -1)">-</button>
+              <span class="step-count" id="count_Especialidades_de_la_Casa_1">0</span>
+              <button class="step-btn" onclick="updateQty('Especialidades_de_la_Casa_1', 'Botana Especial Los Pinches', 260, 1)">+</button>
+            </div>
+          </div>
+          
+      </section>
+    
+      <section class="category-section" data-category="Aguachiles & Ceviches">
+        <h2 class="category-title">🦐 Aguachiles & Ceviches</h2>
+        
+        
+          <div class="item-card" data-name="aguachile verde tradicional" data-desc="camarones frescos curtidos al momento en limón con salsa picosa de chile serrano, cilantro, pepino y cebolla morada. picoso al gusto." data-category="aguachiles & ceviches">
+            
+            <div class="item-info">
+              <span class="item-badge">Clásico Tapatío 🔥</span>
+              <div class="item-name">Aguachile Verde Tradicional</div>
+              <p class="item-desc">Camarones frescos curtidos al momento en limón con salsa picosa de chile serrano, cilantro, pepino y cebolla morada. Picoso al gusto.</p>
+              <div class="item-price">$185.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Aguachiles___Ceviches_0', 'Aguachile Verde Tradicional', 185, -1)">-</button>
+              <span class="step-count" id="count_Aguachiles___Ceviches_0">0</span>
+              <button class="step-btn" onclick="updateQty('Aguachiles___Ceviches_0', 'Aguachile Verde Tradicional', 185, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="aguachile negro especial" data-desc="camarón curtido en reducción de salsa negra con chiles tatemados, habanero y un toque de clamato." data-category="aguachiles & ceviches">
+            
+            <div class="item-info">
+              <span class="item-badge">Receta Secreta 🖤</span>
+              <div class="item-name">Aguachile Negro Especial</div>
+              <p class="item-desc">Camarón curtido en reducción de salsa negra con chiles tatemados, habanero y un toque de clamato.</p>
+              <div class="item-price">$195.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Aguachiles___Ceviches_1', 'Aguachile Negro Especial', 195, -1)">-</button>
+              <span class="step-count" id="count_Aguachiles___Ceviches_1">0</span>
+              <button class="step-btn" onclick="updateQty('Aguachiles___Ceviches_1', 'Aguachile Negro Especial', 195, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="ceviche de atún fresco" data-desc="cubos de atún fresco marinados con salsa ponzu de la casa, limón, cubitos de mango o pepino, aguacate y ajonjolí negro." data-category="aguachiles & ceviches">
+            
+            <div class="item-info">
+              <span class="item-badge">Recomendado en Reseñas 🌟</span>
+              <div class="item-name">Ceviche de Atún Fresco</div>
+              <p class="item-desc">Cubos de atún fresco marinados con salsa ponzu de la casa, limón, cubitos de mango o pepino, aguacate y ajonjolí negro.</p>
+              <div class="item-price">$175.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Aguachiles___Ceviches_2', 'Ceviche de Atún Fresco', 175, -1)">-</button>
+              <span class="step-count" id="count_Aguachiles___Ceviches_2">0</span>
+              <button class="step-btn" onclick="updateQty('Aguachiles___Ceviches_2', 'Ceviche de Atún Fresco', 175, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="ceviche de camarón estilo casero" data-desc="camarón fresco picado, jitomate, cebolla morada, cilantro, pepino y toque de jugo de mariscos." data-category="aguachiles & ceviches">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Ceviche de Camarón Estilo Casero</div>
+              <p class="item-desc">Camarón fresco picado, jitomate, cebolla morada, cilantro, pepino y toque de jugo de mariscos.</p>
+              <div class="item-price">$165.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Aguachiles___Ceviches_3', 'Ceviche de Camarón Estilo Casero', 165, -1)">-</button>
+              <span class="step-count" id="count_Aguachiles___Ceviches_3">0</span>
+              <button class="step-btn" onclick="updateQty('Aguachiles___Ceviches_3', 'Ceviche de Camarón Estilo Casero', 165, 1)">+</button>
+            </div>
+          </div>
+          
+      </section>
+    
+      <section class="category-section" data-category="Bebidas Preparadas & Micheladas">
+        <h2 class="category-title">🍺 Bebidas Preparadas & Micheladas</h2>
+        
+        
+          <div class="item-card" data-name="michelada pinche especial (con camarones)" data-desc="cerveza bien helada con escarchado especial de la casa, clamato sazonado, banderilla de gomitas, cacahuates y brocheta de camarones cocidos." data-category="bebidas preparadas & micheladas">
+            
+            <div class="item-info">
+              <span class="item-badge">La Estrella 👑</span>
+              <div class="item-name">Michelada Pinche Especial (Con Camarones)</div>
+              <p class="item-desc">Cerveza bien helada con escarchado especial de la casa, clamato sazonado, banderilla de gomitas, cacahuates y brocheta de camarones cocidos.</p>
+              <div class="item-price">$130.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Bebidas_Preparadas___Micheladas_0', 'Michelada Pinche Especial (Con Camarones)', 130, -1)">-</button>
+              <span class="step-count" id="count_Bebidas_Preparadas___Micheladas_0">0</span>
+              <button class="step-btn" onclick="updateQty('Bebidas_Preparadas___Micheladas_0', 'Michelada Pinche Especial (Con Camarones)', 130, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="clamato preparado con mariscos" data-desc="vaso escarchado con clamato, salsa inglesa, maggi, limón, pepino y camarones." data-category="bebidas preparadas & micheladas">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Clamato Preparado con Mariscos</div>
+              <p class="item-desc">Vaso escarchado con clamato, salsa inglesa, maggi, limón, pepino y camarones.</p>
+              <div class="item-price">$95.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Bebidas_Preparadas___Micheladas_1', 'Clamato Preparado con Mariscos', 95, -1)">-</button>
+              <span class="step-count" id="count_Bebidas_Preparadas___Micheladas_1">0</span>
+              <button class="step-btn" onclick="updateQty('Bebidas_Preparadas___Micheladas_1', 'Clamato Preparado con Mariscos', 95, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="michelada clásica de sabor" data-desc="cerveza helada con escarchado de tamarindo o chamoy con chile piquín, limón y sal." data-category="bebidas preparadas & micheladas">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Michelada Clásica de Sabor</div>
+              <p class="item-desc">Cerveza helada con escarchado de tamarindo o chamoy con chile piquín, limón y sal.</p>
+              <div class="item-price">$75.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Bebidas_Preparadas___Micheladas_2', 'Michelada Clásica de Sabor', 75, -1)">-</button>
+              <span class="step-count" id="count_Bebidas_Preparadas___Micheladas_2">0</span>
+              <button class="step-btn" onclick="updateQty('Bebidas_Preparadas___Micheladas_2', 'Michelada Clásica de Sabor', 75, 1)">+</button>
+            </div>
+          </div>
+          
+      </section>
+    
+      <section class="category-section" data-category="Tostadas & Antojos">
+        <h2 class="category-title">🌮 Tostadas & Antojos</h2>
+        
+        
+          <div class="item-card" data-name="tostada de ceviche de atún" data-desc="tostada crujiente con base de mayonesa chipotle o aguacate, atún marinado y poro frito." data-category="tostadas & antojos">
+            
+            <div class="item-info">
+              <span class="item-badge">Imperdible 🐟</span>
+              <div class="item-name">Tostada de Ceviche de Atún</div>
+              <p class="item-desc">Tostada crujiente con base de mayonesa chipotle o aguacate, atún marinado y poro frito.</p>
+              <div class="item-price">$75.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Tostadas___Antojos_0', 'Tostada de Ceviche de Atún', 75, -1)">-</button>
+              <span class="step-count" id="count_Tostadas___Antojos_0">0</span>
+              <button class="step-btn" onclick="updateQty('Tostadas___Antojos_0', 'Tostada de Ceviche de Atún', 75, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="tostada de aguachile de camarón" data-desc="tostada con abundante aguachile verde o negro, pepino y aguacate." data-category="tostadas & antojos">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Tostada de Aguachile de Camarón</div>
+              <p class="item-desc">Tostada con abundante aguachile verde o negro, pepino y aguacate.</p>
+              <div class="item-price">$85.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Tostadas___Antojos_1', 'Tostada de Aguachile de Camarón', 85, -1)">-</button>
+              <span class="step-count" id="count_Tostadas___Antojos_1">0</span>
+              <button class="step-btn" onclick="updateQty('Tostadas___Antojos_1', 'Tostada de Aguachile de Camarón', 85, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="taco gobernador de camarón" data-desc="tortilla a la plancha con queso fundido y guisado especial de camarón con pimientos." data-category="tostadas & antojos">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Taco Gobernador de Camarón</div>
+              <p class="item-desc">Tortilla a la plancha con queso fundido y guisado especial de camarón con pimientos.</p>
+              <div class="item-price">$55.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Tostadas___Antojos_2', 'Taco Gobernador de Camarón', 55, -1)">-</button>
+              <span class="step-count" id="count_Tostadas___Antojos_2">0</span>
+              <button class="step-btn" onclick="updateQty('Tostadas___Antojos_2', 'Taco Gobernador de Camarón', 55, 1)">+</button>
+            </div>
+          </div>
+          
+      </section>
+    
+      <section class="category-section" data-category="Refrescos & Bebidas">
+        <h2 class="category-title">🥤 Refrescos & Bebidas</h2>
+        
+        
+          <div class="item-card" data-name="refresco de vidrio bien frío (355ml)" data-desc="coca-cola, squirt de toronja, sidral mundet o agua mineral." data-category="refrescos & bebidas">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Refresco de Vidrio Bien Frío (355ml)</div>
+              <p class="item-desc">Coca-Cola, Squirt de toronja, Sidral Mundet o Agua Mineral.</p>
+              <div class="item-price">$28.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Refrescos___Bebidas_0', 'Refresco de Vidrio Bien Frío (355ml)', 28, -1)">-</button>
+              <span class="step-count" id="count_Refrescos___Bebidas_0">0</span>
+              <button class="step-btn" onclick="updateQty('Refrescos___Bebidas_0', 'Refresco de Vidrio Bien Frío (355ml)', 28, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="agua fresca / embotellada" data-desc="agua natural o de sabor del día bien fría." data-category="refrescos & bebidas">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Agua Fresca / Embotellada</div>
+              <p class="item-desc">Agua natural o de sabor del día bien fría.</p>
+              <div class="item-price">$25.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Refrescos___Bebidas_1', 'Agua Fresca / Embotellada', 25, -1)">-</button>
+              <span class="step-count" id="count_Refrescos___Bebidas_1">0</span>
+              <button class="step-btn" onclick="updateQty('Refrescos___Bebidas_1', 'Agua Fresca / Embotellada', 25, 1)">+</button>
+            </div>
+          </div>
+          
+      </section>
+    
+
+    <!-- Tarjeta de Horarios Detallada por Día -->
+    <div class="schedule-card" id="scheduleSection">
+      <h3>🕒 Horarios de Atención</h3>
+      
+        <div class="schedule-row">
+          <span class="schedule-day">Miércoles a Lunes</span>
+          <span class="schedule-time">2:00 PM - 10:00 PM</span>
+        </div>
+      
+        <div class="schedule-row">
+          <span class="schedule-day">Martes</span>
+          <span class="schedule-time">Descansamos</span>
+        </div>
+      
+    </div>
+
+    <!-- Contacto y Ubicación -->
+    <div class="social-footer">
+      <h4>LOS PINCHES PREPARADOS</h4>
+      <div class="social-buttons">
+        <a href="https://wa.me/523313205523" target="_blank" class="soc-btn" style="color: #16a34a;">💬 WhatsApp</a>
+        
+        
+        <a href="https://www.google.com/maps/search/?api=1&query=Los+Pinches+Preparados+Av+Acueducto+915+Zapopan" target="_blank" class="soc-btn" style="color: #f59e0b;">📍 Google Maps</a>
+      </div>
+      <p style="margin-top: 14px; font-size: 0.82rem; color: #64748b;">📍 Av. Acueducto #915, La Casita, Los Girasoles, 45138 Zapopan, Jal.</p>
+    </div>
+  </main>
+
+  <!-- Barra flotante de carrito -->
+  <div class="cart-bar" id="cartBar" onclick="openCheckout()">
+    <div style="display: flex; align-items: center;">
+      <span class="cart-pill" id="cartCount">0</span>
+      <span class="cart-total" id="cartTotal">$0.00 MXN</span>
+    </div>
+    <div class="cart-action">
+      <span>Ver Pedido</span> ➔
+    </div>
+  </div>
+
+  <!-- Modal Checkout -->
+  <div class="modal-overlay" id="checkoutModal">
+    <div class="modal-sheet">
+      <div class="modal-header">
+        <h3 class="modal-title">Tu Pedido</h3>
+        <button class="modal-close" onclick="closeCheckout()">✕</button>
+      </div>
+
+      <div id="orderItemsList"></div>
+
+      <div style="display: flex; justify-content: space-between; font-weight: 800; font-size: 1.15rem; margin: 16px 0; padding-top: 10px; border-top: 2px solid #e2e8f0;">
+        <span>Total a Pagar:</span>
+        <span id="modalTotal" style="color: var(--primary);">$0.00 MXN</span>
+      </div>
+
+      <div class="form-group">
+        <label>¿Cómo deseas tu pedido?</label>
+        <div class="type-selector three-col">
+          <div class="type-btn active" id="btnDomicilio" onclick="setOrderType('A Domicilio 🛵')">A Domicilio 🛵</div>
+          
+            <div class="type-btn active" id="btnLocal" onclick="setOrderType('En Mesa 🍽️')">En Mesa 🍽️</div>
+            <div class="type-btn" id="btnLlevar" onclick="setOrderType('Para Llevar 🥡')">Para Llevar 🥡</div>
+          
+        </div>
+      </div>
+
+      <div class="form-group" id="tableGroup" style="display: block;">
+        <label>Número de Mesa (opcional):</label>
+        <input type="text" id="custTable" class="form-control" placeholder="Ej. Mesa 3 o En Barra">
+      </div>
+
+      <div class="form-group">
+        <label>Método de Pago:</label>
+        <div class="pay-selector">
+          <div class="pay-btn active" id="btnEfectivo" onclick="setPaymentMethod('Efectivo 💵')">Efectivo 💵</div>
+          <div class="pay-btn" id="btnAltPay" onclick="setPaymentMethod('Tarjeta 💳 (Llevar terminal)')">Tarjeta 💳 (Terminal)</div>
+        </div>
+      </div>
+
+      <div class="form-group" id="cambioGroup">
+        <label>¿Con cuánto vas a pagar? (para llevar tu cambio):</label>
+        <input type="text" id="custCambio" class="form-control" placeholder="Ej. Pago con billete de $200 o $500">
+      </div>
+
+      <div class="form-group">
+        <label>Tu Nombre:</label>
+        <input type="text" id="custName" class="form-control" placeholder="Ej. Carlos">
+      </div>
+
+      
+      <div class="form-group" id="addrGroup">
+        <label>Dirección de entrega (calle, número y colonia):</label>
+        <input type="text" id="custAddr" class="form-control" placeholder="Calle, número exterior/interior y colonia">
+      </div>
+      
+
+      <div class="form-group">
+        <label>Instrucciones especiales / Ingredientes al gusto:</label>
+        <input type="text" id="custNotes" class="form-control" placeholder="Ej. Bien doradito, salsa aparte, sin cebolla...">
+      </div>
+
+      <button class="btn-whatsapp" onclick="sendOrderWhatsApp()">
+        <span>Enviar Pedido por WhatsApp</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.969.54 1.861.855 2.796.855 3.18 0 5.767-2.587 5.767-5.766.001-3.18-2.585-5.766-5.767-5.766zm9.969 5.766c0 5.518-4.482 10-10 10-1.748 0-3.414-.452-4.887-1.258l-5.113 1.338 1.365-4.992c-.933-1.536-1.465-3.328-1.465-5.088 0-5.518 4.482-10 10-10 5.518 0 10 4.482 10 10z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal Zoom Imagen Platillo -->
+  <div class="modal-overlay" id="imgZoomModal" onclick="closeImgZoom()" style="display: none; align-items: center; justify-content: center; z-index: 10000; background: rgba(0,0,0,0.85); backdrop-filter: blur(4px);">
+    <div style="max-width: 90%; max-height: 85vh; text-align: center; position: relative;" onclick="event.stopPropagation()">
+      <button onclick="closeImgZoom()" style="position: absolute; top: -14px; right: -14px; background: white; border: none; width: 32px; height: 32px; border-radius: 50%; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">✕</button>
+      <img id="zoomedImg" src="" style="max-width: 100%; max-height: 70vh; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); object-fit: contain; display: block; margin: 0 auto;">
+      <div id="zoomedTitle" style="color: white; font-weight: 700; margin-top: 12px; font-size: 1.1rem; text-shadow: 0 2px 6px rgba(0,0,0,0.8);"></div>
+    </div>
+  </div>
+
+  <!-- Modal Llamar al Mesero / Pedir Cuenta -->
+  <div class="modal-overlay" id="waiterModal" onclick="closeWaiterModal()">
+    <div class="modal-sheet" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3 class="modal-title">🛎️ Asistencia en Mesa</h3>
+        <button class="modal-close" onclick="closeWaiterModal()">✕</button>
+      </div>
+
+      <div class="form-group" style="margin-top: 10px;">
+        <label>Número o Ubicación de Mesa:</label>
+        <input type="text" id="waiterTableNum" class="form-control" placeholder="Ej. Mesa 4 o En Barra">
+      </div>
+
+      <div class="form-group">
+        <label>¿Qué necesitas?</label>
+        <div class="type-selector">
+          <div class="type-btn active" id="btnReqMesero" onclick="setWaiterReq('mesero')">🙋‍♂️ Llamar Mesero</div>
+          <div class="type-btn" id="btnReqCuenta" onclick="setWaiterReq('cuenta')">💵 La Cuenta</div>
+        </div>
+      </div>
+
+      <div class="form-group" id="cuentaPayGroup" style="display: none;">
+        <label>¿Cómo deseas pagar tu cuenta?</label>
+        <div class="pay-selector">
+          <div class="pay-btn active" id="btnCuentaEfec" onclick="setCuentaPay('Efectivo 💵')">Efectivo 💵</div>
+          <div class="pay-btn" id="btnCuentaTarj" onclick="setCuentaPay('Tarjeta 💳 (Terminal)')">Tarjeta 💳 (Terminal)</div>
+        </div>
+      </div>
+
+      <button class="btn-whatsapp" onclick="sendWaiterWhatsApp()" style="margin-top: 14px;">
+        <span>Enviar Aviso por WhatsApp</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.969.54 1.861.855 2.796.855 3.18 0 5.767-2.587 5.767-5.766.001-3.18-2.585-5.766-5.767-5.766zm9.969 5.766c0 5.518-4.482 10-10 10-1.748 0-3.414-.452-4.887-1.258l-5.113 1.338 1.365-4.992c-.933-1.536-1.465-3.328-1.465-5.088 0-5.518 4.482-10 10-10 5.518 0 10 4.482 10 10z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    let waiterReqType = 'mesero';
+    let cuentaPayMethod = 'Efectivo 💵';
+
+    function openWaiterModal() {
+      const tableEl = document.getElementById('custTable');
+      const waiterTable = document.getElementById('waiterTableNum');
+      if (tableEl && waiterTable && tableEl.value) {
+        waiterTable.value = tableEl.value;
+      } else if (tableParam && waiterTable && !waiterTable.value) {
+        waiterTable.value = isNaN(tableParam) ? tableParam : 'Mesa ' + tableParam;
+      }
+      document.getElementById('waiterModal').classList.add('active');
+    }
+
+    function closeWaiterModal() {
+      document.getElementById('waiterModal').classList.remove('active');
+    }
+
+    function setWaiterReq(type) {
+      waiterReqType = type;
+      document.getElementById('btnReqMesero').className = 'type-btn' + (type === 'mesero' ? ' active' : '');
+      document.getElementById('btnReqCuenta').className = 'type-btn' + (type === 'cuenta' ? ' active' : '');
+      document.getElementById('cuentaPayGroup').style.display = (type === 'cuenta' ? 'block' : 'none');
+    }
+
+    function setCuentaPay(method) {
+      cuentaPayMethod = method;
+      document.getElementById('btnCuentaEfec').className = 'pay-btn' + (method.includes('Efectivo') ? ' active' : '');
+      document.getElementById('btnCuentaTarj').className = 'pay-btn' + (!method.includes('Efectivo') ? ' active' : '');
+    }
+
+    function sendWaiterWhatsApp() {
+      const tableNum = (document.getElementById('waiterTableNum').value.trim()) || 'una mesa';
+      let msg = '';
+      if (waiterReqType === 'cuenta') {
+        msg = '👋 ¡Hola ' + businessName + '! 💵\n\nEn *' + tableNum + '* solicitamos la cuenta, por favor.\n💳 *Método de pago:* ' + cuentaPayMethod + '\n\n¡Muchas gracias!';
+      } else {
+        msg = '👋 ¡Hola ' + businessName + '! 🛎️\n\nEn *' + tableNum + '* solicitamos la atención de un mesero en la mesa, por favor.\n\n¡Muchas gracias!';
+      }
+      const waUrl = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(msg);
+      window.open(waUrl, '_blank');
+      closeWaiterModal();
+    }
+
+    function zoomItemImg(src, title) {
+      const modal = document.getElementById('imgZoomModal');
+      if (modal) {
+        document.getElementById('zoomedImg').src = src;
+        document.getElementById('zoomedTitle').innerText = title || '';
+        modal.style.display = 'flex';
+      }
+    }
+    function closeImgZoom() {
+      const modal = document.getElementById('imgZoomModal');
+      if (modal) modal.style.display = 'none';
+    }
+
+    const phone = "523313205523";
+    const businessName = "LOS PINCHES PREPARADOS";
+    const hasDelivery = true;
+    const tableMode = true;
+    let cart = {};
+    let orderType = tableMode ? 'En Mesa 🍽️' : (hasDelivery ? 'A Domicilio 🛵' : 'Para Llevar 🥡');
+    let paymentMethod = 'Efectivo 💵';
+
+    // Detección automática si el QR incluye ?mesa=1 o ?m=1
+    const urlParams = new URLSearchParams(window.location.search);
+    const tableParam = urlParams.get('mesa') || urlParams.get('m');
+
+    function initTableParam() {
+      if (tableParam) {
+        const tableInput = document.getElementById('custTable');
+        if (tableInput && !tableInput.value) {
+          tableInput.value = isNaN(tableParam) ? tableParam : 'Mesa ' + tableParam;
+        }
+      }
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initTableParam);
+    } else {
+      initTableParam();
+    }
+
+    function scrollToSchedule() {
+      const el = document.getElementById('scheduleSection');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function updateQty(id, name, price, delta) {
+      if (!cart[id]) cart[id] = { name, price, qty: 0 };
+      cart[id].qty += delta;
+      if (cart[id].qty <= 0) {
+        delete cart[id];
+        document.getElementById('count_' + id).innerText = 0;
+      } else {
+        document.getElementById('count_' + id).innerText = cart[id].qty;
+      }
+      renderCartBar();
+    }
+
+    function renderCartBar() {
+      let totalQty = 0;
+      let totalMoney = 0;
+      for (const key in cart) {
+        totalQty += cart[key].qty;
+        totalMoney += cart[key].qty * cart[key].price;
+      }
+      const bar = document.getElementById('cartBar');
+      if (totalQty > 0) {
+        bar.classList.add('visible');
+        document.getElementById('cartCount').innerText = totalQty + (totalQty === 1 ? ' platillo' : ' platillos');
+        document.getElementById('cartTotal').innerText = '$' + totalMoney.toFixed(2) + ' MXN';
+      } else {
+        bar.classList.remove('visible');
+      }
+    }
+
+    function openCheckout() {
+      const listEl = document.getElementById('orderItemsList');
+      listEl.innerHTML = '';
+      let totalMoney = 0;
+      for (const key in cart) {
+        const item = cart[key];
+        const sub = item.qty * item.price;
+        totalMoney += sub;
+        listEl.innerHTML += `
+          <div class="order-item-row">
+            <div><strong>${item.qty}x</strong> ${item.name}</div>
+            <div style="font-weight: 700;">$${sub.toFixed(2)}</div>
+          </div>
+        `;
+      }
+      document.getElementById('modalTotal').innerText = '$' + totalMoney.toFixed(2) + ' MXN';
+      document.getElementById('checkoutModal').classList.add('active');
+    }
+
+    function closeCheckout() {
+      document.getElementById('checkoutModal').classList.remove('active');
+    }
+
+    function setOrderType(type) {
+      orderType = type;
+      if (document.getElementById('btnDomicilio')) {
+        document.getElementById('btnDomicilio').className = 'type-btn' + (type.includes('Domicilio') ? ' active' : '');
+      }
+      document.getElementById('btnLlevar').className = 'type-btn' + (type.includes('Llevar') ? ' active' : '');
+      document.getElementById('btnLocal').className = 'type-btn' + (type.includes('Aquí') || type.includes('Mesa') ? ' active' : '');
+      const addrEl = document.getElementById('addrGroup');
+      if (addrEl) {
+        addrEl.style.display = type.includes('Domicilio') ? 'block' : 'none';
+      }
+      const tableEl = document.getElementById('tableGroup');
+      if (tableEl) {
+        tableEl.style.display = (type.includes('Aquí') || type.includes('Mesa')) ? 'block' : 'none';
+      }
+    }
+
+    function setPaymentMethod(method) {
+      paymentMethod = method;
+      const isCash = (method === 'Efectivo 💵' || method === 'Efectivo');
+      document.getElementById('btnEfectivo').className = 'pay-btn' + (isCash ? ' active' : '');
+      const altBtn = document.getElementById('btnAltPay') || document.getElementById('btnTransf');
+      if (altBtn) {
+        altBtn.className = 'pay-btn' + (!isCash ? ' active' : '');
+      }
+      document.getElementById('cambioGroup').style.display = isCash ? 'block' : 'none';
+    }
+
+    function sendOrderWhatsApp() {
+      const name = document.getElementById('custName').value.trim() || 'Cliente';
+      const addrEl = document.getElementById('custAddr');
+      const addr = addrEl ? addrEl.value.trim() : '';
+      const tableEl = document.getElementById('custTable');
+      const tableNum = tableEl ? tableEl.value.trim() : '';
+      const notes = document.getElementById('custNotes').value.trim();
+      const cambio = document.getElementById('custCambio').value.trim();
+
+      let totalMoney = 0;
+      let msg = '👋 ¡Hola ' + businessName + '! Quiero hacer el siguiente pedido:\n\n';
+
+      for (const key in cart) {
+        const item = cart[key];
+        const sub = item.qty * item.price;
+        totalMoney += sub;
+        msg += '• ' + item.qty + 'x ' + item.name + ' ($' + sub.toFixed(2) + ')\n';
+      }
+
+      msg += '\n💰 *Total:* $' + totalMoney.toFixed(2) + ' MXN\n';
+      msg += '📍 *Tipo:* ' + orderType + '\n';
+      if ((orderType.includes('Mesa') || orderType.includes('Aquí')) && tableNum) {
+        msg += '🪑 *Mesa:* ' + tableNum + '\n';
+      }
+      msg += '💳 *Pago:* ' + paymentMethod;
+      if (paymentMethod.includes('Efectivo') && cambio) {
+        msg += ' (' + cambio + ')';
+      }
+      msg += '\n👤 *Cliente:* ' + name + '\n';
+      if (orderType.includes('Domicilio') && addr) {
+        msg += '🏠 *Dirección:* ' + addr + '\n';
+      }
+      if (notes) {
+        msg += '📝 *Notas:* ' + notes + '\n';
+      }
+      msg += '\n¿Me confirman tiempo de espera? ¡Muchas gracias!';
+
+      const waUrl = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(msg);
+      window.open(waUrl, '_blank');
+    }
+
+    function shareMenu() {
+      const shareUrl = window.location.href;
+      if (navigator.share) {
+        navigator.share({
+          title: businessName + ' - Menú Digital',
+          text: '¡Checa el menú y promociones de ' + businessName + '!',
+          url: shareUrl
+        }).catch(() => {});
+      } else {
+        const waShare = 'https://api.whatsapp.com/send?text=' + encodeURIComponent('¡Hola! Checa el menú digital de ' + businessName + ' y pide directo: ' + shareUrl);
+        window.open(waShare, '_blank');
+      }
+    }
+
+    function filterCategory(catName, btn) {
+      document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      
+      const searchEl = document.getElementById('searchInput');
+      if (searchEl && searchEl.value) {
+        searchEl.value = '';
+      }
+      const noRes = document.getElementById('noSearchResults');
+      if (noRes) noRes.style.display = 'none';
+
+      const sections = document.querySelectorAll('.category-section');
+      sections.forEach(sec => {
+        if (catName === 'all' || sec.getAttribute('data-category') === catName) {
+          sec.style.display = 'block';
+          sec.querySelectorAll('.item-card').forEach(card => card.style.display = 'flex');
+        } else {
+          sec.style.display = 'none';
+        }
+      });
+    }
+
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+      searchInput.addEventListener('input', function(e) {
+        const rawQ = e.target.value;
+        const q = rawQ.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").trim();
+        const allSections = document.querySelectorAll('.category-section');
+        const activeCatBtn = document.querySelector('.cat-btn.active');
+        const activeCategory = activeCatBtn ? (activeCatBtn.getAttribute('data-cat-target') || 'all') : 'all';
+
+        let noRes = document.getElementById('noSearchResults');
+
+        if (!q) {
+          allSections.forEach(sec => {
+            const secCat = sec.getAttribute('data-category');
+            if (activeCategory === 'all' || secCat === activeCategory) {
+              sec.style.display = 'block';
+              sec.querySelectorAll('.item-card').forEach(c => c.style.display = 'flex');
+            } else {
+              sec.style.display = 'none';
+            }
+          });
+          if (noRes) noRes.style.display = 'none';
+          return;
+        }
+
+        let totalMatches = 0;
+        allSections.forEach(sec => {
+          let sectionMatches = 0;
+          const secCat = (sec.getAttribute('data-category') || '').toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+
+          sec.querySelectorAll('.item-card').forEach(card => {
+            const name = (card.getAttribute('data-name') || '').normalize("NFD").replace(/[̀-ͯ]/g, "");
+            const desc = (card.getAttribute('data-desc') || '').normalize("NFD").replace(/[̀-ͯ]/g, "");
+            const cat = (card.getAttribute('data-category') || '').normalize("NFD").replace(/[̀-ͯ]/g, "");
+
+            if (name.includes(q) || desc.includes(q) || cat.includes(q) || secCat.includes(q)) {
+              card.style.display = 'flex';
+              sectionMatches++;
+              totalMatches++;
+            } else {
+              card.style.display = 'none';
+            }
+          });
+
+          if (sectionMatches > 0) {
+            sec.style.display = 'block';
+          } else {
+            sec.style.display = 'none';
+          }
+        });
+
+        if (!noRes) {
+          noRes = document.createElement('div');
+          noRes.id = 'noSearchResults';
+          noRes.style.cssText = 'text-align: center; padding: 36px 20px; color: #64748b; font-size: 0.95rem; font-weight: 600; line-height: 1.5;';
+          const menuContainer = document.querySelector('.menu-container');
+          if (menuContainer) menuContainer.prepend(noRes);
+        }
+
+        if (totalMatches === 0) {
+          noRes.innerHTML = '🔍 No se encontraron platillos con "<strong>' + rawQ + '</strong>".<br><span style="font-size:0.84rem;font-weight:normal;opacity:0.85;">Intenta buscar por ingrediente o categoría.</span>';
+          noRes.style.display = 'block';
+        } else {
+          noRes.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
