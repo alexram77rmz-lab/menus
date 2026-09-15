@@ -119,6 +119,11 @@
       color: #ffffff !important;
       box-shadow: 0 2px 10px rgba(24, 119, 242, 0.35);
     }
+    .pill-waiter {
+      background: linear-gradient(135deg, #6366f1, #4f46e5) !important;
+      color: #ffffff !important;
+      box-shadow: 0 2px 10px rgba(99, 102, 241, 0.4);
+    }
     .brand-logo-wrap {
       margin-bottom: 14px;
       display: flex;
@@ -572,6 +577,7 @@
           💬 WhatsApp
         </a>
       
+      
       <button onclick="shareMenu()" class="action-pill">
         📤 Compartir Menú
       </button>
@@ -930,7 +936,89 @@
     </div>
   </div>
 
+  <!-- Modal Llamar al Mesero / Pedir Cuenta -->
+  <div class="modal-overlay" id="waiterModal" onclick="closeWaiterModal()">
+    <div class="modal-sheet" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3 class="modal-title">🛎️ Asistencia en Mesa</h3>
+        <button class="modal-close" onclick="closeWaiterModal()">✕</button>
+      </div>
+
+      <div class="form-group" style="margin-top: 10px;">
+        <label>Número o Ubicación de Mesa:</label>
+        <input type="text" id="waiterTableNum" class="form-control" placeholder="Ej. Mesa 4 o En Barra">
+      </div>
+
+      <div class="form-group">
+        <label>¿Qué necesitas?</label>
+        <div class="type-selector">
+          <div class="type-btn active" id="btnReqMesero" onclick="setWaiterReq('mesero')">🙋‍♂️ Llamar Mesero</div>
+          <div class="type-btn" id="btnReqCuenta" onclick="setWaiterReq('cuenta')">💵 La Cuenta</div>
+        </div>
+      </div>
+
+      <div class="form-group" id="cuentaPayGroup" style="display: none;">
+        <label>¿Cómo deseas pagar tu cuenta?</label>
+        <div class="pay-selector">
+          <div class="pay-btn active" id="btnCuentaEfec" onclick="setCuentaPay('Efectivo 💵')">Efectivo 💵</div>
+          <div class="pay-btn" id="btnCuentaTarj" onclick="setCuentaPay('Tarjeta 💳 (Terminal)')">Tarjeta 💳 (Terminal)</div>
+        </div>
+      </div>
+
+      <button class="btn-whatsapp" onclick="sendWaiterWhatsApp()" style="margin-top: 14px;">
+        <span>Enviar Aviso por WhatsApp</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.969.54 1.861.855 2.796.855 3.18 0 5.767-2.587 5.767-5.766.001-3.18-2.585-5.766-5.767-5.766zm9.969 5.766c0 5.518-4.482 10-10 10-1.748 0-3.414-.452-4.887-1.258l-5.113 1.338 1.365-4.992c-.933-1.536-1.465-3.328-1.465-5.088 0-5.518 4.482-10 10-10 5.518 0 10 4.482 10 10z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
   <script>
+    let waiterReqType = 'mesero';
+    let cuentaPayMethod = 'Efectivo 💵';
+
+    function openWaiterModal() {
+      const tableEl = document.getElementById('custTable');
+      const waiterTable = document.getElementById('waiterTableNum');
+      if (tableEl && waiterTable && tableEl.value) {
+        waiterTable.value = tableEl.value;
+      } else if (tableParam && waiterTable && !waiterTable.value) {
+        waiterTable.value = isNaN(tableParam) ? tableParam : 'Mesa ' + tableParam;
+      }
+      document.getElementById('waiterModal').classList.add('active');
+    }
+
+    function closeWaiterModal() {
+      document.getElementById('waiterModal').classList.remove('active');
+    }
+
+    function setWaiterReq(type) {
+      waiterReqType = type;
+      document.getElementById('btnReqMesero').className = 'type-btn' + (type === 'mesero' ? ' active' : '');
+      document.getElementById('btnReqCuenta').className = 'type-btn' + (type === 'cuenta' ? ' active' : '');
+      document.getElementById('cuentaPayGroup').style.display = (type === 'cuenta' ? 'block' : 'none');
+    }
+
+    function setCuentaPay(method) {
+      cuentaPayMethod = method;
+      document.getElementById('btnCuentaEfec').className = 'pay-btn' + (method.includes('Efectivo') ? ' active' : '');
+      document.getElementById('btnCuentaTarj').className = 'pay-btn' + (!method.includes('Efectivo') ? ' active' : '');
+    }
+
+    function sendWaiterWhatsApp() {
+      const tableNum = (document.getElementById('waiterTableNum').value.trim()) || 'una mesa';
+      let msg = '';
+      if (waiterReqType === 'cuenta') {
+        msg = '👋 ¡Hola ' + businessName + '! 💵\n\nEn *' + tableNum + '* solicitamos la cuenta, por favor.\n💳 *Método de pago:* ' + cuentaPayMethod + '\n\n¡Muchas gracias!';
+      } else {
+        msg = '👋 ¡Hola ' + businessName + '! 🛎️\n\nEn *' + tableNum + '* solicitamos la atención de un mesero en la mesa, por favor.\n\n¡Muchas gracias!';
+      }
+      const waUrl = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(msg);
+      window.open(waUrl, '_blank');
+      closeWaiterModal();
+    }
+
     function zoomItemImg(src, title) {
       const modal = document.getElementById('imgZoomModal');
       if (modal) {
