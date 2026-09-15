@@ -465,9 +465,11 @@
       max-width: 580px;
       border-top-left-radius: 24px;
       border-top-right-radius: 24px;
-      padding: 24px;
+      padding: 24px 24px 36px 24px;
       max-height: 85vh;
       overflow-y: auto;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
       animation: slideUp 0.25s ease-out;
     }
     @keyframes slideUp {
@@ -1234,12 +1236,13 @@
 
     function setPaymentMethod(method) {
       paymentMethod = method;
-      document.getElementById('btnEfectivo').className = 'pay-btn' + (method.includes('Efectivo') ? ' active' : '');
+      const isCash = (method === 'Efectivo 💵' || method === 'Efectivo');
+      document.getElementById('btnEfectivo').className = 'pay-btn' + (isCash ? ' active' : '');
       const altBtn = document.getElementById('btnAltPay') || document.getElementById('btnTransf');
       if (altBtn) {
-        altBtn.className = 'pay-btn' + (!method.includes('Efectivo') ? ' active' : '');
+        altBtn.className = 'pay-btn' + (!isCash ? ' active' : '');
       }
-      document.getElementById('cambioGroup').style.display = method.includes('Efectivo') ? 'block' : 'none';
+      document.getElementById('cambioGroup').style.display = isCash ? 'block' : 'none';
     }
 
     function sendOrderWhatsApp() {
