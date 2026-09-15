@@ -557,7 +557,7 @@
 </head>
 <body>
 
-  <div class="delivery-bar">🦐 ¡Elaborados al momento con marisco fresco garantizado! Pide en mesa o por WhatsApp.</div>
+  <div class="delivery-bar">🦐 ¡Elaborados al momento con marisco fresco garantizado! Disfruta en mesa o pide para llevar por WhatsApp.</div>
 
   <header>
     
@@ -1640,8 +1640,8 @@
 
       <div class="form-group">
         <label>¿Cómo deseas tu pedido?</label>
-        <div class="type-selector three-col">
-          <div class="type-btn active" id="btnDomicilio" onclick="setOrderType('A Domicilio 🛵')">A Domicilio 🛵</div>
+        <div class="type-selector ">
+          
           
             <div class="type-btn active" id="btnLocal" onclick="setOrderType('En Mesa 🍽️')">En Mesa 🍽️</div>
             <div class="type-btn" id="btnLlevar" onclick="setOrderType('Para Llevar 🥡')">Para Llevar 🥡</div>
@@ -1672,11 +1672,6 @@
         <input type="text" id="custName" class="form-control" placeholder="Ej. Carlos">
       </div>
 
-      
-      <div class="form-group" id="addrGroup">
-        <label>Dirección de entrega (calle, número y colonia):</label>
-        <input type="text" id="custAddr" class="form-control" placeholder="Calle, número exterior/interior y colonia">
-      </div>
       
 
       <div class="form-group">
@@ -1800,7 +1795,7 @@
 
     const phone = "523313205523";
     const businessName = "LOS PINCHES PREPARADOS";
-    const hasDelivery = true;
+    const hasDelivery = false;
     const tableMode = true;
     let cart = {};
     let orderType = tableMode ? 'En Mesa 🍽️' : (hasDelivery ? 'A Domicilio 🛵' : 'Para Llevar 🥡');
