@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>LOS PINCHES PREPARADOS - Menú Digital & Reseñas</title>
-  <meta name="description" content="Mariscos Estilo Carreta · Mariscos Frescos y Bebidas Preparadas">
+  <meta name="description" content="Mariscos Estilo Carreta · Alitas, Boneless & Bebidas Preparadas">
   
   <!-- OpenGraph para WhatsApp, Telegram y Redes Sociales -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="LOS PINCHES PREPARADOS 📱 Menú Digital Oficial">
-  <meta property="og:description" content="Mariscos Estilo Carreta · Mariscos Frescos y Bebidas Preparadas">
+  <meta property="og:description" content="Mariscos Estilo Carreta · Alitas, Boneless & Bebidas Preparadas">
   <meta property="og:image" content="https://alexram77rmz-lab.github.io/menus/preparados/codigo_qr_para_imprimir.png">
   <meta property="og:url" content="https://alexram77rmz-lab.github.io/menus/preparados">
   <meta name="theme-color" content="#0284c7">
@@ -213,6 +213,39 @@
       top: 50%;
       transform: translateY(-50%);
       color: #94a3b8;
+    }
+
+    /* Tabs Principales de Carta (Ej. Mariscos vs Alitas) */
+    .menu-tabs-bar {
+      display: flex;
+      background: #e2e8f0;
+      padding: 5px;
+      border-radius: 18px;
+      gap: 6px;
+      margin-bottom: 12px;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.04);
+    }
+    .menu-tab-btn {
+      flex: 1;
+      padding: 10px 14px;
+      border: none;
+      border-radius: 14px;
+      background: transparent;
+      font-weight: 800;
+      font-size: 0.88rem;
+      color: #475569;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+    .menu-tab-btn.active {
+      background: white;
+      color: var(--primary);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     /* Categorías */
@@ -557,16 +590,16 @@
 </head>
 <body>
 
-  <div class="delivery-bar">🦐 ¡Elaborados al momento con marisco fresco garantizado! Disfruta en mesa o pide para llevar por WhatsApp.</div>
+  <div class="delivery-bar">🦐🍗 ¡Elaborados al momento garantizando frescura y sabor! Disfruta en mesa o pide para llevar.</div>
 
   <header>
     
     <div class="badge-schedule" onclick="scrollToSchedule()">
       <span class="badge-dot open"></span>
-      <span id="headerScheduleText">Miércoles a Lunes: 2:00 PM - 10:00 PM</span>
+      <span id="headerScheduleText">Miércoles a Lunes: 12:00 PM - 9:00 PM (Cerramos Martes)</span>
     </div>
     <h1>LOS PINCHES PREPARADOS</h1>
-    <p class="slogan">Mariscos Estilo Carreta · Mariscos Frescos y Bebidas Preparadas</p>
+    <p class="slogan">Mariscos Estilo Carreta · Alitas, Boneless & Bebidas Preparadas</p>
 
     <div class="quick-actions">
       
@@ -605,60 +638,104 @@
     </div>
   </div>
 
+  
+  <div style="padding: 0 20px; max-width: 600px; margin: 0 auto;">
+    <div class="menu-tabs-bar" id="menuTabsBar">
+      
+        <button class="menu-tab-btn active" data-tab-target="mariscos" onclick="switchMenuTab('mariscos', this)">
+          🦐 Mariscos & Carreta
+        </button>
+      
+        <button class="menu-tab-btn " data-tab-target="alitas" onclick="switchMenuTab('alitas', this)">
+          🍗 Alitas & Snacks
+        </button>
+      
+        <button class="menu-tab-btn " data-tab-target="bebidas" onclick="switchMenuTab('bebidas', this)">
+          🍺 Bebidas & Barra
+        </button>
+      
+    </div>
+  </div>
+  
+
   <div class="search-box">
     <span class="search-icon">🔍</span>
-    <input type="text" id="searchInput" class="search-input" placeholder="Buscar aguachile, ceviche, torre, charola, mariscoco, coctel, miche...">
+    <input type="text" id="searchInput" class="search-input" placeholder="Buscar alitas, boneless, combo, aguachile, torre, miche...">
   </div>
 
   <div class="categories-bar" id="categoryBar">
     <button class="cat-btn active" data-cat-target="all" onclick="filterCategory('all', this)">Todos</button>
     
-      <button class="cat-btn" data-cat-target="Aguachiles & Aguachicoco" onclick="filterCategory('Aguachiles & Aguachicoco', this)">
+      <button class="cat-btn" data-tab="mariscos" data-cat-target="Aguachiles & Aguachicoco" onclick="filterCategory('Aguachiles & Aguachicoco', this)">
         🌶️ Aguachiles & Aguachicoco
       </button>
     
-      <button class="cat-btn" data-cat-target="Ceviches Frescos (Por Litro y Medio)" onclick="filterCategory('Ceviches Frescos (Por Litro y Medio)', this)">
+      <button class="cat-btn" data-tab="mariscos" data-cat-target="Ceviches Frescos (Por Litro y Medio)" onclick="filterCategory('Ceviches Frescos (Por Litro y Medio)', this)">
         🥣 Ceviches Frescos (Por Litro y Medio)
       </button>
     
-      <button class="cat-btn" data-cat-target="Cocteles de Mariscos" onclick="filterCategory('Cocteles de Mariscos', this)">
+      <button class="cat-btn" data-tab="mariscos" data-cat-target="Cocteles de Mariscos" onclick="filterCategory('Cocteles de Mariscos', this)">
         🍸 Cocteles de Mariscos
       </button>
     
-      <button class="cat-btn" data-cat-target="Charolas, Botanas Especiales & Cecina" onclick="filterCategory('Charolas, Botanas Especiales & Cecina', this)">
+      <button class="cat-btn" data-tab="mariscos" data-cat-target="Charolas, Botanas Especiales & Cecina" onclick="filterCategory('Charolas, Botanas Especiales & Cecina', this)">
         🍱 Charolas, Botanas Especiales & Cecina
       </button>
     
-      <button class="cat-btn" data-cat-target="Las Pinches Botanas & Tacos" onclick="filterCategory('Las Pinches Botanas & Tacos', this)">
+      <button class="cat-btn" data-tab="mariscos" data-cat-target="Las Pinches Botanas & Tacos" onclick="filterCategory('Las Pinches Botanas & Tacos', this)">
         🍤 Las Pinches Botanas & Tacos
       </button>
     
-      <button class="cat-btn" data-cat-target="Miche Botanas & Micheladas" onclick="filterCategory('Miche Botanas & Micheladas', this)">
+      <button class="cat-btn" data-tab="alitas" data-cat-target="Combos Pinches (Alitas & Boneless)" onclick="filterCategory('Combos Pinches (Alitas & Boneless)', this)">
+        ⭐ Combos Pinches (Alitas & Boneless)
+      </button>
+    
+      <button class="cat-btn" data-tab="alitas" data-cat-target="Alitas Crujientes" onclick="filterCategory('Alitas Crujientes', this)">
+        🍗 Alitas Crujientes
+      </button>
+    
+      <button class="cat-btn" data-tab="alitas" data-cat-target="Boneless Especiales" onclick="filterCategory('Boneless Especiales', this)">
+        🍖 Boneless Especiales
+      </button>
+    
+      <button class="cat-btn" data-tab="alitas" data-cat-target="Papas a la Francesa & Gajo" onclick="filterCategory('Papas a la Francesa & Gajo', this)">
+        🍟 Papas a la Francesa & Gajo
+      </button>
+    
+      <button class="cat-btn" data-tab="alitas" data-cat-target="Dedos de Queso & Botanas" onclick="filterCategory('Dedos de Queso & Botanas', this)">
+        🧀 Dedos de Queso & Botanas
+      </button>
+    
+      <button class="cat-btn" data-tab="bebidas" data-cat-target="Miche Botanas & Micheladas" onclick="filterCategory('Miche Botanas & Micheladas', this)">
         🍺 Miche Botanas & Micheladas
       </button>
     
-      <button class="cat-btn" data-cat-target="Los Pinches Preparados & Coctelería" onclick="filterCategory('Los Pinches Preparados & Coctelería', this)">
+      <button class="cat-btn" data-tab="bebidas" data-cat-target="Los Pinches Preparados & Coctelería" onclick="filterCategory('Los Pinches Preparados & Coctelería', this)">
         🍹 Los Pinches Preparados & Coctelería
       </button>
     
-      <button class="cat-btn" data-cat-target="Caguamas, Cubetas & Six" onclick="filterCategory('Caguamas, Cubetas & Six', this)">
+      <button class="cat-btn" data-tab="bebidas" data-cat-target="Caguamas, Cubetas & Six" onclick="filterCategory('Caguamas, Cubetas & Six', this)">
         🧊 Caguamas, Cubetas & Six
+      </button>
+    
+      <button class="cat-btn" data-tab="bebidas" data-cat-target="Refrescos & Sin Alcohol" onclick="filterCategory('Refrescos & Sin Alcohol', this)">
+        🥤 Refrescos & Sin Alcohol
       </button>
     
   </div>
 
   <main class="menu-container">
     
-      <section class="category-section" data-category="Aguachiles & Aguachicoco">
+      <section class="category-section" data-tab="mariscos" data-category="Aguachiles & Aguachicoco">
         <h2 class="category-title">🌶️ Aguachiles & Aguachicoco</h2>
+        <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">Salsas a elegir: Chiltepín, Verde, Rojo, Salsas Negras o Salsa Macha.</p>
         
-        
-          <div class="item-card" data-name="aguachile tradicional (1/2 litro)" data-desc="camarones frescos curtidos al momento. elige tu salsa favorita: chiltepín, verde, rojo, salsas negras o salsa macha." data-category="aguachiles & aguachicoco">
+          <div class="item-card" data-name="aguachile tradicional (1/2 litro)" data-desc="camarones frescos curtidos al momento. elige tu salsa: chiltepín, verde, rojo, salsas negras o salsa macha." data-category="aguachiles & aguachicoco">
             
             <div class="item-info">
               <span class="item-badge">1/2 Litro 🔥</span>
               <div class="item-name">Aguachile Tradicional (1/2 Litro)</div>
-              <p class="item-desc">Camarones frescos curtidos al momento. Elige tu salsa favorita: Chiltepín, Verde, Rojo, Salsas Negras o Salsa Macha.</p>
+              <p class="item-desc">Camarones frescos curtidos al momento. Elige tu salsa: Chiltepín, Verde, Rojo, Salsas Negras o Salsa Macha.</p>
               <div class="item-price">$170.00 MXN</div>
             </div>
             <div class="item-stepper">
@@ -668,12 +745,12 @@
             </div>
           </div>
           
-          <div class="item-card" data-name="aguachile tradicional (1 litro completo)" data-desc="porción completa de 1 litro de camarones frescos. salsa a tu elección: chiltepín, verde, rojo, salsas negras o salsa macha." data-category="aguachiles & aguachicoco">
+          <div class="item-card" data-name="aguachile tradicional (1 litro completo)" data-desc="porción generosa de 1 litro de camarones frescos con cebolla morada y pepino." data-category="aguachiles & aguachicoco">
             
             <div class="item-info">
               <span class="item-badge">1 Litro Familiar 👑</span>
               <div class="item-name">Aguachile Tradicional (1 Litro Completo)</div>
-              <p class="item-desc">Porción completa de 1 litro de camarones frescos. Salsa a tu elección: Chiltepín, Verde, Rojo, Salsas Negras o Salsa Macha.</p>
+              <p class="item-desc">Porción generosa de 1 litro de camarones frescos con cebolla morada y pepino.</p>
               <div class="item-price">$280.00 MXN</div>
             </div>
             <div class="item-stepper">
@@ -683,12 +760,12 @@
             </div>
           </div>
           
-          <div class="item-card" data-name="aguachicoco (1/2 litro)" data-desc="camarones curtidos servidos con agua y pulpa de coco natural tierno y salsa de la casa." data-category="aguachiles & aguachicoco">
+          <div class="item-card" data-name="aguachicoco (1/2 litro)" data-desc="camarones curtidos servidos con agua y pulpa fresca de coco natural tierno." data-category="aguachiles & aguachicoco">
             
             <div class="item-info">
               <span class="item-badge">1/2 Litro 🥥</span>
               <div class="item-name">Aguachicoco (1/2 Litro)</div>
-              <p class="item-desc">Camarones curtidos servidos con agua y pulpa de coco natural tierno y salsa de la casa.</p>
+              <p class="item-desc">Camarones curtidos servidos con agua y pulpa fresca de coco natural tierno.</p>
               <div class="item-price">$190.00 MXN</div>
             </div>
             <div class="item-stepper">
@@ -698,12 +775,12 @@
             </div>
           </div>
           
-          <div class="item-card" data-name="aguachicoco (1 litro completo)" data-desc="el consentido de la casa: camarones con pulpa de coco natural en porción generosa de 1 litro." data-category="aguachiles & aguachicoco">
+          <div class="item-card" data-name="aguachicoco (1 litro completo)" data-desc="el consentido de la casa: camarones con coco natural en porción grande de 1 litro." data-category="aguachiles & aguachicoco">
             
             <div class="item-info">
               <span class="item-badge">1 Litro 🥥👑</span>
               <div class="item-name">Aguachicoco (1 Litro Completo)</div>
-              <p class="item-desc">El consentido de la casa: camarones con pulpa de coco natural en porción generosa de 1 litro.</p>
+              <p class="item-desc">El consentido de la casa: camarones con coco natural en porción grande de 1 litro.</p>
               <div class="item-price">$300.00 MXN</div>
             </div>
             <div class="item-stepper">
@@ -715,16 +792,16 @@
           
       </section>
     
-      <section class="category-section" data-category="Ceviches Frescos (Por Litro y Medio)">
+      <section class="category-section" data-tab="mariscos" data-category="Ceviches Frescos (Por Litro y Medio)">
         <h2 class="category-title">🥣 Ceviches Frescos (Por Litro y Medio)</h2>
         
         
-          <div class="item-card" data-name="ceviche especial de mariscos (1 litro)" data-desc="mariscos a elegir: camarón cocido, camarón curtido, pulpo, calamar o atún fresco con verduras y salsas." data-category="ceviches frescos (por litro y medio)">
+          <div class="item-card" data-name="ceviche especial de mariscos (1 litro)" data-desc="mariscos a elegir: camarón cocido, curtido, pulpo, calamar o atún fresco con verduras y salsas." data-category="ceviches frescos (por litro y medio)">
             
             <div class="item-info">
               <span class="item-badge">1 Litro Mixto ⭐</span>
               <div class="item-name">Ceviche Especial de Mariscos (1 Litro)</div>
-              <p class="item-desc">Mariscos a elegir: camarón cocido, camarón curtido, pulpo, calamar o atún fresco con verduras y salsas.</p>
+              <p class="item-desc">Mariscos a elegir: camarón cocido, curtido, pulpo, calamar o atún fresco con verduras y salsas.</p>
               <div class="item-price">$300.00 MXN</div>
             </div>
             <div class="item-stepper">
@@ -734,12 +811,12 @@
             </div>
           </div>
           
-          <div class="item-card" data-name="ceviche especial de mariscos (1/2 litro)" data-desc="mariscos a elegir: camarón cocido, camarón curtido, pulpo, calamar o atún fresco." data-category="ceviches frescos (por litro y medio)">
+          <div class="item-card" data-name="ceviche especial de mariscos (1/2 litro)" data-desc="mariscos a elegir: camarón cocido, curtido, pulpo, calamar o atún fresco." data-category="ceviches frescos (por litro y medio)">
             
             <div class="item-info">
               <span class="item-badge">1/2 Litro</span>
               <div class="item-name">Ceviche Especial de Mariscos (1/2 Litro)</div>
-              <p class="item-desc">Mariscos a elegir: camarón cocido, camarón curtido, pulpo, calamar o atún fresco.</p>
+              <p class="item-desc">Mariscos a elegir: camarón cocido, curtido, pulpo, calamar o atún fresco.</p>
               <div class="item-price">$170.00 MXN</div>
             </div>
             <div class="item-stepper">
@@ -841,7 +918,7 @@
           
       </section>
     
-      <section class="category-section" data-category="Cocteles de Mariscos">
+      <section class="category-section" data-tab="mariscos" data-category="Cocteles de Mariscos">
         <h2 class="category-title">🍸 Cocteles de Mariscos</h2>
         
         
@@ -892,7 +969,7 @@
           
       </section>
     
-      <section class="category-section" data-category="Charolas, Botanas Especiales & Cecina">
+      <section class="category-section" data-tab="mariscos" data-category="Charolas, Botanas Especiales & Cecina">
         <h2 class="category-title">🍱 Charolas, Botanas Especiales & Cecina</h2>
         
         
@@ -973,7 +1050,7 @@
           
       </section>
     
-      <section class="category-section" data-category="Las Pinches Botanas & Tacos">
+      <section class="category-section" data-tab="mariscos" data-category="Las Pinches Botanas & Tacos">
         <h2 class="category-title">🍤 Las Pinches Botanas & Tacos</h2>
         
         
@@ -1159,7 +1236,281 @@
           
       </section>
     
-      <section class="category-section" data-category="Miche Botanas & Micheladas">
+      <section class="category-section" data-tab="alitas" data-category="Combos Pinches (Alitas & Boneless)">
+        <h2 class="category-title">⭐ Combos Pinches (Alitas & Boneless)</h2>
+        <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">¡Los paquetes más pedidos para comer sabroso y botanear!</p>
+        
+          <div class="item-card" data-name="combo pinche (con michelada)" data-desc="250 g de boneless crujientes bañados en tu salsa favorita + papas a la francesa + 1 michelada preparada bien fría." data-category="combos pinches (alitas & boneless)">
+            
+              <div class="item-img-wrap" onclick="zoomItemImg('images/flyer_alitas.jpg', 'Combo Pinche (Con Michelada)')">
+                <img src="images/flyer_alitas.jpg" alt="Combo Pinche (Con Michelada)" class="item-img" loading="lazy">
+              </div>
+            
+            <div class="item-info">
+              <span class="item-badge">El Consentido 🍻⭐</span>
+              <div class="item-name">Combo Pinche (Con Michelada)</div>
+              <p class="item-desc">250 g de boneless crujientes bañados en tu salsa favorita + Papas a la francesa + 1 Michelada preparada bien fría.</p>
+              <div class="item-price">$199.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Combos_Pinches__Alitas___Boneless__0', 'Combo Pinche (Con Michelada)', 199, -1)">-</button>
+              <span class="step-count" id="count_Combos_Pinches__Alitas___Boneless__0">0</span>
+              <button class="step-btn" onclick="updateQty('Combos_Pinches__Alitas___Boneless__0', 'Combo Pinche (Con Michelada)', 199, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="combo alitas" data-desc="10 alitas crujientes bañadas en tu salsa favorita + papas a la francesa doradas." data-category="combos pinches (alitas & boneless)">
+            
+            <div class="item-info">
+              <span class="item-badge">Combo Alitas 🍗</span>
+              <div class="item-name">Combo Alitas</div>
+              <p class="item-desc">10 Alitas crujientes bañadas en tu salsa favorita + Papas a la francesa doradas.</p>
+              <div class="item-price">$189.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Combos_Pinches__Alitas___Boneless__1', 'Combo Alitas', 189, -1)">-</button>
+              <span class="step-count" id="count_Combos_Pinches__Alitas___Boneless__1">0</span>
+              <button class="step-btn" onclick="updateQty('Combos_Pinches__Alitas___Boneless__1', 'Combo Alitas', 189, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="combo boneless" data-desc="250 g de boneless tiernos y crujientes + papas a la francesa doradas." data-category="combos pinches (alitas & boneless)">
+            
+            <div class="item-info">
+              <span class="item-badge">Individual 🔥</span>
+              <div class="item-name">Combo Boneless</div>
+              <p class="item-desc">250 g de boneless tiernos y crujientes + Papas a la francesa doradas.</p>
+              <div class="item-price">$129.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Combos_Pinches__Alitas___Boneless__2', 'Combo Boneless', 129, -1)">-</button>
+              <span class="step-count" id="count_Combos_Pinches__Alitas___Boneless__2">0</span>
+              <button class="step-btn" onclick="updateQty('Combos_Pinches__Alitas___Boneless__2', 'Combo Boneless', 129, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="combo doble (para pareja)" data-desc="500 g de boneless crujientes con salsa al gusto + papas a la francesa + 2 micheladas preparadas heladas." data-category="combos pinches (alitas & boneless)">
+            
+            <div class="item-info">
+              <span class="item-badge">Para Compartir 👩‍❤️‍👨</span>
+              <div class="item-name">Combo Doble (Para Pareja)</div>
+              <p class="item-desc">500 g de boneless crujientes con salsa al gusto + Papas a la francesa + 2 Micheladas preparadas heladas.</p>
+              <div class="item-price">$329.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Combos_Pinches__Alitas___Boneless__3', 'Combo Doble (Para Pareja)', 329, -1)">-</button>
+              <span class="step-count" id="count_Combos_Pinches__Alitas___Boneless__3">0</span>
+              <button class="step-btn" onclick="updateQty('Combos_Pinches__Alitas___Boneless__3', 'Combo Doble (Para Pareja)', 329, 1)">+</button>
+            </div>
+          </div>
+          
+      </section>
+    
+      <section class="category-section" data-tab="alitas" data-category="Alitas Crujientes">
+        <h2 class="category-title">🍗 Alitas Crujientes</h2>
+        <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">Salsas a elegir: Buffalo 🔥, BBQ 🍖, Mango Habanero 🥭, Lemon Pepper 🍋 o Salsa de la Casa 🌶️.</p>
+        
+          <div class="item-card" data-name="alitas (5 piezas)" data-desc="5 alitas crujientes bañadas en tu salsa favorita: buffalo, bbq, mango habanero, lemon pepper o salsa de la casa." data-category="alitas crujientes">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Alitas (5 Piezas)</div>
+              <p class="item-desc">5 Alitas crujientes bañadas en tu salsa favorita: Buffalo, BBQ, Mango Habanero, Lemon Pepper o Salsa de la casa.</p>
+              <div class="item-price">$89.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Alitas_Crujientes_0', 'Alitas (5 Piezas)', 89, -1)">-</button>
+              <span class="step-count" id="count_Alitas_Crujientes_0">0</span>
+              <button class="step-btn" onclick="updateQty('Alitas_Crujientes_0', 'Alitas (5 Piezas)', 89, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="alitas (10 piezas)" data-desc="10 alitas doradas y jugosas bañadas en tu salsa favorita con aderezo." data-category="alitas crujientes">
+            
+            <div class="item-info">
+              <span class="item-badge">10 Piezas ⭐</span>
+              <div class="item-name">Alitas (10 Piezas)</div>
+              <p class="item-desc">10 Alitas doradas y jugosas bañadas en tu salsa favorita con aderezo.</p>
+              <div class="item-price">$159.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Alitas_Crujientes_1', 'Alitas (10 Piezas)', 159, -1)">-</button>
+              <span class="step-count" id="count_Alitas_Crujientes_1">0</span>
+              <button class="step-btn" onclick="updateQty('Alitas_Crujientes_1', 'Alitas (10 Piezas)', 159, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="alitas (15 piezas)" data-desc="15 alitas crujientes bañadas en tu salsa favorita. ideal para compartir." data-category="alitas crujientes">
+            
+            <div class="item-info">
+              <span class="item-badge">Familiar 👑</span>
+              <div class="item-name">Alitas (15 Piezas)</div>
+              <p class="item-desc">15 Alitas crujientes bañadas en tu salsa favorita. Ideal para compartir.</p>
+              <div class="item-price">$219.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Alitas_Crujientes_2', 'Alitas (15 Piezas)', 219, -1)">-</button>
+              <span class="step-count" id="count_Alitas_Crujientes_2">0</span>
+              <button class="step-btn" onclick="updateQty('Alitas_Crujientes_2', 'Alitas (15 Piezas)', 219, 1)">+</button>
+            </div>
+          </div>
+          
+      </section>
+    
+      <section class="category-section" data-tab="alitas" data-category="Boneless Especiales">
+        <h2 class="category-title">🍖 Boneless Especiales</h2>
+        <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">Pechuga de pollo empanizada y bañada en tu salsa a elegir.</p>
+        
+          <div class="item-card" data-name="boneless (250 g)" data-desc="250 gramos de tiernos trozos de pechuga crujiente bañados en tu salsa: buffalo, bbq, mango habanero, lemon pepper o salsa de la casa." data-category="boneless especiales">
+            
+            <div class="item-info">
+              <span class="item-badge">Individual 🤤</span>
+              <div class="item-name">Boneless (250 g)</div>
+              <p class="item-desc">250 gramos de tiernos trozos de pechuga crujiente bañados en tu salsa: Buffalo, BBQ, Mango Habanero, Lemon Pepper o Salsa de la casa.</p>
+              <div class="item-price">$99.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Boneless_Especiales_0', 'Boneless (250 g)', 99, -1)">-</button>
+              <span class="step-count" id="count_Boneless_Especiales_0">0</span>
+              <button class="step-btn" onclick="updateQty('Boneless_Especiales_0', 'Boneless (250 g)', 99, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="boneless (500 g)" data-desc="medio kilo (500 gramos) de jugosos boneless crujientes bañados en tu salsa favorita con aderezo y bastones." data-category="boneless especiales">
+            
+            <div class="item-info">
+              <span class="item-badge">Medio Kilo 👑</span>
+              <div class="item-name">Boneless (500 g)</div>
+              <p class="item-desc">Medio kilo (500 gramos) de jugosos boneless crujientes bañados en tu salsa favorita con aderezo y bastones.</p>
+              <div class="item-price">$169.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Boneless_Especiales_1', 'Boneless (500 g)', 169, -1)">-</button>
+              <span class="step-count" id="count_Boneless_Especiales_1">0</span>
+              <button class="step-btn" onclick="updateQty('Boneless_Especiales_1', 'Boneless (500 g)', 169, 1)">+</button>
+            </div>
+          </div>
+          
+      </section>
+    
+      <section class="category-section" data-tab="alitas" data-category="Papas a la Francesa & Gajo">
+        <h2 class="category-title">🍟 Papas a la Francesa & Gajo</h2>
+        
+        
+          <div class="item-card" data-name="papas a la francesa (150 g)" data-desc="papas clásicas doraditas y crujientes con sal y cátsup." data-category="papas a la francesa & gajo">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Papas a la Francesa (150 g)</div>
+              <p class="item-desc">Papas clásicas doraditas y crujientes con sal y cátsup.</p>
+              <div class="item-price">$45.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Papas_a_la_Francesa___Gajo_0', 'Papas a la Francesa (150 g)', 45, -1)">-</button>
+              <span class="step-count" id="count_Papas_a_la_Francesa___Gajo_0">0</span>
+              <button class="step-btn" onclick="updateQty('Papas_a_la_Francesa___Gajo_0', 'Papas a la Francesa (150 g)', 45, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="papas a la francesa (250 g)" data-desc="porción grande de 250 gramos de papas a la francesa crujientes." data-category="papas a la francesa & gajo">
+            
+            <div class="item-info">
+              <span class="item-badge">Grande 🍟</span>
+              <div class="item-name">Papas a la Francesa (250 g)</div>
+              <p class="item-desc">Porción grande de 250 gramos de papas a la francesa crujientes.</p>
+              <div class="item-price">$59.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Papas_a_la_Francesa___Gajo_1', 'Papas a la Francesa (250 g)', 59, -1)">-</button>
+              <span class="step-count" id="count_Papas_a_la_Francesa___Gajo_1">0</span>
+              <button class="step-btn" onclick="updateQty('Papas_a_la_Francesa___Gajo_1', 'Papas a la Francesa (250 g)', 59, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="papas gajo sazonadas (150 g)" data-desc="papas gajo doradas y sazonadas con especias especiales de la casa y aderezo." data-category="papas a la francesa & gajo">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Papas Gajo Sazonadas (150 g)</div>
+              <p class="item-desc">Papas gajo doradas y sazonadas con especias especiales de la casa y aderezo.</p>
+              <div class="item-price">$55.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Papas_a_la_Francesa___Gajo_2', 'Papas Gajo Sazonadas (150 g)', 55, -1)">-</button>
+              <span class="step-count" id="count_Papas_a_la_Francesa___Gajo_2">0</span>
+              <button class="step-btn" onclick="updateQty('Papas_a_la_Francesa___Gajo_2', 'Papas Gajo Sazonadas (150 g)', 55, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="papas gajo sazonadas (250 g)" data-desc="porción grande de 250 gramos de papas gajo sazonadas crujientes." data-category="papas a la francesa & gajo">
+            
+            <div class="item-info">
+              <span class="item-badge">Favoritas 🥔</span>
+              <div class="item-name">Papas Gajo Sazonadas (250 g)</div>
+              <p class="item-desc">Porción grande de 250 gramos de papas gajo sazonadas crujientes.</p>
+              <div class="item-price">$79.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Papas_a_la_Francesa___Gajo_3', 'Papas Gajo Sazonadas (250 g)', 79, -1)">-</button>
+              <span class="step-count" id="count_Papas_a_la_Francesa___Gajo_3">0</span>
+              <button class="step-btn" onclick="updateQty('Papas_a_la_Francesa___Gajo_3', 'Papas Gajo Sazonadas (250 g)', 79, 1)">+</button>
+            </div>
+          </div>
+          
+      </section>
+    
+      <section class="category-section" data-tab="alitas" data-category="Dedos de Queso & Botanas">
+        <h2 class="category-title">🧀 Dedos de Queso & Botanas</h2>
+        
+        
+          <div class="item-card" data-name="dedos de queso (5 piezas)" data-desc="5 dedos crujientes rellenos de queso mozzarella derretido con salsa cátsup o aderezo marinara." data-category="dedos de queso & botanas">
+            
+            <div class="item-info">
+              
+              <div class="item-name">Dedos de Queso (5 Piezas)</div>
+              <p class="item-desc">5 Dedos crujientes rellenos de queso mozzarella derretido con salsa cátsup o aderezo marinara.</p>
+              <div class="item-price">$69.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Dedos_de_Queso___Botanas_0', 'Dedos de Queso (5 Piezas)', 69, -1)">-</button>
+              <span class="step-count" id="count_Dedos_de_Queso___Botanas_0">0</span>
+              <button class="step-btn" onclick="updateQty('Dedos_de_Queso___Botanas_0', 'Dedos de Queso (5 Piezas)', 69, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="dedos de queso (8 piezas)" data-desc="8 dedos de queso mozzarella dorados y crujientes con aderezo." data-category="dedos de queso & botanas">
+            
+            <div class="item-info">
+              <span class="item-badge">8 Piezas 🧀</span>
+              <div class="item-name">Dedos de Queso (8 Piezas)</div>
+              <p class="item-desc">8 Dedos de queso mozzarella dorados y crujientes con aderezo.</p>
+              <div class="item-price">$99.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Dedos_de_Queso___Botanas_1', 'Dedos de Queso (8 Piezas)', 99, -1)">-</button>
+              <span class="step-count" id="count_Dedos_de_Queso___Botanas_1">0</span>
+              <button class="step-btn" onclick="updateQty('Dedos_de_Queso___Botanas_1', 'Dedos de Queso (8 Piezas)', 99, 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="item-card" data-name="dedos de queso (10 piezas)" data-desc="10 dedos de queso mozzarella crujientes para botanear en grupo." data-category="dedos de queso & botanas">
+            
+            <div class="item-info">
+              <span class="item-badge">10 Piezas 👑</span>
+              <div class="item-name">Dedos de Queso (10 Piezas)</div>
+              <p class="item-desc">10 Dedos de queso mozzarella crujientes para botanear en grupo.</p>
+              <div class="item-price">$119.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Dedos_de_Queso___Botanas_2', 'Dedos de Queso (10 Piezas)', 119, -1)">-</button>
+              <span class="step-count" id="count_Dedos_de_Queso___Botanas_2">0</span>
+              <button class="step-btn" onclick="updateQty('Dedos_de_Queso___Botanas_2', 'Dedos de Queso (10 Piezas)', 119, 1)">+</button>
+            </div>
+          </div>
+          
+      </section>
+    
+      <section class="category-section" data-tab="bebidas" data-category="Miche Botanas & Micheladas">
         <h2 class="category-title">🍺 Miche Botanas & Micheladas</h2>
         
         
@@ -1225,7 +1576,7 @@
           
       </section>
     
-      <section class="category-section" data-category="Los Pinches Preparados & Coctelería">
+      <section class="category-section" data-tab="bebidas" data-category="Los Pinches Preparados & Coctelería">
         <h2 class="category-title">🍹 Los Pinches Preparados & Coctelería</h2>
         
         
@@ -1396,7 +1747,7 @@
           
       </section>
     
-      <section class="category-section" data-category="Caguamas, Cubetas & Six">
+      <section class="category-section" data-tab="bebidas" data-category="Caguamas, Cubetas & Six">
         <h2 class="category-title">🧊 Caguamas, Cubetas & Six</h2>
         
         
@@ -1550,7 +1901,13 @@
             </div>
           </div>
           
-          <div class="item-card" data-name="agua de jamaica" data-desc="agua fresca natural de jamaica." data-category="caguamas, cubetas & six">
+      </section>
+    
+      <section class="category-section" data-tab="bebidas" data-category="Refrescos & Sin Alcohol">
+        <h2 class="category-title">🥤 Refrescos & Sin Alcohol</h2>
+        
+        
+          <div class="item-card" data-name="agua de jamaica" data-desc="agua fresca natural de jamaica." data-category="refrescos & sin alcohol">
             
             <div class="item-info">
               
@@ -1559,13 +1916,13 @@
               <div class="item-price">$48.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Caguamas__Cubetas___Six_10', 'Agua de Jamaica', 48, -1)">-</button>
-              <span class="step-count" id="count_Caguamas__Cubetas___Six_10">0</span>
-              <button class="step-btn" onclick="updateQty('Caguamas__Cubetas___Six_10', 'Agua de Jamaica', 48, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Refrescos___Sin_Alcohol_0', 'Agua de Jamaica', 48, -1)">-</button>
+              <span class="step-count" id="count_Refrescos___Sin_Alcohol_0">0</span>
+              <button class="step-btn" onclick="updateQty('Refrescos___Sin_Alcohol_0', 'Agua de Jamaica', 48, 1)">+</button>
             </div>
           </div>
           
-          <div class="item-card" data-name="refresco coca-cola" data-desc="refresco coca-cola frío." data-category="caguamas, cubetas & six">
+          <div class="item-card" data-name="refresco coca-cola" data-desc="refresco coca-cola frío." data-category="refrescos & sin alcohol">
             
             <div class="item-info">
               
@@ -1574,9 +1931,9 @@
               <div class="item-price">$30.00 MXN</div>
             </div>
             <div class="item-stepper">
-              <button class="step-btn" onclick="updateQty('Caguamas__Cubetas___Six_11', 'Refresco Coca-Cola', 30, -1)">-</button>
-              <span class="step-count" id="count_Caguamas__Cubetas___Six_11">0</span>
-              <button class="step-btn" onclick="updateQty('Caguamas__Cubetas___Six_11', 'Refresco Coca-Cola', 30, 1)">+</button>
+              <button class="step-btn" onclick="updateQty('Refrescos___Sin_Alcohol_1', 'Refresco Coca-Cola', 30, -1)">-</button>
+              <span class="step-count" id="count_Refrescos___Sin_Alcohol_1">0</span>
+              <button class="step-btn" onclick="updateQty('Refrescos___Sin_Alcohol_1', 'Refresco Coca-Cola', 30, 1)">+</button>
             </div>
           </div>
           
@@ -1589,7 +1946,7 @@
       
         <div class="schedule-row">
           <span class="schedule-day">Miércoles a Lunes</span>
-          <span class="schedule-time">2:00 PM - 10:00 PM</span>
+          <span class="schedule-time">12:00 PM - 9:00 PM</span>
         </div>
       
         <div class="schedule-row">
@@ -1608,7 +1965,7 @@
         
         <a href="https://www.google.com/maps/search/?api=1&query=Los+Pinches+Preparados+Av+Acueducto+915+Zapopan" target="_blank" class="soc-btn" style="color: #f59e0b;">📍 Google Maps</a>
       </div>
-      <p style="margin-top: 14px; font-size: 0.82rem; color: #64748b;">📍 Av. Acueducto #915, Planta Alta, Col. La Casita, 45138 Zapopan, Jal.</p>
+      <p style="margin-top: 14px; font-size: 0.82rem; color: #64748b;">📍 Av. Acueducto #915-A, Planta Alta, Col. La Casita, 45138 Zapopan, Jal.</p>
     </div>
   </main>
 
@@ -1959,6 +2316,50 @@
       }
     }
 
+    function switchMenuTab(tabId, btn) {
+      document.querySelectorAll('.menu-tab-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      const sections = document.querySelectorAll('.category-section');
+      const catBtns = document.querySelectorAll('.cat-btn');
+
+      sections.forEach(sec => {
+        const secTab = sec.getAttribute('data-tab');
+        if (!secTab || tabId === 'all' || secTab === tabId) {
+          sec.style.display = 'block';
+          sec.querySelectorAll('.item-card').forEach(card => card.style.display = 'flex');
+        } else {
+          sec.style.display = 'none';
+        }
+      });
+
+      catBtns.forEach(b => {
+        const btnTab = b.getAttribute('data-tab');
+        if (b.getAttribute('data-cat-target') === 'all') {
+          b.style.display = 'inline-block';
+        } else if (!btnTab || tabId === 'all' || btnTab === tabId) {
+          b.style.display = 'inline-block';
+        } else {
+          b.style.display = 'none';
+        }
+      });
+
+      document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+      const allPill = document.querySelector('.cat-btn[data-cat-target="all"]');
+      if (allPill) allPill.classList.add('active');
+
+      const searchEl = document.getElementById('searchInput');
+      if (searchEl) searchEl.value = '';
+      const noRes = document.getElementById('noSearchResults');
+      if (noRes) noRes.style.display = 'none';
+
+      // Scroll smoothly back to top of categories
+      const targetAnchor = document.getElementById('menuTabsBar') || document.getElementById('categoryBar');
+      if (targetAnchor) {
+        targetAnchor.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
     function filterCategory(catName, btn) {
       document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
@@ -1970,9 +2371,15 @@
       const noRes = document.getElementById('noSearchResults');
       if (noRes) noRes.style.display = 'none';
 
+      const activeTabBtn = document.querySelector('.menu-tab-btn.active');
+      const activeTabId = activeTabBtn ? activeTabBtn.getAttribute('data-tab-target') : null;
+
       const sections = document.querySelectorAll('.category-section');
       sections.forEach(sec => {
-        if (catName === 'all' || sec.getAttribute('data-category') === catName) {
+        const secTab = sec.getAttribute('data-tab');
+        const matchesTab = !activeTabId || !secTab || activeTabId === 'all' || secTab === activeTabId;
+        const matchesCat = (catName === 'all' || sec.getAttribute('data-category') === catName);
+        if (matchesTab && matchesCat) {
           sec.style.display = 'block';
           sec.querySelectorAll('.item-card').forEach(card => card.style.display = 'flex');
         } else {
@@ -2048,6 +2455,11 @@
         }
       });
     }
+
+    
+    const firstTab = document.querySelector('.menu-tab-btn');
+    if (firstTab) switchMenuTab('mariscos', firstTab);
+    
   </script>
 </body>
 </html>
