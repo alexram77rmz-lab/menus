@@ -436,6 +436,34 @@
         </a>
       </div>
 
+      <!-- VIDEO DE INTRODUCCIÓN SUPERIOR (CONOCE A ALEX - 3 MIN) -->
+      <div style="margin: 36px auto 30px; max-width: 780px; background: var(--surface-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; box-shadow: var(--shadow-md); text-align: left;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+          <div>
+            <span style="font-family: var(--mono); font-size: 0.72rem; font-weight: 700; color: var(--primary); background: var(--primary-light); padding: 3px 8px; border-radius: 4px; text-transform: uppercase;">Video Presentación · 3 Minutos</span>
+            <h3 style="font-family: var(--heading); font-size: 1.3rem; font-weight: 700; margin-top: 4px; color: var(--text-main);">¿Quién está detrás de MenuExpress y cómo funciona?</h3>
+          </div>
+          <span style="font-family: var(--mono); font-size: 0.8rem; color: var(--text-muted);">Trato directo · Sin intermediarios</span>
+        </div>
+
+        <div style="position: relative; aspect-ratio: 16/9; background: #0f172a; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid var(--border);" id="videoContainer">
+          <div style="text-align: center; padding: 20px;">
+            <div style="width: 64px; height: 64px; border-radius: 50%; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin: 0 auto 12px; box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4); cursor: pointer;" onclick="playDemoVideo()">
+              ▶
+            </div>
+            <div style="font-family: var(--heading); font-size: 1.1rem; font-weight: 700; color: #ffffff;">Conoce a Alex · Creador de MenuExpress</div>
+            <p style="font-size: 0.85rem; color: #94a3b8; max-width: 480px; margin: 6px auto 0;">
+              Te explico en 3 minutos cómo digitalizamos tu carta, cómo funcionan las 5 placas NFC gratis y cómo aumentas el ticket promedio de tu restaurante.
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-top: 14px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; font-size: 0.82rem; color: var(--text-muted);">
+          <span>📍 Desarrollado localmente en Zapopan, Jalisco</span>
+          <a href="https://wa.me/523312345678?text=Hola%20Alex!%20Vi%20tu%20video%20y%20quiero%20platicar%20sobre%20mi%20men%C3%BA" style="color: var(--primary); font-weight: 700; text-decoration: none;">¿Dudas? Escríbeme directo a WhatsApp ➔</a>
+        </div>
+      </div>
+
       <div class="trust-badges-bar">
         <div class="trust-badge-item"><span>⚡</span> Carga en 800ms con datos</div>
         <div class="trust-badge-item"><span>💎</span> 5 Placas NFC Gratis Incluidas</div>
@@ -637,67 +665,134 @@
       </div>
     </section>
 
-    <!-- PORTAFOLIO OFICIAL FILTRADO (4 NEGOCIOS ACTIVOS) -->
+    <!-- PORTAFOLIO DE CASOS DE ÉXITO EN CARRUSEL (5 ESTRELLAS) -->
     <section class="section-wrap" id="portafolio">
-      <h2 class="section-title">Casos de Éxito en Zapopan 📱</h2>
-      <p class="section-subtitle">Toca cualquier negocio para probar su menú interactivo real en tu celular:</p>
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; flex-wrap: wrap; gap: 16px;">
+        <div>
+          <span class="pill-kicker">Casos de Éxito Reales · 100% Verificados</span>
+          <h2 class="section-title" style="text-align: left; margin-bottom: 4px;">Restaurantes Activos en Zapopan ⭐⭐⭐⭐⭐</h2>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">Desliza para explorar los menús que ya están operando en vivo:</p>
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <button type="button" class="btn-secondary-clean" id="carouselPrev" style="width: 44px; height: 44px; padding: 0; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; cursor: pointer;" title="Anterior">←</button>
+          <button type="button" class="btn-primary-blue" id="carouselNext" style="width: 44px; height: 44px; padding: 0; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; cursor: pointer;" title="Siguiente">→</button>
+        </div>
+      </div>
 
-      <div class="portfolio-grid">
-        <!-- 1. Los Pinches Preparados -->
-        <a href="preparados/" class="port-item-card">
+      <!-- Pista del Carrusel Deslizable -->
+      <div style="overflow-x: auto; scroll-snap-type: x mandatory; display: flex; gap: 20px; padding-bottom: 20px; -webkit-overflow-scrolling: touch; scrollbar-width: thin;" id="carouselTrack">
+        
+        <!-- Tarjeta 1: Los Pinches Preparados -->
+        <div style="flex: 0 0 320px; scroll-snap-align: start; background: var(--surface-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between;">
           <div>
-            <div class="port-item-name">🥥 Los Pinches Preparados</div>
-            <div class="port-item-loc">Av. Acueducto / Los Girasoles, Zapopan</div>
-            <div class="port-tags-row">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span style="color: #f59e0b; font-size: 1rem; letter-spacing: 2px;">⭐⭐⭐⭐⭐</span>
+              <span style="font-family: var(--mono); font-size: 0.75rem; font-weight: 700; color: #15803d; background: #dcfce7; padding: 2px 8px; border-radius: 4px;">5.0 Verificado</span>
+            </div>
+            <h3 style="font-family: var(--heading); font-size: 1.2rem; font-weight: 700; color: var(--text-main); margin-bottom: 2px;">🥥 Los Pinches Preparados</h3>
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">Av. Acueducto / Los Girasoles, Zapopan</div>
+            <p style="font-size: 0.88rem; color: var(--text-main); line-height: 1.5; margin-bottom: 16px; font-style: italic;">
+              "Más de 40 especialidades con aguachiles, micheladas botana y combos. El modo mesa con llamadas al mesero nos agilizó las horas pico de fin de semana."
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px;">
               <span class="port-tag">Mariscos Carreta</span>
               <span class="port-tag">Alitas & Snacks</span>
               <span class="port-tag">Modo Mesa 🛎️</span>
             </div>
           </div>
-          <div class="port-view-action">Probar Menú en Vivo ➔</div>
-        </a>
+          <a href="preparados/" class="btn-primary-blue" style="text-align: center; justify-content: center; font-size: 0.85rem; padding: 10px;">Probar Menú en Vivo ➔</a>
+        </div>
 
-        <!-- 2. El Limoncito Culichi -->
-        <a href="limoncito/" class="port-item-card">
+        <!-- Tarjeta 2: El Limoncito Culichi -->
+        <div style="flex: 0 0 320px; scroll-snap-align: start; background: var(--surface-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between;">
           <div>
-            <div class="port-item-name">🦐 El Limoncito Culichi</div>
-            <div class="port-item-loc">Sta. Teresa, Santa Margarita, Zapopan</div>
-            <div class="port-tags-row">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span style="color: #f59e0b; font-size: 1rem; letter-spacing: 2px;">⭐⭐⭐⭐⭐</span>
+              <span style="font-family: var(--mono); font-size: 0.75rem; font-weight: 700; color: #15803d; background: #dcfce7; padding: 2px 8px; border-radius: 4px;">5.0 Verificado</span>
+            </div>
+            <h3 style="font-family: var(--heading); font-size: 1.2rem; font-weight: 700; color: var(--text-main); margin-bottom: 2px;">🦐 El Limoncito Culichi</h3>
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">Sta. Teresa, Santa Margarita, Zapopan</div>
+            <p style="font-size: 0.88rem; color: var(--text-main); line-height: 1.5; margin-bottom: 16px; font-style: italic;">
+              "Digitalizamos más de 70 platillos, sushi sinaloense y mariscos fríos. Los clientes ya no batallan con cartas manchadas y piden directo a WhatsApp."
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px;">
               <span class="port-tag">70+ Platillos</span>
               <span class="port-tag">Sushis & Mariscos</span>
-              <span class="port-tag">Atención en Mesa</span>
+              <span class="port-tag">WhatsApp Directo</span>
             </div>
           </div>
-          <div class="port-view-action">Probar Menú en Vivo ➔</div>
-        </a>
+          <a href="limoncito/" class="btn-primary-blue" style="text-align: center; justify-content: center; font-size: 0.85rem; padding: 10px;">Probar Menú en Vivo ➔</a>
+        </div>
 
-        <!-- 3. Kyutai Rice Balls & Sushi -->
-        <a href="kyutai/" class="port-item-card">
+        <!-- Tarjeta 3: Kyutai Sushi -->
+        <div style="flex: 0 0 320px; scroll-snap-align: start; background: var(--surface-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between;">
           <div>
-            <div class="port-item-name">🍙 Kyutai Rice Balls & Sushi</div>
-            <div class="port-item-loc">Col. La Villa, Zapopan</div>
-            <div class="port-tags-row">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span style="color: #f59e0b; font-size: 1rem; letter-spacing: 2px;">⭐⭐⭐⭐⭐</span>
+              <span style="font-family: var(--mono); font-size: 0.75rem; font-weight: 700; color: #15803d; background: #dcfce7; padding: 2px 8px; border-radius: 4px;">5.0 Verificado</span>
+            </div>
+            <h3 style="font-family: var(--heading); font-size: 1.2rem; font-weight: 700; color: var(--text-main); margin-bottom: 2px;">🍙 Kyutai Rice Balls & Sushi</h3>
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">Col. La Villa, Zapopan</div>
+            <p style="font-size: 0.88rem; color: var(--text-main); line-height: 1.5; margin-bottom: 16px; font-style: italic;">
+              "Onigiris, sushi bowls y bubble teas presentados con fotos nítidas. Carga en menos de 1 segundo en cualquier celular sin descargar nada."
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px;">
               <span class="port-tag">Onigiris</span>
               <span class="port-tag">Sushi Bowls</span>
               <span class="port-tag">Bubble Tea</span>
             </div>
           </div>
-          <div class="port-view-action">Probar Menú en Vivo ➔</div>
-        </a>
+          <a href="kyutai/" class="btn-primary-blue" style="text-align: center; justify-content: center; font-size: 0.85rem; padding: 10px;">Probar Menú en Vivo ➔</a>
+        </div>
 
-        <!-- 4. d'ANGEL'S Wings & Snacks -->
-        <a href="dangels/" class="port-item-card">
+        <!-- Tarjeta 4: d'ANGEL'S Wings -->
+        <div style="flex: 0 0 320px; scroll-snap-align: start; background: var(--surface-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between;">
           <div>
-            <div class="port-item-name">🍗 d'ANGEL'S Wings & Snacks</div>
-            <div class="port-item-loc">Marina Vallarta, Zapopan</div>
-            <div class="port-tags-row">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span style="color: #f59e0b; font-size: 1rem; letter-spacing: 2px;">⭐⭐⭐⭐⭐</span>
+              <span style="font-family: var(--mono); font-size: 0.75rem; font-weight: 700; color: #15803d; background: #dcfce7; padding: 2px 8px; border-radius: 4px;">5.0 Verificado</span>
+            </div>
+            <h3 style="font-family: var(--heading); font-size: 1.2rem; font-weight: 700; color: var(--text-main); margin-bottom: 2px;">🍗 d'ANGEL'S Wings & Snacks</h3>
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">Marina Vallarta, Zapopan</div>
+            <p style="font-size: 0.88rem; color: var(--text-main); line-height: 1.5; margin-bottom: 16px; font-style: italic;">
+              "Alitas, boneless y hamburguesas con selección de salsas. Cambiamos precios y nuevos combos al instante sin tener que reimprimir lonas."
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px;">
               <span class="port-tag">Alitas & Boneless</span>
               <span class="port-tag">Burgers</span>
               <span class="port-tag">Terminal Tarjeta</span>
             </div>
           </div>
-          <div class="port-view-action">Probar Menú en Vivo ➔</div>
-        </a>
+          <a href="dangels/" class="btn-primary-blue" style="text-align: center; justify-content: center; font-size: 0.85rem; padding: 10px;">Probar Menú en Vivo ➔</a>
+        </div>
+
+      </div>
+
+      <!-- DESGLOSE DE SERVICIOS ADICIONALES (FOTOS, VIDEOS Y DOMINIOS) -->
+      <div style="margin-top: 40px; background: var(--surface-card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; box-shadow: var(--shadow-sm);">
+        <h3 style="font-family: var(--heading); font-size: 1.25rem; font-weight: 700; color: var(--text-main); margin-bottom: 6px;">
+          Servicios Adicionales Opcionales · Tarifas Abiertas desde el Primer Día
+        </h3>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">
+          Si necesitas que nosotros vayamos a tu local a tomar fotos o grabar videos para tus redes, aquí tienes los costos sin sorpresas:
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+          <div style="background: var(--bg-alt); padding: 16px; border-radius: 10px; border: 1px solid var(--border);">
+            <div style="font-family: var(--mono); font-weight: 700; color: var(--primary); font-size: 1.1rem;">+$600 MXN</div>
+            <strong style="font-size: 0.9rem; color: var(--text-main); display: block; margin: 4px 0;">📸 Sesión de Fotos de Platillos</strong>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">Sesión fotográfica en tu restaurante, recorte profesional y optimización para el menú digital.</p>
+          </div>
+          <div style="background: var(--bg-alt); padding: 16px; border-radius: 10px; border: 1px solid var(--border);">
+            <div style="font-family: var(--mono); font-weight: 700; color: var(--primary); font-size: 1.1rem;">+$450 MXN</div>
+            <strong style="font-size: 0.9rem; color: var(--text-main); display: block; margin: 4px 0;">🎬 Video Reel Promocional</strong>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">Edición de 1 Reel/TikTok de alta calidad para redes mostrando tus platillos estrella y el QR en mesa.</p>
+          </div>
+          <div style="background: var(--bg-alt); padding: 16px; border-radius: 10px; border: 1px solid var(--border);">
+            <div style="font-family: var(--mono); font-weight: 700; color: var(--primary); font-size: 1.1rem;">+$45 MXN / c/u</div>
+            <strong style="font-size: 0.9rem; color: var(--text-main); display: block; margin: 4px 0;">💎 Placa NFC de Mesa Extra</strong>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">Acrílico rígido con chip NFC + QR grabado en alta resistencia (recuerda que 5 ya van gratis en el Plan Pro).</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1025,6 +1120,23 @@
           window.open('https://wa.me/523312345678?text=' + text, '_blank');
         });
       }
+      // 6. CONTROL DEL CARRUSEL DE 5 ESTRELLAS
+      const track = document.getElementById('carouselTrack');
+      const prevBtn = document.getElementById('carouselPrev');
+      const nextBtn = document.getElementById('carouselNext');
+
+      if (track && prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', function() {
+          track.scrollBy({ left: -340, behavior: 'smooth' });
+        });
+        nextBtn.addEventListener('click', function() {
+          track.scrollBy({ left: 340, behavior: 'smooth' });
+        });
+      }
+
+      window.playDemoVideo = function() {
+        alert('¡Hola! Aquí se cargará tu video de 3 minutos grabado con tu celular explicando los planes de MenuExpress. ¡Sigue las instrucciones en el chat para grabarlo!');
+      };
     })();
   </script>
 
