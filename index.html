@@ -3,52 +3,384 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MenuExpress - Menús Digitales Zapopan</title>
+  <title>MenuExpress | Menús Digitales Interactivos para Restaurantes en Zapopan</title>
+  <meta name="description" content="Digitaliza el menú de tu restaurante en 24 horas. Códigos QR, tecnología de mesa, pedidos directos por WhatsApp y sin pagar 35% de comisión.">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, sans-serif; }
-    body { background: #0f172a; color: white; padding: 30px 20px; text-align: center; }
-    h1 { font-size: 1.8rem; margin-bottom: 8px; color: #f59e0b; }
-    p { color: #94a3b8; font-size: 0.95rem; margin-bottom: 25px; }
-    .grid { display: flex; flex-direction: column; gap: 14px; max-width: 450px; margin: 0 auto; }
-    .card { background: #1e293b; border: 1px solid #334155; border-radius: 16px; padding: 18px; text-decoration: none; color: white; display: flex; align-items: center; justify-content: space-between; transition: transform 0.2s; }
-    .card:active { transform: scale(0.98); }
-    .card-title { font-size: 1.1rem; font-weight: 700; text-align: left; }
-    .card-desc { font-size: 0.8rem; color: #94a3b8; text-align: left; margin-top: 3px; }
-    .btn { background: #ea580c; color: white; font-weight: 700; padding: 8px 14px; border-radius: 10px; font-size: 0.82rem; }
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --accent: #f59e0b;
+      --dark: #0f172a;
+      --dark-card: #1e293b;
+      --text-gray: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background: #0b1120; color: #f8fafc; line-height: 1.5; overflow-x: hidden; }
+
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 14px 20px; display: flex; justify-content: space-between; align-items: center;
+      max-width: 1000px; margin: 0 auto;
+    }
+    .brand { display: flex; align-items: center; gap: 8px; font-size: 1.25rem; font-weight: 900; color: white; text-decoration: none; }
+    .brand span { color: var(--accent); }
+    .header-btn {
+      background: #25d366; color: white; font-weight: 700; font-size: 0.85rem;
+      padding: 8px 16px; border-radius: 20px; text-decoration: none;
+      display: flex; align-items: center; gap: 6px; box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+      transition: transform 0.2s;
+    }
+    .header-btn:hover { transform: scale(1.04); }
+
+    .wrap { max-width: 900px; margin: 0 auto; padding: 30px 20px 80px; }
+
+    .hero { text-align: center; padding: 30px 10px 45px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(2, 132, 199, 0.15); border: 1px solid rgba(2, 132, 199, 0.3);
+      color: #38bdf8; font-size: 0.8rem; font-weight: 800; padding: 5px 14px;
+      border-radius: 30px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-size: 2.2rem; font-weight: 900; line-height: 1.2; margin-bottom: 16px;
+      background: linear-gradient(135deg, #ffffff 40%, #cbd5e1 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, #38bdf8, #f59e0b);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 1.05rem; color: var(--text-gray); max-width: 650px; margin: 0 auto 28px;
+    }
+
+    .video-card {
+      background: var(--dark-card); border: 1px solid #334155; border-radius: 24px;
+      padding: 24px 20px; max-width: 640px; margin: 0 auto 50px; text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+    .video-frame-box {
+      background: #020617; border-radius: 16px; aspect-ratio: 16/9;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      border: 2px dashed #475569; position: relative; overflow: hidden; margin-bottom: 16px;
+    }
+    .play-btn {
+      width: 64px; height: 64px; border-radius: 50%; background: var(--accent);
+      color: #0f172a; display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem; cursor: pointer; box-shadow: 0 0 30px rgba(245, 158, 11, 0.6);
+      transition: transform 0.2s;
+    }
+    .play-btn:hover { transform: scale(1.1); }
+    .video-text { font-size: 0.88rem; color: #cbd5e1; margin-top: 10px; font-weight: 600; }
+
+    .comp-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;
+      margin-bottom: 50px;
+    }
+    .comp-box {
+      background: var(--dark-card); border-radius: 18px; padding: 22px;
+      border: 1px solid #334155;
+    }
+    .comp-bad { border-left: 4px solid #ef4444; }
+    .comp-good { border-left: 4px solid #22c55e; }
+    .comp-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 12px; }
+    .comp-list { list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 0.88rem; color: #cbd5e1; }
+    .comp-list li { display: flex; align-items: flex-start; gap: 8px; }
+
+    .section-title { font-size: 1.6rem; font-weight: 900; text-align: center; margin-bottom: 8px; }
+    .section-subtitle { text-align: center; color: var(--text-gray); font-size: 0.95rem; margin-bottom: 30px; }
+
+    .portfolio-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;
+      margin-bottom: 60px;
+    }
+    .port-card {
+      background: var(--dark-card); border: 1px solid #334155; border-radius: 20px;
+      padding: 20px; display: flex; flex-direction: column; justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s; text-decoration: none; color: white;
+    }
+    .port-card:hover { transform: translateY(-4px); border-color: var(--primary); }
+    .port-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+    .port-name { font-size: 1.15rem; font-weight: 800; }
+    .port-zone { font-size: 0.78rem; color: var(--text-gray); margin-bottom: 14px; }
+    .port-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+    .tag { font-size: 0.72rem; font-weight: 700; background: #0f172a; border: 1px solid #334155; padding: 3px 8px; border-radius: 8px; color: #38bdf8; }
+    .port-btn {
+      background: rgba(2, 132, 199, 0.2); color: #38bdf8; border: 1px solid rgba(2, 132, 199, 0.4);
+      font-weight: 700; font-size: 0.82rem; padding: 8px 12px; border-radius: 10px; text-align: center;
+    }
+
+    .plans-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px;
+      margin-bottom: 60px;
+    }
+    .plan-card {
+      background: var(--dark-card); border: 1px solid #334155; border-radius: 22px;
+      padding: 26px 20px; position: relative; display: flex; flex-direction: column;
+    }
+    .plan-card.popular {
+      border: 2px solid var(--accent);
+      background: linear-gradient(180deg, rgba(245, 158, 11, 0.08), var(--dark-card));
+    }
+    .popular-badge {
+      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+      background: var(--accent); color: #0f172a; font-size: 0.72rem; font-weight: 900;
+      padding: 4px 14px; border-radius: 20px; text-transform: uppercase;
+    }
+    .plan-name { font-size: 1.25rem; font-weight: 900; margin-bottom: 6px; }
+    .plan-price { font-size: 2.2rem; font-weight: 900; color: white; margin-bottom: 4px; }
+    .plan-price span { font-size: 0.9rem; font-weight: 600; color: var(--text-gray); }
+    .plan-note { font-size: 0.78rem; color: #22c55e; font-weight: 700; margin-bottom: 18px; }
+    .plan-features { list-style: none; margin-bottom: 24px; flex-grow: 1; display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; color: #cbd5e1; }
+    .plan-features li { display: flex; align-items: center; gap: 8px; }
+    .plan-cta {
+      display: block; text-align: center; text-decoration: none; font-weight: 800; font-size: 0.9rem;
+      padding: 12px; border-radius: 12px; background: #334155; color: white; transition: background 0.2s;
+    }
+    .plan-card.popular .plan-cta {
+      background: var(--accent); color: #0f172a;
+    }
+
+    .tourist-box {
+      background: linear-gradient(135deg, rgba(2, 132, 199, 0.15), rgba(15, 23, 42, 0.8));
+      border: 1px solid rgba(2, 132, 199, 0.3); border-radius: 22px; padding: 26px;
+      text-align: center; margin-bottom: 60px;
+    }
+    .flags { font-size: 1.8rem; margin-bottom: 10px; }
+
+    .mobile-cta {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 150;
+      background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255,255,255,0.1); padding: 12px 20px;
+      display: flex; justify-content: center;
+    }
+    .mobile-cta-btn {
+      width: 100%; max-width: 480px; background: #25d366; color: white;
+      text-decoration: none; font-weight: 900; font-size: 0.95rem; padding: 13px;
+      border-radius: 14px; text-align: center; display: flex; align-items: center;
+      justify-content: center; gap: 8px; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    }
   </style>
 </head>
 <body>
-  <h1>📱 Menús Digitales Oficiales</h1>
-  <p>Selecciona un negocio para ver su menú y ordenar por WhatsApp:</p>
-  <div class="grid">
-    <a href="charly/" class="card">
-      <div><div class="card-title">🍔 Hamburguesas El Charly</div><div class="card-desc">Santa Margarita</div></div>
-      <span class="btn">Ver Menú</span>
+
+  <header>
+    <a href="#" class="brand">
+      📱 Menu<span>Express</span>
     </a>
-    <a href="dangels/" class="card">
-      <div><div class="card-title">🍗 d'ANGEL'S Wings & Snacks</div><div class="card-desc">Marina Vallarta</div></div>
-      <span class="btn">Ver Menú</span>
+    <a href="https://wa.me/523312345678?text=Hola%20Alex!%20Me%20interesa%20digitalizar%20el%20men%C3%BA%20de%20mi%20restaurante" class="header-btn">
+      💬 Cotizar por WhatsApp
     </a>
-    <a href="tacos-moy/" class="card">
-      <div><div class="card-title">🌮 Tacos Moy (Barbacoa)</div><div class="card-desc">Santa Margarita</div></div>
-      <span class="btn">Ver Menú</span>
-    </a>
-    <a href="carnales/" class="card">
-      <div><div class="card-title">🍲 Tacos y Birria Los Carnales</div><div class="card-desc">Santa Margarita</div></div>
-      <span class="btn">Ver Menú</span>
-    </a>
-    <a href="kyutai/" class="card">
-      <div><div class="card-title">🍙 Kyutai Rice Balls & Sushi</div><div class="card-desc">Col. La Villa, Zapopan</div></div>
-      <span class="btn">Ver Menú</span>
-    </a>
-    <a href="limoncito/" class="card">
-      <div><div class="card-title">🦐 El Limoncito Culichi</div><div class="card-desc">Sta. Teresa, Santa Margarita</div></div>
-      <span class="btn">Ver Menú</span>
-    </a>
-    <a href="preparados/" class="card">
-      <div><div class="card-title">🥥 Los Pinches Preparados</div><div class="card-desc">Los Girasoles / Acueducto</div></div>
-      <span class="btn">Ver Menú</span>
+  </header>
+
+  <div class="wrap">
+    
+    <!-- Hero -->
+    <div class="hero">
+      <div class="badge">🚀 Tecnología Gastronómica en Zapopan</div>
+      <h1>Menús Digitales Interactivos que <span>Venden Más</span></h1>
+      <p>Deja de perder dinero con cartas de papel sucias o PDFs de 50MB que nadie abre. Entrégale a tus comensales una app web rápida, con pedidos directos a tu WhatsApp y sin pagar 35% de comisión a plataformas.</p>
+    </div>
+
+    <!-- Video Showcase / Pitch -->
+    <div class="video-card">
+      <div class="video-frame-box">
+        <a href="https://wa.me/523312345678?text=Hola%20Alex!%20Quiero%20ver%20una%20demostraci%C3%B3n%20en%20video" target="_blank" style="text-decoration:none; display:flex; flex-direction:column; align-items:center;">
+          <div class="play-btn">▶</div>
+          <div class="video-text">Ver cómo funciona en un restaurante real ➔</div>
+        </a>
+      </div>
+      <p style="font-size: 0.9rem; color: var(--text-gray); margin-bottom: 4px;">
+        💡 <strong>¿Tienes estos problemas en tu negocio?</strong> Cartas físicas maltratadas, meseros tardados en horas pico o falta de fotos atractivas.
+      </p>
+      <p style="font-size: 0.85rem; color: #38bdf8; font-weight: 700;">
+        ¡Nosotros te resolvemos el menú, las fotos y tus redes completas en 24 horas!
+      </p>
+    </div>
+
+    <!-- Comparativa -->
+    <div class="comp-grid">
+      <div class="comp-box comp-bad">
+        <div class="comp-title" style="color: #f87171;">❌ El Menú Tradicional</div>
+        <ul class="comp-list">
+          <li><span>⚠️</span> Cartas de papel manchadas que dan mala imagen.</li>
+          <li><span>⚠️</span> Reimprimir todo cuesta $1,500 cada que suben los precios.</li>
+          <li><span>⚠️</span> PDFs pesados que los clientes no quieren descargar con sus datos.</li>
+          <li><span>⚠️</span> Apps de delivery que te quitan el 30% al 35% de tu ganancia.</li>
+        </ul>
+      </div>
+      <div class="comp-box comp-good">
+        <div class="comp-title" style="color: #4ade80;">✅ Con MenuExpress</div>
+        <ul class="comp-list">
+          <li><span>⚡</span> Carga en 1 segundo en cualquier celular sin descargar apps.</li>
+          <li><span>💰</span> Cambias un precio y se actualiza al instante en todas tus mesas.</li>
+          <li><span>🛎️</span> Botón flotante para <strong>Llamar al Mesero</strong> y <strong>Pedir la Cuenta</strong>.</li>
+          <li><span>💵</span> Pedidos directos a tu WhatsApp: el 100% de la venta es tuyo.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Tourist Language Feature -->
+    <div class="tourist-box">
+      <div class="flags">🇲🇽 🇺🇸 🇨🇳 🇫🇷 🇩🇪</div>
+      <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 6px;">🌐 ¿Recibes turistas o clientes extranjeros?</h3>
+      <p style="font-size: 0.9rem; color: #cbd5e1; max-width: 600px; margin: 0 auto;">
+        Nuestros menús cuentan con opción de traducción instantánea para que comensales de cualquier país entiendan tus platillos y ordenen sin batallar con el idioma. ¡Ideal para Guadalajara y zonas ejecutivas!
+      </p>
+    </div>
+
+    <!-- Planes y Precios Transparentes -->
+    <div class="section-title">Planes Claros · Cero Letras Chiquitas 💎</div>
+    <div class="section-subtitle">Sin costos ocultos, sin comisiones por platillo vendido. Tú eres dueño de tu negocio.</div>
+
+    <div class="plans-grid">
+      <!-- Plan 1 -->
+      <div class="plan-card">
+        <div class="plan-name">Plan Despegue</div>
+        <div class="plan-price">$500 <span>MXN</span></div>
+        <div class="plan-note">Pago único de instalación</div>
+        <ul class="plan-features">
+          <li><span>✅</span> Menú web interactivo completo</li>
+          <li><span>✅</span> Código QR en alta definición para imprimir</li>
+          <li><span>✅</span> Botón de pedido directo a tu WhatsApp</li>
+          <li><span>✅</span> Buscador en tiempo real de platillos</li>
+          <li><span>✅</span> Alojamiento 24/7 de alta velocidad</li>
+        </ul>
+        <a href="https://wa.me/523312345678?text=Hola%20Alex!%20Me%20interesa%20el%20Plan%20Despegue%20de%20$500" class="plan-cta">Contratar Plan $500</a>
+      </div>
+
+      <!-- Plan 2 (Popular) -->
+      <div class="plan-card popular">
+        <div class="popular-badge">⭐ El Más Recomendado</div>
+        <div class="plan-name">Restaurante Pro</div>
+        <div class="plan-price">$900 <span>MXN</span></div>
+        <div class="plan-note">Paquete Integral Llave en Mano</div>
+        <ul class="plan-features">
+          <li><span>✅</span> <strong>Todo lo del Plan Despegue</strong></li>
+          <li><span>✅</span> <strong>Modo Mesa Activo</strong>: Botones de Llamar Mesero y Pedir Cuenta</li>
+          <li><span>✅</span> <strong>Cartel Digital Imprimible</strong> para mostrador/entrada</li>
+          <li><span>✅</span> Integración y optimización de <strong>fotos reales</strong></li>
+          <li><span>✅</span> Soporte prioritario y enlaces por mesa (?m=1, 2, 3...)</li>
+        </ul>
+        <a href="https://wa.me/523312345678?text=Hola%20Alex!%20Me%20interesa%20el%20Plan%20Restaurante%20Pro%20de%20$900" class="plan-cta">Quiero el Plan Pro $900</a>
+      </div>
+
+      <!-- Plan 3 -->
+      <div class="plan-card">
+        <div class="plan-name">Plan Integral Élite</div>
+        <div class="plan-price">A Cotizar</div>
+        <div class="plan-note">Solución Completa para Franquicias</div>
+        <ul class="plan-features">
+          <li><span>✅</span> Todo lo del Plan Pro</li>
+          <li><span>✅</span> <strong>Dominio web propio</strong> (.com o .mx)</li>
+          <li><span>✅</span> Paquete de <strong>acrílicos de mesa con chip NFC</strong></li>
+          <li><span>✅</span> Optimización de ficha en <strong>Google Maps</strong></li>
+          <li><span>✅</span> Asesoría en video/Reels para redes sociales</li>
+        </ul>
+        <a href="https://wa.me/523312345678?text=Hola%20Alex!%20Quiero%20cotizar%20el%20Plan%20Integral%20%C3%89lite" class="plan-cta">Cotizar Proyecto</a>
+      </div>
+    </div>
+
+    <!-- Portafolio de Clientes Reales (Filtrado: sin Charly ni Carnales, con Kyutai Sushi) -->
+    <div class="section-title">Casos de Éxito Reales 📱</div>
+    <div class="section-subtitle">Toca cualquier negocio para probar su menú interactivo en vivo:</div>
+
+    <div class="portfolio-grid">
+      <!-- Los Pinches Preparados -->
+      <a href="preparados/" class="port-card">
+        <div>
+          <div class="port-head">
+            <div class="port-name">🥥 Los Pinches Preparados</div>
+            <span style="font-size: 1.1rem;">➔</span>
+          </div>
+          <div class="port-zone">Av. Acueducto / Los Girasoles, Zapopan</div>
+          <div class="port-tags">
+            <span class="tag">Mariscos Carreta</span>
+            <span class="tag">Alitas & Boneless</span>
+            <span class="tag">Modo Mesa 🛎️</span>
+          </div>
+        </div>
+        <div class="port-btn">Probar Menú en Vivo</div>
+      </a>
+
+      <!-- El Limoncito Culichi -->
+      <a href="limoncito/" class="port-card">
+        <div>
+          <div class="port-head">
+            <div class="port-name">🦐 El Limoncito Culichi</div>
+            <span style="font-size: 1.1rem;">➔</span>
+          </div>
+          <div class="port-zone">Sta. Teresa, Santa Margarita, Zapopan</div>
+          <div class="port-tags">
+            <span class="tag">70+ Platillos</span>
+            <span class="tag">Sushis & Mariscos</span>
+            <span class="tag">Atención en Mesa</span>
+          </div>
+        </div>
+        <div class="port-btn">Probar Menú en Vivo</div>
+      </a>
+
+      <!-- Kyutai Sushi -->
+      <a href="kyutai/" class="port-card">
+        <div>
+          <div class="port-head">
+            <div class="port-name">🍙 Kyutai Rice Balls & Sushi</div>
+            <span style="font-size: 1.1rem;">➔</span>
+          </div>
+          <div class="port-zone">Col. La Villa, Zapopan</div>
+          <div class="port-tags">
+            <span class="tag">Onigiris</span>
+            <span class="tag">Sushi Bowls</span>
+            <span class="tag">Bubble Tea</span>
+          </div>
+        </div>
+        <div class="port-btn">Probar Menú en Vivo</div>
+      </a>
+
+      <!-- d'ANGEL'S Wings -->
+      <a href="dangels/" class="port-card">
+        <div>
+          <div class="port-head">
+            <div class="port-name">🍗 d'ANGEL'S Wings & Snacks</div>
+            <span style="font-size: 1.1rem;">➔</span>
+          </div>
+          <div class="port-zone">Marina Vallarta, Zapopan</div>
+          <div class="port-tags">
+            <span class="tag">Alitas & Boneless</span>
+            <span class="tag">Burgers</span>
+            <span class="tag">Terminal Tarjeta</span>
+          </div>
+        </div>
+        <div class="port-btn">Probar Menú en Vivo</div>
+      </a>
+
+      <!-- Tacos Moy -->
+      <a href="tacos-moy/" class="port-card">
+        <div>
+          <div class="port-head">
+            <div class="port-name">🌮 Tacos Moy (Barbacoa)</div>
+            <span style="font-size: 1.1rem;">➔</span>
+          </div>
+          <div class="port-zone">Santa Margarita, Zapopan</div>
+          <div class="port-tags">
+            <span class="tag">Barbacoa Tradicional</span>
+            <span class="tag">Quesadillas</span>
+            <span class="tag">Para Llevar</span>
+          </div>
+        </div>
+        <div class="port-btn">Probar Menú en Vivo</div>
+      </a>
+    </div>
+
+  </div>
+
+  <div class="mobile-cta">
+    <a href="https://wa.me/523312345678?text=Hola%20Alex!%20Quiero%20cotizar%20un%20men%C3%BA%20digital%20para%20mi%20restaurante" class="mobile-cta-btn">
+      💬 ¡Cotiza tu Menú en 5 Minutos! ➔
     </a>
   </div>
+
 </body>
 </html>
