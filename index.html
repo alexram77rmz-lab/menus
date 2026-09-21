@@ -320,46 +320,83 @@
       background: var(--primary); color: #ffffff; border-color: var(--primary);
       box-shadow: 0 4px 15px rgba(37, 99, 235, 0.35);
     }
+    /* CONMUTADOR DE IDIOMA (ES / EN / ZH) */
+    .lang-switcher {
+      display: inline-flex; align-items: center; background: var(--bg-alt);
+      border: 1px solid var(--border); border-radius: 24px; padding: 2px 4px; gap: 2px;
+    }
+    .lang-btn {
+      background: transparent; border: none; font-family: var(--mono); font-size: 0.72rem;
+      font-weight: 700; color: var(--text-muted); padding: 4px 8px; border-radius: 18px;
+      cursor: pointer; transition: all 0.15s ease;
+    }
+    .lang-btn.active {
+      background: var(--primary); color: #ffffff;
+    }
+
+    /* CONTENEDOR 3D ADAPTABLE CON CONTRASTE ELEGANTE */
     .hero-3d-wrapper {
-      position: relative; width: 100%; max-width: 980px; height: 580px; margin: 0 auto 20px;
-      border-radius: 28px; overflow: hidden;
-      background: radial-gradient(circle at 50% 30%, rgba(37, 99, 235, 0.08) 0%, rgba(15, 23, 42, 0.03) 70%);
-      border: 1px solid var(--border); box-shadow: 0 20px 50px -10px rgba(0,0,0,0.1);
+      position: relative; width: 100%; height: 520px; margin: 0 auto;
+      border-radius: 26px; overflow: hidden;
+      background: linear-gradient(180deg, rgba(241, 245, 249, 0.9) 0%, #ffffff 50%, rgba(239, 246, 255, 0.75) 100%);
+      border: 1px solid rgba(203, 213, 225, 0.85);
+      box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.1);
+      transition: background 0.3s, border-color 0.3s;
     }
     [data-theme="dark"] .hero-3d-wrapper {
-      background: radial-gradient(circle at 50% 30%, rgba(59, 130, 246, 0.12) 0%, rgba(15, 23, 42, 0.8) 70%);
-      border-color: rgba(255, 255, 255, 0.08); box-shadow: 0 25px 60px -10px rgba(0,0,0,0.6);
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.85) 0%, rgba(8, 12, 20, 0.95) 50%, rgba(15, 23, 42, 0.85) 100%);
+      border-color: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.6);
     }
     #hero-3d-canvas-container {
-      width: 100%; height: 100%; cursor: grab;
+      width: 100%; height: 100%; cursor: grab; touch-action: pan-y;
     }
     #hero-3d-canvas-container:active { cursor: grabbing; }
+    
+    /* HUD BAR CON BOTONES TOUCH-FRIENDLY (MIN-H 44PX) */
     .hero-3d-hud-bar {
-      position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
-      display: flex; align-items: center; gap: 10px; background: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(12px); padding: 8px 16px; border-radius: 30px;
-      border: 1px solid rgba(255, 255, 255, 0.14); box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      z-index: 20; flex-wrap: wrap; justify-content: center;
+      position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
+      display: flex; align-items: center; gap: 8px; background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); padding: 6px 14px;
+      border-radius: 36px; border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35); z-index: 20; flex-wrap: wrap; justify-content: center;
+      max-width: 92%;
     }
     .hud-btn {
-      background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #ffffff; font-family: var(--mono); font-size: 0.76rem; font-weight: 700;
-      padding: 6px 14px; border-radius: 20px; cursor: pointer; display: flex; align-items: center;
-      gap: 6px; transition: all 0.15s ease;
+      min-height: 44px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #ffffff; font-family: var(--mono); font-size: 0.8rem; font-weight: 700;
+      padding: 8px 16px; border-radius: 22px; cursor: pointer; display: flex; align-items: center;
+      gap: 6px; transition: all 0.15s ease; -webkit-tap-highlight-color: transparent;
     }
     .hud-btn:hover { background: var(--primary); border-color: var(--primary); transform: translateY(-1px); }
-    .hud-btn-primary { background: var(--primary); border-color: var(--primary); box-shadow: 0 2px 10px rgba(37, 99, 235, 0.4); }
-    .hud-tip { font-family: var(--mono); font-size: 0.72rem; color: #94a3b8; padding-left: 8px; border-left: 1px solid rgba(255, 255, 255, 0.15); }
-    @media (max-width: 640px) {
-      .hero-3d-wrapper { height: 460px; }
-      .hud-tip { display: none; }
+    .hud-btn-primary { background: var(--primary); border-color: var(--primary); box-shadow: 0 2px 12px rgba(37, 99, 235, 0.4); }
+    .hud-btn.nfc-btn-success {
+      background: #10b981 !important; border-color: #10b981 !important;
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.5) !important;
     }
+    .hud-tip { font-family: var(--mono); font-size: 0.72rem; color: #94a3b8; padding-left: 8px; border-left: 1px solid rgba(255, 255, 255, 0.15); }
+
+    /* TOAST FLOTANTE ESTILO IOS */
     .nfc-toast {
-      position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
-      background: #10b981; color: white; font-family: var(--sans); font-size: 0.85rem;
-      font-weight: 700; padding: 9px 20px; border-radius: 30px;
-      box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4); display: none; align-items: center;
-      gap: 8px; z-index: 30; pointer-events: none; transition: opacity 0.3s ease;
+      position: absolute; top: 16px; left: 50%; transform: translateX(-50%) translateY(-10px);
+      background: rgba(15, 23, 42, 0.92); color: #ffffff;
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+      font-family: var(--sans); font-size: 0.88rem; font-weight: 700;
+      padding: 10px 22px; border-radius: 40px; display: none; align-items: center; gap: 8px;
+      z-index: 50; pointer-events: none; opacity: 0;
+      transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nfc-toast.show-ios-toast {
+      display: flex; opacity: 1; transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      .hero-3d-wrapper { height: 360px; border-radius: 20px; }
+      .hero-3d-hud-bar { bottom: 10px; padding: 4px 10px; gap: 6px; }
+      .hud-btn { min-height: 42px; padding: 6px 12px; font-size: 0.75rem; }
+      .hud-tip { display: none; }
     }
     .device-switcher-tabs {
       display: inline-flex; background: var(--bg-alt); padding: 5px; border-radius: 30px;
@@ -670,19 +707,25 @@
         <div class="brand-badge">Zapopan · 2026</div>
       </a>
       <div class="header-actions">
-        <a href="#demo" class="header-link">En Vivo</a>
-        <a href="#paneles" class="header-link">3 Paneles</a>
-        <a href="#nfc" class="header-link">Placas NFC</a>
-        <a href="#planes" class="header-link">Planes</a>
-        <a href="#portafolio" class="header-link">Casos de Éxito</a>
+        <a href="#demo" class="header-link" id="navDemo">En Vivo</a>
+        <a href="#paneles" class="header-link" id="navPanels">3 Paneles</a>
+        <a href="#nfc" class="header-link" id="navNfc">Placas NFC</a>
+        <a href="#planes" class="header-link" id="navPlans">Planes</a>
+        <a href="#portafolio" class="header-link" id="navCases">Casos de Éxito</a>
         
+        <div class="lang-switcher" aria-label="Seleccionar idioma">
+          <button type="button" class="lang-btn active" id="langEs" onclick="switchLanguage('es')" title="Español">🇲🇽 ES</button>
+          <button type="button" class="lang-btn" id="langEn" onclick="switchLanguage('en')" title="English">🇺🇸 EN</button>
+          <button type="button" class="lang-btn" id="langZh" onclick="switchLanguage('zh')" title="中文">🇨🇳 中文</button>
+        </div>
+
         <button class="theme-toggle-btn" id="themeToggle" title="Cambiar Tema Claro / Oscuro">
           🌓
         </button>
 
-        <a href="https://wa.me/523312345678?text=Hola%20Alex!%20Me%20interesa%20digitalizar%20mi%20restaurante%20con%20MenuExpress" class="whatsapp-radar-btn">
+        <a href="https://wa.me/523312345678?text=Hola%20Alex!%20Me%20interesa%20digitalizar%20mi%20restaurante%20con%20MenuExpress" class="whatsapp-radar-btn" id="navWaBtn">
           <span class="radar-dot"><span class="radar-wave"></span></span>
-          <span>💬 Cotizar en WhatsApp</span>
+          <span id="navWaText">💬 Cotizar en WhatsApp</span>
         </a>
       </div>
     </div>
@@ -700,14 +743,14 @@
         <div class="hero-split-left">
           <div class="pill-kicker">
             <span class="pulse-dot"></span>
-            <span>Sistema en Vivo en Zapopan · Carga en 800ms</span>
+            <span id="heroPill">Sistema en Vivo en Zapopan · Carga en 800ms</span>
           </div>
 
           <h1 class="hero-awwwards-title" id="revealTitle">
             El Sistema Completo para tu Restaurante: <span class="text-gradient-cyan">Menú NFC, Comandas y SAT</span>
           </h1>
 
-          <p class="hero-split-desc">
+          <p class="hero-split-desc" id="heroDesc">
             Mucho más que una simple carta web. Entrega a tu negocio un ecosistema de 3 niveles: <strong>Panel de Cliente en Mesa</strong> con placas NFC de cristal acrílico negro piano, <strong>Pantalla de Cocina KDS</strong> para comandas sin papel y <strong>Panel Gerencial</strong> con reporte nocturno y cálculo fiscal SAT.
           </p>
 
@@ -717,13 +760,13 @@
               <a href="#demo" class="magnetic-shimmer-btn">
                 <span class="magnetic-shimmer-border"></span>
                 <span class="magnetic-inner">
-                  <span>Probar Demostración en Vivo</span>
+                  <span id="heroCtaText">Probar Demostración en Vivo</span>
                   <span class="magnetic-arrow">➔</span>
                 </span>
               </a>
             </div>
 
-            <a href="#planes" class="btn-secondary-clean">
+            <a href="#planes" class="btn-secondary-clean" id="heroSecCta">
               Ver Planes ($100 a $300/mes)
             </a>
           </div>
@@ -734,30 +777,30 @@
               <div class="tilt-glare"></div>
               <div class="tilt-head">
                 <span class="tilt-icon">💳</span>
-                <span class="tilt-badge">5 GRATIS</span>
+                <span class="tilt-badge" id="badgeNfc">5 GRATIS</span>
               </div>
-              <div class="tilt-title">Placas NFC de Mesa</div>
-              <div class="tilt-sub">Acrílico negro piano con QR + chip</div>
+              <div class="tilt-title" id="titleNfc">Placas NFC de Mesa</div>
+              <div class="tilt-sub" id="subNfc">Acrílico negro piano con QR + chip</div>
             </div>
 
             <div class="tilt-card" data-tilt>
               <div class="tilt-glare"></div>
               <div class="tilt-head">
                 <span class="tilt-icon">🧑‍🍳</span>
-                <span class="tilt-badge">EN VIVO</span>
+                <span class="tilt-badge" id="badgeKds">EN VIVO</span>
               </div>
-              <div class="tilt-title">Cocina KDS</div>
-              <div class="tilt-sub">Comandas en pantalla sin papel</div>
+              <div class="tilt-title" id="titleKds">Cocina KDS</div>
+              <div class="tilt-sub" id="subKds">Comandas en pantalla sin papel</div>
             </div>
 
             <div class="tilt-card" data-tilt>
               <div class="tilt-glare"></div>
               <div class="tilt-head">
                 <span class="tilt-icon">🏛️</span>
-                <span class="tilt-badge">PRO</span>
+                <span class="tilt-badge" id="badgeSat">PRO</span>
               </div>
-              <div class="tilt-title">Auditoría SAT</div>
-              <div class="tilt-sub">Cálculo RESICO y mermas</div>
+              <div class="tilt-title" id="titleSat">Auditoría SAT</div>
+              <div class="tilt-sub" id="subSat">Cálculo RESICO y mermas</div>
             </div>
           </div>
         </div>
@@ -769,19 +812,19 @@
             <div id="hero-3d-canvas-container"></div>
             
             <div class="hero-3d-hud-bar">
-              <button type="button" class="hud-btn hud-btn-primary" onclick="if(window.hero3dSimulateNfc) window.hero3dSimulateNfc();">
-                <span>⚡</span> Tocar NFC
+              <button type="button" class="hud-btn hud-btn-primary" id="btnNfcAction" onclick="if(window.hero3dSimulateNfc) window.hero3dSimulateNfc();">
+                <span id="hudNfcText"><span>⚡</span> <span>Tocar NFC</span></span>
               </button>
-              <button type="button" class="hud-btn" onclick="if(window.hero3dSpin360) window.hero3dSpin360();">
-                <span>🔄</span> Girar 360°
+              <button type="button" class="hud-btn" id="btnSpinAction" onclick="if(window.hero3dSpin360) window.hero3dSpin360();">
+                <span id="hudSpinText"><span>🔄</span> <span>Girar 360°</span></span>
               </button>
-              <button type="button" class="hud-btn" onclick="if(window.hero3dResetView) window.hero3dResetView();">
-                <span>🎯</span> Centrar
+              <button type="button" class="hud-btn" id="btnResetAction" onclick="if(window.hero3dResetView) window.hero3dResetView();">
+                <span id="hudResetText"><span>🎯</span> <span>Centrar</span></span>
               </button>
-              <span class="hud-tip">🖱️ Arrastra en 360°</span>
+              <span class="hud-tip" id="hudTip">🖱️ Arrastra en 360°</span>
             </div>
           </div>
-          <p style="font-size: 0.8rem; color: var(--text-muted); font-family: var(--mono); text-align: center;">
+          <p id="pbrFootnote" style="font-size: 0.8rem; color: var(--text-muted); font-family: var(--mono); text-align: center;">
             ✨ Renderizado PBR en tiempo real · Acrílico negro piano con refracción, chip NFC y Google Reviews.
           </p>
         </div>
@@ -794,21 +837,21 @@
     <!-- ======================================================================= -->
     <section class="showcase-interactive-section" id="demo">
       <div class="showcase-header">
-        <span class="pill-kicker">Demostración en Tiempo Real</span>
-        <h2 class="section-title" style="margin-bottom: 6px;">El Sistema Operativo en tu Celular</h2>
-        <p style="color: var(--text-muted); font-size: 1rem;">Alterna entre las 3 pantallas en vivo para ver cómo opera tu restaurante:</p>
+        <span class="pill-kicker" id="demoPill">Demostración en Tiempo Real</span>
+        <h2 class="section-title" id="demoTitle" style="margin-bottom: 6px;">El Sistema Operativo en tu Celular</h2>
+        <p id="demoDesc" style="color: var(--text-muted); font-size: 1rem;">Alterna entre las 3 pantallas en vivo para ver cómo opera tu restaurante:</p>
       </div>
 
       <!-- TABS SELECTORAS -->
       <div class="device-switcher-tabs">
         <button type="button" class="dev-tab-btn active" id="tabClienteBtn" onclick="switchPhoneView('cliente', true)">
-          <span>📱</span> Vista 1: Cliente en Mesa
+          <span>📱</span> <span id="tabClienteText">Vista 1: Cliente en Mesa</span>
         </button>
         <button type="button" class="dev-tab-btn" id="tabEmpleadoBtn" onclick="switchPhoneView('empleado', true)">
-          <span>🧑‍🍳</span> Vista 2: Cocina y Comandas
+          <span>🧑‍🍳</span> <span id="tabEmpleadoText">Vista 2: Cocina y Comandas</span>
         </button>
         <button type="button" class="dev-tab-btn" id="tabGerenteBtn" onclick="switchPhoneView('gerente', true)">
-          <span>📈</span> Vista 3: Gerente y SAT
+          <span>📈</span> <span id="tabGerenteText">Vista 3: Gerente y SAT</span>
         </button>
       </div>
 
@@ -1534,6 +1577,140 @@
   <!-- JAVASCRIPT DINÁMICO: CONTROL DEL SMARTPHONE, CARRUSEL Y MODALES -->
   <script>
     (function() {
+      // 0. CONMUTADOR MULTI-IDIOMA TURÍSTICO (ES / EN / ZH)
+      const translations = {
+        es: {
+          navDemo: 'En Vivo',
+          navPanels: '3 Paneles',
+          navNfc: 'Placas NFC',
+          navPlans: 'Planes',
+          navCases: 'Casos de Éxito',
+          navWaText: '💬 Cotizar en WhatsApp',
+          heroPill: 'Sistema en Vivo en Zapopan · Carga en 800ms',
+          revealTitle: 'El Sistema Completo para tu Restaurante: <span class="text-gradient-cyan">Menú NFC, Comandas y SAT</span>',
+          heroDesc: 'Mucho más que una simple carta web. Entrega a tu negocio un ecosistema de 3 niveles: <strong>Panel de Cliente en Mesa</strong> con placas NFC de cristal acrílico negro piano, <strong>Pantalla de Cocina KDS</strong> para comandas sin papel y <strong>Panel Gerencial</strong> con reporte nocturno y cálculo fiscal SAT.',
+          heroCtaText: 'Probar Demostración en Vivo',
+          heroSecCta: 'Ver Planes ($100 a $300/mes)',
+          badgeNfc: '5 GRATIS',
+          titleNfc: 'Placas NFC de Mesa',
+          subNfc: 'Acrílico negro piano con QR + chip',
+          badgeKds: 'EN VIVO',
+          titleKds: 'Cocina KDS',
+          subKds: 'Comandas en pantalla sin papel',
+          badgeSat: 'PRO',
+          titleSat: 'Auditoría SAT',
+          subSat: 'Cálculo RESICO y mermas',
+          hudNfcText: '<span>⚡</span> <span>Tocar NFC</span>',
+          hudSpinText: '<span>🔄</span> <span>Girar 360°</span>',
+          hudResetText: '<span>🎯</span> <span>Centrar</span>',
+          hudTip: '🖱️ Arrastra en 360°',
+          pbrFootnote: '✨ Renderizado PBR en tiempo real · Acrílico negro piano con refracción, chip NFC y Google Reviews.',
+          demoPill: 'Demostración en Tiempo Real',
+          demoTitle: 'El Sistema Operativo en tu Celular',
+          demoDesc: 'Alterna entre las 3 pantallas en vivo para ver cómo opera tu restaurante:',
+          tabClienteText: 'Vista 1: Cliente en Mesa',
+          tabEmpleadoText: 'Vista 2: Cocina y Comandas',
+          tabGerenteText: 'Vista 3: Gerente y SAT'
+        },
+        en: {
+          navDemo: 'Live Demo',
+          navPanels: '3 Systems',
+          navNfc: 'NFC Plaques',
+          navPlans: 'Pricing',
+          navCases: 'Success Stories',
+          navWaText: '💬 Quote via WhatsApp',
+          heroPill: 'Live System in Zapopan · 800ms Ultra-Fast Load',
+          revealTitle: 'The Complete Operating System for Restaurants: <span class="text-gradient-cyan">NFC Menus, Kitchen KDS & Taxes</span>',
+          heroDesc: 'Far more than a simple digital menu. Equip your restaurant with a 3-tier ecosystem: <strong>Diner Table Panel</strong> with luxury piano-black acrylic NFC plaques, <strong>Kitchen KDS Screen</strong> for paperless order routing, and <strong>Manager Panel</strong> with nightly auditing and automated tax tracking.',
+          heroCtaText: 'Experience Live Interactive Demo',
+          heroSecCta: 'View Plans ($100 - $300 MXN/mo)',
+          badgeNfc: '5 FREE',
+          titleNfc: 'Tabletop NFC Plaques',
+          subNfc: 'Piano-black acrylic with QR + chip',
+          badgeKds: 'REAL-TIME',
+          titleKds: 'Kitchen KDS',
+          subKds: 'Paperless kitchen order tickets',
+          badgeSat: 'PRO TIER',
+          titleSat: 'Tax & Audit Panel',
+          subSat: 'Automated tax and food waste analytics',
+          hudNfcText: '<span>⚡</span> <span>Tap NFC</span>',
+          hudSpinText: '<span>🔄</span> <span>Spin 360°</span>',
+          hudResetText: '<span>🎯</span> <span>Center</span>',
+          hudTip: '🖱️ Drag to rotate 360°',
+          pbrFootnote: '✨ Real-time PBR 3D rendering · Piano-black acrylic with refractive light, NFC chip & Google Reviews.',
+          demoPill: 'Real-Time Interactive Demo',
+          demoTitle: 'The Operating System on Mobile',
+          demoDesc: 'Switch between the 3 live screens to see your restaurant in action:',
+          tabClienteText: 'View 1: Diner at Table',
+          tabEmpleadoText: 'View 2: Kitchen & Tickets',
+          tabGerenteText: 'View 3: Manager & Taxes'
+        },
+        zh: {
+          navDemo: '实机演示',
+          navPanels: '三合一系统',
+          navNfc: 'NFC 标牌',
+          navPlans: '套餐价格',
+          navCases: '成功案例',
+          navWaText: '💬 WhatsApp 咨询报价',
+          heroPill: '墨西哥现行系统 · 800毫秒瞬时加载',
+          revealTitle: '餐厅全功能数字化系统：<span class="text-gradient-cyan">NFC智能餐牌、后厨KDS与税务核算</span>',
+          heroDesc: '远不止是普通二维码菜单。为您的餐厅打造三层一体化生态：<strong>顾客桌面系统</strong>配备钢琴黑高透亚克力NFC智能餐牌，<strong>后厨KDS大屏</strong>实现无纸化点单流转，<strong>店长管理后台</strong>具备夜间自动结账与税务核算。',
+          heroCtaText: '体验在线互动演示',
+          heroSecCta: '查看套餐 ($100 - $300/月)',
+          badgeNfc: '免费赠5套',
+          titleNfc: '桌面NFC智能餐牌',
+          subNfc: '高透钢琴黑亚克力+双模芯片',
+          badgeKds: '实时出单',
+          titleKds: '后厨KDS看板',
+          subKds: '告别漏单错单，无纸化实时流转',
+          badgeSat: '旗舰版',
+          titleSat: '税务与损耗审计',
+          subSat: '损耗监控与RESICO税额预估',
+          hudNfcText: '<span>⚡</span> <span>轻触 NFC</span>',
+          hudSpinText: '<span>🔄</span> <span>360° 旋转</span>',
+          hudResetText: '<span>🎯</span> <span>居中视角</span>',
+          hudTip: '🖱️ 360° 自由拖拽旋转',
+          pbrFootnote: '✨ 实时PBR物理级渲染 · 钢琴黑光学折射亚克力，内置NFC芯片与谷歌高分好评背面。',
+          demoPill: '实机全流程互动演示',
+          demoTitle: '餐厅数字操作系统（手机端）',
+          demoDesc: '在以下三块实时交互屏幕间自由切换：',
+          tabClienteText: '视图一：顾客点餐',
+          tabEmpleadoText: '视图二：后厨出单',
+          tabGerenteText: '视图三：店长与税务'
+        }
+      };
+
+      window.switchLanguage = function(lang) {
+        if (!translations[lang]) return;
+        const dict = translations[lang];
+        document.documentElement.setAttribute('lang', lang);
+        localStorage.setItem('menuexpress_lang', lang);
+
+        ['langEs', 'langEn', 'langZh'].forEach(function(id) {
+          const btn = document.getElementById(id);
+          if (btn) {
+            if ((id === 'langEs' && lang === 'es') || (id === 'langEn' && lang === 'en') || (id === 'langZh' && lang === 'zh')) {
+              btn.classList.add('active');
+            } else {
+              btn.classList.remove('active');
+            }
+          }
+        });
+
+        Object.keys(dict).forEach(function(key) {
+          const el = document.getElementById(key);
+          if (el) {
+            el.innerHTML = dict[key];
+          }
+        });
+      };
+
+      // Inicializar idioma persistente si fue seleccionado previamente
+      const savedLang = localStorage.getItem('menuexpress_lang') || 'es';
+      if (savedLang !== 'es') {
+        window.switchLanguage(savedLang);
+      }
+
       // 1. TEMA CLARO / OSCURO
       const themeToggle = document.getElementById('themeToggle');
       const currentTheme = localStorage.getItem('menuexpress_theme') || 'light';
