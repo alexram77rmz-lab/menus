@@ -334,62 +334,303 @@
       background: var(--primary); color: #ffffff;
     }
 
-    /* CONTENEDOR 3D ADAPTABLE CON CONTRASTE ELEGANTE */
-    .hero-3d-wrapper {
-      position: relative; width: 100%; height: 480px; margin: 0 auto;
-      border-radius: 24px; overflow: hidden;
-      background: linear-gradient(180deg, rgba(241, 245, 249, 0.85) 0%, rgba(255, 255, 255, 0.95) 50%, rgba(239, 246, 255, 0.6) 100%);
-      border: 1px solid rgba(226, 232, 240, 0.85);
-      box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.7) inset;
-      transition: background 0.3s, border-color 0.3s, height 0.2s;
+    /* ========================================================================= */
+    /* SCROLLYTELLING INTERACTIVO 3D CINEMATOGRÁFICO                            */
+    /* ========================================================================= */
+    .scrolly-container {
+      position: relative;
+      width: 100%;
+      height: 380vh;
+      margin: 0;
+      padding: 0;
     }
-    [data-theme="dark"] .hero-3d-wrapper {
-      background: linear-gradient(180deg, rgba(15, 23, 42, 0.85) 0%, rgba(8, 12, 20, 0.95) 50%, rgba(15, 23, 42, 0.85) 100%);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.6);
+
+    .scrolly-sticky-stage {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 50% 40%, rgba(14, 165, 233, 0.08) 0%, transparent 65%), linear-gradient(180deg, var(--bg) 0%, rgba(15, 23, 42, 0.03) 100%);
+      transition: background 0.3s ease;
     }
+
+    [data-theme="dark"] .scrolly-sticky-stage {
+      background: radial-gradient(circle at 50% 40%, rgba(14, 165, 233, 0.12) 0%, transparent 60%), linear-gradient(180deg, #050811 0%, #0a0f1d 50%, #030712 100%);
+    }
+
     #hero-3d-canvas-container {
-      width: 100%; height: 100%; cursor: grab; touch-action: pan-y;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      cursor: grab;
+      touch-action: pan-y;
     }
     #hero-3d-canvas-container:active { cursor: grabbing; }
-    
+
+    .scrolly-vignette-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+      background: radial-gradient(ellipse at center, transparent 45%, rgba(0, 0, 0, 0.45) 100%);
+    }
+    [data-theme="light"] .scrolly-vignette-overlay {
+      background: radial-gradient(ellipse at center, transparent 55%, rgba(226, 232, 240, 0.55) 100%);
+    }
+
+    /* CAPA INICIAL: HERO APPLE-STYLE MINIMALISTA */
+    .scrolly-hero-overlay {
+      position: absolute;
+      top: 15%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 860px;
+      text-align: center;
+      z-index: 10;
+      pointer-events: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      will-change: transform, opacity, filter;
+    }
+
+    .scrolly-hero-title {
+      font-family: var(--heading);
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1.6px;
+      margin-bottom: 14px;
+      color: var(--text);
+    }
+
+    .scrolly-hero-desc {
+      font-size: clamp(1rem, 1.6vw, 1.2rem);
+      color: var(--text-muted);
+      line-height: 1.55;
+      max-width: 660px;
+      margin: 0 auto 26px;
+      font-weight: 400;
+    }
+
+    .scrolly-hero-cta-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    /* INDICADOR DE SCROLL WHEEL */
+    .scrolly-mouse-indicator {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      will-change: transform, opacity;
+    }
+    .mouse-icon {
+      width: 20px;
+      height: 32px;
+      border: 2px solid var(--text-muted);
+      border-radius: 12px;
+      position: relative;
+    }
+    .mouse-wheel {
+      width: 3px;
+      height: 6px;
+      background: var(--primary);
+      border-radius: 2px;
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: scrollWheelPulse 1.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+    }
+    @keyframes scrollWheelPulse {
+      0% { opacity: 0; transform: translate(-50%, 0); }
+      30% { opacity: 1; }
+      100% { opacity: 0; transform: translate(-50%, 12px); }
+    }
+
+    /* TARJETAS NARRATIVAS DE LAS ESTACIONES (GLASSMORPHISM) */
+    .glass-narrative-card {
+      position: absolute;
+      z-index: 15;
+      width: 380px;
+      max-width: 90%;
+      padding: 24px 26px;
+      border-radius: 20px;
+      background: rgba(15, 23, 42, 0.78);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+      color: #ffffff;
+      pointer-events: none;
+      opacity: 0;
+      will-change: transform, opacity, filter;
+      transition: border-color 0.3s;
+    }
+    [data-theme="light"] .glass-narrative-card {
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      box-shadow: 0 24px 48px -12px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+      color: #0f172a;
+    }
+
+    .scrolly-card-pos-left {
+      left: 7%;
+      top: 50%;
+    }
+    .scrolly-card-pos-right {
+      right: 7%;
+      top: 50%;
+    }
+
+    .station-pill {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 3px 10px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+    }
+    .station-title {
+      font-family: var(--heading);
+      font-size: 1.3rem;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    [data-theme="dark"] .station-title { color: #f8fafc; }
+    [data-theme="light"] .station-title { color: #0f172a; }
+
+    .station-desc {
+      font-size: 0.9rem;
+      line-height: 1.55;
+      margin-bottom: 12px;
+    }
+    [data-theme="dark"] .station-desc { color: #cbd5e1; }
+    [data-theme="light"] .station-desc { color: #475569; }
+
+    .station-meta {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .station-tag {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #94a3b8;
+    }
+    [data-theme="light"] .station-tag {
+      background: rgba(0, 0, 0, 0.04);
+      border-color: rgba(0, 0, 0, 0.08);
+      color: #475569;
+    }
+
     /* HUD BAR CON BOTONES TOUCH-FRIENDLY (MIN-H 44PX) */
     .hero-3d-hud-bar {
-      position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
-      display: flex; align-items: center; gap: 8px; background: rgba(15, 23, 42, 0.88);
-      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); padding: 6px 14px;
-      border-radius: 36px; border: 1px solid rgba(255, 255, 255, 0.16);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35); z-index: 20; flex-wrap: wrap; justify-content: center;
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 6px 14px;
+      border-radius: 36px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+      z-index: 20;
+      flex-wrap: wrap;
+      justify-content: center;
       max-width: 92%;
     }
     .hud-btn {
-      min-height: 44px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.18);
-      color: #ffffff; font-family: var(--mono); font-size: 0.8rem; font-weight: 700;
-      padding: 8px 16px; border-radius: 22px; cursor: pointer; display: flex; align-items: center;
-      gap: 6px; transition: all 0.15s ease; -webkit-tap-highlight-color: transparent;
+      min-height: 44px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 22px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+      -webkit-tap-highlight-color: transparent;
     }
     .hud-btn:hover { background: var(--primary); border-color: var(--primary); transform: translateY(-1px); }
     .hud-btn-primary { background: var(--primary); border-color: var(--primary); box-shadow: 0 2px 12px rgba(37, 99, 235, 0.4); }
     .hud-btn.nfc-btn-success {
-      background: #10b981 !important; border-color: #10b981 !important;
+      background: #10b981 !important;
+      border-color: #10b981 !important;
       box-shadow: 0 0 20px rgba(16, 185, 129, 0.5) !important;
     }
     .hud-tip { font-family: var(--mono); font-size: 0.72rem; color: #94a3b8; padding-left: 8px; border-left: 1px solid rgba(255, 255, 255, 0.15); }
 
     /* TOAST FLOTANTE ESTILO IOS */
     .nfc-toast {
-      position: absolute; top: 16px; left: 50%; transform: translateX(-50%) translateY(-10px);
-      background: rgba(15, 23, 42, 0.92); color: #ffffff;
-      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      position: absolute;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-10px);
+      background: rgba(15, 23, 42, 0.92);
+      color: #ffffff;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border: 1px solid rgba(255, 255, 255, 0.2);
       box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
-      font-family: var(--sans); font-size: 0.88rem; font-weight: 700;
-      padding: 10px 22px; border-radius: 40px; display: none; align-items: center; gap: 8px;
-      z-index: 50; pointer-events: none; opacity: 0;
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      font-weight: 700;
+      padding: 10px 22px;
+      border-radius: 40px;
+      display: none;
+      align-items: center;
+      gap: 8px;
+      z-index: 50;
+      pointer-events: none;
+      opacity: 0;
       transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .nfc-toast.show-ios-toast {
-      display: flex; opacity: 1; transform: translateX(-50%) translateY(0);
+      display: flex;
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
     }
 
     @media (max-width: 768px) {
@@ -433,36 +674,29 @@
       .container {
         padding: 12px 14px 50px;
       }
-      .hero-split-section {
-        padding: 6px 0 16px;
+      /* Scrollytelling Mobile Experience */
+      .scrolly-container {
+        height: 350vh;
       }
-      .hero-split-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        text-align: center;
+      .scrolly-hero-overlay {
+        top: 12%;
+        width: 92%;
       }
-      .pill-kicker {
-        font-size: 0.68rem;
-        padding: 4px 10px;
-        margin: 0 auto 12px auto;
-        letter-spacing: 0.2px;
+      .scrolly-hero-title {
+        font-size: 1.85rem;
+        letter-spacing: -0.7px;
+        margin-bottom: 10px;
       }
-      .hero-awwwards-title {
-        font-size: 1.8rem;
-        line-height: 1.16;
-        letter-spacing: -0.6px;
-        margin-bottom: 12px;
+      .scrolly-hero-desc {
+        font-size: 0.88rem;
+        line-height: 1.45;
+        margin-bottom: 20px;
       }
-      .hero-split-desc {
-        font-size: 0.9rem;
-        line-height: 1.48;
-        margin-bottom: 18px;
-      }
-      .hero-cta-group-split {
+      .scrolly-hero-cta-group {
         flex-direction: column;
         width: 100%;
         gap: 10px;
-        margin-bottom: 20px;
+        margin-bottom: 18px;
       }
       .magnetic-wrap, .magnetic-shimmer-btn {
         width: 100%;
@@ -479,14 +713,30 @@
         padding: 11px 18px;
         font-size: 0.88rem;
       }
-
-      /* Visor 3D adaptativo en cel (340px) */
-      .hero-3d-wrapper {
-        height: 340px;
-        border-radius: 18px;
+      .glass-narrative-card {
+        left: 5% !important;
+        right: 5% !important;
+        bottom: 80px !important;
+        top: auto !important;
+        width: auto !important;
+        max-width: 90% !important;
+        padding: 16px 18px !important;
+        margin: 0 auto !important;
+      }
+      .station-title {
+        font-size: 1.15rem !important;
+        margin-bottom: 6px !important;
+      }
+      .station-desc {
+        font-size: 0.82rem !important;
+        line-height: 1.45 !important;
+        margin-bottom: 0 !important;
+      }
+      .station-meta {
+        display: none !important;
       }
       .hero-3d-hud-bar {
-        bottom: 10px;
+        bottom: 14px;
         padding: 4px 8px;
         gap: 6px;
         max-width: 96%;
@@ -498,35 +748,6 @@
       }
       .hud-tip {
         display: none;
-      }
-
-      /* Tilt Badges en fila compacta de 3 columnas */
-      .tilt-badges-grid {
-        grid-template-columns: repeat(3, 1fr) !important;
-        gap: 6px;
-        padding-top: 14px;
-      }
-      .tilt-card {
-        padding: 8px 5px;
-        border-radius: 10px;
-      }
-      .tilt-head {
-        margin-bottom: 4px;
-      }
-      .tilt-icon {
-        font-size: 1rem;
-      }
-      .tilt-badge {
-        font-size: 0.55rem;
-        padding: 1px 3px;
-      }
-      .tilt-title {
-        font-size: 0.72rem;
-        margin-bottom: 1px;
-      }
-      .tilt-sub {
-        font-size: 0.6rem;
-        line-height: 1.15;
       }
     }
     .device-switcher-tabs {
@@ -862,106 +1083,117 @@
     </div>
   </header>
 
-  <div class="container">
+  <!-- ======================================================================= -->
+  <!-- EXPERIENCIA SCROLLYTELLING 3D CINEMATOGRÁFICA INTERACTIVA                -->
+  <!-- ======================================================================= -->
+  <div id="scrollytelling-container" class="scrolly-container">
+    <div class="scrolly-sticky-stage">
+      <!-- THREE.JS CANVAS CONTAINER -->
+      <div id="hero-3d-canvas-container"></div>
 
-    <!-- ======================================================================= -->
-    <!-- HERO PRINCIPAL ASIMÉTRICO (SPLIT GRID AWWWARDS TECH GASTRO)            -->
-    <!-- ======================================================================= -->
-    <section class="hero-split-section">
-      <div class="hero-split-grid">
-        
-        <!-- COLUMNA IZQUIERDA: COPYWRITING, BOTÓN MAGNÉTICO Y 3D TILT CARDS -->
-        <div class="hero-split-left">
-          <div class="pill-kicker">
-            <span class="pulse-dot"></span>
-            <span id="heroPill">Sistema en Vivo en Zapopan · Carga en 800ms</span>
-          </div>
+      <!-- AMBIENT VIGNETTE / GLOW OVERLAY -->
+      <div class="scrolly-vignette-overlay"></div>
 
-          <h1 class="hero-awwwards-title" id="revealTitle">
-            El Sistema Completo para tu Restaurante: <span class="text-gradient-cyan">Menú NFC, Comandas y SAT</span>
-          </h1>
+      <!-- TOAST FLOTANTE ESTILO IOS -->
+      <div id="nfcNotificationToast" class="nfc-toast">📲 ¡Menú abierto en mesa! 📱</div>
 
-          <p class="hero-split-desc" id="heroDesc">
-            Mucho más que una simple carta web. Entrega a tu negocio un ecosistema de 3 niveles: <strong>Panel de Cliente en Mesa</strong> con placas NFC de cristal acrílico negro piano, <strong>Pantalla de Cocina KDS</strong> para comandas sin papel y <strong>Panel Gerencial</strong> con reporte nocturno y cálculo fiscal SAT.
-          </p>
+      <!-- ESTACIÓN 0: HERO APPLE-STYLE MINIMALISTA OVERLAY -->
+      <div id="scrollyHeroText" class="scrolly-hero-overlay">
+        <div class="pill-kicker">
+          <span class="pulse-dot"></span>
+          <span id="heroPill">Sistema en Vivo en Zapopan · Carga en 800ms</span>
+        </div>
 
-          <div class="hero-cta-group-split">
-            <!-- BOTÓN MAGNÉTICO SHIMMER (AWWWARDS) -->
-            <div class="magnetic-wrap" id="magneticBtnWrap">
-              <a href="#demo" class="magnetic-shimmer-btn">
-                <span class="magnetic-shimmer-border"></span>
-                <span class="magnetic-inner">
-                  <span id="heroCtaText">Probar Demostración en Vivo</span>
-                  <span class="magnetic-arrow">➔</span>
-                </span>
-              </a>
-            </div>
+        <h1 class="scrolly-hero-title" id="revealTitle">
+          Tu restaurante operando en <span class="text-gradient-cyan">piloto automático</span>.
+        </h1>
 
-            <a href="#planes" class="btn-secondary-clean" id="heroSecCta">
-              Ver Planes ($100 a $300/mes)
+        <p class="scrolly-hero-desc" id="heroDesc">
+          Menú NFC de cristal negro piano, comandas en cocina sin papel y balance fiscal SAT. Todo en 800 milisegundos.
+        </p>
+
+        <div class="scrolly-hero-cta-group">
+          <div class="magnetic-wrap" id="magneticBtnWrap">
+            <a href="#demo" class="magnetic-shimmer-btn">
+              <span class="magnetic-shimmer-border"></span>
+              <span class="magnetic-inner">
+                <span id="heroCtaText">Explorar Ecosistema</span>
+                <span class="magnetic-arrow">➔</span>
+              </span>
             </a>
           </div>
 
-          <!-- BADGES CON 3D TILT INTERACTIVO -->
-          <div class="tilt-badges-grid" id="tiltBadgesGrid">
-            <div class="tilt-card" data-tilt>
-              <div class="tilt-glare"></div>
-              <div class="tilt-head">
-                <span class="tilt-icon">💳</span>
-                <span class="tilt-badge" id="badgeNfc">5 GRATIS</span>
-              </div>
-              <div class="tilt-title" id="titleNfc">Placas NFC de Mesa</div>
-              <div class="tilt-sub" id="subNfc">Acrílico negro piano con QR + chip</div>
-            </div>
-
-            <div class="tilt-card" data-tilt>
-              <div class="tilt-glare"></div>
-              <div class="tilt-head">
-                <span class="tilt-icon">🧑‍🍳</span>
-                <span class="tilt-badge" id="badgeKds">EN VIVO</span>
-              </div>
-              <div class="tilt-title" id="titleKds">Cocina KDS</div>
-              <div class="tilt-sub" id="subKds">Comandas en pantalla sin papel</div>
-            </div>
-
-            <div class="tilt-card" data-tilt>
-              <div class="tilt-glare"></div>
-              <div class="tilt-head">
-                <span class="tilt-icon">🏛️</span>
-                <span class="tilt-badge" id="badgeSat">PRO</span>
-              </div>
-              <div class="tilt-title" id="titleSat">Auditoría SAT</div>
-              <div class="tilt-sub" id="subSat">Cálculo RESICO y mermas</div>
-            </div>
-          </div>
+          <a href="#planes" class="btn-secondary-clean" id="heroSecCta">
+            Ver Planes ($100 a $300/mes)
+          </a>
         </div>
 
-        <!-- COLUMNA DERECHA: ESCENA 3D INTERACTIVA WEBGL -->
-        <div class="hero-split-right">
-          <div class="hero-3d-wrapper">
-            <div id="nfcNotificationToast" class="nfc-toast">📲 ¡NFC Detectado! Abriendo Menú Mesa 04 en 0.4s</div>
-            <div id="hero-3d-canvas-container"></div>
-            
-            <div class="hero-3d-hud-bar">
-              <button type="button" class="hud-btn hud-btn-primary" id="btnNfcAction" onclick="if(window.hero3dSimulateNfc) window.hero3dSimulateNfc();">
-                <span id="hudNfcText"><span>⚡</span> <span>Tocar NFC</span></span>
-              </button>
-              <button type="button" class="hud-btn" id="btnSpinAction" onclick="if(window.hero3dSpin360) window.hero3dSpin360();">
-                <span id="hudSpinText"><span>🔄</span> <span>Girar 360°</span></span>
-              </button>
-              <button type="button" class="hud-btn" id="btnResetAction" onclick="if(window.hero3dResetView) window.hero3dResetView();">
-                <span id="hudResetText"><span>🎯</span> <span>Centrar</span></span>
-              </button>
-              <span class="hud-tip" id="hudTip">🖱️ Arrastra en 360°</span>
-            </div>
+        <!-- INDICADOR DE SCROLL PULSANTE (MOUSE WHEEL) -->
+        <div class="scrolly-mouse-indicator" id="scrollyScrollIndicator">
+          <div class="mouse-icon">
+            <div class="mouse-wheel"></div>
           </div>
-          <p id="pbrFootnote" style="font-size: 0.8rem; color: var(--text-muted); font-family: var(--mono); text-align: center;">
-            ✨ Renderizado PBR en tiempo real · Acrílico negro piano con refracción, chip NFC y Google Reviews.
-          </p>
+          <span id="scrollIndText">Desplaza para ensamblar el sistema</span>
         </div>
-
       </div>
-    </section>
+
+      <!-- ESTACIÓN 1: LA MESA (Acrílico Negro Piano) -->
+      <div id="scrollyCard1" class="glass-narrative-card scrolly-card-pos-left">
+        <div class="station-pill" id="card1Pill">01 · EN MESA</div>
+        <h3 class="station-title" id="card1Title">Acrílico Negro Piano con Sensor Háptico</h3>
+        <p class="station-desc" id="card1Desc">
+          Toca con el smartphone o escanea el QR. Carga el menú en 800ms con refracción PBR y chip integrado anti-desgaste.
+        </p>
+        <div class="station-meta">
+          <span class="station-tag">⚡ Chip NTAG213</span>
+          <span class="station-tag">🛡️ Resistente al agua y caídas</span>
+        </div>
+      </div>
+
+      <!-- ESTACIÓN 2: LA COCINA KDS (Comandas en Pantalla Sin Papel) -->
+      <div id="scrollyCard2" class="glass-narrative-card scrolly-card-pos-right">
+        <div class="station-pill" id="card2Pill">02 · EN COCINA</div>
+        <h3 class="station-title" id="card2Title">Comandas en Pantalla Sin Papel (KDS)</h3>
+        <p class="station-desc" id="card2Desc">
+          El pedido vuela directo a los cocineros. Elimina tickets perdidos, tiempos muertos y errores de comanda para siempre.
+        </p>
+        <div class="station-meta">
+          <span class="station-tag">🧑‍🍳 Cero papel térmico</span>
+          <span class="station-tag">⏱️ Tiempos de preparación en vivo</span>
+        </div>
+      </div>
+
+      <!-- ESTACIÓN 3: GERENCIA & SAT (Cálculo RESICO y Detector de Mermas) -->
+      <div id="scrollyCard3" class="glass-narrative-card scrolly-card-pos-left">
+        <div class="station-pill" id="card3Pill">03 · EN GERENCIA</div>
+        <h3 class="station-title" id="card3Title">Cálculo RESICO y Detector de Mermas</h3>
+        <p class="station-desc" id="card3Desc">
+          Cierra caja a medianoche con desglose automático de IVA/ISR y recolecta reseñas 5 estrellas de Google en la placa física.
+        </p>
+        <div class="station-meta">
+          <span class="station-tag">🏛️ Cumplimiento SAT 100%</span>
+          <span class="station-tag">⭐ Google Reviews NFC</span>
+        </div>
+      </div>
+
+      <!-- HUD BAR INTERACTIVO FLOTANTE -->
+      <div class="hero-3d-hud-bar">
+        <button type="button" class="hud-btn hud-btn-primary" id="btnNfcAction" onclick="if(window.hero3dSimulateNfc) window.hero3dSimulateNfc();">
+          <span id="hudNfcText"><span>⚡</span> <span>Tocar NFC</span></span>
+        </button>
+        <button type="button" class="hud-btn" id="btnSpinAction" onclick="if(window.hero3dSpin360) window.hero3dSpin360();">
+          <span id="hudSpinText"><span>🔄</span> <span>Girar 360°</span></span>
+        </button>
+        <button type="button" class="hud-btn" id="btnResetAction" onclick="if(window.hero3dResetView) window.hero3dResetView();">
+          <span id="hudResetText"><span>🎯</span> <span>Centrar</span></span>
+        </button>
+        <span class="hud-tip" id="hudTip">🖱️ Arrastra en 360°</span>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container">
 
     <!-- ======================================================================= -->
     <!-- DEMOSTRACIÓN EN CELULAR: EL SISTEMA OPERATIVO EN ACCIÓN                 -->
@@ -1718,24 +1950,24 @@
           navCases: 'Casos de Éxito',
           navWaText: '💬 Cotizar<span class="hide-mobile"> en WhatsApp</span>',
           heroPill: 'Sistema en Vivo en Zapopan · Carga en 800ms',
-          revealTitle: 'El Sistema Completo para tu Restaurante: <span class="text-gradient-cyan">Menú NFC, Comandas y SAT</span>',
-          heroDesc: 'Mucho más que una simple carta web. Entrega a tu negocio un ecosistema de 3 niveles: <strong>Panel de Cliente en Mesa</strong> con placas NFC de cristal acrílico negro piano, <strong>Pantalla de Cocina KDS</strong> para comandas sin papel y <strong>Panel Gerencial</strong> con reporte nocturno y cálculo fiscal SAT.',
-          heroCtaText: 'Probar Demostración en Vivo',
+          revealTitle: 'Tu restaurante operando en <span class="text-gradient-cyan">piloto automático</span>.',
+          heroDesc: 'Menú NFC de cristal negro piano, comandas en cocina sin papel y balance fiscal SAT. Todo en 800 milisegundos.',
+          heroCtaText: 'Explorar Ecosistema',
           heroSecCta: 'Ver Planes ($100 a $300/mes)',
-          badgeNfc: '5 GRATIS',
-          titleNfc: 'Placas NFC de Mesa',
-          subNfc: 'Acrílico negro piano con QR + chip',
-          badgeKds: 'EN VIVO',
-          titleKds: 'Cocina KDS',
-          subKds: 'Comandas en pantalla sin papel',
-          badgeSat: 'PRO',
-          titleSat: 'Auditoría SAT',
-          subSat: 'Cálculo RESICO y mermas',
+          scrollIndText: 'Desplaza para ensamblar el sistema',
+          card1Pill: '01 · EN MESA',
+          card1Title: 'Acrílico Negro Piano con Sensor Háptico',
+          card1Desc: 'Toca con el smartphone o escanea el QR. Carga el menú en 800ms con refracción PBR y chip integrado anti-desgaste.',
+          card2Pill: '02 · EN COCINA',
+          card2Title: 'Comandas en Pantalla Sin Papel (KDS)',
+          card2Desc: 'El pedido vuela directo a los cocineros. Elimina tickets perdidos, tiempos muertos y errores de comanda para siempre.',
+          card3Pill: '03 · EN GERENCIA',
+          card3Title: 'Cálculo RESICO y Detector de Mermas',
+          card3Desc: 'Cierra caja a medianoche con desglose automático de IVA/ISR y recolecta reseñas 5 estrellas de Google en la placa física.',
           hudNfcText: '<span>⚡</span> <span>Tocar NFC</span>',
           hudSpinText: '<span>🔄</span> <span>Girar 360°</span>',
           hudResetText: '<span>🎯</span> <span>Centrar</span>',
           hudTip: '🖱️ Arrastra en 360°',
-          pbrFootnote: '✨ Renderizado PBR en tiempo real · Acrílico negro piano con refracción, chip NFC y Google Reviews.',
           demoPill: 'Demostración en Tiempo Real',
           demoTitle: 'El Sistema Operativo en tu Celular',
           demoDesc: 'Alterna entre las 3 pantallas en vivo para ver cómo opera tu restaurante:',
@@ -1751,24 +1983,24 @@
           navCases: 'Success Stories',
           navWaText: '💬 Quote<span class="hide-mobile"> on WhatsApp</span>',
           heroPill: 'Live System in Zapopan · 800ms Ultra-Fast Load',
-          revealTitle: 'The Complete Operating System for Restaurants: <span class="text-gradient-cyan">NFC Menus, Kitchen KDS & Taxes</span>',
-          heroDesc: 'Far more than a simple digital menu. Equip your restaurant with a 3-tier ecosystem: <strong>Diner Table Panel</strong> with luxury piano-black acrylic NFC plaques, <strong>Kitchen KDS Screen</strong> for paperless order routing, and <strong>Manager Panel</strong> with nightly auditing and automated tax tracking.',
-          heroCtaText: 'Experience Live Interactive Demo',
-          heroSecCta: 'View Plans ($100 - $300 MXN/mo)',
-          badgeNfc: '5 FREE',
-          titleNfc: 'Tabletop NFC Plaques',
-          subNfc: 'Piano-black acrylic with QR + chip',
-          badgeKds: 'REAL-TIME',
-          titleKds: 'Kitchen KDS',
-          subKds: 'Paperless kitchen order tickets',
-          badgeSat: 'PRO TIER',
-          titleSat: 'Tax & Audit Panel',
-          subSat: 'Automated tax and food waste analytics',
+          revealTitle: 'Your restaurant running on <span class="text-gradient-cyan">autopilot</span>.',
+          heroDesc: 'Piano-black acrylic NFC menu, paperless kitchen tickets, and automated tax balance. In 800 milliseconds.',
+          heroCtaText: 'Explore Ecosystem',
+          heroSecCta: 'View Plans ($100 - $300/mo)',
+          scrollIndText: 'Scroll to assemble the system',
+          card1Pill: '01 · AT TABLE',
+          card1Title: 'Piano-Black Acrylic with Haptic Sensor',
+          card1Desc: 'Tap with your smartphone or scan the QR. Loads menu in 800ms with optical refraction and scratch-proof chip.',
+          card2Pill: '02 · IN KITCHEN',
+          card2Title: 'Paperless Kitchen Display System (KDS)',
+          card2Desc: 'Orders fly instantly to kitchen screens. Eliminate lost paper tickets, delays, and order confusion forever.',
+          card3Pill: '03 · IN MANAGEMENT',
+          card3Title: 'RESICO Tax Auditing & Food Waste Detector',
+          card3Desc: 'Close register at midnight with automated tax breakdown and harvest 5-star Google Reviews on the physical plaque.',
           hudNfcText: '<span>⚡</span> <span>Tap NFC</span>',
           hudSpinText: '<span>🔄</span> <span>Spin 360°</span>',
           hudResetText: '<span>🎯</span> <span>Center</span>',
           hudTip: '🖱️ Drag to rotate 360°',
-          pbrFootnote: '✨ Real-time PBR 3D rendering · Piano-black acrylic with refractive light, NFC chip & Google Reviews.',
           demoPill: 'Real-Time Interactive Demo',
           demoTitle: 'The Operating System on Mobile',
           demoDesc: 'Switch between the 3 live screens to see your restaurant in action:',
@@ -1784,24 +2016,24 @@
           navCases: '成功案例',
           navWaText: '💬 WhatsApp<span class="hide-mobile"> 咨询报价</span>',
           heroPill: '墨西哥现行系统 · 800毫秒瞬时加载',
-          revealTitle: '餐厅全功能数字化系统：<span class="text-gradient-cyan">NFC智能餐牌、后厨KDS与税务核算</span>',
-          heroDesc: '远不止是普通二维码菜单。为您的餐厅打造三层一体化生态：<strong>顾客桌面系统</strong>配备钢琴黑高透亚克力NFC智能餐牌，<strong>后厨KDS大屏</strong>实现无纸化点单流转，<strong>店长管理后台</strong>具备夜间自动结账与税务核算。',
-          heroCtaText: '体验在线互动演示',
+          revealTitle: '让您的餐厅实现<span class="text-gradient-cyan">全自动运转</span>。',
+          heroDesc: '高透黑晶亚克力NFC点餐、后厨实时无纸化KDS与智能税务核算，800毫秒瞬时响应。',
+          heroCtaText: '探索完整系统',
           heroSecCta: '查看套餐 ($100 - $300/月)',
-          badgeNfc: '免费赠5套',
-          titleNfc: '桌面NFC智能餐牌',
-          subNfc: '高透钢琴黑亚克力+双模芯片',
-          badgeKds: '实时出单',
-          titleKds: '后厨KDS看板',
-          subKds: '告别漏单错单，无纸化实时流转',
-          badgeSat: '旗舰版',
-          titleSat: '税务与损耗审计',
-          subSat: '损耗监控与RESICO税额预估',
+          scrollIndText: '向下滚动组装智能系统',
+          card1Pill: '01 · 顾客桌面',
+          card1Title: '钢琴黑亚克力高感触控餐牌',
+          card1Desc: '手机轻触或扫码，800毫秒极速呈现高透PBR数字菜单，内置工业级耐磨芯片。',
+          card2Pill: '02 · 后厨中枢',
+          card2Title: '后厨KDS大屏 无纸化出单',
+          card2Desc: '顾客点单直达后厨显示屏，告别飞单、漏单与字迹混乱，出餐效率提升40%以上。',
+          card3Pill: '03 · 管理与财务',
+          card3Title: '税务合规与原料损耗智能侦测',
+          card3Desc: '每晚午夜自动核算营收与税费账单，餐牌背面一键唤起谷歌5星好评，助您业绩翻倍。',
           hudNfcText: '<span>⚡</span> <span>轻触 NFC</span>',
           hudSpinText: '<span>🔄</span> <span>360° 旋转</span>',
           hudResetText: '<span>🎯</span> <span>居中视角</span>',
           hudTip: '🖱️ 360° 自由拖拽旋转',
-          pbrFootnote: '✨ 实时PBR物理级渲染 · 钢琴黑光学折射亚克力，内置NFC芯片与谷歌高分好评背面。',
           demoPill: '实机全流程互动演示',
           demoTitle: '餐厅数字操作系统（手机端）',
           demoDesc: '在以下三块实时交互屏幕间自由切换：',
