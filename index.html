@@ -73,7 +73,7 @@
       background: rgba(255, 255, 255, 0.94);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
-      padding: 14px 24px;
+      padding: 12px 24px;
       transition: background 0.2s, border-color 0.2s;
     }
     [data-theme="dark"] header {
@@ -81,33 +81,33 @@
     }
     .header-inner {
       max-width: 1160px; margin: 0 auto;
-      display: flex; justify-content: space-between; align-items: center;
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
     }
     .brand-group {
-      display: flex; align-items: center; gap: 10px; text-decoration: none;
+      display: flex; align-items: center; gap: 8px; text-decoration: none; flex-shrink: 0;
     }
     .brand-logo-icon {
-      width: 34px; height: 34px; border-radius: 9px; background: var(--primary);
+      width: 32px; height: 32px; border-radius: 9px; background: var(--primary);
       color: white; display: flex; align-items: center; justify-content: center;
-      font-family: var(--heading); font-weight: 700; font-size: 1.15rem;
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+      font-family: var(--heading); font-weight: 700; font-size: 1.1rem;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); flex-shrink: 0;
     }
     .brand-title {
-      font-family: var(--heading); font-size: 1.25rem; font-weight: 700;
-      letter-spacing: -0.5px; color: var(--text-main);
+      font-family: var(--heading); font-size: 1.2rem; font-weight: 700;
+      letter-spacing: -0.5px; color: var(--text-main); white-space: nowrap;
     }
     .brand-title span { color: var(--primary); }
     .brand-badge {
       font-family: var(--mono); font-size: 0.7rem; font-weight: 600;
       background: var(--primary-light); color: var(--primary);
-      border: 1px solid #bfdbfe; padding: 2px 8px; border-radius: 4px;
+      border: 1px solid #bfdbfe; padding: 2px 8px; border-radius: 4px; white-space: nowrap;
     }
     [data-theme="dark"] .brand-badge { border-color: rgba(59, 130, 246, 0.3); }
 
-    .header-actions { display: flex; align-items: center; gap: 14px; }
+    .header-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
     .header-link {
-      font-size: 0.88rem; font-weight: 600; color: var(--text-muted);
-      text-decoration: none; transition: color 0.15s;
+      font-size: 0.86rem; font-weight: 600; color: var(--text-muted);
+      text-decoration: none; transition: color 0.15s; white-space: nowrap;
     }
     .header-link:hover { color: var(--primary); }
     
@@ -336,16 +336,16 @@
 
     /* CONTENEDOR 3D ADAPTABLE CON CONTRASTE ELEGANTE */
     .hero-3d-wrapper {
-      position: relative; width: 100%; height: 520px; margin: 0 auto;
-      border-radius: 26px; overflow: hidden;
-      background: linear-gradient(180deg, rgba(241, 245, 249, 0.9) 0%, #ffffff 50%, rgba(239, 246, 255, 0.75) 100%);
-      border: 1px solid rgba(203, 213, 225, 0.85);
-      box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.1);
-      transition: background 0.3s, border-color 0.3s;
+      position: relative; width: 100%; height: 480px; margin: 0 auto;
+      border-radius: 24px; overflow: hidden;
+      background: linear-gradient(180deg, rgba(241, 245, 249, 0.85) 0%, rgba(255, 255, 255, 0.95) 50%, rgba(239, 246, 255, 0.6) 100%);
+      border: 1px solid rgba(226, 232, 240, 0.85);
+      box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.7) inset;
+      transition: background 0.3s, border-color 0.3s, height 0.2s;
     }
     [data-theme="dark"] .hero-3d-wrapper {
       background: linear-gradient(180deg, rgba(15, 23, 42, 0.85) 0%, rgba(8, 12, 20, 0.95) 50%, rgba(15, 23, 42, 0.85) 100%);
-      border-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.6);
     }
     #hero-3d-canvas-container {
@@ -393,10 +393,141 @@
     }
 
     @media (max-width: 768px) {
-      .hero-3d-wrapper { height: 360px; border-radius: 20px; }
-      .hero-3d-hud-bar { bottom: 10px; padding: 4px 10px; gap: 6px; }
-      .hud-btn { min-height: 42px; padding: 6px 12px; font-size: 0.75rem; }
-      .hud-tip { display: none; }
+      header {
+        padding: 10px 14px;
+      }
+      .header-inner {
+        gap: 6px;
+      }
+      .header-link {
+        display: none !important;
+      }
+      .brand-badge {
+        display: none !important;
+      }
+      .brand-title {
+        font-size: 1.05rem;
+      }
+      .brand-logo-icon {
+        width: 28px; height: 28px; font-size: 0.95rem; border-radius: 7px;
+      }
+      .header-actions {
+        gap: 5px;
+      }
+      .lang-switcher {
+        padding: 2px; gap: 1px;
+      }
+      .lang-btn {
+        padding: 3px 6px; font-size: 0.65rem;
+      }
+      .theme-toggle-btn {
+        width: 30px; height: 30px; font-size: 0.82rem;
+      }
+      .whatsapp-radar-btn {
+        padding: 6px 10px; font-size: 0.74rem; gap: 5px;
+      }
+      .hide-mobile {
+        display: none !important;
+      }
+
+      .container {
+        padding: 12px 14px 50px;
+      }
+      .hero-split-section {
+        padding: 6px 0 16px;
+      }
+      .hero-split-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        text-align: center;
+      }
+      .pill-kicker {
+        font-size: 0.68rem;
+        padding: 4px 10px;
+        margin: 0 auto 12px auto;
+        letter-spacing: 0.2px;
+      }
+      .hero-awwwards-title {
+        font-size: 1.8rem;
+        line-height: 1.16;
+        letter-spacing: -0.6px;
+        margin-bottom: 12px;
+      }
+      .hero-split-desc {
+        font-size: 0.9rem;
+        line-height: 1.48;
+        margin-bottom: 18px;
+      }
+      .hero-cta-group-split {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+      .magnetic-wrap, .magnetic-shimmer-btn {
+        width: 100%;
+      }
+      .magnetic-inner {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 18px;
+        font-size: 0.9rem;
+      }
+      .btn-secondary-clean {
+        width: 100%;
+        text-align: center;
+        padding: 11px 18px;
+        font-size: 0.88rem;
+      }
+
+      /* Visor 3D adaptativo en cel (340px) */
+      .hero-3d-wrapper {
+        height: 340px;
+        border-radius: 18px;
+      }
+      .hero-3d-hud-bar {
+        bottom: 10px;
+        padding: 4px 8px;
+        gap: 6px;
+        max-width: 96%;
+      }
+      .hud-btn {
+        min-height: 44px;
+        padding: 8px 12px;
+        font-size: 0.76rem;
+      }
+      .hud-tip {
+        display: none;
+      }
+
+      /* Tilt Badges en fila compacta de 3 columnas */
+      .tilt-badges-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 6px;
+        padding-top: 14px;
+      }
+      .tilt-card {
+        padding: 8px 5px;
+        border-radius: 10px;
+      }
+      .tilt-head {
+        margin-bottom: 4px;
+      }
+      .tilt-icon {
+        font-size: 1rem;
+      }
+      .tilt-badge {
+        font-size: 0.55rem;
+        padding: 1px 3px;
+      }
+      .tilt-title {
+        font-size: 0.72rem;
+        margin-bottom: 1px;
+      }
+      .tilt-sub {
+        font-size: 0.6rem;
+        line-height: 1.15;
+      }
     }
     .device-switcher-tabs {
       display: inline-flex; background: var(--bg-alt); padding: 5px; border-radius: 30px;
@@ -725,7 +856,7 @@
 
         <a href="https://wa.me/523312345678?text=Hola%20Alex!%20Me%20interesa%20digitalizar%20mi%20restaurante%20con%20MenuExpress" class="whatsapp-radar-btn" id="navWaBtn">
           <span class="radar-dot"><span class="radar-wave"></span></span>
-          <span id="navWaText">💬 Cotizar en WhatsApp</span>
+          <span id="navWaText">💬 Cotizar<span class="hide-mobile"> en WhatsApp</span></span>
         </a>
       </div>
     </div>
@@ -1585,7 +1716,7 @@
           navNfc: 'Placas NFC',
           navPlans: 'Planes',
           navCases: 'Casos de Éxito',
-          navWaText: '💬 Cotizar en WhatsApp',
+          navWaText: '💬 Cotizar<span class="hide-mobile"> en WhatsApp</span>',
           heroPill: 'Sistema en Vivo en Zapopan · Carga en 800ms',
           revealTitle: 'El Sistema Completo para tu Restaurante: <span class="text-gradient-cyan">Menú NFC, Comandas y SAT</span>',
           heroDesc: 'Mucho más que una simple carta web. Entrega a tu negocio un ecosistema de 3 niveles: <strong>Panel de Cliente en Mesa</strong> con placas NFC de cristal acrílico negro piano, <strong>Pantalla de Cocina KDS</strong> para comandas sin papel y <strong>Panel Gerencial</strong> con reporte nocturno y cálculo fiscal SAT.',
@@ -1618,7 +1749,7 @@
           navNfc: 'NFC Plaques',
           navPlans: 'Pricing',
           navCases: 'Success Stories',
-          navWaText: '💬 Quote via WhatsApp',
+          navWaText: '💬 Quote<span class="hide-mobile"> on WhatsApp</span>',
           heroPill: 'Live System in Zapopan · 800ms Ultra-Fast Load',
           revealTitle: 'The Complete Operating System for Restaurants: <span class="text-gradient-cyan">NFC Menus, Kitchen KDS & Taxes</span>',
           heroDesc: 'Far more than a simple digital menu. Equip your restaurant with a 3-tier ecosystem: <strong>Diner Table Panel</strong> with luxury piano-black acrylic NFC plaques, <strong>Kitchen KDS Screen</strong> for paperless order routing, and <strong>Manager Panel</strong> with nightly auditing and automated tax tracking.',
@@ -1651,7 +1782,7 @@
           navNfc: 'NFC 标牌',
           navPlans: '套餐价格',
           navCases: '成功案例',
-          navWaText: '💬 WhatsApp 咨询报价',
+          navWaText: '💬 WhatsApp<span class="hide-mobile"> 咨询报价</span>',
           heroPill: '墨西哥现行系统 · 800毫秒瞬时加载',
           revealTitle: '餐厅全功能数字化系统：<span class="text-gradient-cyan">NFC智能餐牌、后厨KDS与税务核算</span>',
           heroDesc: '远不止是普通二维码菜单。为您的餐厅打造三层一体化生态：<strong>顾客桌面系统</strong>配备钢琴黑高透亚克力NFC智能餐牌，<strong>后厨KDS大屏</strong>实现无纸化点单流转，<strong>店长管理后台</strong>具备夜间自动结账与税务核算。',
