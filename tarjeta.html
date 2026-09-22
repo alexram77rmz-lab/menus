@@ -83,14 +83,14 @@
 
     .brand-avatar-box {
       position: relative;
-      width: 88px;
-      height: 88px;
+      width: 96px;
+      height: 96px;
       margin: 0 auto 16px;
     }
     .brand-avatar-img {
       width: 100%;
       height: 100%;
-      border-radius: 22px;
+      border-radius: 24px;
       object-fit: cover;
       border: 2px solid rgba(0, 240, 255, 0.5);
       box-shadow: 0 0 25px rgba(0, 240, 255, 0.35);
@@ -134,16 +134,44 @@
       font-size: 0.88rem;
       color: var(--text-muted);
       line-height: 1.4;
-      margin-bottom: 22px;
+      margin-bottom: 16px;
+    }
+
+    /* Selector de Códigos QR */
+    .qr-type-tabs {
+      display: inline-flex;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 3px;
+      gap: 4px;
+      margin-bottom: 14px;
+    }
+    .qr-tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .qr-tab-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 2px 10px rgba(37, 99, 235, 0.4);
     }
 
     /* QR Container */
     .qr-frame {
       background: #ffffff;
       border-radius: 20px;
-      padding: 16px;
+      padding: 14px;
       display: inline-block;
-      margin: 0 auto 16px;
+      margin: 0 auto 14px;
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
       position: relative;
     }
@@ -151,7 +179,7 @@
       width: 220px;
       height: 220px;
       display: block;
-      border-radius: 12px;
+      border-radius: 10px;
     }
 
     .scan-hint {
@@ -159,7 +187,7 @@
       color: var(--text-muted);
       line-height: 1.4;
       max-width: 320px;
-      margin: 0 auto 22px;
+      margin: 0 auto 20px;
     }
     .scan-hint strong {
       color: #ffffff;
@@ -255,7 +283,7 @@
 
   <main class="card-wrap">
     <div class="brand-avatar-box">
-      <img src="images/menuexpress_logo.jpg" alt="MenuExpress Logo" class="brand-avatar-img">
+      <img src="images/menuexpress_logo_maximalist.jpg" alt="MenuExpress Maximalist Logo" class="brand-avatar-img">
       <div class="brand-status-dot" title="En servicio activo"></div>
     </div>
 
@@ -263,16 +291,22 @@
     <h1 class="founder-name">Alex Ramírez</h1>
     <p class="founder-title">
       Fundador · <strong>MenuExpress México</strong><br>
-      Digitalización Gastronómica, Placas NFC & KDS
+      Joven emprendedor metido en la industria para ayudarte a ganar más
     </p>
 
-    <!-- QR CODE NATIVO DE ALTA DEFINICIÓN -->
-    <div class="qr-frame">
-      <img src="images/qr_menuexpress_web.png" alt="Código QR MenuExpress" class="qr-img">
+    <!-- SELECTOR DE QR: WEB VS DEMO -->
+    <div class="qr-type-tabs">
+      <button type="button" class="qr-tab-btn active" id="tabCardWeb" onclick="selectCardQr('web')">🌐 Mi Web</button>
+      <button type="button" class="qr-tab-btn" id="tabCardDemo" onclick="selectCardQr('demo')">🥩 Menú Ejemplo</button>
     </div>
 
-    <p class="scan-hint">
-      Apunta con la cámara de tu celular para ver <strong>cómo opera un restaurante en piloto automático</strong>.
+    <!-- QR CODE BLANCO MINIMALISTA -->
+    <div class="qr-frame">
+      <img id="cardQrImg" src="images/qr_menuexpress_minimal_white.png" alt="Código QR Blanco Minimalista" class="qr-img">
+    </div>
+
+    <p class="scan-hint" id="cardQrHint">
+      Apunta con la cámara de tu celular para abrir <strong>MenuExpress</strong> (cotizaciones y calculadora).
     </p>
 
     <div class="actions-list">
@@ -296,6 +330,24 @@
   </main>
 
   <script>
+    function selectCardQr(type) {
+      const img = document.getElementById('cardQrImg');
+      const hint = document.getElementById('cardQrHint');
+      const btnWeb = document.getElementById('tabCardWeb');
+      const btnDemo = document.getElementById('tabCardDemo');
+      if (type === 'web') {
+        img.src = 'images/qr_menuexpress_minimal_white.png';
+        hint.innerHTML = 'Apunta con la cámara de tu celular para abrir <strong>MenuExpress</strong> (cotizaciones y calculadora).';
+        btnWeb.classList.add('active');
+        btnDemo.classList.remove('active');
+      } else {
+        img.src = 'images/qr_demo_alex_minimal_white.png';
+        hint.innerHTML = 'Apunta con la cámara de tu celular para probar el <strong>Menú Flagship ALEX</strong> (Showcase con Asistente y anti-gravedad).';
+        btnDemo.classList.add('active');
+        btnWeb.classList.remove('active');
+      }
+    }
+
     function shareCard() {
       if (navigator.share) {
         navigator.share({
