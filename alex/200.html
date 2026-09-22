@@ -3,42 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>ALEX · Artisanal Grill & Smokehouse | Menú & Asistente</title>
-  <meta name="description" content="Cortes Prime añejados al mezquite, ahumados lentos de 14 horas, mixología de autor y concierge gastronómico.">
+  <title>ALEX · Artisanal Grill & Smokehouse | Menú Anti-Gravity</title>
+  <meta name="description" content="Ultra-modern anti-gravity digital menu experience. Cortes Prime al mezquite, smash burgers ahumadas y coctelería botánica.">
   
-  <!-- OpenGraph para WhatsApp, Telegram y Redes Sociales -->
+  <!-- OpenGraph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="ALEX · Artisanal Grill & Smokehouse 🥩🔥">
-  <meta property="og:description" content="Cortes Prime añejados al mezquite, Brisket Ahumado 14h y Asistente Gastronómico.">
+  <meta property="og:title" content="ALEX · Artisanal Grill & Smokehouse 🥩✨">
+  <meta property="og:description" content="Experiencia gastronómica inmersiva con efecto flotante anti-gravity y pedido rápido.">
   <meta property="og:image" content="https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&auto=format&fit=crop&q=85">
   <meta property="og:url" content="https://alexram77rmz-lab.github.io/menus/alex/">
-  <meta name="theme-color" content="#161412">
+  <meta name="theme-color" content="#08080a">
 
-  <!-- Tipografías de Alta Gama Editorial / Fine Dining -->
+  <!-- Fuentes de Vanguardia -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- GSAP 3 + ScrollTrigger para Física Anti-Gravity -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 
   <style>
     :root {
-      /* Paleta Cálida de Alta Cocina: Espresso Ahumado, Bronce, Oro Champán y Marfil */
-      --bg: #141210;
-      --bg-surface: #1a1715;
-      --bg-card: rgba(26, 23, 21, 0.78);
-      --border: rgba(245, 230, 210, 0.09);
-      --border-focus: rgba(212, 175, 55, 0.45);
-      --gold: #d4af37;
-      --gold-light: #fef08a;
-      --gold-glow: rgba(212, 175, 55, 0.22);
-      --bronze: #c2410c;
-      --text-main: #fafaf9;
-      --text-muted: #a8a29e;
-      --text-sub: #d6d3d1;
-      --success: #10b981;
+      /* Luxury Dark Theme: Deep Matte Black & Midnight Charcoal */
+      --matte-black: #08080a;
+      --midnight-charcoal: #111116;
+      --surface-card: rgba(19, 19, 25, 0.78);
+      --surface-glass: rgba(26, 26, 34, 0.65);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(245, 158, 11, 0.45);
+      
+      /* Brilliant Vibrant Accents (Strictly for Interaction & Highlights) */
+      --neon-amber: #f59e0b;
+      --neon-amber-glow: rgba(245, 158, 11, 0.35);
+      --glowing-crimson: #f43f5e;
+      --electric-emerald: #10b981;
+      --electric-emerald-glow: rgba(16, 185, 129, 0.35);
+      
+      /* Typography */
+      --text-pure: #ffffff;
+      --text-muted: #94a3b8;
+      --text-warm: #e2e8f0;
       --sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       --heading: 'Space Grotesk', sans-serif;
-      --serif-accent: 'Cinzel', serif;
-      --radius: 20px;
+      --radius: 22px;
     }
 
     * {
@@ -48,9 +56,13 @@
       -webkit-tap-highlight-color: transparent;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      background-color: var(--bg);
-      color: var(--text-main);
+      background-color: var(--matte-black);
+      color: var(--text-pure);
       font-family: var(--sans);
       line-height: 1.5;
       padding-bottom: 120px;
@@ -60,9 +72,9 @@
     }
 
     /* ========================================================================= */
-    /* VIDEO AMBIENTAL DE FONDO (DETRÁS DE TODA LA WEB Y DE LOS PLATILLOS)       */
+    /* CINEMATIC VIDEO BACKGROUND (DARK & MOODY GOURMET LOOP)                    */
     /* ========================================================================= */
-    .ambient-web-video-backdrop {
+    .ambient-cinematic-backdrop {
       position: fixed;
       top: 0;
       left: 0;
@@ -73,54 +85,55 @@
       overflow: hidden;
     }
 
-    .ambient-web-video-backdrop video {
+    .ambient-cinematic-backdrop video {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.22;
-      filter: contrast(1.15) brightness(0.65) saturate(1.1);
+      opacity: 0.28;
+      filter: contrast(1.2) brightness(0.65) saturate(1.15);
       transform: scale(1.05);
     }
 
-    .ambient-web-video-overlay {
+    .ambient-cinematic-overlay {
       position: absolute;
       inset: 0;
       background: 
-        radial-gradient(ellipse at 50% 20%, rgba(20, 18, 16, 0.45) 0%, rgba(18, 16, 14, 0.88) 75%, var(--bg) 100%),
-        linear-gradient(180deg, rgba(20, 18, 16, 0.3) 0%, rgba(20, 18, 16, 0.85) 100%);
+        radial-gradient(ellipse at 50% 30%, rgba(8, 8, 10, 0.35) 0%, rgba(8, 8, 10, 0.88) 75%, var(--matte-black) 100%),
+        linear-gradient(180deg, rgba(8, 8, 10, 0.2) 0%, rgba(8, 8, 10, 0.92) 100%);
     }
 
-    /* Capa de contenido por encima del video ambiental */
-    .app-relative-layer {
+    .content-canvas-layer {
       position: relative;
       z-index: 2;
     }
 
     /* ========================================================================= */
-    /* HEADER REFINADO / CONCIERGE DE MESA                                       */
+    /* FIXED TOP NAVIGATION HEADER                                               */
     /* ========================================================================= */
     header {
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 100;
-      background: rgba(20, 18, 16, 0.86);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--border);
-      padding: 14px 20px;
-      transition: background 0.3s ease;
+      background: rgba(8, 8, 10, 0.82);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 12px 20px;
+      transition: background 0.3s ease, border-color 0.3s ease;
     }
 
-    .header-inner {
-      max-width: 1080px;
+    .header-container {
+      max-width: 1140px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
     }
 
-    .brand-wrap {
+    .brand-cluster {
       display: flex;
       align-items: center;
       gap: 12px;
@@ -128,23 +141,23 @@
       color: inherit;
     }
 
-    .brand-logo-svg {
-      width: 44px;
-      height: 44px;
+    .brand-symbol-box {
+      width: 42px;
+      height: 42px;
       border-radius: 12px;
-      background: linear-gradient(135deg, #26221f 0%, #161412 100%);
-      border: 1px solid rgba(212, 175, 55, 0.35);
+      background: linear-gradient(135deg, #181820 0%, #0d0d12 100%);
+      border: 1px solid rgba(245, 158, 11, 0.4);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45), 0 0 14px rgba(212, 175, 55, 0.15);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5), 0 0 14px rgba(245, 158, 11, 0.18);
     }
 
-    .brand-text h1 {
+    .brand-titles h1 {
       font-family: var(--heading);
-      font-size: 1.32rem;
+      font-size: 1.35rem;
       font-weight: 800;
-      letter-spacing: 1.8px;
+      letter-spacing: 2px;
       color: #ffffff;
       line-height: 1;
       display: flex;
@@ -152,27 +165,33 @@
       gap: 4px;
     }
 
-    .brand-text h1 span {
-      color: var(--gold);
+    .brand-titles h1 span {
+      color: var(--neon-amber);
     }
 
-    .brand-text p {
-      font-size: 0.65rem;
+    .brand-titles p {
+      font-size: 0.64rem;
       color: var(--text-muted);
       letter-spacing: 1.2px;
       text-transform: uppercase;
-      margin-top: 3px;
       font-weight: 600;
+      margin-top: 2px;
     }
 
-    .table-status-pill {
+    .header-actions-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .table-pill-indicator {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      background: rgba(212, 175, 55, 0.08);
-      border: 1px solid rgba(212, 175, 55, 0.28);
-      color: var(--gold-light);
-      font-size: 0.76rem;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: #e2e8f0;
+      font-size: 0.74rem;
       font-weight: 700;
       padding: 6px 14px;
       border-radius: 20px;
@@ -180,449 +199,397 @@
       transition: all 0.2s ease;
     }
 
-    .table-status-pill:hover {
-      background: rgba(212, 175, 55, 0.16);
-      border-color: var(--gold);
+    .table-pill-indicator:hover {
+      background: rgba(245, 158, 11, 0.15);
+      border-color: var(--neon-amber);
     }
 
-    .table-dot {
+    .radar-pulse-dot {
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: var(--success);
-      box-shadow: 0 0 8px var(--success);
-      animation: pulseDot 2s infinite ease-in-out;
+      background: var(--electric-emerald);
+      box-shadow: 0 0 8px var(--electric-emerald);
+      animation: pulseNeon 2s infinite ease-in-out;
     }
 
-    @keyframes pulseDot {
+    @keyframes pulseNeon {
       0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.25); opacity: 0.65; }
+      50% { transform: scale(1.35); opacity: 0.6; }
     }
 
-    /* ========================================================================= */
-    /* HERO INTRO EDITORIAL / ATMÓSFERA GASTRONÓMICA                             */
-    /* ========================================================================= */
-    .hero-intro-section {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 38px 20px 24px;
-    }
-
-    .hero-kicker-badge {
+    /* Floating WhatsApp Button with Soft Persistent Glow */
+    .whatsapp-header-btn {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: rgba(194, 65, 12, 0.15);
-      border: 1px solid rgba(194, 65, 12, 0.35);
-      color: #fdba74;
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 4px 12px;
-      border-radius: 14px;
-      margin-bottom: 12px;
-      backdrop-filter: blur(8px);
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-
-    .hero-headline {
-      font-family: var(--heading);
-      font-size: 2.2rem;
-      font-weight: 800;
-      letter-spacing: -0.8px;
-      line-height: 1.14;
-      margin-bottom: 10px;
+      gap: 8px;
+      background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
       color: #ffffff;
+      border: none;
+      border-radius: 24px;
+      padding: 8px 16px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 0 20px rgba(37, 211, 102, 0.45);
+      cursor: pointer;
+      position: relative;
+      animation: waAmbientGlow 3s infinite alternate ease-in-out;
+      transition: transform 0.2s ease;
     }
 
-    .hero-headline em {
+    .whatsapp-header-btn:hover {
+      transform: scale(1.04);
+      box-shadow: 0 0 28px rgba(37, 211, 102, 0.7);
+    }
+
+    @keyframes waAmbientGlow {
+      0% { box-shadow: 0 0 12px rgba(37, 211, 102, 0.35); }
+      100% { box-shadow: 0 0 26px rgba(37, 211, 102, 0.65), 0 0 40px rgba(37, 211, 102, 0.25); }
+    }
+
+    /* ========================================================================= */
+    /* HERO SECTION (STRIKING BOLD TYPOGRAPHY & DIGITAL CTA 'VER MENÚ')           */
+    /* ========================================================================= */
+    .hero-cinematic-stage {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 20px 60px;
+      position: relative;
+    }
+
+    .hero-center-box {
+      max-width: 780px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-pre-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      color: var(--neon-amber);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 30px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-bold-title {
+      font-family: var(--heading);
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.05;
+      margin-bottom: 18px;
+      color: #ffffff;
+      text-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero-bold-title em {
       font-style: normal;
-      background: linear-gradient(135deg, #ffffff 0%, #fef08a 60%, #d4af37 100%);
+      background: linear-gradient(135deg, #ffffff 0%, #fde68a 50%, #f59e0b 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .hero-sub {
-      font-size: 0.92rem;
-      color: var(--text-sub);
-      max-width: 520px;
-      line-height: 1.5;
-      margin-bottom: 20px;
+    .hero-manifesto {
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      color: var(--text-warm);
+      max-width: 580px;
+      line-height: 1.55;
+      margin-bottom: 34px;
+      opacity: 0.92;
     }
 
-    .hero-action-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .chip-btn {
+    /* Clean High-Contrast Digital CTA 'Ver Menú' */
+    .cta-ver-menu-btn {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: rgba(36, 32, 29, 0.75);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 7px 16px;
-      font-size: 0.80rem;
-      font-weight: 600;
-      color: #ffffff;
+      gap: 12px;
+      background: #ffffff;
+      color: #08080a;
+      border: none;
+      border-radius: 40px;
+      padding: 16px 36px;
+      font-family: var(--sans);
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
       text-decoration: none;
-      backdrop-filter: blur(12px);
+      cursor: pointer;
+      box-shadow: 0 10px 35px rgba(255, 255, 255, 0.25), 0 0 20px rgba(245, 158, 11, 0.2);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .cta-ver-menu-btn:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 16px 45px rgba(255, 255, 255, 0.4), 0 0 30px rgba(245, 158, 11, 0.35);
+      background: var(--neon-amber);
+      color: #08080a;
+    }
+
+    .cta-arrow {
+      font-size: 1.15rem;
+      transition: transform 0.3s ease;
+    }
+
+    .cta-ver-menu-btn:hover .cta-arrow {
+      transform: translateY(3px);
+    }
+
+    /* ========================================================================= */
+    /* ELEGANT ICON CATEGORY STRIP (STICKY TABS)                                 */
+    /* ========================================================================= */
+    .category-nav-bar {
+      position: sticky;
+      top: 67px;
+      z-index: 80;
+      background: rgba(8, 8, 10, 0.90);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 12px 0;
+    }
+
+    .category-tabs-track {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
+      padding: 0 20px;
+      scrollbar-width: none;
+    }
+
+    .category-tabs-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .cat-tab-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      padding: 9px 18px;
+      border-radius: 30px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(22, 22, 28, 0.65);
+      color: var(--text-muted);
+      font-size: 0.84rem;
+      font-weight: 700;
       cursor: pointer;
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .chip-btn:hover {
-      background: rgba(212, 175, 55, 0.18);
-      border-color: var(--gold);
-      transform: translateY(-2px);
+    .cat-tab-pill.active {
+      background: var(--neon-amber);
+      color: #08080a;
+      border-color: var(--neon-amber);
+      box-shadow: 0 4px 18px var(--neon-amber-glow);
     }
 
-    .chip-btn.chip-wallet {
-      background: linear-gradient(135deg, rgba(212, 175, 55, 0.18) 0%, rgba(194, 65, 12, 0.15) 100%);
-      border-color: rgba(212, 175, 55, 0.4);
-      color: #fef08a;
-    }
-
-    .chip-btn.chip-concierge {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(212, 175, 55, 0.12) 100%);
-      border-color: rgba(255, 255, 255, 0.25);
+    .cat-tab-pill:hover:not(.active) {
+      background: rgba(255, 255, 255, 0.08);
       color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.2);
     }
 
     /* ========================================================================= */
-    /* BARRA DE SERVICIO DE MESA                                                 */
+    /* ANTI-GRAVITY FLOATING DISH CARDS WITH VARIABLE SPEEDS & 3D TILT          */
     /* ========================================================================= */
-    .table-service-bar {
-      max-width: 1080px;
-      margin: 0 auto;
+    .floating-menu-grid {
+      max-width: 1140px;
+      margin: 40px auto 0;
       padding: 0 20px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 32px 24px;
+      perspective: 1200px; /* Para efecto 3D hover tilt */
     }
 
-    .service-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 11px 16px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      background: rgba(30, 26, 24, 0.8);
-      backdrop-filter: blur(10px);
-      color: var(--text-main);
-      font-family: var(--sans);
-      font-size: 0.84rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .service-btn:hover {
-      border-color: var(--gold);
-      background: rgba(45, 38, 34, 0.9);
-      transform: translateY(-1px);
-    }
-
-    .service-btn-waiter:hover {
-      color: var(--gold-light);
-    }
-
-    .service-btn-bill:hover {
-      color: #86efac;
-    }
-
-    /* ========================================================================= */
-    /* SELECTOR DE CATEGORÍAS & FILTROS DE DIETA                                 */
-    /* ========================================================================= */
-    .filter-sticky-wrapper {
-      position: sticky;
-      top: 72px;
-      z-index: 90;
-      background: rgba(20, 18, 16, 0.92);
+    /* Tarjeta Flotante Anti-Gravity */
+    .anti-gravity-card {
+      background: var(--surface-card);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-      padding: 12px 0;
-      margin-top: 18px;
-    }
-
-    .category-scroll-strip {
-      display: flex;
-      overflow-x: auto;
-      gap: 8px;
-      padding: 0 20px;
-      scrollbar-width: none;
-    }
-
-    .category-scroll-strip::-webkit-scrollbar {
-      display: none;
-    }
-
-    .cat-tab {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      white-space: nowrap;
-      padding: 8px 18px;
-      border-radius: 30px;
-      border: 1px solid var(--border);
-      background: rgba(32, 28, 25, 0.7);
-      color: var(--text-muted);
-      font-size: 0.82rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.25s ease;
-    }
-
-    .cat-tab.active {
-      background: var(--gold);
-      color: #141210;
-      border-color: var(--gold);
-      box-shadow: 0 4px 16px var(--gold-glow);
-    }
-
-    .dietary-tags-row {
-      display: flex;
-      overflow-x: auto;
-      gap: 6px;
-      padding: 10px 20px 0;
-      scrollbar-width: none;
-    }
-
-    .dietary-tags-row::-webkit-scrollbar {
-      display: none;
-    }
-
-    .diet-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 0.70rem;
-      font-weight: 700;
-      padding: 4px 12px;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .diet-pill.active {
-      background: rgba(212, 175, 55, 0.16);
-      border-color: var(--gold);
-      color: var(--gold-light);
-    }
-
-    /* ========================================================================= */
-    /* CATÁLOGO DE PLATILLOS (TARJETAS GLASSMORPHISM CON FONDO AMBIENTAL)        */
-    /* ========================================================================= */
-    .menu-container {
-      max-width: 1080px;
-      margin: 20px auto 0;
-      padding: 0 20px;
-    }
-
-    .category-section-title {
-      font-family: var(--heading);
-      font-size: 1.35rem;
-      font-weight: 800;
-      letter-spacing: -0.4px;
-      margin: 32px 0 16px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: #ffffff;
-    }
-
-    .category-section-title span {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-
-    .dishes-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-      gap: 18px;
-    }
-
-    /* ANIMACIÓN SUAVE AL BAJAR (SCROLL REVEAL EDITORIAL) */
-    .reveal-on-scroll {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
-    }
-
-    .reveal-on-scroll.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .dish-card {
-      background: var(--bg-card);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid var(--border);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius);
       overflow: hidden;
       display: flex;
       flex-direction: column;
       position: relative;
-      transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
-      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+      transform-style: preserve-3d;
+      will-change: transform;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .dish-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--border-focus);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.08);
+    .anti-gravity-card:hover {
+      border-color: var(--border-glow);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75), 0 0 25px rgba(245, 158, 11, 0.15);
     }
 
-    .dish-image-wrapper {
+    /* Reflejo Glare Especular en 3D Hover */
+    .anti-gravity-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle 350px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.12), transparent 70%);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 5;
+    }
+
+    .anti-gravity-card:hover::after {
+      opacity: 1;
+    }
+
+    /* Mockup Aislado Flotante del Platillo */
+    .dish-mockup-frame {
       position: relative;
       width: 100%;
-      height: 205px;
+      height: 220px;
       overflow: hidden;
-      background: #1e1b18;
+      background: #15151c;
     }
 
-    .dish-image {
+    .dish-mockup-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.45s ease;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .dish-card:hover .dish-image {
-      transform: scale(1.04);
+    .anti-gravity-card:hover .dish-mockup-img {
+      transform: scale(1.06) translateY(-4px);
     }
 
-    .dish-star-tag {
+    .dish-floating-badge {
       position: absolute;
-      top: 12px;
-      left: 12px;
-      background: rgba(20, 18, 16, 0.88);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(212, 175, 55, 0.4);
-      color: #fef08a;
-      font-size: 0.70rem;
-      font-weight: 700;
+      top: 14px;
+      left: 14px;
+      background: rgba(8, 8, 10, 0.88);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(245, 158, 11, 0.45);
+      color: var(--neon-amber);
+      font-size: 0.72rem;
+      font-weight: 800;
       padding: 4px 12px;
       border-radius: 20px;
+      z-index: 2;
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      z-index: 2;
+      gap: 5px;
     }
 
-    .dish-content {
-      padding: 18px;
+    .dish-card-body {
+      padding: 20px;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
       justify-content: space-between;
     }
 
-    .dish-header-row {
+    .dish-meta-head {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
       gap: 8px;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
-    .dish-title {
+    .dish-name-title {
       font-family: var(--heading);
-      font-size: 1.12rem;
+      font-size: 1.18rem;
       font-weight: 700;
       color: #ffffff;
     }
 
-    .dish-price {
+    .dish-price-tag {
       font-family: var(--heading);
-      font-size: 1.18rem;
+      font-size: 1.25rem;
       font-weight: 800;
-      color: var(--gold);
+      color: var(--neon-amber);
       white-space: nowrap;
     }
 
-    .dish-desc {
-      font-size: 0.84rem;
+    .dish-description-text {
+      font-size: 0.86rem;
       color: var(--text-muted);
-      line-height: 1.45;
-      margin-bottom: 12px;
+      line-height: 1.48;
+      margin-bottom: 14px;
     }
 
-    /* Insignias de Alérgenos & Nutrición */
-    .dish-meta-badges {
+    .dish-attributes-cluster {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
 
-    .meta-badge {
-      font-size: 0.68rem;
+    .attribute-tag {
+      font-size: 0.70rem;
       font-weight: 600;
-      padding: 3px 9px;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border);
-      color: var(--text-sub);
+      padding: 4px 10px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-warm);
       display: inline-flex;
       align-items: center;
       gap: 4px;
     }
 
-    .badge-gluten-free {
+    .attribute-tag.emerald {
       background: rgba(16, 185, 129, 0.12);
-      border-color: rgba(16, 185, 129, 0.3);
-      color: #6ee7b7;
+      border-color: rgba(16, 185, 129, 0.35);
+      color: #34d399;
     }
 
-    .badge-spicy {
-      background: rgba(194, 65, 12, 0.15);
-      border-color: rgba(194, 65, 12, 0.35);
-      color: #fdba74;
+    .attribute-tag.crimson {
+      background: rgba(244, 63, 94, 0.12);
+      border-color: rgba(244, 63, 94, 0.35);
+      color: #fb7185;
     }
 
-    .badge-nutrition {
-      background: rgba(212, 175, 55, 0.10);
-      border-color: rgba(212, 175, 55, 0.28);
-      color: var(--gold-light);
-    }
-
-    .dish-order-actions {
+    .dish-purchase-row {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       margin-top: auto;
     }
 
-    .qty-control {
+    .counter-widget {
       display: inline-flex;
       align-items: center;
-      background: rgba(20, 18, 16, 0.8);
-      border: 1px solid var(--border);
-      border-radius: 12px;
+      background: rgba(12, 12, 16, 0.85);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
       padding: 3px;
     }
 
-    .qty-btn {
-      width: 28px;
-      height: 28px;
+    .counter-btn {
+      width: 30px;
+      height: 30px;
       background: transparent;
       border: none;
       color: #ffffff;
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: 700;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -630,26 +597,26 @@
       transition: background 0.15s;
     }
 
-    .qty-btn:hover {
+    .counter-btn:hover {
       background: rgba(255, 255, 255, 0.12);
     }
 
-    .qty-num {
-      width: 24px;
+    .counter-display {
+      width: 26px;
       text-align: center;
-      font-size: 0.84rem;
-      font-weight: 700;
+      font-size: 0.88rem;
+      font-weight: 800;
     }
 
-    .add-to-cart-btn {
+    .add-dish-btn {
       flex-grow: 1;
-      background: linear-gradient(135deg, var(--gold) 0%, #b8860b 100%);
-      color: #141210;
+      background: linear-gradient(135deg, var(--neon-amber) 0%, #d97706 100%);
+      color: #08080a;
       border: none;
-      border-radius: 12px;
-      padding: 10px 14px;
+      border-radius: 14px;
+      padding: 11px 16px;
       font-family: var(--sans);
-      font-size: 0.84rem;
+      font-size: 0.86rem;
       font-weight: 800;
       cursor: pointer;
       display: flex;
@@ -657,63 +624,95 @@
       justify-content: center;
       gap: 6px;
       transition: all 0.2s ease;
-      box-shadow: 0 4px 14px rgba(212, 175, 55, 0.25);
+      box-shadow: 0 4px 16px var(--neon-amber-glow);
     }
 
-    .add-to-cart-btn:hover {
-      filter: brightness(1.08);
+    .add-dish-btn:hover {
+      filter: brightness(1.1);
       transform: scale(0.99);
     }
 
     /* ========================================================================= */
-    /* TRIGGER FLOTANTE: ASISTENTE ALEX (HOSPITALITY LUXURY)                     */
+    /* SERVICE SPEED-BAR (LLAMAR MESERO / CUENTA)                                */
     /* ========================================================================= */
-    .assistant-floating-trigger {
-      position: fixed;
-      bottom: 84px;
-      right: 18px;
-      z-index: 120;
-      background: linear-gradient(135deg, #2a2521 0%, #1a1715 100%);
-      border: 1px solid rgba(212, 175, 55, 0.5);
+    .table-speed-bar {
+      max-width: 1140px;
+      margin: 20px auto 0;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .speed-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 16px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(22, 22, 28, 0.7);
+      backdrop-filter: blur(10px);
       color: #ffffff;
-      padding: 11px 20px;
-      border-radius: 30px;
+      font-family: var(--sans);
+      font-size: 0.86rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .speed-btn:hover {
+      border-color: var(--neon-amber);
+      background: rgba(32, 32, 40, 0.85);
+      transform: translateY(-2px);
+    }
+
+    /* ========================================================================= */
+    /* ASISTENTE ALEX & WALLET TRIGGERS                                          */
+    /* ========================================================================= */
+    .assistant-float-btn {
+      position: fixed;
+      bottom: 86px;
+      right: 20px;
+      z-index: 120;
+      background: linear-gradient(135deg, #1e1e26 0%, #111116 100%);
+      border: 1px solid rgba(245, 158, 11, 0.5);
+      color: #ffffff;
+      padding: 12px 22px;
+      border-radius: 35px;
       display: inline-flex;
       align-items: center;
       gap: 8px;
       font-family: var(--sans);
-      font-size: 0.84rem;
-      font-weight: 700;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55), 0 0 16px rgba(212, 175, 55, 0.2);
+      font-size: 0.86rem;
+      font-weight: 800;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(245, 158, 11, 0.25);
       cursor: pointer;
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .assistant-floating-trigger:hover {
-      transform: translateY(-3px);
-      border-color: var(--gold);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), 0 0 22px rgba(212, 175, 55, 0.3);
+    .assistant-float-btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      border-color: var(--neon-amber);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.75), 0 0 26px var(--neon-amber-glow);
     }
 
-    .assistant-icon-glow {
-      color: var(--gold);
-      font-size: 1rem;
-      line-height: 1;
-    }
-
-    /* Modal / Drawer del Asistente */
-    .assistant-modal-backdrop {
+    /* Modal / Drawer Asistente Alex */
+    .assistant-overlay-modal {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.78);
-      backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(12px);
       z-index: 200;
       display: none;
       opacity: 0;
       transition: opacity 0.3s ease;
     }
 
-    .assistant-modal-drawer {
+    .assistant-overlay-modal.open { display: block; opacity: 1; }
+
+    .assistant-drawer-box {
       position: fixed;
       bottom: 0;
       left: 50%;
@@ -722,64 +721,52 @@
       max-width: 520px;
       height: 80vh;
       max-height: 660px;
-      background: #181513;
-      border: 1px solid rgba(212, 175, 55, 0.3);
+      background: #111116;
+      border: 1px solid rgba(245, 158, 11, 0.35);
       border-top-left-radius: 28px;
       border-top-right-radius: 28px;
       z-index: 210;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 -12px 45px rgba(0, 0, 0, 0.75);
       transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .assistant-modal-backdrop.open { display: block; opacity: 1; }
-    .assistant-modal-backdrop.open + .assistant-modal-drawer { transform: translateX(-50%) translateY(0); }
+    .assistant-overlay-modal.open + .assistant-drawer-box {
+      transform: translateX(-50%) translateY(0);
+    }
 
-    .assistant-drawer-header {
-      padding: 16px 20px;
-      border-bottom: 1px solid var(--border);
+    .assistant-drawer-top {
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--border-subtle);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(212, 175, 55, 0.06);
+      background: rgba(245, 158, 11, 0.05);
     }
 
-    .assistant-header-info {
+    .assistant-brand-meta {
       display: flex;
       align-items: center;
       gap: 12px;
     }
 
-    .assistant-avatar {
+    .assistant-emblem {
       width: 40px;
       height: 40px;
       border-radius: 12px;
-      background: linear-gradient(135deg, #d4af37 0%, #856404 100%);
-      color: #141210;
+      background: linear-gradient(135deg, var(--neon-amber) 0%, #b45309 100%);
+      color: #08080a;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.2rem;
-      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.25);
-    }
-
-    .assistant-header-text h3 {
-      font-family: var(--heading);
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: #ffffff;
-    }
-
-    .assistant-header-text p {
-      font-size: 0.72rem;
-      color: var(--gold);
-      font-weight: 600;
+      font-weight: 800;
     }
 
     .assistant-drawer-close {
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
       background: rgba(255, 255, 255, 0.08);
       border: none;
       color: #ffffff;
@@ -791,42 +778,42 @@
       justify-content: center;
     }
 
-    .assistant-chat-body {
+    .assistant-dialog-stream {
       flex-grow: 1;
       overflow-y: auto;
-      padding: 18px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       gap: 14px;
     }
 
-    .chat-bubble {
+    .dialog-bubble {
       max-width: 86%;
       padding: 13px 18px;
       border-radius: 18px;
-      font-size: 0.86rem;
+      font-size: 0.88rem;
       line-height: 1.48;
     }
 
-    .chat-bubble.assistant {
+    .dialog-bubble.ai {
       align-self: flex-start;
-      background: #24201c;
-      border: 1px solid rgba(212, 175, 55, 0.2);
-      color: #f5f5f4;
+      background: #1a1a24;
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      color: #f8fafc;
       border-bottom-left-radius: 4px;
     }
 
-    .chat-bubble.user {
+    .dialog-bubble.user {
       align-self: flex-end;
-      background: var(--gold);
-      color: #141210;
+      background: var(--neon-amber);
+      color: #08080a;
       font-weight: 700;
       border-bottom-right-radius: 4px;
     }
 
-    .chat-dish-suggestion {
-      background: #141210;
-      border: 1px solid var(--border);
+    .dialog-dish-card {
+      background: #0d0d12;
+      border: 1px solid var(--border-subtle);
       border-radius: 14px;
       padding: 12px;
       margin-top: 10px;
@@ -835,201 +822,316 @@
       align-items: center;
     }
 
-    .chat-dish-img {
+    .dialog-dish-img {
       width: 62px;
       height: 62px;
       border-radius: 10px;
       object-fit: cover;
     }
 
-    .chat-dish-info {
-      flex-grow: 1;
-    }
-
-    .chat-dish-info h4 {
+    .dialog-dish-meta h4 {
       font-family: var(--heading);
       font-size: 0.90rem;
       color: #ffffff;
     }
 
-    .chat-dish-info p {
-      font-size: 0.84rem;
-      color: var(--gold);
+    .dialog-dish-meta p {
+      font-size: 0.85rem;
+      color: var(--neon-amber);
       font-weight: 800;
     }
 
-    .chat-dish-add {
-      background: var(--gold);
-      color: #141210;
+    .dialog-dish-btn {
+      background: var(--neon-amber);
+      color: #08080a;
       border: none;
       border-radius: 10px;
       padding: 7px 12px;
       font-size: 0.75rem;
       font-weight: 800;
       cursor: pointer;
+      margin-left: auto;
       white-space: nowrap;
     }
 
-    .assistant-quick-prompts {
-      padding: 10px 18px;
-      border-top: 1px solid var(--border);
+    .assistant-suggestion-chips {
+      padding: 10px 20px;
+      border-top: 1px solid var(--border-subtle);
       display: flex;
       overflow-x: auto;
-      gap: 6px;
+      gap: 8px;
       scrollbar-width: none;
     }
 
-    .assistant-quick-prompts::-webkit-scrollbar {
+    .assistant-suggestion-chips::-webkit-scrollbar {
       display: none;
     }
 
-    .prompt-chip {
+    .suggest-chip {
       white-space: nowrap;
-      background: #24201c;
-      border: 1px solid rgba(212, 175, 55, 0.25);
+      background: #1a1a24;
+      border: 1px solid rgba(245, 158, 11, 0.25);
       color: #fef08a;
-      font-size: 0.74rem;
+      font-size: 0.75rem;
       font-weight: 600;
       padding: 7px 14px;
-      border-radius: 16px;
+      border-radius: 18px;
       cursor: pointer;
       transition: all 0.2s;
     }
 
-    .prompt-chip:hover {
-      background: rgba(212, 175, 55, 0.2);
-      border-color: var(--gold);
+    .suggest-chip:hover {
+      background: rgba(245, 158, 11, 0.2);
+      border-color: var(--neon-amber);
     }
 
-    .assistant-input-row {
-      padding: 12px 18px;
-      border-top: 1px solid var(--border);
+    .assistant-input-tray {
+      padding: 12px 20px;
+      border-top: 1px solid var(--border-subtle);
       display: flex;
-      gap: 8px;
-      background: #141210;
+      gap: 10px;
+      background: #0d0d12;
     }
 
-    .assistant-input-field {
+    .assistant-text-field {
       flex-grow: 1;
-      background: #24201c;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 10px 18px;
+      background: #1a1a24;
+      border: 1px solid var(--border-subtle);
+      border-radius: 24px;
+      padding: 11px 18px;
       color: #ffffff;
-      font-size: 0.86rem;
+      font-size: 0.88rem;
       outline: none;
     }
 
-    .assistant-input-field:focus {
-      border-color: var(--gold);
+    .assistant-text-field:focus {
+      border-color: var(--neon-amber);
     }
 
-    .assistant-send-btn {
-      background: var(--gold);
-      color: #141210;
+    .assistant-action-send {
+      background: var(--neon-amber);
+      color: #08080a;
       border: none;
       border-radius: 50%;
-      width: 40px;
-      height: 40px;
+      width: 42px;
+      height: 42px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      font-size: 1.1rem;
       font-weight: 800;
     }
 
     /* ========================================================================= */
-    /* MODAL DE TARJETA WALLET (APPLE & GOOGLE)                                */
+    /* BOTTOM FLOATING COMANDA BAR                                               */
     /* ========================================================================= */
-    .wallet-modal-backdrop {
+    .bottom-comanda-bar {
+      position: fixed;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 36px);
+      max-width: 520px;
+      background: linear-gradient(135deg, #1a1a24 0%, #0d0d12 100%);
+      border: 1px solid rgba(245, 158, 11, 0.45);
+      border-radius: 35px;
+      padding: 12px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.8), 0 0 24px var(--neon-amber-glow);
+      z-index: 110;
+      transition: all 0.25s ease;
+    }
+
+    .comanda-counter-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .comanda-items-lbl {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+    }
+
+    .comanda-price-lbl {
+      font-family: var(--heading);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--neon-amber);
+    }
+
+    .comanda-inspect-btn {
+      background: linear-gradient(135deg, var(--neon-amber) 0%, #d97706 100%);
+      color: #08080a;
+      border: none;
+      border-radius: 24px;
+      padding: 10px 22px;
+      font-family: var(--sans);
+      font-size: 0.86rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Drawer de la comanda */
+    .comanda-drawer-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.82);
-      backdrop-filter: blur(12px);
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(8px);
+      z-index: 220;
+      display: none;
+    }
+
+    .comanda-drawer-backdrop.open { display: block; }
+
+    .comanda-drawer {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%) translateY(100%);
+      width: 100%;
+      max-width: 520px;
+      height: 75vh;
+      max-height: 600px;
+      background: #111116;
+      border: 1px solid var(--border-subtle);
+      border-top-left-radius: 28px;
+      border-top-right-radius: 28px;
+      z-index: 230;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 -12px 45px rgba(0, 0, 0, 0.8);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .comanda-drawer-backdrop.open + .comanda-drawer {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .comanda-drawer-head {
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .comanda-stream-list {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .comanda-row-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      padding: 12px 16px;
+      border-radius: 14px;
+    }
+
+    .comanda-drawer-foot {
+      padding: 18px 22px;
+      border-top: 1px solid var(--border-subtle);
+      background: #08080a;
+    }
+
+    .order-summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .order-summary-total {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--heading);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--border-subtle);
+    }
+
+    .btn-fire-whatsapp-order {
+      width: 100%;
+      background: #25d366;
+      color: #ffffff;
+      border: none;
+      border-radius: 16px;
+      padding: 13px;
+      font-family: var(--sans);
+      font-size: 0.94rem;
+      font-weight: 800;
+      cursor: pointer;
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+    }
+
+    /* Modal Wallet Pass */
+    .wallet-dialog-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(14px);
       z-index: 250;
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 16px;
+      padding: 20px;
     }
 
-    .wallet-modal-backdrop.open { display: flex; }
+    .wallet-dialog-backdrop.open { display: flex; }
 
-    .wallet-pass-card {
+    .wallet-card-container {
       width: 100%;
       max-width: 360px;
-      background: linear-gradient(135deg, #24201c 0%, #141210 100%);
-      border: 1px solid rgba(212, 175, 55, 0.4);
-      border-radius: 24px;
+      background: linear-gradient(135deg, #1c1c24 0%, #0d0d12 100%);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      border-radius: 26px;
       padding: 24px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(212, 175, 55, 0.12);
+      box-shadow: 0 20px 55px rgba(0, 0, 0, 0.8), 0 0 30px rgba(245, 158, 11, 0.15);
       position: relative;
     }
 
-    .pass-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 20px;
-    }
-
-    .pass-brand h2 {
-      font-family: var(--heading);
-      font-size: 1.25rem;
-      letter-spacing: 1.5px;
-      color: #ffffff;
-    }
-
-    .pass-brand h2 span { color: var(--gold); }
-
-    .pass-brand p {
-      font-size: 0.65rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .pass-vip-badge {
-      background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
-      color: #141210;
-      font-size: 0.70rem;
-      font-weight: 800;
-      padding: 4px 12px;
-      border-radius: 12px;
-    }
-
-    .push-simulator-box {
+    .push-notif-card {
       background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(212, 175, 55, 0.2);
+      border: 1px solid rgba(245, 158, 11, 0.25);
       border-radius: 14px;
       padding: 10px 14px;
       margin-bottom: 18px;
       font-size: 0.78rem;
-      line-height: 1.35;
     }
 
-    .push-sim-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.66rem;
-      color: var(--gold);
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .stamps-grid {
+    .stamps-flex-track {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       gap: 8px;
       margin-bottom: 18px;
-      background: rgba(0, 0, 0, 0.3);
+      background: rgba(0, 0, 0, 0.35);
       padding: 12px;
       border-radius: 16px;
-      border: 1px dashed rgba(212, 175, 55, 0.3);
+      border: 1px dashed rgba(245, 158, 11, 0.35);
     }
 
-    .stamp-slot {
+    .stamp-spot {
       aspect-ratio: 1;
       border-radius: 12px;
       display: flex;
@@ -1038,43 +1140,25 @@
       justify-content: center;
       font-size: 1.15rem;
       background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border);
+      border: 1px solid var(--border-subtle);
     }
 
-    .stamp-slot.filled {
-      background: rgba(212, 175, 55, 0.18);
-      border-color: var(--gold);
-      color: var(--gold);
+    .stamp-spot.active {
+      background: rgba(245, 158, 11, 0.2);
+      border-color: var(--neon-amber);
+      color: var(--neon-amber);
     }
 
-    .stamp-label {
-      font-size: 0.55rem;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
-
-    .pass-reward-callout {
-      font-size: 0.78rem;
-      color: #fef08a;
-      background: rgba(212, 175, 55, 0.10);
-      border: 1px solid rgba(212, 175, 55, 0.25);
-      padding: 10px 14px;
-      border-radius: 12px;
-      margin-bottom: 18px;
-      text-align: center;
-      line-height: 1.4;
-    }
-
-    .wallet-store-btns {
+    .wallet-save-buttons {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 8px;
     }
 
-    .btn-wallet-add {
-      background: #141210;
+    .btn-save-pass {
+      background: #0d0d12;
       color: #ffffff;
-      border: 1px solid #3d3834;
+      border: 1px solid #2d2d38;
       border-radius: 12px;
       padding: 10px 8px;
       font-size: 0.75rem;
@@ -1086,199 +1170,26 @@
       gap: 6px;
     }
 
-    .wallet-modal-close {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      font-size: 1.4rem;
-      cursor: pointer;
-    }
-
-    /* ========================================================================= */
-    /* BARRA INFERIOR DE COMANDA / CARRITO                                       */
-    /* ========================================================================= */
-    .cart-bottom-bar {
-      position: fixed;
-      bottom: 16px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: calc(100% - 32px);
-      max-width: 500px;
-      background: linear-gradient(135deg, #24201c 0%, #161412 100%);
-      border: 1px solid rgba(212, 175, 55, 0.4);
-      border-radius: 30px;
-      padding: 11px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px var(--gold-glow);
-      z-index: 110;
-      transition: all 0.25s ease;
-    }
-
-    .cart-summary-text {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .cart-count-pill {
-      font-size: 0.72rem;
-      color: var(--text-sub);
-    }
-
-    .cart-total-val {
-      font-family: var(--heading);
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: var(--gold);
-    }
-
-    .cart-checkout-btn {
-      background: linear-gradient(135deg, var(--gold) 0%, #b8860b 100%);
-      color: #141210;
-      border: none;
-      border-radius: 20px;
-      padding: 9px 20px;
-      font-family: var(--sans);
-      font-size: 0.84rem;
-      font-weight: 800;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    /* Drawer del Carrito */
-    .cart-drawer-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(8px);
-      z-index: 220;
-      display: none;
-    }
-
-    .cart-drawer-backdrop.open { display: block; }
-
-    .cart-drawer {
-      position: fixed;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%) translateY(100%);
-      width: 100%;
-      max-width: 520px;
-      height: 75vh;
-      max-height: 600px;
-      background: #181513;
-      border: 1px solid var(--border);
-      border-top-left-radius: 26px;
-      border-top-right-radius: 26px;
-      z-index: 230;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.7);
-      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .cart-drawer-backdrop.open + .cart-drawer {
-      transform: translateX(-50%) translateY(0);
-    }
-
-    .cart-drawer-header {
-      padding: 16px 20px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .cart-drawer-items {
-      flex-grow: 1;
-      overflow-y: auto;
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .cart-item-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border);
-      padding: 12px 16px;
-      border-radius: 14px;
-    }
-
-    .cart-drawer-footer {
-      padding: 16px 20px;
-      border-top: 1px solid var(--border);
-      background: #141210;
-    }
-
-    .cart-calc-row {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.84rem;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-    }
-
-    .cart-calc-total {
-      display: flex;
-      justify-content: space-between;
-      font-family: var(--heading);
-      font-size: 1.18rem;
-      font-weight: 800;
-      color: #ffffff;
-      margin-top: 8px;
-      padding-top: 8px;
-      border-top: 1px dashed var(--border);
-    }
-
-    .btn-send-whatsapp-order {
-      width: 100%;
-      background: #25d366;
-      color: #ffffff;
-      border: none;
-      border-radius: 14px;
-      padding: 12px;
-      font-family: var(--sans);
-      font-size: 0.92rem;
-      font-weight: 800;
-      cursor: pointer;
-      margin-top: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      box-shadow: 0 4px 18px rgba(37, 211, 102, 0.3);
-    }
-
-    .mini-toast {
+    .mini-toast-badge {
       position: fixed;
       top: 20px;
       left: 50%;
       transform: translateX(-50%) translateY(-60px);
-      background: rgba(20, 18, 16, 0.95);
-      border: 1px solid var(--gold);
-      color: var(--gold-light);
-      padding: 9px 20px;
+      background: rgba(13, 13, 18, 0.95);
+      border: 1px solid var(--neon-amber);
+      color: #fef08a;
+      padding: 9px 22px;
       border-radius: 20px;
       font-size: 0.84rem;
-      font-weight: 700;
-      box-shadow: 0 6px 22px rgba(0, 0, 0, 0.55);
+      font-weight: 800;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.65), 0 0 16px var(--neon-amber-glow);
       z-index: 400;
       opacity: 0;
       transition: all 0.3s ease;
       pointer-events: none;
     }
 
-    .mini-toast.visible {
+    .mini-toast-badge.visible {
       transform: translateX(-50%) translateY(0);
       opacity: 1;
     }
@@ -1287,486 +1198,489 @@
 <body>
 
   <!-- ======================================================================= -->
-  <!-- VIDEO AMBIENTAL DE FONDO (SUAVE Y DETRÁS DE LOS PLATILLOS EN TODA LA WEB)-->
+  <!-- DARK & MOODY CINEMATIC LOOP VIDEO IN THE BACKGROUND                     -->
   <!-- ======================================================================= -->
-  <div class="ambient-web-video-backdrop">
+  <div class="ambient-cinematic-backdrop">
     <video autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&auto=format&fit=crop&q=80">
       <source src="grill-fire.mp4" type="video/mp4">
     </video>
-    <div class="ambient-web-video-overlay"></div>
+    <div class="ambient-cinematic-overlay"></div>
   </div>
 
-  <div class="app-relative-layer">
+  <div class="content-canvas-layer">
 
-    <!-- TOAST FLOTANTE -->
-    <div id="miniToast" class="mini-toast">✓ Platillo agregado a tu comanda</div>
+    <!-- TOAST POPUP -->
+    <div id="toastBadge" class="mini-toast-badge">✓ Platillo añadido a la comanda</div>
 
     <!-- ======================================================================= -->
-    <!-- HEADER & SERVICIO DE MESA                                               -->
+    <!-- FIXED MINIMALIST NAVIGATION HEADER & WHATSAPP PULSE BUTTON              -->
     <!-- ======================================================================= -->
     <header>
-      <div class="header-inner">
-        <a href="#" class="brand-wrap">
-          <div class="brand-logo-svg" aria-label="Logo ALEX">
-            <!-- LOGO MINIMALISTA GEOMÉTRICO (A DORADA CON LLAMA SUTIL) -->
+      <div class="header-container">
+        <a href="#" class="brand-cluster">
+          <div class="brand-symbol-box" aria-label="Logo ALEX">
             <svg width="26" height="26" viewBox="0 0 32 32" fill="none">
-              <path d="M16 3L5 27H11L13.5 21H18.5L21 27H27L16 3Z" fill="#d4af37"/>
-              <path d="M16 11L14.4 16.5H17.6L16 11Z" fill="#141210"/>
-              <path d="M16 7C16 7 19.5 13 18.5 17C17.5 15.5 16 14.5 16 14.5C16 14.5 14.5 15.5 13.5 17C12.5 13 16 7 16 7Z" fill="#c2410c"/>
+              <path d="M16 3L5 27H11L13.5 21H18.5L21 27H27L16 3Z" fill="#f59e0b"/>
+              <path d="M16 11L14.4 16.5H17.6L16 11Z" fill="#08080a"/>
+              <path d="M16 7C16 7 19.5 13 18.5 17C17.5 15.5 16 14.5 16 14.5C16 14.5 14.5 15.5 13.5 17C12.5 13 16 7 16 7Z" fill="#f43f5e"/>
             </svg>
           </div>
-          <div class="brand-text">
+          <div class="brand-titles">
             <h1>ALEX<span>.</span></h1>
             <p>Artisanal Grill & Smokehouse</p>
           </div>
         </a>
 
-        <div class="table-status-pill" id="tableBadge" onclick="promptTableChange()">
-          <span class="table-dot"></span>
-          <span id="tableLabel">Mesa 4 · Terraza</span>
+        <div class="header-actions-group">
+          <div class="table-pill-indicator" id="tableBtn" onclick="promptTableChange()">
+            <span class="radar-pulse-dot"></span>
+            <span id="tableLabel">Mesa 4 · Terraza</span>
+          </div>
+
+          <!-- FLOATING WHATSAPP BUTTON WITH SOFT PERSISTENT GLOWING PULSE -->
+          <a href="https://wa.me/523312345678?text=Hola%20ALEX!%20Deseo%20hacer%20un%20pedido%20o%20reservación" target="_blank" class="whatsapp-header-btn" aria-label="Ordenar por WhatsApp">
+            <span>💬</span> Pedido Rápido
+          </a>
         </div>
       </div>
     </header>
 
     <!-- ======================================================================= -->
-    <!-- HERO INTRO EDITORIAL                                                    -->
+    <!-- HERO SECTION (BOLD TYPOGRAPHY & DIGITAL CTA 'VER MENÚ')                 -->
     <!-- ======================================================================= -->
-    <section class="hero-intro-section reveal-on-scroll">
-      <div class="hero-kicker-badge">
-        <span>🔥</span> Horno de Leña & Ahumador 14 Horas
-      </div>
-      <h2 class="hero-headline">Cortes de Autor &<br><em>Cocina de Brasa.</em></h2>
-      <p class="hero-sub">Carne Prime madurada al mezquite, smash burgers ahumadas con madera de manzano y coctelería botánica.</p>
+    <section class="hero-cinematic-stage" id="inicio">
+      <div class="hero-center-box">
+        <div class="hero-pre-kicker">
+          <span>🔥</span> Cocina de Brasa & Ahumador 14 Horas
+        </div>
 
-      <div class="hero-action-chips">
-        <button type="button" class="chip-btn chip-wallet" onclick="openWalletModal()">
-          <span>💳</span> Mi Tarjeta Wallet (3/5 Sellos)
-        </button>
-        <button type="button" class="chip-btn chip-concierge" onclick="openAssistantModal()">
-          <span class="assistant-icon-glow">✨</span> Asistente Alex
-        </button>
-        <a href="https://maps.google.com" target="_blank" class="chip-btn">
-          <span>⭐</span> 4.9 en Google
+        <h2 class="hero-bold-title">
+          Fuego, Tierra &<br><em>Cortes de Autor.</em>
+        </h2>
+
+        <p class="hero-manifesto">
+          Carne Prime madurada al mezquite, smash burgers ahumadas con madera de manzano y coctelería botánica servida con humo en mesa.
+        </p>
+
+        <!-- HIGH-CONTRAST DIGITAL CALL TO ACTION 'VER MENÚ' -->
+        <a href="#menu" class="cta-ver-menu-btn" onclick="smoothScrollToMenu(event)">
+          <span>Ver Menú</span>
+          <span class="cta-arrow">↓</span>
         </a>
       </div>
     </section>
 
-    <!-- ACCIONES RÁPIDAS DE MESA -->
-    <div class="table-service-bar reveal-on-scroll">
-      <button type="button" class="service-btn service-btn-waiter" onclick="callWaiter()">
+    <!-- ELEGANT ICON CATEGORY TABS (STICKY) -->
+    <div class="category-nav-bar" id="menu">
+      <div class="category-tabs-track">
+        <button type="button" class="cat-tab-pill active" onclick="filterMenu('all', this)">
+          <span>🔥</span> Todo el Menú
+        </button>
+        <button type="button" class="cat-tab-pill" onclick="filterMenu('cortes', this)">
+          <span>🥩</span> Cortes al Mezquite
+        </button>
+        <button type="button" class="cat-tab-pill" onclick="filterMenu('burgers', this)">
+          <span>🍔</span> Burgers & Smoke
+        </button>
+        <button type="button" class="cat-tab-pill" onclick="filterMenu('tacos', this)">
+          <span>🌮</span> Tacos de Autor
+        </button>
+        <button type="button" class="cat-tab-pill" onclick="filterMenu('cocteles', this)">
+          <span>🍸</span> Mixología Ahumada
+        </button>
+        <button type="button" class="cat-tab-pill" onclick="filterMenu('postres', this)">
+          <span>🍫</span> Postres al Fuego
+        </button>
+      </div>
+    </div>
+
+    <!-- QUICK SPEED-BAR -->
+    <div class="table-speed-bar">
+      <button type="button" class="speed-btn" onclick="callWaiter()">
         <span>🛎️</span> Llamar al Mesero
       </button>
-      <button type="button" class="service-btn service-btn-bill" onclick="requestBill()">
+      <button type="button" class="speed-btn" onclick="requestBill()">
         <span>🧾</span> Solicitar la Cuenta
       </button>
     </div>
 
     <!-- ======================================================================= -->
-    <!-- SELECTOR DE CATEGORÍAS & FILTROS DIETÉTICOS                             -->
+    <!-- ANTI-GRAVITY FLOATING DISH GRID (VARIABLE PARALLAX SPEEDS & 3D TILT)     -->
     <!-- ======================================================================= -->
-    <div class="filter-sticky-wrapper">
-      <div class="category-scroll-strip" id="catStrip">
-        <button type="button" class="cat-tab active" onclick="filterCategory('all', this)">🔥 Toda la Carta</button>
-        <button type="button" class="cat-tab" onclick="filterCategory('cortes', this)">🥩 Cortes al Mezquite</button>
-        <button type="button" class="cat-tab" onclick="filterCategory('burgers', this)">🍔 Burgers & Smoke</button>
-        <button type="button" class="cat-tab" onclick="filterCategory('tacos', this)">🌮 Tacos & Entradas</button>
-        <button type="button" class="cat-tab" onclick="filterCategory('cocteles', this)">🍸 Coctelería de Autor</button>
-        <button type="button" class="cat-tab" onclick="filterCategory('postres', this)">🍫 Postres & Fuego</button>
-      </div>
+    <main class="floating-menu-grid" id="dishesGrid">
 
-      <div class="dietary-tags-row">
-        <button type="button" class="diet-pill" id="filterGluten" onclick="toggleDietaryFilter('gluten', this)">
-          <span>🌾</span> Sin Gluten
-        </button>
-        <button type="button" class="diet-pill" id="filterSpicy" onclick="toggleDietaryFilter('spicy', this)">
-          <span>🌶️</span> Picante
-        </button>
-        <button type="button" class="diet-pill" id="filterLight" onclick="toggleDietaryFilter('light', this)">
-          <span>🌱</span> Alto en Proteína
-        </button>
-      </div>
-    </div>
-
-    <!-- ======================================================================= -->
-    <!-- CATÁLOGO DE PLATILLOS                                                   -->
-    <!-- ======================================================================= -->
-    <main class="menu-container">
-
-      <!-- SECCIÓN CORTES -->
-      <div class="category-block" data-cat="cortes">
-        <div class="category-section-title reveal-on-scroll">
-          🥩 Cortes Prime al Mezquite <span>(Añejados 28 días)</span>
+      <!-- ITEM 1: Tomahawk Prime -->
+      <div class="anti-gravity-card float-speed-1" data-cat="cortes">
+        <div class="dish-mockup-frame">
+          <span class="dish-floating-badge">⭐ Insignia del Chef</span>
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=900&auto=format&fit=crop&q=80" alt="Tomahawk Prime" class="dish-mockup-img">
         </div>
-        <div class="dishes-grid">
-
-          <!-- Platillo 1: Tomahawk Prime -->
-          <div class="dish-card reveal-on-scroll" data-dish="tomahawk" data-tags="gluten,light">
-            <div class="dish-image-wrapper">
-              <span class="dish-star-tag">⭐ Insignia del Chef</span>
-              <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=900&auto=format&fit=crop&q=80" alt="Tomahawk Prime" class="dish-image">
+        <div class="dish-card-body">
+          <div>
+            <div class="dish-meta-head">
+              <h3 class="dish-name-title">Tomahawk Prime (1.2 kg)</h3>
+              <span class="dish-price-tag">$890</span>
             </div>
-            <div class="dish-content">
-              <div>
-                <div class="dish-header-row">
-                  <h3 class="dish-title">Tomahawk Prime (1.2 kg)</h3>
-                  <span class="dish-price">$890</span>
-                </div>
-                <p class="dish-desc">Corte con hueso largo añejado 28 días. Sellado a fuego vivo de mezquite, bañado con mantequilla clarificada al romero y escamas de sal negra.</p>
-                <div class="dish-meta-badges">
-                  <span class="meta-badge badge-gluten-free">🌾 Sin Gluten</span>
-                  <span class="meta-badge badge-nutrition">🥩 95g Prot · 1,180 Kcal</span>
-                  <span class="meta-badge">👥 Para 2-3 personas</span>
-                </div>
-              </div>
-              <div class="dish-order-actions">
-                <div class="qty-control">
-                  <button type="button" class="qty-btn" onclick="adjustQty('tomahawk', -1)">-</button>
-                  <span class="qty-num" id="qty-tomahawk">1</span>
-                  <button type="button" class="qty-btn" onclick="adjustQty('tomahawk', 1)">+</button>
-                </div>
-                <button type="button" class="add-to-cart-btn" onclick="addToCart('Tomahawk Prime (1.2 kg)', 890, 'tomahawk')">
-                  <span>+</span> Agregar
-                </button>
-              </div>
+            <p class="dish-description-text">Corte con hueso largo añejado 28 días. Sellado a fuego vivo de mezquite, bañado con mantequilla de romero y sal ahumada.</p>
+            <div class="dish-attributes-cluster">
+              <span class="attribute-tag emerald">🌾 Sin Gluten</span>
+              <span class="attribute-tag">🥩 95g Prot · 1,180 Kcal</span>
+              <span class="attribute-tag">👥 Para 2-3 personas</span>
             </div>
           </div>
-
-          <!-- Platillo 2: Ribeye con Costra de Pimientas -->
-          <div class="dish-card reveal-on-scroll" data-dish="ribeye" data-tags="gluten,light">
-            <div class="dish-image-wrapper">
-              <img src="https://images.unsplash.com/photo-1558030006-450675393462?w=900&auto=format&fit=crop&q=80" alt="Ribeye Prime" class="dish-image">
+          <div class="dish-purchase-row">
+            <div class="counter-widget">
+              <button type="button" class="counter-btn" onclick="adjustCount('tomahawk', -1)">-</button>
+              <span class="counter-display" id="qty-tomahawk">1</span>
+              <button type="button" class="counter-btn" onclick="adjustCount('tomahawk', 1)">+</button>
             </div>
-            <div class="dish-content">
-              <div>
-                <div class="dish-header-row">
-                  <h3 class="dish-title">Ribeye Mezquite (400g)</h3>
-                  <span class="dish-price">$490</span>
-                </div>
-                <p class="dish-desc">Marmoleo Prime con costra de cuatro pimientas y ajo confitado. Acompañado de papa rústica horneada a la leña.</p>
-                <div class="dish-meta-badges">
-                  <span class="meta-badge badge-gluten-free">🌾 Sin Gluten</span>
-                  <span class="meta-badge badge-nutrition">🥩 68g Prot · 740 Kcal</span>
-                </div>
-              </div>
-              <div class="dish-order-actions">
-                <div class="qty-control">
-                  <button type="button" class="qty-btn" onclick="adjustQty('ribeye', -1)">-</button>
-                  <span class="qty-num" id="qty-ribeye">1</span>
-                  <button type="button" class="qty-btn" onclick="adjustQty('ribeye', 1)">+</button>
-                </div>
-                <button type="button" class="add-to-cart-btn" onclick="addToCart('Ribeye Mezquite (400g)', 490, 'ribeye')">
-                  <span>+</span> Agregar
-                </button>
-              </div>
-            </div>
+            <button type="button" class="add-dish-btn" onclick="addDishToCart('Tomahawk Prime (1.2 kg)', 890, 'tomahawk')">
+              <span>+</span> Agregar
+            </button>
           </div>
-
         </div>
       </div>
 
-      <!-- SECCIÓN BURGERS & SMOKEHOUSE -->
-      <div class="category-block" data-cat="burgers">
-        <div class="category-section-title reveal-on-scroll">
-          🍔 Burgers & Smokehouse <span>(Ahumado Lento 14 Horas)</span>
+      <!-- ITEM 2: Ribeye Mezquite -->
+      <div class="anti-gravity-card float-speed-2" data-cat="cortes">
+        <div class="dish-mockup-frame">
+          <img src="https://images.unsplash.com/photo-1558030006-450675393462?w=900&auto=format&fit=crop&q=80" alt="Ribeye Prime" class="dish-mockup-img">
         </div>
-        <div class="dishes-grid">
-
-          <!-- Platillo 3: Brisket Burger Black Angus -->
-          <div class="dish-card reveal-on-scroll" data-dish="brisket-burger" data-tags="">
-            <div class="dish-image-wrapper">
-              <span class="dish-star-tag">🔥 Lo Más Solicitado</span>
-              <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&auto=format&fit=crop&q=80" alt="Brisket Burger" class="dish-image">
+        <div class="dish-card-body">
+          <div>
+            <div class="dish-meta-head">
+              <h3 class="dish-name-title">Ribeye Mezquite (400g)</h3>
+              <span class="dish-price-tag">$490</span>
             </div>
-            <div class="dish-content">
-              <div>
-                <div class="dish-header-row">
-                  <h3 class="dish-title">Brisket Burger 14 Horas</h3>
-                  <span class="dish-price">$260</span>
-                </div>
-                <p class="dish-desc">Carne Black Angus smash con rebanadas de brisket ahumado 14h, queso gouda fundido, cebolla caramelizada al bourbon y pan brioche tostado con mantequilla.</p>
-                <div class="dish-meta-badges">
-                  <span class="meta-badge">🥛 Contiene Lácteos</span>
-                  <span class="meta-badge badge-nutrition">🥩 48g Prot · 820 Kcal</span>
-                </div>
-              </div>
-              <div class="dish-order-actions">
-                <div class="qty-control">
-                  <button type="button" class="qty-btn" onclick="adjustQty('brisket-burger', -1)">-</button>
-                  <span class="qty-num" id="qty-brisket-burger">1</span>
-                  <button type="button" class="qty-btn" onclick="adjustQty('brisket-burger', 1)">+</button>
-                </div>
-                <button type="button" class="add-to-cart-btn" onclick="addToCart('Brisket Burger 14 Horas', 260, 'brisket-burger')">
-                  <span>+</span> Agregar
-                </button>
-              </div>
+            <p class="dish-description-text">Marmoleo Prime con costra de cuatro pimientas y ajo confitado. Acompañado de papa rústica horneada a la leña.</p>
+            <div class="dish-attributes-cluster">
+              <span class="attribute-tag emerald">🌾 Sin Gluten</span>
+              <span class="attribute-tag">🥩 68g Prot · 740 Kcal</span>
             </div>
           </div>
-
-          <!-- Platillo 4: Costillas St. Louis BBQ -->
-          <div class="dish-card reveal-on-scroll" data-dish="costillas" data-tags="gluten">
-            <div class="dish-image-wrapper">
-              <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=900&auto=format&fit=crop&q=80" alt="Costillas St Louis" class="dish-image">
+          <div class="dish-purchase-row">
+            <div class="counter-widget">
+              <button type="button" class="counter-btn" onclick="adjustCount('ribeye', -1)">-</button>
+              <span class="counter-display" id="qty-ribeye">1</span>
+              <button type="button" class="counter-btn" onclick="adjustCount('ribeye', 1)">+</button>
             </div>
-            <div class="dish-content">
-              <div>
-                <div class="dish-header-row">
-                  <h3 class="dish-title">Costillas St. Louis Glaseadas</h3>
-                  <span class="dish-price">$340</span>
-                </div>
-                <p class="dish-desc">Costillar tierno que se desprende del hueso. Glaseado con salsa BBQ de ciruela pasa y piquín ahumado artesanal.</p>
-                <div class="dish-meta-badges">
-                  <span class="meta-badge badge-gluten-free">🌾 Sin Gluten</span>
-                  <span class="meta-badge badge-spicy">🌶️ Picor Suave</span>
-                  <span class="meta-badge badge-nutrition">🥩 62g Prot · 910 Kcal</span>
-                </div>
-              </div>
-              <div class="dish-order-actions">
-                <div class="qty-control">
-                  <button type="button" class="qty-btn" onclick="adjustQty('costillas', -1)">-</button>
-                  <span class="qty-num" id="qty-costillas">1</span>
-                  <button type="button" class="qty-btn" onclick="adjustQty('costillas', 1)">+</button>
-                </div>
-                <button type="button" class="add-to-cart-btn" onclick="addToCart('Costillas St. Louis Glaseadas', 340, 'costillas')">
-                  <span>+</span> Agregar
-                </button>
-              </div>
-            </div>
+            <button type="button" class="add-dish-btn" onclick="addDishToCart('Ribeye Mezquite (400g)', 490, 'ribeye')">
+              <span>+</span> Agregar
+            </button>
           </div>
-
         </div>
       </div>
 
-      <!-- SECCIÓN TACOS & ENTRADAS -->
-      <div class="category-block" data-cat="tacos">
-        <div class="category-section-title reveal-on-scroll">
-          🌮 Tacos de Autor & Entradas Calientes
+      <!-- ITEM 3: Brisket Burger -->
+      <div class="anti-gravity-card float-speed-3" data-cat="burgers">
+        <div class="dish-mockup-frame">
+          <span class="dish-floating-badge">🔥 Lo Más Pedido</span>
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&auto=format&fit=crop&q=80" alt="Brisket Burger" class="dish-mockup-img">
         </div>
-        <div class="dishes-grid">
-
-          <!-- Platillo 5: Tacos de Picaña en Maíz Azul -->
-          <div class="dish-card reveal-on-scroll" data-dish="tacos-picanha" data-tags="gluten,spicy">
-            <div class="dish-image-wrapper">
-              <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=900&auto=format&fit=crop&q=80" alt="Tacos Picaña" class="dish-image">
+        <div class="dish-card-body">
+          <div>
+            <div class="dish-meta-head">
+              <h3 class="dish-name-title">Brisket Burger 14h</h3>
+              <span class="dish-price-tag">$260</span>
             </div>
-            <div class="dish-content">
-              <div>
-                <div class="dish-header-row">
-                  <h3 class="dish-title">Tacos Picaña Maíz Azul (3)</h3>
-                  <span class="dish-price">$195</span>
-                </div>
-                <p class="dish-desc">Picaña al carbón sobre tortilla de maíz azul nixtamalizado, costra de queso manchego, aguacate tatemado y salsa de habanero negro.</p>
-                <div class="dish-meta-badges">
-                  <span class="meta-badge badge-gluten-free">🌾 Sin Gluten</span>
-                  <span class="meta-badge badge-spicy">🌶️🌶️ Picante Bravo</span>
-                  <span class="meta-badge badge-nutrition">🥩 38g Prot · 560 Kcal</span>
-                </div>
-              </div>
-              <div class="dish-order-actions">
-                <div class="qty-control">
-                  <button type="button" class="qty-btn" onclick="adjustQty('tacos-picanha', -1)">-</button>
-                  <span class="qty-num" id="qty-tacos-picanha">1</span>
-                  <button type="button" class="qty-btn" onclick="adjustQty('tacos-picanha', 1)">+</button>
-                </div>
-                <button type="button" class="add-to-cart-btn" onclick="addToCart('Tacos Picaña Maíz Azul (3)', 195, 'tacos-picanha')">
-                  <span>+</span> Agregar
-                </button>
-              </div>
+            <p class="dish-description-text">Black Angus smash con láminas de brisket ahumado 14h, queso gouda fundido, cebolla al bourbon y pan brioche artesanal.</p>
+            <div class="dish-attributes-cluster">
+              <span class="attribute-tag">🥛 Lácteos</span>
+              <span class="attribute-tag">🥩 48g Prot · 820 Kcal</span>
             </div>
           </div>
-
-          <!-- Platillo 6: Tuétanos Asados al Romero -->
-          <div class="dish-card reveal-on-scroll" data-dish="tuetanos" data-tags="gluten,spicy">
-            <div class="dish-image-wrapper">
-              <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=900&auto=format&fit=crop&q=80" alt="Tuétanos" class="dish-image">
+          <div class="dish-purchase-row">
+            <div class="counter-widget">
+              <button type="button" class="counter-btn" onclick="adjustCount('brisket-burger', -1)">-</button>
+              <span class="counter-display" id="qty-brisket-burger">1</span>
+              <button type="button" class="counter-btn" onclick="adjustCount('brisket-burger', 1)">+</button>
             </div>
-            <div class="dish-content">
-              <div>
-                <div class="dish-header-row">
-                  <h3 class="dish-title">Tuétanos con Chicharrón Ribeye</h3>
-                  <span class="dish-price">$220</span>
-                </div>
-                <p class="dish-desc">Canal de tuétano asado a la brasa con costra de chicharrón crujiente de ribeye, brotes de cilantro y tortillas recién hechas a mano.</p>
-                <div class="dish-meta-badges">
-                  <span class="meta-badge badge-gluten-free">🌾 Sin Gluten</span>
-                  <span class="meta-badge badge-spicy">🌶️ Picor Medio</span>
-                </div>
-              </div>
-              <div class="dish-order-actions">
-                <div class="qty-control">
-                  <button type="button" class="qty-btn" onclick="adjustQty('tuetanos', -1)">-</button>
-                  <span class="qty-num" id="qty-tuetanos">1</span>
-                  <button type="button" class="qty-btn" onclick="adjustQty('tuetanos', 1)">+</button>
-                </div>
-                <button type="button" class="add-to-cart-btn" onclick="addToCart('Tuétanos con Chicharrón Ribeye', 220, 'tuetanos')">
-                  <span>+</span> Agregar
-                </button>
-              </div>
-            </div>
+            <button type="button" class="add-dish-btn" onclick="addDishToCart('Brisket Burger 14h', 260, 'brisket-burger')">
+              <span>+</span> Agregar
+            </button>
           </div>
-
         </div>
       </div>
 
-      <!-- SECCIÓN MIXOLOGÍA & POSTRES -->
-      <div class="category-block" data-cat="cocteles">
-        <div class="category-section-title reveal-on-scroll">
-          🍸 Mixología Ahumada de Autor
+      <!-- ITEM 4: Costillas St. Louis BBQ -->
+      <div class="anti-gravity-card float-speed-1" data-cat="burgers">
+        <div class="dish-mockup-frame">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=900&auto=format&fit=crop&q=80" alt="Costillas BBQ" class="dish-mockup-img">
         </div>
-        <div class="dishes-grid">
-
-          <!-- Platillo 7: Smoked Mezcalita -->
-          <div class="dish-card reveal-on-scroll" data-dish="mezcalita" data-tags="gluten">
-            <div class="dish-image-wrapper">
-              <span class="dish-star-tag">🍸 Coctel Insignia</span>
-              <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=900&auto=format&fit=crop&q=80" alt="Smoked Mezcalita" class="dish-image">
+        <div class="dish-card-body">
+          <div>
+            <div class="dish-meta-head">
+              <h3 class="dish-name-title">Costillas St. Louis Glaseadas</h3>
+              <span class="dish-price-tag">$340</span>
             </div>
-            <div class="dish-content">
-              <div>
-                <div class="dish-header-row">
-                  <h3 class="dish-title">Smoked Mezcalita Oaxaqueña</h3>
-                  <span class="dish-price">$170</span>
-                </div>
-                <p class="dish-desc">Servida bajo campana de cristal con humo de nogal. Mezcal espadín artesanal, jugo de mandarina tatemada, miel de agave y sal de chapulín.</p>
-                <div class="dish-meta-badges">
-                  <span class="meta-badge badge-gluten-free">🌾 Sin Gluten</span>
-                  <span class="meta-badge">💨 Servido con Humo en Mesa</span>
-                </div>
-              </div>
-              <div class="dish-order-actions">
-                <div class="qty-control">
-                  <button type="button" class="qty-btn" onclick="adjustQty('mezcalita', -1)">-</button>
-                  <span class="qty-num" id="qty-mezcalita">1</span>
-                  <button type="button" class="qty-btn" onclick="adjustQty('mezcalita', 1)">+</button>
-                </div>
-                <button type="button" class="add-to-cart-btn" onclick="addToCart('Smoked Mezcalita Oaxaqueña', 170, 'mezcalita')">
-                  <span>+</span> Agregar
-                </button>
-              </div>
+            <p class="dish-description-text">Costillar tierno desprendiéndose del hueso. Glaseado con salsa BBQ de ciruela pasa y piquín ahumado artesanal.</p>
+            <div class="dish-attributes-cluster">
+              <span class="attribute-tag emerald">🌾 Sin Gluten</span>
+              <span class="attribute-tag crimson">🌶️ Picor Suave</span>
+              <span class="attribute-tag">🥩 62g Prot</span>
             </div>
           </div>
-
-          <!-- Platillo 8: Volcán de Chocolate -->
-          <div class="dish-card reveal-on-scroll" data-dish="volcan" data-tags="">
-            <div class="dish-image-wrapper">
-              <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=900&auto=format&fit=crop&q=80" alt="Volcán de Chocolate" class="dish-image">
+          <div class="dish-purchase-row">
+            <div class="counter-widget">
+              <button type="button" class="counter-btn" onclick="adjustCount('costillas', -1)">-</button>
+              <span class="counter-display" id="qty-costillas">1</span>
+              <button type="button" class="counter-btn" onclick="adjustCount('costillas', 1)">+</button>
             </div>
-            <div class="dish-content">
-              <div>
-                <div class="dish-header-row">
-                  <h3 class="dish-title">Volcán de Chocolate Oaxaqueño</h3>
-                  <span class="dish-price">$150</span>
-                </div>
-                <p class="dish-desc">Bizcocho tibio de chocolate 70% cacao con centro líquido de avellana, flameado en mesa con licor de café y helado artesanal de vainilla Papantla.</p>
-                <div class="dish-meta-badges">
-                  <span class="meta-badge">🥛 Lácteos</span>
-                  <span class="meta-badge">🥜 Frutos Secos</span>
-                </div>
-              </div>
-              <div class="dish-order-actions">
-                <div class="qty-control">
-                  <button type="button" class="qty-btn" onclick="adjustQty('volcan', -1)">-</button>
-                  <span class="qty-num" id="qty-volcan">1</span>
-                  <button type="button" class="qty-btn" onclick="adjustQty('volcan', 1)">+</button>
-                </div>
-                <button type="button" class="add-to-cart-btn" onclick="addToCart('Volcán de Chocolate Oaxaqueño', 150, 'volcan')">
-                  <span>+</span> Agregar
-                </button>
-              </div>
+            <button type="button" class="add-dish-btn" onclick="addDishToCart('Costillas St. Louis Glaseadas', 340, 'costillas')">
+              <span>+</span> Agregar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 5: Tacos de Picaña en Maíz Azul -->
+      <div class="anti-gravity-card float-speed-2" data-cat="tacos">
+        <div class="dish-mockup-frame">
+          <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=900&auto=format&fit=crop&q=80" alt="Tacos Picaña" class="dish-mockup-img">
+        </div>
+        <div class="dish-card-body">
+          <div>
+            <div class="dish-meta-head">
+              <h3 class="dish-name-title">Tacos Picaña Maíz Azul (3)</h3>
+              <span class="dish-price-tag">$195</span>
+            </div>
+            <p class="dish-description-text">Picaña al carbón sobre tortilla de maíz azul nixtamalizado, costra de queso manchego, aguacate y habanero negro.</p>
+            <div class="dish-attributes-cluster">
+              <span class="attribute-tag emerald">🌾 Sin Gluten</span>
+              <span class="attribute-tag crimson">🌶️🌶️ Picante Bravo</span>
+              <span class="attribute-tag">🥩 38g Prot</span>
             </div>
           </div>
+          <div class="dish-purchase-row">
+            <div class="counter-widget">
+              <button type="button" class="counter-btn" onclick="adjustCount('tacos-picanha', -1)">-</button>
+              <span class="counter-display" id="qty-tacos-picanha">1</span>
+              <button type="button" class="counter-btn" onclick="adjustCount('tacos-picanha', 1)">+</button>
+            </div>
+            <button type="button" class="add-dish-btn" onclick="addDishToCart('Tacos Picaña Maíz Azul (3)', 195, 'tacos-picanha')">
+              <span>+</span> Agregar
+            </button>
+          </div>
+        </div>
+      </div>
 
+      <!-- ITEM 6: Tuétanos Asados -->
+      <div class="anti-gravity-card float-speed-3" data-cat="tacos">
+        <div class="dish-mockup-frame">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=900&auto=format&fit=crop&q=80" alt="Tuétanos" class="dish-mockup-img">
+        </div>
+        <div class="dish-card-body">
+          <div>
+            <div class="dish-meta-head">
+              <h3 class="dish-name-title">Tuétanos con Chicharrón</h3>
+              <span class="dish-price-tag">$220</span>
+            </div>
+            <p class="dish-description-text">Canal de tuétano asado a la brasa con costra crujiente de chicharrón de ribeye, brotes de cilantro y tortillas calientes.</p>
+            <div class="dish-attributes-cluster">
+              <span class="attribute-tag emerald">🌾 Sin Gluten</span>
+              <span class="attribute-tag crimson">🌶️ Picor Medio</span>
+            </div>
+          </div>
+          <div class="dish-purchase-row">
+            <div class="counter-widget">
+              <button type="button" class="counter-btn" onclick="adjustCount('tuetanos', -1)">-</button>
+              <span class="counter-display" id="qty-tuetanos">1</span>
+              <button type="button" class="counter-btn" onclick="adjustCount('tuetanos', 1)">+</button>
+            </div>
+            <button type="button" class="add-dish-btn" onclick="addDishToCart('Tuétanos con Chicharrón', 220, 'tuetanos')">
+              <span>+</span> Agregar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 7: Smoked Mezcalita -->
+      <div class="anti-gravity-card float-speed-1" data-cat="cocteles">
+        <div class="dish-mockup-frame">
+          <span class="dish-floating-badge">🍸 Coctel Insignia</span>
+          <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=900&auto=format&fit=crop&q=80" alt="Smoked Mezcalita" class="dish-mockup-img">
+        </div>
+        <div class="dish-card-body">
+          <div>
+            <div class="dish-meta-head">
+              <h3 class="dish-name-title">Smoked Mezcalita Oaxaqueña</h3>
+              <span class="dish-price-tag">$170</span>
+            </div>
+            <p class="dish-description-text">Servida bajo campana de cristal con humo de nogal. Mezcal espadín artesanal, mandarina tatemada y sal de chapulín.</p>
+            <div class="dish-attributes-cluster">
+              <span class="attribute-tag emerald">🌾 Sin Gluten</span>
+              <span class="attribute-tag">💨 Humo en Mesa</span>
+            </div>
+          </div>
+          <div class="dish-purchase-row">
+            <div class="counter-widget">
+              <button type="button" class="counter-btn" onclick="adjustCount('mezcalita', -1)">-</button>
+              <span class="counter-display" id="qty-mezcalita">1</span>
+              <button type="button" class="counter-btn" onclick="adjustCount('mezcalita', 1)">+</button>
+            </div>
+            <button type="button" class="add-dish-btn" onclick="addDishToCart('Smoked Mezcalita Oaxaqueña', 170, 'mezcalita')">
+              <span>+</span> Agregar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 8: Volcán de Chocolate -->
+      <div class="anti-gravity-card float-speed-2" data-cat="postres">
+        <div class="dish-mockup-frame">
+          <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=900&auto=format&fit=crop&q=80" alt="Volcán de Chocolate" class="dish-mockup-img">
+        </div>
+        <div class="dish-card-body">
+          <div>
+            <div class="dish-meta-head">
+              <h3 class="dish-name-title">Volcán de Chocolate 70%</h3>
+              <span class="dish-price-tag">$150</span>
+            </div>
+            <p class="dish-description-text">Bizcocho tibio de cacao con centro líquido de avellana, flameado con licor de café y helado artesanal de vainilla Papantla.</p>
+            <div class="dish-attributes-cluster">
+              <span class="attribute-tag">🥛 Lácteos</span>
+              <span class="attribute-tag">🥜 Frutos Secos</span>
+            </div>
+          </div>
+          <div class="dish-purchase-row">
+            <div class="counter-widget">
+              <button type="button" class="counter-btn" onclick="adjustCount('volcan', -1)">-</button>
+              <span class="counter-display" id="qty-volcan">1</span>
+              <button type="button" class="counter-btn" onclick="adjustCount('volcan', 1)">+</button>
+            </div>
+            <button type="button" class="add-dish-btn" onclick="addDishToCart('Volcán de Chocolate 70%', 150, 'volcan')">
+              <span>+</span> Agregar
+            </button>
+          </div>
         </div>
       </div>
 
     </main>
 
     <!-- ======================================================================= -->
-    <!-- TRIGGER FLOTANTE DEL ASISTENTE                                          -->
+    <!-- FLOATING ASISTENTE TRIGGER & SLIDE-UP MODAL                             -->
     <!-- ======================================================================= -->
-    <button type="button" class="assistant-floating-trigger" onclick="openAssistantModal()">
-      <span class="assistant-icon-glow">✨</span>
+    <button type="button" class="assistant-float-btn" onclick="toggleAssistantModal(true)">
+      <span>✨</span>
       <span>Asistente Alex</span>
     </button>
 
-    <!-- DRAWER / MODAL ASISTENTE GOURMET -->
-    <div class="assistant-modal-backdrop" id="assistantBackdrop" onclick="closeAssistantModal()"></div>
-    <div class="assistant-modal-drawer" id="assistantDrawer">
-      <div class="assistant-drawer-header">
-        <div class="assistant-header-info">
-          <div class="assistant-avatar">✨</div>
-          <div class="assistant-header-text">
-            <h3>Asistente Alex</h3>
-            <p>Concierge Gastronómico de Mesa</p>
+    <div class="assistant-overlay-modal" id="assistantOverlay" onclick="toggleAssistantModal(false)"></div>
+    <div class="assistant-drawer-box" id="assistantDrawer">
+      <div class="assistant-drawer-top">
+        <div class="assistant-brand-meta">
+          <div class="assistant-emblem">✨</div>
+          <div>
+            <h3 style="font-family: var(--heading); font-size: 1.05rem; color: #ffffff;">Asistente Alex</h3>
+            <p style="font-size: 0.72rem; color: var(--neon-amber); font-weight: 700;">Concierge Gastronómico de Mesa</p>
           </div>
         </div>
-        <button type="button" class="assistant-drawer-close" onclick="closeAssistantModal()">&times;</button>
+        <button type="button" class="assistant-drawer-close" onclick="toggleAssistantModal(false)">&times;</button>
       </div>
 
-      <div class="assistant-chat-body" id="assistantChatBody">
-        <div class="chat-bubble assistant">
-          Buenas tardes, bienvenido a <strong>ALEX</strong>. Es un placer atenderte. ¿Deseas alguna recomendación sobre el maridaje, términos de cocción o tienes alguna preferencia de alérgenos?
+      <div class="assistant-dialog-stream" id="dialogStream">
+        <div class="dialog-bubble ai">
+          Buenas tardes, bienvenido a <strong>ALEX</strong>. Es un placer tenerte con nosotros. ¿Deseas alguna recomendación sobre el maridaje, términos de cocción o tienes alguna restricción de alérgenos?
         </div>
       </div>
 
-      <!-- CHIPS DE CONSULTAS RÁPIDAS -->
-      <div class="assistant-quick-prompts">
-        <button type="button" class="prompt-chip" onclick="askAssistantPrompt('¿Qué corte recomiendan para compartir?')">🥩 Corte para compartir</button>
-        <button type="button" class="prompt-chip" onclick="askAssistantPrompt('Busco opciones sin gluten')">🌾 Opciones Sin Gluten</button>
-        <button type="button" class="prompt-chip" onclick="askAssistantPrompt('¿Con qué cóctel marida la Brisket Burger?')">🍔 Maridaje Burger</button>
-        <button type="button" class="prompt-chip" onclick="askAssistantPrompt('Recomiéndame una cena completa por menos de $450')">💰 Menú hasta $450</button>
+      <div class="assistant-suggestion-chips">
+        <button type="button" class="suggest-chip" onclick="askConcierge('¿Qué corte recomiendan para compartir?')">🥩 Corte para compartir</button>
+        <button type="button" class="suggest-chip" onclick="askConcierge('Busco opciones sin gluten')">🌾 Opciones Sin Gluten</button>
+        <button type="button" class="suggest-chip" onclick="askConcierge('¿Con qué cóctel marida la Brisket Burger?')">🍔 Maridaje Burger</button>
+        <button type="button" class="suggest-chip" onclick="askConcierge('Recomiéndame un menú por menos de $450')">💰 Menú hasta $450</button>
       </div>
 
-      <form class="assistant-input-row" onsubmit="handleAssistantUserSubmit(event)">
-        <input type="text" id="assistantInputField" class="assistant-input-field" placeholder="Escribe tu consulta o preferencia..." autocomplete="off">
-        <button type="submit" class="assistant-send-btn">➔</button>
+      <form class="assistant-input-tray" onsubmit="handleConciergeSubmit(event)">
+        <input type="text" id="conciergeInput" class="assistant-text-field" placeholder="Pregúntale a tu asistente gastronómico..." autocomplete="off">
+        <button type="submit" class="assistant-action-send">➔</button>
       </form>
     </div>
 
     <!-- ======================================================================= -->
-    <!-- MODAL DE TARJETA WALLET (APPLE & GOOGLE)                                -->
+    <!-- FLOATING COMANDA BAR & DRAWERS                                          -->
     <!-- ======================================================================= -->
-    <div class="wallet-modal-backdrop" id="walletBackdrop" onclick="if(event.target === this) closeWalletModal();">
-      <div class="wallet-pass-card">
-        <button type="button" class="wallet-modal-close" onclick="closeWalletModal()">&times;</button>
+    <div class="bottom-comanda-bar" id="comandaBar" style="display: none;">
+      <div class="comanda-counter-col" onclick="toggleComandaDrawer(true)">
+        <span class="comanda-items-lbl" id="comandaCountText">0 platillos seleccionados</span>
+        <span class="comanda-price-lbl" id="comandaTotalText">$0 MXN</span>
+      </div>
+      <button type="button" class="comanda-inspect-btn" onclick="toggleComandaDrawer(true)">
+        <span>Ver Comanda</span> ➔
+      </button>
+    </div>
 
-        <div class="pass-header">
-          <div class="pass-brand">
-            <h2>ALEX<span>.</span></h2>
-            <p>VIP Loyalty Pass</p>
-          </div>
-          <span class="pass-vip-badge">Nivel Oro</span>
+    <div class="comanda-drawer-backdrop" id="comandaBackdrop" onclick="toggleComandaDrawer(false)"></div>
+    <div class="comanda-drawer" id="comandaDrawer">
+      <div class="comanda-drawer-head">
+        <h3 style="font-family: var(--heading); font-size: 1.15rem; color: #ffffff;">🛒 Tu Comanda · <span id="drawerTableLbl" style="color: var(--neon-amber);">Mesa 4</span></h3>
+        <button type="button" class="assistant-drawer-close" onclick="toggleComandaDrawer(false)">&times;</button>
+      </div>
+
+      <div class="comanda-stream-list" id="comandaItemList"></div>
+
+      <div class="comanda-drawer-foot">
+        <div class="order-summary-row">
+          <span>Subtotal Alimentos:</span>
+          <span id="subtotalVal">$0 MXN</span>
+        </div>
+        <div class="order-summary-row">
+          <span>Propina sugerida (10%):</span>
+          <span id="tipVal">$0 MXN</span>
+        </div>
+        <div class="order-summary-total">
+          <span>Total a Pagar:</span>
+          <span id="totalVal">$0 MXN</span>
         </div>
 
-        <!-- SIMULACIÓN DE NOTIFICACIÓN PUSH EN PANTALLA BLOQUEADA -->
-        <div class="push-simulator-box">
-          <div class="push-sim-header">
+        <button type="button" class="btn-fire-whatsapp-order" onclick="dispatchOrderWhatsApp()">
+          <span>💬</span> Enviar Comanda a Cocina por WhatsApp
+        </button>
+      </div>
+    </div>
+
+    <!-- MODAL WALLET PASS -->
+    <div class="wallet-dialog-backdrop" id="walletModal" onclick="if(event.target === this) toggleWalletModal(false);">
+      <div class="wallet-card-container">
+        <button type="button" class="assistant-drawer-close" style="position: absolute; top: 16px; right: 16px;" onclick="toggleWalletModal(false)">&times;</button>
+
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px;">
+          <div>
+            <h2 style="font-family: var(--heading); font-size: 1.25rem; letter-spacing: 1.5px; color: #ffffff;">ALEX<span style="color: var(--neon-amber);">.</span></h2>
+            <p style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">VIP Loyalty Pass</p>
+          </div>
+          <span style="background: var(--neon-amber); color: #08080a; font-size: 0.70rem; font-weight: 800; padding: 4px 12px; border-radius: 12px;">Nivel Oro</span>
+        </div>
+
+        <div class="push-notif-card">
+          <div style="display: flex; justify-content: space-between; font-size: 0.65rem; color: var(--neon-amber); font-weight: 700; margin-bottom: 4px;">
             <span>🔔 ALEX Smokehouse · AHORA</span>
             <span>Wallet Push</span>
           </div>
-          <strong>¡2x1 en Cócteles de Autor hoy!</strong>
-          <p style="color: #a8a29e; font-size: 0.72rem; margin-top: 2px;">Presenta tu pase digital antes de las 9:00 PM.</p>
+          <strong style="color: #ffffff;">¡2x1 en Cócteles de Autor hoy!</strong>
+          <p style="color: var(--text-muted); font-size: 0.72rem; margin-top: 2px;">Válido presentando este pase antes de las 9:00 PM.</p>
         </div>
 
-        <p style="font-size: 0.78rem; color: #d6d3d1; margin-bottom: 8px;">Sellos Acumulados: <strong>3 de 5</strong></p>
-        <div class="stamps-grid">
-          <div class="stamp-slot filled">🔥<span class="stamp-label">18 Sep</span></div>
-          <div class="stamp-slot filled">🔥<span class="stamp-label">20 Sep</span></div>
-          <div class="stamp-slot filled">🔥<span class="stamp-label">21 Sep</span></div>
-          <div class="stamp-slot">⭕<span class="stamp-label">Sello 4</span></div>
-          <div class="stamp-slot">🎁<span class="stamp-label">Premio</span></div>
+        <p style="font-size: 0.78rem; color: var(--text-warm); margin-bottom: 8px;">Sellos Acumulados: <strong>3 de 5</strong></p>
+        <div class="stamps-flex-track">
+          <div class="stamp-spot active">🔥<span style="font-size: 0.55rem; color: var(--text-muted);">18 Sep</span></div>
+          <div class="stamp-spot active">🔥<span style="font-size: 0.55rem; color: var(--text-muted);">20 Sep</span></div>
+          <div class="stamp-spot active">🔥<span style="font-size: 0.55rem; color: var(--text-muted);">21 Sep</span></div>
+          <div class="stamp-spot">⭕<span style="font-size: 0.55rem; color: var(--text-muted);">Sello 4</span></div>
+          <div class="stamp-spot">🎁<span style="font-size: 0.55rem; color: var(--text-muted);">Premio</span></div>
         </div>
 
-        <div class="pass-reward-callout">
+        <div style="font-size: 0.78rem; color: #fef08a; background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); padding: 10px 14px; border-radius: 12px; margin-bottom: 18px; text-align: center;">
           🎁 <strong>¡A solo 2 visitas de tu recompensa!</strong><br>
           En tu 5ta visita recibe cortesía de Tacos de Picaña o una Smoked Mezcalita.
         </div>
 
-        <div class="wallet-store-btns">
-          <button type="button" class="btn-wallet-add" onclick="saveToWallet('apple')">
+        <div class="wallet-save-buttons">
+          <button type="button" class="btn-save-pass" onclick="savePassAction('apple')">
             <svg width="14" height="14" viewBox="0 0 170 170" fill="currentColor"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.69-3.04-7.67-7.81-11.96-14.34-6.41-9.78-11.44-20.9-15.09-33.34-3.65-12.44-5.48-24.32-5.48-35.63 0-14.35 3.58-26.47 10.74-36.35 7.16-9.88 16.5-14.9 28.02-15.07 4.02 0 8.87 1.09 14.54 3.27 5.67 2.18 9.38 3.32 11.13 3.42 2.5.11 6.53-1.09 12.09-3.61 5.56-2.52 10.37-3.72 14.42-3.61 10.33.43 18.91 4.18 25.75 11.25-9.46 5.76-14.07 13.91-13.83 24.45.24 8.37 3.48 15.43 9.72 21.19 6.24 5.76 13.78 9.07 22.62 9.94-2.18 6.41-4.78 12.71-7.81 18.91zM119.22 31.02c0-7.39 2.66-14.45 7.98-21.18 5.32-6.73 11.96-10.87 19.92-12.42.44 2.17.65 4.34.65 6.51 0 7.39-2.72 14.67-8.15 21.84-5.43 7.17-12.06 11.25-19.89 12.24-.11-2.28-.51-4.61-.51-6.99z"/></svg>
             Apple Wallet
           </button>
-          <button type="button" class="btn-wallet-add" onclick="saveToWallet('google')">
+          <button type="button" class="btn-save-pass" onclick="savePassAction('google')">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
             Google Wallet
           </button>
@@ -1774,55 +1688,10 @@
       </div>
     </div>
 
-    <!-- ======================================================================= -->
-    <!-- CARRITO DE COMPRA & BARRA INFERIOR                                      -->
-    <!-- ======================================================================= -->
-    <div class="cart-bottom-bar" id="cartBar" style="display: none;">
-      <div class="cart-summary-text" onclick="openCartDrawer()">
-        <span class="cart-count-pill" id="cartCountPill">0 platillos seleccionados</span>
-        <span class="cart-total-val" id="cartTotalVal">$0 MXN</span>
-      </div>
-      <button type="button" class="cart-checkout-btn" onclick="openCartDrawer()">
-        <span>Ver Comanda</span> ➔
-      </button>
-    </div>
-
-    <!-- DRAWER DEL CARRITO -->
-    <div class="cart-drawer-backdrop" id="cartBackdrop" onclick="closeCartDrawer()"></div>
-    <div class="cart-drawer" id="cartDrawer">
-      <div class="cart-drawer-header">
-        <h3 style="font-family: var(--heading); font-size: 1.1rem; color: #ffffff;">🛒 Tu Comanda · <span id="cartDrawerTable" style="color: var(--gold);">Mesa 4</span></h3>
-        <button type="button" class="assistant-drawer-close" onclick="closeCartDrawer()">&times;</button>
-      </div>
-
-      <div class="cart-drawer-items" id="cartItemsList">
-        <!-- Inyección dinámica -->
-      </div>
-
-      <div class="cart-drawer-footer">
-        <div class="cart-calc-row">
-          <span>Subtotal Alimentos:</span>
-          <span id="calcSubtotal">$0 MXN</span>
-        </div>
-        <div class="cart-calc-row">
-          <span>Propina sugerida (10%):</span>
-          <span id="calcTip">$0 MXN</span>
-        </div>
-        <div class="cart-calc-total">
-          <span>Total a Pagar:</span>
-          <span id="calcTotal">$0 MXN</span>
-        </div>
-
-        <button type="button" class="btn-send-whatsapp-order" onclick="sendOrderViaWhatsApp()">
-          <span>💬</span> Enviar Comanda a Cocina por WhatsApp
-        </button>
-      </div>
-    </div>
-
   </div>
 
   <!-- ======================================================================= -->
-  <!-- SCRIPTS & INTERACCIÓN                                                   -->
+  <!-- GSAP ANTI-GRAVITY PHYSICS & INTERACTION LOGIC                           -->
   <!-- ======================================================================= -->
   <script>
     (function() {
@@ -1830,130 +1699,200 @@
       const urlParams = new URLSearchParams(window.location.search);
       let currentTable = urlParams.get('m') || '4';
       const tableLabel = document.getElementById('tableLabel');
-      const cartDrawerTable = document.getElementById('cartDrawerTable');
+      const drawerTableLbl = document.getElementById('drawerTableLbl');
       if (tableLabel) tableLabel.textContent = 'Mesa ' + currentTable + ' · Terraza';
-      if (cartDrawerTable) cartDrawerTable.textContent = 'Mesa ' + currentTable;
+      if (drawerTableLbl) drawerTableLbl.textContent = 'Mesa ' + currentTable;
 
       window.promptTableChange = function() {
         const val = prompt('Ingresa tu número de mesa:', currentTable);
         if (val && val.trim()) {
           currentTable = val.trim();
           tableLabel.textContent = 'Mesa ' + currentTable + ' · Terraza';
-          cartDrawerTable.textContent = 'Mesa ' + currentTable;
-          showToast('Mesa cambiada a: Mesa ' + currentTable);
+          drawerTableLbl.textContent = 'Mesa ' + currentTable;
+          showToast('Mesa asignada a: Mesa ' + currentTable);
         }
       };
 
-      // 2. Toast Notificación
+      // 2. Toast
       let toastTimer = null;
       window.showToast = function(msg) {
-        const toast = document.getElementById('miniToast');
-        if (!toast) return;
-        toast.textContent = msg;
-        toast.classList.add('visible');
+        const t = document.getElementById('toastBadge');
+        if (!t) return;
+        t.textContent = msg;
+        t.classList.add('visible');
         if (navigator.vibrate) navigator.vibrate(25);
         if (toastTimer) clearTimeout(toastTimer);
-        toastTimer = setTimeout(() => {
-          toast.classList.remove('visible');
-        }, 2200);
+        toastTimer = setTimeout(() => t.classList.remove('visible'), 2200);
       };
 
-      // 3. Llamar Mesero y Cuenta
+      // 3. Botones de Mesa
       window.callWaiter = function() {
         if (navigator.vibrate) navigator.vibrate([40, 60, 40]);
-        showToast('🛎️ Avisando a tu mesero para acudir a Mesa ' + currentTable);
+        showToast('🛎️ Notificando al mesero para Mesa ' + currentTable);
       };
-
       window.requestBill = function() {
         if (navigator.vibrate) navigator.vibrate([40, 60, 40]);
         showToast('🧾 Cuenta solicitada para Mesa ' + currentTable);
       };
 
-      // 4. Filtro de Categorías
-      window.filterCategory = function(cat, btn) {
-        document.querySelectorAll('.cat-tab').forEach(b => b.classList.remove('active'));
+      // 4. Smooth Scroll to Menu
+      window.smoothScrollToMenu = function(e) {
+        e.preventDefault();
+        const target = document.getElementById('menu');
+        if (target) {
+          const offset = 70;
+          const bodyRect = document.body.getBoundingClientRect().top;
+          const elementRect = target.getBoundingClientRect().top;
+          const elementPosition = elementRect - bodyRect;
+          const offsetPosition = elementPosition - offset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      };
+
+      // 5. GSAP ANTI-GRAVITY SCROLL PARALLAX PHYSICS & LEVITATION
+      if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Anti-gravity floating variable parallax speeds
+        gsap.utils.toArray('.float-speed-1').forEach(card => {
+          gsap.to(card, {
+            y: -35,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: 1.4
+            }
+          });
+        });
+
+        gsap.utils.toArray('.float-speed-2').forEach(card => {
+          gsap.to(card, {
+            y: 45,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: 1.8
+            }
+          });
+        });
+
+        gsap.utils.toArray('.float-speed-3').forEach(card => {
+          gsap.to(card, {
+            y: -55,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: 2.2
+            }
+          });
+        });
+
+        // Continuous subtle anti-gravity levitation drift (Sine wave oscillation)
+        gsap.utils.toArray('.anti-gravity-card').forEach((card, i) => {
+          gsap.to(card, {
+            y: '+=6',
+            duration: 2.8 + (i % 3) * 0.4,
+            yoyo: true,
+            repeat: -1,
+            ease: 'sine.inOut',
+            delay: (i * 0.15) % 1
+          });
+        });
+      }
+
+      // 6. 3D TILT EFFECT IN RESPONSE TO MOUSE CURSOR HOVER
+      document.querySelectorAll('.anti-gravity-card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = ((y - centerY) / centerY) * -7;
+          const rotateY = ((x - centerX) / centerX) * 7;
+
+          card.style.setProperty('--mouse-x', `${(x / rect.width) * 100}%`);
+          card.style.setProperty('--mouse-y', `${(y / rect.height) * 100}%`);
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(8px)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+        });
+      });
+
+      // 7. Filtro de Categorías
+      window.filterMenu = function(cat, btn) {
+        document.querySelectorAll('.cat-tab-pill').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
 
-        document.querySelectorAll('.category-block').forEach(block => {
-          if (cat === 'all' || block.getAttribute('data-cat') === cat) {
-            block.style.display = 'block';
-          } else {
-            block.style.display = 'none';
-          }
-        });
-      };
-
-      // 5. Filtros Dietéticos
-      window.toggleDietaryFilter = function(tag, btn) {
-        btn.classList.toggle('active');
-        const activeTags = [];
-        document.querySelectorAll('.diet-pill.active').forEach(p => {
-          if (p.id === 'filterGluten') activeTags.push('gluten');
-          if (p.id === 'filterSpicy') activeTags.push('spicy');
-          if (p.id === 'filterLight') activeTags.push('light');
-        });
-
-        document.querySelectorAll('.dish-card').forEach(card => {
-          const cardTags = (card.getAttribute('data-tags') || '').split(',');
-          if (activeTags.length === 0) {
+        document.querySelectorAll('.anti-gravity-card').forEach(card => {
+          if (cat === 'all' || card.getAttribute('data-cat') === cat) {
             card.style.display = 'flex';
           } else {
-            const hasAll = activeTags.every(t => cardTags.includes(t));
-            card.style.display = hasAll ? 'flex' : 'none';
+            card.style.display = 'none';
           }
         });
+        if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
       };
 
-      // 6. Carrito de Compras
+      // 8. Carrito & Comanda Logic
       const cart = {};
 
-      window.adjustQty = function(dishKey, delta) {
-        const qtyEl = document.getElementById('qty-' + dishKey);
-        if (!qtyEl) return;
-        let cur = parseInt(qtyEl.textContent) || 1;
-        cur = Math.max(1, Math.min(20, cur + delta));
-        qtyEl.textContent = cur;
+      window.adjustCount = function(key, delta) {
+        const el = document.getElementById('qty-' + key);
+        if (!el) return;
+        let val = parseInt(el.textContent) || 1;
+        val = Math.max(1, Math.min(20, val + delta));
+        el.textContent = val;
       };
 
-      window.addToCart = function(title, price, dishKey) {
-        const qtyEl = document.getElementById('qty-' + dishKey);
+      window.addDishToCart = function(title, price, key) {
+        const qtyEl = document.getElementById('qty-' + key);
         const qty = qtyEl ? (parseInt(qtyEl.textContent) || 1) : 1;
 
-        if (!cart[title]) {
-          cart[title] = { price: price, qty: 0 };
-        }
+        if (!cart[title]) cart[title] = { price, qty: 0 };
         cart[title].qty += qty;
         if (qtyEl) qtyEl.textContent = '1';
 
-        updateCartUI();
+        updateCartState();
         showToast('✓ ' + qty + 'x ' + title + ' agregado');
       };
 
-      function updateCartUI() {
-        let totalQty = 0;
+      function updateCartState() {
+        let totalItems = 0;
         let totalPrice = 0;
-        const list = document.getElementById('cartItemsList');
+        const list = document.getElementById('comandaItemList');
         if (list) list.innerHTML = '';
 
         for (let name in cart) {
           const item = cart[name];
           if (item.qty > 0) {
-            totalQty += item.qty;
+            totalItems += item.qty;
             totalPrice += item.price * item.qty;
 
             if (list) {
               const row = document.createElement('div');
-              row.className = 'cart-item-row';
+              row.className = 'comanda-row-item';
               row.innerHTML = `
                 <div>
                   <strong style="color: #ffffff; font-size: 0.90rem;">${name}</strong>
-                  <div style="color: #a8a29e; font-size: 0.78rem;">$${item.price} c/u</div>
+                  <div style="color: #94a3b8; font-size: 0.78rem;">$${item.price} c/u</div>
                 </div>
                 <div style="display: flex; align-items: center; gap: 8px;">
-                  <button type="button" class="qty-btn" onclick="modifyCartItem('${name}', -1)">-</button>
-                  <span style="font-weight: 700;">${item.qty}</span>
-                  <button type="button" class="qty-btn" onclick="modifyCartItem('${name}', 1)">+</button>
-                  <span style="font-weight: 800; color: var(--gold); margin-left: 6px;">$${item.price * item.qty}</span>
+                  <button type="button" class="counter-btn" onclick="modifyCartLine('${name}', -1)">-</button>
+                  <span style="font-weight: 800;">${item.qty}</span>
+                  <button type="button" class="counter-btn" onclick="modifyCartLine('${name}', 1)">+</button>
+                  <span style="font-weight: 800; color: var(--neon-amber); margin-left: 6px;">$${item.price * item.qty}</span>
                 </div>
               `;
               list.appendChild(row);
@@ -1961,50 +1900,47 @@
           }
         }
 
-        const cartBar = document.getElementById('cartBar');
-        const cartCountPill = document.getElementById('cartCountPill');
-        const cartTotalVal = document.getElementById('cartTotalVal');
-        const calcSubtotal = document.getElementById('calcSubtotal');
-        const calcTip = document.getElementById('calcTip');
-        const calcTotal = document.getElementById('calcTotal');
+        const bar = document.getElementById('comandaBar');
+        const countTxt = document.getElementById('comandaCountText');
+        const priceTxt = document.getElementById('comandaTotalText');
+        const subtotalVal = document.getElementById('subtotalVal');
+        const tipVal = document.getElementById('tipVal');
+        const totalVal = document.getElementById('totalVal');
 
-        if (totalQty > 0) {
-          if (cartBar) cartBar.style.display = 'flex';
-          if (cartCountPill) cartCountPill.textContent = totalQty + ' platillo' + (totalQty > 1 ? 's' : '') + ' en comanda';
-          if (cartTotalVal) cartTotalVal.textContent = '$' + totalPrice.toLocaleString('es-MX') + ' MXN';
+        if (totalItems > 0) {
+          if (bar) bar.style.display = 'flex';
+          if (countTxt) countTxt.textContent = totalItems + ' platillo' + (totalItems > 1 ? 's' : '') + ' en comanda';
+          if (priceTxt) priceTxt.textContent = '$' + totalPrice.toLocaleString('es-MX') + ' MXN';
 
           const tip = Math.round(totalPrice * 0.10);
-          if (calcSubtotal) calcSubtotal.textContent = '$' + totalPrice.toLocaleString('es-MX') + ' MXN';
-          if (calcTip) calcTip.textContent = '$' + tip.toLocaleString('es-MX') + ' MXN';
-          if (calcTotal) calcTotal.textContent = '$' + (totalPrice + tip).toLocaleString('es-MX') + ' MXN';
+          if (subtotalVal) subtotalVal.textContent = '$' + totalPrice.toLocaleString('es-MX') + ' MXN';
+          if (tipVal) tipVal.textContent = '$' + tip.toLocaleString('es-MX') + ' MXN';
+          if (totalVal) totalVal.textContent = '$' + (totalPrice + tip).toLocaleString('es-MX') + ' MXN';
         } else {
-          if (cartBar) cartBar.style.display = 'none';
-          closeCartDrawer();
+          if (bar) bar.style.display = 'none';
+          toggleComandaDrawer(false);
         }
       }
 
-      window.modifyCartItem = function(name, delta) {
+      window.modifyCartLine = function(name, delta) {
         if (cart[name]) {
           cart[name].qty += delta;
-          if (cart[name].qty <= 0) {
-            delete cart[name];
-          }
-          updateCartUI();
+          if (cart[name].qty <= 0) delete cart[name];
+          updateCartState();
         }
       };
 
-      window.openCartDrawer = function() {
-        document.getElementById('cartBackdrop').classList.add('open');
-      };
-      window.closeCartDrawer = function() {
-        document.getElementById('cartBackdrop').classList.remove('open');
+      window.toggleComandaDrawer = function(open) {
+        const bd = document.getElementById('comandaBackdrop');
+        if (open) bd.classList.add('open');
+        else bd.classList.remove('open');
       };
 
-      // 7. WhatsApp Order Dispatch
-      window.sendOrderViaWhatsApp = function() {
+      // 9. Dispatch WhatsApp Order
+      window.dispatchOrderWhatsApp = function() {
         let msg = `*🔥 NUEVA COMANDA - ALEX SMOKEHOUSE 🔥*\n`;
-        msg += `📍 *Ubicación:* Mesa ${currentTable} (Terraza)\n\n`;
-        msg += `*DETALLE DEL PEDIDO:*\n`;
+        msg += `📍 *Mesa:* ${currentTable} (Terraza)\n\n`;
+        msg += `*PLATILLOS SOLICITADOS:*\n`;
 
         let total = 0;
         for (let name in cart) {
@@ -2017,123 +1953,97 @@
         const tip = Math.round(total * 0.10);
         msg += `\n💵 *Subtotal:* $${total} MXN`;
         msg += `\n✨ *Propina Sugerida (10%):* $${tip} MXN`;
-        msg += `\n💳 *Total a Pagar:* $${total + tip} MXN\n`;
-        msg += `\n_Enviado desde Menú Digital NFC MenuExpress_`;
+        msg += `\n💳 *Total Comanda:* $${total + tip} MXN\n`;
+        msg += `\n_Enviado desde Menú Digital Anti-Gravity MenuExpress_`;
 
-        const waUrl = `https://wa.me/523312345678?text=${encodeURIComponent(msg)}`;
-        window.open(waUrl, '_blank');
-      };
-
-      // 8. Modal de Wallet
-      window.openWalletModal = function() {
-        document.getElementById('walletBackdrop').classList.add('open');
-      };
-      window.closeWalletModal = function() {
-        document.getElementById('walletBackdrop').classList.remove('open');
-      };
-      window.saveToWallet = function(platform) {
-        showToast('✓ Pase añadido a tu ' + (platform === 'apple' ? 'Apple Wallet' : 'Google Wallet'));
+        window.open(`https://wa.me/523312345678?text=${encodeURIComponent(msg)}`, '_blank');
       };
 
-      // 9. Asistente Alex (Hospitality / Sommelier)
-      window.openAssistantModal = function() {
-        document.getElementById('assistantBackdrop').classList.add('open');
-      };
-      window.closeAssistantModal = function() {
-        document.getElementById('assistantBackdrop').classList.remove('open');
+      // 10. Asistente Alex Modal & Logic
+      window.toggleAssistantModal = function(open) {
+        const m = document.getElementById('assistantOverlay');
+        if (open) m.classList.add('open');
+        else m.classList.remove('open');
       };
 
-      const assistantAnswers = {
+      const conciergeKnowledge = {
         'compartir': {
-          text: 'Para compartir en el centro de la mesa, la recomendación de la casa es el **Tomahawk Prime de 1.2 kg**. Viene sellado a fuego de mezquite con mantequilla de romero y es ideal para 2 o 3 personas.',
+          text: 'Para compartir al centro, la joya de la brasa es el **Tomahawk Prime de 1.2 kg**. Viene sellado a fuego de mezquite con mantequilla al romero, ideal para 2 o 3 comensales.',
           dish: { title: 'Tomahawk Prime (1.2 kg)', price: 890, img: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=300&auto=format&fit=crop&q=80', key: 'tomahawk' }
         },
         'gluten': {
-          text: 'Con gusto. Si buscas opciones libres de gluten, te sugiero los **Tacos de Picaña en Maíz Azul** o el **Ribeye al Mezquite**. Ambos son 100% gluten-free y preparados con ingredientes puros a la brasa.',
+          text: 'Con gusto. Nuestras mejores opciones 100% libres de gluten son los **Tacos de Picaña en Maíz Azul** o el **Ribeye al Mezquite**. Ambos preparados sin harinas añadidas a fuego puro.',
           dish: { title: 'Tacos Picaña Maíz Azul (3)', price: 195, img: 'https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=300&auto=format&fit=crop&q=80', key: 'tacos-picanha' }
         },
         'maridaje': {
-          text: 'Para la **Brisket Burger de 14 horas**, el maridaje ideal es nuestra **Smoked Mezcalita**. La acidez de la mandarina tatemada y el humo de nogal balancean la grasa untuosa del Black Angus.',
+          text: 'Para la **Brisket Burger de 14 horas**, el maridaje de autor recomendado es la **Smoked Mezcalita**. La acidez de la mandarina tatemada limpia la untuosidad del Black Angus ahumado.',
           dish: { title: 'Smoked Mezcalita Oaxaqueña', price: 170, img: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=300&auto=format&fit=crop&q=80', key: 'mezcalita' }
         },
         'presupuesto': {
-          text: 'Por menos de $450 pesos puedes disfrutar una experiencia completa: una **Brisket Burger 14 Horas ($260)** acompañada de una **Smoked Mezcalita ($170)**. Total: **$430 MXN**.',
-          dish: { title: 'Brisket Burger 14 Horas', price: 260, img: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&auto=format&fit=crop&q=80', key: 'brisket-burger' }
+          text: 'Por menos de $450 pesos puedes armar una experiencia completa: una **Brisket Burger 14h ($260)** + una **Smoked Mezcalita ($170)** = **$430 MXN**.',
+          dish: { title: 'Brisket Burger 14h', price: 260, img: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&auto=format&fit=crop&q=80', key: 'brisket-burger' }
         }
       };
 
-      window.askAssistantPrompt = function(promptText) {
-        addChatMessage(promptText, 'user');
-
+      window.askConcierge = function(promptText) {
+        addDialogBubble(promptText, 'user');
         setTimeout(() => {
-          let matched = null;
-          const lower = promptText.toLowerCase();
-          if (lower.includes('compartir') || lower.includes('corte')) matched = assistantAnswers['compartir'];
-          else if (lower.includes('gluten') || lower.includes('proteína')) matched = assistantAnswers['gluten'];
-          else if (lower.includes('marida') || lower.includes('burger')) matched = assistantAnswers['maridaje'];
-          else matched = assistantAnswers['presupuesto'];
+          let ans = conciergeKnowledge['presupuesto'];
+          const q = promptText.toLowerCase();
+          if (q.includes('compartir') || q.includes('corte')) ans = conciergeKnowledge['compartir'];
+          else if (q.includes('gluten') || q.includes('proteína')) ans = conciergeKnowledge['gluten'];
+          else if (q.includes('marida') || q.includes('burger')) ans = conciergeKnowledge['maridaje'];
 
-          addChatMessage(matched.text, 'assistant', matched.dish);
-        }, 400);
+          addDialogBubble(ans.text, 'ai', ans.dish);
+        }, 380);
       };
 
-      window.handleAssistantUserSubmit = function(e) {
+      window.handleConciergeSubmit = function(e) {
         e.preventDefault();
-        const input = document.getElementById('assistantInputField');
+        const input = document.getElementById('conciergeInput');
         const val = input.value.trim();
         if (!val) return;
         input.value = '';
-        askAssistantPrompt(val);
+        askConcierge(val);
       };
 
-      function addChatMessage(text, sender, dish) {
-        const body = document.getElementById('assistantChatBody');
+      function addDialogBubble(text, sender, dish) {
+        const stream = document.getElementById('dialogStream');
         const bubble = document.createElement('div');
-        bubble.className = 'chat-bubble ' + sender;
+        bubble.className = 'dialog-bubble ' + sender;
 
         let formatted = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
         bubble.innerHTML = formatted;
 
         if (dish) {
-          const dishCard = document.createElement('div');
-          dishCard.className = 'chat-dish-suggestion';
-          dishCard.innerHTML = `
-            <img src="${dish.img}" class="chat-dish-img" alt="${dish.title}">
-            <div class="chat-dish-info">
+          const card = document.createElement('div');
+          card.className = 'dialog-dish-card';
+          card.innerHTML = `
+            <img src="${dish.img}" class="dialog-dish-img" alt="${dish.title}">
+            <div class="dialog-dish-meta">
               <h4>${dish.title}</h4>
               <p>$${dish.price} MXN</p>
             </div>
-            <button type="button" class="chat-dish-add" onclick="addToCart('${dish.title}', ${dish.price}, '${dish.key}')">
+            <button type="button" class="dialog-dish-btn" onclick="addDishToCart('${dish.title}', ${dish.price}, '${dish.key}')">
               + Agregar
             </button>
           `;
-          bubble.appendChild(dishCard);
+          bubble.appendChild(card);
         }
 
-        body.appendChild(bubble);
-        body.scrollTop = body.scrollHeight;
+        stream.appendChild(bubble);
+        stream.scrollTop = stream.scrollHeight;
       }
 
-      // 10. MOTOR DE ANIMACIÓN AL HACER SCROLL (INTERSECTION OBSERVER)
-      if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, {
-          threshold: 0.12,
-          rootMargin: '0px 0px -40px 0px'
-        });
-
-        document.querySelectorAll('.reveal-on-scroll').forEach(el => {
-          observer.observe(el);
-        });
-      } else {
-        document.querySelectorAll('.reveal-on-scroll').forEach(el => el.classList.add('is-visible'));
-      }
+      // 11. Wallet Modal
+      window.toggleWalletModal = function(open) {
+        const modal = document.getElementById('walletModal');
+        if (open) modal.classList.add('open');
+        else modal.classList.remove('open');
+      };
+      window.savePassAction = function(plat) {
+        showToast('✓ Pase guardado en tu ' + (plat === 'apple' ? 'Apple Wallet' : 'Google Wallet'));
+      };
 
     })();
   </script>
