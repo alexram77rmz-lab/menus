@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MenuExpress | Menús Digitales, NFC y Sistema Operativo para Restaurantes en Zapopan</title>
-  <meta name="description" content="Digitalización gastronómica en Zapopan. Menús con NFC, pantalla de comandas para cocina, panel gerencial con detector de mermas y SAT. Planes desde $100/mes.">
+  <title>MenuExpress | Menús Digitales, NFC y Sistema Operativo para Restaurantes en México</title>
+  <meta name="description" content="Digitalización gastronómica en México. Menús con NFC, pantalla de comandas para cocina, panel gerencial con detector de mermas y SAT. Planes desde $100/mes.">
   
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -86,30 +86,27 @@
     .brand-group {
       display: flex; align-items: center; gap: 8px; text-decoration: none; flex-shrink: 0;
     }
-    .brand-logo-icon {
-      width: 32px; height: 32px; border-radius: 9px; background: var(--primary);
-      color: white; display: flex; align-items: center; justify-content: center;
-      font-family: var(--heading); font-weight: 700; font-size: 1.1rem;
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); flex-shrink: 0;
+    .brand-svg-icon {
+      width: 36px; height: 36px; border-radius: 10px; background: rgba(37, 99, 235, 0.08);
+      border: 1px solid rgba(37, 99, 235, 0.22);
+      color: var(--primary); display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.12); flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+    [data-theme="dark"] .brand-svg-icon {
+      background: rgba(0, 240, 255, 0.08); border-color: rgba(0, 240, 255, 0.28);
+      color: #00f0ff; box-shadow: 0 4px 16px rgba(0, 240, 255, 0.2);
+    }
+    .brand-group:hover .brand-svg-icon {
+      transform: scale(1.05); border-color: var(--primary);
     }
     .brand-title {
-      font-family: var(--heading); font-size: 1.2rem; font-weight: 700;
-      letter-spacing: -0.5px; color: var(--text-main); white-space: nowrap;
+      font-family: var(--heading); font-size: 1.25rem; font-weight: 800;
+      letter-spacing: -0.6px; color: var(--text-main); white-space: nowrap;
     }
     .brand-title span { color: var(--primary); }
-    .brand-badge {
-      font-family: var(--mono); font-size: 0.7rem; font-weight: 600;
-      background: var(--primary-light); color: var(--primary);
-      border: 1px solid #bfdbfe; padding: 2px 8px; border-radius: 4px; white-space: nowrap;
-    }
-    [data-theme="dark"] .brand-badge { border-color: rgba(59, 130, 246, 0.3); }
 
-    .header-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
-    .header-link {
-      font-size: 0.86rem; font-weight: 600; color: var(--text-muted);
-      text-decoration: none; transition: color 0.15s; white-space: nowrap;
-    }
-    .header-link:hover { color: var(--primary); }
+    .header-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
     
     .whatsapp-btn-main {
       background: var(--whatsapp); color: #ffffff; font-family: var(--sans);
@@ -129,6 +126,85 @@
       font-size: 1rem; transition: background 0.15s;
     }
     .theme-toggle-btn:hover { background: var(--border); }
+
+    /* HAMBURGER BUTTON & MICROANIMATION */
+    .hamburger-btn {
+      width: 38px; height: 38px; border-radius: 10px; background: var(--bg-alt);
+      border: 1px solid var(--border); display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 5px; cursor: pointer;
+      padding: 0; transition: all 0.2s ease; -webkit-tap-highlight-color: transparent;
+    }
+    .hamburger-btn:hover { background: var(--border); border-color: var(--primary); }
+    .ham-bar {
+      width: 18px; height: 2px; background: var(--text-main); border-radius: 2px;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+    .hamburger-btn.is-active .ham-bar-1 {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .hamburger-btn.is-active .ham-bar-2 {
+      opacity: 0;
+    }
+    .hamburger-btn.is-active .ham-bar-3 {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* NAV DRAWER OVERLAY */
+    .nav-drawer-backdrop {
+      position: fixed; inset: 0; background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+      z-index: 998; opacity: 0; pointer-events: none; transition: opacity 0.25s ease;
+    }
+    .nav-drawer-backdrop.show {
+      opacity: 1; pointer-events: auto;
+    }
+    .nav-drawer-panel {
+      position: fixed; top: 0; right: -340px; width: 320px; max-width: 85vw; height: 100vh;
+      background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+      border-left: 1px solid var(--border); box-shadow: -15px 0 40px rgba(0, 0, 0, 0.25);
+      z-index: 999; display: flex; flex-direction: column; justify-content: space-between;
+      padding: 24px 20px; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    [data-theme="dark"] .nav-drawer-panel {
+      background: rgba(11, 17, 30, 0.96); border-left-color: rgba(255, 255, 255, 0.1);
+      box-shadow: -20px 0 50px rgba(0, 0, 0, 0.6);
+    }
+    .nav-drawer-panel.show {
+      transform: translateX(-340px);
+    }
+    .nav-drawer-header {
+      display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-drawer-close {
+      width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--border);
+      background: var(--bg-alt); color: var(--text-main); font-size: 1.4rem;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: all 0.15s ease;
+    }
+    .nav-drawer-close:hover { background: var(--border); color: var(--primary); }
+    .nav-drawer-links {
+      display: flex; flex-direction: column; gap: 6px; margin: 20px 0; overflow-y: auto; flex: 1;
+    }
+    .nav-drawer-item {
+      display: flex; align-items: center; gap: 12px; font-family: var(--sans);
+      font-size: 0.92rem; font-weight: 600; color: var(--text-main); text-decoration: none;
+      padding: 10px 14px; border-radius: 12px; transition: all 0.15s ease;
+      background: transparent; border: none; width: 100%; text-align: left; cursor: pointer;
+    }
+    .nav-drawer-item:hover {
+      background: var(--bg-alt); color: var(--primary); transform: translateX(4px);
+    }
+    .nav-drawer-item .drawer-icon {
+      font-size: 1.15rem; width: 24px; text-align: center;
+    }
+    .nav-drawer-admin {
+      margin-top: 10px; border-top: 1px dashed var(--border); padding-top: 12px;
+      color: var(--primary); font-family: var(--mono); font-size: 0.82rem; font-weight: 700;
+    }
+    .nav-drawer-footer {
+      padding-top: 14px; border-top: 1px solid var(--border);
+    }
 
     .container { max-width: 1160px; margin: 0 auto; padding: 30px 24px 80px; }
 
@@ -969,10 +1045,150 @@
     .plan-features-list li { display: flex; align-items: flex-start; gap: 10px; }
     .plan-features-list li span { color: var(--primary); font-weight: bold; }
 
+    /* NFC TIER CARD (CALCULATOR DYNAMIC EVOLUTION) */
+    .nfc-tier-card {
+      display: flex; align-items: center; gap: 18px;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(56, 189, 248, 0.05) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      border-radius: 16px; padding: 18px 22px; margin-bottom: 24px;
+      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+      transition: all 0.25s ease;
+    }
+    [data-theme="dark"] .nfc-tier-card {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.16) 0%, rgba(0, 240, 255, 0.09) 100%);
+      border-color: rgba(0, 240, 255, 0.28);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+    }
+    .nfc-tier-emoji {
+      font-size: 2.5rem; line-height: 1; flex-shrink: 0;
+      width: 60px; height: 60px; border-radius: 16px;
+      background: var(--surface); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .nfc-tier-emoji.tier-bounce {
+      transform: scale(1.24) rotate(-6deg);
+    }
+    .nfc-tier-info { flex: 1; }
+    .nfc-tier-badge {
+      display: inline-block; font-family: var(--mono); font-size: 0.72rem; font-weight: 800;
+      color: var(--primary); text-transform: uppercase; letter-spacing: 0.6px;
+      margin-bottom: 4px;
+    }
+    [data-theme="dark"] .nfc-tier-badge { color: #38bdf8; }
+    .nfc-tier-title {
+      font-family: var(--heading); font-size: 1.2rem; font-weight: 700;
+      color: var(--text-main); margin-bottom: 4px;
+    }
+    .nfc-tier-desc {
+      font-size: 0.88rem; color: var(--text-muted); line-height: 1.45;
+    }
+
     /* CARRUSEL CASOS DE ÉXITO 5 ESTRELLAS */
     .portfolio-grid {
       overflow-x: auto; scroll-snap-type: x mandatory; display: flex; gap: 20px;
-      padding-bottom: 20px; -webkit-overflow-scrolling: touch; scrollbar-width: thin;
+      padding-bottom: 24px; -webkit-overflow-scrolling: touch; scrollbar-width: thin;
+    }
+    .portfolio-card {
+      flex: 0 0 340px; scroll-snap-align: start; background: var(--surface-card);
+      border: 1px solid var(--border); border-radius: 18px; padding: 26px;
+      box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .portfolio-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 36px -10px rgba(37, 99, 235, 0.22);
+      border-color: rgba(56, 189, 248, 0.45);
+    }
+
+    /* SECCIÓN CONÓCEME (ABOUT FOUNDER) */
+    .about-founder-container {
+      display: grid; grid-template-columns: 300px 1fr; gap: 40px; align-items: center;
+      background: var(--surface-card); border: 1px solid var(--border);
+      border-radius: 24px; padding: 44px 38px; box-shadow: var(--shadow-md);
+      position: relative; overflow: hidden; margin-bottom: 70px;
+    }
+    @media (max-width: 860px) {
+      .about-founder-container {
+        grid-template-columns: 1fr; gap: 28px; padding: 30px 22px; text-align: center;
+      }
+    }
+    .founder-photo-frame {
+      display: flex; flex-direction: column; align-items: center; position: relative;
+    }
+    .founder-avatar-placeholder {
+      width: 210px; height: 210px; border-radius: 28px;
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      border: 2px solid rgba(56, 189, 248, 0.4);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+      overflow: hidden;
+    }
+    .founder-avatar-placeholder img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .founder-avatar-icon {
+      font-size: 5rem; line-height: 1;
+    }
+    .founder-halo-glow {
+      position: absolute; width: 140px; height: 140px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.35) 0%, transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;
+    }
+    .founder-status-badge {
+      display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono);
+      font-size: 0.74rem; font-weight: 700; color: #15803d; background: #dcfce7;
+      border: 1px solid #86efac; padding: 6px 14px; border-radius: 20px; margin-top: 16px;
+    }
+    [data-theme="dark"] .founder-status-badge {
+      background: rgba(16, 185, 129, 0.14); border-color: rgba(16, 185, 129, 0.4);
+      color: #34d399;
+    }
+    .founder-role-tag {
+      font-family: var(--mono); font-size: 0.88rem; font-weight: 700;
+      color: var(--primary); margin-bottom: 18px;
+    }
+    .founder-story-card {
+      background: var(--bg-alt); border: 1px solid var(--border);
+      border-radius: 16px; padding: 22px 24px; position: relative; margin-bottom: 24px;
+      text-align: left;
+    }
+    .quote-mark {
+      position: absolute; top: -6px; left: 14px; font-size: 3rem;
+      font-family: Georgia, serif; line-height: 1; color: var(--primary); opacity: 0.3;
+    }
+    .founder-story-text {
+      font-size: 0.95rem; line-height: 1.65; color: var(--text-main); font-style: italic;
+      margin-bottom: 12px; position: relative; z-index: 1;
+    }
+    .quote-author {
+      display: block; font-family: var(--mono); font-size: 0.78rem; font-weight: 700;
+      color: var(--text-muted); text-align: right;
+    }
+    .founder-pillars-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 14px; margin-bottom: 24px; text-align: left;
+    }
+    .founder-pillar-item {
+      display: flex; gap: 10px; align-items: flex-start;
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 12px 14px; border-radius: 12px;
+    }
+    .pillar-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+    .founder-pillar-item strong {
+      display: block; font-size: 0.84rem; font-family: var(--heading);
+      color: var(--text-main); margin-bottom: 2px;
+    }
+    .founder-pillar-item p {
+      font-size: 0.76rem; color: var(--text-muted); line-height: 1.35; margin: 0;
+    }
+    .founder-cta-wrap {
+      display: flex; gap: 14px; flex-wrap: wrap;
+    }
+    @media (max-width: 860px) {
+      .founder-cta-wrap { justify-content: center; }
+      .founder-story-card { text-align: left; }
     }
 
     /* FORMULARIO COTIZADOR */
@@ -1046,25 +1262,286 @@
       max-width: 1160px; margin: 0 auto; display: flex; justify-content: space-between;
       align-items: center; flex-wrap: wrap; gap: 16px;
     }
+
+    /* ========================================================================= */
+    /* MOTOR DE ANIMACIONES AWWWARDS (SCROLL REVEAL, ORBES, 3D TILT, RIPPLE)    */
+    /* ========================================================================= */
+
+    /* 1. Orbes Neón de Ambiente */
+    .ambient-orb {
+      position: fixed; pointer-events: none; border-radius: 50%;
+      filter: blur(100px); opacity: 0.16; z-index: 0;
+      transition: opacity 0.5s ease;
+      will-change: transform;
+    }
+    [data-theme="dark"] .ambient-orb { opacity: 0.28; }
+    .ambient-orb-cyan {
+      top: 5vh; left: -8vw; width: 44vw; height: 44vw;
+      background: radial-gradient(circle, #00f0ff 0%, #2563eb 65%, transparent 100%);
+      animation: driftOrb1 22s ease-in-out infinite alternate;
+    }
+    .ambient-orb-purple {
+      top: 45vh; right: -10vw; width: 48vw; height: 48vw;
+      background: radial-gradient(circle, #8b5cf6 0%, #3b82f6 65%, transparent 100%);
+      animation: driftOrb2 26s ease-in-out infinite alternate;
+    }
+    .ambient-orb-emerald {
+      bottom: -8vh; left: 20vw; width: 40vw; height: 40vw;
+      background: radial-gradient(circle, #10b981 0%, #06b6d4 65%, transparent 100%);
+      animation: driftOrb3 20s ease-in-out infinite alternate;
+    }
+    @keyframes driftOrb1 {
+      0% { transform: translate3d(0, 0, 0) scale(1); }
+      50% { transform: translate3d(60px, 40px, 0) scale(1.08); }
+      100% { transform: translate3d(-30px, 70px, 0) scale(0.96); }
+    }
+    @keyframes driftOrb2 {
+      0% { transform: translate3d(0, 0, 0) scale(1); }
+      50% { transform: translate3d(-70px, -50px, 0) scale(1.12); }
+      100% { transform: translate3d(40px, -20px, 0) scale(0.92); }
+    }
+    @keyframes driftOrb3 {
+      0% { transform: translate3d(0, 0, 0) scale(1); }
+      50% { transform: translate3d(45px, -45px, 0) scale(1.06); }
+      100% { transform: translate3d(-25px, 50px, 0) scale(0.95); }
+    }
+
+    /* 2. Motor de Scroll Reveal */
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-item.is-revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+
+    /* 3. Universal 3D Tilt Card con Glare Especular */
+    .interactive-card {
+      position: relative;
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+      transform-style: preserve-3d;
+      will-change: transform;
+      overflow: hidden;
+    }
+    .interactive-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(circle 320px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 240, 255, 0.18), transparent 70%);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 5;
+    }
+    [data-theme="light"] .interactive-card::after {
+      background: radial-gradient(circle 320px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(37, 99, 235, 0.12), transparent 70%);
+    }
+    .interactive-card:hover::after {
+      opacity: 1;
+    }
+
+    /* 4. Ripple Wave en Botones */
+    .btn-has-ripple {
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-ripple-wave {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.45);
+      transform: scale(0);
+      animation: rippleExpand 0.6s linear;
+      pointer-events: none;
+    }
+    [data-theme="light"] .btn-secondary-clean .btn-ripple-wave {
+      background: rgba(37, 99, 235, 0.25);
+    }
+    @keyframes rippleExpand {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+
+    /* 5. Celular Interactivo con Micro-feedback */
+    .phone-dish-card {
+      cursor: pointer;
+      position: relative;
+      user-select: none;
+      transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+    }
+    .phone-dish-card:hover {
+      border-color: #3b82f6 !important;
+      background: #f8fafc;
+    }
+    .phone-dish-card:active {
+      transform: scale(0.97);
+      background: #eff6ff !important;
+      border-color: #2563eb !important;
+    }
+    .dish-add-feedback {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%) scale(0.5);
+      background: #10b981;
+      color: white;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+      z-index: 10;
+    }
+    .dish-add-feedback.show {
+      transform: translateY(-80%) scale(1.05);
+      opacity: 1;
+    }
+    .phone-mini-toast {
+      position: absolute;
+      top: 48px;
+      left: 12px;
+      right: 12px;
+      background: rgba(15, 23, 42, 0.94);
+      backdrop-filter: blur(10px);
+      color: #ffffff;
+      padding: 9px 12px;
+      border-radius: 10px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      z-index: 40;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .phone-mini-toast.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* 6. Animación Escalonada en Menú Drawer */
+    .nav-drawer-panel .nav-drawer-item {
+      opacity: 0;
+      transform: translateX(18px);
+      transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nav-drawer-panel.show .nav-drawer-item {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .nav-drawer-panel.show .nav-drawer-item:nth-child(1) { transition-delay: 0.05s; }
+    .nav-drawer-panel.show .nav-drawer-item:nth-child(2) { transition-delay: 0.09s; }
+    .nav-drawer-panel.show .nav-drawer-item:nth-child(3) { transition-delay: 0.13s; }
+    .nav-drawer-panel.show .nav-drawer-item:nth-child(4) { transition-delay: 0.17s; }
+    .nav-drawer-panel.show .nav-drawer-item:nth-child(5) { transition-delay: 0.21s; }
+    .nav-drawer-panel.show .nav-drawer-item:nth-child(6) { transition-delay: 0.25s; }
+    .nav-drawer-panel.show .nav-drawer-item:nth-child(7) { transition-delay: 0.29s; }
+    .nav-drawer-panel.show .nav-drawer-item:nth-child(8) { transition-delay: 0.33s; }
+
+    /* 7. FAQ Accordion */
+    .faq-accordion-container {
+      max-width: 820px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .faq-item {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 24px;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+      overflow: hidden;
+    }
+    .faq-item:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .faq-question-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .faq-q-title {
+      font-family: var(--heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .faq-toggle-icon {
+      font-family: var(--mono);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--primary);
+      transition: transform 0.25s ease;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .faq-item.is-open .faq-toggle-icon {
+      transform: rotate(45deg);
+    }
+    .faq-answer-content {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, margin-top 0.25s ease;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .faq-item.is-open .faq-answer-content {
+      max-height: 220px;
+      opacity: 1;
+      margin-top: 14px;
+    }
   </style>
 </head>
 <body>
 
-  <!-- ENCABEZADO -->
+  <!-- ORBES NEÓN DE AMBIENTE FLUIDO (Awwwards Atmosphere) -->
+  <div class="ambient-orb ambient-orb-cyan"></div>
+  <div class="ambient-orb ambient-orb-purple"></div>
+  <div class="ambient-orb ambient-orb-emerald"></div>
+
+  <!-- ENCABEZADO MINIMALISTA DE ALTA GAMA -->
   <header>
     <div class="header-inner">
       <a href="#" class="brand-group">
-        <div class="brand-logo-icon">M</div>
+        <span class="brand-svg-icon" aria-label="MenuExpress Logo">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="5" stroke-width="2"/>
+            <path d="M7 12C9 9.5 15 9.5 17 12"/>
+            <path d="M9 15C10.5 13.8 13.5 13.8 15 15"/>
+            <circle cx="12" cy="18" r="1" fill="currentColor"/>
+          </svg>
+        </span>
         <div class="brand-title">Menu<span>Express</span></div>
-        <div class="brand-badge">Zapopan · 2026</div>
       </a>
+
       <div class="header-actions">
-        <a href="#demo" class="header-link" id="navDemo">En Vivo</a>
-        <a href="#paneles" class="header-link" id="navPanels">3 Paneles</a>
-        <a href="#nfc" class="header-link" id="navNfc">Placas NFC</a>
-        <a href="#planes" class="header-link" id="navPlans">Planes</a>
-        <a href="#portafolio" class="header-link" id="navCases">Casos de Éxito</a>
-        
         <div class="lang-switcher" aria-label="Seleccionar idioma">
           <button type="button" class="lang-btn active" id="langEs" onclick="switchLanguage('es')" title="Español">🇲🇽 ES</button>
           <button type="button" class="lang-btn" id="langEn" onclick="switchLanguage('en')" title="English">🇺🇸 EN</button>
@@ -1079,9 +1556,42 @@
           <span class="radar-dot"><span class="radar-wave"></span></span>
           <span id="navWaText">💬 Cotizar<span class="hide-mobile"> en WhatsApp</span></span>
         </a>
+
+        <!-- BOTÓN HAMBURGUESA (RAYITAS MINIMALISTAS) -->
+        <button type="button" class="hamburger-btn" id="menuToggleBtn" aria-label="Menú de Navegación" onclick="toggleNavDrawer()">
+          <span class="ham-bar ham-bar-1"></span>
+          <span class="ham-bar ham-bar-2"></span>
+          <span class="ham-bar ham-bar-3"></span>
+        </button>
       </div>
     </div>
   </header>
+
+  <!-- NAVEGACIÓN DESPLEGABLE (DRAWER OVERLAY GLASSMORPHISM) -->
+  <div class="nav-drawer-backdrop" id="navDrawerBackdrop" onclick="closeNavDrawer()"></div>
+  <aside class="nav-drawer-panel" id="navDrawerPanel" aria-label="Menú Principal">
+    <div class="nav-drawer-header">
+      <div class="brand-title">Menu<span>Express</span></div>
+      <button type="button" class="nav-drawer-close" onclick="closeNavDrawer()" aria-label="Cerrar Menú">&times;</button>
+    </div>
+    <nav class="nav-drawer-links">
+      <a href="#demo" class="nav-drawer-item" onclick="closeNavDrawer()"><span class="drawer-icon">⚡</span> <span id="drawDemo">Visor 3D & Celular</span></a>
+      <a href="#paneles" class="nav-drawer-item" onclick="closeNavDrawer()"><span class="drawer-icon">📱</span> <span id="drawPanels">3 Paneles del Sistema</span></a>
+      <a href="#nfc" class="nav-drawer-item" onclick="closeNavDrawer()"><span class="drawer-icon">💳</span> <span id="drawNfc">Calculadora de Placas NFC</span></a>
+      <a href="#planes" class="nav-drawer-item" onclick="closeNavDrawer()"><span class="drawer-icon">💎</span> <span id="drawPlans">Planes y Precios</span></a>
+      <a href="#portafolio" class="nav-drawer-item" onclick="closeNavDrawer()"><span class="drawer-icon">⭐</span> <span id="drawCases">Casos de Éxito</span></a>
+      <a href="#conoceme" class="nav-drawer-item" onclick="closeNavDrawer()"><span class="drawer-icon">👨‍💻</span> <span id="drawAbout">Conóceme (Fundador)</span></a>
+      <a href="#faq" class="nav-drawer-item" onclick="closeNavDrawer()"><span class="drawer-icon">❓</span> <span id="drawFaq">Preguntas Frecuentes</span></a>
+      <button type="button" class="nav-drawer-item nav-drawer-admin" onclick="closeNavDrawer(); openAdminModal();">
+        <span class="drawer-icon">🔐</span> <span>Panel Maestro Alex</span>
+      </button>
+    </nav>
+    <div class="nav-drawer-footer">
+      <a href="https://wa.me/523312345678?text=Hola%20Alex!%20Me%20interesa%20digitalizar%20mi%20restaurante%20con%20MenuExpress" class="whatsapp-btn-main" style="width: 100%; justify-content: center; padding: 12px; font-size: 0.9rem;">
+        <span>💬</span> Contactar a Alex por WhatsApp
+      </a>
+    </div>
+  </aside>
 
   <!-- ======================================================================= -->
   <!-- EXPERIENCIA SCROLLYTELLING 3D CINEMATOGRÁFICA INTERACTIVA                -->
@@ -1101,7 +1611,7 @@
       <div id="scrollyHeroText" class="scrolly-hero-overlay">
         <div class="pill-kicker">
           <span class="pulse-dot"></span>
-          <span id="heroPill">Sistema en Vivo en Zapopan · Carga en 800ms</span>
+          <span id="heroPill">Sistema en Vivo en México · Carga en 800ms</span>
         </div>
 
         <h1 class="scrolly-hero-title" id="revealTitle">
@@ -1198,7 +1708,7 @@
     <!-- ======================================================================= -->
     <!-- DEMOSTRACIÓN EN CELULAR: EL SISTEMA OPERATIVO EN ACCIÓN                 -->
     <!-- ======================================================================= -->
-    <section class="showcase-interactive-section" id="demo">
+    <section class="showcase-interactive-section reveal-item" id="demo">
       <div class="showcase-header">
         <span class="pill-kicker" id="demoPill">Demostración en Tiempo Real</span>
         <h2 class="section-title" id="demoTitle" style="margin-bottom: 6px;">El Sistema Operativo en tu Celular</h2>
@@ -1229,13 +1739,15 @@
 
           <!-- PANTALLA INTERNA DINÁMICA -->
           <div class="phone-screen">
+            <!-- Toast Notificaciones en Pantalla Móvil -->
+            <div id="phoneMiniToast" class="phone-mini-toast"></div>
             
             <!-- PANTALLA 1: CLIENTE EN MESA -->
             <div class="view-cliente" id="screenCliente">
               <div class="phone-brand-bar">
                 <div>
-                  <strong style="color: #0f172a; font-size: 0.9rem;">🥥 Los Pinches Preparados</strong>
-                  <div style="font-size: 0.7rem; color: #64748b;">Zapopan, Jal.</div>
+                  <strong style="color: #0f172a; font-size: 0.9rem;">🍙 TC Sushi & Ramen Bar</strong>
+                  <div style="font-size: 0.7rem; color: #64748b;">Polanco / Roma Norte, CDMX</div>
                 </div>
                 <span class="phone-table-pill">MESA 4 🛎️</span>
               </div>
@@ -1247,39 +1759,42 @@
               </div>
 
               <!-- Platillo 1 -->
-              <div class="phone-dish-card">
+              <div class="phone-dish-card" onclick="addDishToCart(185, 1)">
                 <div>
-                  <div class="phone-dish-name">Aguachile Negro 1/2 Lt</div>
-                  <div class="phone-dish-desc">Camarón crudo, salsas negras y cebolla morada</div>
+                  <div class="phone-dish-name">Dragon Roll Especial (10 pzs)</div>
+                  <div class="phone-dish-desc">Camarón tempura, aguacate, queso crema y salsa de anguila</div>
                 </div>
-                <div class="phone-dish-price">$175</div>
+                <div class="phone-dish-price">$185</div>
+                <span class="dish-add-feedback" id="dishFb1">+1</span>
               </div>
 
               <!-- Platillo 2 -->
-              <div class="phone-dish-card">
+              <div class="phone-dish-card" onclick="addDishToCart(195, 2)">
                 <div>
-                  <div class="phone-dish-name">Michelada Botana Especial</div>
-                  <div class="phone-dish-desc">Cecina, camarón cocido y clamato preparado</div>
+                  <div class="phone-dish-name">Tonkotsu Ramen Artesanal</div>
+                  <div class="phone-dish-desc">Caldo concentrado 12h, chashu de cerdo, huevo nitamago y naruto</div>
                 </div>
-                <div class="phone-dish-price">$165</div>
+                <div class="phone-dish-price">$195</div>
+                <span class="dish-add-feedback" id="dishFb2">+1</span>
               </div>
 
               <!-- Platillo 3 -->
-              <div class="phone-dish-card">
+              <div class="phone-dish-card" onclick="addDishToCart(95, 3)">
                 <div>
-                  <div class="phone-dish-name">Orden Alitas BBQ (500g)</div>
-                  <div class="phone-dish-desc">Con papas a la francesa y aderezo ranch</div>
+                  <div class="phone-dish-name">Edamames al Vapor Spicy</div>
+                  <div class="phone-dish-desc">Vainas tiernas con sal de grano y shichimi togarashi</div>
                 </div>
-                <div class="phone-dish-price">$129</div>
+                <div class="phone-dish-price">$95</div>
+                <span class="dish-add-feedback" id="dishFb3">+1</span>
               </div>
 
               <!-- Acciones Flotantes -->
               <div class="phone-actions-float">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
-                  <div class="phone-btn-waiter">🛎️ Llamar Mesero</div>
-                  <div class="phone-btn-waiter">💵 Pedir Cuenta</div>
+                  <div class="phone-btn-waiter" onclick="notifyPhoneToast('🛎️ ¡Mesero notificado en Mesa 4!')">🛎️ Llamar Mesero</div>
+                  <div class="phone-btn-waiter" onclick="notifyPhoneToast('💵 ¡Cuenta solicitada! El mesero se acerca.')">💵 Pedir Cuenta</div>
                 </div>
-                <div class="phone-btn-order">🛒 Pedir Comanda a WhatsApp ($469)</div>
+                <div class="phone-btn-order" id="phoneOrderBtn" onclick="notifyPhoneToast('🛒 ¡Comanda enviada a Cocina KDS en 0.2s!')">🛒 Pedir Comanda a WhatsApp (<span id="phoneCartTotalVal">$475</span>)</div>
               </div>
             </div>
 
@@ -1290,19 +1805,19 @@
                 <span style="font-family: var(--mono); font-size: 0.7rem; color: #34d399;">● 3 Activas</span>
               </div>
 
-              <!-- Ticket 1 (Mesa 4) -->
-              <div class="kds-ticket active">
+              <!-- Ticket 1 (Mesa 4 - Sincronizado con TC Sushi) -->
+              <div class="kds-ticket active" id="kdsTicket1">
                 <div class="kds-ticket-top">
                   <span style="color: #0f172a;">MESA 4 · Orden #48</span>
-                  <span class="kds-badge-status" style="background: #fef3c7; color: #92400e;">En Preparación ⏱️ 4 min</span>
+                  <span class="kds-badge-status" id="kdsBadge1" style="background: #fef3c7; color: #92400e;">En Preparación ⏱️ 4 min</span>
                 </div>
                 <div class="kds-ticket-body">
-                  • 1x Aguachile Negro 1/2 Lt (Sin cebolla)<br>
-                  • 1x Miche Botana Especial<br>
-                  • 1x Caguama Corona Extra
+                  • 1x Dragon Roll Especial (Sin picante)<br>
+                  • 1x Tonkotsu Ramen Artesanal (Extra chashu)<br>
+                  • 1x Edamames al Vapor Spicy
                 </div>
-                <div style="text-align: right;">
-                  <button style="background: #2563eb; color: white; border: none; padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; cursor: pointer;">Marcar Listo ➔</button>
+                <div style="text-align: right; margin-top: 6px;">
+                  <button type="button" id="kdsBtn1" onclick="markKdsTicketDone(1)" style="background: #2563eb; color: white; border: none; padding: 5px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: 700; cursor: pointer; transition: all 0.2s;">Marcar Listo ➔</button>
                 </div>
               </div>
 
@@ -1313,8 +1828,8 @@
                   <span class="kds-badge-status" style="background: #dcfce7; color: #15803d;">Listo para Servir ✓</span>
                 </div>
                 <div class="kds-ticket-body">
-                  • 1x Boneless 500g (Salsa Mango Habanero)<br>
-                  • 1x Papas Gajo Especiales
+                  • 1x Ebi Tempura Roll (10 pzs)<br>
+                  • 1x Gyozas de Cerdo al Vapor
                 </div>
               </div>
 
@@ -1393,7 +1908,7 @@
     <!-- ======================================================================= -->
     <!-- EXPLICACIÓN DETALLADA DE LA ARQUITECTURA DE 3 PANELES                   -->
     <!-- ======================================================================= -->
-    <section class="panels-section" id="paneles">
+    <section class="panels-section reveal-item" id="paneles">
       <div style="text-align: center; max-width: 760px; margin: 0 auto;">
         <span class="pill-kicker">Arquitectura de Software Profesional</span>
         <h2 class="section-title">Los 3 Paneles que Transforman tu Negocio</h2>
@@ -1404,7 +1919,7 @@
 
       <div class="panels-grid-3">
         <!-- Panel 1 -->
-        <div class="panel-card-box">
+        <div class="panel-card-box interactive-card reveal-item delay-1">
           <div class="panel-card-icon">📱</div>
           <div class="panel-card-title">1. Panel de Cliente (En Mesa)</div>
           <p style="font-size: 0.88rem; color: var(--text-muted);">Sin instalar apps ni gastar memoria. El comensal solo acerca su teléfono a la placa NFC o escanea el QR:</p>
@@ -1417,7 +1932,7 @@
         </div>
 
         <!-- Panel 2 -->
-        <div class="panel-card-box" style="border-color: var(--primary);">
+        <div class="panel-card-box interactive-card reveal-item delay-2" style="border-color: var(--primary);">
           <div class="panel-card-icon" style="background: var(--primary); color: white;">🧑‍🍳</div>
           <div class="panel-card-title">2. Panel de Empleado (Cocina KDS)</div>
           <p style="font-size: 0.88rem; color: var(--text-muted);">Pantalla para tablet, teléfono o monitor de cocina que elimina por completo los papelitos perdidos:</p>
@@ -1430,7 +1945,7 @@
         </div>
 
         <!-- Panel 3 -->
-        <div class="panel-card-box">
+        <div class="panel-card-box interactive-card reveal-item delay-3">
           <div class="panel-card-icon">📈</div>
           <div class="panel-card-title">3. Panel Gerencial (Cerebro y SAT)</div>
           <p style="font-size: 0.88rem; color: var(--text-muted);">Como tener un director financiero y contador con 50 años de experiencia en la palma de tu mano:</p>
@@ -1444,13 +1959,13 @@
       </div>
     </section>
 
-    <!-- CALCULADORA DE PLACAS NFC (5 GRATIS) -->
-    <section class="nfc-calculator-section" id="nfc">
+    <!-- CALCULADORA DE PLACAS NFC INTERACTIVA (5 GRATIS + TIERS CON EMOJIS) -->
+    <section class="nfc-calculator-section reveal-item" id="nfc">
       <div class="nfc-calc-head">
         <div>
           <span class="nfc-badge-free">🎁 5 Placas de Mesa NFC 100% GRATIS</span>
           <h2 style="font-family: var(--heading); font-size: 1.6rem; font-weight: 700; margin-top: 8px; color: var(--text-main);">
-            Calculadora de Placas con Chip NFC + Código QR
+            Calculadora Inteligente de Placas NFC + Código QR
           </h2>
           <p style="font-size: 0.92rem; color: var(--text-muted); margin-top: 4px;">
             Acrílicos de alta resistencia para mesa. El comensal solo acerca su teléfono y el menú abre al instante sin descargar apps.
@@ -1458,12 +1973,22 @@
         </div>
       </div>
 
+      <!-- TIER DINÁMICO CON EMOJI SEGÚN TAMAÑO DE RESTAURANTE -->
+      <div class="nfc-tier-card interactive-card" id="nfcTierCard">
+        <div class="nfc-tier-emoji" id="nfcTierEmoji">🌮</div>
+        <div class="nfc-tier-info">
+          <div class="nfc-tier-badge" id="nfcTierBadge">Nivel 1 · Negocio Emergente</div>
+          <h4 class="nfc-tier-title" id="nfcTierTitle">Puesto / Cafetería / Food Truck (5 a 12 mesas)</h4>
+          <p class="nfc-tier-desc" id="nfcTierDesc">Ideal para arrancar ágilmente sin comandas en papel y con 5 placas 100% de regalo.</p>
+        </div>
+      </div>
+
       <div class="nfc-slider-wrap">
         <div style="display: flex; justify-content: space-between; font-family: var(--mono); font-size: 0.88rem; font-weight: 700; margin-bottom: 8px;">
           <span>Mesas del Restaurante: <strong id="tablesCountLbl" style="color: var(--primary);">5 mesas</strong></span>
-          <span style="color: var(--text-muted);">Rango: 5 a 50 mesas</span>
+          <span style="color: var(--text-muted);">Rango: 5 a 80 mesas</span>
         </div>
-        <input type="range" min="5" max="50" value="5" class="nfc-slider" id="nfcSlider">
+        <input type="range" min="5" max="80" value="5" step="1" class="nfc-slider" id="nfcSlider">
       </div>
 
       <div class="nfc-output-grid">
@@ -1485,7 +2010,7 @@
         <p style="font-size: 0.88rem; color: var(--text-muted);">
           *Las primeras 5 placas acrílicas van por nuestra cuenta al contratar tu Plan Restaurante Pro. Sin letras chiquitas.
         </p>
-        <button type="button" class="btn-primary-blue" id="btnQuoteNfc">
+        <button type="button" class="btn-primary-blue btn-has-ripple" id="btnQuoteNfc">
           Cotizar mis <span id="btnTablesNum">5</span> Mesas en WhatsApp ➔
         </button>
       </div>
@@ -1494,12 +2019,12 @@
     <!-- ======================================================================= -->
     <!-- SECCIÓN DE PLANES CON SUSCRIPCIÓN ACCESIBLE ($100, $200, $300)          -->
     <!-- ======================================================================= -->
-    <section class="section-wrap" id="planes">
+    <section class="section-wrap reveal-item" id="planes">
       <h2 class="section-title">Planes Transparentes · Cero Cobros Abusivos 💎</h2>
       <p class="section-subtitle">Instalación accesible por única ocasión + Póliza de servicio activo en la nube.</p>
 
       <!-- EXPLICACIÓN DEL POR QUÉ DE LA MENSUALIDAD -->
-      <div class="why-subscription-box">
+      <div class="why-subscription-box interactive-card reveal-item">
         <strong style="color: var(--primary); font-family: var(--heading); font-size: 1.05rem;">¿Por qué una cuota mensual simbólica de $100 a $300 pesos?</strong>
         <p style="font-size: 0.88rem; color: var(--text-main); margin-top: 6px; line-height: 1.5;">
           No es renta de software. Es tu <strong>Póliza de Servicio Activo</strong>: incluye servidor en la nube de alta disponibilidad 24/7, <strong>cambios de precios y platillos ilimitados</strong> directo por WhatsApp (nosotros los hacemos por ti) y el procesamiento automático de tus métricas nocturnas. ¡Menos de lo que cuesta un refresco al día!
@@ -1508,7 +2033,7 @@
 
       <div class="plans-grid">
         <!-- Plan 1 -->
-        <div class="plan-card">
+        <div class="plan-card interactive-card reveal-item delay-1">
           <div class="plan-name">Plan Despegue</div>
           <div class="plan-desc">Para puestos de tacos, carretas y negocios con pedidos para llevar.</div>
           <div class="plan-setup-cost">Instalación Única: $499 MXN</div>
@@ -1524,13 +2049,13 @@
             <li><span>✓</span> <strong>Cambios de precios ilimitados</strong> vía WhatsApp</li>
             <li><span>✓</span> Servidor en la nube de alta disponibilidad 24/7</li>
           </ul>
-          <a href="https://wa.me/523312345678?text=Hola%20Alex!%20Deseo%20el%20Plan%20Despegue%20($499%20+%20$100/mes)" class="btn-secondary-clean" style="text-align: center; justify-content: center;">
+          <a href="https://wa.me/523312345678?text=Hola%20Alex!%20Deseo%20el%20Plan%20Despegue%20($499%20+%20$100/mes)" class="btn-secondary-clean btn-has-ripple" style="text-align: center; justify-content: center;">
             Contratar Plan $100/mes
           </a>
         </div>
 
         <!-- Plan 2 (Recomendado) -->
-        <div class="plan-card featured">
+        <div class="plan-card featured interactive-card reveal-item delay-2">
           <span class="featured-ribbon">⭐ Opción Más Popular</span>
           <div class="plan-name">Restaurante Pro</div>
           <div class="plan-desc">El paquete integral para restaurantes con salón, marisquerías y alitas.</div>
@@ -1549,13 +2074,13 @@
             <li><span>✓</span> Conmutador multilingüe (Español / Inglés / Chino)</li>
             <li><span>✓</span> Soporte prioritario y cambios ilimitados</li>
           </ul>
-          <a href="https://wa.me/523312345678?text=Hola%20Alex!%20Me%20interesa%20el%20Plan%20Restaurante%20Pro%20($999%20+%20$200/mes)" class="btn-primary-blue" style="text-align: center; justify-content: center;">
+          <a href="https://wa.me/523312345678?text=Hola%20Alex!%20Me%20interesa%20el%20Plan%20Restaurante%20Pro%20($999%20+%20$200/mes)" class="btn-primary-blue btn-has-ripple" style="text-align: center; justify-content: center;">
             Quiero el Plan Pro $200/mes
           </a>
         </div>
 
         <!-- Plan 3 -->
-        <div class="plan-card">
+        <div class="plan-card interactive-card reveal-item delay-3">
           <div class="plan-name">Gerencial Master</div>
           <div class="plan-desc">El sistema operativo completo para franquicias y restaurantes consolidados.</div>
           <div class="plan-setup-cost">Instalación Única: $1,890 MXN</div>
@@ -1574,7 +2099,7 @@
             <li><span>✓</span> - Cálculo de Food Cost y margen de utilidad neta</li>
             <li><span>✓</span> Atención prioritaria 24/7 y respaldo diario</li>
           </ul>
-          <a href="https://wa.me/523312345678?text=Hola%20Alex!%20Quiero%20el%20Plan%20Gerencial%20Master%20($1,890%20+%20$300/mes)" class="btn-secondary-clean" style="text-align: center; justify-content: center;">
+          <a href="https://wa.me/523312345678?text=Hola%20Alex!%20Quiero%20el%20Plan%20Gerencial%20Master%20($1,890%20+%20$300/mes)" class="btn-secondary-clean btn-has-ripple" style="text-align: center; justify-content: center;">
             Solicitar Plan Master $300/mes
           </a>
         </div>
@@ -1582,7 +2107,7 @@
     </section>
 
     <!-- HUB DIGITAL EN CHIP NFC -->
-    <div style="margin-bottom: 70px; background: var(--surface-card); border: 2px solid var(--primary); border-radius: 16px; padding: 32px; box-shadow: var(--shadow-sm);">
+    <div class="interactive-card reveal-item" style="margin-bottom: 70px; background: var(--surface-card); border: 2px solid var(--primary); border-radius: 16px; padding: 32px; box-shadow: var(--shadow-sm);">
       <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
         <span style="font-family: var(--mono); font-size: 0.75rem; font-weight: 700; color: var(--primary); background: var(--primary-light); padding: 3px 8px; border-radius: 4px; text-transform: uppercase;">Tecnología Todo-en-Uno</span>
         <span style="font-family: var(--mono); font-size: 0.75rem; color: #15803d; font-weight: 700;">● Sin Capacitaciones Complicadas</span>
@@ -1622,11 +2147,11 @@
     </div>
 
     <!-- CARRUSEL CASOS DE ÉXITO 5 ESTRELLAS -->
-    <section class="section-wrap" id="portafolio">
+    <section class="section-wrap reveal-item" id="portafolio">
       <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; flex-wrap: wrap; gap: 16px;">
         <div>
           <span class="pill-kicker">Casos de Éxito Reales · 100% Verificados</span>
-          <h2 class="section-title" style="text-align: left; margin-bottom: 4px;">Restaurantes Activos en Zapopan ⭐⭐⭐⭐⭐</h2>
+          <h2 class="section-title" style="text-align: left; margin-bottom: 4px;">Restaurantes Activos en México ⭐⭐⭐⭐⭐</h2>
           <p style="color: var(--text-muted); font-size: 0.95rem;">Desliza para explorar los menús que ya están operando en vivo:</p>
         </div>
         <div style="display: flex; gap: 10px;">
@@ -1636,36 +2161,15 @@
       </div>
 
       <div class="portfolio-grid" id="carouselTrack">
-        <!-- 1: Los Pinches Preparados -->
-        <div style="flex: 0 0 320px; scroll-snap-align: start; background: var(--surface-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-              <span style="color: #f59e0b; font-size: 1rem; letter-spacing: 2px;">⭐⭐⭐⭐⭐</span>
-              <span style="font-family: var(--mono); font-size: 0.75rem; font-weight: 700; color: #15803d; background: #dcfce7; padding: 2px 8px; border-radius: 4px;">5.0 Verificado</span>
-            </div>
-            <h3 style="font-family: var(--heading); font-size: 1.2rem; font-weight: 700; color: var(--text-main); margin-bottom: 2px;">🥥 Los Pinches Preparados</h3>
-            <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">Av. Acueducto / Los Girasoles, Zapopan</div>
-            <p style="font-size: 0.88rem; color: var(--text-main); line-height: 1.5; margin-bottom: 16px; font-style: italic;">
-              "Más de 40 especialidades con aguachiles, micheladas botana y combos. El modo mesa con llamadas al mesero nos agilizó las horas pico de fin de semana."
-            </p>
-            <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px;">
-              <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: var(--bg-alt); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; color: var(--primary);">Mariscos Carreta</span>
-              <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: var(--bg-alt); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; color: var(--primary);">Alitas & Snacks</span>
-              <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: var(--bg-alt); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; color: var(--primary);">Modo Mesa 🛎️</span>
-            </div>
-          </div>
-          <a href="preparados/" class="btn-primary-blue" style="text-align: center; justify-content: center; font-size: 0.85rem; padding: 10px;">Probar Menú en Vivo ➔</a>
-        </div>
-
-        <!-- 2: El Limoncito Culichi -->
-        <div style="flex: 0 0 320px; scroll-snap-align: start; background: var(--surface-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between;">
+        <!-- 1: El Limoncito Culichi -->
+        <div class="portfolio-card interactive-card reveal-item delay-1">
           <div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
               <span style="color: #f59e0b; font-size: 1rem; letter-spacing: 2px;">⭐⭐⭐⭐⭐</span>
               <span style="font-family: var(--mono); font-size: 0.75rem; font-weight: 700; color: #15803d; background: #dcfce7; padding: 2px 8px; border-radius: 4px;">5.0 Verificado</span>
             </div>
             <h3 style="font-family: var(--heading); font-size: 1.2rem; font-weight: 700; color: var(--text-main); margin-bottom: 2px;">🦐 El Limoncito Culichi</h3>
-            <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">Sta. Teresa, Santa Margarita, Zapopan</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">Av. Providencia, Guadalajara</div>
             <p style="font-size: 0.88rem; color: var(--text-main); line-height: 1.5; margin-bottom: 16px; font-style: italic;">
               "Digitalizamos más de 70 platillos, sushi sinaloense y mariscos fríos. Los clientes ya no batallan con cartas manchadas y piden directo a WhatsApp."
             </p>
@@ -1675,18 +2179,18 @@
               <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: var(--bg-alt); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; color: var(--primary);">WhatsApp Directo</span>
             </div>
           </div>
-          <a href="limoncito/" class="btn-primary-blue" style="text-align: center; justify-content: center; font-size: 0.85rem; padding: 10px;">Probar Menú en Vivo ➔</a>
+          <a href="limoncito/" class="btn-primary-blue btn-has-ripple" style="text-align: center; justify-content: center; font-size: 0.85rem; padding: 10px;">Probar Menú en Vivo ➔</a>
         </div>
 
-        <!-- 3: Kyutai Sushi -->
-        <div style="flex: 0 0 320px; scroll-snap-align: start; background: var(--surface-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between;">
+        <!-- 2: Kyutai Sushi -->
+        <div class="portfolio-card interactive-card reveal-item delay-2">
           <div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
               <span style="color: #f59e0b; font-size: 1rem; letter-spacing: 2px;">⭐⭐⭐⭐⭐</span>
               <span style="font-family: var(--mono); font-size: 0.75rem; font-weight: 700; color: #15803d; background: #dcfce7; padding: 2px 8px; border-radius: 4px;">5.0 Verificado</span>
             </div>
             <h3 style="font-family: var(--heading); font-size: 1.2rem; font-weight: 700; color: var(--text-main); margin-bottom: 2px;">🍙 Kyutai Rice Balls & Sushi</h3>
-            <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">Col. La Villa, Zapopan</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">Polanco / Reforma, CDMX</div>
             <p style="font-size: 0.88rem; color: var(--text-main); line-height: 1.5; margin-bottom: 16px; font-style: italic;">
               "Onigiris, sushi bowls y bubble teas presentados con fotos nítidas. Carga en menos de 1 segundo en cualquier celular sin descargar nada."
             </p>
@@ -1696,18 +2200,18 @@
               <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: var(--bg-alt); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; color: var(--primary);">Bubble Tea</span>
             </div>
           </div>
-          <a href="kyutai/" class="btn-primary-blue" style="text-align: center; justify-content: center; font-size: 0.85rem; padding: 10px;">Probar Menú en Vivo ➔</a>
+          <a href="kyutai/" class="btn-primary-blue btn-has-ripple" style="text-align: center; justify-content: center; font-size: 0.85rem; padding: 10px;">Probar Menú en Vivo ➔</a>
         </div>
 
-        <!-- 4: d'ANGEL'S Wings -->
-        <div style="flex: 0 0 320px; scroll-snap-align: start; background: var(--surface-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between;">
+        <!-- 3: d'ANGEL'S Wings -->
+        <div class="portfolio-card interactive-card reveal-item delay-3">
           <div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
               <span style="color: #f59e0b; font-size: 1rem; letter-spacing: 2px;">⭐⭐⭐⭐⭐</span>
               <span style="font-family: var(--mono); font-size: 0.75rem; font-weight: 700; color: #15803d; background: #dcfce7; padding: 2px 8px; border-radius: 4px;">5.0 Verificado</span>
             </div>
             <h3 style="font-family: var(--heading); font-size: 1.2rem; font-weight: 700; color: var(--text-main); margin-bottom: 2px;">🍗 d'ANGEL'S Wings & Snacks</h3>
-            <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">Marina Vallarta, Zapopan</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">San Pedro Garza García, NL</div>
             <p style="font-size: 0.88rem; color: var(--text-main); line-height: 1.5; margin-bottom: 16px; font-style: italic;">
               "Alitas, boneless y hamburguesas con selección de salsas. Cambiamos precios y nuevos combos al instante sin tener que reimprimir lonas."
             </p>
@@ -1717,13 +2221,193 @@
               <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: var(--bg-alt); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; color: var(--primary);">Terminal Tarjeta</span>
             </div>
           </div>
-          <a href="dangels/" class="btn-primary-blue" style="text-align: center; justify-content: center; font-size: 0.85rem; padding: 10px;">Probar Menú en Vivo ➔</a>
+          <a href="dangels/" class="btn-primary-blue btn-has-ripple" style="text-align: center; justify-content: center; font-size: 0.85rem; padding: 10px;">Probar Menú en Vivo ➔</a>
+        </div>
+
+        <!-- 4: Hamburguesas El Charly -->
+        <div class="portfolio-card interactive-card reveal-item delay-1">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span style="color: #f59e0b; font-size: 1rem; letter-spacing: 2px;">⭐⭐⭐⭐⭐</span>
+              <span style="font-family: var(--mono); font-size: 0.75rem; font-weight: 700; color: #15803d; background: #dcfce7; padding: 2px 8px; border-radius: 4px;">5.0 Verificado</span>
+            </div>
+            <h3 style="font-family: var(--heading); font-size: 1.2rem; font-weight: 700; color: var(--text-main); margin-bottom: 2px;">🍔 Hamburguesas El Charly</h3>
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">Roma Norte / Condesa, CDMX</div>
+            <p style="font-size: 0.88rem; color: var(--text-main); line-height: 1.5; margin-bottom: 16px; font-style: italic;">
+              "Hamburguesas al carbón, sincronizadas y salchipapas. Las placas en mesa hicieron que los clientes no esperaran por meseros para ver la carta."
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px;">
+              <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: var(--bg-alt); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; color: var(--primary);">Burgers Carbón</span>
+              <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: var(--bg-alt); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; color: var(--primary);">Combos Familia</span>
+              <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: var(--bg-alt); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; color: var(--primary);">Menú Rápido ⚡</span>
+            </div>
+          </div>
+          <a href="charly/" class="btn-primary-blue btn-has-ripple" style="text-align: center; justify-content: center; font-size: 0.85rem; padding: 10px;">Probar Menú en Vivo ➔</a>
+        </div>
+
+        <!-- 5: Los 3 Carnales -->
+        <div class="portfolio-card interactive-card reveal-item delay-2">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span style="color: #f59e0b; font-size: 1rem; letter-spacing: 2px;">⭐⭐⭐⭐⭐</span>
+              <span style="font-family: var(--mono); font-size: 0.75rem; font-weight: 700; color: #15803d; background: #dcfce7; padding: 2px 8px; border-radius: 4px;">5.0 Verificado</span>
+            </div>
+            <h3 style="font-family: var(--heading); font-size: 1.2rem; font-weight: 700; color: var(--text-main); margin-bottom: 2px;">🌮 Los 3 Carnales</h3>
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">Marina Vallarta / Cancún</div>
+            <p style="font-size: 0.88rem; color: var(--text-main); line-height: 1.5; margin-bottom: 16px; font-style: italic;">
+              "Taquería con flujo continuo. El cliente abre el menú en mesa con NFC o código QR y ahorramos hasta 15 minutos por comensal en horas pico."
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px;">
+              <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: var(--bg-alt); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; color: var(--primary);">Tacos & Birria</span>
+              <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: var(--bg-alt); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; color: var(--primary);">Flujo Continuo</span>
+              <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: var(--bg-alt); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; color: var(--primary);">Zero Papel</span>
+            </div>
+          </div>
+          <a href="carnales/" class="btn-primary-blue btn-has-ripple" style="text-align: center; justify-content: center; font-size: 0.85rem; padding: 10px;">Probar Menú en Vivo ➔</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- SECCIÓN: CONÓCEME (FUNDADOR & LEAD DEVELOPER)                            -->
+    <!-- ======================================================================= -->
+    <section class="section-wrap reveal-item" id="conoceme">
+      <div class="about-founder-container interactive-card">
+        
+        <div class="about-founder-visual">
+          <div class="founder-photo-frame">
+            <!-- PLACEHOLDER ESTÉTICO LISTO PARA images/alex_fundador.jpg -->
+            <div class="founder-avatar-placeholder" id="founderAvatarContainer">
+              <span class="founder-avatar-icon">👨‍💻</span>
+              <div class="founder-halo-glow"></div>
+            </div>
+            <div class="founder-status-badge">
+              <span class="status-dot-pulse"></span>
+              <span>Disponible para Proyectos y Asesorías</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-founder-content">
+          <span class="pill-kicker">Fundador & Arquitectura de Software</span>
+          <h2 class="section-title" style="text-align: left; margin-bottom: 6px;">Conoce al Creador de MenuExpress</h2>
+          <div class="founder-role-tag">Alex Ramírez · Lead Creative Engineer</div>
+          
+          <div class="founder-story-card">
+            <span class="quote-mark">“</span>
+            <p class="founder-story-text" id="founderStoryText">
+              Diseñé MenuExpress para resolver la frustración diaria de los restauranteros en México: comandas perdidas en papel, cartas manchadas que cuesta una fortuna reimprimir y sistemas lentos que cobran comisiones abusivas. Aquí no hay intermediarios; cada línea de código y cada placa NFC está calibrada para que tu negocio opere en piloto automático y facture más desde el primer día.
+            </p>
+            <span class="quote-author">— Alex, Desarrollador de MenuExpress</span>
+          </div>
+
+          <div class="founder-pillars-grid">
+            <div class="founder-pillar-item">
+              <span class="pillar-icon">⚡</span>
+              <div>
+                <strong>Velocidad WebGL</strong>
+                <p>Carga instantánea en 800ms sin descargar apps.</p>
+              </div>
+            </div>
+            <div class="founder-pillar-item">
+              <span class="pillar-icon">🛡️</span>
+              <div>
+                <strong>Acrílico Grado Industrial</strong>
+                <p>Chips NTAG213 anti-desgaste y QR indeleble.</p>
+              </div>
+            </div>
+            <div class="founder-pillar-item">
+              <span class="pillar-icon">🤝</span>
+              <div>
+                <strong>Trato Directo y Cercano</strong>
+                <p>Soporte personal con el ingeniero que programa tu sistema.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="founder-cta-wrap">
+            <a href="https://wa.me/523312345678?text=Hola%20Alex!%20Le%C3%AD%20tu%20secci%C3%B3n%20Con%C3%B3ceme%20y%20me%20gustar%C3%ADa%20platicar%20sobre%20mi%20restaurante" class="whatsapp-btn-main btn-has-ripple" style="padding: 13px 22px; font-size: 0.92rem;">
+              <span>💬</span> Platicar Directo con Alex por WhatsApp
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- PREGUNTAS FRECUENTES (FAQ INTERACTIVO CON ACCORDION ANIMADO)           -->
+    <!-- ======================================================================= -->
+    <section class="section-wrap reveal-item" id="faq">
+      <div style="text-align: center; max-width: 760px; margin: 0 auto 36px;">
+        <span class="pill-kicker">Resuelve tus Dudas</span>
+        <h2 class="section-title">Preguntas Frecuentes · Menús NFC & SAT 💡</h2>
+        <p style="color: var(--text-muted); font-size: 1.05rem;">
+          Todo lo que necesitas saber antes de modernizar las mesas de tu restaurante:
+        </p>
+      </div>
+
+      <div class="faq-accordion-container">
+        <!-- FAQ 1 -->
+        <div class="faq-item interactive-card" onclick="toggleFaq(this)">
+          <div class="faq-question-row">
+            <span class="faq-q-title">¿Qué teléfonos son compatibles con las placas NFC de mesa?</span>
+            <span class="faq-toggle-icon">+</span>
+          </div>
+          <div class="faq-answer-content">
+            El 100% de los smartphones modernos son compatibles. Cualquier iPhone (desde iPhone XS / XR hasta iPhone 16) y cualquier dispositivo Android con NFC (Samsung, Motorola, Xiaomi) abren el menú con solo acercar el teléfono. Además, para dispositivos más antiguos, cada placa incluye un código QR grabado en alta definición.
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item interactive-card" onclick="toggleFaq(this)">
+          <div class="faq-question-row">
+            <span class="faq-q-title">¿Los comensales necesitan descargar alguna app o registrarse?</span>
+            <span class="faq-toggle-icon">+</span>
+          </div>
+          <div class="faq-answer-content">
+            No, absolutamente cero descargas. El menú abre instantáneamente en el navegador del teléfono en menos de 800 milisegundos. Sin contraseñas, sin registros y sin consumir la memoria del cliente.
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item interactive-card" onclick="toggleFaq(this)">
+          <div class="faq-question-row">
+            <span class="faq-q-title">¿Cómo actualizo los precios y platillos cuando haya cambios?</span>
+            <span class="faq-toggle-icon">+</span>
+          </div>
+          <div class="faq-answer-content">
+            No tienes que aprender ningún software complicado ni perder horas en tutoriales. Solo nos envías un WhatsApp con tus cambios (ej. <em>"Alex, sube la hamburguesa especial a $140"</em>) y nuestro equipo lo actualiza en cuestión de minutos. Todos los cambios son ilimitados y van incluidos en tu póliza activa.
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item interactive-card" onclick="toggleFaq(this)">
+          <div class="faq-question-row">
+            <span class="faq-q-title">¿Qué equipo necesita mi cocina para el panel de comandas (KDS)?</span>
+            <span class="faq-toggle-icon">+</span>
+          </div>
+          <div class="faq-answer-content">
+            Puedes utilizar cualquier tablet Android o iPad básica, un teléfono celular o un monitor/televisión con navegador web. El panel se actualiza en directo sin necesidad de cables ni antenas especiales.
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-item interactive-card" onclick="toggleFaq(this)">
+          <div class="faq-question-row">
+            <span class="faq-q-title">¿Cómo me ayuda el módulo de Estimador Fiscal SAT (RESICO)?</span>
+            <span class="faq-toggle-icon">+</span>
+          </div>
+          <div class="faq-answer-content">
+            El sistema totaliza automáticamente tus ingresos diarios y estima tu pago mensual de ISR bajo las tasas preferenciales del régimen RESICO (1% al 2.5%), además de separar el IVA retenido. Te permite proyectar tus impuestos y evitar discrepancias o recargos ante el SAT.
+          </div>
         </div>
       </div>
     </section>
 
     <!-- FORMULARIO DE COTIZACIÓN -->
-    <section class="form-wrap" id="cotizador">
+    <section class="form-wrap interactive-card reveal-item" id="cotizador">
       <h3 style="font-family: var(--heading); font-size: 1.6rem; font-weight: 700; color: var(--text-main); text-align: center;">
         Cotiza el Sistema para tu Restaurante en 5 Minutos
       </h3>
@@ -1752,8 +2436,8 @@
             </select>
           </div>
           <div>
-            <div class="field-label">Zona o Colonia (Zapopan / GDL) *</div>
-            <input type="text" id="restLocation" class="field-input" placeholder="Ej. Santa Margarita / Andares" required maxlength="100">
+            <div class="field-label">Ciudad o Zona de tu Restaurante *</div>
+            <input type="text" id="restLocation" class="field-input" placeholder="Ej. Polanco, CDMX o San Pedro, NL" required maxlength="100">
           </div>
           <div>
             <div class="field-label">Teléfono WhatsApp *</div>
@@ -1779,7 +2463,7 @@
       <div>
         <div class="brand-title" style="margin-bottom: 6px;">Menu<span>Express</span></div>
         <div style="font-size: 0.85rem; color: var(--text-muted);">
-          Arquitectura de Software y Digitalización Gastronómica · Zapopan, Jalisco, México.
+          Arquitectura de Software y Digitalización Gastronómica · México.
         </div>
         <div style="font-family: var(--mono); font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">
           © 2026 MenuExpress México. Todos los derechos reservados.
@@ -1827,7 +2511,7 @@
         <h4 style="margin-top: 0; color: var(--text-main);">Directorio de Menús Activos en GitHub Pages:</h4>
         <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
           <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-alt); padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border);">
-            <span>🥥 <strong>Los Pinches Preparados</strong> (Mariscos & Alitas)</span>
+            <span>🍙 <strong>TC Sushi & Bowls</strong> (Cocina Asiática & Fusión)</span>
             <a href="preparados/" target="_blank" class="btn-primary-blue" style="font-size: 0.75rem; padding: 6px 12px;">Abrir Menú ➔</a>
           </div>
           <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-alt); padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border);">
@@ -1851,7 +2535,7 @@
             <a href="charly/" target="_blank" class="btn-secondary-clean" style="font-size: 0.75rem; padding: 6px 12px;">Menú Interno ➔</a>
           </div>
           <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-alt); padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border);">
-            <span>🌮 <strong>Tacos Moy</strong> (Barbacoa Santa Margarita)</span>
+            <span>🌮 <strong>Tacos Moy</strong> (Barbacoa Tradicional)</span>
             <a href="tacos-moy/" target="_blank" class="btn-secondary-clean" style="font-size: 0.75rem; padding: 6px 12px;">Menú Interno ➔</a>
           </div>
         </div>
@@ -1870,7 +2554,7 @@
         <button class="legal-modal-close" onclick="closeLegalModal('privacidad')">&times;</button>
       </div>
       <div class="legal-modal-body">
-        <p><strong>Responsable del Tratamiento:</strong> MenuExpress México, con operaciones en Zapopan, Jalisco, México.</p>
+        <p><strong>Responsable del Tratamiento:</strong> MenuExpress México, con cobertura y operaciones técnicas a nivel nacional en México.</p>
         <h4>1. Finalidades Primarias</h4>
         <p>Los datos comerciales y de contacto solicitados (nombre del restaurante, teléfono WhatsApp y zona) son empleados exclusivamente para elaborar cotizaciones y configurar la plataforma web.</p>
         <h4>2. Derechos ARCO</h4>
@@ -1926,7 +2610,7 @@
       </div>
       <div class="legal-modal-body">
         <h4>1. Identificación</h4>
-        <p>MenuExpress México. Operaciones en Zapopan, Jalisco. Servicios técnicos de digitalización gastronómica.</p>
+        <p>MenuExpress México. Servicios técnicos de digitalización gastronómica y hardware NFC a nivel nacional en México.</p>
         <h4>2. Garantía</h4>
         <p>Entrega de la versión inicial en 24 a 48 horas hábiles. 7 días naturales de garantía para ajustes ilimitados de precios.</p>
       </div>
@@ -1949,7 +2633,7 @@
           navPlans: 'Planes',
           navCases: 'Casos de Éxito',
           navWaText: '💬 Cotizar<span class="hide-mobile"> en WhatsApp</span>',
-          heroPill: 'Sistema en Vivo en Zapopan · Carga en 800ms',
+          heroPill: 'Sistema en Vivo en México · Carga en 800ms',
           revealTitle: 'Tu restaurante operando en <span class="text-gradient-cyan">piloto automático</span>.',
           heroDesc: 'Menú NFC de cristal negro piano, comandas en cocina sin papel y balance fiscal SAT. Todo en 800 milisegundos.',
           heroCtaText: 'Explorar Ecosistema',
@@ -1968,6 +2652,13 @@
           hudSpinText: '<span>🔄</span> <span>Girar 360°</span>',
           hudResetText: '<span>🎯</span> <span>Centrar</span>',
           hudTip: '🖱️ Arrastra en 360°',
+          drawDemo: 'Visor 3D & Celular',
+          drawPanels: '3 Paneles del Sistema',
+          drawNfc: 'Calculadora de Placas NFC',
+          drawPlans: 'Planes y Precios',
+          drawCases: 'Casos de Éxito',
+          drawAbout: 'Conóceme (Fundador)',
+          drawFaq: 'Preguntas Frecuentes',
           demoPill: 'Demostración en Tiempo Real',
           demoTitle: 'El Sistema Operativo en tu Celular',
           demoDesc: 'Alterna entre las 3 pantallas en vivo para ver cómo opera tu restaurante:',
@@ -1982,7 +2673,7 @@
           navPlans: 'Pricing',
           navCases: 'Success Stories',
           navWaText: '💬 Quote<span class="hide-mobile"> on WhatsApp</span>',
-          heroPill: 'Live System in Zapopan · 800ms Ultra-Fast Load',
+          heroPill: 'Live System in Mexico · 800ms Ultra-Fast Load',
           revealTitle: 'Your restaurant running on <span class="text-gradient-cyan">autopilot</span>.',
           heroDesc: 'Piano-black acrylic NFC menu, paperless kitchen tickets, and automated tax balance. In 800 milliseconds.',
           heroCtaText: 'Explore Ecosystem',
@@ -2001,6 +2692,13 @@
           hudSpinText: '<span>🔄</span> <span>Spin 360°</span>',
           hudResetText: '<span>🎯</span> <span>Center</span>',
           hudTip: '🖱️ Drag to rotate 360°',
+          drawDemo: '3D View & Mobile',
+          drawPanels: '3 Core Systems',
+          drawNfc: 'NFC Plaques Calculator',
+          drawPlans: 'Pricing & Plans',
+          drawCases: 'Success Stories',
+          drawAbout: 'About the Founder',
+          drawFaq: 'FAQ',
           demoPill: 'Real-Time Interactive Demo',
           demoTitle: 'The Operating System on Mobile',
           demoDesc: 'Switch between the 3 live screens to see your restaurant in action:',
@@ -2034,6 +2732,13 @@
           hudSpinText: '<span>🔄</span> <span>360° 旋转</span>',
           hudResetText: '<span>🎯</span> <span>居中视角</span>',
           hudTip: '🖱️ 360° 自由拖拽旋转',
+          drawDemo: '3D实机与手机演示',
+          drawPanels: '三大核心系统',
+          drawNfc: 'NFC标牌计算器',
+          drawPlans: '套餐与价格',
+          drawCases: '真实成功案例',
+          drawAbout: '创始人介绍',
+          drawFaq: '常见问题解答',
           demoPill: '实机全流程互动演示',
           demoTitle: '餐厅数字操作系统（手机端）',
           demoDesc: '在以下三块实时交互屏幕间自由切换：',
@@ -2173,13 +2878,46 @@
         window.switchPhoneView(views[currentViewIdx], false);
       }, 5000);
 
-      // 3. CALCULADORA NFC
+      // 2.1 DRAWER DE NAVEGACIÓN
+      window.toggleNavDrawer = function() {
+        const panel = document.getElementById('navDrawerPanel');
+        const backdrop = document.getElementById('navDrawerBackdrop');
+        const btn = document.getElementById('menuToggleBtn');
+        if (!panel) return;
+        const isOpen = panel.classList.contains('show');
+        if (isOpen) {
+          window.closeNavDrawer();
+        } else {
+          panel.classList.add('show');
+          if (backdrop) backdrop.classList.add('show');
+          if (btn) btn.classList.add('is-active');
+          document.body.style.overflow = 'hidden';
+        }
+      };
+
+      window.closeNavDrawer = function() {
+        const panel = document.getElementById('navDrawerPanel');
+        const backdrop = document.getElementById('navDrawerBackdrop');
+        const btn = document.getElementById('menuToggleBtn');
+        if (panel) panel.classList.remove('show');
+        if (backdrop) backdrop.classList.remove('show');
+        if (btn) btn.classList.remove('is-active');
+        document.body.style.overflow = '';
+      };
+
+      // 3. CALCULADORA NFC CON TIERS DINÁMICOS Y EMOJIS
       const nfcSlider = document.getElementById('nfcSlider');
       const tablesCountLbl = document.getElementById('tablesCountLbl');
       const extraPlaquesLbl = document.getElementById('extraPlaquesLbl');
       const extraCostLbl = document.getElementById('extraCostLbl');
       const btnTablesNum = document.getElementById('btnTablesNum');
       const btnQuoteNfc = document.getElementById('btnQuoteNfc');
+      const nfcTierEmoji = document.getElementById('nfcTierEmoji');
+      const nfcTierBadge = document.getElementById('nfcTierBadge');
+      const nfcTierTitle = document.getElementById('nfcTierTitle');
+      const nfcTierDesc = document.getElementById('nfcTierDesc');
+
+      let prevTierLevel = 1;
 
       function updateNfc() {
         if (!nfcSlider) return;
@@ -2192,6 +2930,45 @@
         extraPlaquesLbl.textContent = extra;
         extraCostLbl.textContent = extraCost === 0 ? '$0 MXN (Incluidas)' : '+$' + extraCost + ' MXN';
         btnTablesNum.textContent = total;
+
+        let level = 1;
+        let emoji = '🌮';
+        let badge = 'Nivel 1 · Negocio Emergente';
+        let title = 'Puesto / Cafetería / Food Truck (' + total + ' mesas)';
+        let desc = 'Ideal para arrancar ágilmente sin comandas en papel y con 5 placas 100% de regalo.';
+
+        if (total >= 13 && total <= 25) {
+          level = 2;
+          emoji = '🍕';
+          badge = 'Nivel 2 · Restaurante Consolidado';
+          title = 'Restaurante de Barrio / Pizzería / Burgers (' + total + ' mesas)';
+          desc = 'Acelera la rotación de mesas un 35% y envía comandas en directo a cocina KDS sin errores ni papel.';
+        } else if (total >= 26 && total <= 45) {
+          level = 3;
+          emoji = '🍷';
+          badge = 'Nivel 3 · Fine Dining & Bistro';
+          title = 'Bistro / Steakhouse / Fine Dining (' + total + ' mesas)';
+          desc = 'Elegancia máxima con acrílico negro piano, sensor háptico y captación masiva de reseñas 5 estrellas de Google.';
+        } else if (total >= 46) {
+          level = 4;
+          emoji = '👑';
+          badge = 'Nivel 4 · Corporativo / Franquicia';
+          title = 'Gran Cadena / Franquicia / Grupo Gastronómico (' + total + ' mesas)';
+          desc = 'Control multi-pantalla KDS, auditoría fiscal SAT automatizada y balance consolidado multi-sucursal.';
+        }
+
+        if (nfcTierEmoji) {
+          nfcTierEmoji.textContent = emoji;
+          if (level !== prevTierLevel) {
+            nfcTierEmoji.classList.remove('tier-bounce');
+            void nfcTierEmoji.offsetWidth; // trigger reflow
+            nfcTierEmoji.classList.add('tier-bounce');
+            prevTierLevel = level;
+          }
+        }
+        if (nfcTierBadge) nfcTierBadge.textContent = badge;
+        if (nfcTierTitle) nfcTierTitle.textContent = title;
+        if (nfcTierDesc) nfcTierDesc.textContent = desc;
       }
 
       if (nfcSlider) {
@@ -2207,18 +2984,29 @@
         });
       }
 
-      // 4. CARRUSEL 5 ESTRELLAS
+      // 4. CARRUSEL 5 ESTRELLAS CON AUTOPLAY SUAVE
       const track = document.getElementById('carouselTrack');
       const prevBtn = document.getElementById('carouselPrev');
       const nextBtn = document.getElementById('carouselNext');
 
       if (track && prevBtn && nextBtn) {
         prevBtn.addEventListener('click', function() {
-          track.scrollBy({ left: -340, behavior: 'smooth' });
+          track.scrollBy({ left: -360, behavior: 'smooth' });
         });
         nextBtn.addEventListener('click', function() {
-          track.scrollBy({ left: 340, behavior: 'smooth' });
+          track.scrollBy({ left: 360, behavior: 'smooth' });
         });
+
+        // Autoplay fluido pausado al hacer hover
+        setInterval(function() {
+          if (!track.matches(':hover')) {
+            if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 10) {
+              track.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+              track.scrollBy({ left: 360, behavior: 'smooth' });
+            }
+          }
+        }, 4200);
       }
 
       // 5. MODALES LEGALES Y PANEL ADMIN
@@ -2279,6 +3067,121 @@
           window.open('https://wa.me/523312345678?text=' + text, '_blank');
         });
       }
+
+      // 7. MOTOR DE SCROLL REVEAL (INTERSECTION OBSERVER)
+      const revealItems = document.querySelectorAll('.reveal-item');
+      if ('IntersectionObserver' in window) {
+        const revealObs = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-revealed');
+              revealObs.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        revealItems.forEach(function(el) { revealObs.observe(el); });
+      } else {
+        revealItems.forEach(function(el) { el.classList.add('is-revealed'); });
+      }
+
+      // 8. 3D TILT & SPECULAR CURSOR SPOTLIGHT UNIVERSAL
+      const interactiveCards = document.querySelectorAll('.interactive-card');
+      interactiveCards.forEach(function(card) {
+        card.addEventListener('mousemove', function(e) {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          card.style.setProperty('--mouse-x', x + 'px');
+          card.style.setProperty('--mouse-y', y + 'px');
+
+          const rotX = ((y - rect.height / 2) / (rect.height / 2)) * -5;
+          const rotY = ((x - rect.width / 2) / (rect.width / 2)) * 5;
+          card.style.transform = 'perspective(1000px) rotateX(' + rotX.toFixed(2) + 'deg) rotateY(' + rotY.toFixed(2) + 'deg) translateY(-3px)';
+        });
+        card.addEventListener('mouseleave', function() {
+          card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+        });
+      });
+
+      // 9. EFECTO RIPPLE HÁPTICO EN BOTONES
+      document.querySelectorAll('.btn-has-ripple, .whatsapp-btn-main, .btn-primary-blue, .hud-btn').forEach(function(btn) {
+        btn.classList.add('btn-has-ripple');
+        btn.addEventListener('click', function(e) {
+          const circle = document.createElement('span');
+          const d = Math.max(btn.clientWidth, btn.clientHeight);
+          const rect = btn.getBoundingClientRect();
+          circle.style.width = circle.style.height = d + 'px';
+          circle.style.left = (e.clientX - rect.left - d / 2) + 'px';
+          circle.style.top = (e.clientY - rect.top - d / 2) + 'px';
+          circle.classList.add('btn-ripple-wave');
+          btn.appendChild(circle);
+          setTimeout(function() { circle.remove(); }, 600);
+        });
+      });
+
+      // 10. SMARTPHONE DEMO MICRO-INTERACCIONES EN VIVO
+      let currentCartTotal = 475;
+      window.addDishToCart = function(price, id) {
+        currentCartTotal += price;
+        const totalLbl = document.getElementById('phoneCartTotalVal');
+        if (totalLbl) totalLbl.textContent = '$' + currentCartTotal;
+
+        const fb = document.getElementById('dishFb' + id);
+        if (fb) {
+          fb.classList.remove('show');
+          void fb.offsetWidth;
+          fb.classList.add('show');
+          setTimeout(function() { fb.classList.remove('show'); }, 900);
+        }
+
+        const phone = document.getElementById('phoneDevice');
+        if (phone) {
+          phone.style.transform = 'translateY(-4px) scale(1.01)';
+          setTimeout(function() { phone.style.transform = ''; }, 180);
+        }
+      };
+
+      let toastTimer = null;
+      window.notifyPhoneToast = function(msg) {
+        const toast = document.getElementById('phoneMiniToast');
+        if (!toast) return;
+        toast.textContent = msg;
+        toast.classList.add('visible');
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(function() {
+          toast.classList.remove('visible');
+        }, 2200);
+      };
+
+      window.markKdsTicketDone = function(ticketId) {
+        const ticket = document.getElementById('kdsTicket' + ticketId);
+        const badge = document.getElementById('kdsBadge' + ticketId);
+        const btn = document.getElementById('kdsBtn' + ticketId);
+        if (ticket) {
+          ticket.classList.remove('active');
+          ticket.classList.add('done');
+        }
+        if (badge) {
+          badge.style.background = '#dcfce7';
+          badge.style.color = '#15803d';
+          badge.textContent = 'Listo para Servir ✓';
+        }
+        if (btn) {
+          btn.style.background = '#10b981';
+          btn.textContent = '✓ Despachado';
+          btn.disabled = true;
+          btn.style.cursor = 'default';
+        }
+      };
+
+      // 11. FAQ ACCORDION INTERACTIVO
+      window.toggleFaq = function(el) {
+        const isOpen = el.classList.contains('is-open');
+        document.querySelectorAll('.faq-item').forEach(function(item) {
+          if (item !== el) item.classList.remove('is-open');
+        });
+        el.classList.toggle('is-open', !isOpen);
+      };
     })();
   </script>
   
