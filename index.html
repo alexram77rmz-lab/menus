@@ -15,12 +15,12 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600;1,700;1,800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --bg: #ffffff;
-      --bg-alt: #f8fafc;
+      --bg-alt: #fafbfe;
       --surface: #ffffff;
       --surface-card: #ffffff;
       --border: #e2e8f0;
@@ -107,7 +107,23 @@
       font-family: var(--heading); font-size: 1.25rem; font-weight: 800;
       letter-spacing: -0.6px; color: var(--text-main); white-space: nowrap;
     }
-    .brand-title span { color: var(--primary); }
+    .brand-title span, .brand-title em, .brand-express {
+      color: var(--primary);
+      font-style: italic;
+      font-weight: 800;
+    }
+    [data-theme="dark"] .brand-title span, [data-theme="dark"] .brand-title em, [data-theme="dark"] .brand-express {
+      color: #00f0ff;
+    }
+    .brand-express-neon {
+      color: #00f0ff !important;
+      font-style: italic;
+      font-weight: 800;
+    }
+    .text-gradient-cyan em, h1 em, h2 em, .section-title em {
+      font-style: italic;
+      font-family: inherit;
+    }
 
     .header-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
     
@@ -751,31 +767,59 @@
       }
 
       .container {
-        padding: 12px 14px 50px;
+        padding: 20px 20px 60px;
       }
-      /* Scrollytelling Mobile Experience */
+      /* Scrollytelling Mobile Experience: Natural flow, zero scroll trap */
       .scrolly-container {
-        height: 350vh;
+        height: auto !important;
+        margin-bottom: 28px !important;
+      }
+      .scrolly-sticky-stage {
+        position: relative !important;
+        height: auto !important;
+        min-height: 520px;
+        padding: 24px 16px 36px !important;
+        overflow: hidden !important;
+      }
+      #hero-3d-canvas-container {
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+        pointer-events: none !important;
+      }
+      #hero-3d-canvas-container canvas {
+        pointer-events: none !important;
       }
       .scrolly-hero-overlay {
-        top: 12%;
-        width: 92%;
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        opacity: 1 !important;
+        filter: none !important;
+        pointer-events: auto !important;
+        padding: 10px 0 16px !important;
+        text-align: center;
       }
       .scrolly-hero-title {
-        font-size: 1.85rem;
-        letter-spacing: -0.7px;
-        margin-bottom: 10px;
+        font-size: 2.1rem;
+        letter-spacing: -0.8px;
+        line-height: 1.18;
+        margin-bottom: 14px;
       }
       .scrolly-hero-desc {
-        font-size: 0.88rem;
-        line-height: 1.45;
-        margin-bottom: 20px;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 22px;
       }
       .scrolly-hero-cta-group {
         flex-direction: column;
         width: 100%;
-        gap: 10px;
-        margin-bottom: 18px;
+        gap: 12px;
+        margin-bottom: 20px;
       }
       .magnetic-wrap, .magnetic-shimmer-btn {
         width: 100%;
@@ -783,50 +827,53 @@
       .magnetic-inner {
         width: 100%;
         justify-content: center;
-        padding: 12px 18px;
-        font-size: 0.9rem;
+        padding: 14px 20px;
+        font-size: 0.95rem;
+        min-height: 48px;
       }
       .btn-secondary-clean {
         width: 100%;
         text-align: center;
-        padding: 11px 18px;
-        font-size: 0.88rem;
+        padding: 13px 20px;
+        font-size: 0.92rem;
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .scrolly-mouse-indicator {
+        display: none !important;
       }
       .glass-narrative-card {
-        left: 5% !important;
-        right: 5% !important;
-        bottom: 80px !important;
-        top: auto !important;
-        width: auto !important;
-        max-width: 90% !important;
-        padding: 16px 18px !important;
-        margin: 0 auto !important;
-      }
-      .station-title {
-        font-size: 1.15rem !important;
-        margin-bottom: 6px !important;
-      }
-      .station-desc {
-        font-size: 0.82rem !important;
-        line-height: 1.45 !important;
-        margin-bottom: 0 !important;
-      }
-      .station-meta {
         display: none !important;
       }
       .hero-3d-hud-bar {
-        bottom: 14px;
-        padding: 4px 8px;
-        gap: 6px;
+        position: relative !important;
+        bottom: auto !important;
+        left: auto !important;
+        transform: none !important;
+        margin-top: 16px;
+        pointer-events: auto !important;
+        padding: 6px 12px;
+        gap: 8px;
         max-width: 96%;
       }
       .hud-btn {
         min-height: 44px;
-        padding: 8px 12px;
-        font-size: 0.76rem;
+        padding: 8px 14px;
+        font-size: 0.8rem;
+        pointer-events: auto !important;
       }
       .hud-tip {
         display: none;
+      }
+      /* Mobile Section Spacing Calibration */
+      .section-wrap {
+        margin-bottom: 54px !important;
+      }
+      .section-title {
+        font-size: 1.8rem !important;
+        line-height: 1.2 !important;
       }
     }
     .device-switcher-tabs {
@@ -1088,15 +1135,29 @@
       font-size: 0.88rem; color: var(--text-muted); line-height: 1.45;
     }
 
-    /* CARRUSEL CASOS DE ÉXITO 5 ESTRELLAS */
+    /* CASOS DE ÉXITO 5 ESTRELLAS (3 COLUMNAS BALANCEADAS) */
     .portfolio-grid {
-      overflow-x: auto; scroll-snap-type: x mandatory; display: flex; gap: 20px;
-      padding-bottom: 24px; -webkit-overflow-scrolling: touch; scrollbar-width: thin;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 24px;
+      margin-bottom: 40px;
+    }
+    @media (max-width: 960px) {
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
     }
     .portfolio-card {
-      flex: 0 0 340px; scroll-snap-align: start; background: var(--surface-card);
-      border: 1px solid var(--border); border-radius: 18px; padding: 26px;
-      box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between;
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 26px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
     }
     .portfolio-card:hover {
@@ -1108,9 +1169,12 @@
     /* SECCIÓN CONÓCEME (ABOUT FOUNDER) */
     .about-founder-container {
       display: grid; grid-template-columns: 300px 1fr; gap: 40px; align-items: center;
-      background: var(--surface-card); border: 1px solid var(--border);
-      border-radius: 24px; padding: 44px 38px; box-shadow: var(--shadow-md);
+      background: #ffffff; border: 1px solid var(--border);
+      border-radius: 24px; padding: 44px 38px; box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
       position: relative; overflow: hidden; margin-bottom: 70px;
+    }
+    [data-theme="dark"] .about-founder-container {
+      background: var(--surface-card);
     }
     @media (max-width: 860px) {
       .about-founder-container {
@@ -1153,9 +1217,13 @@
       color: var(--primary); margin-bottom: 18px;
     }
     .founder-story-card {
-      background: var(--bg-alt); border: 1px solid var(--border);
+      background: #ffffff; border: 1px solid rgba(37, 99, 235, 0.16);
+      border-left: 4px solid var(--primary);
       border-radius: 16px; padding: 22px 24px; position: relative; margin-bottom: 24px;
-      text-align: left;
+      text-align: left; box-shadow: 0 4px 20px rgba(37, 99, 235, 0.04);
+    }
+    [data-theme="dark"] .founder-story-card {
+      background: #0f172a; border-color: rgba(0, 240, 255, 0.25); border-left-color: #00f0ff;
     }
     .quote-mark {
       position: absolute; top: -6px; left: 14px; font-size: 3rem;
@@ -1175,8 +1243,12 @@
     }
     .founder-pillar-item {
       display: flex; gap: 10px; align-items: flex-start;
-      background: var(--surface); border: 1px solid var(--border);
+      background: #ffffff; border: 1px solid var(--border);
       padding: 12px 14px; border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    }
+    [data-theme="dark"] .founder-pillar-item {
+      background: #111827; border-color: #1f293d;
     }
     .pillar-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
     .founder-pillar-item strong {
@@ -1203,10 +1275,16 @@
     @media (max-width: 640px) { .field-grid { grid-template-columns: 1fr; } }
     .field-label { font-family: var(--mono); font-size: 0.78rem; font-weight: 700; color: var(--text-main); text-transform: uppercase; margin-bottom: 6px; }
     .field-input, .field-select {
-      width: 100%; padding: 12px 14px; background: var(--bg-alt); border: 1px solid var(--border);
-      border-radius: 8px; font-size: 0.95rem; color: var(--text-main); outline: none; transition: border-color 0.15s;
+      width: 100%; padding: 12px 14px; background: #ffffff; border: 1px solid var(--border);
+      border-radius: 8px; font-size: 0.95rem; color: var(--text-main); outline: none; transition: border-color 0.15s, box-shadow 0.15s;
     }
-    .field-input:focus, .field-select:focus { border-color: var(--primary); }
+    [data-theme="dark"] .field-input, [data-theme="dark"] .field-select {
+      background: #111827;
+    }
+    .field-input:focus, .field-select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
 
     /* FOOTER */
     footer {
@@ -1596,7 +1674,7 @@
             <circle cx="12" cy="18" r="1" fill="currentColor"/>
           </svg>
         </span>
-        <div class="brand-title">Menu<span>Express</span></div>
+        <div class="brand-title">Menu<em class="brand-express">Express</em></div>
       </a>
 
       <div class="header-actions">
@@ -1629,7 +1707,7 @@
   <div class="nav-drawer-backdrop" id="navDrawerBackdrop" onclick="closeNavDrawer()"></div>
   <aside class="nav-drawer-panel" id="navDrawerPanel" aria-label="Menú Principal">
     <div class="nav-drawer-header">
-      <div class="brand-title">Menu<span>Express</span></div>
+      <div class="brand-title">Menu<em class="brand-express">Express</em></div>
       <button type="button" class="nav-drawer-close" onclick="closeNavDrawer()" aria-label="Cerrar Menú">&times;</button>
     </div>
     <nav class="nav-drawer-links">
@@ -1673,7 +1751,7 @@
         </div>
 
         <h1 class="scrolly-hero-title" id="revealTitle">
-          Tu restaurante operando en <span class="text-gradient-cyan">piloto automático</span>.
+          Tu restaurante operando en <span class="text-gradient-cyan"><em>piloto automático</em></span>.
         </h1>
 
         <p class="scrolly-hero-desc" id="heroDesc">
@@ -2204,124 +2282,76 @@
       </div>
     </div>
 
-    <!-- CARRUSEL CASOS DE ÉXITO 5 ESTRELLAS -->
+    <!-- SECCIÓN CASOS DE ÉXITO 5 ESTRELLAS (3 COLUMNAS BALANCEADAS) -->
     <section class="section-wrap reveal-item" id="portafolio">
-      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; flex-wrap: wrap; gap: 16px;">
-        <div>
-          <span class="pill-kicker">Casos de Éxito Reales · 100% Verificados</span>
-          <h2 class="section-title" style="text-align: left; margin-bottom: 4px;">Restaurantes Activos en México ⭐⭐⭐⭐⭐</h2>
-          <p style="color: var(--text-muted); font-size: 0.95rem;">Desliza para explorar los menús que ya están operando en vivo:</p>
-        </div>
-        <div style="display: flex; gap: 10px;">
-          <button type="button" class="btn-secondary-clean" id="carouselPrev" style="width: 44px; height: 44px; padding: 0; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; cursor: pointer;" title="Anterior">←</button>
-          <button type="button" class="btn-primary-blue" id="carouselNext" style="width: 44px; height: 44px; padding: 0; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; cursor: pointer;" title="Siguiente">→</button>
-        </div>
+      <div style="text-align: center; max-width: 760px; margin: 0 auto 32px;">
+        <span class="pill-kicker">Casos de Éxito Reales · 100% Verificados</span>
+        <h2 class="section-title" style="margin-bottom: 6px;">Restaurantes Activos en México ⭐⭐⭐⭐⭐</h2>
+        <p style="color: var(--text-muted); font-size: 1rem;">Menús digitales operando <span style="font-style: italic; color: var(--primary); font-weight: 600;">en tiempo real</span>:</p>
       </div>
 
-      <div class="portfolio-grid" id="carouselTrack">
-        <!-- 1: El Limoncito Culichi -->
+      <div class="portfolio-grid" id="portfolioShowcaseGrid">
+        <!-- 1: El Limoncito Culichi (Izquierda) -->
         <div class="portfolio-card interactive-card reveal-item delay-1">
           <div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
               <span style="color: #f59e0b; font-size: 1rem; letter-spacing: 2px;">⭐⭐⭐⭐⭐</span>
               <span style="font-family: var(--mono); font-size: 0.75rem; font-weight: 700; color: #15803d; background: #dcfce7; padding: 2px 8px; border-radius: 4px;">5.0 Verificado</span>
             </div>
-            <h3 style="font-family: var(--heading); font-size: 1.2rem; font-weight: 700; color: var(--text-main); margin-bottom: 2px;">🦐 El Limoncito Culichi</h3>
+            <h3 style="font-family: var(--heading); font-size: 1.25rem; font-weight: 700; color: var(--text-main); margin-bottom: 2px;">🦐 El Limoncito Culichi</h3>
             <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">Av. Providencia, Guadalajara</div>
             <p style="font-size: 0.88rem; color: var(--text-main); line-height: 1.5; margin-bottom: 16px; font-style: italic;">
               "Digitalizamos más de 70 platillos, sushi sinaloense y mariscos fríos. Los clientes ya no batallan con cartas manchadas y piden directo a WhatsApp."
             </p>
             <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px;">
-              <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: var(--bg-alt); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; color: var(--primary);">70+ Platillos</span>
-              <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: var(--bg-alt); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; color: var(--primary);">Sushis & Mariscos</span>
-              <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: var(--bg-alt); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; color: var(--primary);">WhatsApp Directo</span>
+              <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: #eff6ff; border: 1px solid #bfdbfe; padding: 3px 8px; border-radius: 4px; color: #1d4ed8;">70+ Platillos</span>
+              <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 3px 8px; border-radius: 4px; color: #166534;">Sushis & Mariscos</span>
+              <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: #fefce8; border: 1px solid #fef08a; padding: 3px 8px; border-radius: 4px; color: #854d0e;">WhatsApp Directo</span>
             </div>
           </div>
           <a href="limoncito/" class="btn-primary-blue btn-has-ripple" style="text-align: center; justify-content: center; font-size: 0.85rem; padding: 10px;">Probar Menú en Vivo ➔</a>
         </div>
 
-        <!-- 2: Kyutai Sushi -->
+        <!-- 2: TC Sushi & Asian Bowls (Centro) -->
         <div class="portfolio-card interactive-card reveal-item delay-2">
           <div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
               <span style="color: #f59e0b; font-size: 1rem; letter-spacing: 2px;">⭐⭐⭐⭐⭐</span>
               <span style="font-family: var(--mono); font-size: 0.75rem; font-weight: 700; color: #15803d; background: #dcfce7; padding: 2px 8px; border-radius: 4px;">5.0 Verificado</span>
             </div>
-            <h3 style="font-family: var(--heading); font-size: 1.2rem; font-weight: 700; color: var(--text-main); margin-bottom: 2px;">🍙 Kyutai Rice Balls & Sushi</h3>
+            <h3 style="font-family: var(--heading); font-size: 1.25rem; font-weight: 700; color: var(--text-main); margin-bottom: 2px;">🍱 TC Sushi & Asian Bowls</h3>
             <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">Polanco / Reforma, CDMX</div>
             <p style="font-size: 0.88rem; color: var(--text-main); line-height: 1.5; margin-bottom: 16px; font-style: italic;">
-              "Onigiris, sushi bowls y bubble teas presentados con fotos nítidas. Carga en menos de 1 segundo en cualquier celular sin descargar nada."
+              "Onigiris, sushi rolls y ramen presentados con fotos nítidas. Carga en menos de 1 segundo en cualquier celular sin descargar aplicaciones."
             </p>
             <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px;">
-              <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: var(--bg-alt); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; color: var(--primary);">Onigiris</span>
-              <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: var(--bg-alt); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; color: var(--primary);">Sushi Bowls</span>
-              <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: var(--bg-alt); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; color: var(--primary);">Bubble Tea</span>
+              <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: #eff6ff; border: 1px solid #bfdbfe; padding: 3px 8px; border-radius: 4px; color: #1d4ed8;">Sushi Rolls</span>
+              <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: #fefce8; border: 1px solid #fef08a; padding: 3px 8px; border-radius: 4px; color: #854d0e;">Ramen & Bowls</span>
+              <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 3px 8px; border-radius: 4px; color: #166534;">Carga 800ms</span>
             </div>
           </div>
           <a href="kyutai/" class="btn-primary-blue btn-has-ripple" style="text-align: center; justify-content: center; font-size: 0.85rem; padding: 10px;">Probar Menú en Vivo ➔</a>
         </div>
 
-        <!-- 3: d'ANGEL'S Wings -->
+        <!-- 3: d'ANGEL'S Wings & Snacks (Derecha) -->
         <div class="portfolio-card interactive-card reveal-item delay-3">
           <div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
               <span style="color: #f59e0b; font-size: 1rem; letter-spacing: 2px;">⭐⭐⭐⭐⭐</span>
               <span style="font-family: var(--mono); font-size: 0.75rem; font-weight: 700; color: #15803d; background: #dcfce7; padding: 2px 8px; border-radius: 4px;">5.0 Verificado</span>
             </div>
-            <h3 style="font-family: var(--heading); font-size: 1.2rem; font-weight: 700; color: var(--text-main); margin-bottom: 2px;">🍗 d'ANGEL'S Wings & Snacks</h3>
+            <h3 style="font-family: var(--heading); font-size: 1.25rem; font-weight: 700; color: var(--text-main); margin-bottom: 2px;">🍗 d'ANGEL'S Wings & Snacks</h3>
             <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">San Pedro Garza García, NL</div>
             <p style="font-size: 0.88rem; color: var(--text-main); line-height: 1.5; margin-bottom: 16px; font-style: italic;">
               "Alitas, boneless y hamburguesas con selección de salsas. Cambiamos precios y nuevos combos al instante sin tener que reimprimir lonas."
             </p>
             <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px;">
-              <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: var(--bg-alt); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; color: var(--primary);">Alitas & Boneless</span>
-              <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: var(--bg-alt); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; color: var(--primary);">Burgers</span>
-              <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: var(--bg-alt); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; color: var(--primary);">Terminal Tarjeta</span>
+              <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: #eff6ff; border: 1px solid #bfdbfe; padding: 3px 8px; border-radius: 4px; color: #1d4ed8;">Alitas & Boneless</span>
+              <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: #fefce8; border: 1px solid #fef08a; padding: 3px 8px; border-radius: 4px; color: #854d0e;">Burgers</span>
+              <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 3px 8px; border-radius: 4px; color: #166534;">Terminal Tarjeta</span>
             </div>
           </div>
           <a href="dangels/" class="btn-primary-blue btn-has-ripple" style="text-align: center; justify-content: center; font-size: 0.85rem; padding: 10px;">Probar Menú en Vivo ➔</a>
-        </div>
-
-        <!-- 4: Hamburguesas El Charly -->
-        <div class="portfolio-card interactive-card reveal-item delay-1">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-              <span style="color: #f59e0b; font-size: 1rem; letter-spacing: 2px;">⭐⭐⭐⭐⭐</span>
-              <span style="font-family: var(--mono); font-size: 0.75rem; font-weight: 700; color: #15803d; background: #dcfce7; padding: 2px 8px; border-radius: 4px;">5.0 Verificado</span>
-            </div>
-            <h3 style="font-family: var(--heading); font-size: 1.2rem; font-weight: 700; color: var(--text-main); margin-bottom: 2px;">🍔 Hamburguesas El Charly</h3>
-            <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">Roma Norte / Condesa, CDMX</div>
-            <p style="font-size: 0.88rem; color: var(--text-main); line-height: 1.5; margin-bottom: 16px; font-style: italic;">
-              "Hamburguesas al carbón, sincronizadas y salchipapas. Las placas en mesa hicieron que los clientes no esperaran por meseros para ver la carta."
-            </p>
-            <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px;">
-              <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: var(--bg-alt); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; color: var(--primary);">Burgers Carbón</span>
-              <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: var(--bg-alt); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; color: var(--primary);">Combos Familia</span>
-              <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: var(--bg-alt); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; color: var(--primary);">Menú Rápido ⚡</span>
-            </div>
-          </div>
-          <a href="charly/" class="btn-primary-blue btn-has-ripple" style="text-align: center; justify-content: center; font-size: 0.85rem; padding: 10px;">Probar Menú en Vivo ➔</a>
-        </div>
-
-        <!-- 5: Los 3 Carnales -->
-        <div class="portfolio-card interactive-card reveal-item delay-2">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-              <span style="color: #f59e0b; font-size: 1rem; letter-spacing: 2px;">⭐⭐⭐⭐⭐</span>
-              <span style="font-family: var(--mono); font-size: 0.75rem; font-weight: 700; color: #15803d; background: #dcfce7; padding: 2px 8px; border-radius: 4px;">5.0 Verificado</span>
-            </div>
-            <h3 style="font-family: var(--heading); font-size: 1.2rem; font-weight: 700; color: var(--text-main); margin-bottom: 2px;">🌮 Los 3 Carnales</h3>
-            <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">Marina Vallarta / Cancún</div>
-            <p style="font-size: 0.88rem; color: var(--text-main); line-height: 1.5; margin-bottom: 16px; font-style: italic;">
-              "Taquería con flujo continuo. El cliente abre el menú en mesa con NFC o código QR y ahorramos hasta 15 minutos por comensal en horas pico."
-            </p>
-            <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px;">
-              <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: var(--bg-alt); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; color: var(--primary);">Tacos & Birria</span>
-              <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: var(--bg-alt); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; color: var(--primary);">Flujo Continuo</span>
-              <span class="port-tag" style="font-family: var(--mono); font-size: 0.72rem; background: var(--bg-alt); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; color: var(--primary);">Zero Papel</span>
-            </div>
-          </div>
-          <a href="carnales/" class="btn-primary-blue btn-has-ripple" style="text-align: center; justify-content: center; font-size: 0.85rem; padding: 10px;">Probar Menú en Vivo ➔</a>
         </div>
       </div>
     </section>
@@ -2348,15 +2378,15 @@
 
         <div class="about-founder-content">
           <span class="pill-kicker">Fundador & Arquitectura de Software</span>
-          <h2 class="section-title" style="text-align: left; margin-bottom: 6px;">Conoce al Creador de MenuExpress</h2>
+          <h2 class="section-title" style="text-align: left; margin-bottom: 6px;">Conoce al Creador de <em>MenuExpress</em></h2>
           <div class="founder-role-tag">Alex Ramírez · Lead Creative Engineer</div>
           
           <div class="founder-story-card">
             <span class="quote-mark">“</span>
             <p class="founder-story-text" id="founderStoryText">
-              Diseñé MenuExpress para resolver la frustración diaria de los restauranteros en México: comandas perdidas en papel, cartas manchadas que cuesta una fortuna reimprimir y sistemas lentos que cobran comisiones abusivas. Aquí no hay intermediarios; cada línea de código y cada placa NFC está calibrada para que tu negocio opere en piloto automático y facture más desde el primer día.
+              Diseñé <em>MenuExpress</em> para resolver la frustración diaria de los restauranteros en México: comandas perdidas en papel, cartas manchadas que cuesta una fortuna reimprimir y sistemas lentos que cobran comisiones abusivas. Aquí no hay intermediarios; cada línea de código y cada placa NFC está calibrada para que tu negocio opere en <em>piloto automático</em> y facture más desde el primer día.
             </p>
-            <span class="quote-author">— Alex, Desarrollador de MenuExpress</span>
+            <span class="quote-author">— Alex, Desarrollador & Fundador de <em>MenuExpress</em></span>
           </div>
 
           <div class="founder-pillars-grid">
@@ -2525,7 +2555,7 @@
 
     <div class="footer-inner">
       <div>
-        <div class="brand-title" style="color: #ffffff; margin-bottom: 6px;">Menu<span style="color: #00f0ff;">Express</span></div>
+        <div class="brand-title" style="color: #ffffff; margin-bottom: 6px;">Menu<em class="brand-express-neon">Express</em></div>
         <div style="font-size: 0.85rem; color: #94a3b8;">
           Arquitectura de Software y Digitalización Gastronómica · México.
         </div>
@@ -2702,7 +2732,7 @@
           navCases: 'Casos de Éxito',
           navWaText: '💬 Cotizar<span class="hide-mobile"> en WhatsApp</span>',
           heroPill: 'Sistema en Vivo en México · Carga en 800ms',
-          revealTitle: 'Tu restaurante operando en <span class="text-gradient-cyan">piloto automático</span>.',
+          revealTitle: 'Tu restaurante operando en <span class="text-gradient-cyan"><em>piloto automático</em></span>.',
           heroDesc: 'Menú NFC de cristal negro piano, comandas en cocina sin papel y balance fiscal SAT. Todo en 800 milisegundos.',
           heroCtaText: 'Explorar Ecosistema',
           heroSecCta: 'Ver Planes ($100 a $300/mes)',
@@ -2742,7 +2772,7 @@
           navCases: 'Success Stories',
           navWaText: '💬 Quote<span class="hide-mobile"> on WhatsApp</span>',
           heroPill: 'Live System in Mexico · 800ms Ultra-Fast Load',
-          revealTitle: 'Your restaurant running on <span class="text-gradient-cyan">autopilot</span>.',
+          revealTitle: 'Your restaurant running on <span class="text-gradient-cyan"><em>autopilot</em></span>.',
           heroDesc: 'Piano-black acrylic NFC menu, paperless kitchen tickets, and automated tax balance. In 800 milliseconds.',
           heroCtaText: 'Explore Ecosystem',
           heroSecCta: 'View Plans ($100 - $300/mo)',
@@ -3052,30 +3082,8 @@
         });
       }
 
-      // 4. CARRUSEL 5 ESTRELLAS CON AUTOPLAY SUAVE
-      const track = document.getElementById('carouselTrack');
-      const prevBtn = document.getElementById('carouselPrev');
-      const nextBtn = document.getElementById('carouselNext');
-
-      if (track && prevBtn && nextBtn) {
-        prevBtn.addEventListener('click', function() {
-          track.scrollBy({ left: -360, behavior: 'smooth' });
-        });
-        nextBtn.addEventListener('click', function() {
-          track.scrollBy({ left: 360, behavior: 'smooth' });
-        });
-
-        // Autoplay fluido pausado al hacer hover
-        setInterval(function() {
-          if (!track.matches(':hover')) {
-            if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 10) {
-              track.scrollTo({ left: 0, behavior: 'smooth' });
-            } else {
-              track.scrollBy({ left: 360, behavior: 'smooth' });
-            }
-          }
-        }, 4200);
-      }
+      // 4. CASOS DE ÉXITO 5 ESTRELLAS (3 COLUMNAS BALANCEADAS)
+      // Visualización balanceada y responsiva sin carrusel forzado.
 
       // 5. MODALES LEGALES Y PANEL ADMIN
       window.openLegalModal = function(id) {
