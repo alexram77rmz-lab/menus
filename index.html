@@ -776,60 +776,51 @@
       /* Scrollytelling Mobile Experience: Natural flow, zero scroll trap */
       .scrolly-container {
         height: auto !important;
-        margin-bottom: 20px !important;
+        margin-bottom: 24px !important;
+        padding-top: 64px !important;
       }
       .scrolly-sticky-stage {
         position: relative !important;
         height: auto !important;
-        min-height: 520px;
-        max-height: 640px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        padding: 16px 14px 20px !important;
-        overflow: hidden !important;
-      }
-      #hero-3d-canvas-container {
-        position: absolute !important;
-        top: 0;
-        left: 0;
-        width: 100% !important;
-        height: 100% !important;
-        pointer-events: none !important;
-      }
-      #hero-3d-canvas-container canvas {
-        pointer-events: none !important;
+        min-height: auto !important;
+        max-height: none !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        padding: 12px 14px 20px !important;
+        overflow: visible !important;
       }
       .scrolly-hero-overlay {
+        order: 1 !important;
         position: relative !important;
         top: auto !important;
         left: auto !important;
         transform: none !important;
         width: 100% !important;
-        max-width: 380px !important;
+        max-width: 420px !important;
         opacity: 1 !important;
         filter: none !important;
         pointer-events: auto !important;
-        padding: 4px 0 6px !important;
-        text-align: center;
+        padding: 8px 6px 12px !important;
+        text-align: center !important;
       }
       .pill-kicker {
         font-size: 0.68rem !important;
         padding: 3px 10px !important;
-        margin-bottom: 8px !important;
+        margin-bottom: 10px !important;
       }
       .scrolly-hero-title {
-        font-size: 1.55rem !important;
+        font-size: 1.65rem !important;
         letter-spacing: -0.6px !important;
-        line-height: 1.16 !important;
-        margin-bottom: 8px !important;
+        line-height: 1.2 !important;
+        margin-bottom: 10px !important;
       }
       .scrolly-hero-desc {
-        font-size: 0.82rem !important;
-        line-height: 1.38 !important;
-        margin-bottom: 12px !important;
-        max-width: 330px !important;
+        font-size: 0.86rem !important;
+        line-height: 1.45 !important;
+        margin-bottom: 16px !important;
+        max-width: 340px !important;
         margin-left: auto !important;
         margin-right: auto !important;
       }
@@ -838,7 +829,7 @@
         justify-content: center !important;
         width: 100% !important;
         gap: 8px !important;
-        margin-bottom: 8px !important;
+        margin-bottom: 14px !important;
         flex-wrap: wrap !important;
       }
       .magnetic-wrap, .magnetic-shimmer-btn {
@@ -870,12 +861,13 @@
       }
       /* Mobile Station Switcher & HUD */
       .mobile-station-switcher {
+        order: 2 !important;
         display: flex !important;
-        gap: 6px;
-        justify-content: center;
-        margin-top: 180px;
-        z-index: 20;
-        position: relative;
+        gap: 8px !important;
+        justify-content: center !important;
+        margin: 8px auto 6px !important;
+        z-index: 20 !important;
+        position: relative !important;
       }
       .mobile-station-btn {
         background: rgba(255, 255, 255, 0.9);
@@ -883,9 +875,9 @@
         -webkit-backdrop-filter: blur(8px);
         border: 1px solid var(--border);
         border-radius: 18px;
-        padding: 4px 10px;
+        padding: 5px 12px;
         font-family: var(--mono);
-        font-size: 0.70rem;
+        font-size: 0.72rem;
         font-weight: 700;
         color: var(--text-muted);
         cursor: pointer;
@@ -903,23 +895,22 @@
         box-shadow: 0 2px 10px rgba(37, 99, 235, 0.35);
       }
       .mobile-station-desc {
+        order: 3 !important;
         display: block !important;
-        font-family: var(--sans);
-        font-size: 0.74rem;
-        font-weight: 600;
-        color: var(--text-main);
-        background: rgba(255, 255, 255, 0.88);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border: 1px solid var(--border);
-        border-radius: 14px;
-        padding: 4px 12px;
-        margin-top: 6px;
-        text-align: center;
-        max-width: 92%;
-        transition: opacity 0.2s ease;
-        z-index: 20;
-        position: relative;
+        font-family: var(--sans) !important;
+        font-size: 0.76rem !important;
+        font-weight: 600 !important;
+        color: var(--text-main) !important;
+        background: var(--surface-card) !important;
+        backdrop-filter: blur(10px) !important;
+        border: 1px solid var(--border) !important;
+        border-radius: 14px !important;
+        padding: 5px 14px !important;
+        margin: 4px auto 10px !important;
+        text-align: center !important;
+        max-width: 94% !important;
+        position: relative !important;
+        z-index: 20 !important;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -929,12 +920,44 @@
         border-color: rgba(255, 255, 255, 0.12);
         color: #e2e8f0;
       }
+      #hero-3d-canvas-container {
+        order: 4 !important;
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        width: 100% !important;
+        max-width: 360px !important;
+        height: 290px !important;
+        margin: 0 auto 6px !important;
+        border-radius: 20px !important;
+        overflow: hidden !important;
+        pointer-events: auto !important;
+        touch-action: pan-y !important;
+        background: radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.08) 0%, transparent 72%) !important;
+        border: 1px solid var(--border) !important;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06) !important;
+      }
+      [data-theme="dark"] #hero-3d-canvas-container {
+        background: radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.08) 0%, rgba(5, 8, 17, 0.6) 80%) !important;
+        border-color: rgba(255, 255, 255, 0.08) !important;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45) !important;
+      }
+      #hero-3d-canvas-container canvas {
+        width: 100% !important;
+        height: 100% !important;
+        pointer-events: auto !important;
+        display: block !important;
+      }
+      .scrolly-vignette-overlay {
+        display: none !important;
+      }
       .hero-3d-hud-bar {
+        order: 5 !important;
         position: relative !important;
         bottom: auto !important;
         left: auto !important;
         transform: none !important;
-        margin-top: 8px;
+        margin: 8px auto 0 !important;
         pointer-events: auto !important;
         padding: 5px 10px;
         gap: 6px;
@@ -948,6 +971,16 @@
       }
       .hud-tip {
         display: none;
+      }
+      .nfc-toast {
+        position: fixed !important;
+        top: 70px !important;
+        left: 50% !important;
+        transform: translateX(-50%) translateY(-20px) !important;
+        z-index: 999 !important;
+      }
+      .nfc-toast.show-ios-toast {
+        transform: translateX(-50%) translateY(0) !important;
       }
       /* Mobile Section Spacing & Titles Calibration */
       .section-wrap {
@@ -972,16 +1005,17 @@
         font-size: 0.76rem !important;
       }
       /* Fix Restaurante Pro Ribbon on Mobile */
-      .plan-card.featured {
-        margin-top: 22px !important;
-        padding-top: 38px !important;
+      .plan-card.featured, .plan-card.featured.interactive-card {
+        margin-top: 36px !important;
+        padding-top: 44px !important;
         overflow: visible !important;
       }
       .featured-ribbon {
-        top: -14px !important;
-        font-size: 0.76rem !important;
-        padding: 5px 14px !important;
-        z-index: 30 !important;
+        top: -16px !important;
+        font-size: 0.78rem !important;
+        padding: 6px 18px !important;
+        z-index: 35 !important;
+        box-shadow: 0 4px 18px rgba(37, 99, 235, 0.5) !important;
       }
     }
     .device-switcher-tabs {
@@ -1177,16 +1211,16 @@
       transition: transform 0.15s, border-color 0.15s;
     }
     .plan-card:hover { transform: translateY(-4px); border-color: var(--primary); }
-    .plan-card.featured {
+    .plan-card.featured, .plan-card.featured.interactive-card {
       border: 2px solid var(--primary);
       box-shadow: 0 10px 30px rgba(37, 99, 235, 0.18);
       overflow: visible !important;
-      margin-top: 14px;
-      padding-top: 38px;
+      margin-top: 18px;
+      padding-top: 42px;
     }
     .featured-ribbon {
       position: absolute;
-      top: -14px;
+      top: -16px;
       left: 50%;
       transform: translateX(-50%);
       background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
@@ -1198,12 +1232,125 @@
       border-radius: 20px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.45);
-      z-index: 25;
+      box-shadow: 0 4px 16px rgba(37, 99, 235, 0.45);
+      z-index: 30;
       white-space: nowrap;
       display: inline-flex;
       align-items: center;
       gap: 6px;
+    }
+
+    /* ========================================================================= */
+    /* ESTILOS: PROGRAMA DE AFILIADOS Y RED DE SOCIOS GASTRONÓMICOS              */
+    /* ========================================================================= */
+    .affiliates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
+    }
+    .affiliate-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 30px 24px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: var(--shadow-sm);
+    }
+    .affiliate-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-md);
+    }
+    .affiliate-badge {
+      display: inline-block;
+      align-self: flex-start;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--primary-light);
+      border: 1px solid #bfdbfe;
+      padding: 3px 10px;
+      border-radius: 6px;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    [data-theme="dark"] .affiliate-badge {
+      background: rgba(37, 99, 235, 0.15);
+      border-color: rgba(37, 99, 235, 0.35);
+      color: #60a5fa;
+    }
+    .affiliate-icon {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+      line-height: 1;
+    }
+    .affiliate-title {
+      font-family: var(--heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
+    }
+    .affiliate-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+    .affiliate-perks {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      margin-top: auto;
+      font-size: 0.83rem;
+      color: var(--text-main);
+    }
+    .affiliate-perks li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.4;
+    }
+    .affiliate-perks li span {
+      color: var(--whatsapp);
+      font-weight: bold;
+    }
+
+    /* TARJETA QR MODAL */
+    .qr-modal-content {
+      max-width: 440px;
+      text-align: center;
+      padding: 32px 24px;
+    }
+    .qr-modal-logo {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      margin: 0 auto 14px;
+      border: 2px solid rgba(0, 240, 255, 0.4);
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+      display: block;
+      object-fit: cover;
+    }
+    .qr-modal-image-wrap {
+      background: #ffffff;
+      padding: 14px;
+      border-radius: 18px;
+      display: inline-block;
+      margin: 16px auto;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
+    }
+    .qr-modal-image-wrap img {
+      width: 200px;
+      height: 200px;
+      display: block;
+      border-radius: 8px;
     }
     .plan-name { font-family: var(--heading); font-size: 1.35rem; font-weight: 700; margin-bottom: 4px; }
     .plan-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px; }
@@ -1844,6 +1991,10 @@
       <a href="#nfc" class="nav-drawer-item" onclick="closeNavDrawer()"><span class="drawer-icon">💳</span> <span id="drawNfc">Calculadora de Placas NFC</span></a>
       <a href="#planes" class="nav-drawer-item" onclick="closeNavDrawer()"><span class="drawer-icon">💎</span> <span id="drawPlans">Planes y Precios</span></a>
       <a href="#portafolio" class="nav-drawer-item" onclick="closeNavDrawer()"><span class="drawer-icon">⭐</span> <span id="drawCases">Casos de Éxito</span></a>
+      <a href="#afiliados" class="nav-drawer-item" onclick="closeNavDrawer()"><span class="drawer-icon">🤝</span> <span id="drawAfiliados">Red de Afiliados</span></a>
+      <button type="button" class="nav-drawer-item" onclick="closeNavDrawer(); openQrCardModal();" style="border: none; background: transparent; cursor: pointer; width: 100%; text-align: left; font-family: inherit; font-size: inherit; color: inherit; display: flex; align-items: center; gap: 12px; padding: 10px 14px;">
+        <span class="drawer-icon">📱</span> <span>Mi Tarjeta Digital & QR</span>
+      </button>
       <a href="#conoceme" class="nav-drawer-item" onclick="closeNavDrawer()"><span class="drawer-icon">👨‍💻</span> <span id="drawAbout">Conóceme (Fundador)</span></a>
       <a href="#faq" class="nav-drawer-item" onclick="closeNavDrawer()"><span class="drawer-icon">❓</span> <span id="drawFaq">Preguntas Frecuentes</span></a>
       <button type="button" class="nav-drawer-item nav-drawer-admin" onclick="closeNavDrawer(); openAdminModal();">
@@ -2346,7 +2497,7 @@
             <li><span>✓</span> Conmutador multilingüe (Español / Inglés / Chino)</li>
             <li><span>✓</span> Soporte prioritario y cambios ilimitados</li>
           </ul>
-          <a href="https://wa.me/523312345678?text=Hola%20Alex!%20Me%20interesa%20el%20Plan%20Restaurante%20Pro%20($999%20+%20$200/mes)" class="btn-primary-blue btn-has-ripple" style="text-align: center; justify-content: center; margin-top: auto;">
+          <a href="https://wa.me/523312345678?text=Hola%20Alex!%20Me%20interesa%20el%20Plan%20Restaurante%20Pro%20($999%20+%20$200/mes)" class="btn-primary-blue btn-has-ripple" style="text-align: center; justify-content: center; margin-top: 24px; padding: 14px 20px; font-size: 0.95rem; min-height: 48px; border-radius: 12px; font-weight: 700; width: 100%; display: flex; align-items: center;">
             Quiero el Plan Pro $200/mes
           </a>
         </div>
@@ -2489,6 +2640,75 @@
           </div>
           <a href="dangels/" class="btn-primary-blue btn-has-ripple" style="text-align: center; justify-content: center; font-size: 0.85rem; padding: 10px;">Probar Menú en Vivo ➔</a>
         </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- PROGRAMA DE AFILIADOS Y RED DE SOCIOS PARA NEGOCIOS                      -->
+    <!-- ======================================================================= -->
+    <section class="section-wrap reveal-item" id="afiliados">
+      <div style="text-align: center; max-width: 760px; margin: 0 auto 32px;">
+        <span class="pill-kicker">Red de Socios & Afiliados 🤝</span>
+        <h2 class="section-title" style="margin-bottom: 8px;">Gana comisiones o meses gratis para tu restaurante</h2>
+        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.55;">
+          ¿Conoces dueños de restaurantes, taquerías, cafeterías o bares? Gana ingresos inmediatos o mensualidades sin costo recomendando <span style="font-style: italic; color: var(--primary); font-weight: 700;">MenuExpress</span>.
+        </p>
+      </div>
+
+      <div class="affiliates-grid">
+        <!-- Tarjeta 1: Dueños de Restaurante -->
+        <div class="affiliate-card interactive-card reveal-item delay-1">
+          <div class="affiliate-badge">Para Dueños & Clientes</div>
+          <div class="affiliate-icon">🏪</div>
+          <h3 class="affiliate-title">1 Mes GRATIS por Colega</h3>
+          <p class="affiliate-desc">
+            Por cada colega o restaurante amigo que contrate su menú digital con tu recomendación, te bonificamos <strong>1 mes 100% GRATIS</strong> en tu mensualidad de MenuExpress o te transferimos <strong>$400 MXN</strong> directos a tu cuenta.
+          </p>
+          <ul class="affiliate-perks">
+            <li><span>✓</span> Sin límite de referidos (puedes acumular un año entero gratis).</li>
+            <li><span>✓</span> Válido en cualquier plan ($100, $200 o $300/mes).</li>
+            <li><span>✓</span> Ayudas a un colega a modernizar su negocio.</li>
+          </ul>
+        </div>
+
+        <!-- Tarjeta 2: Meseros, Bartenders & Capitanes -->
+        <div class="affiliate-card interactive-card reveal-item delay-2">
+          <div class="affiliate-badge" style="background: #dcfce7; color: #15803d; border-color: #86efac;">Para Empleados & Gremio</div>
+          <div class="affiliate-icon">💵</div>
+          <h3 class="affiliate-title">$500 MXN en Efectivo</h3>
+          <p class="affiliate-desc">
+            ¿Trabajas en sala, cocina o barra? Si conectas a tu gerente o al dueño de otro establecimiento gastronómico con nosotros y cierran su instalación, te pagamos <strong>$500 MXN en efectivo o transferencia SPEI</strong> inmediata.
+          </p>
+          <ul class="affiliate-perks">
+            <li><span>✓</span> Pago el mismo día en que se monta la versión digital.</li>
+            <li><span>✓</span> Nosotros nos encargamos de todo el pitch y la instalación.</li>
+            <li><span>✓</span> Solo pásanos el contacto o dile que te mencione.</li>
+          </ul>
+        </div>
+
+        <!-- Tarjeta 3: Agencias & Creadores de Contenido -->
+        <div class="affiliate-card interactive-card reveal-item delay-3">
+          <div class="affiliate-badge" style="background: #fef3c7; color: #92400e; border-color: #fde68a;">Agencias & Creadores</div>
+          <div class="affiliate-icon">🚀</div>
+          <h3 class="affiliate-title">20% Comisión Recurrente</h3>
+          <p class="affiliate-desc">
+            Si eres community manager, fotógrafo de alimentos, diseñador o agencia de marketing para restaurantes, añade menús interactivos con NFC y KDS a tu oferta y quédate con un <strong>20% recurrente mensual</strong> de cada cliente.
+          </p>
+          <ul class="affiliate-perks">
+            <li><span>✓</span> Tú mantienes la relación y sumas valor a tu cliente.</li>
+            <li><span>✓</span> Nosotros ponemos el servidor, SAT y soporte técnico 24/7.</li>
+            <li><span>✓</span> Ingresos pasivos estables mes con mes.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Banner de acción para afiliados -->
+      <div class="affiliate-card interactive-card reveal-item delay-4" style="margin-top: 24px; text-align: center; padding: 26px 20px; align-items: center;">
+        <h4 style="font-family: var(--heading); font-size: 1.2rem; font-weight: 700; color: var(--text-main); margin-bottom: 6px;">¿Quieres recomendar a un restaurante hoy mismo?</h4>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px; max-width: 580px;">Escríbeme por WhatsApp con el nombre del negocio o el contacto del dueño y coordinamos su cotización al momento:</p>
+        <a href="https://wa.me/523312345678?text=Hola%20Alex!%20Deseo%20afiliarme%20y%20recomendar%20a%20un%20restaurante%20para%20MenuExpress" class="whatsapp-btn-main" style="display: inline-flex; justify-content: center; padding: 12px 24px; font-size: 0.95rem;">
+          <span>🤝</span> Recomendar Negocio / Afiliarme por WhatsApp
+        </a>
       </div>
     </section>
 
@@ -2853,6 +3073,39 @@
         <button class="btn-primary-blue" onclick="closeLegalModal('aviso')">Comprendido</button>
       </div>
     </div>
+  <!-- ======================================================================= -->
+  <!-- MODAL: TARJETA DE PRESENTACIÓN DIGITAL & CÓDIGO QR PROFESIONAL          -->
+  <!-- ======================================================================= -->
+  <div class="legal-modal-backdrop" id="modal-qr-card" role="dialog" aria-modal="true">
+    <div class="legal-modal-content qr-modal-content">
+      <div class="legal-modal-header" style="justify-content: flex-end; padding: 0 0 10px; border-bottom: none;">
+        <button class="legal-modal-close" onclick="closeQrCardModal()">&times;</button>
+      </div>
+      <img src="images/menuexpress_logo.jpg" alt="MenuExpress Logo" class="qr-modal-logo">
+      <span class="affiliate-badge" style="align-self: center; margin-bottom: 8px;">Carta de Presentación Oficial</span>
+      <h3 style="font-family: var(--heading); font-size: 1.45rem; font-weight: 800; color: var(--text-main); margin-bottom: 4px;">Alex Ramírez</h3>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">Fundador & Desarrollo Técnico · MenuExpress México</p>
+      
+      <div class="qr-modal-image-wrap">
+        <img src="images/qr_menuexpress_web.png" alt="Código QR MenuExpress Oficial">
+      </div>
+      
+      <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 18px; line-height: 1.4;">
+        Apunta con la cámara de tu smartphone para explorar en vivo los menús interactivos, la comanda KDS y la calculadora NFC.
+      </p>
+
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <a href="https://wa.me/523312345678?text=Hola%20Alex!%20Escane%C3%A9%20tu%20tarjeta%20digital%20y%20me%20gustar%C3%ADa%20cotizar" class="whatsapp-btn-main" style="justify-content: center; padding: 12px; font-size: 0.92rem;">
+          <span>💬</span> Contactar por WhatsApp Directo
+        </a>
+        <a href="tarjeta.html" target="_blank" class="btn-secondary-clean" style="justify-content: center; font-size: 0.85rem; padding: 10px;">
+          <span>📱</span> Abrir Tarjeta en Pantalla Completa ↗
+        </a>
+        <a href="images/qr_menuexpress_web.png" download="QR_MenuExpress_Alex.png" class="btn-secondary-clean" style="justify-content: center; font-size: 0.82rem; padding: 8px; color: var(--text-muted);">
+          <span>📥</span> Descargar Imagen QR para Imprimir
+        </a>
+      </div>
+    </div>
   </div>
 
   <!-- JAVASCRIPT DINÁMICO: CONTROL DEL SMARTPHONE, CARRUSEL Y MODALES -->
@@ -2891,6 +3144,7 @@
           drawNfc: 'Calculadora de Placas NFC',
           drawPlans: 'Planes y Precios',
           drawCases: 'Casos de Éxito',
+          drawAfiliados: 'Red de Afiliados',
           drawAbout: 'Conóceme (Fundador)',
           drawFaq: 'Preguntas Frecuentes',
           demoPill: 'Demostración en Tiempo Real',
@@ -2931,6 +3185,7 @@
           drawNfc: 'NFC Plaques Calculator',
           drawPlans: 'Pricing & Plans',
           drawCases: 'Success Stories',
+          drawAfiliados: 'Affiliate Network',
           drawAbout: 'About the Founder',
           drawFaq: 'FAQ',
           demoPill: 'Real-Time Interactive Demo',
@@ -2971,6 +3226,7 @@
           drawNfc: 'NFC标牌计算器',
           drawPlans: '套餐与价格',
           drawCases: '真实成功案例',
+          drawAfiliados: '推荐联盟',
           drawAbout: '创始人介绍',
           drawFaq: '常见问题解答',
           demoPill: '实机全流程互动演示',
@@ -3237,6 +3493,15 @@
       };
       window.closeAdminModal = function() {
         const m = document.getElementById('modal-admin');
+        if (m) { m.style.display = 'none'; document.body.style.overflow = ''; }
+      };
+
+      window.openQrCardModal = function() {
+        const m = document.getElementById('modal-qr-card');
+        if (m) { m.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+      };
+      window.closeQrCardModal = function() {
+        const m = document.getElementById('modal-qr-card');
         if (m) { m.style.display = 'none'; document.body.style.overflow = ''; }
       };
 
