@@ -3,39 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>ALEX · Artisanal Grill & Smokehouse | Menú Digital & Asistente IA</title>
-  <meta name="description" content="Cortes Prime añejados al mezquite, ahumados lentos de 14 horas, mixología de autor y asistente gastronómico con IA.">
+  <title>ALEX · Artisanal Grill & Smokehouse | Menú & Asistente</title>
+  <meta name="description" content="Cortes Prime añejados al mezquite, ahumados lentos de 14 horas, mixología de autor y concierge gastronómico.">
   
   <!-- OpenGraph para WhatsApp, Telegram y Redes Sociales -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="ALEX · Artisanal Grill & Smokehouse 🥩🔥">
-  <meta property="og:description" content="Menú Digital de Alta Gama · Cortes Prime, Brisket Ahumado 14h y Asistente con IA.">
+  <meta property="og:description" content="Cortes Prime añejados al mezquite, Brisket Ahumado 14h y Asistente Gastronómico.">
   <meta property="og:image" content="https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&auto=format&fit=crop&q=85">
   <meta property="og:url" content="https://alexram77rmz-lab.github.io/menus/alex/">
-  <meta name="theme-color" content="#0a0d14">
+  <meta name="theme-color" content="#161412">
 
-  <!-- Tipografías de Alta Gama -->
+  <!-- Tipografías de Alta Gama Editorial / Fine Dining -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #0a0d14;
-      --bg-surface: #121824;
-      --bg-card: rgba(22, 30, 46, 0.85);
-      --border: rgba(255, 255, 255, 0.1);
-      --border-focus: rgba(245, 158, 11, 0.45);
-      --primary: #f59e0b;
-      --primary-hover: #d97706;
-      --primary-glow: rgba(245, 158, 11, 0.28);
-      --ember: #ef4444;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
+      /* Paleta Cálida de Alta Cocina: Espresso Ahumado, Bronce, Oro Champán y Marfil */
+      --bg: #141210;
+      --bg-surface: #1a1715;
+      --bg-card: rgba(26, 23, 21, 0.78);
+      --border: rgba(245, 230, 210, 0.09);
+      --border-focus: rgba(212, 175, 55, 0.45);
+      --gold: #d4af37;
+      --gold-light: #fef08a;
+      --gold-glow: rgba(212, 175, 55, 0.22);
+      --bronze: #c2410c;
+      --text-main: #fafaf9;
+      --text-muted: #a8a29e;
+      --text-sub: #d6d3d1;
       --success: #10b981;
       --sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       --heading: 'Space Grotesk', sans-serif;
-      --mono: 'JetBrains Mono', monospace;
+      --serif-accent: 'Cinzel', serif;
       --radius: 20px;
     }
 
@@ -54,23 +56,59 @@
       padding-bottom: 120px;
       overflow-x: hidden;
       min-height: 100vh;
-      background-image: 
-        radial-gradient(ellipse at 50% -10%, rgba(245, 158, 11, 0.15) 0%, transparent 60%),
-        radial-gradient(ellipse at 90% 40%, rgba(239, 68, 68, 0.08) 0%, transparent 50%);
+      position: relative;
     }
 
     /* ========================================================================= */
-    /* HEADER ULTRA-MINIMALISTA & MODO MESA                                      */
+    /* VIDEO AMBIENTAL DE FONDO (DETRÁS DE TODA LA WEB Y DE LOS PLATILLOS)       */
+    /* ========================================================================= */
+    .ambient-web-video-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .ambient-web-video-backdrop video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.22;
+      filter: contrast(1.15) brightness(0.65) saturate(1.1);
+      transform: scale(1.05);
+    }
+
+    .ambient-web-video-overlay {
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse at 50% 20%, rgba(20, 18, 16, 0.45) 0%, rgba(18, 16, 14, 0.88) 75%, var(--bg) 100%),
+        linear-gradient(180deg, rgba(20, 18, 16, 0.3) 0%, rgba(20, 18, 16, 0.85) 100%);
+    }
+
+    /* Capa de contenido por encima del video ambiental */
+    .app-relative-layer {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ========================================================================= */
+    /* HEADER REFINADO / CONCIERGE DE MESA                                       */
     /* ========================================================================= */
     header {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(10, 13, 20, 0.88);
+      background: rgba(20, 18, 16, 0.86);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--border);
-      padding: 12px 18px;
+      padding: 14px 20px;
+      transition: background 0.3s ease;
     }
 
     .header-inner {
@@ -94,142 +132,122 @@
       width: 44px;
       height: 44px;
       border-radius: 12px;
-      background: linear-gradient(135deg, #1e2638 0%, #0d121d 100%);
-      border: 1px solid rgba(245, 158, 11, 0.4);
+      background: linear-gradient(135deg, #26221f 0%, #161412 100%);
+      border: 1px solid rgba(212, 175, 55, 0.35);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), 0 0 12px rgba(245, 158, 11, 0.18);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45), 0 0 14px rgba(212, 175, 55, 0.15);
     }
 
     .brand-text h1 {
       font-family: var(--heading);
-      font-size: 1.35rem;
+      font-size: 1.32rem;
       font-weight: 800;
-      letter-spacing: 1.5px;
+      letter-spacing: 1.8px;
       color: #ffffff;
       line-height: 1;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
     }
 
     .brand-text h1 span {
-      color: var(--primary);
+      color: var(--gold);
     }
 
     .brand-text p {
-      font-family: var(--mono);
       font-size: 0.65rem;
       color: var(--text-muted);
-      letter-spacing: 1px;
+      letter-spacing: 1.2px;
       text-transform: uppercase;
-      margin-top: 2px;
+      margin-top: 3px;
+      font-weight: 600;
     }
 
     .table-status-pill {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: rgba(245, 158, 11, 0.12);
-      border: 1px solid rgba(245, 158, 11, 0.35);
-      color: #fbbf24;
-      font-family: var(--mono);
-      font-size: 0.74rem;
+      gap: 7px;
+      background: rgba(212, 175, 55, 0.08);
+      border: 1px solid rgba(212, 175, 55, 0.28);
+      color: var(--gold-light);
+      font-size: 0.76rem;
       font-weight: 700;
-      padding: 5px 12px;
+      padding: 6px 14px;
       border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .table-status-pill:hover {
+      background: rgba(212, 175, 55, 0.16);
+      border-color: var(--gold);
     }
 
     .table-dot {
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: #10b981;
-      box-shadow: 0 0 8px #10b981;
+      background: var(--success);
+      box-shadow: 0 0 8px var(--success);
       animation: pulseDot 2s infinite ease-in-out;
     }
 
     @keyframes pulseDot {
       0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.3); opacity: 0.6; }
+      50% { transform: scale(1.25); opacity: 0.65; }
     }
 
     /* ========================================================================= */
-    /* HERO BANNER CON MICRO-VIDEO EN BUCLE DE FUEGO & CARNE                      */
+    /* HERO INTRO EDITORIAL / ATMÓSFERA GASTRONÓMICA                             */
     /* ========================================================================= */
-    .hero-video-section {
-      position: relative;
-      width: 100%;
-      height: 310px;
-      overflow: hidden;
-      display: flex;
-      align-items: flex-end;
-      padding: 24px 20px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .hero-video-bg {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
-      transform: translate(-50%, -50%);
-      object-fit: cover;
-      opacity: 0.48;
-      filter: saturate(1.2) contrast(1.1);
-      pointer-events: none;
-    }
-
-    .hero-vignette {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(10, 13, 20, 0.3) 0%, rgba(10, 13, 20, 0.85) 75%, var(--bg) 100%);
-      pointer-events: none;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
+    .hero-intro-section {
       max-width: 1080px;
       margin: 0 auto;
-      width: 100%;
+      padding: 38px 20px 24px;
     }
 
     .hero-kicker-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(239, 68, 68, 0.18);
-      border: 1px solid rgba(239, 68, 68, 0.4);
-      color: #fca5a5;
-      font-family: var(--mono);
+      background: rgba(194, 65, 12, 0.15);
+      border: 1px solid rgba(194, 65, 12, 0.35);
+      color: #fdba74;
       font-size: 0.72rem;
       font-weight: 700;
-      padding: 4px 10px;
+      padding: 4px 12px;
       border-radius: 14px;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
       backdrop-filter: blur(8px);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
     }
 
     .hero-headline {
       font-family: var(--heading);
-      font-size: 1.85rem;
+      font-size: 2.2rem;
       font-weight: 800;
-      letter-spacing: -0.5px;
-      line-height: 1.15;
-      margin-bottom: 6px;
+      letter-spacing: -0.8px;
+      line-height: 1.14;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    .hero-headline em {
+      font-style: normal;
+      background: linear-gradient(135deg, #ffffff 0%, #fef08a 60%, #d4af37 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .hero-sub {
-      font-size: 0.88rem;
-      color: #cbd5e1;
-      max-width: 480px;
-      line-height: 1.4;
-      margin-bottom: 14px;
+      font-size: 0.92rem;
+      color: var(--text-sub);
+      max-width: 520px;
+      line-height: 1.5;
+      margin-bottom: 20px;
     }
 
     .hero-action-chips {
@@ -242,44 +260,44 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(36, 32, 29, 0.75);
       border: 1px solid var(--border);
       border-radius: 20px;
-      padding: 6px 14px;
-      font-size: 0.78rem;
+      padding: 7px 16px;
+      font-size: 0.80rem;
       font-weight: 600;
       color: #ffffff;
       text-decoration: none;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .chip-btn:hover {
-      background: rgba(245, 158, 11, 0.2);
-      border-color: var(--primary);
+      background: rgba(212, 175, 55, 0.18);
+      border-color: var(--gold);
       transform: translateY(-2px);
     }
 
     .chip-btn.chip-wallet {
-      background: linear-gradient(135deg, rgba(245, 158, 11, 0.25) 0%, rgba(239, 68, 68, 0.2) 100%);
-      border-color: rgba(245, 158, 11, 0.5);
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.18) 0%, rgba(194, 65, 12, 0.15) 100%);
+      border-color: rgba(212, 175, 55, 0.4);
       color: #fef08a;
     }
 
-    .chip-btn.chip-ai {
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.2) 0%, rgba(37, 99, 235, 0.25) 100%);
-      border-color: rgba(56, 189, 248, 0.5);
-      color: #bae6fd;
+    .chip-btn.chip-concierge {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(212, 175, 55, 0.12) 100%);
+      border-color: rgba(255, 255, 255, 0.25);
+      color: #ffffff;
     }
 
     /* ========================================================================= */
-    /* BARRA DE BOTONES RÁPIDOS DE MESA (LLAMAR MESERO / CUENTA)                 */
+    /* BARRA DE SERVICIO DE MESA                                                 */
     /* ========================================================================= */
     .table-service-bar {
       max-width: 1080px;
-      margin: 14px auto 0;
-      padding: 0 16px;
+      margin: 0 auto;
+      padding: 0 20px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px;
@@ -290,55 +308,54 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 10px 14px;
+      padding: 11px 16px;
       border-radius: 14px;
       border: 1px solid var(--border);
-      background: var(--bg-surface);
+      background: rgba(30, 26, 24, 0.8);
+      backdrop-filter: blur(10px);
       color: var(--text-main);
       font-family: var(--sans);
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.2s ease;
     }
 
-    .service-btn:hover, .service-btn:active {
-      transform: scale(0.98);
-      border-color: var(--primary);
+    .service-btn:hover {
+      border-color: var(--gold);
+      background: rgba(45, 38, 34, 0.9);
+      transform: translateY(-1px);
     }
 
     .service-btn-waiter:hover {
-      background: rgba(245, 158, 11, 0.15);
-      color: #fbbf24;
+      color: var(--gold-light);
     }
 
     .service-btn-bill:hover {
-      background: rgba(16, 185, 129, 0.15);
-      color: #34d399;
+      color: #86efac;
     }
 
     /* ========================================================================= */
-    /* SELECTOR DE CATEGORÍAS & FILTRO DE ALÉRGENOS / DIETA                     */
+    /* SELECTOR DE CATEGORÍAS & FILTROS DE DIETA                                 */
     /* ========================================================================= */
     .filter-sticky-wrapper {
       position: sticky;
-      top: 69px;
+      top: 72px;
       z-index: 90;
-      background: rgba(10, 13, 20, 0.94);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      background: rgba(20, 18, 16, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
-      padding: 10px 0;
-      margin-top: 14px;
+      padding: 12px 0;
+      margin-top: 18px;
     }
 
     .category-scroll-strip {
       display: flex;
       overflow-x: auto;
       gap: 8px;
-      padding: 0 16px;
+      padding: 0 20px;
       scrollbar-width: none;
-      -ms-overflow-style: none;
     }
 
     .category-scroll-strip::-webkit-scrollbar {
@@ -350,29 +367,29 @@
       align-items: center;
       gap: 6px;
       white-space: nowrap;
-      padding: 8px 16px;
+      padding: 8px 18px;
       border-radius: 30px;
       border: 1px solid var(--border);
-      background: var(--bg-surface);
+      background: rgba(32, 28, 25, 0.7);
       color: var(--text-muted);
       font-size: 0.82rem;
       font-weight: 700;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.25s ease;
     }
 
     .cat-tab.active {
-      background: var(--primary);
-      color: #0a0d14;
-      border-color: var(--primary);
-      box-shadow: 0 4px 14px var(--primary-glow);
+      background: var(--gold);
+      color: #141210;
+      border-color: var(--gold);
+      box-shadow: 0 4px 16px var(--gold-glow);
     }
 
     .dietary-tags-row {
       display: flex;
       overflow-x: auto;
       gap: 6px;
-      padding: 8px 16px 0;
+      padding: 10px 20px 0;
       scrollbar-width: none;
     }
 
@@ -384,42 +401,41 @@
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      font-family: var(--mono);
-      font-size: 0.68rem;
+      font-size: 0.70rem;
       font-weight: 700;
-      padding: 4px 10px;
+      padding: 4px 12px;
       border-radius: 12px;
       background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border);
       color: var(--text-muted);
       cursor: pointer;
       transition: all 0.2s ease;
     }
 
     .diet-pill.active {
-      background: rgba(16, 185, 129, 0.2);
-      border-color: #10b981;
-      color: #34d399;
+      background: rgba(212, 175, 55, 0.16);
+      border-color: var(--gold);
+      color: var(--gold-light);
     }
 
     /* ========================================================================= */
-    /* CATÁLOGO DE PLATILLOS (TARJETAS GLASSMORPHISM CON VIDEO PREVIEW)         */
+    /* CATÁLOGO DE PLATILLOS (TARJETAS GLASSMORPHISM CON FONDO AMBIENTAL)        */
     /* ========================================================================= */
     .menu-container {
       max-width: 1080px;
-      margin: 18px auto 0;
-      padding: 0 16px;
+      margin: 20px auto 0;
+      padding: 0 20px;
     }
 
     .category-section-title {
       font-family: var(--heading);
-      font-size: 1.25rem;
+      font-size: 1.35rem;
       font-weight: 800;
-      letter-spacing: -0.3px;
-      margin: 22px 0 12px;
+      letter-spacing: -0.4px;
+      margin: 32px 0 16px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       color: #ffffff;
     }
 
@@ -427,46 +443,60 @@
       font-size: 0.78rem;
       color: var(--text-muted);
       font-weight: 500;
-      font-family: var(--mono);
     }
 
     .dishes-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-      gap: 16px;
+      gap: 18px;
+    }
+
+    /* ANIMACIÓN SUAVE AL BAJAR (SCROLL REVEAL EDITORIAL) */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .dish-card {
       background: var(--bg-card);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       overflow: hidden;
       display: flex;
       flex-direction: column;
       position: relative;
-      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
     }
 
     .dish-card:hover {
       transform: translateY(-4px);
       border-color: var(--border-focus);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.08);
     }
 
     .dish-image-wrapper {
       position: relative;
       width: 100%;
-      height: 195px;
+      height: 205px;
       overflow: hidden;
-      background: #1a2233;
+      background: #1e1b18;
     }
 
     .dish-image {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.4s ease;
+      transition: transform 0.45s ease;
     }
 
     .dish-card:hover .dish-image {
@@ -475,16 +505,15 @@
 
     .dish-star-tag {
       position: absolute;
-      top: 10px;
-      left: 10px;
-      background: rgba(10, 13, 20, 0.85);
+      top: 12px;
+      left: 12px;
+      background: rgba(20, 18, 16, 0.88);
       backdrop-filter: blur(8px);
-      border: 1px solid rgba(245, 158, 11, 0.4);
+      border: 1px solid rgba(212, 175, 55, 0.4);
       color: #fef08a;
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      font-weight: 800;
-      padding: 4px 10px;
+      font-size: 0.70rem;
+      font-weight: 700;
+      padding: 4px 12px;
       border-radius: 20px;
       display: inline-flex;
       align-items: center;
@@ -492,43 +521,8 @@
       z-index: 2;
     }
 
-    .video-preview-trigger {
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      background: rgba(10, 13, 20, 0.85);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      color: #ffffff;
-      font-family: var(--mono);
-      font-size: 0.70rem;
-      font-weight: 700;
-      padding: 5px 10px;
-      border-radius: 20px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      z-index: 2;
-      transition: all 0.2s ease;
-    }
-
-    .video-preview-trigger:hover {
-      background: var(--ember);
-      border-color: var(--ember);
-      transform: scale(1.05);
-    }
-
-    .video-pulse-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #ef4444;
-      animation: pulseDot 1.4s infinite;
-    }
-
     .dish-content {
-      padding: 16px;
+      padding: 18px;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
@@ -545,23 +539,23 @@
 
     .dish-title {
       font-family: var(--heading);
-      font-size: 1.1rem;
+      font-size: 1.12rem;
       font-weight: 700;
       color: #ffffff;
     }
 
     .dish-price {
-      font-family: var(--mono);
-      font-size: 1.15rem;
+      font-family: var(--heading);
+      font-size: 1.18rem;
       font-weight: 800;
-      color: var(--primary);
+      color: var(--gold);
       white-space: nowrap;
     }
 
     .dish-desc {
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       color: var(--text-muted);
-      line-height: 1.4;
+      line-height: 1.45;
       margin-bottom: 12px;
     }
 
@@ -569,19 +563,18 @@
     .dish-meta-badges {
       display: flex;
       flex-wrap: wrap;
-      gap: 5px;
-      margin-bottom: 14px;
+      gap: 6px;
+      margin-bottom: 16px;
     }
 
     .meta-badge {
-      font-family: var(--mono);
-      font-size: 0.66rem;
+      font-size: 0.68rem;
       font-weight: 600;
-      padding: 3px 8px;
+      padding: 3px 9px;
       border-radius: 8px;
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--border);
-      color: #cbd5e1;
+      color: var(--text-sub);
       display: inline-flex;
       align-items: center;
       gap: 4px;
@@ -589,20 +582,20 @@
 
     .badge-gluten-free {
       background: rgba(16, 185, 129, 0.12);
-      border-color: rgba(16, 185, 129, 0.35);
-      color: #34d399;
+      border-color: rgba(16, 185, 129, 0.3);
+      color: #6ee7b7;
     }
 
     .badge-spicy {
-      background: rgba(239, 68, 68, 0.12);
-      border-color: rgba(239, 68, 68, 0.35);
-      color: #f87171;
+      background: rgba(194, 65, 12, 0.15);
+      border-color: rgba(194, 65, 12, 0.35);
+      color: #fdba74;
     }
 
     .badge-nutrition {
-      background: rgba(56, 189, 248, 0.1);
-      border-color: rgba(56, 189, 248, 0.3);
-      color: #7dd3fc;
+      background: rgba(212, 175, 55, 0.10);
+      border-color: rgba(212, 175, 55, 0.28);
+      color: var(--gold-light);
     }
 
     .dish-order-actions {
@@ -615,7 +608,7 @@
     .qty-control {
       display: inline-flex;
       align-items: center;
-      background: var(--bg-surface);
+      background: rgba(20, 18, 16, 0.8);
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 3px;
@@ -644,18 +637,17 @@
     .qty-num {
       width: 24px;
       text-align: center;
-      font-family: var(--mono);
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       font-weight: 700;
     }
 
     .add-to-cart-btn {
       flex-grow: 1;
-      background: linear-gradient(135deg, var(--primary) 0%, #d97706 100%);
-      color: #0a0d14;
+      background: linear-gradient(135deg, var(--gold) 0%, #b8860b 100%);
+      color: #141210;
       border: none;
       border-radius: 12px;
-      padding: 9px 14px;
+      padding: 10px 14px;
       font-family: var(--sans);
       font-size: 0.84rem;
       font-weight: 800;
@@ -665,26 +657,26 @@
       justify-content: center;
       gap: 6px;
       transition: all 0.2s ease;
-      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.25);
+      box-shadow: 0 4px 14px rgba(212, 175, 55, 0.25);
     }
 
-    .add-to-cart-btn:hover, .add-to-cart-btn:active {
-      transform: scale(0.98);
-      filter: brightness(1.1);
+    .add-to-cart-btn:hover {
+      filter: brightness(1.08);
+      transform: scale(0.99);
     }
 
     /* ========================================================================= */
-    /* BOTÓN FLOTANTE Y DRAWER: MESERO IA CONVERSACIONAL                         */
+    /* TRIGGER FLOTANTE: ASISTENTE ALEX (HOSPITALITY LUXURY)                     */
     /* ========================================================================= */
-    .ai-floating-trigger {
+    .assistant-floating-trigger {
       position: fixed;
       bottom: 84px;
       right: 18px;
       z-index: 120;
-      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-      border: 1px solid rgba(56, 189, 248, 0.6);
+      background: linear-gradient(135deg, #2a2521 0%, #1a1715 100%);
+      border: 1px solid rgba(212, 175, 55, 0.5);
       color: #ffffff;
-      padding: 10px 18px;
+      padding: 11px 20px;
       border-radius: 30px;
       display: inline-flex;
       align-items: center;
@@ -692,43 +684,28 @@
       font-family: var(--sans);
       font-size: 0.84rem;
       font-weight: 700;
-      box-shadow: 0 8px 24px rgba(2, 132, 199, 0.45);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55), 0 0 16px rgba(212, 175, 55, 0.2);
       cursor: pointer;
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .ai-floating-trigger:hover {
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 12px 30px rgba(2, 132, 199, 0.6);
+    .assistant-floating-trigger:hover {
+      transform: translateY(-3px);
+      border-color: var(--gold);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), 0 0 22px rgba(212, 175, 55, 0.3);
     }
 
-    .ai-beacon {
-      position: relative;
-      width: 10px;
-      height: 10px;
-      background: #38bdf8;
-      border-radius: 50%;
+    .assistant-icon-glow {
+      color: var(--gold);
+      font-size: 1rem;
+      line-height: 1;
     }
 
-    .ai-beacon::after {
-      content: '';
-      position: absolute;
-      inset: -4px;
-      border-radius: 50%;
-      border: 2px solid #38bdf8;
-      animation: beaconWave 1.8s infinite;
-    }
-
-    @keyframes beaconWave {
-      0% { transform: scale(0.8); opacity: 1; }
-      100% { transform: scale(2.2); opacity: 0; }
-    }
-
-    /* Modal / Drawer Mesero IA */
-    .ai-modal-backdrop {
+    /* Modal / Drawer del Asistente */
+    .assistant-modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.75);
+      background: rgba(0, 0, 0, 0.78);
       backdrop-filter: blur(10px);
       z-index: 200;
       display: none;
@@ -736,72 +713,74 @@
       transition: opacity 0.3s ease;
     }
 
-    .ai-modal-drawer {
+    .assistant-modal-drawer {
       position: fixed;
       bottom: 0;
       left: 50%;
       transform: translateX(-50%) translateY(100%);
       width: 100%;
       max-width: 520px;
-      height: 82vh;
-      max-height: 680px;
-      background: #0f1523;
-      border: 1px solid rgba(56, 189, 248, 0.35);
+      height: 80vh;
+      max-height: 660px;
+      background: #181513;
+      border: 1px solid rgba(212, 175, 55, 0.3);
       border-top-left-radius: 28px;
       border-top-right-radius: 28px;
       z-index: 210;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.7);
       transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .ai-modal-backdrop.open { display: block; opacity: 1; }
-    .ai-modal-backdrop.open + .ai-modal-drawer { transform: translateX(-50%) translateY(0); }
+    .assistant-modal-backdrop.open { display: block; opacity: 1; }
+    .assistant-modal-backdrop.open + .assistant-modal-drawer { transform: translateX(-50%) translateY(0); }
 
-    .ai-drawer-header {
+    .assistant-drawer-header {
       padding: 16px 20px;
       border-bottom: 1px solid var(--border);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(2, 132, 199, 0.08);
+      background: rgba(212, 175, 55, 0.06);
     }
 
-    .ai-header-info {
+    .assistant-header-info {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
 
-    .ai-avatar {
-      width: 38px;
-      height: 38px;
+    .assistant-avatar {
+      width: 40px;
+      height: 40px;
       border-radius: 12px;
-      background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+      background: linear-gradient(135deg, #d4af37 0%, #856404 100%);
+      color: #141210;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.2rem;
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.25);
     }
 
-    .ai-header-text h3 {
+    .assistant-header-text h3 {
       font-family: var(--heading);
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       color: #ffffff;
     }
 
-    .ai-header-text p {
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      color: #38bdf8;
+    .assistant-header-text p {
+      font-size: 0.72rem;
+      color: var(--gold);
+      font-weight: 600;
     }
 
-    .ai-drawer-close {
+    .assistant-drawer-close {
       width: 32px;
       height: 32px;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.08);
       border: none;
       color: #ffffff;
       border-radius: 50%;
@@ -812,53 +791,53 @@
       justify-content: center;
     }
 
-    .ai-chat-body {
+    .assistant-chat-body {
       flex-grow: 1;
       overflow-y: auto;
-      padding: 16px;
+      padding: 18px;
       display: flex;
       flex-direction: column;
       gap: 14px;
     }
 
     .chat-bubble {
-      max-width: 85%;
-      padding: 12px 16px;
+      max-width: 86%;
+      padding: 13px 18px;
       border-radius: 18px;
       font-size: 0.86rem;
-      line-height: 1.45;
+      line-height: 1.48;
     }
 
-    .chat-bubble.ai {
+    .chat-bubble.assistant {
       align-self: flex-start;
-      background: #182235;
-      border: 1px solid rgba(56, 189, 248, 0.25);
-      color: #f1f5f9;
+      background: #24201c;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      color: #f5f5f4;
       border-bottom-left-radius: 4px;
     }
 
     .chat-bubble.user {
       align-self: flex-end;
-      background: var(--primary);
-      color: #0a0d14;
-      font-weight: 600;
+      background: var(--gold);
+      color: #141210;
+      font-weight: 700;
       border-bottom-right-radius: 4px;
     }
 
     .chat-dish-suggestion {
-      background: #0f172a;
+      background: #141210;
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 10px;
+      padding: 12px;
       margin-top: 10px;
       display: flex;
-      gap: 10px;
+      gap: 12px;
       align-items: center;
     }
 
     .chat-dish-img {
-      width: 60px;
-      height: 60px;
+      width: 62px;
+      height: 62px;
       border-radius: 10px;
       object-fit: cover;
     }
@@ -869,31 +848,30 @@
 
     .chat-dish-info h4 {
       font-family: var(--heading);
-      font-size: 0.88rem;
+      font-size: 0.90rem;
       color: #ffffff;
     }
 
     .chat-dish-info p {
-      font-family: var(--mono);
-      font-size: 0.82rem;
-      color: var(--primary);
-      font-weight: 700;
+      font-size: 0.84rem;
+      color: var(--gold);
+      font-weight: 800;
     }
 
     .chat-dish-add {
-      background: var(--primary);
-      color: #0a0d14;
+      background: var(--gold);
+      color: #141210;
       border: none;
-      border-radius: 8px;
-      padding: 6px 10px;
-      font-size: 0.74rem;
+      border-radius: 10px;
+      padding: 7px 12px;
+      font-size: 0.75rem;
       font-weight: 800;
       cursor: pointer;
       white-space: nowrap;
     }
 
-    .ai-quick-prompts {
-      padding: 10px 16px;
+    .assistant-quick-prompts {
+      padding: 10px 18px;
       border-top: 1px solid var(--border);
       display: flex;
       overflow-x: auto;
@@ -901,54 +879,54 @@
       scrollbar-width: none;
     }
 
-    .ai-quick-prompts::-webkit-scrollbar {
+    .assistant-quick-prompts::-webkit-scrollbar {
       display: none;
     }
 
     .prompt-chip {
       white-space: nowrap;
-      background: #182235;
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      color: #bae6fd;
+      background: #24201c;
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      color: #fef08a;
       font-size: 0.74rem;
       font-weight: 600;
-      padding: 6px 12px;
+      padding: 7px 14px;
       border-radius: 16px;
       cursor: pointer;
       transition: all 0.2s;
     }
 
     .prompt-chip:hover {
-      background: rgba(56, 189, 248, 0.25);
-      border-color: #38bdf8;
+      background: rgba(212, 175, 55, 0.2);
+      border-color: var(--gold);
     }
 
-    .ai-input-row {
-      padding: 12px 16px;
+    .assistant-input-row {
+      padding: 12px 18px;
       border-top: 1px solid var(--border);
       display: flex;
       gap: 8px;
-      background: #0d121e;
+      background: #141210;
     }
 
-    .ai-input-field {
+    .assistant-input-field {
       flex-grow: 1;
-      background: #182235;
+      background: #24201c;
       border: 1px solid var(--border);
       border-radius: 20px;
-      padding: 10px 16px;
+      padding: 10px 18px;
       color: #ffffff;
       font-size: 0.86rem;
       outline: none;
     }
 
-    .ai-input-field:focus {
-      border-color: #38bdf8;
+    .assistant-input-field:focus {
+      border-color: var(--gold);
     }
 
-    .ai-send-btn {
-      background: #0284c7;
-      color: #ffffff;
+    .assistant-send-btn {
+      background: var(--gold);
+      color: #141210;
       border: none;
       border-radius: 50%;
       width: 40px;
@@ -957,16 +935,16 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      font-size: 1.1rem;
+      font-weight: 800;
     }
 
     /* ========================================================================= */
-    /* MODAL DE TARJETA WALLET (APPLE & GOOGLE FIDELIZACIÓN)                     */
+    /* MODAL DE TARJETA WALLET (APPLE & GOOGLE)                                */
     /* ========================================================================= */
     .wallet-modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 0.82);
       backdrop-filter: blur(12px);
       z-index: 250;
       display: none;
@@ -975,26 +953,17 @@
       padding: 16px;
     }
 
-    .wallet-modal-backdrop.open {
-      display: flex;
-    }
+    .wallet-modal-backdrop.open { display: flex; }
 
     .wallet-pass-card {
       width: 100%;
       max-width: 360px;
-      background: linear-gradient(135deg, #181d28 0%, #0a0d14 100%);
-      border: 1px solid rgba(245, 158, 11, 0.45);
+      background: linear-gradient(135deg, #24201c 0%, #141210 100%);
+      border: 1px solid rgba(212, 175, 55, 0.4);
       border-radius: 24px;
       padding: 24px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(245, 158, 11, 0.15);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(212, 175, 55, 0.12);
       position: relative;
-      overflow: hidden;
-      animation: passZoom 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    @keyframes passZoom {
-      from { transform: scale(0.9); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
     }
 
     .pass-header {
@@ -1007,30 +976,48 @@
     .pass-brand h2 {
       font-family: var(--heading);
       font-size: 1.25rem;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
       color: #ffffff;
     }
 
-    .pass-brand h2 span { color: var(--primary); }
+    .pass-brand h2 span { color: var(--gold); }
 
     .pass-brand p {
-      font-family: var(--mono);
       font-size: 0.65rem;
-      color: #94a3b8;
+      color: var(--text-muted);
       text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     .pass-vip-badge {
-      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-      color: #0a0d14;
-      font-family: var(--mono);
+      background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+      color: #141210;
       font-size: 0.70rem;
       font-weight: 800;
-      padding: 3px 10px;
+      padding: 4px 12px;
       border-radius: 12px;
     }
 
-    /* Sellos de Tarjeta */
+    .push-simulator-box {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 14px;
+      padding: 10px 14px;
+      margin-bottom: 18px;
+      font-size: 0.78rem;
+      line-height: 1.35;
+    }
+
+    .push-sim-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.66rem;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
     .stamps-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -1039,7 +1026,7 @@
       background: rgba(0, 0, 0, 0.3);
       padding: 12px;
       border-radius: 16px;
-      border: 1px dashed rgba(245, 158, 11, 0.3);
+      border: 1px dashed rgba(212, 175, 55, 0.3);
     }
 
     .stamp-slot {
@@ -1049,56 +1036,33 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--border);
     }
 
     .stamp-slot.filled {
-      background: rgba(245, 158, 11, 0.2);
-      border-color: var(--primary);
-      color: #f59e0b;
-      box-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
+      background: rgba(212, 175, 55, 0.18);
+      border-color: var(--gold);
+      color: var(--gold);
     }
 
     .stamp-label {
-      font-family: var(--mono);
       font-size: 0.55rem;
-      color: #94a3b8;
+      color: var(--text-muted);
       margin-top: 2px;
     }
 
     .pass-reward-callout {
       font-size: 0.78rem;
-      color: #fde68a;
-      background: rgba(245, 158, 11, 0.12);
-      border: 1px solid rgba(245, 158, 11, 0.3);
-      padding: 8px 12px;
+      color: #fef08a;
+      background: rgba(212, 175, 55, 0.10);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      padding: 10px 14px;
       border-radius: 12px;
       margin-bottom: 18px;
       text-align: center;
-      line-height: 1.35;
-    }
-
-    /* Notificación Push Simulator */
-    .push-simulator-box {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: 14px;
-      padding: 10px 12px;
-      margin-bottom: 18px;
-      font-size: 0.76rem;
-      line-height: 1.3;
-    }
-
-    .push-sim-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      color: #38bdf8;
-      margin-bottom: 4px;
+      line-height: 1.4;
     }
 
     .wallet-store-btns {
@@ -1108,12 +1072,12 @@
     }
 
     .btn-wallet-add {
-      background: #000000;
+      background: #141210;
       color: #ffffff;
-      border: 1px solid #334155;
+      border: 1px solid #3d3834;
       border-radius: 12px;
-      padding: 10px 6px;
-      font-size: 0.74rem;
+      padding: 10px 8px;
+      font-size: 0.75rem;
       font-weight: 700;
       cursor: pointer;
       display: flex;
@@ -1128,81 +1092,29 @@
       right: 14px;
       background: transparent;
       border: none;
-      color: #94a3b8;
+      color: var(--text-muted);
       font-size: 1.4rem;
       cursor: pointer;
     }
 
     /* ========================================================================= */
-    /* MODAL DE VIDEO PREVIEW EN VIVO                                           */
-    /* ========================================================================= */
-    .video-modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.88);
-      backdrop-filter: blur(14px);
-      z-index: 300;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-    }
-
-    .video-modal-backdrop.open { display: flex; }
-
-    .video-modal-box {
-      width: 100%;
-      max-width: 540px;
-      background: #0f1523;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
-      position: relative;
-    }
-
-    .video-modal-player {
-      width: 100%;
-      height: 290px;
-      object-fit: cover;
-      background: #000000;
-    }
-
-    .video-modal-details {
-      padding: 16px 20px;
-    }
-
-    .video-modal-details h3 {
-      font-family: var(--heading);
-      font-size: 1.15rem;
-      color: #ffffff;
-      margin-bottom: 4px;
-    }
-
-    .video-modal-details p {
-      font-size: 0.84rem;
-      color: var(--text-muted);
-      margin-bottom: 12px;
-    }
-
-    /* ========================================================================= */
-    /* STICKY BOTTOM BAR DEL CARRITO & COMANDA                                  */
+    /* BARRA INFERIOR DE COMANDA / CARRITO                                       */
     /* ========================================================================= */
     .cart-bottom-bar {
       position: fixed;
-      bottom: 14px;
+      bottom: 16px;
       left: 50%;
       transform: translateX(-50%);
-      width: calc(100% - 28px);
+      width: calc(100% - 32px);
       max-width: 500px;
-      background: linear-gradient(135deg, #182235 0%, #0d121e 100%);
-      border: 1px solid rgba(245, 158, 11, 0.45);
+      background: linear-gradient(135deg, #24201c 0%, #161412 100%);
+      border: 1px solid rgba(212, 175, 55, 0.4);
       border-radius: 30px;
-      padding: 10px 18px;
+      padding: 11px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65), 0 0 20px var(--primary-glow);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px var(--gold-glow);
       z-index: 110;
       transition: all 0.25s ease;
     }
@@ -1213,24 +1125,23 @@
     }
 
     .cart-count-pill {
-      font-family: var(--mono);
       font-size: 0.72rem;
-      color: #cbd5e1;
+      color: var(--text-sub);
     }
 
     .cart-total-val {
-      font-family: var(--mono);
-      font-size: 1.2rem;
+      font-family: var(--heading);
+      font-size: 1.25rem;
       font-weight: 800;
-      color: var(--primary);
+      color: var(--gold);
     }
 
     .cart-checkout-btn {
-      background: linear-gradient(135deg, var(--primary) 0%, #d97706 100%);
-      color: #0a0d14;
+      background: linear-gradient(135deg, var(--gold) 0%, #b8860b 100%);
+      color: #141210;
       border: none;
       border-radius: 20px;
-      padding: 8px 18px;
+      padding: 9px 20px;
       font-family: var(--sans);
       font-size: 0.84rem;
       font-weight: 800;
@@ -1238,10 +1149,9 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
     }
 
-    /* Drawer del Carrito Completo */
+    /* Drawer del Carrito */
     .cart-drawer-backdrop {
       position: fixed;
       inset: 0;
@@ -1262,7 +1172,7 @@
       max-width: 520px;
       height: 75vh;
       max-height: 600px;
-      background: #0f1523;
+      background: #181513;
       border: 1px solid var(--border);
       border-top-left-radius: 26px;
       border-top-right-radius: 26px;
@@ -1300,14 +1210,14 @@
       align-items: center;
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--border);
-      padding: 10px 14px;
+      padding: 12px 16px;
       border-radius: 14px;
     }
 
     .cart-drawer-footer {
       padding: 16px 20px;
       border-top: 1px solid var(--border);
-      background: #0a0d14;
+      background: #141210;
     }
 
     .cart-calc-row {
@@ -1322,7 +1232,7 @@
       display: flex;
       justify-content: space-between;
       font-family: var(--heading);
-      font-size: 1.15rem;
+      font-size: 1.18rem;
       font-weight: 800;
       color: #ffffff;
       margin-top: 8px;
@@ -1349,19 +1259,19 @@
       box-shadow: 0 4px 18px rgba(37, 211, 102, 0.3);
     }
 
-    /* TOAST DE CONFIRMACIÓN */
     .mini-toast {
       position: fixed;
       top: 20px;
       left: 50%;
       transform: translateX(-50%) translateY(-60px);
-      background: rgba(16, 185, 129, 0.95);
-      color: #ffffff;
-      padding: 8px 18px;
+      background: rgba(20, 18, 16, 0.95);
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      padding: 9px 20px;
       border-radius: 20px;
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       font-weight: 700;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 6px 22px rgba(0, 0, 0, 0.55);
       z-index: 400;
       opacity: 0;
       transition: all 0.3s ease;
@@ -1376,565 +1286,547 @@
 </head>
 <body>
 
-  <!-- TOAST NOTIFICACIÓN FLOTANTE -->
-  <div id="miniToast" class="mini-toast">✓ Platillo agregado a tu comanda</div>
-
   <!-- ======================================================================= -->
-  <!-- HEADER & MODO MESA                                                      -->
+  <!-- VIDEO AMBIENTAL DE FONDO (SUAVE Y DETRÁS DE LOS PLATILLOS EN TODA LA WEB)-->
   <!-- ======================================================================= -->
-  <header>
-    <div class="header-inner">
-      <a href="#" class="brand-wrap">
-        <div class="brand-logo-svg" aria-label="Logo ALEX">
-          <!-- LOGO MINIMALISTA GEOMÉTRICO (A CON FLAMA EN DORADO) -->
-          <svg width="26" height="26" viewBox="0 0 32 32" fill="none">
-            <path d="M16 3L5 27H11L13.5 21H18.5L21 27H27L16 3Z" fill="#f59e0b"/>
-            <path d="M16 11L14.4 16.5H17.6L16 11Z" fill="#0a0d14"/>
-            <path d="M16 7C16 7 19.5 13 18.5 17C17.5 15.5 16 14.5 16 14.5C16 14.5 14.5 15.5 13.5 17C12.5 13 16 7 16 7Z" fill="#ef4444"/>
-          </svg>
-        </div>
-        <div class="brand-text">
-          <h1>ALEX<span>.</span></h1>
-          <p>Artisanal Grill & Smoke</p>
-        </div>
-      </a>
-
-      <div class="table-status-pill" id="tableBadge" onclick="promptTableChange()">
-        <span class="table-dot"></span>
-        <span id="tableLabel">Mesa 4 · Terraza</span>
-      </div>
-    </div>
-  </header>
-
-  <!-- ======================================================================= -->
-  <!-- HERO BANNER CON VIDEO EN BUCLE DE FUEGO & CORTE AL CARBÓN                -->
-  <!-- ======================================================================= -->
-  <section class="hero-video-section">
-    <!-- VIDEO HTML5 NATIVO ALOJADO EN GITHUB REPO (STREAMING FLUIDO) -->
-    <video class="hero-video-bg" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1544025162-d76694265947?w=1000&auto=format&fit=crop&q=80">
+  <div class="ambient-web-video-backdrop">
+    <video autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&auto=format&fit=crop&q=80">
       <source src="grill-fire.mp4" type="video/mp4">
-      <source src="https://upload.wikimedia.org/wikipedia/commons/transcoded/a/ae/Grill_box_fire_240fps.webm/Grill_box_fire_240fps.webm.360p.mpeg4.mov" type="video/quicktime">
     </video>
-    <div class="hero-vignette"></div>
+    <div class="ambient-web-video-overlay"></div>
+  </div>
 
-    <div class="hero-content">
-      <div class="hero-kicker-badge">
-        <span>🔥</span> Horno de Leña & Ahumador 14 Horas Activo
+  <div class="app-relative-layer">
+
+    <!-- TOAST FLOTANTE -->
+    <div id="miniToast" class="mini-toast">✓ Platillo agregado a tu comanda</div>
+
+    <!-- ======================================================================= -->
+    <!-- HEADER & SERVICIO DE MESA                                               -->
+    <!-- ======================================================================= -->
+    <header>
+      <div class="header-inner">
+        <a href="#" class="brand-wrap">
+          <div class="brand-logo-svg" aria-label="Logo ALEX">
+            <!-- LOGO MINIMALISTA GEOMÉTRICO (A DORADA CON LLAMA SUTIL) -->
+            <svg width="26" height="26" viewBox="0 0 32 32" fill="none">
+              <path d="M16 3L5 27H11L13.5 21H18.5L21 27H27L16 3Z" fill="#d4af37"/>
+              <path d="M16 11L14.4 16.5H17.6L16 11Z" fill="#141210"/>
+              <path d="M16 7C16 7 19.5 13 18.5 17C17.5 15.5 16 14.5 16 14.5C16 14.5 14.5 15.5 13.5 17C12.5 13 16 7 16 7Z" fill="#c2410c"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <h1>ALEX<span>.</span></h1>
+            <p>Artisanal Grill & Smokehouse</p>
+          </div>
+        </a>
+
+        <div class="table-status-pill" id="tableBadge" onclick="promptTableChange()">
+          <span class="table-dot"></span>
+          <span id="tableLabel">Mesa 4 · Terraza</span>
+        </div>
       </div>
-      <h2 class="hero-headline">Fuego, Brasa &<br>Cocina de Humo.</h2>
-      <p class="hero-sub">Cortes Prime añejados al mezquite, smash burgers ahumadas y mixología botánica con carbón activado.</p>
+    </header>
+
+    <!-- ======================================================================= -->
+    <!-- HERO INTRO EDITORIAL                                                    -->
+    <!-- ======================================================================= -->
+    <section class="hero-intro-section reveal-on-scroll">
+      <div class="hero-kicker-badge">
+        <span>🔥</span> Horno de Leña & Ahumador 14 Horas
+      </div>
+      <h2 class="hero-headline">Cortes de Autor &<br><em>Cocina de Brasa.</em></h2>
+      <p class="hero-sub">Carne Prime madurada al mezquite, smash burgers ahumadas con madera de manzano y coctelería botánica.</p>
 
       <div class="hero-action-chips">
         <button type="button" class="chip-btn chip-wallet" onclick="openWalletModal()">
           <span>💳</span> Mi Tarjeta Wallet (3/5 Sellos)
         </button>
-        <button type="button" class="chip-btn chip-ai" onclick="openAiModal()">
-          <span>🤖</span> Mesero con IA
+        <button type="button" class="chip-btn chip-concierge" onclick="openAssistantModal()">
+          <span class="assistant-icon-glow">✨</span> Asistente Alex
         </button>
         <a href="https://maps.google.com" target="_blank" class="chip-btn">
-          <span>⭐</span> 4.9 en Google Maps
+          <span>⭐</span> 4.9 en Google
         </a>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- BOTONES RÁPIDOS DE SERVICIO EN MESA -->
-  <div class="table-service-bar">
-    <button type="button" class="service-btn service-btn-waiter" onclick="callWaiter()">
-      <span>🛎️</span> Llamar al Mesero
-    </button>
-    <button type="button" class="service-btn service-btn-bill" onclick="requestBill()">
-      <span>🧾</span> Pedir la Cuenta
-    </button>
-  </div>
-
-  <!-- ======================================================================= -->
-  <!-- SELECTOR DE CATEGORÍAS & FILTROS DIETÉTICOS / ALÉRGENOS                  -->
-  <!-- ======================================================================= -->
-  <div class="filter-sticky-wrapper">
-    <div class="category-scroll-strip" id="catStrip">
-      <button type="button" class="cat-tab active" onclick="filterCategory('all', this)">🔥 Todo el Menú</button>
-      <button type="button" class="cat-tab" onclick="filterCategory('cortes', this)">🥩 Cortes al Mezquite</button>
-      <button type="button" class="cat-tab" onclick="filterCategory('burgers', this)">🍔 Burgers & Smoke</button>
-      <button type="button" class="cat-tab" onclick="filterCategory('tacos', this)">🌮 Tacos & Entradas</button>
-      <button type="button" class="cat-tab" onclick="filterCategory('cocteles', this)">🍸 Mixología Ahumada</button>
-      <button type="button" class="cat-tab" onclick="filterCategory('postres', this)">🍫 Postres & Fuego</button>
-    </div>
-
-    <div class="dietary-tags-row">
-      <button type="button" class="diet-pill" id="filterGluten" onclick="toggleDietaryFilter('gluten', this)">
-        <span>🌾</span> Sin Gluten
+    <!-- ACCIONES RÁPIDAS DE MESA -->
+    <div class="table-service-bar reveal-on-scroll">
+      <button type="button" class="service-btn service-btn-waiter" onclick="callWaiter()">
+        <span>🛎️</span> Llamar al Mesero
       </button>
-      <button type="button" class="diet-pill" id="filterSpicy" onclick="toggleDietaryFilter('spicy', this)">
-        <span>🌶️</span> Picante
-      </button>
-      <button type="button" class="diet-pill" id="filterLight" onclick="toggleDietaryFilter('light', this)">
-        <span>🌱</span> Alto en Proteína
+      <button type="button" class="service-btn service-btn-bill" onclick="requestBill()">
+        <span>🧾</span> Solicitar la Cuenta
       </button>
     </div>
-  </div>
 
-  <!-- ======================================================================= -->
-  <!-- CATÁLOGO DE PLATILLOS                                                   -->
-  <!-- ======================================================================= -->
-  <main class="menu-container">
-
-    <!-- SECCIÓN CORTES -->
-    <div class="category-block" data-cat="cortes">
-      <div class="category-section-title">
-        🥩 Cortes Prime al Mezquite <span>(Añejados 28 días)</span>
-      </div>
-      <div class="dishes-grid">
-
-        <!-- Platillo 1: Tomahawk Prime (Con Video Preview) -->
-        <div class="dish-card" data-dish="tomahawk" data-tags="gluten,light">
-          <div class="dish-image-wrapper">
-            <span class="dish-star-tag">⭐ Insignia del Chef</span>
-            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=900&auto=format&fit=crop&q=80" alt="Tomahawk Prime" class="dish-image">
-            <button type="button" class="video-preview-trigger" onclick="openVideoModal('Tomahawk Prime al Mezquite (1.2 kg)', 'Sellado a 450°C al carbón de mezquite con mantequilla de romero y sal ahumada.')">
-              <span class="video-pulse-dot"></span> <span>▶ Ver Brasa</span>
-            </button>
-          </div>
-          <div class="dish-content">
-            <div>
-              <div class="dish-header-row">
-                <h3 class="dish-title">Tomahawk Prime (1.2 kg)</h3>
-                <span class="dish-price">$890</span>
-              </div>
-              <p class="dish-desc">Corte con hueso largo añejado 28 días. Sellado a fuego vivo de mezquite, bañado con mantequilla clarificada al romero y escamas de sal negra.</p>
-              <div class="dish-meta-badges">
-                <span class="meta-badge badge-gluten-free">🌾 Sin Gluten</span>
-                <span class="meta-badge badge-nutrition">🥩 95g Prot · 1,180 Kcal</span>
-                <span class="meta-badge">👥 Para 2-3 personas</span>
-              </div>
-            </div>
-            <div class="dish-order-actions">
-              <div class="qty-control">
-                <button type="button" class="qty-btn" onclick="adjustQty('tomahawk', -1)">-</button>
-                <span class="qty-num" id="qty-tomahawk">1</span>
-                <button type="button" class="qty-btn" onclick="adjustQty('tomahawk', 1)">+</button>
-              </div>
-              <button type="button" class="add-to-cart-btn" onclick="addToCart('Tomahawk Prime (1.2 kg)', 890, 'tomahawk')">
-                <span>+</span> Agregar
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Platillo 2: Ribeye con Costra de Pimientas -->
-        <div class="dish-card" data-dish="ribeye" data-tags="gluten,light">
-          <div class="dish-image-wrapper">
-            <img src="https://images.unsplash.com/photo-1558030006-450675393462?w=900&auto=format&fit=crop&q=80" alt="Ribeye Prime" class="dish-image">
-          </div>
-          <div class="dish-content">
-            <div>
-              <div class="dish-header-row">
-                <h3 class="dish-title">Ribeye Mezquite (400g)</h3>
-                <span class="dish-price">$490</span>
-              </div>
-              <p class="dish-desc">Marmoleo Prime con costra de cuatro pimientas y ajo confitado. Acompañado de papa rústica horneada a la leña.</p>
-              <div class="dish-meta-badges">
-                <span class="meta-badge badge-gluten-free">🌾 Sin Gluten</span>
-                <span class="meta-badge badge-nutrition">🥩 68g Prot · 740 Kcal</span>
-              </div>
-            </div>
-            <div class="dish-order-actions">
-              <div class="qty-control">
-                <button type="button" class="qty-btn" onclick="adjustQty('ribeye', -1)">-</button>
-                <span class="qty-num" id="qty-ribeye">1</span>
-                <button type="button" class="qty-btn" onclick="adjustQty('ribeye', 1)">+</button>
-              </div>
-              <button type="button" class="add-to-cart-btn" onclick="addToCart('Ribeye Mezquite (400g)', 490, 'ribeye')">
-                <span>+</span> Agregar
-              </button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- SECCIÓN BURGERS & SMOKEHOUSE -->
-    <div class="category-block" data-cat="burgers">
-      <div class="category-section-title">
-        🍔 Burgers & Smokehouse <span>(Ahumado Lento 14 Horas)</span>
-      </div>
-      <div class="dishes-grid">
-
-        <!-- Platillo 3: Brisket Burger Black Angus -->
-        <div class="dish-card" data-dish="brisket-burger" data-tags="">
-          <div class="dish-image-wrapper">
-            <span class="dish-star-tag">🔥 Lo Más Vendido</span>
-            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&auto=format&fit=crop&q=80" alt="Brisket Burger" class="dish-image">
-          </div>
-          <div class="dish-content">
-            <div>
-              <div class="dish-header-row">
-                <h3 class="dish-title">Brisket Burger 14 Horas</h3>
-                <span class="dish-price">$260</span>
-              </div>
-              <p class="dish-desc">Carne Black Angus smash con rebanadas de brisket ahumado 14h, queso gouda fundido, cebolla caramelizada al bourbon y pan brioche tostado con mantequilla.</p>
-              <div class="dish-meta-badges">
-                <span class="meta-badge">🥛 Contiene Lácteos</span>
-                <span class="meta-badge badge-nutrition">🥩 48g Prot · 820 Kcal</span>
-              </div>
-            </div>
-            <div class="dish-order-actions">
-              <div class="qty-control">
-                <button type="button" class="qty-btn" onclick="adjustQty('brisket-burger', -1)">-</button>
-                <span class="qty-num" id="qty-brisket-burger">1</span>
-                <button type="button" class="qty-btn" onclick="adjustQty('brisket-burger', 1)">+</button>
-              </div>
-              <button type="button" class="add-to-cart-btn" onclick="addToCart('Brisket Burger 14 Horas', 260, 'brisket-burger')">
-                <span>+</span> Agregar
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Platillo 4: Costillas St. Louis BBQ -->
-        <div class="dish-card" data-dish="costillas" data-tags="gluten">
-          <div class="dish-image-wrapper">
-            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=900&auto=format&fit=crop&q=80" alt="Costillas St Louis" class="dish-image">
-          </div>
-          <div class="dish-content">
-            <div>
-              <div class="dish-header-row">
-                <h3 class="dish-title">Costillas St. Louis Glaseadas</h3>
-                <span class="dish-price">$340</span>
-              </div>
-              <p class="dish-desc">Costillar tierno que se desprende del hueso. Glaseado con salsa BBQ de ciruela pasa y piquín ahumado artesanal.</p>
-              <div class="dish-meta-badges">
-                <span class="meta-badge badge-gluten-free">🌾 Sin Gluten</span>
-                <span class="meta-badge badge-spicy">🌶️ Picor Suave</span>
-                <span class="meta-badge badge-nutrition">🥩 62g Prot · 910 Kcal</span>
-              </div>
-            </div>
-            <div class="dish-order-actions">
-              <div class="qty-control">
-                <button type="button" class="qty-btn" onclick="adjustQty('costillas', -1)">-</button>
-                <span class="qty-num" id="qty-costillas">1</span>
-                <button type="button" class="qty-btn" onclick="adjustQty('costillas', 1)">+</button>
-              </div>
-              <button type="button" class="add-to-cart-btn" onclick="addToCart('Costillas St. Louis Glaseadas', 340, 'costillas')">
-                <span>+</span> Agregar
-              </button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- SECCIÓN TACOS & ENTRADAS -->
-    <div class="category-block" data-cat="tacos">
-      <div class="category-section-title">
-        🌮 Tacos de Autor & Entradas Calientes
-      </div>
-      <div class="dishes-grid">
-
-        <!-- Platillo 5: Tacos de Picaña en Maíz Azul -->
-        <div class="dish-card" data-dish="tacos-picanha" data-tags="gluten,spicy">
-          <div class="dish-image-wrapper">
-            <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=900&auto=format&fit=crop&q=80" alt="Tacos Picaña" class="dish-image">
-          </div>
-          <div class="dish-content">
-            <div>
-              <div class="dish-header-row">
-                <h3 class="dish-title">Tacos Picaña Maíz Azul (3)</h3>
-                <span class="dish-price">$195</span>
-              </div>
-              <p class="dish-desc">Picaña al carbón sobre tortilla de maíz azul nixtamalizado, costra de queso manchego, aguacate tatemado y salsa de habanero negro.</p>
-              <div class="dish-meta-badges">
-                <span class="meta-badge badge-gluten-free">🌾 Sin Gluten</span>
-                <span class="meta-badge badge-spicy">🌶️🌶️ Picante Bravo</span>
-                <span class="meta-badge badge-nutrition">🥩 38g Prot · 560 Kcal</span>
-              </div>
-            </div>
-            <div class="dish-order-actions">
-              <div class="qty-control">
-                <button type="button" class="qty-btn" onclick="adjustQty('tacos-picanha', -1)">-</button>
-                <span class="qty-num" id="qty-tacos-picanha">1</span>
-                <button type="button" class="qty-btn" onclick="adjustQty('tacos-picanha', 1)">+</button>
-              </div>
-              <button type="button" class="add-to-cart-btn" onclick="addToCart('Tacos Picaña Maíz Azul (3)', 195, 'tacos-picanha')">
-                <span>+</span> Agregar
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Platillo 6: Tuétanos Asados al Romero -->
-        <div class="dish-card" data-dish="tuetanos" data-tags="gluten,spicy">
-          <div class="dish-image-wrapper">
-            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=900&auto=format&fit=crop&q=80" alt="Tuétanos" class="dish-image">
-          </div>
-          <div class="dish-content">
-            <div>
-              <div class="dish-header-row">
-                <h3 class="dish-title">Tuétanos con Chicharrón Ribeye</h3>
-                <span class="dish-price">$220</span>
-              </div>
-              <p class="dish-desc">Canal de tuétano asado a la brasa con costra de chicharrón crujiente de ribeye, brotes de cilantro y tortillas recién hechas a mano.</p>
-              <div class="dish-meta-badges">
-                <span class="meta-badge badge-gluten-free">🌾 Sin Gluten</span>
-                <span class="meta-badge badge-spicy">🌶️ Picor Medio</span>
-              </div>
-            </div>
-            <div class="dish-order-actions">
-              <div class="qty-control">
-                <button type="button" class="qty-btn" onclick="adjustQty('tuetanos', -1)">-</button>
-                <span class="qty-num" id="qty-tuetanos">1</span>
-                <button type="button" class="qty-btn" onclick="adjustQty('tuetanos', 1)">+</button>
-              </div>
-              <button type="button" class="add-to-cart-btn" onclick="addToCart('Tuétanos con Chicharrón Ribeye', 220, 'tuetanos')">
-                <span>+</span> Agregar
-              </button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- SECCIÓN MIXOLOGÍA & POSTRES -->
-    <div class="category-block" data-cat="cocteles">
-      <div class="category-section-title">
-        🍸 Mixología Ahumada de Autor
-      </div>
-      <div class="dishes-grid">
-
-        <!-- Platillo 7: Smoked Mezcalita -->
-        <div class="dish-card" data-dish="mezcalita" data-tags="gluten">
-          <div class="dish-image-wrapper">
-            <span class="dish-star-tag">🍸 Coctel Insignia</span>
-            <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=900&auto=format&fit=crop&q=80" alt="Smoked Mezcalita" class="dish-image">
-            <button type="button" class="video-preview-trigger" onclick="openVideoModal('Smoked Mezcalita Artesanal', 'Infusionada en frío con humo de madera de nogal, mezcal espadín Oaxaqueño y escarcha de sal de gusano.')">
-              <span class="video-pulse-dot"></span> <span>▶ Ver Infusión</span>
-            </button>
-          </div>
-          <div class="dish-content">
-            <div>
-              <div class="dish-header-row">
-                <h3 class="dish-title">Smoked Mezcalita Oaxaqueña</h3>
-                <span class="dish-price">$170</span>
-              </div>
-              <p class="dish-desc">Servida bajo campana de cristal con humo de nogal. Mezcal espadín artesanal, jugo de mandarina tatemada, miel de agave y sal de chapulín.</p>
-              <div class="dish-meta-badges">
-                <span class="meta-badge badge-gluten-free">🌾 Sin Gluten</span>
-                <span class="meta-badge">💨 Servido con Humo en Mesa</span>
-              </div>
-            </div>
-            <div class="dish-order-actions">
-              <div class="qty-control">
-                <button type="button" class="qty-btn" onclick="adjustQty('mezcalita', -1)">-</button>
-                <span class="qty-num" id="qty-mezcalita">1</span>
-                <button type="button" class="qty-btn" onclick="adjustQty('mezcalita', 1)">+</button>
-              </div>
-              <button type="button" class="add-to-cart-btn" onclick="addToCart('Smoked Mezcalita Oaxaqueña', 170, 'mezcalita')">
-                <span>+</span> Agregar
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Platillo 8: Volcán de Chocolate -->
-        <div class="dish-card" data-dish="volcan" data-tags="">
-          <div class="dish-image-wrapper">
-            <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=900&auto=format&fit=crop&q=80" alt="Volcán de Chocolate" class="dish-image">
-          </div>
-          <div class="dish-content">
-            <div>
-              <div class="dish-header-row">
-                <h3 class="dish-title">Volcán de Chocolate Oaxaqueño</h3>
-                <span class="dish-price">$150</span>
-              </div>
-              <p class="dish-desc">Bizcocho tibio de chocolate 70% cacao con centro líquido de avellana, flameado en mesa con licor de café y helado artesanal de vainilla Papantla.</p>
-              <div class="dish-meta-badges">
-                <span class="meta-badge">🥛 Lácteos</span>
-                <span class="meta-badge">🥜 Frutos Secos</span>
-              </div>
-            </div>
-            <div class="dish-order-actions">
-              <div class="qty-control">
-                <button type="button" class="qty-btn" onclick="adjustQty('volcan', -1)">-</button>
-                <span class="qty-num" id="qty-volcan">1</span>
-                <button type="button" class="qty-btn" onclick="adjustQty('volcan', 1)">+</button>
-              </div>
-              <button type="button" class="add-to-cart-btn" onclick="addToCart('Volcán de Chocolate Oaxaqueño', 150, 'volcan')">
-                <span>+</span> Agregar
-              </button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-  </main>
-
-  <!-- ======================================================================= -->
-  <!-- TRIGGER FLOTANTE DEL MESERO IA                                          -->
-  <!-- ======================================================================= -->
-  <button type="button" class="ai-floating-trigger" onclick="openAiModal()">
-    <span class="ai-beacon"></span>
-    <span>💬 Mesero IA Alex</span>
-  </button>
-
-  <!-- DRAWER / MODAL MESERO IA -->
-  <div class="ai-modal-backdrop" id="aiBackdrop" onclick="closeAiModal()"></div>
-  <div class="ai-modal-drawer" id="aiDrawer">
-    <div class="ai-drawer-header">
-      <div class="ai-header-info">
-        <div class="ai-avatar">🤖</div>
-        <div class="ai-header-text">
-          <h3>Alex Assistant IA</h3>
-          <p>Sommelier & Concierge de Mesa</p>
-        </div>
-      </div>
-      <button type="button" class="ai-drawer-close" onclick="closeAiModal()">&times;</button>
-    </div>
-
-    <div class="ai-chat-body" id="aiChatBody">
-      <div class="chat-bubble ai">
-        ¡Hola! Bienvenido a <strong>ALEX</strong> 🔥. Soy tu sommelier y mesero virtual. ¿Tienes algún antojo especial, preferencia de carne o alguna restricción de alérgenos?
-      </div>
-    </div>
-
-    <!-- CHIPS DE CONSULTAS RÁPIDAS -->
-    <div class="ai-quick-prompts">
-      <button type="button" class="prompt-chip" onclick="askAiPrompt('¿Qué corte me recomiendas para compartir?')">🥩 Corte para compartir</button>
-      <button type="button" class="prompt-chip" onclick="askAiPrompt('Busco opciones sin gluten y ricas en proteína')">🌾 Opciones Sin Gluten</button>
-      <button type="button" class="prompt-chip" onclick="askAiPrompt('¿Con qué cóctel marida la Brisket Burger?')">🍔 Maridaje con Burger</button>
-      <button type="button" class="prompt-chip" onclick="askAiPrompt('Recomiéndame una cena completa por menos de $450')">💰 Cena por menos de $450</button>
-    </div>
-
-    <form class="ai-input-row" onsubmit="handleAiUserSubmit(event)">
-      <input type="text" id="aiInputField" class="ai-input-field" placeholder="Escribe tu pregunta o antojo..." autocomplete="off">
-      <button type="submit" class="ai-send-btn">➔</button>
-    </form>
-  </div>
-
-  <!-- ======================================================================= -->
-  <!-- MODAL DE TARJETA WALLET (APPLE & GOOGLE)                                -->
-  <!-- ======================================================================= -->
-  <div class="wallet-modal-backdrop" id="walletBackdrop" onclick="if(event.target === this) closeWalletModal();">
-    <div class="wallet-pass-card">
-      <button type="button" class="wallet-modal-close" onclick="closeWalletModal()">&times;</button>
-
-      <div class="pass-header">
-        <div class="pass-brand">
-          <h2>ALEX<span>.</span></h2>
-          <p>VIP Loyalty Pass</p>
-        </div>
-        <span class="pass-vip-badge">Nivel Oro</span>
+    <!-- ======================================================================= -->
+    <!-- SELECTOR DE CATEGORÍAS & FILTROS DIETÉTICOS                             -->
+    <!-- ======================================================================= -->
+    <div class="filter-sticky-wrapper">
+      <div class="category-scroll-strip" id="catStrip">
+        <button type="button" class="cat-tab active" onclick="filterCategory('all', this)">🔥 Toda la Carta</button>
+        <button type="button" class="cat-tab" onclick="filterCategory('cortes', this)">🥩 Cortes al Mezquite</button>
+        <button type="button" class="cat-tab" onclick="filterCategory('burgers', this)">🍔 Burgers & Smoke</button>
+        <button type="button" class="cat-tab" onclick="filterCategory('tacos', this)">🌮 Tacos & Entradas</button>
+        <button type="button" class="cat-tab" onclick="filterCategory('cocteles', this)">🍸 Coctelería de Autor</button>
+        <button type="button" class="cat-tab" onclick="filterCategory('postres', this)">🍫 Postres & Fuego</button>
       </div>
 
-      <!-- SIMULACIÓN DE NOTIFICACIÓN PUSH EN PANTALLA BLOQUEADA -->
-      <div class="push-simulator-box">
-        <div class="push-sim-header">
-          <span>🔔 ALEX Smokehouse · AHORA</span>
-          <span>Apple / Google Wallet</span>
-        </div>
-        <strong>¡2x1 en Cócteles Ahumados hoy!</strong>
-        <p style="color: #94a3b8; font-size: 0.72rem; margin-top: 2px;">Válido presentando este pase antes de las 9:00 PM.</p>
-      </div>
-
-      <!-- LOS 5 SELLOS DE LA TARJETA -->
-      <p style="font-size: 0.78rem; font-family: var(--mono); color: #cbd5e1; margin-bottom: 8px;">Tus Sellos Acumulados: <strong>3 de 5</strong></p>
-      <div class="stamps-grid">
-        <div class="stamp-slot filled">🔥<span class="stamp-label">18 Sep</span></div>
-        <div class="stamp-slot filled">🔥<span class="stamp-label">20 Sep</span></div>
-        <div class="stamp-slot filled">🔥<span class="stamp-label">21 Sep</span></div>
-        <div class="stamp-slot">⭕<span class="stamp-label">Sello 4</span></div>
-        <div class="stamp-slot">🎁<span class="stamp-label">Premio</span></div>
-      </div>
-
-      <div class="pass-reward-callout">
-        🎁 <strong>¡Te faltan solo 2 visitas!</strong><br>
-        En tu 5ta visita te regalamos una orden de Tacos de Picaña o una Smoked Mezcalita.
-      </div>
-
-      <div class="wallet-store-btns">
-        <button type="button" class="btn-wallet-add" onclick="saveToWallet('apple')">
-          <svg width="14" height="14" viewBox="0 0 170 170" fill="currentColor"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.69-3.04-7.67-7.81-11.96-14.34-6.41-9.78-11.44-20.9-15.09-33.34-3.65-12.44-5.48-24.32-5.48-35.63 0-14.35 3.58-26.47 10.74-36.35 7.16-9.88 16.5-14.9 28.02-15.07 4.02 0 8.87 1.09 14.54 3.27 5.67 2.18 9.38 3.32 11.13 3.42 2.5.11 6.53-1.09 12.09-3.61 5.56-2.52 10.37-3.72 14.42-3.61 10.33.43 18.91 4.18 25.75 11.25-9.46 5.76-14.07 13.91-13.83 24.45.24 8.37 3.48 15.43 9.72 21.19 6.24 5.76 13.78 9.07 22.62 9.94-2.18 6.41-4.78 12.71-7.81 18.91zM119.22 31.02c0-7.39 2.66-14.45 7.98-21.18 5.32-6.73 11.96-10.87 19.92-12.42.44 2.17.65 4.34.65 6.51 0 7.39-2.72 14.67-8.15 21.84-5.43 7.17-12.06 11.25-19.89 12.24-.11-2.28-.51-4.61-.51-6.99z"/></svg>
-          Apple Wallet
+      <div class="dietary-tags-row">
+        <button type="button" class="diet-pill" id="filterGluten" onclick="toggleDietaryFilter('gluten', this)">
+          <span>🌾</span> Sin Gluten
         </button>
-        <button type="button" class="btn-wallet-add" onclick="saveToWallet('google')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
-          Google Wallet
+        <button type="button" class="diet-pill" id="filterSpicy" onclick="toggleDietaryFilter('spicy', this)">
+          <span>🌶️</span> Picante
+        </button>
+        <button type="button" class="diet-pill" id="filterLight" onclick="toggleDietaryFilter('light', this)">
+          <span>🌱</span> Alto en Proteína
         </button>
       </div>
     </div>
-  </div>
 
-  <!-- ======================================================================= -->
-  <!-- MODAL DE VIDEO PREVIEW REPRODUCTOR EN VIVO                              -->
-  <!-- ======================================================================= -->
-  <div class="video-modal-backdrop" id="videoModalBackdrop" onclick="if(event.target === this) closeVideoModal();">
-    <div class="video-modal-box">
-      <video id="dishVideoPlayer" class="video-modal-player" controls playsinline>
-        <source src="grill-fire.mp4" type="video/mp4">
-      </video>
-      <div class="video-modal-details">
-        <h3 id="videoModalTitle">Preparación en Vivo</h3>
-        <p id="videoModalDesc">Sellado y terminado al fuego de leña en nuestra cocina.</p>
-        <button type="button" class="service-btn" style="width: 100%;" onclick="closeVideoModal()">Cerrar Reproductor</button>
+    <!-- ======================================================================= -->
+    <!-- CATÁLOGO DE PLATILLOS                                                   -->
+    <!-- ======================================================================= -->
+    <main class="menu-container">
+
+      <!-- SECCIÓN CORTES -->
+      <div class="category-block" data-cat="cortes">
+        <div class="category-section-title reveal-on-scroll">
+          🥩 Cortes Prime al Mezquite <span>(Añejados 28 días)</span>
+        </div>
+        <div class="dishes-grid">
+
+          <!-- Platillo 1: Tomahawk Prime -->
+          <div class="dish-card reveal-on-scroll" data-dish="tomahawk" data-tags="gluten,light">
+            <div class="dish-image-wrapper">
+              <span class="dish-star-tag">⭐ Insignia del Chef</span>
+              <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=900&auto=format&fit=crop&q=80" alt="Tomahawk Prime" class="dish-image">
+            </div>
+            <div class="dish-content">
+              <div>
+                <div class="dish-header-row">
+                  <h3 class="dish-title">Tomahawk Prime (1.2 kg)</h3>
+                  <span class="dish-price">$890</span>
+                </div>
+                <p class="dish-desc">Corte con hueso largo añejado 28 días. Sellado a fuego vivo de mezquite, bañado con mantequilla clarificada al romero y escamas de sal negra.</p>
+                <div class="dish-meta-badges">
+                  <span class="meta-badge badge-gluten-free">🌾 Sin Gluten</span>
+                  <span class="meta-badge badge-nutrition">🥩 95g Prot · 1,180 Kcal</span>
+                  <span class="meta-badge">👥 Para 2-3 personas</span>
+                </div>
+              </div>
+              <div class="dish-order-actions">
+                <div class="qty-control">
+                  <button type="button" class="qty-btn" onclick="adjustQty('tomahawk', -1)">-</button>
+                  <span class="qty-num" id="qty-tomahawk">1</span>
+                  <button type="button" class="qty-btn" onclick="adjustQty('tomahawk', 1)">+</button>
+                </div>
+                <button type="button" class="add-to-cart-btn" onclick="addToCart('Tomahawk Prime (1.2 kg)', 890, 'tomahawk')">
+                  <span>+</span> Agregar
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Platillo 2: Ribeye con Costra de Pimientas -->
+          <div class="dish-card reveal-on-scroll" data-dish="ribeye" data-tags="gluten,light">
+            <div class="dish-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1558030006-450675393462?w=900&auto=format&fit=crop&q=80" alt="Ribeye Prime" class="dish-image">
+            </div>
+            <div class="dish-content">
+              <div>
+                <div class="dish-header-row">
+                  <h3 class="dish-title">Ribeye Mezquite (400g)</h3>
+                  <span class="dish-price">$490</span>
+                </div>
+                <p class="dish-desc">Marmoleo Prime con costra de cuatro pimientas y ajo confitado. Acompañado de papa rústica horneada a la leña.</p>
+                <div class="dish-meta-badges">
+                  <span class="meta-badge badge-gluten-free">🌾 Sin Gluten</span>
+                  <span class="meta-badge badge-nutrition">🥩 68g Prot · 740 Kcal</span>
+                </div>
+              </div>
+              <div class="dish-order-actions">
+                <div class="qty-control">
+                  <button type="button" class="qty-btn" onclick="adjustQty('ribeye', -1)">-</button>
+                  <span class="qty-num" id="qty-ribeye">1</span>
+                  <button type="button" class="qty-btn" onclick="adjustQty('ribeye', 1)">+</button>
+                </div>
+                <button type="button" class="add-to-cart-btn" onclick="addToCart('Ribeye Mezquite (400g)', 490, 'ribeye')">
+                  <span>+</span> Agregar
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
-    </div>
-  </div>
 
-  <!-- ======================================================================= -->
-  <!-- CARRITO DE COMPRA & BARRA INFERIOR                                      -->
-  <!-- ======================================================================= -->
-  <div class="cart-bottom-bar" id="cartBar" style="display: none;">
-    <div class="cart-summary-text" onclick="openCartDrawer()">
-      <span class="cart-count-pill" id="cartCountPill">0 platillos seleccionados</span>
-      <span class="cart-total-val" id="cartTotalVal">$0 MXN</span>
-    </div>
-    <button type="button" class="cart-checkout-btn" onclick="openCartDrawer()">
-      <span>Ver Comanda</span> ➔
+      <!-- SECCIÓN BURGERS & SMOKEHOUSE -->
+      <div class="category-block" data-cat="burgers">
+        <div class="category-section-title reveal-on-scroll">
+          🍔 Burgers & Smokehouse <span>(Ahumado Lento 14 Horas)</span>
+        </div>
+        <div class="dishes-grid">
+
+          <!-- Platillo 3: Brisket Burger Black Angus -->
+          <div class="dish-card reveal-on-scroll" data-dish="brisket-burger" data-tags="">
+            <div class="dish-image-wrapper">
+              <span class="dish-star-tag">🔥 Lo Más Solicitado</span>
+              <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&auto=format&fit=crop&q=80" alt="Brisket Burger" class="dish-image">
+            </div>
+            <div class="dish-content">
+              <div>
+                <div class="dish-header-row">
+                  <h3 class="dish-title">Brisket Burger 14 Horas</h3>
+                  <span class="dish-price">$260</span>
+                </div>
+                <p class="dish-desc">Carne Black Angus smash con rebanadas de brisket ahumado 14h, queso gouda fundido, cebolla caramelizada al bourbon y pan brioche tostado con mantequilla.</p>
+                <div class="dish-meta-badges">
+                  <span class="meta-badge">🥛 Contiene Lácteos</span>
+                  <span class="meta-badge badge-nutrition">🥩 48g Prot · 820 Kcal</span>
+                </div>
+              </div>
+              <div class="dish-order-actions">
+                <div class="qty-control">
+                  <button type="button" class="qty-btn" onclick="adjustQty('brisket-burger', -1)">-</button>
+                  <span class="qty-num" id="qty-brisket-burger">1</span>
+                  <button type="button" class="qty-btn" onclick="adjustQty('brisket-burger', 1)">+</button>
+                </div>
+                <button type="button" class="add-to-cart-btn" onclick="addToCart('Brisket Burger 14 Horas', 260, 'brisket-burger')">
+                  <span>+</span> Agregar
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Platillo 4: Costillas St. Louis BBQ -->
+          <div class="dish-card reveal-on-scroll" data-dish="costillas" data-tags="gluten">
+            <div class="dish-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=900&auto=format&fit=crop&q=80" alt="Costillas St Louis" class="dish-image">
+            </div>
+            <div class="dish-content">
+              <div>
+                <div class="dish-header-row">
+                  <h3 class="dish-title">Costillas St. Louis Glaseadas</h3>
+                  <span class="dish-price">$340</span>
+                </div>
+                <p class="dish-desc">Costillar tierno que se desprende del hueso. Glaseado con salsa BBQ de ciruela pasa y piquín ahumado artesanal.</p>
+                <div class="dish-meta-badges">
+                  <span class="meta-badge badge-gluten-free">🌾 Sin Gluten</span>
+                  <span class="meta-badge badge-spicy">🌶️ Picor Suave</span>
+                  <span class="meta-badge badge-nutrition">🥩 62g Prot · 910 Kcal</span>
+                </div>
+              </div>
+              <div class="dish-order-actions">
+                <div class="qty-control">
+                  <button type="button" class="qty-btn" onclick="adjustQty('costillas', -1)">-</button>
+                  <span class="qty-num" id="qty-costillas">1</span>
+                  <button type="button" class="qty-btn" onclick="adjustQty('costillas', 1)">+</button>
+                </div>
+                <button type="button" class="add-to-cart-btn" onclick="addToCart('Costillas St. Louis Glaseadas', 340, 'costillas')">
+                  <span>+</span> Agregar
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SECCIÓN TACOS & ENTRADAS -->
+      <div class="category-block" data-cat="tacos">
+        <div class="category-section-title reveal-on-scroll">
+          🌮 Tacos de Autor & Entradas Calientes
+        </div>
+        <div class="dishes-grid">
+
+          <!-- Platillo 5: Tacos de Picaña en Maíz Azul -->
+          <div class="dish-card reveal-on-scroll" data-dish="tacos-picanha" data-tags="gluten,spicy">
+            <div class="dish-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=900&auto=format&fit=crop&q=80" alt="Tacos Picaña" class="dish-image">
+            </div>
+            <div class="dish-content">
+              <div>
+                <div class="dish-header-row">
+                  <h3 class="dish-title">Tacos Picaña Maíz Azul (3)</h3>
+                  <span class="dish-price">$195</span>
+                </div>
+                <p class="dish-desc">Picaña al carbón sobre tortilla de maíz azul nixtamalizado, costra de queso manchego, aguacate tatemado y salsa de habanero negro.</p>
+                <div class="dish-meta-badges">
+                  <span class="meta-badge badge-gluten-free">🌾 Sin Gluten</span>
+                  <span class="meta-badge badge-spicy">🌶️🌶️ Picante Bravo</span>
+                  <span class="meta-badge badge-nutrition">🥩 38g Prot · 560 Kcal</span>
+                </div>
+              </div>
+              <div class="dish-order-actions">
+                <div class="qty-control">
+                  <button type="button" class="qty-btn" onclick="adjustQty('tacos-picanha', -1)">-</button>
+                  <span class="qty-num" id="qty-tacos-picanha">1</span>
+                  <button type="button" class="qty-btn" onclick="adjustQty('tacos-picanha', 1)">+</button>
+                </div>
+                <button type="button" class="add-to-cart-btn" onclick="addToCart('Tacos Picaña Maíz Azul (3)', 195, 'tacos-picanha')">
+                  <span>+</span> Agregar
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Platillo 6: Tuétanos Asados al Romero -->
+          <div class="dish-card reveal-on-scroll" data-dish="tuetanos" data-tags="gluten,spicy">
+            <div class="dish-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=900&auto=format&fit=crop&q=80" alt="Tuétanos" class="dish-image">
+            </div>
+            <div class="dish-content">
+              <div>
+                <div class="dish-header-row">
+                  <h3 class="dish-title">Tuétanos con Chicharrón Ribeye</h3>
+                  <span class="dish-price">$220</span>
+                </div>
+                <p class="dish-desc">Canal de tuétano asado a la brasa con costra de chicharrón crujiente de ribeye, brotes de cilantro y tortillas recién hechas a mano.</p>
+                <div class="dish-meta-badges">
+                  <span class="meta-badge badge-gluten-free">🌾 Sin Gluten</span>
+                  <span class="meta-badge badge-spicy">🌶️ Picor Medio</span>
+                </div>
+              </div>
+              <div class="dish-order-actions">
+                <div class="qty-control">
+                  <button type="button" class="qty-btn" onclick="adjustQty('tuetanos', -1)">-</button>
+                  <span class="qty-num" id="qty-tuetanos">1</span>
+                  <button type="button" class="qty-btn" onclick="adjustQty('tuetanos', 1)">+</button>
+                </div>
+                <button type="button" class="add-to-cart-btn" onclick="addToCart('Tuétanos con Chicharrón Ribeye', 220, 'tuetanos')">
+                  <span>+</span> Agregar
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SECCIÓN MIXOLOGÍA & POSTRES -->
+      <div class="category-block" data-cat="cocteles">
+        <div class="category-section-title reveal-on-scroll">
+          🍸 Mixología Ahumada de Autor
+        </div>
+        <div class="dishes-grid">
+
+          <!-- Platillo 7: Smoked Mezcalita -->
+          <div class="dish-card reveal-on-scroll" data-dish="mezcalita" data-tags="gluten">
+            <div class="dish-image-wrapper">
+              <span class="dish-star-tag">🍸 Coctel Insignia</span>
+              <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=900&auto=format&fit=crop&q=80" alt="Smoked Mezcalita" class="dish-image">
+            </div>
+            <div class="dish-content">
+              <div>
+                <div class="dish-header-row">
+                  <h3 class="dish-title">Smoked Mezcalita Oaxaqueña</h3>
+                  <span class="dish-price">$170</span>
+                </div>
+                <p class="dish-desc">Servida bajo campana de cristal con humo de nogal. Mezcal espadín artesanal, jugo de mandarina tatemada, miel de agave y sal de chapulín.</p>
+                <div class="dish-meta-badges">
+                  <span class="meta-badge badge-gluten-free">🌾 Sin Gluten</span>
+                  <span class="meta-badge">💨 Servido con Humo en Mesa</span>
+                </div>
+              </div>
+              <div class="dish-order-actions">
+                <div class="qty-control">
+                  <button type="button" class="qty-btn" onclick="adjustQty('mezcalita', -1)">-</button>
+                  <span class="qty-num" id="qty-mezcalita">1</span>
+                  <button type="button" class="qty-btn" onclick="adjustQty('mezcalita', 1)">+</button>
+                </div>
+                <button type="button" class="add-to-cart-btn" onclick="addToCart('Smoked Mezcalita Oaxaqueña', 170, 'mezcalita')">
+                  <span>+</span> Agregar
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Platillo 8: Volcán de Chocolate -->
+          <div class="dish-card reveal-on-scroll" data-dish="volcan" data-tags="">
+            <div class="dish-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=900&auto=format&fit=crop&q=80" alt="Volcán de Chocolate" class="dish-image">
+            </div>
+            <div class="dish-content">
+              <div>
+                <div class="dish-header-row">
+                  <h3 class="dish-title">Volcán de Chocolate Oaxaqueño</h3>
+                  <span class="dish-price">$150</span>
+                </div>
+                <p class="dish-desc">Bizcocho tibio de chocolate 70% cacao con centro líquido de avellana, flameado en mesa con licor de café y helado artesanal de vainilla Papantla.</p>
+                <div class="dish-meta-badges">
+                  <span class="meta-badge">🥛 Lácteos</span>
+                  <span class="meta-badge">🥜 Frutos Secos</span>
+                </div>
+              </div>
+              <div class="dish-order-actions">
+                <div class="qty-control">
+                  <button type="button" class="qty-btn" onclick="adjustQty('volcan', -1)">-</button>
+                  <span class="qty-num" id="qty-volcan">1</span>
+                  <button type="button" class="qty-btn" onclick="adjustQty('volcan', 1)">+</button>
+                </div>
+                <button type="button" class="add-to-cart-btn" onclick="addToCart('Volcán de Chocolate Oaxaqueño', 150, 'volcan')">
+                  <span>+</span> Agregar
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+
+    <!-- ======================================================================= -->
+    <!-- TRIGGER FLOTANTE DEL ASISTENTE                                          -->
+    <!-- ======================================================================= -->
+    <button type="button" class="assistant-floating-trigger" onclick="openAssistantModal()">
+      <span class="assistant-icon-glow">✨</span>
+      <span>Asistente Alex</span>
     </button>
-  </div>
 
-  <!-- DRAWER COMPLETO DE CARRITO -->
-  <div class="cart-drawer-backdrop" id="cartBackdrop" onclick="closeCartDrawer()"></div>
-  <div class="cart-drawer" id="cartDrawer">
-    <div class="cart-drawer-header">
-      <h3 style="font-family: var(--heading); font-size: 1.1rem; color: #ffffff;">🛒 Tu Comanda · <span id="cartDrawerTable" style="color: var(--primary);">Mesa 4</span></h3>
-      <button type="button" class="ai-drawer-close" onclick="closeCartDrawer()">&times;</button>
+    <!-- DRAWER / MODAL ASISTENTE GOURMET -->
+    <div class="assistant-modal-backdrop" id="assistantBackdrop" onclick="closeAssistantModal()"></div>
+    <div class="assistant-modal-drawer" id="assistantDrawer">
+      <div class="assistant-drawer-header">
+        <div class="assistant-header-info">
+          <div class="assistant-avatar">✨</div>
+          <div class="assistant-header-text">
+            <h3>Asistente Alex</h3>
+            <p>Concierge Gastronómico de Mesa</p>
+          </div>
+        </div>
+        <button type="button" class="assistant-drawer-close" onclick="closeAssistantModal()">&times;</button>
+      </div>
+
+      <div class="assistant-chat-body" id="assistantChatBody">
+        <div class="chat-bubble assistant">
+          Buenas tardes, bienvenido a <strong>ALEX</strong>. Es un placer atenderte. ¿Deseas alguna recomendación sobre el maridaje, términos de cocción o tienes alguna preferencia de alérgenos?
+        </div>
+      </div>
+
+      <!-- CHIPS DE CONSULTAS RÁPIDAS -->
+      <div class="assistant-quick-prompts">
+        <button type="button" class="prompt-chip" onclick="askAssistantPrompt('¿Qué corte recomiendan para compartir?')">🥩 Corte para compartir</button>
+        <button type="button" class="prompt-chip" onclick="askAssistantPrompt('Busco opciones sin gluten')">🌾 Opciones Sin Gluten</button>
+        <button type="button" class="prompt-chip" onclick="askAssistantPrompt('¿Con qué cóctel marida la Brisket Burger?')">🍔 Maridaje Burger</button>
+        <button type="button" class="prompt-chip" onclick="askAssistantPrompt('Recomiéndame una cena completa por menos de $450')">💰 Menú hasta $450</button>
+      </div>
+
+      <form class="assistant-input-row" onsubmit="handleAssistantUserSubmit(event)">
+        <input type="text" id="assistantInputField" class="assistant-input-field" placeholder="Escribe tu consulta o preferencia..." autocomplete="off">
+        <button type="submit" class="assistant-send-btn">➔</button>
+      </form>
     </div>
 
-    <div class="cart-drawer-items" id="cartItemsList">
-      <!-- Se inyectan dinámicamente -->
+    <!-- ======================================================================= -->
+    <!-- MODAL DE TARJETA WALLET (APPLE & GOOGLE)                                -->
+    <!-- ======================================================================= -->
+    <div class="wallet-modal-backdrop" id="walletBackdrop" onclick="if(event.target === this) closeWalletModal();">
+      <div class="wallet-pass-card">
+        <button type="button" class="wallet-modal-close" onclick="closeWalletModal()">&times;</button>
+
+        <div class="pass-header">
+          <div class="pass-brand">
+            <h2>ALEX<span>.</span></h2>
+            <p>VIP Loyalty Pass</p>
+          </div>
+          <span class="pass-vip-badge">Nivel Oro</span>
+        </div>
+
+        <!-- SIMULACIÓN DE NOTIFICACIÓN PUSH EN PANTALLA BLOQUEADA -->
+        <div class="push-simulator-box">
+          <div class="push-sim-header">
+            <span>🔔 ALEX Smokehouse · AHORA</span>
+            <span>Wallet Push</span>
+          </div>
+          <strong>¡2x1 en Cócteles de Autor hoy!</strong>
+          <p style="color: #a8a29e; font-size: 0.72rem; margin-top: 2px;">Presenta tu pase digital antes de las 9:00 PM.</p>
+        </div>
+
+        <p style="font-size: 0.78rem; color: #d6d3d1; margin-bottom: 8px;">Sellos Acumulados: <strong>3 de 5</strong></p>
+        <div class="stamps-grid">
+          <div class="stamp-slot filled">🔥<span class="stamp-label">18 Sep</span></div>
+          <div class="stamp-slot filled">🔥<span class="stamp-label">20 Sep</span></div>
+          <div class="stamp-slot filled">🔥<span class="stamp-label">21 Sep</span></div>
+          <div class="stamp-slot">⭕<span class="stamp-label">Sello 4</span></div>
+          <div class="stamp-slot">🎁<span class="stamp-label">Premio</span></div>
+        </div>
+
+        <div class="pass-reward-callout">
+          🎁 <strong>¡A solo 2 visitas de tu recompensa!</strong><br>
+          En tu 5ta visita recibe cortesía de Tacos de Picaña o una Smoked Mezcalita.
+        </div>
+
+        <div class="wallet-store-btns">
+          <button type="button" class="btn-wallet-add" onclick="saveToWallet('apple')">
+            <svg width="14" height="14" viewBox="0 0 170 170" fill="currentColor"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.69-3.04-7.67-7.81-11.96-14.34-6.41-9.78-11.44-20.9-15.09-33.34-3.65-12.44-5.48-24.32-5.48-35.63 0-14.35 3.58-26.47 10.74-36.35 7.16-9.88 16.5-14.9 28.02-15.07 4.02 0 8.87 1.09 14.54 3.27 5.67 2.18 9.38 3.32 11.13 3.42 2.5.11 6.53-1.09 12.09-3.61 5.56-2.52 10.37-3.72 14.42-3.61 10.33.43 18.91 4.18 25.75 11.25-9.46 5.76-14.07 13.91-13.83 24.45.24 8.37 3.48 15.43 9.72 21.19 6.24 5.76 13.78 9.07 22.62 9.94-2.18 6.41-4.78 12.71-7.81 18.91zM119.22 31.02c0-7.39 2.66-14.45 7.98-21.18 5.32-6.73 11.96-10.87 19.92-12.42.44 2.17.65 4.34.65 6.51 0 7.39-2.72 14.67-8.15 21.84-5.43 7.17-12.06 11.25-19.89 12.24-.11-2.28-.51-4.61-.51-6.99z"/></svg>
+            Apple Wallet
+          </button>
+          <button type="button" class="btn-wallet-add" onclick="saveToWallet('google')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
+            Google Wallet
+          </button>
+        </div>
+      </div>
     </div>
 
-    <div class="cart-drawer-footer">
-      <div class="cart-calc-row">
-        <span>Subtotal Alimentos:</span>
-        <span id="calcSubtotal">$0 MXN</span>
+    <!-- ======================================================================= -->
+    <!-- CARRITO DE COMPRA & BARRA INFERIOR                                      -->
+    <!-- ======================================================================= -->
+    <div class="cart-bottom-bar" id="cartBar" style="display: none;">
+      <div class="cart-summary-text" onclick="openCartDrawer()">
+        <span class="cart-count-pill" id="cartCountPill">0 platillos seleccionados</span>
+        <span class="cart-total-val" id="cartTotalVal">$0 MXN</span>
       </div>
-      <div class="cart-calc-row">
-        <span>Propina sugerida (10%):</span>
-        <span id="calcTip">$0 MXN</span>
-      </div>
-      <div class="cart-calc-total">
-        <span>Total a Pagar:</span>
-        <span id="calcTotal">$0 MXN</span>
-      </div>
-
-      <button type="button" class="btn-send-whatsapp-order" onclick="sendOrderViaWhatsApp()">
-        <span>💬</span> Enviar Comanda a Cocina por WhatsApp
+      <button type="button" class="cart-checkout-btn" onclick="openCartDrawer()">
+        <span>Ver Comanda</span> ➔
       </button>
     </div>
+
+    <!-- DRAWER DEL CARRITO -->
+    <div class="cart-drawer-backdrop" id="cartBackdrop" onclick="closeCartDrawer()"></div>
+    <div class="cart-drawer" id="cartDrawer">
+      <div class="cart-drawer-header">
+        <h3 style="font-family: var(--heading); font-size: 1.1rem; color: #ffffff;">🛒 Tu Comanda · <span id="cartDrawerTable" style="color: var(--gold);">Mesa 4</span></h3>
+        <button type="button" class="assistant-drawer-close" onclick="closeCartDrawer()">&times;</button>
+      </div>
+
+      <div class="cart-drawer-items" id="cartItemsList">
+        <!-- Inyección dinámica -->
+      </div>
+
+      <div class="cart-drawer-footer">
+        <div class="cart-calc-row">
+          <span>Subtotal Alimentos:</span>
+          <span id="calcSubtotal">$0 MXN</span>
+        </div>
+        <div class="cart-calc-row">
+          <span>Propina sugerida (10%):</span>
+          <span id="calcTip">$0 MXN</span>
+        </div>
+        <div class="cart-calc-total">
+          <span>Total a Pagar:</span>
+          <span id="calcTotal">$0 MXN</span>
+        </div>
+
+        <button type="button" class="btn-send-whatsapp-order" onclick="sendOrderViaWhatsApp()">
+          <span>💬</span> Enviar Comanda a Cocina por WhatsApp
+        </button>
+      </div>
+    </div>
+
   </div>
 
   <!-- ======================================================================= -->
-  <!-- SCRIPTS Y LÓGICA DE INTERACTIVIDAD                                      -->
+  <!-- SCRIPTS & INTERACCIÓN                                                   -->
   <!-- ======================================================================= -->
   <script>
     (function() {
-      // 1. Detección de Mesa en URL (?m=1, ?m=7...)
+      // 1. Detección de Mesa
       const urlParams = new URLSearchParams(window.location.search);
       let currentTable = urlParams.get('m') || '4';
       const tableLabel = document.getElementById('tableLabel');
@@ -1943,7 +1835,7 @@
       if (cartDrawerTable) cartDrawerTable.textContent = 'Mesa ' + currentTable;
 
       window.promptTableChange = function() {
-        const val = prompt('Ingresa el número de mesa (ej. 1, 2, 5...):', currentTable);
+        const val = prompt('Ingresa tu número de mesa:', currentTable);
         if (val && val.trim()) {
           currentTable = val.trim();
           tableLabel.textContent = 'Mesa ' + currentTable + ' · Terraza';
@@ -1952,7 +1844,7 @@
         }
       };
 
-      // 2. Notificaciones Toast
+      // 2. Toast Notificación
       let toastTimer = null;
       window.showToast = function(msg) {
         const toast = document.getElementById('miniToast');
@@ -1966,18 +1858,18 @@
         }, 2200);
       };
 
-      // 3. Llamar al mesero y pedir cuenta
+      // 3. Llamar Mesero y Cuenta
       window.callWaiter = function() {
         if (navigator.vibrate) navigator.vibrate([40, 60, 40]);
-        showToast('🛎️ Llamando al mesero a la Mesa ' + currentTable + '...');
+        showToast('🛎️ Avisando a tu mesero para acudir a Mesa ' + currentTable);
       };
 
       window.requestBill = function() {
         if (navigator.vibrate) navigator.vibrate([40, 60, 40]);
-        showToast('🧾 Cuenta solicitada para Mesa ' + currentTable + '. En un momento la traen.');
+        showToast('🧾 Cuenta solicitada para Mesa ' + currentTable);
       };
 
-      // 4. Filtro por Categorías
+      // 4. Filtro de Categorías
       window.filterCategory = function(cat, btn) {
         document.querySelectorAll('.cat-tab').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
@@ -1991,9 +1883,9 @@
         });
       };
 
-      // 5. Filtro Dietético / Alérgenos
+      // 5. Filtros Dietéticos
       window.toggleDietaryFilter = function(tag, btn) {
-        const isActive = btn.classList.toggle('active');
+        btn.classList.toggle('active');
         const activeTags = [];
         document.querySelectorAll('.diet-pill.active').forEach(p => {
           if (p.id === 'filterGluten') activeTags.push('gluten');
@@ -2012,7 +1904,7 @@
         });
       };
 
-      // 6. Contadores y Carrito de Compras
+      // 6. Carrito de Compras
       const cart = {};
 
       window.adjustQty = function(dishKey, delta) {
@@ -2054,14 +1946,14 @@
               row.className = 'cart-item-row';
               row.innerHTML = `
                 <div>
-                  <strong style="color: #ffffff; font-size: 0.9rem;">${name}</strong>
-                  <div style="color: #94a3b8; font-size: 0.76rem; font-family: var(--mono);">$${item.price} c/u</div>
+                  <strong style="color: #ffffff; font-size: 0.90rem;">${name}</strong>
+                  <div style="color: #a8a29e; font-size: 0.78rem;">$${item.price} c/u</div>
                 </div>
                 <div style="display: flex; align-items: center; gap: 8px;">
                   <button type="button" class="qty-btn" onclick="modifyCartItem('${name}', -1)">-</button>
-                  <span style="font-family: var(--mono); font-weight: 700;">${item.qty}</span>
+                  <span style="font-weight: 700;">${item.qty}</span>
                   <button type="button" class="qty-btn" onclick="modifyCartItem('${name}', 1)">+</button>
-                  <span style="font-family: var(--mono); font-weight: 800; color: var(--primary); margin-left: 6px;">$${item.price * item.qty}</span>
+                  <span style="font-weight: 800; color: var(--gold); margin-left: 6px;">$${item.price * item.qty}</span>
                 </div>
               `;
               list.appendChild(row);
@@ -2108,7 +2000,7 @@
         document.getElementById('cartBackdrop').classList.remove('open');
       };
 
-      // 7. Enviar Comanda a WhatsApp
+      // 7. WhatsApp Order Dispatch
       window.sendOrderViaWhatsApp = function() {
         let msg = `*🔥 NUEVA COMANDA - ALEX SMOKEHOUSE 🔥*\n`;
         msg += `📍 *Ubicación:* Mesa ${currentTable} (Terraza)\n\n`;
@@ -2132,93 +2024,73 @@
         window.open(waUrl, '_blank');
       };
 
-      // 8. Modales de Video y Wallet
-      window.openVideoModal = function(title, desc) {
-        const player = document.getElementById('dishVideoPlayer');
-        document.getElementById('videoModalTitle').textContent = title;
-        document.getElementById('videoModalDesc').textContent = desc;
-        document.getElementById('videoModalBackdrop').classList.add('open');
-        if (player) {
-          player.currentTime = 0;
-          player.play().catch(() => {});
-        }
-      };
-
-      window.closeVideoModal = function() {
-        const player = document.getElementById('dishVideoPlayer');
-        if (player) player.pause();
-        document.getElementById('videoModalBackdrop').classList.remove('open');
-      };
-
+      // 8. Modal de Wallet
       window.openWalletModal = function() {
         document.getElementById('walletBackdrop').classList.add('open');
       };
-
       window.closeWalletModal = function() {
         document.getElementById('walletBackdrop').classList.remove('open');
       };
-
       window.saveToWallet = function(platform) {
-        showToast('✓ Pase guardado en tu ' + (platform === 'apple' ? 'Apple Wallet' : 'Google Wallet'));
+        showToast('✓ Pase añadido a tu ' + (platform === 'apple' ? 'Apple Wallet' : 'Google Wallet'));
       };
 
-      // 9. Mesero con IA Conversacional
-      window.openAiModal = function() {
-        document.getElementById('aiBackdrop').classList.add('open');
+      // 9. Asistente Alex (Hospitality / Sommelier)
+      window.openAssistantModal = function() {
+        document.getElementById('assistantBackdrop').classList.add('open');
       };
-      window.closeAiModal = function() {
-        document.getElementById('aiBackdrop').classList.remove('open');
+      window.closeAssistantModal = function() {
+        document.getElementById('assistantBackdrop').classList.remove('open');
       };
 
-      const aiResponses = {
+      const assistantAnswers = {
         'compartir': {
-          text: 'Para compartir en la mesa no hay nada como el **Tomahawk Prime de 1.2 kg**. Es sellado al mezquite con mantequilla de romero y alcanza perfecto para 2 o 3 personas.',
+          text: 'Para compartir en el centro de la mesa, la recomendación de la casa es el **Tomahawk Prime de 1.2 kg**. Viene sellado a fuego de mezquite con mantequilla de romero y es ideal para 2 o 3 personas.',
           dish: { title: 'Tomahawk Prime (1.2 kg)', price: 890, img: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=300&auto=format&fit=crop&q=80', key: 'tomahawk' }
         },
         'gluten': {
-          text: '¡Claro! En ALEX cuidamos mucho las alergias. Te recomiendo los **Tacos de Picaña en Maíz Azul** o el **Ribeye al Mezquite**. Ambos son 100% libres de gluten y altísimos en proteína.',
+          text: 'Con gusto. Si buscas opciones libres de gluten, te sugiero los **Tacos de Picaña en Maíz Azul** o el **Ribeye al Mezquite**. Ambos son 100% gluten-free y preparados con ingredientes puros a la brasa.',
           dish: { title: 'Tacos Picaña Maíz Azul (3)', price: 195, img: 'https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=300&auto=format&fit=crop&q=80', key: 'tacos-picanha' }
         },
         'maridaje': {
-          text: 'La **Brisket Burger de 14 horas** tiene notas ahumadas profundas y grasa fundida de Black Angus. El maridaje perfecto es la **Smoked Mezcalita**, el humo de nogal y el cítrico limpian el paladar en cada bocado.',
+          text: 'Para la **Brisket Burger de 14 horas**, el maridaje ideal es nuestra **Smoked Mezcalita**. La acidez de la mandarina tatemada y el humo de nogal balancean la grasa untuosa del Black Angus.',
           dish: { title: 'Smoked Mezcalita Oaxaqueña', price: 170, img: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=300&auto=format&fit=crop&q=80', key: 'mezcalita' }
         },
         'presupuesto': {
-          text: 'Con $450 pesos te armas un combo de campeonato: una **Brisket Burger 14 Horas ($260)** + una **Smoked Mezcalita ($170)** = **$430 MXN**. ¡Una experiencia de humo completa!',
+          text: 'Por menos de $450 pesos puedes disfrutar una experiencia completa: una **Brisket Burger 14 Horas ($260)** acompañada de una **Smoked Mezcalita ($170)**. Total: **$430 MXN**.',
           dish: { title: 'Brisket Burger 14 Horas', price: 260, img: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&auto=format&fit=crop&q=80', key: 'brisket-burger' }
         }
       };
 
-      window.askAiPrompt = function(promptText) {
+      window.askAssistantPrompt = function(promptText) {
         addChatMessage(promptText, 'user');
 
         setTimeout(() => {
           let matched = null;
           const lower = promptText.toLowerCase();
-          if (lower.includes('compartir') || lower.includes('corte')) matched = aiResponses['compartir'];
-          else if (lower.includes('gluten') || lower.includes('proteína')) matched = aiResponses['gluten'];
-          else if (lower.includes('marida') || lower.includes('burger')) matched = aiResponses['maridaje'];
-          else matched = aiResponses['presupuesto'];
+          if (lower.includes('compartir') || lower.includes('corte')) matched = assistantAnswers['compartir'];
+          else if (lower.includes('gluten') || lower.includes('proteína')) matched = assistantAnswers['gluten'];
+          else if (lower.includes('marida') || lower.includes('burger')) matched = assistantAnswers['maridaje'];
+          else matched = assistantAnswers['presupuesto'];
 
-          addChatMessage(matched.text, 'ai', matched.dish);
-        }, 450);
+          addChatMessage(matched.text, 'assistant', matched.dish);
+        }, 400);
       };
 
-      window.handleAiUserSubmit = function(e) {
+      window.handleAssistantUserSubmit = function(e) {
         e.preventDefault();
-        const input = document.getElementById('aiInputField');
+        const input = document.getElementById('assistantInputField');
         const val = input.value.trim();
         if (!val) return;
         input.value = '';
-        askAiPrompt(val);
+        askAssistantPrompt(val);
       };
 
       function addChatMessage(text, sender, dish) {
-        const body = document.getElementById('aiChatBody');
+        const body = document.getElementById('assistantChatBody');
         const bubble = document.createElement('div');
         bubble.className = 'chat-bubble ' + sender;
 
-        // Render Markdown básico
         let formatted = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
         bubble.innerHTML = formatted;
 
@@ -2240,6 +2112,27 @@
 
         body.appendChild(bubble);
         body.scrollTop = body.scrollHeight;
+      }
+
+      // 10. MOTOR DE ANIMACIÓN AL HACER SCROLL (INTERSECTION OBSERVER)
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.12,
+          rootMargin: '0px 0px -40px 0px'
+        });
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+          observer.observe(el);
+        });
+      } else {
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => el.classList.add('is-visible'));
       }
 
     })();
