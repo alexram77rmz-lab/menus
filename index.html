@@ -1522,17 +1522,18 @@
     }
 
     /* ========================================================================= */
-    /* ZONA INFERIOR OBSIDIAN BLACK TECH ("FONDO NEGRO CON UN TOQUE")            */
+    /* FOOTER OBSIDIAN BLACK TECH ("SOLO LA PARTE DE ABAJO EN NEGRO CON TOQUE")   */
     /* ========================================================================= */
-    .dark-bottom-zone {
+    .footer-obsidian-black {
       position: relative;
-      background: #030712;
+      background: #030712 !important;
       color: #f8fafc;
       overflow: hidden;
-      margin-top: 70px;
       border-top: 1px solid rgba(0, 240, 255, 0.22);
+      padding: 55px 24px 75px;
+      margin-top: 50px;
     }
-    .dark-bottom-laser {
+    .footer-laser-line {
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 2px;
@@ -1540,44 +1541,18 @@
       box-shadow: 0 0 25px rgba(0, 240, 255, 0.8), 0 0 10px rgba(59, 130, 246, 0.6);
       z-index: 5;
     }
-    .dark-bottom-aurora {
+    .footer-ambient-aura {
       position: absolute;
-      top: -120px; left: 50%;
+      top: -100px; left: 50%;
       transform: translateX(-50%);
-      width: 1000px; max-width: 100vw; height: 520px;
-      background: radial-gradient(ellipse 70% 60% at 50% 20%, rgba(37, 99, 235, 0.22) 0%, rgba(0, 240, 255, 0.09) 40%, transparent 75%);
+      width: 800px; max-width: 100vw; height: 350px;
+      background: radial-gradient(ellipse, rgba(37, 99, 235, 0.2) 0%, rgba(0, 240, 255, 0.08) 40%, transparent 75%);
       pointer-events: none;
       z-index: 1;
     }
-    .dark-bottom-grid {
-      position: absolute;
-      inset: 0;
-      background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-      background-size: 36px 36px;
-      mask-image: radial-gradient(ellipse 90% 80% at 50% 20%, black 20%, transparent 85%);
-      -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 20%, black 20%, transparent 85%);
-      pointer-events: none;
-      z-index: 1;
-    }
-    .dark-bottom-inner {
+    .footer-obsidian-black .footer-inner {
       position: relative;
       z-index: 2;
-      max-width: 1160px;
-      margin: 0 auto;
-      padding: 60px 24px 20px;
-    }
-    .dark-title {
-      color: #ffffff !important;
-      letter-spacing: -0.5px;
-    }
-    .dark-subtitle {
-      color: #94a3b8 !important;
-      font-size: 1.05rem;
-    }
-    .dark-brand-title {
-      color: #ffffff !important;
     }
     .admin-btn-glow {
       color: #38bdf8 !important;
@@ -1594,86 +1569,10 @@
       border-color: #38bdf8 !important;
       box-shadow: 0 0 18px rgba(56, 189, 248, 0.4) !important;
     }
-
-    /* FAQ DENTRO DE ZONA OBSIDIAN */
-    .dark-bottom-zone .faq-item {
-      background: rgba(15, 23, 42, 0.75);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(20px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
-    }
-    .dark-bottom-zone .faq-item:hover {
-      border-color: rgba(0, 240, 255, 0.45);
-      box-shadow: 0 12px 35px rgba(0, 240, 255, 0.12);
-      transform: translateY(-2px);
-    }
-    .dark-bottom-zone .faq-item.is-open {
-      border-color: rgba(0, 240, 255, 0.6);
-      box-shadow: 0 12px 40px rgba(0, 240, 255, 0.18);
-    }
-    .dark-bottom-zone .faq-q-title {
-      color: #ffffff;
-    }
-    .dark-bottom-zone .faq-toggle-icon {
-      color: #00f0ff;
-    }
-    .dark-bottom-zone .faq-answer-content {
-      color: #cbd5e1;
-    }
-
-    /* FORMULARIO COTIZADOR DENTRO DE ZONA OBSIDIAN */
-    .dark-bottom-zone .form-wrap {
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid rgba(56, 189, 248, 0.28);
-      backdrop-filter: blur(24px);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(37, 99, 235, 0.12);
-      border-radius: 20px;
-    }
-    .dark-form-title {
-      font-family: var(--heading);
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: #ffffff;
-      text-align: center;
-    }
-    .dark-form-subtitle {
-      font-size: 0.92rem;
-      color: #94a3b8;
-      text-align: center;
-      margin-top: 4px;
-    }
-    .dark-bottom-zone .field-label {
-      color: #38bdf8;
-    }
-    .dark-bottom-zone .field-input,
-    .dark-bottom-zone .field-select {
-      background: rgba(11, 17, 30, 0.95);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      color: #ffffff;
-      border-radius: 10px;
-    }
-    .dark-bottom-zone .field-input:focus,
-    .dark-bottom-zone .field-select:focus {
-      border-color: #00f0ff;
-      box-shadow: 0 0 16px rgba(0, 240, 255, 0.35);
-      background: rgba(11, 17, 30, 1);
-    }
-    .dark-bottom-zone .field-select option {
-      background: #0f172a;
-      color: #ffffff;
-    }
-
-    /* FOOTER DENTRO DE ZONA OBSIDIAN */
-    .dark-bottom-zone footer {
-      background: transparent;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 50px 24px 70px;
-      margin-top: 20px;
-    }
-    .dark-bottom-zone .legal-btn-link {
+    .footer-obsidian-black .legal-btn-link {
       color: #94a3b8;
     }
-    .dark-bottom-zone .legal-btn-link:hover {
+    .footer-obsidian-black .legal-btn-link:hover {
       color: #00f0ff;
     }
   </style>
@@ -2494,168 +2393,160 @@
 
       </div>
     </section>
-  </div>
-
-  <!-- ======================================================================= -->
-  <!-- ZONA INFERIOR OBSIDIAN BLACK TECH: FAQ, COTIZADOR Y FOOTER              -->
-  <!-- ======================================================================= -->
-  <div class="dark-bottom-zone" id="zona-inferior">
-    <!-- Haz láser neón superior con resplandor -->
-    <div class="dark-bottom-laser"></div>
-    <!-- Malla de cuadrícula cibernética -->
-    <div class="dark-bottom-grid"></div>
-    <!-- Aurora radial neón ambiental -->
-    <div class="dark-bottom-aurora"></div>
-
-    <div class="dark-bottom-inner">
-      <!-- PREGUNTAS FRECUENTES (FAQ INTERACTIVO CON ACCORDION ANIMADO) -->
-      <section class="section-wrap reveal-item" id="faq" style="margin-bottom: 50px;">
-        <div style="text-align: center; max-width: 760px; margin: 0 auto 36px;">
-          <span class="pill-kicker" style="background: rgba(0, 240, 255, 0.12); border-color: rgba(0, 240, 255, 0.35); color: #00f0ff;">Resuelve tus Dudas</span>
-          <h2 class="section-title dark-title">Preguntas Frecuentes · Menús NFC & SAT 💡</h2>
-          <p class="dark-subtitle">
-            Todo lo que necesitas saber antes de modernizar las mesas de tu restaurante:
-          </p>
-        </div>
-
-        <div class="faq-accordion-container">
-          <!-- FAQ 1 -->
-          <div class="faq-item interactive-card" onclick="toggleFaq(this)">
-            <div class="faq-question-row">
-              <span class="faq-q-title">¿Qué teléfonos son compatibles con las placas NFC de mesa?</span>
-              <span class="faq-toggle-icon">+</span>
-            </div>
-            <div class="faq-answer-content">
-              El 100% de los smartphones modernos son compatibles. Cualquier iPhone (desde iPhone XS / XR hasta iPhone 16) y cualquier dispositivo Android con NFC (Samsung, Motorola, Xiaomi) abren el menú con solo acercar el teléfono. Además, para dispositivos más antiguos, cada placa incluye un código QR grabado en alta definición.
-            </div>
-          </div>
-
-          <!-- FAQ 2 -->
-          <div class="faq-item interactive-card" onclick="toggleFaq(this)">
-            <div class="faq-question-row">
-              <span class="faq-q-title">¿Los comensales necesitan descargar alguna app o registrarse?</span>
-              <span class="faq-toggle-icon">+</span>
-            </div>
-            <div class="faq-answer-content">
-              No, absolutamente cero descargas. El menú abre instantáneamente en el navegador del teléfono en menos de 800 milisegundos. Sin contraseñas, sin registros y sin consumir la memoria del cliente.
-            </div>
-          </div>
-
-          <!-- FAQ 3 -->
-          <div class="faq-item interactive-card" onclick="toggleFaq(this)">
-            <div class="faq-question-row">
-              <span class="faq-q-title">¿Cómo actualizo los precios y platillos cuando haya cambios?</span>
-              <span class="faq-toggle-icon">+</span>
-            </div>
-            <div class="faq-answer-content">
-              No tienes que aprender ningún software complicado ni perder horas en tutoriales. Solo nos envías un WhatsApp con tus cambios (ej. <em>"Alex, sube la hamburguesa especial a $140"</em>) y nuestro equipo lo actualiza en cuestión de minutos. Todos los cambios son ilimitados y van incluidos en tu póliza activa.
-            </div>
-          </div>
-
-          <!-- FAQ 4 -->
-          <div class="faq-item interactive-card" onclick="toggleFaq(this)">
-            <div class="faq-question-row">
-              <span class="faq-q-title">¿Qué equipo necesita mi cocina para el panel de comandas (KDS)?</span>
-              <span class="faq-toggle-icon">+</span>
-            </div>
-            <div class="faq-answer-content">
-              Puedes utilizar cualquier tablet Android o iPad básica, un teléfono celular o un monitor/televisión con navegador web. El panel se actualiza en directo sin necesidad de cables ni antenas especiales.
-            </div>
-          </div>
-
-          <!-- FAQ 5 -->
-          <div class="faq-item interactive-card" onclick="toggleFaq(this)">
-            <div class="faq-question-row">
-              <span class="faq-q-title">¿Cómo me ayuda el módulo de Estimador Fiscal SAT (RESICO)?</span>
-              <span class="faq-toggle-icon">+</span>
-            </div>
-            <div class="faq-answer-content">
-              El sistema totaliza automáticamente tus ingresos diarios y estima tu pago mensual de ISR bajo las tasas preferenciales del régimen RESICO (1% al 2.5%), además de separar el IVA retenido. Te permite proyectar tus impuestos y evitar discrepancias o recargos ante el SAT.
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- FORMULARIO DE COTIZACIÓN -->
-      <section class="form-wrap interactive-card reveal-item" id="cotizador" style="margin-bottom: 40px;">
-        <div style="text-align: center; margin-bottom: 8px;">
-          <span class="pill-kicker" style="background: rgba(0, 240, 255, 0.12); border-color: rgba(0, 240, 255, 0.35); color: #00f0ff;">⚡ Cotización Inmediata</span>
-        </div>
-        <h3 class="dark-form-title">
-          Cotiza el Sistema para tu Restaurante en 5 Minutos
-        </h3>
-        <p class="dark-form-subtitle">
-          Ingresa tus datos y te preparamos una demostración en vivo con tu logotipo sin ningún costo.
+    <!-- ======================================================================= -->
+    <!-- PREGUNTAS FRECUENTES (FAQ INTERACTIVO CON ACCORDION ANIMADO)           -->
+    <!-- ======================================================================= -->
+    <section class="section-wrap reveal-item" id="faq" style="margin-bottom: 50px;">
+      <div style="text-align: center; max-width: 760px; margin: 0 auto 36px;">
+        <span class="pill-kicker">Resuelve tus Dudas</span>
+        <h2 class="section-title">Preguntas Frecuentes · Menús NFC & SAT 💡</h2>
+        <p style="color: var(--text-muted); font-size: 1.05rem;">
+          Todo lo que necesitas saber antes de modernizar las mesas de tu restaurante:
         </p>
+      </div>
 
-        <form id="quoteCleanForm">
-          <input type="text" name="website_url_hp" id="hpField" tabindex="-1" autocomplete="off" style="position:absolute; left:-9999px; opacity:0; pointer-events:none;">
-          <input type="hidden" name="client_csrf" id="csrfField" value="">
-
-          <div class="field-grid">
-            <div>
-              <div class="field-label">Nombre del Restaurante *</div>
-              <input type="text" id="restName" class="field-input" placeholder="Ej. Mariscos El Rey" required maxlength="80">
-            </div>
-            <div>
-              <div class="field-label">Giro o Especialidad *</div>
-              <select id="restCategory" class="field-select" required>
-                <option value="Mariscos y Pescados">Mariscos y Pescados</option>
-                <option value="Alitas, Burgers y Snacks">Alitas, Burgers y Snacks</option>
-                <option value="Tacos y Birria">Tacos y Birria</option>
-                <option value="Sushi y Comida Asiática">Sushi y Comida Asiática</option>
-                <option value="Cafetería y Postres">Cafetería y Postres</option>
-                <option value="Otro">Otro Giro Gastronómico</option>
-              </select>
-            </div>
-            <div>
-              <div class="field-label">Ciudad o Zona de tu Restaurante *</div>
-              <input type="text" id="restLocation" class="field-input" placeholder="Ej. Polanco, CDMX o San Pedro, NL" required maxlength="100">
-            </div>
-            <div>
-              <div class="field-label">Teléfono WhatsApp *</div>
-              <input type="tel" id="restPhone" class="field-input" placeholder="Ej. 33 1234 5678" required maxlength="15">
-            </div>
+      <div class="faq-accordion-container">
+        <!-- FAQ 1 -->
+        <div class="faq-item interactive-card" onclick="toggleFaq(this)">
+          <div class="faq-question-row">
+            <span class="faq-q-title">¿Qué teléfonos son compatibles con las placas NFC de mesa?</span>
+            <span class="faq-toggle-icon">+</span>
           </div>
-
-          <button type="submit" class="whatsapp-btn-main" id="submitBtn" style="width: 100%; border: none; cursor: pointer; justify-content: center; font-size: 1rem; padding: 15px; margin-top: 24px; border-radius: 12px;">
-            <span>⚡</span> Enviar Cotización Directa a WhatsApp
-          </button>
-
-          <p style="font-size: 0.8rem; color: #94a3b8; text-align: center; margin-top: 14px;">
-            Al enviar aceptas nuestro <button type="button" class="legal-btn-link" onclick="openLegalModal('privacidad')">Aviso de Privacidad</button> y los <button type="button" class="legal-btn-link" onclick="openLegalModal('terminos')">Términos del Servicio</button>. Tus datos son 100% confidenciales.
-          </p>
-        </form>
-      </section>
-    </div>
-
-    <!-- PIE DE PÁGINA TECH -->
-    <footer>
-      <div class="footer-inner">
-        <div>
-          <div class="brand-title dark-brand-title" style="margin-bottom: 6px;">Menu<span style="color: #00f0ff;">Express</span></div>
-          <div style="font-size: 0.85rem; color: #94a3b8;">
-            Arquitectura de Software y Digitalización Gastronómica · México.
-          </div>
-          <div style="display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 0.73rem; color: #34d399; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.28); padding: 4px 10px; border-radius: 16px; margin-top: 10px;">
-            <span class="status-dot-pulse" style="background: #10b981;"></span>
-            <span>Red NFC y Servidores SAT en Línea · 2026</span>
-          </div>
-          <div style="font-family: var(--mono); font-size: 0.72rem; color: #64748b; margin-top: 8px;">
-            © 2026 MenuExpress México. Todos los derechos reservados.
+          <div class="faq-answer-content">
+            El 100% de los smartphones modernos son compatibles. Cualquier iPhone (desde iPhone XS / XR hasta iPhone 16) y cualquier dispositivo Android con NFC (Samsung, Motorola, Xiaomi) abren el menú con solo acercar el teléfono. Además, para dispositivos más antiguos, cada placa incluye un código QR grabado en alta definición.
           </div>
         </div>
 
-        <nav class="legal-nav-btns" aria-label="Enlaces Legales">
-          <button type="button" class="legal-btn-link" onclick="openLegalModal('privacidad')">Aviso de Privacidad</button>
-          <button type="button" class="legal-btn-link" onclick="openLegalModal('terminos')">Términos y Condiciones</button>
-          <button type="button" class="legal-btn-link" onclick="openLegalModal('cookies')">Política de Cookies</button>
-          <button type="button" class="legal-btn-link" onclick="openLegalModal('aviso')">Aviso Legal y Reembolsos</button>
-          <button type="button" class="legal-btn-link admin-btn-glow" onclick="openAdminModal()">🔐 Panel Admin Alex</button>
-        </nav>
+        <!-- FAQ 2 -->
+        <div class="faq-item interactive-card" onclick="toggleFaq(this)">
+          <div class="faq-question-row">
+            <span class="faq-q-title">¿Los comensales necesitan descargar alguna app o registrarse?</span>
+            <span class="faq-toggle-icon">+</span>
+          </div>
+          <div class="faq-answer-content">
+            No, absolutamente cero descargas. El menú abre instantáneamente en el navegador del teléfono en menos de 800 milisegundos. Sin contraseñas, sin registros y sin consumir la memoria del cliente.
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item interactive-card" onclick="toggleFaq(this)">
+          <div class="faq-question-row">
+            <span class="faq-q-title">¿Cómo actualizo los precios y platillos cuando haya cambios?</span>
+            <span class="faq-toggle-icon">+</span>
+          </div>
+          <div class="faq-answer-content">
+            No tienes que aprender ningún software complicado ni perder horas en tutoriales. Solo nos envías un WhatsApp con tus cambios (ej. <em>"Alex, sube la hamburguesa especial a $140"</em>) y nuestro equipo lo actualiza en cuestión de minutos. Todos los cambios son ilimitados y van incluidos en tu póliza activa.
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item interactive-card" onclick="toggleFaq(this)">
+          <div class="faq-question-row">
+            <span class="faq-q-title">¿Qué equipo necesita mi cocina para el panel de comandas (KDS)?</span>
+            <span class="faq-toggle-icon">+</span>
+          </div>
+          <div class="faq-answer-content">
+            Puedes utilizar cualquier tablet Android o iPad básica, un teléfono celular o un monitor/televisión con navegador web. El panel se actualiza en directo sin necesidad de cables ni antenas especiales.
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-item interactive-card" onclick="toggleFaq(this)">
+          <div class="faq-question-row">
+            <span class="faq-q-title">¿Cómo me ayuda el módulo de Estimador Fiscal SAT (RESICO)?</span>
+            <span class="faq-toggle-icon">+</span>
+          </div>
+          <div class="faq-answer-content">
+            El sistema totaliza automáticamente tus ingresos diarios y estima tu pago mensual de ISR bajo las tasas preferenciales del régimen RESICO (1% al 2.5%), además de separar el IVA retenido. Te permite proyectar tus impuestos y evitar discrepancias o recargos ante el SAT.
+          </div>
+        </div>
       </div>
-    </footer>
+    </section>
+
+    <!-- FORMULARIO DE COTIZACIÓN -->
+    <section class="form-wrap interactive-card reveal-item" id="cotizador" style="margin-bottom: 70px;">
+      <h3 style="font-family: var(--heading); font-size: 1.6rem; font-weight: 700; color: var(--text-main); text-align: center;">
+        Cotiza el Sistema para tu Restaurante en 5 Minutos
+      </h3>
+      <p style="font-size: 0.92rem; color: var(--text-muted); text-align: center; margin-top: 4px;">
+        Ingresa tus datos y te preparamos una demostración en vivo con tu logotipo sin ningún costo.
+      </p>
+
+      <form id="quoteCleanForm">
+        <input type="text" name="website_url_hp" id="hpField" tabindex="-1" autocomplete="off" style="position:absolute; left:-9999px; opacity:0; pointer-events:none;">
+        <input type="hidden" name="client_csrf" id="csrfField" value="">
+
+        <div class="field-grid">
+          <div>
+            <div class="field-label">Nombre del Restaurante *</div>
+            <input type="text" id="restName" class="field-input" placeholder="Ej. Mariscos El Rey" required maxlength="80">
+          </div>
+          <div>
+            <div class="field-label">Giro o Especialidad *</div>
+            <select id="restCategory" class="field-select" required>
+              <option value="Mariscos y Pescados">Mariscos y Pescados</option>
+              <option value="Alitas, Burgers y Snacks">Alitas, Burgers y Snacks</option>
+              <option value="Tacos y Birria">Tacos y Birria</option>
+              <option value="Sushi y Comida Asiática">Sushi y Comida Asiática</option>
+              <option value="Cafetería y Postres">Cafetería y Postres</option>
+              <option value="Otro">Otro Giro Gastronómico</option>
+            </select>
+          </div>
+          <div>
+            <div class="field-label">Ciudad o Zona de tu Restaurante *</div>
+            <input type="text" id="restLocation" class="field-input" placeholder="Ej. Polanco, CDMX o San Pedro, NL" required maxlength="100">
+          </div>
+          <div>
+            <div class="field-label">Teléfono WhatsApp *</div>
+            <input type="tel" id="restPhone" class="field-input" placeholder="Ej. 33 1234 5678" required maxlength="15">
+          </div>
+        </div>
+
+        <button type="submit" class="whatsapp-btn-main" id="submitBtn" style="width: 100%; border: none; cursor: pointer; justify-content: center; font-size: 1rem; padding: 15px; margin-top: 24px; border-radius: 12px;">
+          <span>⚡</span> Enviar Cotización Directa a WhatsApp
+        </button>
+
+        <p style="font-size: 0.8rem; color: var(--text-muted); text-align: center; margin-top: 14px;">
+          Al enviar aceptas nuestro <button type="button" class="legal-btn-link" onclick="openLegalModal('privacidad')">Aviso de Privacidad</button> y los <button type="button" class="legal-btn-link" onclick="openLegalModal('terminos')">Términos del Servicio</button>. Tus datos son 100% confidenciales.
+        </p>
+      </form>
+    </section>
+
   </div>
+
+  <!-- ======================================================================= -->
+  <!-- PIE DE PÁGINA TECNOLÓGICO OBSIDIAN (SOLO ESTA PARTE EN NEGRO CON TOQUE) -->
+  <!-- ======================================================================= -->
+  <footer class="footer-obsidian-black">
+    <!-- Haz láser neón superior con resplandor -->
+    <div class="footer-laser-line"></div>
+    <!-- Aurora radial neón ambiental sutil -->
+    <div class="footer-ambient-aura"></div>
+
+    <div class="footer-inner">
+      <div>
+        <div class="brand-title" style="color: #ffffff; margin-bottom: 6px;">Menu<span style="color: #00f0ff;">Express</span></div>
+        <div style="font-size: 0.85rem; color: #94a3b8;">
+          Arquitectura de Software y Digitalización Gastronómica · México.
+        </div>
+        <div style="display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 0.73rem; color: #34d399; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.28); padding: 4px 10px; border-radius: 16px; margin-top: 10px;">
+          <span class="status-dot-pulse" style="background: #10b981;"></span>
+          <span>Red NFC y Servidores SAT en Línea · 2026</span>
+        </div>
+        <div style="font-family: var(--mono); font-size: 0.72rem; color: #64748b; margin-top: 8px;">
+          © 2026 MenuExpress México. Todos los derechos reservados.
+        </div>
+      </div>
+
+      <nav class="legal-nav-btns" aria-label="Enlaces Legales">
+        <button type="button" class="legal-btn-link" onclick="openLegalModal('privacidad')">Aviso de Privacidad</button>
+        <button type="button" class="legal-btn-link" onclick="openLegalModal('terminos')">Términos y Condiciones</button>
+        <button type="button" class="legal-btn-link" onclick="openLegalModal('cookies')">Política de Cookies</button>
+        <button type="button" class="legal-btn-link" onclick="openLegalModal('aviso')">Aviso Legal y Reembolsos</button>
+        <button type="button" class="legal-btn-link admin-btn-glow" onclick="openAdminModal()">🔐 Panel Admin Alex</button>
+      </nav>
+    </div>
+  </footer>
 
   <!-- ======================================================================= -->
   <!-- MODAL EXCLUSIVO: PANEL ADMINISTRADOR ALEX (BACKEND / NEGOCIO)            -->
@@ -3364,6 +3255,12 @@
   
   <!-- MOTOR WEBGL 3D (THREE.JS / PBR / NFC SHOCKWAVE BUNDLE) -->
   <script src="js/hero-3d.bundle.js"></script>
-
+  <script>
+    (function() {
+      if (typeof window !== 'undefined' && window.initHero3D) {
+        window.initHero3D('hero-3d-canvas-container');
+      }
+    })();
+  </script>
 </body>
 </html>
