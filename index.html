@@ -440,6 +440,10 @@
       padding: 0;
     }
 
+    .mobile-station-switcher, .mobile-station-desc {
+      display: none;
+    }
+
     .scrolly-sticky-stage {
       position: sticky;
       top: 0;
@@ -767,18 +771,23 @@
       }
 
       .container {
-        padding: 20px 20px 60px;
+        padding: 16px 16px 50px;
       }
       /* Scrollytelling Mobile Experience: Natural flow, zero scroll trap */
       .scrolly-container {
         height: auto !important;
-        margin-bottom: 28px !important;
+        margin-bottom: 20px !important;
       }
       .scrolly-sticky-stage {
         position: relative !important;
         height: auto !important;
         min-height: 520px;
-        padding: 24px 16px 36px !important;
+        max-height: 640px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 16px 14px 20px !important;
         overflow: hidden !important;
       }
       #hero-3d-canvas-container {
@@ -798,46 +807,58 @@
         left: auto !important;
         transform: none !important;
         width: 100% !important;
+        max-width: 380px !important;
         opacity: 1 !important;
         filter: none !important;
         pointer-events: auto !important;
-        padding: 10px 0 16px !important;
+        padding: 4px 0 6px !important;
         text-align: center;
+      }
+      .pill-kicker {
+        font-size: 0.68rem !important;
+        padding: 3px 10px !important;
+        margin-bottom: 8px !important;
       }
       .scrolly-hero-title {
-        font-size: 2.1rem;
-        letter-spacing: -0.8px;
-        line-height: 1.18;
-        margin-bottom: 14px;
+        font-size: 1.55rem !important;
+        letter-spacing: -0.6px !important;
+        line-height: 1.16 !important;
+        margin-bottom: 8px !important;
       }
       .scrolly-hero-desc {
-        font-size: 0.95rem;
-        line-height: 1.5;
-        margin-bottom: 22px;
+        font-size: 0.82rem !important;
+        line-height: 1.38 !important;
+        margin-bottom: 12px !important;
+        max-width: 330px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
       }
       .scrolly-hero-cta-group {
-        flex-direction: column;
-        width: 100%;
-        gap: 12px;
-        margin-bottom: 20px;
+        flex-direction: row !important;
+        justify-content: center !important;
+        width: 100% !important;
+        gap: 8px !important;
+        margin-bottom: 8px !important;
+        flex-wrap: wrap !important;
       }
       .magnetic-wrap, .magnetic-shimmer-btn {
-        width: 100%;
+        width: auto !important;
       }
       .magnetic-inner {
-        width: 100%;
-        justify-content: center;
-        padding: 14px 20px;
-        font-size: 0.95rem;
-        min-height: 48px;
+        width: auto !important;
+        padding: 9px 16px !important;
+        font-size: 0.82rem !important;
+        min-height: 38px !important;
+        border-radius: 20px !important;
       }
       .btn-secondary-clean {
-        width: 100%;
+        width: auto !important;
         text-align: center;
-        padding: 13px 20px;
-        font-size: 0.92rem;
-        min-height: 48px;
-        display: flex;
+        padding: 9px 16px !important;
+        font-size: 0.82rem !important;
+        min-height: 38px !important;
+        border-radius: 20px !important;
+        display: inline-flex;
         align-items: center;
         justify-content: center;
       }
@@ -847,33 +868,120 @@
       .glass-narrative-card {
         display: none !important;
       }
+      /* Mobile Station Switcher & HUD */
+      .mobile-station-switcher {
+        display: flex !important;
+        gap: 6px;
+        justify-content: center;
+        margin-top: 180px;
+        z-index: 20;
+        position: relative;
+      }
+      .mobile-station-btn {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 4px 10px;
+        font-family: var(--mono);
+        font-size: 0.70rem;
+        font-weight: 700;
+        color: var(--text-muted);
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      [data-theme="dark"] .mobile-station-btn {
+        background: rgba(15, 23, 42, 0.9);
+        border-color: rgba(255, 255, 255, 0.14);
+        color: #94a3b8;
+      }
+      .mobile-station-btn.active {
+        background: var(--primary);
+        color: #ffffff;
+        border-color: var(--primary);
+        box-shadow: 0 2px 10px rgba(37, 99, 235, 0.35);
+      }
+      .mobile-station-desc {
+        display: block !important;
+        font-family: var(--sans);
+        font-size: 0.74rem;
+        font-weight: 600;
+        color: var(--text-main);
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 4px 12px;
+        margin-top: 6px;
+        text-align: center;
+        max-width: 92%;
+        transition: opacity 0.2s ease;
+        z-index: 20;
+        position: relative;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      [data-theme="dark"] .mobile-station-desc {
+        background: rgba(15, 23, 42, 0.88);
+        border-color: rgba(255, 255, 255, 0.12);
+        color: #e2e8f0;
+      }
       .hero-3d-hud-bar {
         position: relative !important;
         bottom: auto !important;
         left: auto !important;
         transform: none !important;
-        margin-top: 16px;
+        margin-top: 8px;
         pointer-events: auto !important;
-        padding: 6px 12px;
-        gap: 8px;
+        padding: 5px 10px;
+        gap: 6px;
         max-width: 96%;
       }
       .hud-btn {
-        min-height: 44px;
-        padding: 8px 14px;
-        font-size: 0.8rem;
+        min-height: 38px;
+        padding: 6px 12px;
+        font-size: 0.74rem;
         pointer-events: auto !important;
       }
       .hud-tip {
         display: none;
       }
-      /* Mobile Section Spacing Calibration */
+      /* Mobile Section Spacing & Titles Calibration */
       .section-wrap {
-        margin-bottom: 54px !important;
+        margin-bottom: 48px !important;
       }
       .section-title {
-        font-size: 1.8rem !important;
+        font-size: 1.55rem !important;
         line-height: 1.2 !important;
+      }
+      .phone-device {
+        width: 290px !important;
+        height: 560px !important;
+        border-width: 8px !important;
+        border-radius: 40px !important;
+      }
+      .phone-screen {
+        border-radius: 32px !important;
+        padding: 38px 12px 14px !important;
+      }
+      .dev-tab-btn {
+        padding: 6px 12px !important;
+        font-size: 0.76rem !important;
+      }
+      /* Fix Restaurante Pro Ribbon on Mobile */
+      .plan-card.featured {
+        margin-top: 22px !important;
+        padding-top: 38px !important;
+        overflow: visible !important;
+      }
+      .featured-ribbon {
+        top: -14px !important;
+        font-size: 0.76rem !important;
+        padding: 5px 14px !important;
+        z-index: 30 !important;
       }
     }
     .device-switcher-tabs {
@@ -1070,12 +1178,32 @@
     }
     .plan-card:hover { transform: translateY(-4px); border-color: var(--primary); }
     .plan-card.featured {
-      border: 2px solid var(--primary); box-shadow: var(--shadow-lg);
+      border: 2px solid var(--primary);
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.18);
+      overflow: visible !important;
+      margin-top: 14px;
+      padding-top: 38px;
     }
     .featured-ribbon {
-      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
-      background: var(--primary); color: #ffffff; font-family: var(--mono);
-      font-size: 0.72rem; font-weight: 800; padding: 4px 14px; border-radius: 20px; text-transform: uppercase;
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      color: #ffffff;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 6px 18px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.45);
+      z-index: 25;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
     .plan-name { font-family: var(--heading); font-size: 1.35rem; font-weight: 700; margin-bottom: 4px; }
     .plan-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px; }
@@ -1822,6 +1950,14 @@
         </div>
       </div>
 
+      <!-- SELECTOR COMPACTO DE ESTACIONES 3D EN MÓVIL (ANIMADO) -->
+      <div class="mobile-station-switcher" aria-label="Estaciones del Sistema">
+        <button type="button" class="mobile-station-btn active" onclick="if(window.hero3dSetStation) window.hero3dSetStation(0);">01 Mesa</button>
+        <button type="button" class="mobile-station-btn" onclick="if(window.hero3dSetStation) window.hero3dSetStation(1);">02 Cocina</button>
+        <button type="button" class="mobile-station-btn" onclick="if(window.hero3dSetStation) window.hero3dSetStation(2);">03 Gerencia</button>
+      </div>
+      <div id="mobileStationDesc" class="mobile-station-desc">⚡ 01 Mesa: Acrílico Negro Piano · Chip NTAG213 y QR PBR</div>
+
       <!-- HUD BAR INTERACTIVO FLOTANTE -->
       <div class="hero-3d-hud-bar">
         <button type="button" class="hud-btn hud-btn-primary" id="btnNfcAction" onclick="if(window.hero3dSimulateNfc) window.hero3dSimulateNfc();">
@@ -2185,7 +2321,7 @@
             <li><span>✓</span> <strong>Cambios de precios ilimitados</strong> vía WhatsApp</li>
             <li><span>✓</span> Servidor en la nube de alta disponibilidad 24/7</li>
           </ul>
-          <a href="https://wa.me/523312345678?text=Hola%20Alex!%20Deseo%20el%20Plan%20Despegue%20($499%20+%20$100/mes)" class="btn-secondary-clean btn-has-ripple" style="text-align: center; justify-content: center;">
+          <a href="https://wa.me/523312345678?text=Hola%20Alex!%20Deseo%20el%20Plan%20Despegue%20($499%20+%20$100/mes)" class="btn-secondary-clean btn-has-ripple" style="text-align: center; justify-content: center; margin-top: auto;">
             Contratar Plan $100/mes
           </a>
         </div>
@@ -2210,7 +2346,7 @@
             <li><span>✓</span> Conmutador multilingüe (Español / Inglés / Chino)</li>
             <li><span>✓</span> Soporte prioritario y cambios ilimitados</li>
           </ul>
-          <a href="https://wa.me/523312345678?text=Hola%20Alex!%20Me%20interesa%20el%20Plan%20Restaurante%20Pro%20($999%20+%20$200/mes)" class="btn-primary-blue btn-has-ripple" style="text-align: center; justify-content: center;">
+          <a href="https://wa.me/523312345678?text=Hola%20Alex!%20Me%20interesa%20el%20Plan%20Restaurante%20Pro%20($999%20+%20$200/mes)" class="btn-primary-blue btn-has-ripple" style="text-align: center; justify-content: center; margin-top: auto;">
             Quiero el Plan Pro $200/mes
           </a>
         </div>
@@ -2235,7 +2371,7 @@
             <li><span>✓</span> - Cálculo de Food Cost y margen de utilidad neta</li>
             <li><span>✓</span> Atención prioritaria 24/7 y respaldo diario</li>
           </ul>
-          <a href="https://wa.me/523312345678?text=Hola%20Alex!%20Quiero%20el%20Plan%20Gerencial%20Master%20($1,890%20+%20$300/mes)" class="btn-secondary-clean btn-has-ripple" style="text-align: center; justify-content: center;">
+          <a href="https://wa.me/523312345678?text=Hola%20Alex!%20Quiero%20el%20Plan%20Gerencial%20Master%20($1,890%20+%20$300/mes)" class="btn-secondary-clean btn-has-ripple" style="text-align: center; justify-content: center; margin-top: auto;">
             Solicitar Plan Master $300/mes
           </a>
         </div>
