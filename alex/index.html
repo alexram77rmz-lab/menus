@@ -1644,6 +1644,544 @@
     }
 
     /* ========================================================================= */
+    /* BARRA DE DEMOSTRACIÓN DE ROLES & PANELES OPERATIVOS (EMPLEADO / GERENTE)  */
+    /* ========================================================================= */
+    .header-roles-ribbon {
+      background: #090d16;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 6px 16px;
+      font-size: 0.74rem;
+      position: relative;
+      z-index: 101;
+    }
+
+    [data-theme="light"] .header-roles-ribbon {
+      background: #0f172a;
+      border-bottom-color: rgba(15, 23, 42, 0.2);
+    }
+
+    .roles-ribbon-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .roles-ribbon-title {
+      font-family: var(--heading);
+      font-size: 0.70rem;
+      font-weight: 800;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .roles-tabs-wrap {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .roles-tabs-wrap::-webkit-scrollbar { display: none; }
+
+    .ribbon-role-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: #f1f5f9;
+      font-family: var(--sans);
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 14px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .ribbon-role-btn:hover {
+      background: rgba(245, 158, 11, 0.25);
+      border-color: var(--neon-amber);
+      color: #ffffff;
+    }
+
+    .ribbon-role-btn.active {
+      background: var(--neon-amber);
+      color: #08080a;
+      border-color: var(--neon-amber);
+      font-weight: 800;
+    }
+
+    .badge-counter {
+      background: #ef4444;
+      color: #ffffff;
+      font-size: 0.62rem;
+      font-weight: 800;
+      min-width: 16px;
+      height: 16px;
+      padding: 0 4px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Modal Backdrop para Paneles Operativos */
+    .ops-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(8, 8, 10, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      z-index: 500;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .ops-modal-backdrop.open {
+      display: flex;
+      animation: opsFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes opsFadeIn {
+      from { opacity: 0; transform: scale(0.97); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .ops-modal-window {
+      background: #111116;
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      border-radius: 24px;
+      width: 100%;
+      max-width: 1040px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(245, 158, 11, 0.15);
+      overflow: hidden;
+    }
+
+    [data-theme="light"] .ops-modal-window {
+      background: #ffffff;
+      border-color: #cbd5e1;
+      box-shadow: 0 25px 60px rgba(15, 23, 42, 0.2);
+    }
+
+    .ops-modal-header {
+      padding: 16px 22px;
+      background: rgba(245, 158, 11, 0.08);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    [data-theme="light"] .ops-modal-header {
+      background: #f8fafc;
+      border-bottom-color: #e2e8f0;
+    }
+
+    .ops-title-cluster {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .ops-title-cluster h3 {
+      font-family: var(--heading);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-pure);
+      margin: 0;
+    }
+
+    .ops-title-cluster p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .ops-close-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-pure);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .ops-close-btn:hover {
+      background: #ef4444;
+      color: #ffffff;
+      border-color: #ef4444;
+      transform: scale(1.05);
+    }
+
+    .ops-body-scroll {
+      padding: 22px;
+      overflow-y: auto;
+      flex-grow: 1;
+    }
+
+    /* KDS (Kitchen Display System / Empleados) */
+    .kds-filters-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .kds-tabs {
+      display: flex;
+      gap: 6px;
+    }
+
+    .kds-tab-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    [data-theme="light"] .kds-tab-btn {
+      background: #f1f5f9;
+      color: #475569;
+    }
+
+    .kds-tab-btn.active {
+      background: var(--neon-amber);
+      color: #08080a;
+      border-color: var(--neon-amber);
+    }
+
+    .kds-clock-box {
+      font-family: var(--heading);
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--neon-amber);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .kds-tickets-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 18px;
+    }
+
+    .kds-ticket-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    [data-theme="light"] .kds-ticket-card {
+      background: #f8fafc;
+      border-color: #e2e8f0;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+    }
+
+    .kds-ticket-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(245, 158, 11, 0.5);
+    }
+
+    .kds-ticket-head {
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .kds-ticket-head.cooking {
+      background: rgba(245, 158, 11, 0.15);
+      border-left: 5px solid var(--neon-amber);
+    }
+
+    .kds-ticket-head.ready {
+      background: rgba(16, 185, 129, 0.15);
+      border-left: 5px solid #10b981;
+    }
+
+    .ticket-table-name {
+      font-family: var(--heading);
+      font-size: 0.98rem;
+      font-weight: 800;
+      color: var(--text-pure);
+    }
+
+    .ticket-time-tag {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .kds-ticket-items {
+      padding: 14px 16px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .kds-item-line {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.88rem;
+      color: var(--text-pure);
+    }
+
+    .kds-item-line strong {
+      color: var(--text-pure);
+      font-weight: 800;
+    }
+
+    .kds-item-note {
+      font-size: 0.74rem;
+      color: #f59e0b;
+      font-style: italic;
+      margin-top: 2px;
+    }
+
+    .kds-ticket-actions {
+      padding: 12px 16px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-kds-action {
+      flex-grow: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 12px;
+      font-family: var(--sans);
+      font-size: 0.80rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .btn-kds-ready {
+      background: #10b981;
+      color: #ffffff;
+    }
+    .btn-kds-ready:hover {
+      background: #059669;
+    }
+
+    .btn-kds-served {
+      background: #3b82f6;
+      color: #ffffff;
+    }
+    .btn-kds-served:hover {
+      background: #2563eb;
+    }
+
+    /* Manager Dashboard & Table Styles */
+    .manager-kpis-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .kpi-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    [data-theme="light"] .kpi-card {
+      background: #f8fafc;
+      border-color: #e2e8f0;
+    }
+
+    .kpi-label {
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .kpi-value {
+      font-family: var(--heading);
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: var(--text-pure);
+    }
+
+    .kpi-meta {
+      font-size: 0.72rem;
+      color: #10b981;
+      font-weight: 700;
+    }
+
+    .manager-table-wrap {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      overflow-x: auto;
+      margin-bottom: 20px;
+    }
+
+    [data-theme="light"] .manager-table-wrap {
+      background: #ffffff;
+      border-color: #e2e8f0;
+    }
+
+    .manager-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.84rem;
+      min-width: 680px;
+    }
+
+    .manager-table th {
+      background: rgba(255, 255, 255, 0.04);
+      padding: 12px 16px;
+      font-family: var(--heading);
+      font-size: 0.74rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    [data-theme="light"] .manager-table th {
+      background: #f1f5f9;
+      color: #475569;
+      border-bottom-color: #e2e8f0;
+    }
+
+    .manager-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      color: var(--text-pure);
+      vertical-align: middle;
+    }
+
+    [data-theme="light"] .manager-table td {
+      border-bottom-color: #f1f5f9;
+    }
+
+    .dish-cell-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .dish-mini-thumb {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .stock-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .stock-badge.ok {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+    }
+
+    .stock-badge.low {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+    }
+
+    .stock-badge.out {
+      background: rgba(239, 68, 68, 0.15);
+      color: #f87171;
+    }
+
+    .switch-stock-btn {
+      background: #10b981;
+      color: #ffffff;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 14px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .switch-stock-btn.sold-out {
+      background: #ef4444;
+    }
+
+    .manager-notice-box {
+      background: rgba(59, 130, 246, 0.08);
+      border: 1px solid rgba(59, 130, 246, 0.25);
+      border-radius: 14px;
+      padding: 12px 18px;
+      font-size: 0.78rem;
+      color: #93c5fd;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    [data-theme="light"] .manager-notice-box {
+      background: #eff6ff;
+      border-color: #bfdbfe;
+      color: #1e40af;
+    }
+
+    /* ========================================================================= */
     /* 8. PRELOADER SCREEN                                                       */
     /* ========================================================================= */
     .alex-preloader {
@@ -2069,9 +2607,28 @@
     <div id="toastBadge" class="mini-toast-badge">✓ Platillo añadido a la comanda</div>
 
     <!-- ======================================================================= -->
-    <!-- FIXED MINIMALIST NAVIGATION HEADER & WHATSAPP PULSE BUTTON              -->
-    <!-- ======================================================================= -->
     <header>
+      <!-- BARRA DE DEMOSTRACIÓN DE ROLES: COMENSAL / EMPLEADO / GERENTE -->
+      <div class="header-roles-ribbon">
+        <div class="roles-ribbon-inner">
+          <div class="roles-ribbon-title">
+            <span>🛡️ ROLES DEMOSTRACIÓN:</span>
+          </div>
+          <div class="roles-tabs-wrap">
+            <button type="button" class="ribbon-role-btn active" id="btnRoleDiner" onclick="activateRoleView('diner')">
+              <span>🍽️</span> Vista Comensal
+            </button>
+            <button type="button" class="ribbon-role-btn" id="btnRoleStaff" onclick="openStaffPanel()">
+              <span>👨‍🍳</span> Panel Empleado (Cocina / KDS)
+              <span class="badge-counter" id="kdsBadgeCount">3</span>
+            </button>
+            <button type="button" class="ribbon-role-btn" id="btnRoleManager" onclick="openManagerPanel()">
+              <span>📊</span> Panel Gerente (Ventas & Platos)
+            </button>
+          </div>
+        </div>
+      </div>
+
       <div class="header-container">
         <a href="#" class="brand-cluster">
           <div class="brand-symbol-box" aria-label="Logo ALEX">
@@ -2560,6 +3117,14 @@
         <span class="dock-icon">⭐</span>
         <span class="dock-label">Reseñas</span>
       </button>
+      <button type="button" class="dock-item-btn" onclick="openStaffPanel()">
+        <span class="dock-icon">👨‍🍳</span>
+        <span class="dock-label">Cocina</span>
+      </button>
+      <button type="button" class="dock-item-btn" onclick="openManagerPanel()">
+        <span class="dock-icon">📊</span>
+        <span class="dock-label">Gerente</span>
+      </button>
     </nav>
 
     <!-- ======================================================================= -->
@@ -2689,6 +3254,337 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
             Google Wallet
           </button>
+    <!-- ======================================================================= -->
+    <!-- MODAL: PANEL DEL EMPLEADO / PANTALLA DE COCINA (KDS)                    -->
+    <!-- ======================================================================= -->
+    <div class="ops-modal-backdrop" id="modalEmployeePanel" onclick="handleOpsBackdropClick(event, 'modalEmployeePanel')">
+      <div class="ops-modal-window" onclick="event.stopPropagation()">
+        <div class="ops-modal-header">
+          <div class="ops-title-cluster">
+            <div class="assistant-emblem" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+              👨‍🍳
+            </div>
+            <div>
+              <h3>Pantalla de Cocina & Meseros (KDS)</h3>
+              <p>Comandas en tiempo real · ALEX Smokehouse (Licencia Empleado Operativo)</p>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div class="kds-clock-box">
+              <span>⏱️</span> <span id="kdsLiveClock">14:35:12</span>
+            </div>
+            <button type="button" class="ops-close-btn" onclick="closeStaffPanel()" aria-label="Cerrar">✕</button>
+          </div>
+        </div>
+
+        <div class="ops-body-scroll">
+          <div class="kds-filters-row">
+            <div class="kds-tabs">
+              <button type="button" class="kds-tab-btn active" onclick="filterKdsTickets('all', this)">Todas (<span id="kdsAllCount">3</span>)</button>
+              <button type="button" class="kds-tab-btn" onclick="filterKdsTickets('cooking', this)">⏳ En Preparación (2)</button>
+              <button type="button" class="kds-tab-btn" onclick="filterKdsTickets('ready', this)">🛎️ Listas para Servir (1)</button>
+            </div>
+            <button type="button" class="role-nav-btn" onclick="simulateNewOrderIncoming()" style="background: rgba(16, 185, 129, 0.2); border-color: #10b981; color: #34d399;">
+              <span>➕</span> Simular Comanda Entrante
+            </button>
+          </div>
+
+          <div class="kds-tickets-grid" id="kdsTicketsGrid">
+            <!-- TICKET 104 -->
+            <div class="kds-ticket-card" data-status="cooking" id="ticket-104">
+              <div class="kds-ticket-head cooking">
+                <span class="ticket-table-name">Mesa 4 · Terraza</span>
+                <span class="ticket-time-tag">Hace 5 min · #104</span>
+              </div>
+              <div class="kds-ticket-items">
+                <div class="kds-item-line">
+                  <span>1x <strong>Tomahawk Prime (1.2kg)</strong></span>
+                  <span style="color: var(--neon-amber); font-weight: 700;">$890</span>
+                </div>
+                <div class="kds-item-note">🔥 Término 3/4 · Sal de Colima al carbón</div>
+
+                <div class="kds-item-line">
+                  <span>2x <strong>Smoked Mezcalita</strong></span>
+                  <span style="color: var(--neon-amber); font-weight: 700;">$380</span>
+                </div>
+                <div class="kds-item-note">🍸 Vaso escarchado con sal de gusano</div>
+              </div>
+              <div class="kds-ticket-actions">
+                <button type="button" class="btn-kds-action btn-kds-ready" onclick="markTicketReady('ticket-104', 'Mesa 4')">
+                  <span>🛎️</span> Marcar Listo
+                </button>
+                <button type="button" class="btn-kds-action" onclick="callWaiterToTable('Mesa 4')" style="background: rgba(255,255,255,0.08); color: var(--text-pure);">
+                  <span>📢</span> Avisar
+                </button>
+              </div>
+            </div>
+
+            <!-- TICKET 103 -->
+            <div class="kds-ticket-card" data-status="ready" id="ticket-103">
+              <div class="kds-ticket-head ready">
+                <span class="ticket-table-name">Mesa 2 · Salón VIP</span>
+                <span class="ticket-time-tag">Hace 11 min · #103</span>
+              </div>
+              <div class="kds-ticket-items">
+                <div class="kds-item-line">
+                  <span>2x <strong>Brisket Smoke Burger</strong></span>
+                  <span style="color: var(--neon-amber); font-weight: 700;">$480</span>
+                </div>
+                <div class="kds-item-note">🍔 Ahumado 14h · Queso cheddar madurado</div>
+
+                <div class="kds-item-line">
+                  <span>1x <strong>Papas Rústicas Trufadas</strong></span>
+                  <span style="color: var(--neon-amber); font-weight: 700;">$140</span>
+                </div>
+              </div>
+              <div class="kds-ticket-actions">
+                <button type="button" class="btn-kds-action btn-kds-served" onclick="markTicketServed('ticket-103', 'Mesa 2')">
+                  <span>✅</span> Entregado a Mesa
+                </button>
+              </div>
+            </div>
+
+            <!-- TICKET 105 -->
+            <div class="kds-ticket-card" data-status="cooking" id="ticket-105">
+              <div class="kds-ticket-head cooking">
+                <span class="ticket-table-name">Mesa 7 · Barra</span>
+                <span class="ticket-time-tag">Hace 2 min · #105</span>
+              </div>
+              <div class="kds-ticket-items">
+                <div class="kds-item-line">
+                  <span>1x <strong>Tacos de Tuétano & Rib Eye</strong></span>
+                  <span style="color: var(--neon-amber); font-weight: 700;">$240</span>
+                </div>
+                <div class="kds-item-note">🌮 Tortilla azul hecha a mano</div>
+
+                <div class="kds-item-line">
+                  <span>1x <strong>Smoked Old Fashioned</strong></span>
+                  <span style="color: var(--neon-amber); font-weight: 700;">$210</span>
+                </div>
+              </div>
+              <div class="kds-ticket-actions">
+                <button type="button" class="btn-kds-action btn-kds-ready" onclick="markTicketReady('ticket-105', 'Mesa 7')">
+                  <span>🛎️</span> Marcar Listo
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- MODAL: PANEL DEL GERENTE / TABLA DE PLATOS & CONTROL DE STOCK           -->
+    <!-- ======================================================================= -->
+    <div class="ops-modal-backdrop" id="modalManagerPanel" onclick="handleOpsBackdropClick(event, 'modalManagerPanel')">
+      <div class="ops-modal-window" onclick="event.stopPropagation()">
+        <div class="ops-modal-header">
+          <div class="ops-title-cluster">
+            <div class="assistant-emblem" style="background: linear-gradient(135deg, var(--neon-amber) 0%, #b45309 100%);">
+              📊
+            </div>
+            <div>
+              <h3>Panel del Gerente · Ventas & Control de Platos</h3>
+              <p>ALEX Smokehouse · Turno en Vivo · Licencia Gerencial Operativa</p>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <button type="button" class="role-nav-btn" onclick="exportShiftReport()" style="background: #10b981; color: #ffffff; border-color: #10b981;">
+              <span>📥</span> Corte de Caja Z
+            </button>
+            <button type="button" class="ops-close-btn" onclick="closeManagerPanel()" aria-label="Cerrar">✕</button>
+          </div>
+        </div>
+
+        <div class="ops-body-scroll">
+          <!-- KPIs Principales del Gerente -->
+          <div class="manager-kpis-grid">
+            <div class="kpi-card">
+              <span class="kpi-label">💰 Ventas del Turno</span>
+              <span class="kpi-value" id="kpiSalesTotal">$24,850 <small style="font-size: 0.85rem;">MXN</small></span>
+              <span class="kpi-meta">▲ +18.4% vs promedio diario</span>
+            </div>
+
+            <div class="kpi-card">
+              <span class="kpi-label">🧾 Comandas Servidas</span>
+              <span class="kpi-value">38 <small style="font-size: 0.85rem;">mesas</small></span>
+              <span class="kpi-meta" style="color: #60a5fa;">Ticket promedio: $653.90 MXN</span>
+            </div>
+
+            <div class="kpi-card">
+              <span class="kpi-label">⏱️ Tiempo Promedio Cocina</span>
+              <span class="kpi-value">13.8 <small style="font-size: 0.85rem;">min</small></span>
+              <span class="kpi-meta">⚡ Eficiencia operativa óptima</span>
+            </div>
+
+            <div class="kpi-card">
+              <span class="kpi-label">👥 Ocupación de Mesas</span>
+              <span class="kpi-value">17 / 20</span>
+              <span class="kpi-meta" style="color: #f59e0b;">85% de capacidad en salón</span>
+            </div>
+          </div>
+
+          <!-- Subtítulo de la Tabla Gerencial -->
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+            <div>
+              <h4 style="font-family: var(--heading); font-size: 1.1rem; color: var(--text-pure); margin-bottom: 2px;">
+                Tabla Gerencial: Platos Más Vendidos & Control de Stock
+              </h4>
+              <p style="font-size: 0.78rem; color: var(--text-muted);">
+                Apaga o enciende la disponibilidad en tiempo real. Si un plato se agota, se deshabilita de inmediato en el menú del cliente.
+              </p>
+            </div>
+            <div style="font-size: 0.76rem; color: var(--neon-amber); font-weight: 700;">
+              🟢 4 Activos · 🔴 1 Agotado
+            </div>
+          </div>
+
+          <!-- TABLA DEL GERENTE -->
+          <div class="manager-table-wrap">
+            <table class="manager-table">
+              <thead>
+                <tr>
+                  <th>Platillo</th>
+                  <th>Categoría</th>
+                  <th>Vendidos Hoy</th>
+                  <th>Ingreso Total</th>
+                  <th>Stock Físico</th>
+                  <th>Estado Menú (En Vivo)</th>
+                  <th>Acción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="dish-cell-info">
+                      <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=120&auto=format&fit=crop&q=80" alt="Tomahawk" class="dish-mini-thumb">
+                      <div>
+                        <strong>Tomahawk Prime (1.2kg)</strong>
+                        <div style="font-size: 0.72rem; color: var(--text-muted);">$890 c/u</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="attribute-tag" style="padding: 2px 8px;">🥩 Cortes</span></td>
+                  <td><strong style="font-size: 1rem; color: var(--neon-amber);">14 pzas</strong></td>
+                  <td><strong>$12,460 MXN</strong></td>
+                  <td><span class="stock-badge ok">● 6 porciones</span></td>
+                  <td>
+                    <button type="button" class="switch-stock-btn" id="switch-dish-tomahawk" onclick="toggleStockStatus('tomahawk', 'Tomahawk Prime', this)">
+                      🟢 Disponible
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="role-nav-btn" onclick="editDishStock('Tomahawk Prime')">✏️ Ajustar</button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="dish-cell-info">
+                      <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=120&auto=format&fit=crop&q=80" alt="Burger" class="dish-mini-thumb">
+                      <div>
+                        <strong>Brisket Smoke Burger</strong>
+                        <div style="font-size: 0.72rem; color: var(--text-muted);">$240 c/u</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="attribute-tag" style="padding: 2px 8px;">🍔 Burgers</span></td>
+                  <td><strong style="font-size: 1rem; color: var(--neon-amber);">28 pzas</strong></td>
+                  <td><strong>$6,720 MXN</strong></td>
+                  <td><span class="stock-badge ok">● 12 porciones</span></td>
+                  <td>
+                    <button type="button" class="switch-stock-btn" id="switch-dish-burger" onclick="toggleStockStatus('burger', 'Brisket Burger', this)">
+                      🟢 Disponible
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="role-nav-btn" onclick="editDishStock('Brisket Burger')">✏️ Ajustar</button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="dish-cell-info">
+                      <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=120&auto=format&fit=crop&q=80" alt="Mezcalita" class="dish-mini-thumb">
+                      <div>
+                        <strong>Smoked Mezcalita</strong>
+                        <div style="font-size: 0.72rem; color: var(--text-muted);">$190 c/u</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="attribute-tag" style="padding: 2px 8px;">🍸 Mixología</span></td>
+                  <td><strong style="font-size: 1rem; color: var(--neon-amber);">35 copas</strong></td>
+                  <td><strong>$6,650 MXN</strong></td>
+                  <td><span class="stock-badge ok">● Ilimitado</span></td>
+                  <td>
+                    <button type="button" class="switch-stock-btn" id="switch-dish-mezcalita" onclick="toggleStockStatus('mezcalita', 'Smoked Mezcalita', this)">
+                      🟢 Disponible
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="role-nav-btn" onclick="editDishStock('Smoked Mezcalita')">✏️ Ajustar</button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="dish-cell-info">
+                      <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=120&auto=format&fit=crop&q=80" alt="Tacos" class="dish-mini-thumb">
+                      <div>
+                        <strong>Tacos Tuétano & Rib Eye</strong>
+                        <div style="font-size: 0.72rem; color: var(--text-muted);">$240 c/u</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="attribute-tag" style="padding: 2px 8px;">🌮 Tacos</span></td>
+                  <td><strong style="font-size: 1rem; color: var(--neon-amber);">19 órdenes</strong></td>
+                  <td><strong>$4,560 MXN</strong></td>
+                  <td><span class="stock-badge low">⚠️ 2 porciones</span></td>
+                  <td>
+                    <button type="button" class="switch-stock-btn" id="switch-dish-tacos" onclick="toggleStockStatus('tacos', 'Tacos Tuétano', this)">
+                      🟢 Disponible
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="role-nav-btn" onclick="editDishStock('Tacos Tuétano')">✏️ Ajustar</button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="dish-cell-info">
+                      <img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=120&auto=format&fit=crop&q=80" alt="Postre" class="dish-mini-thumb">
+                      <div>
+                        <strong>Volcán de Chocolate al Humo</strong>
+                        <div style="font-size: 0.72rem; color: var(--text-muted);">$195 c/u</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="attribute-tag" style="padding: 2px 8px;">🍫 Postres</span></td>
+                  <td><strong style="font-size: 1rem; color: var(--neon-amber);">8 pzas</strong></td>
+                  <td><strong>$1,560 MXN</strong></td>
+                  <td><span class="stock-badge out">✕ 0 (Agotado)</span></td>
+                  <td>
+                    <button type="button" class="switch-stock-btn sold-out" id="switch-dish-volcan" onclick="toggleStockStatus('volcan', 'Volcán de Chocolate', this)">
+                      🔴 Agotado
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="role-nav-btn" onclick="editDishStock('Volcán de Chocolate')">✏️ Ajustar</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Aviso de Separación de Permisos / Super Admin Alex -->
+          <div class="manager-notice-box">
+            <span style="font-size: 1.3rem;">🔒</span>
+            <div>
+              <strong>Separación Estricta de Permisos:</strong>
+              Este panel corresponde a la <em>Gerencia Operativa del Restaurante</em> (control de comandas, corte de caja y platos). La gestión de licencias, facturación mensual y creación de nuevos restaurantes se administra únicamente en el <strong>Panel Super-Admin de Alex Ramírez (MenuExpress)</strong>.
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -3179,6 +4075,200 @@
         if (dockLabels[3]) dockLabels[3].textContent = t.dockReviews;
 
         showToast(currentLang === 'en' ? '🌐 Switched to English' : '🌐 Cambiado a Español');
+      };
+
+      // =========================================================================
+      // GESTIÓN DE ROLES: COMENSAL / EMPLEADO (KDS) / GERENTE (VENTAS)
+      // =========================================================================
+      let kdsTimerInterval = null;
+
+      function updateRoleRibbonUI(activeRole) {
+        const btnDiner = document.getElementById('btnRoleDiner');
+        const btnStaff = document.getElementById('btnRoleStaff');
+        const btnManager = document.getElementById('btnRoleManager');
+        if (btnDiner) btnDiner.classList.toggle('active', activeRole === 'diner');
+        if (btnStaff) btnStaff.classList.toggle('active', activeRole === 'staff');
+        if (btnManager) btnManager.classList.toggle('active', activeRole === 'manager');
+      }
+
+      window.activateRoleView = function(role) {
+        if (role === 'diner') {
+          closeStaffPanel();
+          closeManagerPanel();
+          updateRoleRibbonUI('diner');
+          showToast('🍽️ Vista Comensal (Menú Anti-Gravity activo)');
+        } else if (role === 'staff') {
+          openStaffPanel();
+        } else if (role === 'manager') {
+          openManagerPanel();
+        }
+      };
+
+      window.openStaffPanel = function() {
+        const modal = document.getElementById('modalEmployeePanel');
+        if (modal) modal.classList.add('open');
+        updateRoleRibbonUI('staff');
+
+        // Reloj KDS en vivo
+        function tickClock() {
+          const clock = document.getElementById('kdsLiveClock');
+          if (clock) {
+            const now = new Date();
+            clock.textContent = now.toTimeString().split(' ')[0];
+          }
+        }
+        tickClock();
+        if (kdsTimerInterval) clearInterval(kdsTimerInterval);
+        kdsTimerInterval = setInterval(tickClock, 1000);
+      };
+
+      window.closeStaffPanel = function() {
+        const modal = document.getElementById('modalEmployeePanel');
+        if (modal) modal.classList.remove('open');
+        if (kdsTimerInterval) clearInterval(kdsTimerInterval);
+        updateRoleRibbonUI('diner');
+      };
+
+      window.openManagerPanel = function() {
+        const modal = document.getElementById('modalManagerPanel');
+        if (modal) modal.classList.add('open');
+        updateRoleRibbonUI('manager');
+      };
+
+      window.closeManagerPanel = function() {
+        const modal = document.getElementById('modalManagerPanel');
+        if (modal) modal.classList.remove('open');
+        updateRoleRibbonUI('diner');
+      };
+
+      window.handleOpsBackdropClick = function(event, modalId) {
+        if (event.target && event.target.id === modalId) {
+          const modal = document.getElementById(modalId);
+          if (modal) modal.classList.remove('open');
+          updateRoleRibbonUI('diner');
+        }
+      };
+
+      // KDS Ticket Actions
+      window.markTicketReady = function(ticketId, tableName) {
+        const ticket = document.getElementById(ticketId);
+        if (!ticket) return;
+        ticket.setAttribute('data-status', 'ready');
+        const head = ticket.querySelector('.kds-ticket-head');
+        if (head) {
+          head.className = 'kds-ticket-head ready';
+        }
+        const actions = ticket.querySelector('.kds-ticket-actions');
+        if (actions) {
+          actions.innerHTML = `
+            <button type="button" class="btn-kds-action btn-kds-served" onclick="markTicketServed('${ticketId}', '${tableName}')">
+              <span>✅</span> Entregado a Mesa
+            </button>
+          `;
+        }
+        showToast('🛎️ ¡Comanda ' + tableName + ' LISTA para servir!');
+      };
+
+      window.markTicketServed = function(ticketId, tableName) {
+        const ticket = document.getElementById(ticketId);
+        if (!ticket) return;
+        ticket.style.transition = 'all 0.35s ease';
+        ticket.style.opacity = '0';
+        ticket.style.transform = 'scale(0.9)';
+        setTimeout(() => {
+          ticket.remove();
+          updateKdsCounts();
+        }, 350);
+        showToast('✅ Comanda ' + tableName + ' servida exitosamente');
+      };
+
+      window.callWaiterToTable = function(tableName) {
+        showToast('📢 Notificación enviada a mesero para ' + tableName);
+      };
+
+      window.simulateNewOrderIncoming = function() {
+        const grid = document.getElementById('kdsTicketsGrid');
+        if (!grid) return;
+        const newId = 'ticket-sim-' + Date.now();
+        const card = document.createElement('div');
+        card.className = 'kds-ticket-card';
+        card.setAttribute('data-status', 'cooking');
+        card.id = newId;
+        card.innerHTML = `
+          <div class="kds-ticket-head cooking">
+            <span class="ticket-table-name">Mesa 5 · Terraza</span>
+            <span class="ticket-time-tag">Hace 1 min · #106</span>
+          </div>
+          <div class="kds-ticket-items">
+            <div class="kds-item-line">
+              <span>1x <strong>Costillar Ahumado St. Louis</strong></span>
+              <span style="color: var(--neon-amber); font-weight: 700;">$480</span>
+            </div>
+            <div class="kds-item-note">🔥 Glaseado BBQ de chabacano & mezcal</div>
+            <div class="kds-item-line">
+              <span>2x <strong>Cerveza Artesanal IPA</strong></span>
+              <span style="color: var(--neon-amber); font-weight: 700;">$210</span>
+            </div>
+          </div>
+          <div class="kds-ticket-actions">
+            <button type="button" class="btn-kds-action btn-kds-ready" onclick="markTicketReady('${newId}', 'Mesa 5')">
+              <span>🛎️</span> Marcar Listo
+            </button>
+            <button type="button" class="btn-kds-action" onclick="callWaiterToTable('Mesa 5')" style="background: rgba(255,255,255,0.08); color: var(--text-pure);">
+              <span>📢</span> Avisar
+            </button>
+          </div>
+        `;
+        grid.prepend(card);
+        updateKdsCounts();
+        showToast('🔥 ¡Nueva comanda recibida desde Mesa 5!');
+      };
+
+      function updateKdsCounts() {
+        const tickets = document.querySelectorAll('.kds-ticket-card');
+        const count = tickets.length;
+        const badge = document.getElementById('kdsBadgeCount');
+        const allCount = document.getElementById('kdsAllCount');
+        if (badge) badge.textContent = count;
+        if (allCount) allCount.textContent = count;
+      }
+
+      window.filterKdsTickets = function(status, btn) {
+        document.querySelectorAll('.kds-tab-btn').forEach(b => b.classList.remove('active'));
+        if (btn) btn.classList.add('active');
+
+        document.querySelectorAll('.kds-ticket-card').forEach(card => {
+          if (status === 'all' || card.getAttribute('data-status') === status) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      };
+
+      // Manager Stock Control Actions
+      window.toggleStockStatus = function(dishKey, dishName, btn) {
+        const isSoldOut = btn.classList.contains('sold-out');
+        if (isSoldOut) {
+          btn.classList.remove('sold-out');
+          btn.textContent = '🟢 Disponible';
+          showToast('✓ ' + dishName + ' habilitado en el menú');
+        } else {
+          btn.classList.add('sold-out');
+          btn.textContent = '🔴 Agotado';
+          showToast('⚠️ ' + dishName + ' marcado como AGOTADO en el menú');
+        }
+      };
+
+      window.editDishStock = function(dishName) {
+        const newStock = prompt('Ingresa el stock físico disponible para ' + dishName + ':', '10');
+        if (newStock !== null) {
+          showToast('✓ Stock de ' + dishName + ' actualizado a ' + newStock + ' porciones');
+        }
+      };
+
+      window.exportShiftReport = function() {
+        showToast('📊 Corte Z generado. Ventas del turno: $24,850 MXN (38 comandas)');
       };
 
       // 7. Floating Back to Top Button
