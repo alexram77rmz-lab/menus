@@ -13,6 +13,7 @@
   <meta property="og:image" content="https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&auto=format&fit=crop&q=85">
   <meta property="og:url" content="https://alexram77rmz-lab.github.io/menus/alex/">
   <meta name="theme-color" content="#08080a">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3L5 27H11L13.5 21H18.5L21 27H27L16 3Z' fill='%23f59e0b'/%3E%3Cpath d='M16 11L14.4 16.5H17.6L16 11Z' fill='%2308080a'/%3E%3Cpath d='M16 7C16 7 19.5 13 18.5 17C17.5 15.5 16 14.5 16 14.5C16 14.5 14.5 15.5 13.5 17C12.5 13 16 7 16 7Z' fill='%23f43f5e'/%3E%3C/svg%3E">
 
   <!-- Fuentes de Vanguardia -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -202,6 +203,27 @@
     .table-pill-indicator:hover {
       background: rgba(245, 158, 11, 0.15);
       border-color: var(--neon-amber);
+    }
+
+    .lang-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: #e2e8f0;
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .lang-toggle-btn:hover {
+      background: rgba(245, 158, 11, 0.15);
+      border-color: var(--neon-amber);
+      color: var(--neon-amber);
     }
 
     .radar-pulse-dot {
@@ -1193,9 +1215,416 @@
       transform: translateX(-50%) translateY(0);
       opacity: 1;
     }
+
+    /* ========================================================================= */
+    /* 8. PRELOADER SCREEN                                                       */
+    /* ========================================================================= */
+    .alex-preloader {
+      position: fixed;
+      inset: 0;
+      background: #08080a;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+    .alex-preloader.fade-out {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .preloader-emblem-wrap {
+      position: relative;
+      width: 64px;
+      height: 64px;
+      margin-bottom: 18px;
+    }
+    .preloader-glow-ring {
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      border: 2px dashed rgba(245, 158, 11, 0.4);
+      animation: spinRing 8s linear infinite;
+    }
+    @keyframes spinRing {
+      100% { transform: rotate(360deg); }
+    }
+    .preloader-logo-core {
+      width: 100%;
+      height: 100%;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #181820 0%, #0d0d12 100%);
+      border: 1px solid rgba(245, 158, 11, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 25px rgba(245, 158, 11, 0.25);
+    }
+    .preloader-title {
+      font-family: var(--heading);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 2px;
+      margin-bottom: 4px;
+    }
+    .preloader-sub {
+      font-size: 0.70rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--neon-amber);
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+    .preloader-bar-bg {
+      width: 160px;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .preloader-bar-fill {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, #f59e0b, #f43f5e);
+      animation: loadEmber 1.4s ease-in-out infinite;
+      transform-origin: left;
+    }
+    @keyframes loadEmber {
+      0% { transform: scaleX(0); }
+      50% { transform: scaleX(0.7); }
+      100% { transform: scaleX(1); }
+    }
+
+    /* ========================================================================= */
+    /* 7. FLOATING BACK TO TOP BUTTON                                            */
+    /* ========================================================================= */
+    .back-to-top-btn {
+      position: fixed;
+      bottom: 86px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(20, 20, 28, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: var(--neon-amber);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      z-index: 104;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+    .back-to-top-btn.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .back-to-top-btn:hover {
+      background: var(--neon-amber);
+      color: #08080a;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(245, 158, 11, 0.5);
+    }
+    .back-to-top-btn:active {
+      transform: scale(0.92);
+    }
+
+    /* ========================================================================= */
+    /* 5. MOBILE BOTTOM ERGONOMIC DOCK (THUMB-FRIENDLY NAVIGATION)               */
+    /* ========================================================================= */
+    .mobile-bottom-dock {
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .mobile-bottom-dock {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background: rgba(10, 10, 14, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        z-index: 108;
+        padding: 0 8px;
+      }
+      .dock-item-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        background: none;
+        border: none;
+        color: #94a3b8;
+        font-family: var(--sans);
+        font-size: 0.65rem;
+        font-weight: 700;
+        cursor: pointer;
+        padding: 5px 12px;
+        border-radius: 12px;
+        transition: color 0.2s ease, transform 0.15s ease;
+        position: relative;
+      }
+      .dock-item-btn:hover, .dock-item-btn:active {
+        color: var(--neon-amber);
+      }
+      .dock-item-btn:active {
+        transform: scale(0.92);
+      }
+      .dock-icon {
+        font-size: 1.15rem;
+        line-height: 1;
+      }
+      .dock-badge-pulse {
+        position: absolute;
+        top: 2px;
+        right: 8px;
+        background: var(--glowing-crimson);
+        color: #ffffff;
+        font-size: 0.58rem;
+        font-weight: 800;
+        min-width: 15px;
+        height: 15px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 4px;
+        box-shadow: 0 0 8px rgba(244, 63, 94, 0.6);
+      }
+      body {
+        padding-bottom: 140px;
+      }
+      .bottom-comanda-bar {
+        bottom: 68px !important;
+      }
+      .back-to-top-btn {
+        bottom: 128px !important;
+      }
+      .assistant-float-btn {
+        bottom: 128px !important;
+      }
+    }
+
+    /* ========================================================================= */
+    /* 18. TESTIMONIALS & SOCIAL PROOF                                           */
+    /* ========================================================================= */
+    .testimonials-stage {
+      max-width: 1140px;
+      margin: 80px auto 40px;
+      padding: 0 20px;
+    }
+    .testimonials-container {
+      background: rgba(19, 19, 25, 0.6);
+      border: 1px solid var(--border-subtle);
+      border-radius: 28px;
+      padding: 44px 28px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+    .testi-header {
+      text-align: center;
+      margin-bottom: 34px;
+    }
+    .testi-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      color: #fef08a;
+      font-size: 0.76rem;
+      font-weight: 800;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    .testi-title {
+      font-family: var(--heading);
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+    .testi-sub {
+      color: var(--text-muted);
+      font-size: 0.90rem;
+    }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .testi-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+    }
+    .testi-card:hover {
+      border-color: rgba(245, 158, 11, 0.4);
+      transform: translateY(-4px);
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .testi-stars {
+      color: var(--neon-amber);
+      font-size: 1rem;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+    .testi-quote {
+      font-size: 0.88rem;
+      color: #cbd5e1;
+      line-height: 1.55;
+      font-style: italic;
+      margin-bottom: 18px;
+    }
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .testi-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #272733 0%, #15151e 100%);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      color: var(--neon-amber);
+      font-weight: 800;
+      font-size: 0.78rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .testi-author strong {
+      display: block;
+      color: #ffffff;
+      font-size: 0.84rem;
+    }
+    .testi-author small {
+      color: var(--text-muted);
+      font-size: 0.72rem;
+    }
+
+    /* ========================================================================= */
+    /* 17 & 20. FOOTER STAGE & LIVE STATUS TRACKER                               */
+    /* ========================================================================= */
+    .alex-footer-stage {
+      max-width: 1140px;
+      margin: 40px auto 0;
+      padding: 40px 20px 20px;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .footer-top-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .footer-social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .social-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: #cbd5e1;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 16px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .social-chip:hover {
+      background: rgba(245, 158, 11, 0.15);
+      border-color: var(--neon-amber);
+      color: var(--neon-amber);
+    }
+    .footer-bottom-bar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .live-tracker-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #a7f3d0;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 20px;
+    }
+    .pulse-green-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+      animation: pulseNeon 2s infinite ease-in-out;
+    }
   </style>
 </head>
 <body>
+
+  <!-- ======================================================================= -->
+  <!-- 8. LUXURY CINEMATIC PRELOADER                                           -->
+  <!-- ======================================================================= -->
+  <div class="alex-preloader" id="alexPreloader">
+    <div class="preloader-emblem-wrap">
+      <div class="preloader-glow-ring"></div>
+      <div class="preloader-logo-core">
+        <svg width="34" height="34" viewBox="0 0 32 32" fill="none">
+          <path d="M16 3L5 27H11L13.5 21H18.5L21 27H27L16 3Z" fill="#f59e0b"/>
+          <path d="M16 11L14.4 16.5H17.6L16 11Z" fill="#08080a"/>
+          <path d="M16 7C16 7 19.5 13 18.5 17C17.5 15.5 16 14.5 16 14.5C16 14.5 14.5 15.5 13.5 17C12.5 13 16 7 16 7Z" fill="#f43f5e"/>
+        </svg>
+      </div>
+    </div>
+    <div class="preloader-title">ALEX<span style="color: var(--neon-amber);">.</span></div>
+    <div class="preloader-sub">Encendiendo las brasas...</div>
+    <div class="preloader-bar-bg">
+      <div class="preloader-bar-fill"></div>
+    </div>
+  </div>
 
   <!-- ======================================================================= -->
   <!-- DARK & MOODY CINEMATIC LOOP VIDEO IN THE BACKGROUND                     -->
@@ -1232,6 +1661,11 @@
         </a>
 
         <div class="header-actions-group">
+          <!-- 16. SELECTOR DE IDIOMA -->
+          <button type="button" class="lang-toggle-btn" id="langToggleBtn" onclick="toggleLanguage()" aria-label="Cambiar Idioma">
+            <span>🌐</span> <span id="langBtnText">EN</span>
+          </button>
+
           <div class="table-pill-indicator" id="tableBtn" onclick="promptTableChange()">
             <span class="radar-pulse-dot"></span>
             <span id="tableLabel">Mesa 4 · Terraza</span>
@@ -1313,7 +1747,7 @@
       <div class="anti-gravity-card float-speed-1" data-cat="cortes">
         <div class="dish-mockup-frame">
           <span class="dish-floating-badge">⭐ Insignia del Chef</span>
-          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=900&auto=format&fit=crop&q=80" alt="Tomahawk Prime" class="dish-mockup-img">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=900&auto=format&fit=crop&q=80" alt="Tomahawk Prime" class="dish-mockup-img" loading="lazy" decoding="async">
         </div>
         <div class="dish-card-body">
           <div>
@@ -1344,7 +1778,7 @@
       <!-- ITEM 2: Ribeye Mezquite -->
       <div class="anti-gravity-card float-speed-2" data-cat="cortes">
         <div class="dish-mockup-frame">
-          <img src="https://images.unsplash.com/photo-1558030006-450675393462?w=900&auto=format&fit=crop&q=80" alt="Ribeye Prime" class="dish-mockup-img">
+          <img src="https://images.unsplash.com/photo-1558030006-450675393462?w=900&auto=format&fit=crop&q=80" alt="Ribeye Prime" class="dish-mockup-img" loading="lazy" decoding="async">
         </div>
         <div class="dish-card-body">
           <div>
@@ -1375,7 +1809,7 @@
       <div class="anti-gravity-card float-speed-3" data-cat="burgers">
         <div class="dish-mockup-frame">
           <span class="dish-floating-badge">🔥 Lo Más Pedido</span>
-          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&auto=format&fit=crop&q=80" alt="Brisket Burger" class="dish-mockup-img">
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&auto=format&fit=crop&q=80" alt="Brisket Burger" class="dish-mockup-img" loading="lazy" decoding="async">
         </div>
         <div class="dish-card-body">
           <div>
@@ -1405,7 +1839,7 @@
       <!-- ITEM 4: Costillas St. Louis BBQ -->
       <div class="anti-gravity-card float-speed-1" data-cat="burgers">
         <div class="dish-mockup-frame">
-          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=900&auto=format&fit=crop&q=80" alt="Costillas BBQ" class="dish-mockup-img">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=900&auto=format&fit=crop&q=80" alt="Costillas BBQ" class="dish-mockup-img" loading="lazy" decoding="async">
         </div>
         <div class="dish-card-body">
           <div>
@@ -1436,7 +1870,7 @@
       <!-- ITEM 5: Tacos de Picaña en Maíz Azul -->
       <div class="anti-gravity-card float-speed-2" data-cat="tacos">
         <div class="dish-mockup-frame">
-          <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=900&auto=format&fit=crop&q=80" alt="Tacos Picaña" class="dish-mockup-img">
+          <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=900&auto=format&fit=crop&q=80" alt="Tacos Picaña" class="dish-mockup-img" loading="lazy" decoding="async">
         </div>
         <div class="dish-card-body">
           <div>
@@ -1467,7 +1901,7 @@
       <!-- ITEM 6: Tuétanos Asados -->
       <div class="anti-gravity-card float-speed-3" data-cat="tacos">
         <div class="dish-mockup-frame">
-          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=900&auto=format&fit=crop&q=80" alt="Tuétanos" class="dish-mockup-img">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=900&auto=format&fit=crop&q=80" alt="Tuétanos" class="dish-mockup-img" loading="lazy" decoding="async">
         </div>
         <div class="dish-card-body">
           <div>
@@ -1498,7 +1932,7 @@
       <div class="anti-gravity-card float-speed-1" data-cat="cocteles">
         <div class="dish-mockup-frame">
           <span class="dish-floating-badge">🍸 Coctel Insignia</span>
-          <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=900&auto=format&fit=crop&q=80" alt="Smoked Mezcalita" class="dish-mockup-img">
+          <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=900&auto=format&fit=crop&q=80" alt="Smoked Mezcalita" class="dish-mockup-img" loading="lazy" decoding="async">
         </div>
         <div class="dish-card-body">
           <div>
@@ -1528,7 +1962,7 @@
       <!-- ITEM 8: Volcán de Chocolate -->
       <div class="anti-gravity-card float-speed-2" data-cat="postres">
         <div class="dish-mockup-frame">
-          <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=900&auto=format&fit=crop&q=80" alt="Volcán de Chocolate" class="dish-mockup-img">
+          <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=900&auto=format&fit=crop&q=80" alt="Volcán de Chocolate" class="dish-mockup-img" loading="lazy" decoding="async">
         </div>
         <div class="dish-card-body">
           <div>
@@ -1556,6 +1990,127 @@
       </div>
 
     </main>
+
+    <!-- ======================================================================= -->
+    <!-- 18. TESTIMONIALS & SOCIAL PROOF SECTION                                 -->
+    <!-- ======================================================================= -->
+    <section class="testimonials-stage" id="opiniones">
+      <div class="testimonials-container">
+        <div class="testi-header">
+          <div class="testi-badge">
+            <span>⭐</span> 4.9 · +480 Opiniones Verificadas en Google & OpenTable
+          </div>
+          <h2 class="testi-title">Lo que dicen nuestros comensales</h2>
+          <p class="testi-sub">Experiencia culinaria de fuego, humo y tecnología sin fricción.</p>
+        </div>
+
+        <div class="testi-grid">
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-quote">"El Tomahawk de 1.2kg al mezquite es una obra de arte. Poder pedir bebidas y checar la cuenta al instante desde el celular sin estar buscando al mesero cambió la experiencia por completo."</p>
+            <div class="testi-author">
+              <div class="testi-avatar">CM</div>
+              <div>
+                <strong>Carlos Mendoza</strong>
+                <small>Local Guide · 18 visitas</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-quote">"La Brisket Burger ahumada 14 horas se deshace en la boca. El asistente digital en la mesa nos recomendó el maridaje con la Smoked Mezcalita y le atinó al 100%."</p>
+            <div class="testi-author">
+              <div class="testi-avatar">SR</div>
+              <div>
+                <strong>Sofía Ramos</strong>
+                <small>Comensal Frecuente</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-quote">"Fuimos en grupo de 6, guardamos el pase en Apple Wallet y la cuenta se dividió con propina en 2 clics. El mejor grill contemporáneo de la zona."</p>
+            <div class="testi-author">
+              <div class="testi-avatar">DV</div>
+              <div>
+                <strong>David Villarreal</strong>
+                <small>Reserva VIP Terraza</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- 17 & 20. FOOTER WITH RRSS, BRAND AND LIVE STATUS TRACKER               -->
+    <!-- ======================================================================= -->
+    <footer class="alex-footer-stage">
+      <div class="footer-inner">
+        <div class="footer-top-row">
+          <div class="footer-brand-col">
+            <div class="brand-titles">
+              <h2 style="font-family: var(--heading); font-size: 1.4rem; color: #ffffff;">ALEX<span style="color: var(--neon-amber);">.</span></h2>
+              <p style="font-size: 0.70rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Artisanal Grill & Smokehouse</p>
+            </div>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 8px; max-width: 340px;">
+              Carne Prime certificada, leña de mezquite sonorense y coctelería botánica. Servicio inteligente en cada mesa.
+            </p>
+          </div>
+
+          <div class="footer-links-col">
+            <h4 style="font-size: 0.78rem; text-transform: uppercase; color: var(--neon-amber); letter-spacing: 1px; margin-bottom: 10px;">Conecta & Redes</h4>
+            <div class="footer-social-links">
+              <a href="https://instagram.com" target="_blank" class="social-chip">📸 Instagram @alexgrillhouse</a>
+              <a href="https://wa.me/523312345678" target="_blank" class="social-chip">💬 Concierge VIP WhatsApp</a>
+              <a href="https://maps.google.com" target="_blank" class="social-chip">📍 Mapa & Estacionamiento</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom-bar">
+          <div class="live-tracker-badge">
+            <span class="pulse-green-dot"></span>
+            <span>Sistema Digital Activo · 99.98% Uptime · 1,420 órdenes servidas</span>
+          </div>
+          <p style="font-size: 0.74rem; color: #64748b; margin-top: 10px;">
+            © 2026 ALEX Artisanal Grill · Desarrollado con el ecosistema gastronómico de <a href="../" style="color: var(--neon-amber); text-decoration: none; font-weight: 700;">MenuExpress</a>.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ======================================================================= -->
+    <!-- 7. FLOATING BACK TO TOP BUTTON                                          -->
+    <!-- ======================================================================= -->
+    <button type="button" class="back-to-top-btn" id="backToTopBtn" onclick="scrollToTop()" aria-label="Volver arriba">
+      ↑
+    </button>
+
+    <!-- ======================================================================= -->
+    <!-- 5. MOBILE BOTTOM ERGONOMIC DOCK (THUMB-FRIENDLY NAVIGATION)             -->
+    <!-- ======================================================================= -->
+    <nav class="mobile-bottom-dock" aria-label="Navegación Móvil">
+      <button type="button" class="dock-item-btn" onclick="smoothScrollToMenu(event)">
+        <span class="dock-icon">🍽️</span>
+        <span class="dock-label">Menú</span>
+      </button>
+      <button type="button" class="dock-item-btn" onclick="toggleAssistantModal(true)">
+        <span class="dock-icon">✨</span>
+        <span class="dock-label">Asistente</span>
+      </button>
+      <button type="button" class="dock-item-btn" onclick="toggleComandaDrawer(true)">
+        <span class="dock-icon">🛒</span>
+        <span class="dock-label">Comanda</span>
+        <span class="dock-badge-pulse" id="dockCartBadge" style="display: none;">0</span>
+      </button>
+      <button type="button" class="dock-item-btn" onclick="document.getElementById('opiniones').scrollIntoView({behavior:'smooth'})">
+        <span class="dock-icon">⭐</span>
+        <span class="dock-label">Reseñas</span>
+      </button>
+    </nav>
 
     <!-- ======================================================================= -->
     <!-- FLOATING ASISTENTE TRIGGER & SLIDE-UP MODAL                             -->
@@ -1713,16 +2268,27 @@
         }
       };
 
-      // 2. Toast
+      // 2. Toast (14. Mensajes de éxito y error)
       let toastTimer = null;
-      window.showToast = function(msg) {
+      window.showToast = function(msg, isError = false) {
         const t = document.getElementById('toastBadge');
         if (!t) return;
         t.textContent = msg;
+        if (isError) {
+          t.style.borderColor = 'var(--glowing-crimson)';
+          t.style.color = '#fecdd3';
+          t.style.background = 'rgba(28, 10, 15, 0.96)';
+          t.style.boxShadow = '0 8px 25px rgba(0,0,0,0.7), 0 0 16px rgba(244, 63, 94, 0.5)';
+        } else {
+          t.style.borderColor = 'var(--neon-amber)';
+          t.style.color = '#fef08a';
+          t.style.background = 'rgba(13, 13, 18, 0.95)';
+          t.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.65), 0 0 16px var(--neon-amber-glow)';
+        }
         t.classList.add('visible');
-        if (navigator.vibrate) navigator.vibrate(25);
+        if (navigator.vibrate) navigator.vibrate(isError ? [60, 40, 60] : 25);
         if (toastTimer) clearTimeout(toastTimer);
-        toastTimer = setTimeout(() => t.classList.remove('visible'), 2200);
+        toastTimer = setTimeout(() => t.classList.remove('visible'), 2400);
       };
 
       // 3. Botones de Mesa
@@ -1907,10 +2473,16 @@
         const tipVal = document.getElementById('tipVal');
         const totalVal = document.getElementById('totalVal');
 
+        const dockBadge = document.getElementById('dockCartBadge');
+
         if (totalItems > 0) {
           if (bar) bar.style.display = 'flex';
           if (countTxt) countTxt.textContent = totalItems + ' platillo' + (totalItems > 1 ? 's' : '') + ' en comanda';
           if (priceTxt) priceTxt.textContent = '$' + totalPrice.toLocaleString('es-MX') + ' MXN';
+          if (dockBadge) {
+            dockBadge.textContent = totalItems;
+            dockBadge.style.display = 'flex';
+          }
 
           const tip = Math.round(totalPrice * 0.10);
           if (subtotalVal) subtotalVal.textContent = '$' + totalPrice.toLocaleString('es-MX') + ' MXN';
@@ -1918,6 +2490,7 @@
           if (totalVal) totalVal.textContent = '$' + (totalPrice + tip).toLocaleString('es-MX') + ' MXN';
         } else {
           if (bar) bar.style.display = 'none';
+          if (dockBadge) dockBadge.style.display = 'none';
           toggleComandaDrawer(false);
         }
       }
@@ -1936,13 +2509,23 @@
         else bd.classList.remove('open');
       };
 
-      // 9. Dispatch WhatsApp Order
+      // 9. Dispatch WhatsApp Order (12 & 13. Formulario y Validación)
       window.dispatchOrderWhatsApp = function() {
+        let total = 0;
+        let itemCount = 0;
+        for (let name in cart) {
+          if (cart[name].qty > 0) itemCount += cart[name].qty;
+        }
+
+        if (itemCount === 0) {
+          showToast('⚠️ Tu comanda está vacía. Añade platillos antes de enviar.', true);
+          return;
+        }
+
         let msg = `*🔥 NUEVA COMANDA - ALEX SMOKEHOUSE 🔥*\n`;
         msg += `📍 *Mesa:* ${currentTable} (Terraza)\n\n`;
         msg += `*PLATILLOS SOLICITADOS:*\n`;
 
-        let total = 0;
         for (let name in cart) {
           const item = cart[name];
           if (item.qty > 0) {
@@ -1956,6 +2539,7 @@
         msg += `\n💳 *Total Comanda:* $${total + tip} MXN\n`;
         msg += `\n_Enviado desde Menú Digital Anti-Gravity MenuExpress_`;
 
+        showToast('✓ Redirigiendo a WhatsApp de Cocina...');
         window.open(`https://wa.me/523312345678?text=${encodeURIComponent(msg)}`, '_blank');
       };
 
@@ -2044,6 +2628,111 @@
       window.savePassAction = function(plat) {
         showToast('✓ Pase guardado en tu ' + (plat === 'apple' ? 'Apple Wallet' : 'Google Wallet'));
       };
+
+      // 16. Multi-Language Switcher (ES / EN)
+      let currentLang = 'es';
+      const translations = {
+        es: {
+          langBtn: 'EN',
+          kicker: 'Cocina de Brasa & Ahumador 14 Horas',
+          heroDesc: 'Cortes Prime añejados al mezquite, smash burgers ahumadas con madera de nogal y coctelería botánica. Una experiencia gastronómica sin fricción.',
+          btnMenu: 'Ver Menú',
+          btnConcierge: 'Asistente de Mesa',
+          catAll: '🔥 Todo el Menú',
+          catCortes: '🥩 Cortes Prime',
+          catBurgers: '🍔 Smash & Ahumados',
+          catDrinks: '🍸 Coctelería de Autor',
+          catPostres: '🍫 Postres de Brasa',
+          dockMenu: 'Menú',
+          dockAi: 'Asistente',
+          dockCart: 'Comanda',
+          dockReviews: 'Reseñas'
+        },
+        en: {
+          langBtn: 'ES',
+          kicker: 'Live Fire & 14-Hour Smoked Prime Cuts',
+          heroDesc: 'Mesquite-aged Prime steaks, 14-hour pecan-wood smoked smash burgers, and artisanal botanic mixology. An effortless fine dining journey.',
+          btnMenu: 'View Menu',
+          btnConcierge: 'Table Concierge',
+          catAll: '🔥 Full Menu',
+          catCortes: '🥩 Prime Cuts',
+          catBurgers: '🍔 Smash & Smoked',
+          catDrinks: '🍸 Signature Cocktails',
+          catPostres: '🍫 Fire Desserts',
+          dockMenu: 'Menu',
+          dockAi: 'Concierge',
+          dockCart: 'Cart',
+          dockReviews: 'Reviews'
+        }
+      };
+
+      window.toggleLanguage = function() {
+        currentLang = currentLang === 'es' ? 'en' : 'es';
+        const t = translations[currentLang];
+        const btnText = document.getElementById('langBtnText');
+        if (btnText) btnText.textContent = t.langBtn;
+
+        const kicker = document.querySelector('.hero-pre-kicker');
+        if (kicker) kicker.innerHTML = `<span>🔥</span> ${t.kicker}`;
+
+        const heroDesc = document.querySelector('.hero-description');
+        if (heroDesc) heroDesc.textContent = t.heroDesc;
+
+        const btnMenuSpan = document.querySelector('.btn-primary-glow span:last-child');
+        if (btnMenuSpan) btnMenuSpan.textContent = t.btnMenu;
+
+        const btnConciergeSpan = document.querySelector('.btn-glass-concierge span:last-child');
+        if (btnConciergeSpan) btnConciergeSpan.textContent = t.btnConcierge;
+
+        const pills = document.querySelectorAll('.cat-tab-pill');
+        if (pills[0]) pills[0].textContent = t.catAll;
+        if (pills[1]) pills[1].textContent = t.catCortes;
+        if (pills[2]) pills[2].textContent = t.catBurgers;
+        if (pills[3]) pills[3].textContent = t.catDrinks;
+        if (pills[4]) pills[4].textContent = t.catPostres;
+
+        const dockLabels = document.querySelectorAll('.dock-label');
+        if (dockLabels[0]) dockLabels[0].textContent = t.dockMenu;
+        if (dockLabels[1]) dockLabels[1].textContent = t.dockAi;
+        if (dockLabels[2]) dockLabels[2].textContent = t.dockCart;
+        if (dockLabels[3]) dockLabels[3].textContent = t.dockReviews;
+
+        showToast(currentLang === 'en' ? '🌐 Switched to English' : '🌐 Cambiado a Español');
+      };
+
+      // 7. Floating Back to Top Button
+      const backBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (!backBtn) return;
+        if (window.scrollY > 360) {
+          backBtn.classList.add('visible');
+        } else {
+          backBtn.classList.remove('visible');
+        }
+      }, { passive: true });
+
+      window.scrollToTop = function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      };
+
+      // 8. Preloader Auto-Dismiss
+      window.addEventListener('load', () => {
+        const p = document.getElementById('alexPreloader');
+        if (p) {
+          setTimeout(() => {
+            p.classList.add('fade-out');
+            setTimeout(() => p.remove(), 600);
+          }, 350);
+        }
+      });
+      // Fallback preloader dismissal after 2.5s if network is slow
+      setTimeout(() => {
+        const p = document.getElementById('alexPreloader');
+        if (p && !p.classList.contains('fade-out')) {
+          p.classList.add('fade-out');
+          setTimeout(() => p.remove(), 600);
+        }
+      }, 2500);
 
     })();
   </script>
