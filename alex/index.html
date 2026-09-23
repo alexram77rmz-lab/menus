@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -25,29 +25,55 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 
   <style>
-    :root {
+    :root, [data-theme="light"] {
+      /* Luxury Light Theme: Crisp Warm Linen & Fine Dining Contrast */
+      --matte-black: #f8fafc;
+      --midnight-charcoal: #f1f5f9;
+      --surface-card: #ffffff;
+      --surface-glass: rgba(255, 255, 255, 0.94);
+      --border-subtle: rgba(15, 23, 42, 0.09);
+      --border-glow: rgba(217, 119, 6, 0.4);
+      
+      /* Vibrant Accents */
+      --neon-amber: #d97706;
+      --neon-amber-glow: rgba(217, 119, 6, 0.2);
+      --glowing-crimson: #e11d48;
+      --electric-emerald: #059669;
+      --electric-emerald-glow: rgba(5, 150, 105, 0.2);
+      
+      /* Typography */
+      --text-pure: #0f172a;
+      --text-muted: #64748b;
+      --text-warm: #334155;
+      --sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --heading: 'Space Grotesk', sans-serif;
+      --radius: 22px;
+      --card-shadow: 0 12px 32px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(15, 23, 42, 0.04);
+      --backdrop-blur-overlay: radial-gradient(ellipse at 50% 30%, rgba(248, 250, 252, 0.72) 0%, rgba(248, 250, 252, 0.95) 75%, #f8fafc 100%), linear-gradient(180deg, rgba(248, 250, 252, 0.6) 0%, rgba(248, 250, 252, 0.98) 100%);
+      --video-opacity: 0.16;
+    }
+
+    [data-theme="dark"] {
       /* Luxury Dark Theme: Deep Matte Black & Midnight Charcoal */
       --matte-black: #08080a;
       --midnight-charcoal: #111116;
-      --surface-card: rgba(19, 19, 25, 0.78);
-      --surface-glass: rgba(26, 26, 34, 0.65);
-      --border-subtle: rgba(255, 255, 255, 0.08);
+      --surface-card: rgba(19, 19, 25, 0.85);
+      --surface-glass: rgba(13, 13, 18, 0.92);
+      --border-subtle: rgba(255, 255, 255, 0.09);
       --border-glow: rgba(245, 158, 11, 0.45);
       
-      /* Brilliant Vibrant Accents (Strictly for Interaction & Highlights) */
       --neon-amber: #f59e0b;
       --neon-amber-glow: rgba(245, 158, 11, 0.35);
       --glowing-crimson: #f43f5e;
       --electric-emerald: #10b981;
       --electric-emerald-glow: rgba(16, 185, 129, 0.35);
       
-      /* Typography */
       --text-pure: #ffffff;
       --text-muted: #94a3b8;
       --text-warm: #e2e8f0;
-      --sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      --heading: 'Space Grotesk', sans-serif;
-      --radius: 22px;
+      --card-shadow: 0 20px 45px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+      --backdrop-blur-overlay: radial-gradient(ellipse at 50% 30%, rgba(8, 8, 10, 0.35) 0%, rgba(8, 8, 10, 0.88) 75%, #08080a 100%), linear-gradient(180deg, rgba(8, 8, 10, 0.2) 0%, rgba(8, 8, 10, 0.92) 100%);
+      --video-opacity: 0.28;
     }
 
     * {
@@ -224,6 +250,407 @@
       background: rgba(245, 158, 11, 0.15);
       border-color: var(--neon-amber);
       color: var(--neon-amber);
+    }
+
+    .theme-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-warm);
+      font-size: 0.95rem;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .theme-toggle-btn:hover {
+      background: rgba(245, 158, 11, 0.15);
+      border-color: var(--neon-amber);
+      transform: scale(1.05);
+    }
+
+    /* DUAL THEME SPECIFIC ADAPTATION RULES */
+    [data-theme="light"] header {
+      background: rgba(255, 255, 255, 0.94);
+      border-bottom-color: rgba(15, 23, 42, 0.08);
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+    }
+
+    [data-theme="light"] .brand-symbol-box {
+      background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+      border-color: rgba(217, 119, 6, 0.35);
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+    }
+
+    [data-theme="light"] .brand-titles h1 {
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .table-pill-indicator,
+    [data-theme="light"] .lang-toggle-btn,
+    [data-theme="light"] .theme-toggle-btn {
+      background: #f1f5f9;
+      border-color: rgba(15, 23, 42, 0.1);
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .hero-bold-title {
+      color: #0f172a;
+      text-shadow: 0 2px 10px rgba(255, 255, 255, 0.8);
+    }
+
+    [data-theme="light"] .hero-bold-title em {
+      background: linear-gradient(135deg, #0f172a 0%, #b45309 60%, #d97706 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    [data-theme="light"] .hero-manifesto {
+      color: #334155;
+    }
+
+    [data-theme="light"] .cta-ver-menu-btn {
+      background: #0f172a;
+      color: #ffffff;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.18), 0 0 15px rgba(217, 119, 6, 0.15);
+    }
+
+    [data-theme="light"] .cta-ver-menu-btn:hover {
+      background: var(--neon-amber);
+      color: #ffffff;
+    }
+
+    [data-theme="light"] .category-nav-bar {
+      background: rgba(255, 255, 255, 0.94);
+      border-bottom-color: rgba(15, 23, 42, 0.08);
+    }
+
+    [data-theme="light"] .cat-tab-pill {
+      background: #ffffff;
+      color: #475569;
+      border-color: rgba(15, 23, 42, 0.1);
+    }
+
+    [data-theme="light"] .cat-tab-pill:hover:not(.active) {
+      background: #f1f5f9;
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .cat-tab-pill.active {
+      background: var(--neon-amber);
+      color: #ffffff;
+      border-color: var(--neon-amber);
+    }
+
+    [data-theme="light"] .speed-btn {
+      background: #ffffff;
+      color: #0f172a;
+      border-color: rgba(15, 23, 42, 0.1);
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+    }
+
+    [data-theme="light"] .speed-btn:hover {
+      background: #f8fafc;
+      border-color: var(--neon-amber);
+    }
+
+    [data-theme="light"] .anti-gravity-card {
+      background: #ffffff;
+      border-color: rgba(15, 23, 42, 0.09);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    }
+
+    [data-theme="light"] .dish-mockup-frame {
+      background: #f1f5f9;
+    }
+
+    [data-theme="light"] .dish-floating-badge {
+      background: rgba(255, 255, 255, 0.92);
+      border-color: rgba(217, 119, 6, 0.4);
+      color: #b45309;
+    }
+
+    [data-theme="light"] .dish-name-title {
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .attribute-tag {
+      background: #f1f5f9;
+      border-color: rgba(15, 23, 42, 0.08);
+      color: #334155;
+    }
+
+    [data-theme="light"] .counter-widget {
+      background: #f1f5f9;
+      border-color: rgba(15, 23, 42, 0.1);
+    }
+
+    [data-theme="light"] .counter-btn {
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .counter-btn:hover {
+      background: rgba(15, 23, 42, 0.08);
+    }
+
+    [data-theme="light"] .assistant-float-btn {
+      background: #ffffff;
+      color: #0f172a;
+      border-color: rgba(217, 119, 6, 0.4);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+    }
+
+    [data-theme="light"] .assistant-drawer-box,
+    [data-theme="light"] .comanda-drawer {
+      background: #ffffff;
+      border-color: rgba(15, 23, 42, 0.12);
+      box-shadow: 0 -12px 45px rgba(15, 23, 42, 0.15);
+    }
+
+    [data-theme="light"] .assistant-drawer-top,
+    [data-theme="light"] .comanda-drawer-head {
+      border-bottom-color: rgba(15, 23, 42, 0.08);
+      background: rgba(245, 158, 11, 0.05);
+    }
+
+    [data-theme="light"] .assistant-brand-meta h3,
+    [data-theme="light"] .comanda-drawer-head h3 {
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .assistant-drawer-close,
+    [data-theme="light"] .comanda-drawer-close {
+      background: #f1f5f9;
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .dialog-bubble.ai {
+      background: #f1f5f9;
+      border-color: rgba(15, 23, 42, 0.08);
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .dialog-dish-card {
+      background: #ffffff;
+      border-color: rgba(15, 23, 42, 0.1);
+    }
+
+    [data-theme="light"] .dialog-dish-meta h4 {
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .assistant-input-tray,
+    [data-theme="light"] .comanda-drawer-foot {
+      background: #f8fafc;
+      border-top-color: rgba(15, 23, 42, 0.08);
+    }
+
+    [data-theme="light"] .assistant-text-field {
+      background: #ffffff;
+      border-color: rgba(15, 23, 42, 0.15);
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .suggest-chip {
+      background: #ffffff;
+      border-color: rgba(217, 119, 6, 0.3);
+      color: #b45309;
+    }
+
+    [data-theme="light"] .comanda-bottom-bar {
+      background: #ffffff;
+      border-color: rgba(15, 23, 42, 0.12);
+      box-shadow: 0 12px 35px rgba(15, 23, 42, 0.12);
+    }
+
+    [data-theme="light"] .comanda-row-item {
+      background: #f8fafc;
+      border-color: rgba(15, 23, 42, 0.08);
+    }
+
+    [data-theme="light"] .comanda-row-item strong {
+      color: #0f172a !important;
+    }
+
+    [data-theme="light"] .order-summary-total {
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .wallet-card-container {
+      background: #ffffff;
+      border-color: rgba(15, 23, 42, 0.12);
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
+    }
+
+    [data-theme="light"] .wallet-card-container h3,
+    [data-theme="light"] .wallet-card-container p {
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .push-notif-card {
+      background: #f8fafc;
+      border-color: rgba(15, 23, 42, 0.1);
+      color: #334155;
+    }
+
+    [data-theme="light"] .stamps-flex-track {
+      background: #f1f5f9;
+      border-color: rgba(217, 119, 6, 0.3);
+    }
+
+    [data-theme="light"] .stamp-spot {
+      background: #ffffff;
+      border-color: rgba(15, 23, 42, 0.1);
+    }
+
+    [data-theme="light"] .btn-save-pass {
+      background: #ffffff;
+      color: #0f172a;
+      border-color: rgba(15, 23, 42, 0.15);
+    }
+
+    [data-theme="light"] .testimonials-container {
+      background: #ffffff;
+      border-color: rgba(15, 23, 42, 0.08);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    }
+
+    [data-theme="light"] .testi-title {
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .testi-card {
+      background: #f8fafc;
+      border-color: rgba(15, 23, 42, 0.08);
+    }
+
+    [data-theme="light"] .testi-quote {
+      color: #334155;
+    }
+
+    [data-theme="light"] .testi-author strong {
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .back-to-top-btn {
+      background: #ffffff;
+      color: #0f172a;
+      border-color: rgba(15, 23, 42, 0.12);
+      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.1);
+    }
+
+    [data-theme="light"] .mobile-bottom-dock {
+      background: rgba(255, 255, 255, 0.95);
+      border-top-color: rgba(15, 23, 42, 0.09);
+    }
+
+    [data-theme="light"] .dock-item-btn {
+      color: #64748b;
+    }
+
+    [data-theme="light"] .social-chip {
+      background: #f1f5f9;
+      border-color: rgba(15, 23, 42, 0.1);
+      color: #334155;
+    }
+
+    [data-theme="light"] .ambient-cinematic-backdrop video {
+      opacity: 0.10;
+      filter: contrast(1.05) brightness(1.1);
+    }
+
+    [data-theme="light"] .ambient-cinematic-overlay {
+      background: radial-gradient(ellipse at 50% 30%, rgba(248, 250, 252, 0.78) 0%, rgba(248, 250, 252, 0.95) 70%, #f8fafc 100%),
+                  linear-gradient(180deg, rgba(248, 250, 252, 0.7) 0%, rgba(248, 250, 252, 0.98) 100%);
+    }
+
+    /* SECCIÓN DE AFILIADOS / RECOMENDACIONES EN ALEX */
+    .affiliates-showcase-stage {
+      max-width: 1140px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .affiliates-card-banner {
+      background: var(--surface-card);
+      border: 1px solid var(--border-glow);
+      border-radius: 24px;
+      padding: 32px 28px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      box-shadow: var(--card-shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .affiliates-card-banner::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--neon-amber) 0%, var(--glowing-crimson) 100%);
+    }
+
+    .affiliates-left {
+      max-width: 640px;
+    }
+
+    .affiliates-badge {
+      display: inline-block;
+      background: var(--neon-amber-glow);
+      color: var(--neon-amber);
+      font-size: 0.74rem;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .affiliates-title {
+      font-family: var(--heading);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-pure);
+      margin-bottom: 8px;
+    }
+
+    .affiliates-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .affiliates-desc strong {
+      color: var(--text-pure);
+    }
+
+    .affiliates-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--neon-amber) 0%, #d97706 100%);
+      color: #08080a;
+      font-weight: 800;
+      font-size: 0.88rem;
+      padding: 13px 24px;
+      border-radius: 24px;
+      text-decoration: none;
+      box-shadow: 0 6px 20px var(--neon-amber-glow);
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .affiliates-cta-btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
     }
 
     .radar-pulse-dot {
@@ -1661,6 +2088,11 @@
         </a>
 
         <div class="header-actions-group">
+          <!-- SELECTOR DE TEMA CLARO / OSCURO -->
+          <button type="button" class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" aria-label="Cambiar Tema Claro / Oscuro" title="Cambiar Tema">
+            <span id="themeBtnIcon">🌙</span>
+          </button>
+
           <!-- 16. SELECTOR DE IDIOMA -->
           <button type="button" class="lang-toggle-btn" id="langToggleBtn" onclick="toggleLanguage()" aria-label="Cambiar Idioma">
             <span>🌐</span> <span id="langBtnText">EN</span>
@@ -1990,6 +2422,24 @@
       </div>
 
     </main>
+
+    <!-- ======================================================================= -->
+    <!-- PROGRAMA DE AFILIADOS & EMBAJADORES (RECOMIENDA Y GANA)                 -->
+    <!-- ======================================================================= -->
+    <section class="affiliates-showcase-stage" id="afiliados">
+      <div class="affiliates-card-banner">
+        <div class="affiliates-left">
+          <span class="affiliates-badge">🤝 Programa de Embajadores & Afiliados</span>
+          <h3 class="affiliates-title">¿Tienes amigos con restaurante, taquería o bar?</h3>
+          <p class="affiliates-desc">Recomienda un menú digital interactivo como este. Por cada negocio que contrate su sistema con nosotros, ganas <strong>$400 MXN en efectivo inmediato</strong> o <strong>1 mes gratis</strong> en tu servicio.</p>
+        </div>
+        <div class="affiliates-right">
+          <a href="https://wa.me/523312345678?text=Hola%20Alex!%20Deseo%20recomendar%20un%20restaurante%20para%20el%20programa%20de%20afiliados" target="_blank" class="affiliates-cta-btn">
+            <span>🎁</span> Recomendar Negocio
+          </a>
+        </div>
+      </div>
+    </section>
 
     <!-- ======================================================================= -->
     <!-- 18. TESTIMONIALS & SOCIAL PROOF SECTION                                 -->
@@ -2628,6 +3078,37 @@
       window.savePassAction = function(plat) {
         showToast('✓ Pase guardado en tu ' + (plat === 'apple' ? 'Apple Wallet' : 'Google Wallet'));
       };
+
+      // 15. Dual Theme Switcher (Claro / Oscuro)
+      window.toggleTheme = function() {
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        try {
+          localStorage.setItem('alex_theme', newTheme);
+        } catch (e) {}
+        updateThemeUI(newTheme);
+        showToast(newTheme === 'light' ? '☀️ Tema Claro Activado' : '🌙 Tema Oscuro Activado');
+      };
+
+      function updateThemeUI(theme) {
+        const icon = document.getElementById('themeBtnIcon');
+        if (icon) {
+          icon.textContent = theme === 'light' ? '🌙' : '☀️';
+        }
+        const metaTheme = document.querySelector('meta[name="theme-color"]');
+        if (metaTheme) {
+          metaTheme.setAttribute('content', theme === 'light' ? '#f8fafc' : '#08080a');
+        }
+      }
+
+      // Initialize theme on load
+      let activeTheme = 'light';
+      try {
+        activeTheme = localStorage.getItem('alex_theme') || 'light';
+      } catch (e) {}
+      document.documentElement.setAttribute('data-theme', activeTheme);
+      updateThemeUI(activeTheme);
 
       // 16. Multi-Language Switcher (ES / EN)
       let currentLang = 'es';

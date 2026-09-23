@@ -1,200 +1,168 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="dark">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Alex Ramírez · Tarjeta Digital & QR | MenuExpress México</title>
-  <meta name="description" content="Carta de presentación y portafolio interactivo para restaurantes. Escanea para probar menús con NFC, comandas en cocina y pedidos directos.">
-  <meta name="theme-color" content="#090d16">
+  <meta name="description" content="Carta de presentación y código QR digital de Alex Ramírez - MenuExpress México. Soluciones tecnológicas, menús digitales y placas NFC para restaurantes.">
+  <meta name="theme-color" content="#ffffff">
 
   <!-- OpenGraph -->
-  <meta property="og:title" content="Alex Ramírez · MenuExpress México 📱✨">
-  <meta property="og:description" content="Soluciones tecnológicas para restaurantes en México. Escanea el QR para probar en vivo.">
-  <meta property="og:image" content="images/menuexpress_logo.jpg">
+  <meta property="og:title" content="Alex Ramírez · MenuExpress México">
+  <meta property="og:description" content="Menús digitales interactivos y placas NFC para restaurantes en México.">
+  <meta property="og:image" content="images/qr_menuexpress_minimal_white.png">
 
+  <!-- Tipografías: Plus Jakarta Sans, Space Grotesk y Playfair Display (cursiva M) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #090d16;
-      --surface: rgba(17, 24, 39, 0.85);
-      --border: rgba(255, 255, 255, 0.12);
-      --primary: #2563eb;
-      --cyan: #00f0ff;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --border-subtle: #cbd5e1;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --text-light: #94a3b8;
       --whatsapp: #25d366;
       --whatsapp-hover: #1ebd5a;
-      --text: #f8fafc;
-      --text-muted: #94a3b8;
       --sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       --heading: 'Space Grotesk', sans-serif;
-      --mono: 'JetBrains Mono', monospace;
+      --serif: 'Playfair Display', Georgia, serif;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
 
     body {
       background-color: var(--bg);
-      color: var(--text);
+      color: var(--text-main);
       font-family: var(--sans);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 24px 16px;
-      position: relative;
-      overflow-x: hidden;
+      padding: 32px 16px;
+      line-height: 1.5;
     }
 
-    /* Ambient Glowing Orbs */
-    .orb {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(90px);
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.25;
-    }
-    .orb-1 { top: -10vw; left: -10vw; width: 50vw; height: 50vw; background: #00f0ff; }
-    .orb-2 { bottom: -10vw; right: -10vw; width: 55vw; height: 55vw; background: #2563eb; }
-
-    .card-wrap {
-      position: relative;
-      z-index: 2;
+    /* Tarjeta Blanca Minimalista */
+    .stand-card {
+      background: var(--card-bg);
       width: 100%;
       max-width: 420px;
-      background: var(--surface);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid var(--border);
       border-radius: 28px;
-      padding: 32px 24px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+      padding: 40px 28px;
       text-align: center;
-      animation: cardAppear 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08), 0 2px 8px rgba(15, 23, 42, 0.04);
+      animation: cardFadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
-    @keyframes cardAppear {
-      from { opacity: 0; transform: translateY(20px) scale(0.97); }
+    @keyframes cardFadeIn {
+      from { opacity: 0; transform: translateY(16px) scale(0.98); }
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
-    .brand-avatar-box {
-      position: relative;
-      width: 96px;
-      height: 96px;
-      margin: 0 auto 16px;
-    }
-    .brand-avatar-img {
-      width: 100%;
-      height: 100%;
-      border-radius: 24px;
-      object-fit: cover;
-      border: 2px solid rgba(0, 240, 255, 0.5);
-      box-shadow: 0 0 25px rgba(0, 240, 255, 0.35);
-    }
-    .brand-status-dot {
-      position: absolute;
-      bottom: -3px;
-      right: -3px;
-      width: 16px;
-      height: 16px;
+    /* Logo Minimalista: M negra en cursiva dentro de círculo de contraste */
+    .logo-circle {
+      width: 76px;
+      height: 76px;
       border-radius: 50%;
-      background: #10b981;
-      border: 3px solid var(--bg);
-      box-shadow: 0 0 10px #10b981;
+      background: #ffffff;
+      border: 2.5px solid #0f172a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
     }
 
-    .card-kicker {
-      display: inline-block;
-      font-family: var(--mono);
-      font-size: 0.72rem;
+    .logo-letter {
+      font-family: var(--serif);
+      font-style: italic;
       font-weight: 700;
-      color: var(--cyan);
-      background: rgba(0, 240, 255, 0.1);
-      border: 1px solid rgba(0, 240, 255, 0.3);
-      padding: 4px 12px;
-      border-radius: 20px;
-      margin-bottom: 12px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
+      font-size: 2.85rem;
+      color: #0f172a;
+      line-height: 1;
+      transform: translateY(-2px);
     }
 
+    /* Nombre y Datos */
     .founder-name {
       font-family: var(--heading);
-      font-size: 1.6rem;
+      font-size: 1.85rem;
       font-weight: 800;
+      color: #0f172a;
       letter-spacing: -0.5px;
-      color: #ffffff;
       margin-bottom: 4px;
     }
-    .founder-title {
+
+    .brand-kicker {
+      display: inline-block;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #475569;
+      background: #f1f5f9;
+      border: 1px solid var(--border);
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+
+    .founder-subtitle {
       font-size: 0.88rem;
       color: var(--text-muted);
-      line-height: 1.4;
-      margin-bottom: 16px;
+      line-height: 1.45;
+      margin-bottom: 22px;
     }
 
-    /* Selector de Códigos QR */
-    .qr-type-tabs {
-      display: inline-flex;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 3px;
-      gap: 4px;
-      margin-bottom: 14px;
-    }
-    .qr-tab-btn {
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      font-family: var(--mono);
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 6px 14px;
-      border-radius: 20px;
-      cursor: pointer;
-      transition: all 0.15s ease;
-    }
-    .qr-tab-btn.active {
-      background: var(--primary);
-      color: #ffffff;
-      box-shadow: 0 2px 10px rgba(37, 99, 235, 0.4);
-    }
-
-    /* QR Container */
-    .qr-frame {
+    /* Contenedor del Código QR */
+    .qr-box {
       background: #ffffff;
-      border-radius: 20px;
-      padding: 14px;
+      padding: 16px;
+      border-radius: 22px;
+      border: 2px dashed var(--border-subtle);
       display: inline-block;
       margin: 0 auto 14px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-      position: relative;
+      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04);
+      transition: border-color 0.2s ease, transform 0.2s ease;
     }
-    .qr-img {
+
+    .qr-box:hover {
+      border-color: #0f172a;
+      transform: scale(1.01);
+    }
+
+    .qr-image {
       width: 220px;
       height: 220px;
       display: block;
-      border-radius: 10px;
+      border-radius: 12px;
     }
 
-    .scan-hint {
+    .scan-note {
       font-size: 0.82rem;
       color: var(--text-muted);
+      margin-bottom: 24px;
       line-height: 1.4;
-      max-width: 320px;
-      margin: 0 auto 20px;
-    }
-    .scan-hint strong {
-      color: #ffffff;
     }
 
-    /* Action Buttons */
-    .actions-list {
+    .scan-note strong {
+      color: #0f172a;
+    }
+
+    /* Botones de Acción Directa */
+    .actions-group {
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -205,161 +173,160 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      padding: 14px 20px;
-      border-radius: 14px;
+      gap: 8px;
+      padding: 13px 20px;
+      border-radius: 16px;
+      font-size: 0.90rem;
       font-weight: 700;
-      font-size: 0.92rem;
       text-decoration: none;
-      transition: all 0.2s ease;
       cursor: pointer;
       border: none;
       font-family: var(--sans);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .btn-wa {
+
+    .btn-whatsapp {
       background: var(--whatsapp);
       color: #ffffff;
-      box-shadow: 0 4px 18px rgba(37, 211, 102, 0.35);
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
     }
-    .btn-wa:hover {
+
+    .btn-whatsapp:hover {
       background: var(--whatsapp-hover);
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.5);
+      box-shadow: 0 6px 22px rgba(37, 211, 102, 0.45);
     }
-    .btn-showcase {
-      background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(244, 63, 94, 0.2) 100%);
-      border: 1px solid rgba(245, 158, 11, 0.45);
-      color: #f59e0b;
-    }
-    .btn-showcase:hover {
-      background: linear-gradient(135deg, #f59e0b 0%, #f43f5e 100%);
+
+    .btn-website {
+      background: #0f172a;
       color: #ffffff;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.15);
+    }
+
+    .btn-website:hover {
+      background: #1e293b;
       transform: translateY(-2px);
-      box-shadow: 0 8px 22px rgba(245, 158, 11, 0.35);
+      box-shadow: 0 6px 22px rgba(15, 23, 42, 0.25);
     }
-    .btn-web {
-      background: rgba(255, 255, 255, 0.08);
+
+    .btn-demo {
+      background: #ffffff;
       border: 1px solid var(--border);
-      color: var(--text);
+      color: #0f172a;
     }
-    .btn-web:hover {
-      background: rgba(255, 255, 255, 0.14);
-      border-color: var(--cyan);
+
+    .btn-demo:hover {
+      background: #f8fafc;
+      border-color: #0f172a;
       transform: translateY(-2px);
     }
 
+    /* Footer de la tarjeta */
     .card-footer {
-      margin-top: 20px;
+      margin-top: 24px;
       padding-top: 16px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-top: 1px solid var(--border);
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 0.74rem;
-      color: var(--text-muted);
-      font-family: var(--mono);
+      color: var(--text-light);
     }
-    .share-btn {
-      background: transparent;
+
+    .share-link-btn {
+      background: none;
       border: none;
-      color: var(--cyan);
-      cursor: pointer;
+      color: #0f172a;
       font-weight: 700;
-      font-family: var(--mono);
-      font-size: 0.75rem;
-      display: flex;
+      font-size: 0.74rem;
+      cursor: pointer;
+      display: inline-flex;
       align-items: center;
       gap: 4px;
+      font-family: var(--sans);
     }
-    .share-btn:hover {
+
+    .share-link-btn:hover {
       text-decoration: underline;
+    }
+
+    /* Modo Impresión Limpio */
+    @media print {
+      body {
+        background: #ffffff;
+        padding: 0;
+      }
+      .stand-card {
+        box-shadow: none;
+        border: 1px solid #cbd5e1;
+        margin: 0 auto;
+      }
+      .actions-group, .card-footer {
+        display: none !important;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-
-  <main class="card-wrap">
-    <div class="brand-avatar-box">
-      <img src="images/menuexpress_logo_maximalist.jpg" alt="MenuExpress Maximalist Logo" class="brand-avatar-img">
-      <div class="brand-status-dot" title="En servicio activo"></div>
+  <main class="stand-card">
+    <!-- Círculo de Contraste con M Negra en Cursiva -->
+    <div class="logo-circle" aria-label="Logo M">
+      <span class="logo-letter">M</span>
     </div>
 
-    <span class="card-kicker">Carta de Presentación Digital</span>
+    <!-- Nombre y Título -->
     <h1 class="founder-name">Alex Ramírez</h1>
-    <p class="founder-title">
-      Fundador · <strong>MenuExpress México</strong><br>
-      Joven emprendedor metido en la industria para ayudarte a ganar más
+    <span class="brand-kicker">MenuExpress México</span>
+    <p class="founder-subtitle">
+      Menús Digitales Interactivos · Placas QR & NFC
     </p>
 
-    <!-- SELECTOR DE QR: WEB VS DEMO -->
-    <div class="qr-type-tabs">
-      <button type="button" class="qr-tab-btn active" id="tabCardWeb" onclick="selectCardQr('web')">🌐 Mi Web</button>
-      <button type="button" class="qr-tab-btn" id="tabCardDemo" onclick="selectCardQr('demo')">🥩 Menú Ejemplo</button>
+    <!-- Código QR Blanco Minimalista -->
+    <div class="qr-box">
+      <img src="images/qr_menuexpress_minimal_white.png" alt="Código QR Alex Ramírez MenuExpress" class="qr-image">
     </div>
 
-    <!-- QR CODE BLANCO MINIMALISTA -->
-    <div class="qr-frame">
-      <img id="cardQrImg" src="images/qr_menuexpress_minimal_white.png" alt="Código QR Blanco Minimalista" class="qr-img">
-    </div>
-
-    <p class="scan-hint" id="cardQrHint">
-      Apunta con la cámara de tu celular para abrir <strong>MenuExpress</strong> (cotizaciones y calculadora).
+    <p class="scan-note">
+      Apunta con la cámara de tu celular para abrir el portal y cotizaciones.
     </p>
 
-    <div class="actions-list">
-      <a href="https://wa.me/523312345678?text=Hola%20Alex!%20Escane%C3%A9%20tu%20tarjeta%20digital%20y%20me%20gustar%C3%ADa%20cotizar%20mi%20restaurante" class="btn-action btn-wa">
-        <span>💬</span> Mandarme WhatsApp Directo
+    <!-- Botones de Acción Directa -->
+    <div class="actions-group">
+      <a href="https://wa.me/523312345678?text=Hola%20Alex!%20Escane%C3%A9%20tu%20tarjeta%20digital%20y%20me%20gustar%C3%ADa%20cotizar%20un%20men%C3%BA%20digital" target="_blank" class="btn-action btn-whatsapp">
+        <span>💬</span> WhatsApp Directo
       </a>
-      <a href="alex/" class="btn-action btn-showcase">
-        <span>🥩</span> Probar Showcase ALEX (Fine Dining)
+      <a href="index.html" class="btn-action btn-website">
+        <span>🌐</span> Abrir Web & Cotizador
       </a>
-      <a href="index.html" class="btn-action btn-web">
-        <span>🌐</span> Explorar Portal & Calculadora NFC
+      <a href="alex/" class="btn-action btn-demo">
+        <span>🥩</span> Probar Menú Demo (ALEX)
       </a>
     </div>
 
+    <!-- Pie con Compartir -->
     <div class="card-footer">
       <span>MenuExpress · 2026</span>
-      <button type="button" class="share-btn" onclick="shareCard()">
-        <span>🔗</span> Compartir Enlace
+      <button type="button" class="share-link-btn" onclick="shareCard()">
+        <span>🔗</span> Compartir
       </button>
     </div>
   </main>
 
   <script>
-    function selectCardQr(type) {
-      const img = document.getElementById('cardQrImg');
-      const hint = document.getElementById('cardQrHint');
-      const btnWeb = document.getElementById('tabCardWeb');
-      const btnDemo = document.getElementById('tabCardDemo');
-      if (type === 'web') {
-        img.src = 'images/qr_menuexpress_minimal_white.png';
-        hint.innerHTML = 'Apunta con la cámara de tu celular para abrir <strong>MenuExpress</strong> (cotizaciones y calculadora).';
-        btnWeb.classList.add('active');
-        btnDemo.classList.remove('active');
-      } else {
-        img.src = 'images/qr_demo_alex_minimal_white.png';
-        hint.innerHTML = 'Apunta con la cámara de tu celular para probar el <strong>Menú Flagship ALEX</strong> (Showcase con Asistente y anti-gravedad).';
-        btnDemo.classList.add('active');
-        btnWeb.classList.remove('active');
-      }
-    }
-
     function shareCard() {
       if (navigator.share) {
         navigator.share({
           title: 'Alex Ramírez · MenuExpress México',
-          text: 'Conoce cómo modernizar tu restaurante con menús interactivos, placas NFC y comandas sin papel:',
+          text: 'Conoce las cartas digitales interactivas y placas NFC para restaurantes de Alex Ramírez:',
           url: window.location.href
         }).catch(() => {});
       } else {
         navigator.clipboard.writeText(window.location.href);
-        alert('✓ Enlace de la tarjeta copiado al portapapeles');
+        alert('✓ Enlace copiado al portapapeles');
       }
     }
   </script>
+
 </body>
 </html>
