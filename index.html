@@ -1418,22 +1418,24 @@
     }
     .founder-avatar-placeholder {
       width: 210px; height: 210px; border-radius: 28px;
-      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-      border: 2px solid rgba(56, 189, 248, 0.4);
+      background: #f8fafc;
+      border: 2px dashed #cbd5e1;
       display: flex; align-items: center; justify-content: center;
-      position: relative; box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+      position: relative; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
       overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    [data-theme="dark"] .founder-avatar-placeholder {
+      background: #0f172a;
+      border: 2px dashed rgba(148, 163, 184, 0.3);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
     }
     .founder-avatar-placeholder img {
       width: 100%; height: 100%; object-fit: cover;
     }
-    .founder-avatar-icon {
-      font-size: 5rem; line-height: 1;
-    }
-    .founder-halo-glow {
-      position: absolute; width: 140px; height: 140px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(56, 189, 248, 0.35) 0%, transparent 70%);
-      top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;
+    .founder-blank-space {
+      width: 100%; height: 100%;
+      background: transparent;
     }
     .founder-status-badge {
       display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono);
@@ -2624,10 +2626,9 @@
         
         <div class="about-founder-visual">
           <div class="founder-photo-frame">
-            <!-- PLACEHOLDER ESTÉTICO LISTO PARA images/alex_fundador.jpg -->
-            <div class="founder-avatar-placeholder" id="founderAvatarContainer">
-              <span class="founder-avatar-icon">👨‍💻</span>
-              <div class="founder-halo-glow"></div>
+            <!-- ESPACIO EN BLANCO RESERVADO PARA FOTO DE ALEX -->
+            <div class="founder-avatar-placeholder" id="founderAvatarContainer" aria-label="Espacio para fotografía de Alex Ramírez">
+              <div class="founder-blank-space"></div>
             </div>
             <div class="founder-status-badge">
               <span class="status-dot-pulse"></span>
