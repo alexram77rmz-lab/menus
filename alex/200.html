@@ -2619,11 +2619,11 @@
               <span>🍽️</span> Vista Comensal
             </button>
             <button type="button" class="ribbon-role-btn" id="btnRoleStaff" onclick="openStaffPanel()">
-              <span>👨‍🍳</span> Panel Empleado (Cocina / KDS)
+              <span>👨‍🍳</span> Panel Mesero (Cocina & KDS)
               <span class="badge-counter" id="kdsBadgeCount">3</span>
             </button>
             <button type="button" class="ribbon-role-btn" id="btnRoleManager" onclick="openManagerPanel()">
-              <span>📊</span> Panel Gerente (Ventas & Platos)
+              <span>📊</span> Panel Administrador (Ventas & Stock)
             </button>
           </div>
         </div>
@@ -2660,10 +2660,10 @@
             <span id="tableLabel">Mesa 4 · Terraza</span>
           </div>
 
-          <!-- FLOATING WHATSAPP BUTTON WITH SOFT PERSISTENT GLOWING PULSE -->
-          <a href="https://wa.me/523312345678?text=Hola%20ALEX!%20Deseo%20hacer%20un%20pedido%20o%20reservación" target="_blank" class="whatsapp-header-btn" aria-label="Ordenar por WhatsApp">
+          <!-- BOTÓN DEMO DE PEDIDO (PROTECCIÓN ANTI-SPAM) -->
+          <button type="button" onclick="showToast('💬 En tu restaurante real, este botón envía pedidos directo a tu WhatsApp')" class="whatsapp-header-btn" aria-label="Ordenar por WhatsApp">
             <span>💬</span> Pedido Rápido
-          </a>
+          </button>
         </div>
       </div>
     </header>
@@ -2991,7 +2991,7 @@
           <p class="affiliates-desc">Recomienda un menú digital interactivo como este. Por cada negocio que contrate su sistema con nosotros, ganas <strong>$400 MXN en efectivo inmediato</strong> o <strong>1 mes gratis</strong> en tu servicio.</p>
         </div>
         <div class="affiliates-right">
-          <a href="https://wa.me/523312345678?text=Hola%20Alex!%20Deseo%20recomendar%20un%20restaurante%20para%20el%20programa%20de%20afiliados" target="_blank" class="affiliates-cta-btn">
+          <a href="../index.html#planes" class="affiliates-cta-btn">
             <span>🎁</span> Recomendar Negocio
           </a>
         </div>
@@ -3071,7 +3071,7 @@
             <h4 style="font-size: 0.78rem; text-transform: uppercase; color: var(--neon-amber); letter-spacing: 1px; margin-bottom: 10px;">Conecta & Redes</h4>
             <div class="footer-social-links">
               <a href="https://instagram.com" target="_blank" class="social-chip">📸 Instagram @alexgrillhouse</a>
-              <a href="https://wa.me/523312345678" target="_blank" class="social-chip">💬 Concierge VIP WhatsApp</a>
+              <button type="button" onclick="showToast('💬 En tu restaurante real, este botón conecta al comensal con tu WhatsApp')" class="social-chip" style="background: none; border: 1px solid var(--border-subtle); color: var(--text-warm); cursor: pointer; font-family: inherit;">💬 Concierge VIP WhatsApp</button>
               <a href="https://maps.google.com" target="_blank" class="social-chip">📍 Mapa & Estacionamiento</a>
             </div>
           </div>
@@ -3254,8 +3254,12 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
             Google Wallet
           </button>
+        </div>
+      </div>
+    </div>
+
     <!-- ======================================================================= -->
-    <!-- MODAL: PANEL DEL EMPLEADO / PANTALLA DE COCINA (KDS)                    -->
+    <!-- MODAL: PANEL DEL MESERO / COCINA & COMANDAS EN VIVO (KDS)               -->
     <!-- ======================================================================= -->
     <div class="ops-modal-backdrop" id="modalEmployeePanel" onclick="handleOpsBackdropClick(event, 'modalEmployeePanel')">
       <div class="ops-modal-window" onclick="event.stopPropagation()">
@@ -3265,8 +3269,8 @@
               👨‍🍳
             </div>
             <div>
-              <h3>Pantalla de Cocina & Meseros (KDS)</h3>
-              <p>Comandas en tiempo real · ALEX Smokehouse (Licencia Empleado Operativo)</p>
+              <h3>Panel del Mesero & Cocina (KDS)</h3>
+              <p>Comandas en tiempo real · ALEX Smokehouse (Licencia Mesero / Cocina Operativo)</p>
             </div>
           </div>
           <div style="display: flex; align-items: center; gap: 10px;">
@@ -3384,8 +3388,8 @@
               📊
             </div>
             <div>
-              <h3>Panel del Gerente · Ventas & Control de Platos</h3>
-              <p>ALEX Smokehouse · Turno en Vivo · Licencia Gerencial Operativa</p>
+              <h3>Panel del Administrador & Gerente General</h3>
+              <p>ALEX Smokehouse · Turno en Vivo · Ventas & Control de Stock de Platos</p>
             </div>
           </div>
           <div style="display: flex; align-items: center; gap: 8px;">
@@ -3638,13 +3642,49 @@
       };
 
       // 3. Botones de Mesa
+      window.addKdsServicePing = function(tableName, actionText, icon) {
+        const grid = document.getElementById('kdsTicketsGrid');
+        if (!grid) return;
+        const pingId = 'ticket-ping-' + Date.now();
+        const card = document.createElement('div');
+        card.className = 'kds-ticket-card';
+        card.id = pingId;
+        card.setAttribute('data-status', 'cooking');
+        card.style.border = '2px solid #f59e0b';
+        card.style.boxShadow = '0 0 25px rgba(245, 158, 11, 0.4)';
+        card.innerHTML = `
+          <div class="kds-ticket-head cooking" style="background: rgba(245, 158, 11, 0.28); color: #fef08a;">
+            <span class="ticket-table-name">${icon} ${tableName}</span>
+            <span class="ticket-time-tag">AHORA MISMO</span>
+          </div>
+          <div class="kds-ticket-items">
+            <div class="kds-item-line" style="color: #ffffff; font-weight: 800; font-size: 0.95rem;">
+              <span>${actionText}</span>
+            </div>
+            <div class="kds-item-note">Atención de mesero solicitada desde el menú digital</div>
+          </div>
+          <div class="kds-ticket-actions">
+            <button type="button" class="btn-kds-action btn-kds-ready" onclick="document.getElementById('${pingId}').remove(); showToast('✓ Alerta de ${tableName} atendida');">
+              <span>✓</span> Marcar Atendido
+            </button>
+          </div>
+        `;
+        grid.prepend(card);
+        const count = document.getElementById('kdsBadgeCount');
+        if (count) count.textContent = parseInt(count.textContent || '3') + 1;
+        const allCount = document.getElementById('kdsAllCount');
+        if (allCount) allCount.textContent = parseInt(allCount.textContent || '3') + 1;
+      };
+
       window.callWaiter = function() {
         if (navigator.vibrate) navigator.vibrate([40, 60, 40]);
-        showToast('🛎️ Notificando al mesero para Mesa ' + currentTable);
+        showToast('🛎️ Mesero notificado en Mesa ' + currentTable + ' (Ver en Panel Mesero)');
+        addKdsServicePing('Mesa ' + currentTable, '🛎️ Llamar al Mesero para atención directa', '🛎️');
       };
       window.requestBill = function() {
         if (navigator.vibrate) navigator.vibrate([40, 60, 40]);
-        showToast('🧾 Cuenta solicitada para Mesa ' + currentTable);
+        showToast('🧾 Cuenta solicitada para Mesa ' + currentTable + ' (Ver en Panel Mesero)');
+        addKdsServicePing('Mesa ' + currentTable, '🧾 Comensal solicita la Cuenta (Efectivo / Tarjeta)', '🧾');
       };
 
       // 4. Smooth Scroll to Menu
@@ -3885,8 +3925,9 @@
         msg += `\n💳 *Total Comanda:* $${total + tip} MXN\n`;
         msg += `\n_Enviado desde Menú Digital Anti-Gravity MenuExpress_`;
 
-        showToast('✓ Redirigiendo a WhatsApp de Cocina...');
-        window.open(`https://wa.me/523312345678?text=${encodeURIComponent(msg)}`, '_blank');
+        showToast('✓ Comanda enviada a la Pantalla de Cocina (KDS)');
+        window.addKdsServicePing('Mesa ' + currentTable, `Nueva Comanda: ${Object.keys(cart).length} platillos ($${total + tip} MXN)`, '🔥');
+        toggleCartModal(false);
       };
 
       // 10. Asistente Alex Modal & Logic
@@ -4105,9 +4146,15 @@
       };
 
       window.openStaffPanel = function() {
+        const mgrModal = document.getElementById('modalManagerPanel');
+        if (mgrModal) mgrModal.classList.remove('open');
+        const walletModal = document.getElementById('walletModal');
+        if (walletModal) walletModal.classList.remove('open');
+
         const modal = document.getElementById('modalEmployeePanel');
         if (modal) modal.classList.add('open');
         updateRoleRibbonUI('staff');
+        showToast('👨‍🍳 Panel de Mesero & Cocina (KDS)');
 
         // Reloj KDS en vivo
         function tickClock() {
@@ -4130,9 +4177,15 @@
       };
 
       window.openManagerPanel = function() {
+        const staffModal = document.getElementById('modalEmployeePanel');
+        if (staffModal) staffModal.classList.remove('open');
+        const walletModal = document.getElementById('walletModal');
+        if (walletModal) walletModal.classList.remove('open');
+
         const modal = document.getElementById('modalManagerPanel');
         if (modal) modal.classList.add('open');
         updateRoleRibbonUI('manager');
+        showToast('📊 Panel del Administrador & Gerente');
       };
 
       window.closeManagerPanel = function() {
@@ -4145,6 +4198,7 @@
         if (event.target && event.target.id === modalId) {
           const modal = document.getElementById(modalId);
           if (modal) modal.classList.remove('open');
+          if (kdsTimerInterval) clearInterval(kdsTimerInterval);
           updateRoleRibbonUI('diner');
         }
       };
