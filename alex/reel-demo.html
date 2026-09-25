@@ -607,6 +607,7 @@
   </div>
 
   <!-- Interactive Controls Panel -->
+  <audio id="neuralVoiceAudio" src="locucion_reel_60s.mp3" preload="auto"></audio>
   <div class="controls-panel">
     <div class="timeline-row">
       <input type="range" class="timeline-slider" id="timelineSlider" min="0" max="60" value="0" step="0.1">
@@ -615,19 +616,24 @@
 
     <div class="btn-row">
       <button class="action-btn action-btn-primary" id="playBtn">
-        <span id="playIcon">▶</span> <span id="playLabel">Reproducir Reel</span>
+        <span id="playIcon">▶</span> <span id="playLabel">Reproducir con Voz Real</span>
       </button>
       <button class="action-btn action-btn-secondary" id="restartBtn">
         <span>🔄</span> Reiniciar
       </button>
-      <button class="action-btn action-btn-secondary" id="copyScriptBtn">
-        <span>📋</span> Copiar Guión
-      </button>
+      <a href="locucion_reel_60s.mp3" download="locucion_reel_60s.mp3" class="action-btn action-btn-secondary" style="text-decoration:none; display:flex; align-items:center; justify-content:center;">
+        <span>🎙️</span> Descargar MP3
+      </a>
     </div>
 
     <div class="toggle-voice">
-      <span>Voz en Off (Voz IA en Español)</span>
-      <input type="checkbox" id="voiceToggle" checked style="accent-color: var(--amber); width: 18px; height: 18px;">
+      <span style="display:flex; align-items:center; gap:6px;">
+        <span style="width:8px; height:8px; border-radius:50%; background:#10b981;"></span>
+        Voz Neural Locutor (Jorge MX - TikTok/CapCut)
+      </span>
+      <button id="copyScriptBtn" style="background:transparent; border:none; color:var(--amber); font-size:0.75rem; font-weight:700; cursor:pointer;">
+        📋 Copiar Guión
+      </button>
     </div>
   </div>
 
@@ -764,14 +770,22 @@
   }
 
   // Playback Loop
+  const neuralAudio = document.getElementById('neuralVoiceAudio');
+
   function tick(timestamp) {
     if (!isPlaying) return;
-    if (!lastTimestamp) lastTimestamp = timestamp;
-    const dt = (timestamp - lastTimestamp) / 1000;
-    lastTimestamp = timestamp;
+    
+    // Sync strictly with real neural MP3 if active
+    if (neuralAudio && !neuralAudio.paused && !neuralAudio.ended) {
+      currentTime = neuralAudio.currentTime;
+    } else {
+      if (!lastTimestamp) lastTimestamp = timestamp;
+      const dt = (timestamp - lastTimestamp) / 1000;
+      lastTimestamp = timestamp;
+      currentTime += dt;
+    }
 
-    currentTime += dt;
-    if (currentTime >= 60) {
+    if (currentTime >= 60 || (neuralAudio && neuralAudio.ended)) {
       currentTime = 60;
       pause();
       renderTime(60);
@@ -788,6 +802,12 @@
     playLabel.textContent = 'Pausar';
     lastTimestamp = null;
     currentCueIndex = -1; // force trigger
+
+    if (neuralAudio) {
+      neuralAudio.currentTime = currentTime;
+      neuralAudio.play().catch(e => console.log('Audio autoplay policy:', e));
+    }
+
     renderTime(currentTime);
     animFrame = requestAnimationFrame(tick);
   }
@@ -795,7 +815,8 @@
   function pause() {
     isPlaying = false;
     playIcon.textContent = '▶';
-    playLabel.textContent = 'Reproducir';
+    playLabel.textContent = 'Reproducir con Voz Real';
+    if (neuralAudio) neuralAudio.pause();
     if (synth) synth.cancel();
     if (animFrame) cancelAnimationFrame(animFrame);
     reelBgVideo.pause();
@@ -813,6 +834,7 @@
   restartBtn.addEventListener('click', () => {
     pause();
     currentTime = 0;
+    if (neuralAudio) neuralAudio.currentTime = 0;
     currentCueIndex = -1;
     renderTime(0);
     play();
@@ -820,6 +842,7 @@
 
   timelineSlider.addEventListener('input', (e) => {
     const val = parseFloat(e.target.value);
+    if (neuralAudio) neuralAudio.currentTime = val;
     if (synth) synth.cancel();
     renderTime(val);
   });
