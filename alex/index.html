@@ -3263,9 +3263,15 @@
 
     <!-- QUICK SPEED-BAR -->
     <div class="table-speed-bar">
-      <button type="button" class="speed-btn highlight-gold" onclick="openStudio3D('tomahawk')">
-        <span>🥩</span> Estudio 3D en Mesa
+      <button type="button" class="speed-btn highlight-gold" onclick="openStudioVideo('tomahawk')">
+        <span>🔥</span> Video en Brasa
       </button>
+      <button type="button" class="speed-btn" onclick="openStudio3D('tomahawk')">
+        <span>🥩</span> Estudio 3D
+      </button>
+      <a href="ar-menu.html" class="speed-btn" style="text-decoration:none; color: var(--neon-amber); border-color: rgba(245, 158, 11, 0.4);">
+        <span>📱</span> WebAR 3D
+      </a>
       <button type="button" class="speed-btn" onclick="openSecretCutsModal()">
         <span>🔒</span> Cortes Fuera de Carta
       </button>
@@ -4246,9 +4252,12 @@
           </div>
         </div>
 
-        <!-- Escenario 3D con Three.js y AR Cámara -->
+        <!-- Escenario 3D con Three.js, Video Cinematográfico y AR Cámara -->
         <div class="studio3d-stage">
           <video id="arVideoFeed" class="ar-camera-feed" autoplay playsinline muted></video>
+          <video id="studioCinematicVideo" class="studio-cinematic-feed" loop playsinline muted poster="https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&auto=format&fit=crop&q=80" style="display:none; position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:16px; z-index:3;">
+            <source src="grill-fire.mp4" type="video/mp4">
+          </video>
           <canvas id="studio3dCanvas"></canvas>
 
           <div class="studio3d-floating-overlay">
@@ -4263,9 +4272,15 @@
             <button type="button" class="cam-preset-btn active" id="btnCamOrbit" onclick="setStudioCamView('orbit')">🔄 Centrar</button>
             <button type="button" class="cam-preset-btn" id="btnCamTop" onclick="setStudioCamView('top')">📐 Cenital</button>
             <button type="button" class="cam-preset-btn" id="btnCamClose" onclick="setStudioCamView('close')">🔍 Detalle</button>
+            <button type="button" class="cam-preset-btn highlight-gold" id="btnStudioVideo" onclick="toggleStudioVideoMode()">
+              <span>🔥</span> <span id="studioVideoBtnLabel">Video en Brasa</span>
+            </button>
             <button type="button" class="cam-preset-btn btn-ar-mode" id="btnArMode" onclick="toggleArMode()">
               <span>📱</span> <span id="arModeLabel">Ver en mi Mesa (AR)</span>
             </button>
+            <a href="ar-menu.html" class="cam-preset-btn" target="_blank" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px; color:#f59e0b;">
+              <span>🌐</span> WebAR 3D
+            </a>
           </div>
         </div>
 
@@ -6052,11 +6067,57 @@
         }, 50);
       };
 
+      let studioVideoActive = false;
+      window.toggleStudioVideoMode = function(forceState) {
+        const videoEl = document.getElementById('studioCinematicVideo');
+        const canvasEl = document.getElementById('studio3dCanvas');
+        const overlayEl = document.querySelector('.studio3d-floating-overlay');
+        const btnLabel = document.getElementById('studioVideoBtnLabel');
+        const btnVideo = document.getElementById('btnStudioVideo');
+
+        if (typeof forceState === 'boolean') {
+          studioVideoActive = forceState;
+        } else {
+          studioVideoActive = !studioVideoActive;
+        }
+
+        if (studioVideoActive) {
+          if (videoEl) {
+            videoEl.style.display = 'block';
+            videoEl.play().catch(() => {});
+          }
+          if (canvasEl) canvasEl.style.opacity = '0';
+          if (overlayEl) overlayEl.style.display = 'none';
+          if (btnLabel) btnLabel.textContent = 'Ver Modelo 3D';
+          if (btnVideo) btnVideo.classList.add('active');
+          showToast('🔥 Video cinematográfico de brasa en vivo');
+        } else {
+          if (videoEl) {
+            videoEl.pause();
+            videoEl.style.display = 'none';
+          }
+          if (canvasEl) canvasEl.style.opacity = '1';
+          if (overlayEl) overlayEl.style.display = 'flex';
+          if (btnLabel) btnLabel.textContent = 'Video en Brasa';
+          if (btnVideo) btnVideo.classList.remove('active');
+        }
+      };
+
+      window.openStudioVideo = function(dishKey) {
+        openStudio3D(dishKey);
+        setTimeout(() => {
+          toggleStudioVideoMode(true);
+        }, 120);
+      };
+
       window.closeStudio3D = function() {
         const modal = document.getElementById('studio3dModal');
         if (modal) modal.classList.remove('open');
         if (studioArActive) {
           toggleArMode();
+        }
+        if (studioVideoActive) {
+          toggleStudioVideoMode(false);
         }
       };
 
