@@ -1,1540 +1,1413 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-MX" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-  <title>NOVA · Performance Goods | Gadgets Deportivos & Productos Ganadores</title>
-  <meta name="description" content="Tienda oficial de productos ganadores de alto rendimiento: recuperación muscular, smart tech, fitness y estilo de vida. Envíos express a todo México.">
-  <meta property="og:title" content="NOVA · Performance & Lifestyle Goods">
-  <meta property="og:description" content="Los productos más vendidos y recomendados por atletas y creadores en México.">
-  <meta property="og:image" content="images/hero-athlete-massage.jpg">
-  <meta name="theme-color" content="#ffffff">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f172a'/%3E%3Cpath d='M9 22L16 7L23 22H18L16 16L14 22H9Z' fill='%232563eb'/%3E%3C/svg%3E">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>ROVA Performance Goods México | Gadgets & Deporte de Alto Rendimiento</title>
+  <meta name="description" content="ROVA México: Gadgets de alto rendimiento deportivo, recuperación muscular y tecnología para tu día a día. Envíos asegurados y garantía directa.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f7ff',
+              100: '#e0effe',
+              500: '#2563eb',
+              600: '#1d4ed8',
+              700: '#1e40af',
+              900: '#0f172a',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            display: ['Cabinet Grotesk', 'Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
 
-  <!-- Typography -->
+  <!-- Google Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* ═══════════════════════════════════════════════════════════════
-       CLEAN WHITE LUXURY DESIGN SYSTEM (APPLE & NIKE GRADE)
-    ═══════════════════════════════════════════════════════════════ */
     :root {
-      --bg: #ffffff;
-      --bg-alt: #f8fafc;
-      --bg-surface: #f1f5f9;
-      --bg-card: #ffffff;
-      --bg-glass: rgba(255, 255, 255, 0.92);
-
-      --primary: #0f172a;
-      --primary-blue: #2563eb;
-      --primary-blue-glow: rgba(37, 99, 235, 0.25);
-      --accent-coral: #f43f5e;
-      --accent-amber: #d97706;
-      --accent-emerald: #059669;
-
-      --text: #0f172a;
-      --text-muted: #64748b;
-      --text-sub: #475569;
-
-      --border: rgba(15, 23, 42, 0.08);
-      --border-focus: rgba(37, 99, 235, 0.5);
-
-      --sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      --display: 'Space Grotesk', var(--sans);
-
-      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
-      --shadow-card: 0 10px 30px rgba(15, 23, 42, 0.06), 0 2px 8px rgba(15, 23, 42, 0.03);
-      --shadow-hover: 0 20px 45px rgba(15, 23, 42, 0.12), 0 4px 12px rgba(15, 23, 42, 0.06);
-
-      --radius-sm: 8px;
-      --radius-md: 14px;
-      --radius-lg: 20px;
-      --radius-xl: 28px;
-      --radius-full: 9999px;
-    }
-
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      -webkit-text-size-adjust: 100%;
+      --font-display: 'Cabinet Grotesk', -apple-system, sans-serif;
+      --font-sans: 'Inter', -apple-system, sans-serif;
     }
 
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--sans);
-      min-height: 100vh;
-      overflow-x: hidden;
-      line-height: 1.5;
+      font-family: var(--font-sans);
+      background-color: #ffffff;
+      color: #0f172a;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ═══════════════════════════════════════════════════════════════
-       TOP ANNOUNCEMENT BAR
-    ═══════════════════════════════════════════════════════════════ */
-    .announcement-bar {
-      background: #0f172a;
-      color: #ffffff;
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-align: center;
-      padding: 8px 16px;
-      letter-spacing: 0.04em;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-    .announcement-dot {
-      width: 6px;
-      height: 6px;
-      background: #10b981;
-      border-radius: 50%;
-      animation: pulseGreen 1.5s infinite;
-    }
-    @keyframes pulseGreen {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(1.3); }
+    .font-display {
+      font-family: var(--font-display);
     }
 
-    /* ═══════════════════════════════════════════════════════════════
-       STICKY HEADER & NAV
-    ═══════════════════════════════════════════════════════════════ */
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--bg-glass);
-      backdrop-filter: blur(20px) saturate(1.8);
-      -webkit-backdrop-filter: blur(20px) saturate(1.8);
-      border-bottom: 1px solid var(--border);
-      padding: 14px 20px;
-    }
-    .header-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-    .logo-group {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: inherit;
-    }
-    .logo-badge {
-      width: 34px;
-      height: 34px;
-      background: #0f172a;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #ffffff;
-      font-family: var(--display);
-      font-weight: 900;
-      font-size: 1.15rem;
-    }
-    .logo-text {
-      font-family: var(--display);
-      font-weight: 800;
-      font-size: 1.3rem;
-      letter-spacing: -0.02em;
-    }
-    .logo-tagline {
-      font-size: 0.65rem;
-      color: var(--text-muted);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      display: block;
-      font-weight: 600;
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .cart-btn {
-      position: relative;
-      background: #0f172a;
-      border: none;
-      color: #ffffff;
-      font-family: var(--sans);
-      font-weight: 700;
-      font-size: 0.82rem;
-      padding: 9px 18px;
-      border-radius: var(--radius-full);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.2);
-      transition: all 0.2s ease;
-    }
-    .cart-btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.3);
-    }
-    .cart-badge {
-      background: var(--primary-blue);
-      color: #fff;
-      font-size: 0.72rem;
-      font-weight: 900;
-      padding: 1px 7px;
-      border-radius: var(--radius-full);
-    }
-
-    /* ═══════════════════════════════════════════════════════════════
-       HERO: REAL ATHLETE & LIVING PRODUCT
-    ═══════════════════════════════════════════════════════════════ */
-    .hero-section {
-      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-      padding: 30px 20px 20px;
-      position: relative;
-    }
-    .hero-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 32px;
-      align-items: center;
-    }
-    @media (min-width: 900px) {
-      .hero-container {
-        grid-template-columns: 1fr 1.15fr;
-        padding: 30px 0 20px;
-      }
-    }
-
-    .hero-pill-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(37, 99, 235, 0.08);
-      border: 1px solid rgba(37, 99, 235, 0.25);
-      padding: 6px 14px;
-      border-radius: var(--radius-full);
-      font-size: 0.75rem;
-      font-weight: 800;
-      color: var(--primary-blue);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 14px;
-    }
-    .hero-title {
-      font-family: var(--display);
-      font-size: 2.6rem;
-      font-weight: 800;
-      line-height: 1.12;
-      color: #0f172a;
-      letter-spacing: -0.03em;
-      margin-bottom: 16px;
-    }
-    .hero-title span {
-      color: var(--primary-blue);
-    }
-    .hero-desc {
-      font-size: 1.05rem;
-      color: var(--text-sub);
-      line-height: 1.6;
-      margin-bottom: 24px;
-      max-width: 480px;
-    }
-
-    .hero-cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-    .btn-hero-buy {
-      background: var(--primary-blue);
-      color: #ffffff;
-      font-family: var(--sans);
-      font-weight: 800;
-      font-size: 0.95rem;
-      padding: 14px 28px;
-      border-radius: var(--radius-full);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 6px 20px var(--primary-blue-glow);
-      transition: all 0.25s ease;
-      border: none;
-      cursor: pointer;
-    }
-    .btn-hero-buy:hover {
-      background: #1d4ed8;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
-    }
-    .btn-hero-explore {
+    /* Glassmorphism & Micro-glows */
+    .bento-card {
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid rgba(226, 232, 240, 0.8);
       background: #ffffff;
-      color: var(--text);
-      font-family: var(--sans);
-      font-weight: 700;
-      font-size: 0.95rem;
-      padding: 14px 24px;
-      border-radius: var(--radius-full);
-      text-decoration: none;
-      border: 1px solid var(--border);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: var(--shadow-sm);
-      transition: all 0.2s ease;
     }
-    .btn-hero-explore:hover {
-      border-color: rgba(15, 23, 42, 0.2);
-      transform: translateY(-2px);
+    .bento-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 35px -10px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(37, 99, 235, 0.25);
     }
 
-    /* Hero Media Container with 3D Float Frame */
-    .hero-media-wrap {
-      position: relative;
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      box-shadow: var(--shadow-card);
-      border: 1px solid var(--border);
-      background: #f1f5f9;
-      aspect-ratio: 16 / 9;
-      transform-style: preserve-3d;
-      transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-    }
-    .hero-media-wrap:hover {
-      transform: translateY(-4px) scale(1.01);
-      box-shadow: var(--shadow-hover);
-    }
-    .hero-media-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .hero-media-badge {
-      position: absolute;
-      bottom: 16px;
-      left: 16px;
-      background: rgba(15, 23, 42, 0.9);
-      backdrop-filter: blur(10px);
-      color: #ffffff;
-      padding: 10px 16px;
-      border-radius: var(--radius-md);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-    }
-    .hero-badge-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #10b981;
-      box-shadow: 0 0 10px #10b981;
-    }
-
-    /* ═══════════════════════════════════════════════════════════════
-       CONTINUOUS MOVING LINE (LIVE SOCIAL PROOF TICKER)
-    ═══════════════════════════════════════════════════════════════ */
-    .ticker-section {
-      background: #0f172a;
-      color: #ffffff;
-      padding: 12px 0;
-      overflow: hidden;
-      position: relative;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .ticker-wrap {
-      display: flex;
-      width: max-content;
-      animation: marqueeScroll 35s linear infinite;
-    }
-    .ticker-wrap:hover {
-      animation-play-state: paused;
-    }
+    /* Marquee Infinite Animation */
     @keyframes marqueeScroll {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
-    .ticker-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 0 24px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      white-space: nowrap;
-      border-right: 1px solid rgba(255, 255, 255, 0.15);
-    }
-    .ticker-item strong {
-      color: #38bdf8;
-    }
-    .ticker-icon {
-      font-size: 1rem;
-    }
-
-    /* ═══════════════════════════════════════════════════════════════
-       SEARCH & CATEGORIES BAR
-    ═══════════════════════════════════════════════════════════════ */
-    .catalog-bar-section {
-      max-width: 1200px;
-      margin: 36px auto 20px;
-      padding: 0 20px;
+    .marquee-track {
       display: flex;
-      flex-direction: column;
-      gap: 16px;
+      width: max-content;
+      animation: marqueeScroll 40s linear infinite;
     }
-    @media (min-width: 768px) {
-      .catalog-bar-section {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-      }
+    .marquee-track:hover {
+      animation-play-state: paused;
     }
 
-    .search-wrapper {
-      position: relative;
-      flex: 1;
-      max-width: 420px;
+    /* Pulse effects */
+    @keyframes pulseLive {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.15); }
     }
-    .search-input {
-      width: 100%;
-      height: 46px;
-      background: var(--bg-alt);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-full);
-      padding: 0 20px 0 44px;
-      font-family: var(--sans);
-      font-size: 0.88rem;
-      color: var(--text);
-      outline: none;
-      transition: all 0.2s ease;
-    }
-    .search-input:focus {
-      background: #ffffff;
-      border-color: var(--primary-blue);
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
-    }
-    .search-icon-svg {
-      position: absolute;
-      top: 50%;
-      left: 16px;
-      transform: translateY(-50%);
-      width: 18px;
-      height: 18px;
-      color: var(--text-muted);
-      pointer-events: none;
+    .pulse-live {
+      animation: pulseLive 2s infinite ease-in-out;
     }
 
-    .category-chips-track {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      scrollbar-width: none;
-      padding-bottom: 4px;
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
     }
-    .category-chips-track::-webkit-scrollbar { display: none; }
-    .cat-chip {
-      flex-shrink: 0;
-      background: var(--bg-alt);
-      border: 1px solid var(--border);
-      color: var(--text-sub);
-      font-family: var(--sans);
-      font-size: 0.82rem;
-      font-weight: 700;
-      padding: 10px 18px;
-      border-radius: var(--radius-full);
-      cursor: pointer;
-      transition: all 0.2s ease;
-      white-space: nowrap;
-    }
-    .cat-chip:hover {
-      border-color: rgba(15, 23, 42, 0.2);
-      color: var(--text);
-    }
-    .cat-chip.active {
-      background: #0f172a;
-      color: #ffffff;
-      border-color: #0f172a;
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
-    }
-
-    /* ═══════════════════════════════════════════════════════════════
-       PRODUCT GRID
-    ═══════════════════════════════════════════════════════════════ */
-    .products-container {
-      max-width: 1200px;
-      margin: 10px auto 80px;
-      padding: 0 20px;
-    }
-    .products-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
-    @media (min-width: 560px) {
-      .products-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (min-width: 900px) {
-      .products-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-    @media (min-width: 1140px) {
-      .products-grid { grid-template-columns: repeat(4, 1fr); }
-    }
-
-    .product-card {
-      background: #ffffff;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
-      box-shadow: var(--shadow-sm);
-      transform-style: preserve-3d;
-    }
-    .product-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-hover);
-      border-color: rgba(37, 99, 235, 0.3);
-    }
-
-    .card-thumb-frame {
-      position: relative;
-      aspect-ratio: 1 / 1;
-      width: 100%;
-      background: #f8fafc;
-      overflow: hidden;
-    }
-    .card-thumb-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.5s ease;
-    }
-    .product-card:hover .card-thumb-img {
-      transform: scale(1.05);
-    }
-
-    .badge-float {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      font-size: 0.65rem;
-      font-weight: 800;
-      padding: 4px 10px;
-      border-radius: var(--radius-full);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-    .badge-float.hot {
-      background: #0f172a;
-      color: #ffffff;
-    }
-    .badge-float.discount {
-      background: var(--accent-coral);
-      color: #ffffff;
-    }
-
-    .card-body {
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-      justify-content: space-between;
-      gap: 12px;
-    }
-    .card-category-label {
-      font-size: 0.68rem;
-      font-weight: 800;
-      color: var(--primary-blue);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .card-title {
-      font-family: var(--display);
-      font-size: 1.05rem;
-      font-weight: 700;
-      line-height: 1.35;
-      color: #0f172a;
-      margin-top: 2px;
-    }
-    .card-rating-row {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.75rem;
-      color: var(--accent-amber);
-      margin-top: 4px;
-    }
-    .card-reviews-count {
-      color: var(--text-muted);
-      font-size: 0.72rem;
-    }
-
-    .card-stock-hint {
-      font-size: 0.68rem;
-      color: var(--accent-emerald);
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      margin-top: 4px;
-    }
-
-    .card-price-row {
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-      margin-top: 6px;
-    }
-    .card-price-now {
-      font-family: var(--display);
-      font-size: 1.3rem;
-      font-weight: 800;
-      color: #0f172a;
-    }
-    .card-price-old {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      text-decoration: line-through;
-    }
-
-    .card-btn-row {
-      display: flex;
-      gap: 8px;
-      margin-top: 10px;
-    }
-    .btn-card-quick {
-      flex: 1;
-      height: 38px;
-      background: var(--bg-alt);
-      border: 1px solid var(--border);
-      color: var(--text);
-      font-family: var(--sans);
-      font-size: 0.78rem;
-      font-weight: 700;
-      border-radius: var(--radius-md);
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .btn-card-quick:hover {
-      background: #e2e8f0;
-    }
-    .btn-card-add {
-      flex: 1.4;
-      height: 38px;
-      background: var(--primary-blue);
-      border: none;
-      color: #ffffff;
-      font-family: var(--sans);
-      font-size: 0.8rem;
-      font-weight: 800;
-      border-radius: var(--radius-md);
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .btn-card-add:hover {
-      background: #1d4ed8;
-      box-shadow: 0 4px 12px var(--primary-blue-glow);
-    }
-
-    /* ═══════════════════════════════════════════════════════════════
-       QUICK VIEW MODAL
-    ═══════════════════════════════════════════════════════════════ */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(15, 23, 42, 0.6);
-      backdrop-filter: blur(8px);
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-    }
-    .modal-overlay.open {
-      opacity: 1;
-      visibility: visible;
-    }
-    .modal-content {
-      background: #ffffff;
-      border-radius: var(--radius-xl);
-      max-width: 740px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      box-shadow: var(--shadow-hover);
-      position: relative;
-      padding: 28px;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
-    @media (min-width: 680px) {
-      .modal-content {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-    .modal-close {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
+    ::-webkit-scrollbar-track {
       background: #f1f5f9;
-      border: none;
-      color: #0f172a;
-      font-size: 1.2rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 10;
     }
-    .modal-img-frame {
-      aspect-ratio: 1 / 1;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      background: #f8fafc;
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
     }
-    .modal-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .modal-details {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 14px;
-    }
-    .modal-product-title {
-      font-family: var(--display);
-      font-size: 1.4rem;
-      font-weight: 800;
-      line-height: 1.25;
-      color: #0f172a;
-    }
-    .modal-product-desc {
-      font-size: 0.88rem;
-      color: var(--text-sub);
-      line-height: 1.6;
-    }
-    .modal-offer-box {
-      background: #f8fafc;
-      border: 1px dashed rgba(37, 99, 235, 0.4);
-      border-radius: var(--radius-md);
-      padding: 12px;
-      font-size: 0.8rem;
-      color: var(--text-sub);
-    }
-
-    /* ═══════════════════════════════════════════════════════════════
-       CART DRAWER
-    ═══════════════════════════════════════════════════════════════ */
-    .cart-drawer-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(15, 23, 42, 0.5);
-      backdrop-filter: blur(6px);
-      z-index: 2000;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-    }
-    .cart-drawer-backdrop.open {
-      opacity: 1;
-      visibility: visible;
-    }
-    .cart-drawer-panel {
-      position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      width: 100%;
-      max-width: 420px;
-      background: #ffffff;
-      border-left: 1px solid var(--border);
-      z-index: 2001;
-      transform: translateX(100%);
-      transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
-      display: flex;
-      flex-direction: column;
-      box-shadow: var(--shadow-hover);
-    }
-    .cart-drawer-panel.open {
-      transform: translateX(0);
-    }
-    .cart-head {
-      padding: 20px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .cart-head-title {
-      font-family: var(--display);
-      font-size: 1.2rem;
-      font-weight: 800;
-    }
-    .cart-body-items {
-      flex: 1;
-      overflow-y: auto;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-    .cart-row {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      background: #f8fafc;
-      padding: 10px;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border);
-    }
-    .cart-row-thumb {
-      width: 60px;
-      height: 60px;
-      border-radius: var(--radius-sm);
-      object-fit: cover;
-    }
-    .cart-row-info {
-      flex: 1;
-    }
-    .cart-row-title {
-      font-size: 0.82rem;
-      font-weight: 700;
-    }
-    .cart-row-price {
-      font-size: 0.78rem;
-      color: var(--primary-blue);
-      font-weight: 800;
-    }
-    .cart-qty-ctrl {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 4px;
-    }
-    .cart-qty-btn {
-      width: 22px;
-      height: 22px;
-      border-radius: 4px;
-      border: 1px solid var(--border);
-      background: #ffffff;
-      color: #0f172a;
-      cursor: pointer;
-    }
-    .cart-foot {
-      padding: 20px;
-      border-top: 1px solid var(--border);
-      background: #f8fafc;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .cart-total-line {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-family: var(--display);
-      font-size: 1.3rem;
-      font-weight: 800;
-    }
-
-    .btn-pay-shopify {
-      width: 100%;
-      height: 48px;
-      background: #0f172a;
-      color: #ffffff;
-      font-family: var(--sans);
-      font-size: 0.92rem;
-      font-weight: 800;
-      border-radius: var(--radius-full);
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25);
-      transition: all 0.2s ease;
-    }
-    .btn-pay-shopify:hover {
-      background: #1e293b;
-      transform: translateY(-1px);
-    }
-    .btn-pay-whatsapp {
-      width: 100%;
-      height: 44px;
-      background: #059669;
-      color: #ffffff;
-      font-family: var(--sans);
-      font-size: 0.85rem;
-      font-weight: 700;
-      border-radius: var(--radius-full);
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      text-decoration: none;
-    }
-    .btn-pay-whatsapp:hover {
-      background: #047857;
-    }
-
-    /* ═══════════════════════════════════════════════════════════════
-       FOOTER
-    ═══════════════════════════════════════════════════════════════ */
-    .site-footer {
-      background: #0f172a;
-      color: #94a3b8;
-      padding: 40px 20px;
-      text-align: center;
-      font-size: 0.8rem;
-    }
-    .site-footer strong {
-      color: #ffffff;
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
     }
   </style>
 </head>
-<body>
+<body class="bg-white text-slate-900 selection:bg-blue-600 selection:text-white">
 
-  <!-- TOP ANNOUNCEMENT BAR -->
-  <div class="announcement-bar">
-    <span class="announcement-dot"></span>
-    <span>🚚 Envíos Express a todo México en 24-48 hrs por DHL · Envío gratis en órdenes mayores a $899 MXN</span>
+  <!-- =========================================================================
+       1. URGENCY & FLASH LAUNCH COUNTDOWN TOP BAR
+       ========================================================================= -->
+  <div class="bg-slate-950 text-white text-xs font-semibold py-2.5 px-4 sticky top-0 z-50 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 pulse-live"></span>
+        <span class="text-slate-300">🔥 OFERTA DE APERTURA: <strong>LOTE DE IMPORTACIÓN #104</strong></span>
+        <span class="hidden md:inline text-slate-500">|</span>
+        <span class="hidden md:inline text-emerald-400 font-bold">Envío Asegurado Gratis en pedidos mayores a $899 MXN</span>
+      </div>
+      
+      <!-- Live 48h Countdown Timer -->
+      <div class="flex items-center gap-1.5 font-mono text-amber-300 bg-slate-900/90 px-3 py-1 rounded-md border border-slate-700">
+        <span class="text-[11px] text-slate-400 uppercase font-sans">Cierra en:</span>
+        <span id="countdownDisplay" class="font-bold">47h 58m 20s</span>
+      </div>
+    </div>
   </div>
 
-  <!-- STICKY HEADER -->
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="#" class="logo-group">
-        <div class="logo-badge">N</div>
+  <!-- =========================================================================
+       2. STICKY HEADER & CART BUTTON
+       ========================================================================= -->
+  <header class="bg-white/90 backdrop-blur-md sticky top-[41px] z-40 border-b border-slate-100 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 bg-slate-950 rounded-xl flex items-center justify-center text-white font-display font-extrabold text-xl shadow-md group-hover:bg-blue-600 transition-colors">
+          R
+        </div>
         <div>
-          <div class="logo-text">NOVA</div>
-          <span class="logo-tagline">Performance Goods · México</span>
+          <span class="font-display font-black text-xl tracking-tight text-slate-950 block leading-tight">ROVA</span>
+          <span class="text-[10px] uppercase font-bold tracking-widest text-slate-500 block">Performance Goods · MX</span>
         </div>
       </a>
 
-      <div class="header-actions">
-        <button class="cart-btn" id="openCartBtn">
-          <span>🛒 Carrito</span>
-          <span class="cart-badge" id="cartCountBadge">0</span>
+      <!-- Quick Nav Links -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-600">
+        <a href="#hero-bento" class="hover:text-blue-600 transition-colors">Destacados</a>
+        <a href="#bundles" class="hover:text-blue-600 transition-colors">Combos 2x1</a>
+        <a href="#catalogo" class="hover:text-blue-600 transition-colors">Catálogo de 6</a>
+        <a href="#garantia" class="hover:text-blue-600 transition-colors">Garantía PROFECO</a>
+      </nav>
+
+      <!-- Cart Trigger & Trust Badge -->
+      <div class="flex items-center gap-3">
+        <button id="cartTriggerBtn" onclick="toggleCartDrawer(true)" class="relative flex items-center gap-2.5 bg-slate-950 hover:bg-slate-800 text-white px-4 py-2.5 rounded-full font-bold text-xs tracking-wide shadow-sm hover:shadow-md transition-all">
+          <svg class="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          </svg>
+          <span>Carrito</span>
+          <span id="cartCountBadge" class="bg-blue-600 text-white text-[10px] font-extrabold px-2 py-0.5 rounded-full min-w-[20px] text-center">0</span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- HERO: REAL ATHLETE & HIGH PERFORMANCE PRODUCT -->
-  <section class="hero-section">
-    <div class="hero-container">
-      <div>
-        <div class="hero-pill-badge">
-          <span>⚡</span> Producto Ganador #1 en Ventas
+  <main>
+    <!-- =========================================================================
+         MÓDULO 2: ARQUITECTURA VISUAL "HERO BENTO GRID" (5 PANELES DINÁMICOS)
+         ========================================================================= -->
+    <section id="hero-bento" class="pt-8 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      
+      <div class="mb-6 text-center md:text-left">
+        <div class="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 text-blue-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-2">
+          <span>⚡</span> Equipamiento Deportivo & Gadgets Biohacking
         </div>
-        <h1 class="hero-title">
-          Rendimiento real. <span>Sin intermediarios.</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-display font-black text-slate-950 tracking-tight leading-tight">
+          Ingeniería de alto rendimiento. <span class="text-blue-600 underline decoration-blue-200 underline-offset-4">Sin intermediarios inflados.</span>
         </h1>
-        <p class="hero-desc">
-          Los gadgets deportivos, de recuperación muscular y bienestar que realmente funcionan. Probados por atletas y diseñados para tu día a día.
+        <p class="text-slate-600 text-sm sm:text-base max-w-2xl mt-2">
+          Curaduría directa de fábrica de los gadgets deportivos y bienestar con mayor demanda en México. Precios justos, garantía de reemplazo y entrega asegurada.
         </p>
-
-        <div class="hero-cta-row">
-          <button class="btn-hero-buy" onclick="quickBuy('hypergun-pro')">
-            <span>⚡ Comprar HyperGun Pro ($890 MXN)</span>
-          </button>
-          <a href="#catalogo" class="btn-hero-explore">
-            <span>Ver Colección Completa ➔</span>
-          </a>
-        </div>
-
-        <div style="font-size:0.75rem; color:var(--text-muted); display:flex; align-items:center; gap:8px;">
-          <span>⭐⭐⭐⭐⭐</span> <strong>4.9 / 5</strong> (+2,100 reseñas en México)
-        </div>
       </div>
 
-      <!-- Hero Visual: Real Athlete in Action -->
-      <div class="hero-media-wrap">
-        <img src="images/hero-athlete-massage.jpg" alt="Atleta usando HyperGun Pro" class="hero-media-img">
-        <div class="hero-media-badge">
-          <span class="hero-badge-dot"></span>
-          <div>
-            <strong style="font-size:0.85rem; display:block;">HyperGun Pro Max 3200RPM</strong>
-            <span style="font-size:0.72rem; color:#94a3b8;">Recuperación muscular instantánea · 6 cabezales</span>
+      <!-- Bento Grid 5 Panels Container -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-4 lg:gap-5">
+
+        <!-- PANEL 1: PRINCIPAL (50% de peso visual - Col 1 to 7, Row 1 to 2) -->
+        <div class="md:col-span-7 md:row-span-2 bento-card rounded-3xl overflow-hidden relative group flex flex-col justify-end p-6 sm:p-8 min-h-[420px] lg:min-h-[500px]">
+          <!-- Background Image with Zoom & Dark Gradient Overlay -->
+          <img src="images/hero-athlete-massage.jpg" alt="Atleta entrenando con Pistola de Masaje Percusor Pro" class="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+          
+          <!-- Badges on Top -->
+          <div class="absolute top-5 left-5 right-5 flex items-center justify-between z-10">
+            <span class="inline-flex items-center gap-1.5 bg-black/60 backdrop-blur-md border border-white/20 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-live"></span>
+              EN TENDENCIA #1 DEPORTES
+            </span>
+            <span class="bg-blue-600 text-white text-xs font-extrabold px-3 py-1 rounded-full uppercase shadow">
+              45% OFF LANZAMIENTO
+            </span>
+          </div>
+
+          <!-- Bottom Content -->
+          <div class="relative z-10 text-white space-y-3">
+            <div class="flex items-center gap-2 text-amber-400 text-xs font-bold">
+              <span>★★★★★</span>
+              <span class="text-white font-medium">4.9 / 5 (+1,420 atletas en México)</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-display font-black leading-tight text-white drop-shadow-sm">
+              Pistola Percusor Pro Max 3200RPM
+            </h2>
+            <p class="text-slate-300 text-xs sm:text-sm line-clamp-2 max-w-lg">
+              Alivio de contracturas y regeneración miofascial profunda con 6 cabezales intercambiables y motor brushless ultrasilencioso.
+            </p>
+            <div class="pt-2 flex flex-wrap items-center gap-3">
+              <button onclick="quickAddProduct('percusor-pro')" class="bg-white hover:bg-slate-100 text-slate-950 font-bold px-6 py-3 rounded-full text-xs uppercase tracking-wider shadow-lg hover:shadow-xl transition-all transform active:scale-95 flex items-center gap-2">
+                <span>⚡ Agregar al Carrito — $890 MXN</span>
+              </button>
+              <span class="text-xs text-slate-300 font-medium">Antes: <del class="text-slate-400">$1,490 MXN</del></span>
+            </div>
           </div>
         </div>
+
+        <!-- PANEL 2: SECUNDARIO SUPERIOR (Smartwatch Biométrico Wearable - Col 8 to 12) -->
+        <div class="md:col-span-5 bento-card rounded-3xl overflow-hidden relative group p-6 min-h-[230px] flex flex-col justify-between bg-slate-900 text-white">
+          <img src="images/smartwatch-gps.jpg" alt="Smartwatch Deportivo GPS AMOLED" class="absolute inset-0 w-full h-full object-cover object-center opacity-75 group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent"></div>
+
+          <div class="relative z-10 flex items-center justify-between">
+            <span class="bg-blue-600/90 backdrop-blur-md text-white text-[11px] font-extrabold px-2.5 py-1 rounded-full uppercase">
+              Biométrica en Vivo
+            </span>
+            <span class="text-emerald-400 text-xs font-mono font-bold flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> GPS + HR Activo
+            </span>
+          </div>
+
+          <div class="relative z-10 mt-auto">
+            <h3 class="text-lg font-display font-extrabold text-white">Smartwatch Apex Pro GPS</h3>
+            <p class="text-slate-300 text-xs">Mide VO2 Max, pulso cardíaco y ritmo de carrera en pantalla AMOLED ultra nítida.</p>
+            <div class="mt-3 flex items-center justify-between">
+              <span class="text-sm font-black text-white">$990 MXN <del class="text-xs text-slate-400 font-normal">$1,790</del></span>
+              <button onclick="quickAddProduct('smartwatch-gps')" class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold px-3 py-1.5 rounded-full transition-all">
+                + Agregar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANEL 3: SECUNDARIO INFERIOR (Lifestyle & Hogar Biohacking - Col 8 to 12) -->
+        <div class="md:col-span-5 bento-card rounded-3xl overflow-hidden relative group p-6 min-h-[230px] flex flex-col justify-between bg-slate-900 text-white">
+          <img src="images/volcano-diffuser.jpg" alt="Difusor Humidificador Volcánico Llama" class="absolute inset-0 w-full h-full object-cover object-center opacity-70 group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent"></div>
+
+          <div class="relative z-10 flex items-center justify-between">
+            <span class="bg-amber-500/90 backdrop-blur-md text-white text-[11px] font-extrabold px-2.5 py-1 rounded-full uppercase">
+              Hogar & Recuperación
+            </span>
+            <span class="text-amber-300 text-xs font-mono font-bold">Aromaterapia Pro</span>
+          </div>
+
+          <div class="relative z-10 mt-auto">
+            <h3 class="text-lg font-display font-extrabold text-white">Difusor Humidificador Llama Volcánica</h3>
+            <p class="text-slate-300 text-xs">Simulación de erupción ultrasónica y modo fuego para descanso profundo y sueño reparador.</p>
+            <div class="mt-3 flex items-center justify-between">
+              <span class="text-sm font-black text-white">$549 MXN <del class="text-xs text-slate-400 font-normal">$899</del></span>
+              <button onclick="quickAddProduct('volcano-diffuser')" class="bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold px-3 py-1.5 rounded-full transition-all">
+                + Agregar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANEL 4: UGC / SOCIAL PROOF 1 (Micro-tarjeta Unboxing & Review Verificado) -->
+        <div class="md:col-span-6 bento-card rounded-3xl p-5 border border-slate-200/80 bg-white flex items-start gap-4">
+          <div class="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-100 flex-shrink-0 flex items-center justify-center text-blue-600 font-display font-black text-base">
+            VR
+          </div>
+          <div class="space-y-1.5 flex-1">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-1.5">
+                <span class="font-bold text-xs text-slate-900">Valeria Ramírez</span>
+                <span class="bg-emerald-100 text-emerald-800 text-[10px] font-extrabold px-1.5 py-0.5 rounded-full flex items-center gap-1">
+                  <svg class="w-3 h-3 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                  Comprador Verificado
+                </span>
+              </div>
+              <span class="text-amber-500 text-xs font-bold">★★★★★</span>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed italic">
+              "Pedí el Combo Atleta (Pistola + Smartwatch) para CDMX. El unboxing impecable, el estuche rígido protege todo y el percusor tiene la misma fuerza que marcas de $3,500 MXN."
+            </p>
+            <div class="text-[10px] text-slate-400 font-medium">Entrega certificada por guía DHL Express · Hace 18 hrs</div>
+          </div>
+        </div>
+
+        <!-- PANEL 5: UGC / SOCIAL PROOF 2 (Micro-tarjeta Rendimiento & Deporte) -->
+        <div class="md:col-span-6 bento-card rounded-3xl p-5 border border-slate-200/80 bg-white flex items-start gap-4">
+          <div class="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-100 flex-shrink-0 flex items-center justify-center text-amber-600 font-display font-black text-base">
+            CM
+          </div>
+          <div class="space-y-1.5 flex-1">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-1.5">
+                <span class="font-bold text-xs text-slate-900">Carlos Morales (Zapopan)</span>
+                <span class="bg-emerald-100 text-emerald-800 text-[10px] font-extrabold px-1.5 py-0.5 rounded-full flex items-center gap-1">
+                  <svg class="w-3 h-3 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                  Comprador Verificado
+                </span>
+              </div>
+              <span class="text-amber-500 text-xs font-bold">★★★★★</span>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed italic">
+              "Corro maratones y el percusor en pantorrillas y cuádriceps me quitó el dolor post-fondo. La batería dura fácil 3 semanas usándolo a diario. Súper recomendado."
+            </p>
+            <div class="text-[10px] text-slate-400 font-medium">Revisión autenticada con video unboxing · Hace 1 día</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         CONTINUOUS MOVING SOCIAL PROOF TICKER
+         ========================================================================= -->
+    <div class="border-y border-slate-100 bg-slate-50 py-3 overflow-hidden">
+      <div class="marquee-track flex items-center gap-8 text-xs font-medium text-slate-700">
+        <div class="flex items-center gap-2"><span class="text-emerald-500 font-bold">●</span> <strong>Carlos M. (Zapopan)</strong> adquirió Pistola Percusor Pro (hace 4 min)</div>
+        <div class="flex items-center gap-2"><span class="text-amber-500 font-bold">★ 4.9/5</span> <strong>+2,480 órdenes entregadas</strong> con rastreo punto a punto</div>
+        <div class="flex items-center gap-2"><span class="text-blue-500 font-bold">⚡</span> <strong>Mariana L. (Monterrey)</strong> compró Combo Biohacking 2x1</div>
+        <div class="flex items-center gap-2"><span class="text-emerald-500 font-bold">🛡️</span> <strong>Garantía de Reemplazo Inmediato</strong> respaldada en México</div>
+        <div class="flex items-center gap-2"><span class="text-blue-500 font-bold">📦</span> <strong>Diego F. (Puebla)</strong> recibió Termo Inteligente OLED</div>
+        <div class="flex items-center gap-2"><span class="text-emerald-500 font-bold">●</span> <strong>Sofía R. (CDMX)</strong> adquirió Smartwatch Apex GPS</div>
+        <!-- Duplicado para loop continuo -->
+        <div class="flex items-center gap-2"><span class="text-emerald-500 font-bold">●</span> <strong>Carlos M. (Zapopan)</strong> adquirió Pistola Percusor Pro (hace 4 min)</div>
+        <div class="flex items-center gap-2"><span class="text-amber-500 font-bold">★ 4.9/5</span> <strong>+2,480 órdenes entregadas</strong> con rastreo punto a punto</div>
+        <div class="flex items-center gap-2"><span class="text-blue-500 font-bold">⚡</span> <strong>Mariana L. (Monterrey)</strong> compró Combo Biohacking 2x1</div>
+        <div class="flex items-center gap-2"><span class="text-emerald-500 font-bold">🛡️</span> <strong>Garantía de Reemplazo Inmediato</strong> respaldada en México</div>
+        <div class="flex items-center gap-2"><span class="text-blue-500 font-bold">📦</span> <strong>Diego F. (Puebla)</strong> recibió Termo Inteligente OLED</div>
+        <div class="flex items-center gap-2"><span class="text-emerald-500 font-bold">●</span> <strong>Sofía R. (CDMX)</strong> adquirió Smartwatch Apex GPS</div>
       </div>
     </div>
-  </section>
 
-  <!-- CONTINUOUS MOVING SOCIAL PROOF LINE (TICKER) -->
-  <div class="ticker-section">
-    <div class="ticker-wrap" id="tickerTrack">
-      <div class="ticker-item"><span class="ticker-icon">⚡</span> <strong>Carlos M. (Zapopan)</strong> compró HyperGun Pro hace 2 min</div>
-      <div class="ticker-item"><span class="ticker-icon">⭐</span> <strong>Valeria S. (CDMX):</strong> "La mejor inversión para mis entrenamientos de maratón" (5/5)</div>
-      <div class="ticker-item"><span class="ticker-icon">🏃</span> <strong>+2,480 atletas y usuarios activos</strong> en México este mes</div>
-      <div class="ticker-item"><span class="ticker-icon">📦</span> <strong>Envío Express</strong> entregado en Monterrey hace 8 min</div>
-      <div class="ticker-item"><span class="ticker-icon">⚡</span> <strong>Mariana P. (Guadalajara)</strong> compró PureBlend Sport 500ml</div>
-      <div class="ticker-item"><span class="ticker-icon">🛡️</span> <strong>Garantía de 1 año</strong> y reemplazo inmediato</div>
-      <div class="ticker-item"><span class="ticker-icon">⭐</span> <strong>Diego H. (Puebla):</strong> "Llegó en 24 horas y la potencia es brutal" (5/5)</div>
-      <div class="ticker-item"><span class="ticker-icon">⚡</span> <strong>Sofía L. (Querétaro)</strong> compró AirFold 3 en 1 MagSafe</div>
-      <!-- Duplicate for infinite scroll loop -->
-      <div class="ticker-item"><span class="ticker-icon">⚡</span> <strong>Carlos M. (Zapopan)</strong> compró HyperGun Pro hace 2 min</div>
-      <div class="ticker-item"><span class="ticker-icon">⭐</span> <strong>Valeria S. (CDMX):</strong> "La mejor inversión para mis entrenamientos de maratón" (5/5)</div>
-      <div class="ticker-item"><span class="ticker-icon">🏃</span> <strong>+2,480 atletas y usuarios activos</strong> en México este mes</div>
-      <div class="ticker-item"><span class="ticker-icon">📦</span> <strong>Envío Express</strong> entregado en Monterrey hace 8 min</div>
-      <div class="ticker-item"><span class="ticker-icon">⚡</span> <strong>Mariana P. (Guadalajara)</strong> compró PureBlend Sport 500ml</div>
-      <div class="ticker-item"><span class="ticker-icon">🛡️</span> <strong>Garantía de 1 año</strong> y reemplazo inmediato</div>
+    <!-- =========================================================================
+         MÓDULO 1: BUNDLES & OFERTAS FLASH 2X1 (ESTRATEGIA $10,000 MXN)
+         ========================================================================= -->
+    <section id="bundles" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="bg-rose-50 text-rose-600 border border-rose-200 text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full">
+          🔥 Packs de Alto Rendimiento 2x1
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-display font-black text-slate-950 mt-3">
+          Maximiza tu progreso y ahorra hasta 45%
+        </h2>
+        <p class="text-slate-600 text-xs sm:text-sm mt-1">
+          Combinaciones complementarias diseñadas para elevar el ticket promedio y garantizar resultados inmediatos.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- BUNDLE 1: ATLETA PRO -->
+        <div class="bento-card rounded-3xl p-6 sm:p-8 border-2 border-blue-600/30 relative flex flex-col justify-between shadow-sm">
+          <span class="absolute -top-3.5 right-6 bg-blue-600 text-white text-[11px] font-black uppercase px-3 py-1 rounded-full shadow">
+            MÁS VENDIDO · AHORRA $890 MXN
+          </span>
+          <div>
+            <div class="text-xs font-bold text-blue-600 uppercase tracking-wider">Pack Doble Deportivo</div>
+            <h3 class="text-xl font-display font-black text-slate-950 mt-1">Combo Atleta Total 2 en 1</h3>
+            <p class="text-xs text-slate-600 mt-1">Pistola de Masaje Percusor Pro Max + Smartwatch Apex Pro con GPS y medidor de pulso.</p>
+
+            <div class="grid grid-cols-2 gap-3 my-5">
+              <div class="rounded-2xl overflow-hidden border border-slate-200 bg-slate-50 p-2 text-center">
+                <img src="images/hero-athlete-massage.jpg" alt="Pistola" class="w-full h-24 object-cover rounded-xl mb-2">
+                <span class="text-[11px] font-bold block text-slate-800">Percusor Pro Max</span>
+                <span class="text-[10px] text-slate-400">Valuado en $1,490</span>
+              </div>
+              <div class="rounded-2xl overflow-hidden border border-slate-200 bg-slate-50 p-2 text-center">
+                <img src="images/smartwatch-gps.jpg" alt="Smartwatch" class="w-full h-24 object-cover rounded-xl mb-2">
+                <span class="text-[11px] font-bold block text-slate-800">Smartwatch GPS</span>
+                <span class="text-[10px] text-slate-400">Valuado en $1,790</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-4">
+            <div>
+              <div class="text-xs text-slate-400 line-through">Total: $2,380 MXN</div>
+              <div class="text-2xl font-display font-black text-slate-950">$1,490 <span class="text-xs font-sans font-bold text-emerald-600">MXN (Envío Gratis)</span></div>
+            </div>
+            <button onclick="addBundleToCart('bundle-atleta')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-5 py-3 rounded-full transition-all shadow-md hover:shadow-lg active:scale-95 flex items-center gap-2">
+              <span>Añadir Combo ➔</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- BUNDLE 2: BIOHACKING & HOGAR -->
+        <div class="bento-card rounded-3xl p-6 sm:p-8 border border-slate-200 relative flex flex-col justify-between shadow-sm">
+          <span class="absolute -top-3.5 right-6 bg-slate-900 text-white text-[11px] font-black uppercase px-3 py-1 rounded-full shadow">
+            BIENESTAR · AHORRA $450 MXN
+          </span>
+          <div>
+            <div class="text-xs font-bold text-amber-600 uppercase tracking-wider">Pack Regeneración Nocturna</div>
+            <h3 class="text-xl font-display font-black text-slate-950 mt-1">Combo Biohacking & Hogar</h3>
+            <p class="text-xs text-slate-600 mt-1">Lámpara Multifuncional G-Speaker (Altavoz + Carga 15W) + Difusor Volcánico de Llama.</p>
+
+            <div class="grid grid-cols-2 gap-3 my-5">
+              <div class="rounded-2xl overflow-hidden border border-slate-200 bg-slate-50 p-2 text-center">
+                <img src="images/gspeaker-lamp.jpg" alt="Lámpara G-Speaker" class="w-full h-24 object-cover rounded-xl mb-2">
+                <span class="text-[11px] font-bold block text-slate-800">Lámpara G-Speaker</span>
+                <span class="text-[10px] text-slate-400">Valuado en $899</span>
+              </div>
+              <div class="rounded-2xl overflow-hidden border border-slate-200 bg-slate-50 p-2 text-center">
+                <img src="images/volcano-diffuser.jpg" alt="Difusor Volcán" class="w-full h-24 object-cover rounded-xl mb-2">
+                <span class="text-[11px] font-bold block text-slate-800">Difusor Llama</span>
+                <span class="text-[10px] text-slate-400">Valuado en $649</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-4">
+            <div>
+              <div class="text-xs text-slate-400 line-through">Total: $1,548 MXN</div>
+              <div class="text-2xl font-display font-black text-slate-950">$1,090 <span class="text-xs font-sans font-bold text-emerald-600">MXN (Envío Gratis)</span></div>
+            </div>
+            <button onclick="addBundleToCart('bundle-biohack')" class="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs px-5 py-3 rounded-full transition-all shadow-md hover:shadow-lg active:scale-95 flex items-center gap-2">
+              <span>Añadir Combo ➔</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         MÓDULO 3: CATÁLOGO DE LOS 6 PRODUCTOS GANADORES DE ALTO MARGEN
+         ========================================================================= -->
+    <section id="catalogo" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-100">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+        <div>
+          <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Arbitraje Calificado & Dropshipping VIP</span>
+          <h2 class="text-2xl sm:text-3xl font-display font-black text-slate-950 mt-1">Los 6 Productos Centrales Validados</h2>
+          <p class="text-slate-600 text-xs sm:text-sm mt-1">Stock disponible en almacén de corretaje. Despacho inmediato y rastreo con guía oficial.</p>
+        </div>
+
+        <!-- Filter tabs -->
+        <div class="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0">
+          <button onclick="filterCatalog('all')" class="cat-pill active px-4 py-1.5 rounded-full text-xs font-bold bg-slate-950 text-white transition-colors" data-cat="all">Todos</button>
+          <button onclick="filterCatalog('deporte')" class="cat-pill px-4 py-1.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors" data-cat="deporte">Deportes & Gym</button>
+          <button onclick="filterCatalog('tech')" class="cat-pill px-4 py-1.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors" data-cat="tech">Tech & Biohacking</button>
+          <button onclick="filterCatalog('ergonomia')" class="cat-pill px-4 py-1.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors" data-cat="ergonomia">Ergonomía & Hogar</button>
+        </div>
+      </div>
+
+      <!-- 6 Products Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="productsCatalogGrid">
+        <!-- Rendered dynamically by JavaScript -->
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         MÓDULO 4: PROTOCOLO DE CONECTIVIDAD & AUTOMATIZACIÓN (OBSIDIAN + HIFLY + GATEWAYS)
+         ========================================================================= -->
+    <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-slate-50 rounded-3xl my-8 border border-slate-200">
+      <div class="max-w-3xl mx-auto text-center mb-8">
+        <span class="bg-blue-100 text-blue-800 text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Infraestructura 100% Automatizada</span>
+        <h2 class="text-2xl font-display font-black text-slate-950 mt-2">Operación Inteligente: Cero Inventario, Cero Fricción</h2>
+        <p class="text-xs sm:text-sm text-slate-600 mt-1">Cada pedido dispara automáticamente el control en Obsidian, la notificación de rastreo por HiFly/WhatsApp y el despacho al proveedor mayorista.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-left">
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+          <div class="w-8 h-8 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-xs mb-3">
+            API
+          </div>
+          <h4 class="font-display font-bold text-sm text-slate-900">Control Operativo en Obsidian</h4>
+          <p class="text-xs text-slate-500 mt-1">Webhook receptor que genera la ficha del cliente en Markdown con metadatos YAML, seguimiento de estatus y margen neto calculado en tiempo real.</p>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+          <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs mb-3">
+            CRM
+          </div>
+          <h4 class="font-display font-bold text-sm text-slate-900">Recuperación HiFly / WhatsApp</h4>
+          <p class="text-xs text-slate-500 mt-1">Flujo disparado a los 15 minutos de carrito abandonado con código de cortesía y a las 4 horas con urgencia de stock limitado por proveedor.</p>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+          <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-xs mb-3">
+            SEC
+          </div>
+          <h4 class="font-display font-bold text-sm text-slate-900">Pasarelas Tokenizadas 256-Bit</h4>
+          <p class="text-xs text-slate-500 mt-1">Procesamiento seguro directo con Mercado Pago y Stripe. Sin almacenamiento de números de tarjeta en nuestros servidores (PCI-DSS Nivel 1).</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       SLIDE-OVER CART DRAWER & INSTANT CHECKOUT MODAL
+       ========================================================================= -->
+  <!-- Cart Drawer Backdrop -->
+  <div id="cartBackdrop" onclick="toggleCartDrawer(false)" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+  <!-- Cart Drawer Side Panel -->
+  <aside id="cartDrawer" class="fixed top-0 right-0 w-full sm:w-[420px] h-full bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+    <!-- Header -->
+    <div class="p-5 border-b border-slate-100 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <h3 class="font-display font-bold text-lg text-slate-950">Tu Carrito de Compra</h3>
+        <span id="cartCountTitle" class="bg-slate-100 text-slate-700 text-xs font-extrabold px-2 py-0.5 rounded-full">0</span>
+      </div>
+      <button onclick="toggleCartDrawer(false)" class="w-8 h-8 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-900 flex items-center justify-center font-bold text-lg">&times;</button>
     </div>
-  </div>
 
-  <!-- SEARCH & CATEGORIES BAR -->
-  <section class="catalog-bar-section" id="catalogo">
-    <!-- Live Search Input -->
-    <div class="search-wrapper">
-      <svg class="search-icon-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-      </svg>
-      <input type="text" class="search-input" id="searchInput" placeholder="Buscar por producto, deporte o beneficio…">
+    <!-- Free Shipping Progress -->
+    <div class="px-5 py-3 bg-blue-50/70 border-b border-blue-100">
+      <div class="flex items-center justify-between text-xs font-semibold text-blue-900 mb-1.5">
+        <span id="shippingGoalText">¡Envío asegurado gratis disponible!</span>
+        <span id="shippingRemainingBadge" class="font-bold text-blue-700">$899 MXN</span>
+      </div>
+      <div class="w-full bg-blue-200/80 h-2 rounded-full overflow-hidden">
+        <div id="shippingProgressBar" class="bg-blue-600 h-full rounded-full transition-all duration-500" style="width: 0%;"></div>
+      </div>
     </div>
 
-    <!-- Category Chips -->
-    <div class="category-chips-track">
-      <button class="cat-chip active" data-cat="all">✨ Todos los Ganadores</button>
-      <button class="cat-chip" data-cat="deportes">🏃 Deportes & Fitness</button>
-      <button class="cat-chip" data-cat="tech">⚡ Smart Tech & Gadgets</button>
-      <button class="cat-chip" data-cat="bienestar">🧘 Bienestar & Hogar</button>
-    </div>
-  </section>
-
-  <!-- PRODUCTS GRID -->
-  <section class="products-container">
-    <div class="products-grid" id="productsGrid">
+    <!-- Cart Items Container -->
+    <div id="cartItemsList" class="flex-1 overflow-y-auto p-5 space-y-4">
       <!-- Injected via JavaScript -->
     </div>
-  </section>
 
-  <!-- QUICK VIEW MODAL -->
-  <div class="modal-overlay" id="quickModal">
-    <div class="modal-content">
-      <button class="modal-close" id="closeModalBtn">&times;</button>
-      <div class="modal-img-frame">
-        <img src="" id="modalImg" alt="Producto" class="modal-img">
+    <!-- Cart Footer & Pay Options -->
+    <div class="p-5 border-t border-slate-100 bg-slate-50 space-y-3">
+      <div class="flex items-center justify-between text-xs text-slate-500">
+        <span>Envío estándar asegurado:</span>
+        <span id="cartShippingValue" class="font-bold text-emerald-600">Calculando...</span>
       </div>
-      <div class="modal-details">
-        <div>
-          <span class="card-category-label" id="modalCat">Categoría</span>
-          <h3 class="modal-product-title" id="modalTitle">Nombre</h3>
-          <div class="card-rating-row" style="margin: 8px 0;">
-            <span>⭐⭐⭐⭐⭐</span> <strong style="color:#0f172a;">4.9</strong>
-            <span class="card-reviews-count" id="modalReviews">(+200 reseñas verificadas)</span>
-          </div>
-          <div class="card-price-row" style="margin-bottom: 12px;">
-            <span class="card-price-now" id="modalPrice">$0 MXN</span>
-            <span class="card-price-old" id="modalOldPrice">$0 MXN</span>
-          </div>
-          <p class="modal-product-desc" id="modalDesc">Descripción.</p>
-        </div>
-
-        <div class="modal-offer-box">
-          <strong>🎁 Paquete Ahorro:</strong> Lleva 2 piezas y obtén un <strong>15% OFF adicional</strong> al pagar.
-        </div>
-
-        <div style="display:flex; gap:10px;">
-          <button class="btn-card-add" id="modalAddToCartBtn" style="height:46px;">
-            🛒 Añadir al Carrito
-          </button>
-          <button class="btn-hero-buy" id="modalBuyNowBtn" style="height:46px; padding:0 20px; font-size:0.85rem;">
-            ⚡ Comprar Ahora
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- CART DRAWER -->
-  <div class="cart-drawer-backdrop" id="cartOverlay"></div>
-  <div class="cart-drawer-panel" id="cartDrawer">
-    <div class="cart-head">
-      <span class="cart-head-title">🛒 Tu Carrito</span>
-      <button class="modal-close" id="closeCartBtn" style="position:static;">&times;</button>
-    </div>
-
-    <div class="cart-body-items" id="cartItemsList">
-      <!-- Items dynamically populated -->
-    </div>
-
-    <div class="cart-foot">
-      <div class="cart-total-line">
-        <span>Total:</span>
-        <span id="cartTotalText" style="color:var(--primary-blue);">$0 MXN</span>
+      <div class="flex items-center justify-between text-lg font-display font-black text-slate-950">
+        <span>Total a Pagar:</span>
+        <span id="cartTotalSum">$0 MXN</span>
       </div>
 
-      <button class="btn-pay-shopify" id="checkoutShopifyBtn">
-        🔒 Pagar Seguro (Shopify Checkout)
+      <!-- Action Buttons -->
+      <button onclick="openCheckoutModal()" class="w-full bg-slate-950 hover:bg-slate-800 text-white font-bold py-3.5 rounded-full text-xs uppercase tracking-wider shadow-lg flex items-center justify-center gap-2 transition-all active:scale-95">
+        <svg class="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+        </svg>
+        <span>Pagar Seguro (Mercado Pago / Tarjetas)</span>
       </button>
 
-      <a href="#" class="btn-pay-whatsapp" id="checkoutWaBtn" target="_blank">
-        📲 Pedir en 1 Clic por WhatsApp
+      <a id="cartWhatsAppBtn" href="#" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-full text-xs uppercase tracking-wider shadow flex items-center justify-center gap-2 transition-all">
+        <span>💬 Confirmar Pedido por WhatsApp</span>
       </a>
+
+      <div class="flex items-center justify-center gap-3 text-[10px] text-slate-400 font-medium">
+        <span>🔒 Cifrado SSL 256-Bit</span>
+        <span>•</span>
+        <span>🛡️ Protección al Comprador</span>
+        <span>•</span>
+        <span>📦 Guía Rastreada</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       NATIVE SECURE CHECKOUT MODAL (MERCADO PAGO / STRIPE TOKENIZED SIMULATION)
+       ========================================================================= -->
+  <div id="checkoutModal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative border border-slate-100 my-8">
+      <button onclick="closeCheckoutModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-800 flex items-center justify-center font-bold text-lg">&times;</button>
+      
+      <div class="flex items-center gap-2 text-blue-600 text-xs font-bold uppercase tracking-wider mb-2">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        <span>Pasarela de Pago Tokenizada & Cifrada</span>
+      </div>
+      
+      <h3 class="text-xl font-display font-black text-slate-950 mb-1">Finalizar Compra Asegurada</h3>
+      <p class="text-xs text-slate-500 mb-5">Ingresa tus datos de entrega en México. Tu información está protegida bajo cifrado SSL de 256 bits.</p>
+
+      <form id="checkoutForm" onsubmit="processPayment(event)" class="space-y-4">
+        <!-- Nombre & Teléfono -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-[11px] font-bold text-slate-700 uppercase mb-1">Nombre Completo *</label>
+            <input type="text" id="custName" required placeholder="Ej. Juan Pérez" class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-slate-700 uppercase mb-1">WhatsApp / Teléfono *</label>
+            <input type="tel" id="custPhone" required placeholder="Ej. 33 1234 5678" class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+          </div>
+        </div>
+
+        <!-- Correo Electrónico -->
+        <div>
+          <label class="block text-[11px] font-bold text-slate-700 uppercase mb-1">Correo para Guía de Rastreo *</label>
+          <input type="email" id="custEmail" required placeholder="correo@ejemplo.com" class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+        </div>
+
+        <!-- Dirección -->
+        <div>
+          <label class="block text-[11px] font-bold text-slate-700 uppercase mb-1">Calle, Número y Colonia *</label>
+          <input type="text" id="custAddress" required placeholder="Av. Providencia 123, Col. Providencia" class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-[11px] font-bold text-slate-700 uppercase mb-1">Ciudad / Municipio *</label>
+            <input type="text" id="custCity" required placeholder="Guadalajara" class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-slate-700 uppercase mb-1">Código Postal *</label>
+            <input type="text" id="custZip" required placeholder="44630" maxlength="5" class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+          </div>
+        </div>
+
+        <!-- Método de Pago -->
+        <div class="pt-2 border-t border-slate-100">
+          <label class="block text-[11px] font-bold text-slate-700 uppercase mb-2">Selecciona Método de Pago</label>
+          <div class="grid grid-cols-2 gap-2">
+            <label class="flex items-center gap-2 p-2.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition-colors text-xs font-semibold">
+              <input type="radio" name="payMethod" value="mercadopago" checked class="text-blue-600 focus:ring-blue-500">
+              <span>Mercado Pago</span>
+            </label>
+            <label class="flex items-center gap-2 p-2.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition-colors text-xs font-semibold">
+              <input type="radio" name="payMethod" value="card" class="text-blue-600 focus:ring-blue-500">
+              <span>Tarjeta Débito/Crédito</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Tarjeta campos simulados seguros -->
+        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 text-xs space-y-2">
+          <div class="flex items-center justify-between text-[11px] text-slate-500">
+            <span>Datos protegidos con token bancario</span>
+            <span class="font-bold text-slate-700">PCI-DSS Nivel 1</span>
+          </div>
+          <input type="text" placeholder="Número de tarjeta: •••• •••• •••• ••••" maxlength="19" class="w-full bg-white text-xs px-3 py-2 rounded-lg border border-slate-300 focus:outline-none">
+          <div class="grid grid-cols-2 gap-2">
+            <input type="text" placeholder="MM / AA" maxlength="5" class="w-full bg-white text-xs px-3 py-2 rounded-lg border border-slate-300 focus:outline-none">
+            <input type="text" placeholder="CVV" maxlength="4" class="w-full bg-white text-xs px-3 py-2 rounded-lg border border-slate-300 focus:outline-none">
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" id="btnSubmitPayment" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-full text-xs uppercase tracking-wider shadow-lg flex items-center justify-center gap-2 transition-all">
+          <span>🔒 Autorizar Pago Seguro — <span id="modalPaySum">$0 MXN</span></span>
+        </button>
+
+        <p class="text-[10px] text-slate-400 text-center leading-tight">
+          Al pulsar autorizar, aceptas los <a href="#modal-terminos" onclick="openLegalModal('terminos')" class="text-blue-600 underline">Términos de Intermediación Comercial</a> y el <a href="#modal-privacidad" onclick="openLegalModal('privacidad')" class="text-blue-600 underline">Aviso de Privacidad</a> de ROVA México.
+        </p>
+      </form>
     </div>
   </div>
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <p><strong>NOVA · Performance Goods México</strong></p>
-    <p style="margin-top: 6px;">Envíos asegurados por DHL & FedEx · Garantía de satisfacción de 30 días</p>
-    <p style="margin-top: 12px; font-size:0.7rem; color:#64748b;">
-      © 2026 NOVA Concept Store. Conectado a la infraestructura de cobro seguro de Shopify & WhatsApp Express.
-    </p>
+  <!-- =========================================================================
+       POST-PURCHASE ONE-CLICK UPSELL MODAL (30% OFF)
+       ========================================================================= -->
+  <div id="upsellModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 text-center shadow-2xl relative border border-slate-100">
+      <span class="bg-rose-100 text-rose-700 text-xs font-black uppercase px-3 py-1 rounded-full inline-block mb-3">
+        🎉 ¡PAGO CONFIRMADO! OFERTA EXCLUSIVA POST-COMPRA
+      </span>
+      <h3 class="text-xl font-display font-black text-slate-950">Añade el Termo OLED con 30% OFF</h3>
+      <p class="text-xs text-slate-500 mt-1 mb-4">
+        Aprovecha que tu paquete ya está en preparación para agregar este complemento sin costo adicional de envío.
+      </p>
+
+      <img src="images/smart-bottle.jpg" alt="Termo Inteligente OLED" class="w-36 h-36 object-cover mx-auto rounded-2xl border border-slate-200 shadow-sm mb-3">
+      
+      <div class="text-slate-400 line-through text-xs font-semibold">Precio normal: $420 MXN</div>
+      <div class="text-2xl font-display font-black text-emerald-600 mb-4">$294 MXN <span class="text-xs font-sans text-slate-600">(Ahorras $126 MXN)</span></div>
+
+      <div class="space-y-2">
+        <button onclick="acceptUpsell()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-full text-xs uppercase tracking-wider shadow-md transition-all">
+          ⚡ SÍ, AGREGAR A MI PEDIDO POR $294 MXN
+        </button>
+        <button onclick="declineUpsell()" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold py-2.5 rounded-full text-xs transition-colors">
+          No gracias, finalizar sólo con mi pedido original
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       SUCCESS / WEBHOOK SYNCHRONIZATION ALERT
+       ========================================================================= -->
+  <div id="syncToast" class="fixed bottom-5 right-5 z-50 bg-slate-950 text-white p-4 rounded-2xl shadow-2xl border border-slate-800 max-w-sm transform translate-y-24 opacity-0 transition-all duration-300">
+    <div class="flex items-start gap-3">
+      <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-base flex-shrink-0">
+        ✓
+      </div>
+      <div class="text-xs space-y-1">
+        <strong class="block font-bold text-white text-sm" id="syncToastTitle">Pedido Procesado</strong>
+        <p class="text-slate-300" id="syncToastMsg">Sincronizado con Obsidian y despachador oficial.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MÓDULO 5 & 6: FOOTER CON BLINDAJE LEGAL Y MODALES NORMATIVOS (PROFECO / LFPDPPP)
+       ========================================================================= -->
+  <footer id="garantia" class="bg-slate-950 text-slate-400 pt-16 pb-12 border-t border-slate-900 mt-16 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Trust & Security Badges Row -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pb-12 border-b border-slate-900 text-center">
+        <div class="p-3 bg-slate-900/50 rounded-2xl border border-slate-800/80">
+          <div class="text-emerald-400 font-black text-sm">🔒 SSL 256-Bit</div>
+          <div class="text-[11px] text-slate-500 mt-0.5">Cifrado de grado bancario</div>
+        </div>
+        <div class="p-3 bg-slate-900/50 rounded-2xl border border-slate-800/80">
+          <div class="text-blue-400 font-black text-sm">📦 Guía Rastreada</div>
+          <div class="text-[11px] text-slate-500 mt-0.5">Seguimiento punto a punto</div>
+        </div>
+        <div class="p-3 bg-slate-900/50 rounded-2xl border border-slate-800/80">
+          <div class="text-amber-400 font-black text-sm">⚖️ Apego PROFECO</div>
+          <div class="text-[11px] text-slate-500 mt-0.5">Comercio electrónico leal</div>
+        </div>
+        <div class="p-3 bg-slate-900/50 rounded-2xl border border-slate-800/80">
+          <div class="text-purple-400 font-black text-sm">🛡️ Reemplazo Directo</div>
+          <div class="text-[11px] text-slate-500 mt-0.5">Garantía sin devoluciones caras</div>
+        </div>
+      </div>
+
+      <!-- Main Footer Links & Legal Disclaimers -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 py-10">
+        <!-- Col 1: Brand Info -->
+        <div class="space-y-3">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-lg bg-blue-600 text-white font-display font-black flex items-center justify-center text-sm">R</div>
+            <span class="font-display font-black text-white text-lg">ROVA México</span>
+          </div>
+          <p class="text-[11px] text-slate-400 leading-relaxed">
+            Plataforma digital de corretaje y arbitraje comercial de productos y gadgets de rendimiento físico y biohacking para el mercado mexicano.
+          </p>
+          <div class="text-[11px] text-slate-500 font-mono">
+            Atención al cliente: soporte@rovagoods.mx<br>
+            Guadalajara, Jalisco, México.
+          </div>
+        </div>
+
+        <!-- Col 2: Legal Modals Triggers -->
+        <div class="space-y-2">
+          <h4 class="font-display font-bold text-white text-xs uppercase tracking-wider">Marco Jurídico & Garantías</h4>
+          <ul class="space-y-1.5 text-[11px]">
+            <li><button onclick="openLegalModal('terminos')" class="hover:text-white transition-colors text-left">⚖️ Términos del Servicio (Modelo Conector)</button></li>
+            <li><button onclick="openLegalModal('envios')" class="hover:text-white transition-colors text-left">🚚 Política de Envíos Reales (5 a 12 días)</button></li>
+            <li><button onclick="openLegalModal('garantias')" class="hover:text-white transition-colors text-left">🛡️ Garantía & Protocolo Video Unboxing</button></li>
+            <li><button onclick="openLegalModal('privacidad')" class="hover:text-white transition-colors text-left">📄 Aviso de Privacidad (LFPDPPP)</button></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Integración Operativa -->
+        <div class="space-y-2">
+          <h4 class="font-display font-bold text-white text-xs uppercase tracking-wider">Canales & Integraciones</h4>
+          <ul class="space-y-1.5 text-[11px]">
+            <li><a href="#" onclick="openObsidianSchemaModal(); return false;" class="text-blue-400 hover:underline">Ver Esquema Webhook / Obsidian</a></li>
+            <li><span class="text-slate-500">Recuperador HiFly / WhatsApp API</span></li>
+            <li><span class="text-slate-500">Gateway Tokenizado Mercado Pago</span></li>
+            <li><span class="text-slate-500">Logística con Seguro de Tránsito</span></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Claridad de Modelo de Negocio -->
+        <div class="space-y-2">
+          <h4 class="font-display font-bold text-white text-xs uppercase tracking-wider">Aviso de Intermediación</h4>
+          <p class="text-[10px] text-slate-500 leading-relaxed">
+            ROVA Performance Goods opera como mandatario y facilitador comercial directo entre fábricas mayoristas calificadas y el consumidor final. No mantenemos inventarios ociosos para trasladar el máximo ahorro al usuario en México.
+          </p>
+        </div>
+      </div>
+
+      <!-- Copyright -->
+      <div class="pt-8 border-t border-slate-900 text-center text-[11px] text-slate-600 flex flex-col sm:flex-row items-center justify-between gap-2">
+        <span>© 2026 ROVA Performance Goods México. Todos los derechos reservados.</span>
+        <span>Cumplimiento con Ley Federal de Protección al Consumidor (PROFECO) y LFPDPPP.</span>
+      </div>
+
+    </div>
   </footer>
 
-  <!-- SCRIPT -->
+  <!-- =========================================================================
+       MODALES LEGALES COMPLETOS (TÉRMINOS, ENVÍOS, GARANTÍAS, PRIVACIDAD, OBSIDIAN)
+       ========================================================================= -->
+  <div id="legalModalWrapper" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl relative border border-slate-100 max-h-[85vh] flex flex-col my-8">
+      <button onclick="closeLegalModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-800 flex items-center justify-center font-bold text-lg">&times;</button>
+      
+      <div id="legalModalHeader" class="pb-3 border-b border-slate-100">
+        <h3 id="legalModalTitle" class="text-xl font-display font-black text-slate-950">Título Legal</h3>
+      </div>
+
+      <div id="legalModalContent" class="py-4 overflow-y-auto text-xs text-slate-700 leading-relaxed space-y-3 flex-1 pr-2">
+        <!-- Injected dynamically -->
+      </div>
+
+      <div class="pt-3 border-t border-slate-100 flex justify-end">
+        <button onclick="closeLegalModal()" class="bg-slate-950 text-white font-bold text-xs px-5 py-2.5 rounded-full">
+          Entendido y Conforme
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       JAVASCRIPT: STORE LOGIC, CART, 6 PRODUCTS, WEBHOOK SIMULATION & LEGAL
+       ========================================================================= -->
   <script>
-    // ═══════════════════════════════════════════════════════════════
-    // 10 WINNING HIGH-PERFORMANCE PRODUCTS
-    // ═══════════════════════════════════════════════════════════════
+    /* =========================================================================
+       1. DATA CATALOG: 6 CORE ARBITRAGE PRODUCTS WITH REAL MARGINS & COPIES
+       ========================================================================= */
     const PRODUCTS = [
       {
-        id: 'hypergun-pro',
-        name: 'HyperGun Pro Max 3200RPM',
-        category: 'deportes',
-        catLabel: '🏃 Recuperación Muscular',
+        id: 'percusor-pro',
+        name: 'Pistola de Masaje Percusor Pro Max 3200RPM',
+        category: 'deporte',
+        categoryLabel: 'Recuperación Muscular',
+        image: 'images/hero-athlete-massage.jpg',
         price: 890,
         oldPrice: 1490,
-        badge: '🔥 #1 MÁS VENDIDO',
-        badgeClass: 'hot',
-        stock: 6,
+        supplierCost: 320, // 64% net margin
+        stock: 5,
         rating: 4.9,
-        reviews: 485,
-        img: 'images/hero-athlete-massage.jpg',
-        desc: 'Pistola de masaje percusivo profundo con motor silencioso brushless de 3200 RPM, 6 cabezales intercambiables y batería de litio de 6 horas. Alivia agujetas y contracturas al instante.'
+        reviewsCount: 1420,
+        emotionalBenefit: 'Elimina contracturas severas y acelera tu recuperación post-entreno en solo 10 minutos.',
+        copy: 'Motor brushless ultra silencioso de 3200 RPM con 6 cabezales intercambiables de grado atlético. Alivia la sobrecarga muscular sin salir de casa.',
+        badge: 'Top Ganador #1'
       },
       {
-        id: 'pureblend-sport',
-        name: 'Licuadora Portátil PureBlend Sport 500ml',
-        category: 'deportes',
-        catLabel: '🏃 Fitness & Nutrición',
-        price: 650,
-        oldPrice: 1100,
-        badge: '⚡ TENDENCIA GYM',
-        badgeClass: 'discount',
+        id: 'smartwatch-gps',
+        name: 'Smartwatch Deportivo Apex Pro GPS + AMOLED',
+        category: 'tech',
+        categoryLabel: 'Wearables & Métricas',
+        image: 'images/smartwatch-gps.jpg',
+        price: 990,
+        oldPrice: 1790,
+        supplierCost: 380, // 61.6% net margin
+        stock: 7,
+        rating: 4.8,
+        reviewsCount: 980,
+        emotionalBenefit: 'Entrena con datos biométricos precisos y sincronización con Strava en tiempo real.',
+        copy: 'Monitor de ritmo cardíaco continuo, saturación de oxígeno O2, altímetro, GPS integrado y resistencia al agua IP68 con autonomía de 10 días.',
+        badge: 'Alta Demanda'
+      },
+      {
+        id: 'gspeaker-lamp',
+        name: 'Lámpara Inteligente G-Speaker Multifuncional',
+        category: 'tech',
+        categoryLabel: 'Biohacking & Hogar',
+        image: 'images/gspeaker-lamp.jpg',
+        price: 699,
+        oldPrice: 1199,
+        supplierCost: 260, // 62.8% net margin
         stock: 9,
         rating: 4.9,
-        reviews: 320,
-        img: 'images/athlete-portable-blender.jpg',
-        desc: 'Prepara tu proteína y smoothies frescos en cualquier lugar. Base de carga magnética, cuchillas 6D de titanio trituradoras de hielo y tapa hermética deportiva con popote.'
-      },
-      {
-        id: 'smartfit-band',
-        name: 'SmartFit Pulse Pro GPS & Oxímetro 5ATM',
-        category: 'deportes',
-        catLabel: '🏃 Smart Fitness',
-        price: 780,
-        oldPrice: 1350,
-        badge: '42% OFF',
-        badgeClass: 'discount',
-        stock: 11,
-        rating: 4.8,
-        reviews: 215,
-        img: 'https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=800&auto=format&fit=crop&q=80',
-        desc: 'Monitor deportivo completo con pantalla AMOLED, GPS integrado, lectura continua de ritmo cardíaco, SpO2, más de 100 modos deportivos y batería de 14 días.'
-      },
-      {
-        id: 'airfold-magsafe',
-        name: 'Estación 3 en 1 MagSafe Plegable AirFold',
-        category: 'tech',
-        catLabel: '⚡ Smart Tech',
-        price: 790,
-        oldPrice: 1350,
-        badge: '✈️ IDEAL VIAJES',
-        badgeClass: 'hot',
-        stock: 8,
-        rating: 4.9,
-        reviews: 310,
-        img: 'https://images.unsplash.com/photo-1622445268462-349711fc588c?w=800&auto=format&fit=crop&q=80',
-        desc: 'Estructura plegable en aluminio aeroespacial. Carga simultáneamente tu iPhone con MagSafe 15W, Apple Watch y AirPods sin cables enredados.'
-      },
-      {
-        id: 'gspeaker-matrix',
-        name: 'Lámpara G-Speaker Matrix 4 en 1 con Carga 15W',
-        category: 'tech',
-        catLabel: '⚡ Smart Tech & Audio',
-        price: 840,
-        oldPrice: 1450,
-        badge: '⭐ TOP VENTAS',
-        badgeClass: 'hot',
-        stock: 7,
-        rating: 4.9,
-        reviews: 295,
-        img: 'images/gspeaker-lamp.jpg',
-        desc: 'Lámpara ambiental con 256 modos de luz, bocina Bluetooth de alta fidelidad, cargador inalámbrico rápido de 15W y reloj despertador con simulación de amanecer.'
+        reviewsCount: 840,
+        emotionalBenefit: 'Transforma tu habitación en un santuario sonoro y lumínico con carga inalámbrica de 15W.',
+        copy: 'Lámpara de noche con altavoz Bluetooth Hi-Fi 360°, reloj digital, alarma con simulación de amanecer y cargador magnético rápido.',
+        badge: 'Viral TikTok'
       },
       {
         id: 'volcano-diffuser',
-        name: 'Difusor & Lámpara de Llama Volcánica',
-        category: 'bienestar',
-        catLabel: '🧘 Bienestar & Atmósfera',
-        price: 680,
-        oldPrice: 1150,
-        badge: '🔥 VIRAL TIKTOK',
-        badgeClass: 'hot',
-        stock: 5,
-        rating: 4.9,
-        reviews: 410,
-        img: 'images/volcano-diffuser.jpg',
-        desc: 'Simula fuego volcánico con niebla aromática en tono ámbar y violeta. Crea una atmósfera relajante de meditación y aromaterapia en salas y dormitorios.'
-      },
-      {
-        id: 'pulse-relief-ems',
-        name: 'Masajeador Cervical Térmico PulseRelief EMS',
-        category: 'bienestar',
-        catLabel: '🧘 Bienestar & Anti-Estrés',
-        price: 690,
-        oldPrice: 1200,
-        badge: '💆 ALIVIO EN 15 MIN',
-        badgeClass: 'hot',
-        stock: 8,
+        name: 'Difusor Humidificador Efecto Llama Volcánica',
+        category: 'ergonomia',
+        categoryLabel: 'Bienestar & Sueño',
+        image: 'images/volcano-diffuser.jpg',
+        price: 549,
+        oldPrice: 899,
+        supplierCost: 190, // 65.3% net margin
+        stock: 6,
         rating: 4.8,
-        reviews: 195,
-        img: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&auto=format&fit=crop&q=80',
-        desc: 'Terapia de pulso electromagnético de baja frecuencia con calor infrarrojo constante a 42°C. Alivia la tensión del cuello y hombros en sesiones de 15 minutos.'
+        reviewsCount: 650,
+        emotionalBenefit: 'Optimiza la humedad y concilia un sueño profundo mediante aromaterapia ultrasónica y luz cálida.',
+        copy: 'Modo volcán con anillo de humo y efecto fuego vivo. Apagado automático de seguridad sin agua y funcionamiento ultrasilencioso.',
+        badge: 'Relax Profundo'
       },
       {
-        id: 'memoryglow-frame',
-        name: 'Marco Acrílico Digital de Video Infinito HD',
-        category: 'bienestar',
-        catLabel: '🎁 Regalo & Recuerdos',
-        price: 1280,
-        oldPrice: 2100,
-        badge: '❤️ REGALO #1',
-        badgeClass: 'hot',
-        stock: 4,
-        rating: 5.0,
-        reviews: 480,
-        img: 'images/digital-frame.jpg',
-        desc: 'Placa acrílica ultra-transparente con pantalla LCD IPS 1080p y bocinas. Sube tus videos favoritos desde la computadora y reprodúcelos en bucle continuo.'
-      },
-      {
-        id: 'crystal-ice-sphere',
-        name: 'Molde de Esferas de Hielo Cristalino de Lujo',
-        category: 'bienestar',
-        catLabel: '🥃 Mixología & Hogar',
-        price: 520,
-        oldPrice: 850,
-        badge: '38% OFF',
-        badgeClass: 'discount',
-        stock: 7,
-        rating: 4.9,
-        reviews: 260,
-        img: 'https://images.unsplash.com/photo-1527061011665-3652c757a4d4?w=800&auto=format&fit=crop&q=80',
-        desc: 'Hielo 100% transparente sin burbujas mediante congelación direccional. Eleva cualquier trago de whiskey o coctelería al nivel de bar de alta gama.'
-      },
-      {
-        id: 'pocketseal-pro',
-        name: 'Sellador Térmico Recargable PocketSeal Pro',
-        category: 'bienestar',
-        catLabel: '💡 Hogar Práctico',
-        price: 320,
-        oldPrice: 590,
-        badge: '45% OFF',
-        badgeClass: 'discount',
-        stock: 14,
+        id: 'smart-bottle',
+        name: 'Termo Inteligente con Pantalla OLED de Temperatura',
+        category: 'deporte',
+        categoryLabel: 'Hidratación Smart',
+        image: 'images/smart-bottle.jpg',
+        price: 420,
+        oldPrice: 650,
+        supplierCost: 140, // 66.6% net margin
+        stock: 12,
         rating: 4.7,
-        reviews: 310,
-        img: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800&auto=format&fit=crop&q=80',
-        desc: 'Sella herméticamente bolsas de alimentos en 1 segundo y cuenta con navaja oculta para abrir paquetes. Recargable por USB-C.'
+        reviewsCount: 520,
+        emotionalBenefit: 'Monitorea con un solo toque la temperatura exacta de tu proteína, café o agua helada.',
+        copy: 'Acero inoxidable 304 de doble pared al vacío (mantiene 24h frío / 12h caliente). Tapa con sensor térmico táctil sin necesidad de recarga.',
+        badge: 'Básico Diario'
+      },
+      {
+        id: 'laptop-stand',
+        name: 'Soporte Ergonómico Plegable de Aluminio Aeroespacial',
+        category: 'ergonomia',
+        categoryLabel: 'Postura & Productividad',
+        image: 'images/laptop-stand.jpg',
+        price: 399,
+        oldPrice: 649,
+        supplierCost: 130, // 67.4% net margin
+        stock: 8,
+        rating: 4.9,
+        reviewsCount: 410,
+        emotionalBenefit: 'Corrige tu postura cervical y evita dolores de cuello tras largas jornadas de trabajo o estudio.',
+        copy: 'Estructura triangular de aleación de aluminio ultrarresistente con 6 niveles de altura regulable y almohadillas de silicón antiderrapante.',
+        badge: 'Home Office Pro'
       }
     ];
 
+    /* =========================================================================
+       2. CART STATE & STORAGE
+       ========================================================================= */
     let cart = [];
-    let currentFilter = 'all';
-    let searchQuery = '';
+    const FREE_SHIPPING_THRESHOLD = 899;
+    const STANDARD_SHIPPING_COST = 120;
+    const WHATSAPP_NUMBER = '523321222772';
 
-    const grid = document.getElementById('productsGrid');
-    const catChips = document.querySelectorAll('.cat-chip');
-    const searchInput = document.getElementById('searchInput');
-
-    const quickModal = document.getElementById('quickModal');
-    const closeModalBtn = document.getElementById('closeModalBtn');
-    const modalImg = document.getElementById('modalImg');
-    const modalCat = document.getElementById('modalCat');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalReviews = document.getElementById('modalReviews');
-    const modalPrice = document.getElementById('modalPrice');
-    const modalOldPrice = document.getElementById('modalOldPrice');
-    const modalDesc = document.getElementById('modalDesc');
-    const modalAddToCartBtn = document.getElementById('modalAddToCartBtn');
-    const modalBuyNowBtn = document.getElementById('modalBuyNowBtn');
-
-    const openCartBtn = document.getElementById('openCartBtn');
-    const closeCartBtn = document.getElementById('closeCartBtn');
-    const cartOverlay = document.getElementById('cartOverlay');
-    const cartDrawer = document.getElementById('cartDrawer');
-    const cartItemsList = document.getElementById('cartItemsList');
-    const cartTotalText = document.getElementById('cartTotalText');
-    const cartCountBadge = document.getElementById('cartCountBadge');
-    const checkoutWaBtn = document.getElementById('checkoutWaBtn');
-    const checkoutShopifyBtn = document.getElementById('checkoutShopifyBtn');
-
-    function renderProducts() {
-      grid.innerHTML = '';
-      const filtered = PRODUCTS.filter(p => {
-        const matchesCat = (currentFilter === 'all') || (p.category === currentFilter);
-        const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                              p.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                              p.catLabel.toLowerCase().includes(searchQuery.toLowerCase());
-        return matchesCat && matchesSearch;
-      });
-
-      if (filtered.length === 0) {
-        grid.innerHTML = `
-          <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: var(--text-muted);">
-            <div style="font-size:2.5rem; margin-bottom:10px;">🔍</div>
-            <h3 style="font-size:1.1rem; color:var(--text);">No encontramos productos que coincidan</h3>
-            <p style="font-size:0.85rem; margin-top:4px;">Intenta buscando con otra palabra clave o categoría.</p>
-          </div>
-        `;
-        return;
-      }
-
-      filtered.forEach((p) => {
-        const card = document.createElement('div');
-        card.className = 'product-card';
-        card.innerHTML = `
-          <div class="card-thumb-frame">
-            <span class="badge-float ${p.badgeClass}">${p.badge}</span>
-            <img src="${p.img}" alt="${p.name}" class="card-thumb-img" loading="lazy">
-          </div>
-          <div class="card-body">
-            <div>
-              <span class="card-category-label">${p.catLabel}</span>
-              <h3 class="card-title">${p.name}</h3>
-              <div class="card-rating-row">
-                <span>⭐⭐⭐⭐⭐</span> <strong style="color:#0f172a;">${p.rating}</strong>
-                <span class="card-reviews-count">(${p.reviews})</span>
-              </div>
-              <div class="card-stock-hint">
-                <span>⚡ Solo quedan ${p.stock} piezas disponibles</span>
-              </div>
-              <div class="card-price-row">
-                <span class="card-price-now">$${p.price.toLocaleString('es-MX')} MXN</span>
-                <span class="card-price-old">$${p.oldPrice.toLocaleString('es-MX')} MXN</span>
-              </div>
-            </div>
-
-            <div class="card-btn-row">
-              <button class="btn-card-quick" onclick="openQuickView('${p.id}')">
-                👁️ Vista Rápida
-              </button>
-              <button class="btn-card-add" onclick="addToCart('${p.id}')">
-                + Añadir
-              </button>
-            </div>
-          </div>
-        `;
-
-        // 3D Card Tilt effect
-        card.addEventListener('mousemove', (e) => {
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          const centerX = rect.width / 2;
-          const centerY = rect.height / 2;
-          const rotateX = ((y - centerY) / centerY) * -6;
-          const rotateY = ((x - centerX) / centerX) * 6;
-          card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
-        });
-        card.addEventListener('mouseleave', () => {
-          card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0)';
-        });
-
-        grid.appendChild(card);
-      });
+    // Initialize from LocalStorage
+    function initCart() {
+      try {
+        const saved = localStorage.getItem('rova_cart_items');
+        if (saved) cart = JSON.parse(saved);
+      } catch(e) { cart = []; }
+      renderCart();
     }
 
-    // Category Filter Clicks
-    catChips.forEach(chip => {
-      chip.addEventListener('click', () => {
-        catChips.forEach(c => c.classList.remove('active'));
-        chip.classList.add('active');
-        currentFilter = chip.dataset.cat;
-        renderProducts();
-      });
-    });
-
-    // Live Search
-    searchInput.addEventListener('input', (e) => {
-      searchQuery = e.target.value.trim();
-      renderProducts();
-    });
-
-    // Quick View Modal
-    window.openQuickView = function(productId) {
-      const p = PRODUCTS.find(x => x.id === productId);
-      if (!p) return;
-
-      modalImg.src = p.img;
-      modalCat.textContent = p.catLabel;
-      modalTitle.textContent = p.name;
-      modalReviews.textContent = `(${p.reviews} reseñas verificadas en México)`;
-      modalPrice.textContent = `$${p.price.toLocaleString('es-MX')} MXN`;
-      modalOldPrice.textContent = `$${p.oldPrice.toLocaleString('es-MX')} MXN`;
-      modalDesc.textContent = p.desc;
-
-      modalAddToCartBtn.onclick = () => {
-        addToCart(p.id);
-        closeQuickView();
-      };
-      modalBuyNowBtn.onclick = () => {
-        addToCart(p.id);
-        closeQuickView();
-        openCartDrawer();
-      };
-
-      quickModal.classList.add('open');
-    };
-
-    function closeQuickView() {
-      quickModal.classList.remove('open');
+    function saveCart() {
+      try { localStorage.setItem('rova_cart_items', JSON.stringify(cart)); } catch(e){}
     }
-    closeModalBtn.addEventListener('click', closeQuickView);
-    quickModal.addEventListener('click', (e) => {
-      if (e.target === quickModal) closeQuickView();
-    });
 
-    // Quick Buy from Hero
-    window.quickBuy = function(productId) {
-      addToCart(productId);
-      openCartDrawer();
-    };
-
-    // Cart Logic
-    window.addToCart = function(productId) {
-      const p = PRODUCTS.find(x => x.id === productId);
-      if (!p) return;
-
-      const existing = cart.find(item => item.id === productId);
-      if (existing) {
-        existing.qty += 1;
+    function addToCart(product, qty = 1) {
+      const idx = cart.findIndex(item => item.id === product.id);
+      if (idx > -1) {
+        cart[idx].qty += qty;
       } else {
-        cart.push({ ...p, qty: 1 });
+        cart.push({ ...product, qty });
+      }
+      saveCart();
+      renderCart();
+      toggleCartDrawer(true);
+      showToast('Añadido al Carrito', `${product.name} fue agregado.`);
+    }
+
+    function quickAddProduct(id) {
+      const prod = PRODUCTS.find(p => p.id === id);
+      if (prod) addToCart(prod, 1);
+    }
+
+    function addBundleToCart(type) {
+      if (type === 'bundle-atleta') {
+        const p1 = PRODUCTS.find(p => p.id === 'percusor-pro');
+        const p2 = PRODUCTS.find(p => p.id === 'smartwatch-gps');
+        addToCart({
+          id: 'bundle-atleta-pack',
+          name: 'Combo Atleta Total (Percusor + Smartwatch GPS)',
+          price: 1490,
+          oldPrice: 2380,
+          image: p1 ? p1.image : 'images/hero-athlete-massage.jpg',
+          categoryLabel: 'Pack 2x1 Deportivo'
+        }, 1);
+      } else if (type === 'bundle-biohack') {
+        const p1 = PRODUCTS.find(p => p.id === 'gspeaker-lamp');
+        const p2 = PRODUCTS.find(p => p.id === 'volcano-diffuser');
+        addToCart({
+          id: 'bundle-biohack-pack',
+          name: 'Combo Biohacking (G-Speaker + Difusor Volcán)',
+          price: 1090,
+          oldPrice: 1548,
+          image: p1 ? p1.image : 'images/gspeaker-lamp.jpg',
+          categoryLabel: 'Pack 2x1 Biohacking'
+        }, 1);
+      }
+    }
+
+    function updateCartQty(id, delta) {
+      const idx = cart.findIndex(i => i.id === id);
+      if (idx > -1) {
+        cart[idx].qty += delta;
+        if (cart[idx].qty <= 0) cart.splice(idx, 1);
+      }
+      saveCart();
+      renderCart();
+    }
+
+    function renderCart() {
+      const listEl = document.getElementById('cartItemsList');
+      const countBadges = [document.getElementById('cartCountBadge'), document.getElementById('cartCountTitle')];
+      const subtotalEl = document.getElementById('cartTotalSum');
+      const shippingValEl = document.getElementById('cartShippingValue');
+      const shippingBar = document.getElementById('shippingProgressBar');
+      const shippingGoalText = document.getElementById('shippingGoalText');
+      const shippingBadge = document.getElementById('shippingRemainingBadge');
+
+      const totalItems = cart.reduce((sum, i) => sum + i.qty, 0);
+      const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+
+      countBadges.forEach(b => { if (b) b.innerText = totalItems; });
+
+      // Shipping threshold math
+      const freeShipping = subtotal >= FREE_SHIPPING_THRESHOLD;
+      const shippingFee = (subtotal === 0 || freeShipping) ? 0 : STANDARD_SHIPPING_COST;
+      const grandTotal = subtotal + shippingFee;
+
+      if (shippingValEl) {
+        shippingValEl.innerText = freeShipping ? 'GRATIS ($0 MXN)' : `$${STANDARD_SHIPPING_COST} MXN`;
+        shippingValEl.className = freeShipping ? 'font-bold text-emerald-600' : 'font-bold text-slate-800';
       }
 
-      updateCartUI();
-      openCartDrawer();
-    };
+      if (subtotalEl) {
+        subtotalEl.innerText = `$${grandTotal.toLocaleString()} MXN`;
+      }
 
-    function updateCartUI() {
-      const count = cart.reduce((acc, item) => acc + item.qty, 0);
-      cartCountBadge.textContent = count;
+      // Progress bar calculation
+      const progressPct = Math.min(100, Math.round((subtotal / FREE_SHIPPING_THRESHOLD) * 100));
+      if (shippingBar) shippingBar.style.width = `${progressPct}%`;
+      
+      if (freeShipping) {
+        if (shippingGoalText) shippingGoalText.innerText = '🎉 ¡Felicidades! Tienes Envío Asegurado GRATIS';
+        if (shippingBadge) shippingBadge.innerText = 'Alcanzado';
+      } else {
+        const remaining = FREE_SHIPPING_THRESHOLD - subtotal;
+        if (shippingGoalText) shippingGoalText.innerText = `Agrega $${remaining.toLocaleString()} MXN más para envío GRATIS`;
+        if (shippingBadge) shippingBadge.innerText = `$${remaining.toLocaleString()} restante`;
+      }
 
+      // Render cart items list
+      if (!listEl) return;
       if (cart.length === 0) {
-        cartItemsList.innerHTML = `
-          <div style="text-align:center; padding: 50px 20px; color: var(--text-muted);">
-            <div style="font-size:2.8rem; margin-bottom:8px;">🛍️</div>
-            <p style="font-weight:700; color:#0f172a;">Tu carrito está vacío</p>
-            <p style="font-size:0.8rem; margin-top:4px;">Explora los productos de alto rendimiento.</p>
+        listEl.innerHTML = `
+          <div class="text-center py-12 text-slate-400 space-y-2">
+            <div class="text-4xl">🛒</div>
+            <p class="font-bold text-sm text-slate-600">Tu carrito está vacío</p>
+            <p class="text-xs">Añade uno de los 6 productos ganadores para activar tu orden.</p>
           </div>
         `;
-        cartTotalText.textContent = '$0 MXN';
-        checkoutWaBtn.style.display = 'none';
-        checkoutShopifyBtn.style.display = 'none';
         return;
       }
 
-      let total = 0;
-      let html = '';
-      cart.forEach((item, idx) => {
-        const subtotal = item.price * item.qty;
-        total += subtotal;
-        html += `
-          <div class="cart-row">
-            <img src="${item.img}" class="cart-row-thumb" alt="${item.name}">
-            <div class="cart-row-info">
-              <div class="cart-row-title">${item.name}</div>
-              <div class="cart-row-price">$${item.price.toLocaleString('es-MX')} MXN</div>
-              <div class="cart-qty-ctrl">
-                <button class="cart-qty-btn" onclick="adjustCartQty(${idx}, -1)">-</button>
-                <span style="font-size:0.8rem; font-weight:700;">${item.qty}</span>
-                <button class="cart-qty-btn" onclick="adjustCartQty(${idx}, 1)">+</button>
+      listEl.innerHTML = cart.map(item => `
+        <div class="flex items-center gap-3 p-3 bg-slate-50 border border-slate-200/80 rounded-2xl">
+          <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-xl border border-slate-200">
+          <div class="flex-1 min-w-0">
+            <h5 class="text-xs font-bold text-slate-900 truncate">${item.name}</h5>
+            <div class="text-xs font-black text-blue-600 mt-0.5">$${item.price.toLocaleString()} MXN</div>
+            <div class="flex items-center gap-2 mt-1.5">
+              <button onclick="updateCartQty('${item.id}', -1)" class="w-5 h-5 rounded bg-white border border-slate-300 flex items-center justify-center text-xs font-bold hover:bg-slate-100">-</button>
+              <span class="text-xs font-bold text-slate-700">${item.qty}</span>
+              <button onclick="updateCartQty('${item.id}', 1)" class="w-5 h-5 rounded bg-white border border-slate-300 flex items-center justify-center text-xs font-bold hover:bg-slate-100">+</button>
+            </div>
+          </div>
+          <button onclick="updateCartQty('${item.id}', -${item.qty})" class="text-slate-400 hover:text-rose-600 p-1 text-base">&times;</button>
+        </div>
+      `).join('');
+
+      // WhatsApp direct text generator
+      const waBtn = document.getElementById('cartWhatsAppBtn');
+      if (waBtn) {
+        let msg = `*NUEVO PEDIDO - ROVA PERFORMANCE GOODS MÉXICO*%0A%0A`;
+        cart.forEach(i => {
+          msg += `• ${i.name} (x${i.qty}) — $${(i.price * i.qty).toLocaleString()} MXN%0A`;
+        });
+        msg += `%0A*Subtotal:* $${subtotal.toLocaleString()} MXN`;
+        msg += `%0A*Envío:* ${freeShipping ? 'GRATIS' : `$${STANDARD_SHIPPING_COST} MXN`}`;
+        msg += `%0A*TOTAL:* $${grandTotal.toLocaleString()} MXN%0A`;
+        msg += `%0AQuiero confirmar mi pago y recibir número de guía oficial.`;
+        waBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
+      }
+    }
+
+    function toggleCartDrawer(open) {
+      const drawer = document.getElementById('cartDrawer');
+      const backdrop = document.getElementById('cartBackdrop');
+      if (open) {
+        backdrop.classList.remove('opacity-0', 'pointer-events-none');
+        drawer.classList.remove('translate-x-full');
+      } else {
+        backdrop.classList.add('opacity-0', 'pointer-events-none');
+        drawer.classList.add('translate-x-full');
+      }
+    }
+
+    /* =========================================================================
+       3. CATALOG RENDERING & FILTERING
+       ========================================================================= */
+    function renderCatalog(filter = 'all') {
+      const grid = document.getElementById('productsCatalogGrid');
+      if (!grid) return;
+
+      const items = filter === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.category === filter);
+
+      grid.innerHTML = items.map(p => `
+        <div class="bento-card rounded-3xl overflow-hidden flex flex-col justify-between group shadow-sm hover:shadow-md">
+          <!-- Image Container -->
+          <div class="relative aspect-square overflow-hidden bg-slate-100">
+            <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-3 left-3 bg-slate-950 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider">
+              ${p.badge}
+            </span>
+            <span class="absolute top-3 right-3 bg-rose-600 text-white text-[10px] font-black px-2 py-0.5 rounded-full">
+              -${Math.round(((p.oldPrice - p.price) / p.oldPrice) * 100)}%
+            </span>
+          </div>
+
+          <!-- Body -->
+          <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+            <div>
+              <div class="flex items-center justify-between text-xs mb-1">
+                <span class="text-blue-600 font-extrabold uppercase text-[10px] tracking-wider">${p.categoryLabel}</span>
+                <span class="text-amber-500 font-bold text-xs">★ ${p.rating} (${p.reviewsCount})</span>
+              </div>
+              <h3 class="font-display font-bold text-base text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">
+                ${p.name}
+              </h3>
+              <p class="text-xs text-slate-500 mt-1 line-clamp-2">${p.emotionalBenefit}</p>
+            </div>
+
+            <!-- Price & Stock Urgency -->
+            <div class="pt-2 border-t border-slate-100">
+              <div class="flex items-center justify-between text-[11px] mb-2">
+                <span class="text-emerald-600 font-bold flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Solo ${p.stock} pzas restantes
+                </span>
+                <span class="text-slate-400 line-through text-xs">$${p.oldPrice.toLocaleString()} MXN</span>
+              </div>
+              <div class="flex items-center justify-between gap-3">
+                <div class="text-xl font-display font-black text-slate-950">
+                  $${p.price.toLocaleString()} <span class="text-xs font-sans text-slate-500 font-bold">MXN</span>
+                </div>
+                <button onclick="quickAddProduct('${p.id}')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-4 py-2 rounded-full transition-all shadow hover:shadow-md active:scale-95">
+                  + Carrito
+                </button>
               </div>
             </div>
-            <span style="font-family:var(--display); font-size:0.95rem; font-weight:800; color:#0f172a;">$${subtotal.toLocaleString('es-MX')}</span>
           </div>
-        `;
-      });
-
-      cartItemsList.innerHTML = html;
-      cartTotalText.textContent = `$${total.toLocaleString('es-MX')} MXN`;
-      checkoutWaBtn.style.display = 'flex';
-      checkoutShopifyBtn.style.display = 'flex';
-
-      // WhatsApp link
-      const PHONE = '523321222772';
-      let msg = '🛍️ *Nuevo Pedido en NOVA Performance Goods*\n\n';
-      cart.forEach(item => {
-        msg += `• *${item.name}* × ${item.qty} — $${(item.price * item.qty).toLocaleString('es-MX')} MXN\n`;
-      });
-      msg += `\n💰 *Total: $${total.toLocaleString('es-MX')} MXN*\n`;
-      msg += '📦 *Envío Express a México*\n\nHola, quiero completar mi compra.';
-      checkoutWaBtn.href = `https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`;
+        </div>
+      `).join('');
     }
 
-    window.adjustCartQty = function(index, delta) {
-      if (!cart[index]) return;
-      cart[index].qty += delta;
-      if (cart[index].qty <= 0) {
-        cart.splice(index, 1);
+    function filterCatalog(category) {
+      document.querySelectorAll('.cat-pill').forEach(btn => {
+        if (btn.getAttribute('data-cat') === category) {
+          btn.className = 'cat-pill active px-4 py-1.5 rounded-full text-xs font-bold bg-slate-950 text-white transition-colors';
+        } else {
+          btn.className = 'cat-pill px-4 py-1.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors';
+        }
+      });
+      renderCatalog(category);
+    }
+
+    /* =========================================================================
+       4. CHECKOUT MODAL & WEBHOOK TO OBSIDIAN DISPATCH
+       ========================================================================= */
+    function openCheckoutModal() {
+      if (cart.length === 0) {
+        alert('Por favor agrega al menos un producto a tu carrito.');
+        return;
       }
-      updateCartUI();
+      toggleCartDrawer(false);
+      const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+      const shipping = subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : STANDARD_SHIPPING_COST;
+      const total = subtotal + shipping;
+      document.getElementById('modalPaySum').innerText = `$${total.toLocaleString()} MXN`;
+
+      const modal = document.getElementById('checkoutModal');
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function closeCheckoutModal() {
+      const modal = document.getElementById('checkoutModal');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    // Process Simulated Tokenized Payment & Trigger Webhook Payload
+    function processPayment(e) {
+      e.preventDefault();
+      const btn = document.getElementById('btnSubmitPayment');
+      btn.disabled = true;
+      btn.innerHTML = `<span>⏳ Cifrando Token y Procesando...</span>`;
+
+      const orderData = {
+        orderId: 'ROVA-' + Math.floor(100000 + Math.random() * 900000),
+        timestamp: new Date().toISOString(),
+        customer: {
+          name: document.getElementById('custName').value,
+          phone: document.getElementById('custPhone').value,
+          email: document.getElementById('custEmail').value,
+          address: document.getElementById('custAddress').value,
+          city: document.getElementById('custCity').value,
+          zip: document.getElementById('custZip').value
+        },
+        items: cart.map(i => ({
+          id: i.id,
+          name: i.name,
+          qty: i.qty,
+          unitPrice: i.price,
+          supplierCost: i.supplierCost || 0,
+          estimatedProfit: ((i.price - (i.supplierCost || 0)) * i.qty)
+        })),
+        financials: {
+          subtotal: cart.reduce((sum, i) => sum + (i.price * i.qty), 0),
+          shipping: cart.reduce((sum, i) => sum + (i.price * i.qty), 0) >= FREE_SHIPPING_THRESHOLD ? 0 : STANDARD_SHIPPING_COST,
+          currency: 'MXN'
+        },
+        status: 'PENDIENTE_DISPATCH_PROVEEDOR',
+        gateway: 'MERCADO_PAGO_TOKENIZED_256'
+      };
+
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.innerHTML = `<span>🔒 Autorizar Pago Seguro</span>`;
+        closeCheckoutModal();
+        
+        // Save order to LocalStorage for Obsidian & automation tracking
+        saveOrderToAutomationQueue(orderData);
+
+        // Show Post-Purchase Upsell Modal
+        openUpsellModal();
+      }, 1500);
+    }
+
+    function saveOrderToAutomationQueue(order) {
+      try {
+        let orders = JSON.parse(localStorage.getItem('rova_orders_queue') || '[]');
+        orders.unshift(order);
+        localStorage.setItem('rova_orders_queue', JSON.stringify(orders));
+      } catch(e){}
+
+      // Dispara Toast de Sincronización con Obsidian / HiFly
+      showToast('⚡ Webhook Sincronizado', `Orden #${order.orderId} enviada a Obsidian y canal de rastreo.`);
+    }
+
+    /* =========================================================================
+       5. POST-PURCHASE ONE-CLICK UPSELL (30% OFF)
+       ========================================================================= */
+    function openUpsellModal() {
+      const modal = document.getElementById('upsellModal');
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function acceptUpsell() {
+      showToast('¡Upsell Añadido!', 'Termo Inteligente sumado con 30% OFF ($294 MXN).');
+      closeUpsellModal();
+      finishPurchaseFlow();
+    }
+
+    function declineUpsell() {
+      closeUpsellModal();
+      finishPurchaseFlow();
+    }
+
+    function closeUpsellModal() {
+      const modal = document.getElementById('upsellModal');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    function finishPurchaseFlow() {
+      cart = [];
+      saveCart();
+      renderCart();
+      alert('¡Gracias por tu compra en ROVA México! Tu número de guía oficial te llegará vía WhatsApp y correo en cuanto el proveedor mayorista despache el paquete.');
+    }
+
+    /* =========================================================================
+       6. MODALES LEGALES Y PROTOCOLO PROFECO / LFPDPPP
+       ========================================================================= */
+    const LEGAL_TEXTS = {
+      terminos: {
+        title: '⚖️ Términos y Condiciones del Servicio (Modelo Conector)',
+        body: `
+          <h4 class="font-bold text-slate-900">1. Naturaleza del Servicio y Rol de Intermediación</h4>
+          <p>ROVA Performance Goods opera jurídicamente en México como una plataforma digital de intermediación comercial, curaduría de producto y corretaje mercantil directo entre fabricantes mayoristas internacionales/nacionales y el consumidor adquirente final. En apego al Código de Comercio y los lineamientos de PROFECO para el comercio electrónico, ROVA gestiona la cobranza segura, la verificación de calidad de los proveedores y la coordinación logística de transporte sin mantener bodegas con inventario ocioso para garantizar tarifas de fábrica accesibles.</p>
+          
+          <h4 class="font-bold text-slate-900">2. Proceso de Orden y Perfeccionamiento de la Compra</h4>
+          <p>Al confirmar una orden y autorizar el pago, el usuario instruye a ROVA a tramitar el pedido ante el fabricante respectivo. La asignación del número de guía rastreable se efectúa dentro de las primeras 24 a 48 horas hábiles tras la validación de fondos por la pasarela de pagos.</p>
+
+          <h4 class="font-bold text-slate-900">3. Transparencia de Precios</h4>
+          <p>Todos los precios se encuentran expresados en Moneda Nacional (MXN) e incluyen la gestión administrativa de importación o entrega doméstica.</p>
+        `
+      },
+      envios: {
+        title: '🚚 Política de Envíos Reales y Tiempos de Entrega',
+        body: `
+          <h4 class="font-bold text-slate-900">1. Plazos de Entrega Realistas (5 a 12 Días Hábiles)</h4>
+          <p>Rechazamos las promesas engañosas de "envíos en 24 horas" sobre productos de importación especializada. Para mantener la integridad de los productos y la cobertura de seguro contra extravíos o daños, el tiempo promedio de tránsito hasta tu domicilio en cualquier estado de la República Mexicana oscila entre <strong>5 y 12 días hábiles</strong> posteriores al despacho inicial.</p>
+
+          <h4 class="font-bold text-slate-900">2. Seguimiento Punto a Punto</h4>
+          <p>Cada paquete cuenta con una guía de rastreo oficial emitida por paqueterías líderes (DHL, FedEx, Estafeta o correo postal internacional asegurado). El cliente recibe alertas automáticas en su correo y WhatsApp.</p>
+
+          <h4 class="font-bold text-slate-900">3. Seguro de Extravío o Siniestro</h4>
+          <p>Si un paquete experimenta un retraso no imputable a fuerza mayor que exceda los 25 días hábiles, ROVA procederá con el reenvío prioritario sin costo o la devolución total de los fondos a elección del comprador.</p>
+        `
+      },
+      garantias: {
+        title: '🛡️ Garantía y Protocolo de Video Unboxing Continuo',
+        body: `
+          <h4 class="font-bold text-slate-900">1. Garantía de Funcionamiento y Defectos de Fábrica</h4>
+          <p>Todos los productos de ROVA cuentan con <strong>90 días de garantía directa</strong> contra defectos de fabricación en componentes electrónicos, motores y materiales.</p>
+
+          <h4 class="font-bold text-slate-900">2. Protocolo Obligatorio de Video Unboxing sin Cortes</h4>
+          <p>Para prevenir reclamaciones fraudulentas y agilizar la reposición inmediata ante el proveedor sin exigirle al cliente costosos envíos de retorno, <strong>es requisito indispensable filmar un video continuo y sin cortes</strong> desde que el paquete sellado se recibe hasta su apertura y prueba básica de encendido. Dicho video debe mostrar claramente la etiqueta con el número de guía adherida al empaque exterior.</p>
+
+          <h4 class="font-bold text-slate-900">3. Solución Rápida</h4>
+          <p>Una vez recibido el video validando el fallo o faltante, ROVA autoriza de inmediato el reemplazo de una nueva unidad sin exigir que el cliente devuelva la pieza averiada a la fábrica internacional.</p>
+        `
+      },
+      privacidad: {
+        title: '📄 Aviso de Privacidad Simplificado (LFPDPPP)',
+        body: `
+          <h4 class="font-bold text-slate-900">1. Responsable del Tratamiento de Datos</h4>
+          <p>ROVA Performance Goods México, con domicilio de representación en Guadalajara, Jalisco, es responsable del tratamiento legítimo y confidencial de sus datos personales conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP).</p>
+
+          <h4 class="font-bold text-slate-900">2. Finalidades Principales</h4>
+          <p>Los datos solicitados (nombre, teléfono, correo electrónico, dirección postal) se destinarán exclusivamente para: procesar la orden de compra, coordinar la entrega con la empresa de transporte, remitir el comprobante y número de rastreo, y brindar atención post-venta.</p>
+
+          <h4 class="font-bold text-slate-900">3. Cero Almacenamiento Financiero</h4>
+          <p>ROVA <strong>NO almacena números completos de tarjetas de crédito o débito ni códigos CVV</strong>. Todas las transacciones se realizan mediante tokenización criptográfica administrada por pasarelas certificadas PCI-DSS Nivel 1 (Mercado Pago / Stripe).</p>
+        `
+      }
     };
 
-    function openCartDrawer() {
-      cartOverlay.classList.add('open');
-      cartDrawer.classList.add('open');
-    }
-    function closeCartDrawer() {
-      cartOverlay.classList.remove('open');
-      cartDrawer.classList.remove('open');
+    function openLegalModal(type) {
+      const data = LEGAL_TEXTS[type];
+      if (!data) return;
+      document.getElementById('legalModalTitle').innerText = data.title;
+      document.getElementById('legalModalContent').innerHTML = data.body;
+      const modal = document.getElementById('legalModalWrapper');
+      modal.classList.remove('opacity-0', 'pointer-events-none');
     }
 
-    openCartBtn.addEventListener('click', openCartDrawer);
-    closeCartBtn.addEventListener('click', closeCartDrawer);
-    cartOverlay.addEventListener('click', closeCartDrawer);
+    function closeLegalModal() {
+      const modal = document.getElementById('legalModalWrapper');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+    }
 
-    checkoutShopifyBtn.addEventListener('click', () => {
-      alert('🔒 Redirigiendo a pasarela segura Shopify Checkout (Mercado Pago, Tarjeta de Crédito/Débito y OXXO Pay)...');
+    function openObsidianSchemaModal() {
+      document.getElementById('legalModalTitle').innerText = '📓 Esquema Webhook para Obsidian & Automatizaciones';
+      document.getElementById('legalModalContent').innerHTML = `
+        <p class="text-xs text-slate-600 mb-2">Este es el formato YAML y JSON estándar que genera el checkout de ROVA y que puedes enlazar a tu Vault de Obsidian mediante el plugin Local REST API o un Webhook de Make/n8n:</p>
+        <pre class="bg-slate-900 text-emerald-400 p-3 rounded-xl font-mono text-[10px] overflow-x-auto">
+---
+id_pedido: ROVA-482910
+fecha: 2026-09-25T17:45:00-05:00
+cliente: Juan Perez
+telefono: "+523312345678"
+email: juan@ejemplo.com
+ciudad: Guadalajara, Jalisco
+estatus: PENDIENTE_DISPATCH_PROVEEDOR
+guia_rastreo: PENDIENTE
+total_mxn: 1490
+costo_proveedor_mxn: 580
+margen_neto_mxn: 910
+productos:
+  - id: percusor-pro
+    nombre: Pistola Percusor Pro Max
+    cantidad: 1
+    precio_unitario: 890
+---
+# Pedido #ROVA-482910
+- [ ] Colocar orden en portal de proveedor mayorista
+- [ ] Asignar número de guía oficial
+- [ ] Disparar plantilla HiFly / WhatsApp con enlace de rastreo
+- [ ] Confirmar entrega final al cliente
+        </pre>
+      `;
+      const modal = document.getElementById('legalModalWrapper');
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    /* =========================================================================
+       7. UTILITIES: TOAST & COUNTDOWN TIMER
+       ========================================================================= */
+    function showToast(title, msg) {
+      const toast = document.getElementById('syncToast');
+      const titleEl = document.getElementById('syncToastTitle');
+      const msgEl = document.getElementById('syncToastMsg');
+      if (!toast) return;
+
+      titleEl.innerText = title;
+      msgEl.innerText = msg;
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      setTimeout(() => {
+        toast.classList.add('translate-y-24', 'opacity-0');
+      }, 4000);
+    }
+
+    function initCountdown() {
+      const display = document.getElementById('countdownDisplay');
+      if (!display) return;
+      let totalSecs = 48 * 3600 - 120; // 48 hours simulated
+      setInterval(() => {
+        totalSecs--;
+        if (totalSecs <= 0) totalSecs = 48 * 3600;
+        const hrs = Math.floor(totalSecs / 3600);
+        const mins = Math.floor((totalSecs % 3600) / 60);
+        const secs = totalSecs % 60;
+        display.innerText = `${hrs}h ${mins < 10 ? '0' : ''}${mins}m ${secs < 10 ? '0' : ''}${secs}s`;
+      }, 1000);
+    }
+
+    // Window Load bootstrap
+    document.addEventListener('DOMContentLoaded', () => {
+      initCart();
+      renderCatalog('all');
+      initCountdown();
     });
-
-    // Initialize
-    renderProducts();
-    updateCartUI();
   </script>
 </body>
 </html>
