@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>AURA · Future Goods | Los 10 Productos Más Deseados de la Temporada</title>
+  <meta name="description" content="Boutique exclusiva de gadgets de vanguardia, regalos emocionales y decoración mística para Día de Muertos, Buen Fin y Navidad. Envíos express a todo México.">
+  <meta property="og:title" content="AURA · Future Goods & Lifestyle">
+  <meta property="og:description" content="Los 10 productos más virales de la temporada en México. Envíos gratis y pago seguro.">
+  <meta property="og:image" content="images/volcano-diffuser.jpg">
+  <meta name="theme-color" content="#07070a">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%238b5cf6'/%3E%3Cpath d='M16 6L23 23H9L16 6Z' fill='%23ffffff'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ═══════════════════════════════════════════════════════════════
+       DESIGN SYSTEM (SPATIAL DARK LUXURY)
+    ═══════════════════════════════════════════════════════════════ */
+    :root {
+      --bg: #07070a;
+      --bg-card: #0f0f16;
+      --bg-elevated: #161622;
+      --bg-glass: rgba(15, 15, 22, 0.85);
+
+      --purple: #8b5cf6;
+      --purple-light: #a78bfa;
+      --purple-glow: rgba(139, 92, 246, 0.35);
+
+      --amber: #f59e0b;
+      --amber-glow: rgba(245, 158, 11, 0.25);
+      --emerald: #10b981;
+      --emerald-glow: rgba(16, 185, 129, 0.25);
+      --red: #ef4444;
+
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(139, 92, 246, 0.4);
+
+      --sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --display: 'Space Grotesk', var(--sans);
+
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.7);
+      --shadow-glow: 0 0 35px var(--purple-glow);
+
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+      --radius-full: 9999px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       ANNOUNCEMENT BAR
+    ═══════════════════════════════════════════════════════════════ */
+    .announcement-bar {
+      background: linear-gradient(90deg, #7c3aed, #ec4899, #f59e0b);
+      color: #ffffff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-align: center;
+      padding: 8px 16px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .announcement-dot {
+      width: 6px;
+      height: 6px;
+      background: #ffffff;
+      border-radius: 50%;
+      animation: pulseDot 1.5s infinite;
+    }
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.4); }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       HEADER & NAV
+    ═══════════════════════════════════════════════════════════════ */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-glass);
+      backdrop-filter: blur(20px) saturate(1.8);
+      -webkit-backdrop-filter: blur(20px) saturate(1.8);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 20px;
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: inherit;
+    }
+    .logo-emblem {
+      width: 34px;
+      height: 34px;
+      background: linear-gradient(135deg, var(--purple), #c084fc);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: 1.1rem;
+      color: #ffffff;
+      box-shadow: 0 0 20px var(--purple-glow);
+    }
+    .logo-text {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: 0.08em;
+    }
+    .logo-subtitle {
+      font-size: 0.62rem;
+      color: var(--text-muted);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      display: block;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .cart-btn {
+      position: relative;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: 0.82rem;
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .cart-btn:hover {
+      border-color: var(--purple);
+      box-shadow: 0 0 20px var(--purple-glow);
+    }
+    .cart-badge {
+      background: linear-gradient(135deg, var(--purple), #c084fc);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 900;
+      padding: 2px 7px;
+      border-radius: var(--radius-full);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       HERO SHOWCASE
+    ═══════════════════════════════════════════════════════════════ */
+    .hero-section {
+      position: relative;
+      padding: 40px 20px 60px;
+      overflow: hidden;
+    }
+    .hero-glow {
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 400px;
+      background: radial-gradient(circle, var(--purple-glow) 0%, transparent 70%);
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 36px;
+      align-items: center;
+    }
+    @media (min-width: 860px) {
+      .hero-container {
+        grid-template-columns: 1.1fr 0.9fr;
+        padding: 40px 0;
+      }
+    }
+
+    .hero-pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(139, 92, 246, 0.12);
+      border: 1px solid rgba(139, 92, 246, 0.4);
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--purple-light);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+    .hero-title {
+      font-family: var(--display);
+      font-size: 2.4rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+    .hero-title span {
+      background: linear-gradient(135deg, #c084fc, #f59e0b, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .hero-timer-card {
+      background: rgba(22, 22, 34, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 12px 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .timer-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .timer-digits {
+      font-family: var(--display);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--amber);
+      letter-spacing: 0.04em;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn-hero-primary {
+      background: linear-gradient(135deg, var(--purple), #a855f7);
+      color: #ffffff;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 800;
+      padding: 14px 28px;
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 8px 30px var(--purple-glow);
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-hero-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px var(--purple);
+    }
+    .btn-hero-secondary {
+      background: var(--bg-card);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 14px 24px;
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+    }
+    .btn-hero-secondary:hover {
+      border-color: rgba(255, 255, 255, 0.25);
+      background: var(--bg-elevated);
+    }
+
+    /* Hero Card Visual */
+    .hero-visual-card {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-lg), 0 0 50px var(--purple-glow);
+      aspect-ratio: 1 / 1;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+    .hero-visual-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .hero-visual-card:hover .hero-visual-img {
+      transform: scale(1.04);
+    }
+    .hero-visual-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(7,7,10,0.95) 0%, rgba(7,7,10,0.2) 50%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px;
+    }
+    .hero-badge-tag {
+      background: var(--amber);
+      color: #000;
+      font-weight: 800;
+      font-size: 0.72rem;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      align-self: flex-start;
+      margin-bottom: 8px;
+    }
+    .hero-card-title {
+      font-family: var(--display);
+      font-size: 1.35rem;
+      font-weight: 800;
+    }
+    .hero-card-price {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 4px;
+    }
+    .hero-price-now {
+      font-family: var(--display);
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--purple-light);
+    }
+    .hero-price-old {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SEASONAL FILTER TABS
+    ═══════════════════════════════════════════════════════════════ */
+    .filter-section {
+      max-width: 1200px;
+      margin: 0 auto 30px;
+      padding: 0 20px;
+    }
+    .filter-track {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding-bottom: 8px;
+    }
+    .filter-track::-webkit-scrollbar { display: none; }
+    .filter-tab {
+      flex-shrink: 0;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-family: var(--sans);
+      font-size: 0.84rem;
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .filter-tab:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      color: var(--text);
+    }
+    .filter-tab.active {
+      background: linear-gradient(135deg, var(--purple), #a855f7);
+      color: #ffffff;
+      border-color: transparent;
+      box-shadow: 0 4px 20px var(--purple-glow);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       PRODUCT GRID (10 WINNING PRODUCTS)
+    ═══════════════════════════════════════════════════════════════ */
+    .products-section {
+      max-width: 1200px;
+      margin: 0 auto 80px;
+      padding: 0 20px;
+    }
+    .section-head {
+      margin-bottom: 24px;
+    }
+    .section-title {
+      font-family: var(--display);
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+    .section-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    @media (min-width: 580px) {
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 960px) {
+      .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media (min-width: 1180px) {
+      .products-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+      position: relative;
+    }
+    .product-card:hover {
+      border-color: var(--border-glow);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), 0 0 30px var(--purple-glow);
+    }
+
+    .product-thumb-frame {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      background: var(--bg-elevated);
+      overflow: hidden;
+    }
+    .product-thumb-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .product-card:hover .product-thumb-img {
+      transform: scale(1.06);
+    }
+
+    .card-badge-top {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(7, 7, 10, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .card-badge-top.discount {
+      background: linear-gradient(135deg, var(--red), #f43f5e);
+      border: none;
+    }
+    .card-badge-top.viral {
+      background: linear-gradient(135deg, var(--purple), #a855f7);
+      border: none;
+    }
+
+    .product-card-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .product-cat-label {
+      font-size: 0.68rem;
+      color: var(--purple-light);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .product-name {
+      font-family: var(--display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.35;
+      margin-top: 2px;
+    }
+    .product-rating {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      color: var(--amber);
+      margin-top: 4px;
+    }
+    .product-reviews-count {
+      color: var(--text-muted);
+      font-size: 0.7rem;
+    }
+
+    .product-stock-bar {
+      margin-top: 6px;
+    }
+    .stock-label {
+      font-size: 0.68rem;
+      color: var(--amber);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .product-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-top: 6px;
+    }
+    .price-current {
+      font-family: var(--display);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+    .price-original {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    .card-actions-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .btn-quick-view {
+      flex: 1;
+      height: 38px;
+      border: 1px solid var(--border);
+      background: var(--bg-elevated);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 700;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+    .btn-quick-view:hover {
+      border-color: rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .btn-add-cart {
+      flex: 1.4;
+      height: 38px;
+      border: none;
+      background: linear-gradient(135deg, var(--purple), #a855f7);
+      color: #ffffff;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 800;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .btn-add-cart:hover {
+      box-shadow: 0 4px 15px var(--purple-glow);
+      transform: translateY(-1px);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       QUICK VIEW MODAL
+    ═══════════════════════════════════════════════════════════════ */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    .modal-backdrop.open {
+      opacity: 1;
+      visibility: visible;
+    }
+    .modal-window {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glow);
+      border-radius: var(--radius-xl);
+      max-width: 760px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-lg), 0 0 50px var(--purple-glow);
+      position: relative;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media (min-width: 680px) {
+      .modal-window {
+        grid-template-columns: 1fr 1fr;
+        padding: 32px;
+      }
+    }
+    .modal-close-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+    .modal-media-frame {
+      aspect-ratio: 1 / 1;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--bg-elevated);
+    }
+    .modal-media-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .modal-info-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .modal-title {
+      font-family: var(--display);
+      font-size: 1.4rem;
+      font-weight: 800;
+      line-height: 1.25;
+    }
+    .modal-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .bundle-offer-box {
+      background: rgba(139, 92, 246, 0.1);
+      border: 1px dashed var(--purple);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      font-size: 0.8rem;
+    }
+    .bundle-title {
+      font-weight: 800;
+      color: var(--purple-light);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       CART SLIDE-OVER DRAWER
+    ═══════════════════════════════════════════════════════════════ */
+    .cart-drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(6px);
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    .cart-drawer-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      max-width: 420px;
+      background: var(--bg-card);
+      border-left: 1px solid var(--border);
+      z-index: 2001;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+    }
+    .cart-drawer.open {
+      transform: translateX(0);
+    }
+    .cart-drawer-head {
+      padding: 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cart-drawer-title {
+      font-family: var(--display);
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
+    .cart-drawer-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .cart-item-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      background: var(--bg-elevated);
+      padding: 10px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+    }
+    .cart-item-thumb {
+      width: 60px;
+      height: 60px;
+      border-radius: var(--radius-sm);
+      object-fit: cover;
+    }
+    .cart-item-details {
+      flex: 1;
+    }
+    .cart-item-name {
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+    .cart-item-price {
+      font-size: 0.78rem;
+      color: var(--purple-light);
+      font-weight: 800;
+    }
+    .cart-item-qty {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 4px;
+    }
+    .cart-qty-btn {
+      width: 22px;
+      height: 22px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text);
+      cursor: pointer;
+    }
+    .cart-drawer-foot {
+      padding: 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: var(--bg-elevated);
+    }
+    .cart-total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--display);
+      font-size: 1.3rem;
+      font-weight: 800;
+    }
+
+    .btn-checkout-shopify {
+      width: 100%;
+      height: 50px;
+      background: linear-gradient(135deg, var(--purple), #a855f7);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      font-weight: 800;
+      border-radius: var(--radius-full);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 6px 20px var(--purple-glow);
+      transition: all 0.25s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .btn-checkout-shopify:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 30px var(--purple);
+    }
+    .btn-checkout-wa {
+      width: 100%;
+      height: 44px;
+      background: #054c44;
+      border: 1px solid #128c7e;
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 700;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       TRUST BADGES & REVIEWS
+    ═══════════════════════════════════════════════════════════════ */
+    .trust-strip {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 30px 20px;
+      margin-bottom: 60px;
+    }
+    .trust-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    @media (min-width: 768px) {
+      .trust-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .trust-icon {
+      font-size: 1.8rem;
+    }
+    .trust-title {
+      font-size: 0.85rem;
+      font-weight: 800;
+    }
+    .trust-sub {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    .site-footer {
+      background: #050508;
+      border-top: 1px solid var(--border);
+      padding: 40px 20px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announcement-bar">
+    <span class="announcement-dot"></span>
+    <span>🚚 Envíos Gratis a todo México en compras mayores a $899 MXN · Entrega garantizada en 24-48 hrs</span>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#" class="logo-group">
+        <div class="logo-emblem">A</div>
+        <div>
+          <div class="logo-text">AURA</div>
+          <span class="logo-subtitle">Future Goods · Q4 Boutique</span>
+        </div>
+      </a>
+
+      <div class="header-actions">
+        <button class="cart-btn" id="openCartBtn">
+          <span>🛒 Carrito</span>
+          <span class="cart-badge" id="cartCountBadge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SHOWCASE -->
+  <section class="hero-section">
+    <div class="hero-glow"></div>
+    <div class="hero-container">
+      <div>
+        <div class="hero-pill-badge">
+          <span>🔥</span> Producto Estrella · Octubre Místico
+        </div>
+        <h1 class="hero-title">
+          Objetos que despiertan <span>deseo y emoción.</span>
+        </h1>
+        <p class="hero-desc">
+          Los 10 productos más virales y deseados de la temporada para Día de Muertos, Buen Fin y regalos de Navidad. Curados con valor percibido y diseño espacial.
+        </p>
+
+        <div class="hero-timer-card">
+          <div>
+            <div class="timer-label">Oferta de Lanzamiento Termina En:</div>
+            <div class="timer-digits" id="countdownTimer">04h : 28m : 15s</div>
+          </div>
+        </div>
+
+        <div class="hero-cta-group">
+          <button class="btn-hero-primary" onclick="quickBuy(0)">
+            <span>⚡ Comprar Lámpara Volcano ($680 MXN)</span>
+          </button>
+          <a href="#catalogo" class="btn-hero-secondary">
+            <span>Explorar los 10 Productos ➔</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero Visual Card -->
+      <div class="hero-visual-card">
+        <img src="images/volcano-diffuser.jpg" alt="Lámpara Volcano Flame" class="hero-visual-img">
+        <div class="hero-visual-overlay">
+          <span class="hero-badge-tag">🔥 41% OFF · Lanzamiento</span>
+          <div class="hero-card-title">Difusor & Lámpara de Llama Volcánica</div>
+          <div class="hero-card-price">
+            <span class="hero-price-now">$680 MXN</span>
+            <span class="hero-price-old">$1,150 MXN</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <section class="trust-strip">
+    <div class="trust-grid">
+      <div class="trust-item">
+        <span class="trust-icon">⚡</span>
+        <div>
+          <div class="trust-title">Envíos Rápidos</div>
+          <div class="trust-sub">24-48 hrs por DHL/FedEx</div>
+        </div>
+      </div>
+      <div class="trust-item">
+        <span class="trust-icon">🔒</span>
+        <div>
+          <div class="trust-title">Pago 100% Seguro</div>
+          <div class="trust-sub">Shopify Pay, Mercado Pago & OXXO</div>
+        </div>
+      </div>
+      <div class="trust-item">
+        <span class="trust-icon">🛡️</span>
+        <div>
+          <div class="trust-title">Garantía 30 Días</div>
+          <div class="trust-sub">Reemplazo o devolución directa</div>
+        </div>
+      </div>
+      <div class="trust-item">
+        <span class="trust-icon">⭐</span>
+        <div>
+          <div class="trust-title">4.9 / 5 Estrellas</div>
+          <div class="trust-sub">+1,400 clientes felices en MX</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEASONAL FILTER TABS -->
+  <section class="filter-section" id="catalogo">
+    <div class="filter-track">
+      <button class="filter-tab active" data-filter="all">✨ Todos los Ganadores (10)</button>
+      <button class="filter-tab" data-filter="octubre">🕯️ Día de Muertos & Halloween</button>
+      <button class="filter-tab" data-filter="buenfin">⚡ Buen Fin Tech & Hogar</button>
+      <button class="filter-tab" data-filter="navidad">🎁 Especial Regalos de Navidad</button>
+    </div>
+  </section>
+
+  <!-- PRODUCT GRID -->
+  <section class="products-section">
+    <div class="section-head">
+      <h2 class="section-title">Colección Curada Q4 2026</h2>
+      <p class="section-subtitle">Seleccionados por su efecto visual WOW, viralidad y utilidad real.</p>
+    </div>
+
+    <div class="products-grid" id="productsGrid">
+      <!-- Injected via JavaScript -->
+    </div>
+  </section>
+
+  <!-- QUICK VIEW MODAL -->
+  <div class="modal-backdrop" id="quickModal">
+    <div class="modal-window">
+      <button class="modal-close-btn" id="closeModalBtn">&times;</button>
+      <div class="modal-media-frame">
+        <img src="" id="modalImg" alt="Producto" class="modal-media-img">
+      </div>
+      <div class="modal-info-col">
+        <div>
+          <span class="product-cat-label" id="modalCat">Categoría</span>
+          <h3 class="modal-title" id="modalTitle">Nombre del Producto</h3>
+          <div class="product-rating" style="margin: 8px 0;">
+            <span>⭐⭐⭐⭐⭐</span> <strong style="color:#fff;">4.9</strong>
+            <span class="product-reviews-count" id="modalReviews">(184 reseñas verificadas)</span>
+          </div>
+          <div class="product-price-row" style="margin-bottom: 12px;">
+            <span class="price-current" id="modalPrice">$0 MXN</span>
+            <span class="price-original" id="modalOldPrice">$0 MXN</span>
+          </div>
+          <p class="modal-desc" id="modalDesc">Descripción completa del producto.</p>
+        </div>
+
+        <div class="bundle-offer-box">
+          <div class="bundle-title">🎁 Oferta en Paquete (Ahorra más)</div>
+          <span>Lleva 2 piezas para regalo y obtén un <strong>15% de descuento adicional</strong> al finalizar pedido.</span>
+        </div>
+
+        <div style="display:flex; gap:10px;">
+          <button class="btn-add-cart" id="modalAddToCartBtn" style="height:48px; font-size:0.88rem;">
+            🛒 Añadir al Carrito
+          </button>
+          <button class="btn-hero-primary" id="modalBuyNowBtn" style="height:48px; padding:0 20px; font-size:0.85rem;">
+            ⚡ Comprar Ahora
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CART DRAWER -->
+  <div class="cart-drawer-overlay" id="cartOverlay"></div>
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-head">
+      <span class="cart-drawer-title">🛒 Tu Carrito</span>
+      <button class="modal-close-btn" id="closeCartBtn" style="position:static;">&times;</button>
+    </div>
+
+    <div class="cart-drawer-body" id="cartItemsList">
+      <!-- Items dynamically populated -->
+    </div>
+
+    <div class="cart-drawer-foot">
+      <div class="cart-total-row">
+        <span>Total:</span>
+        <span id="cartTotalText" style="color:var(--purple-light);">$0 MXN</span>
+      </div>
+
+      <button class="btn-checkout-shopify" id="checkoutShopifyBtn">
+        🔒 Pagar Seguro (Shopify Checkout)
+      </button>
+
+      <a href="#" class="btn-checkout-wa" id="checkoutWaBtn" target="_blank">
+        📲 Pedir en 1 Clic por WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p><strong>AURA · Future Goods & Lifestyle</strong></p>
+    <p style="margin-top: 6px;">Envíos asegurados a todo México · Pagos protegidos vía SSL</p>
+    <p style="margin-top: 12px; font-size:0.7rem; color:#64748b;">
+      © 2026 AURA Concept Store. Conectado a la infraestructura de cobro de Shopify & WhatsApp Express.
+    </p>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    // ═══════════════════════════════════════════════════════════════
+    // 10 WINNING PRODUCTS DATA (Q4 2026)
+    // ═══════════════════════════════════════════════════════════════
+    const PRODUCTS = [
+      {
+        id: 'volcano-diffuser',
+        name: 'Difusor & Lámpara de Llama Volcánica',
+        category: 'octubre',
+        catLabel: '🕯️ Día de Muertos & Halloween',
+        price: 680,
+        oldPrice: 1150,
+        badge: '🔥 MÁS VENDIDO TIKTOK',
+        badgeClass: 'viral',
+        stock: 5,
+        rating: 4.9,
+        reviews: 320,
+        img: 'images/volcano-diffuser.jpg',
+        desc: 'Simula fuego volcánico con niebla aromática en tono ámbar y violeta. Crea una atmósfera relajante y mística. Ideal para ofrendas modernas, salas y dormitorios.'
+      },
+      {
+        id: 'cosmos-astronaut',
+        name: 'Proyector Galáctico Astronauta 4K 360°',
+        category: 'octubre',
+        catLabel: '✨ Atmósfera & Fiesta',
+        price: 790,
+        oldPrice: 1390,
+        badge: '⭐ VIRAL DEL MES',
+        badgeClass: 'viral',
+        stock: 8,
+        rating: 4.9,
+        reviews: 412,
+        img: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&auto=format&fit=crop&q=80',
+        desc: 'Proyecta estrellas y nebulosas vivas en techos y paredes con lente óptica 4K. Cabeza magnética giratoria 360° y control remoto con temporizador.'
+      },
+      {
+        id: 'rgbic-neon-strip',
+        name: 'Tira de Neón LED Flexible RGBIC con Sonido',
+        category: 'octubre',
+        catLabel: '🎨 Decoración Inteligente',
+        price: 540,
+        oldPrice: 890,
+        badge: '39% OFF',
+        badgeClass: 'discount',
+        stock: 12,
+        rating: 4.8,
+        reviews: 195,
+        img: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=800&auto=format&fit=crop&q=80',
+        desc: 'Silicón difuso flexible estilo neón real de 5 metros. Sincroniza luces al ritmo de la música y se moldea fácilmente para letreros o marcos de altares.'
+      },
+      {
+        id: 'crystal-ice-sphere',
+        name: 'Molde de Esferas de Hielo Cristalino de Lujo',
+        category: 'buenfin',
+        catLabel: '🥃 Bar Secreto & Mixología',
+        price: 520,
+        oldPrice: 850,
+        badge: '🥃 TENDENCIA GOURMET',
+        badgeClass: 'viral',
+        stock: 7,
+        rating: 4.9,
+        reviews: 260,
+        img: 'https://images.unsplash.com/photo-1527061011665-3652c757a4d4?w=800&auto=format&fit=crop&q=80',
+        desc: 'Hielo 100% transparente sin burbujas mediante congelación direccional. Eleva cualquier trago de whiskey o coctelería al nivel de bar clandestino de lujo.'
+      },
+      {
+        id: 'pureblend-ultra',
+        name: 'Licuadora Portátil Magnética PureBlend 500ml',
+        category: 'buenfin',
+        catLabel: '⚡ Estilo de Vida & Gym',
+        price: 650,
+        oldPrice: 1100,
+        badge: '40% OFF',
+        badgeClass: 'discount',
+        stock: 9,
+        rating: 4.8,
+        reviews: 178,
+        img: 'https://images.unsplash.com/photo-1570222094114-d054a817e56b?w=800&auto=format&fit=crop&q=80',
+        desc: 'Cuchillas 6D de titanio con base de carga inalámbrica por inducción. Bate smoothies, proteína y hielo en segundos. Diseño minimalista pastel.'
+      },
+      {
+        id: 'pocketseal-pro',
+        name: 'Sellador Térmico Recargable 2 en 1 PocketSeal',
+        category: 'buenfin',
+        catLabel: '💡 Gadget Útil de Cocina',
+        price: 320,
+        oldPrice: 590,
+        badge: '🔥 IMPULSO POPULAR',
+        badgeClass: 'viral',
+        stock: 14,
+        rating: 4.7,
+        reviews: 310,
+        img: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800&auto=format&fit=crop&q=80',
+        desc: 'Sella herméticamente cualquier bolsa de botanas en 1 segundo y cuenta con navaja oculta para abrir paquetes. Recargable por USB-C.'
+      },
+      {
+        id: 'memoryglow-frame',
+        name: 'Marco Acrílico Digital de Video Infinito HD',
+        category: 'navidad',
+        catLabel: '🎁 Regalo Emocional #1',
+        price: 1280,
+        oldPrice: 2100,
+        badge: '❤️ REGALO PAREJAS',
+        badgeClass: 'viral',
+        stock: 4,
+        rating: 5.0,
+        reviews: 480,
+        img: 'images/digital-frame.jpg',
+        desc: 'Placa de acrílico ultra-transparente con pantalla LCD IPS 1080p y bocinas. Sube tus videos favoritos desde la computadora y reprodúcelos en bucle eterno.'
+      },
+      {
+        id: 'gspeaker-matrix',
+        name: 'Lámpara G-Speaker Matrix 4 en 1 con Carga 15W',
+        category: 'navidad',
+        catLabel: '🎵 Tech & Buró de Noche',
+        price: 840,
+        oldPrice: 1450,
+        badge: '⭐ TOP VENTAS',
+        badgeClass: 'viral',
+        stock: 6,
+        rating: 4.9,
+        reviews: 295,
+        img: 'images/gspeaker-lamp.jpg',
+        desc: 'Lámpara ambiental con 256 colores, bocina Bluetooth de alta fidelidad, cargador inalámbrico rápido de 15W y reloj despertador con simulación de amanecer.'
+      },
+      {
+        id: 'airfold-magsafe',
+        name: 'Estación de Carga 3 en 1 Plegable AirFold Pro',
+        category: 'navidad',
+        catLabel: '✈️ Apple & Viajes',
+        price: 790,
+        oldPrice: 1350,
+        badge: '41% OFF',
+        badgeClass: 'discount',
+        stock: 11,
+        rating: 4.9,
+        reviews: 220,
+        img: 'https://images.unsplash.com/photo-1622445268462-349711fc588c?w=800&auto=format&fit=crop&q=80',
+        desc: 'Aluminio aeroespacial plegable que cabe en el bolsillo. Carga simultáneamente iPhone con MagSafe, Apple Watch y AirPods con un solo cable.'
+      },
+      {
+        id: 'pulse-relief-ems',
+        name: 'Masajeador Cervical Térmico PulseRelief EMS',
+        category: 'navidad',
+        catLabel: '💆 Bienestar & Anti-Estrés',
+        price: 690,
+        oldPrice: 1200,
+        badge: '💆 REGALO MAMÁ / PAPÁ',
+        badgeClass: 'viral',
+        stock: 8,
+        rating: 4.8,
+        reviews: 165,
+        img: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&auto=format&fit=crop&q=80',
+        desc: 'Terapia de pulso electromagnético de baja frecuencia con calor constante a 42°C. Alivia la tensión del cuello y hombros en sesiones de 15 minutos.'
+      }
+    ];
+
+    // Cart state
+    let cart = [];
+
+    // DOM Elements
+    const grid = document.getElementById('productsGrid');
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const quickModal = document.getElementById('quickModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const modalImg = document.getElementById('modalImg');
+    const modalCat = document.getElementById('modalCat');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalReviews = document.getElementById('modalReviews');
+    const modalPrice = document.getElementById('modalPrice');
+    const modalOldPrice = document.getElementById('modalOldPrice');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalAddToCartBtn = document.getElementById('modalAddToCartBtn');
+    const modalBuyNowBtn = document.getElementById('modalBuyNowBtn');
+
+    const openCartBtn = document.getElementById('openCartBtn');
+    const closeCartBtn = document.getElementById('closeCartBtn');
+    const cartOverlay = document.getElementById('cartOverlay');
+    const cartDrawer = document.getElementById('cartDrawer');
+    const cartItemsList = document.getElementById('cartItemsList');
+    const cartTotalText = document.getElementById('cartTotalText');
+    const cartCountBadge = document.getElementById('cartCountBadge');
+    const checkoutWaBtn = document.getElementById('checkoutWaBtn');
+    const checkoutShopifyBtn = document.getElementById('checkoutShopifyBtn');
+
+    let currentSelectedProduct = null;
+
+    // Render Grid
+    function renderProducts(filter = 'all') {
+      grid.innerHTML = '';
+      const filtered = filter === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.category === filter);
+
+      filtered.forEach((p, idx) => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+          <div class="product-thumb-frame">
+            <span class="card-badge-top ${p.badgeClass}">${p.badge}</span>
+            <img src="${p.img}" alt="${p.name}" class="product-thumb-img" loading="lazy">
+          </div>
+          <div class="product-card-body">
+            <div>
+              <span class="product-cat-label">${p.catLabel}</span>
+              <h3 class="product-name">${p.name}</h3>
+              <div class="product-rating">
+                <span>⭐⭐⭐⭐⭐</span> <strong style="color:#fff;">${p.rating}</strong>
+                <span class="product-reviews-count">(${p.reviews})</span>
+              </div>
+              <div class="product-stock-bar">
+                <span class="stock-label">🔥 Solo quedan ${p.stock} piezas</span>
+              </div>
+              <div class="product-price-row">
+                <span class="price-current">$${p.price.toLocaleString('es-MX')} MXN</span>
+                <span class="price-original">$${p.oldPrice.toLocaleString('es-MX')} MXN</span>
+              </div>
+            </div>
+
+            <div class="card-actions-row">
+              <button class="btn-quick-view" onclick="openQuickView('${p.id}')">
+                👁️ Vista Rápida
+              </button>
+              <button class="btn-add-cart" onclick="addToCart('${p.id}')">
+                + Añadir
+              </button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Filter clicks
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        renderProducts(tab.dataset.filter);
+      });
+    });
+
+    // Quick View Modal
+    window.openQuickView = function(productId) {
+      const p = PRODUCTS.find(x => x.id === productId);
+      if (!p) return;
+      currentSelectedProduct = p;
+
+      modalImg.src = p.img;
+      modalCat.textContent = p.catLabel;
+      modalTitle.textContent = p.name;
+      modalReviews.textContent = `(${p.reviews} reseñas verificadas en México)`;
+      modalPrice.textContent = `$${p.price.toLocaleString('es-MX')} MXN`;
+      modalOldPrice.textContent = `$${p.oldPrice.toLocaleString('es-MX')} MXN`;
+      modalDesc.textContent = p.desc;
+
+      modalAddToCartBtn.onclick = () => {
+        addToCart(p.id);
+        closeQuickView();
+      };
+      modalBuyNowBtn.onclick = () => {
+        addToCart(p.id);
+        closeQuickView();
+        openCartDrawer();
+      };
+
+      quickModal.classList.add('open');
+    };
+
+    function closeQuickView() {
+      quickModal.classList.remove('open');
+    }
+    closeModalBtn.addEventListener('click', closeQuickView);
+    quickModal.addEventListener('click', (e) => {
+      if (e.target === quickModal) closeQuickView();
+    });
+
+    // Quick Buy from Hero
+    window.quickBuy = function(index) {
+      const p = PRODUCTS[index];
+      if (p) {
+        addToCart(p.id);
+        openCartDrawer();
+      }
+    };
+
+    // Cart Management
+    window.addToCart = function(productId) {
+      const p = PRODUCTS.find(x => x.id === productId);
+      if (!p) return;
+
+      const existing = cart.find(item => item.id === productId);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ ...p, qty: 1 });
+      }
+
+      updateCartUI();
+      openCartDrawer();
+    };
+
+    function updateCartUI() {
+      const count = cart.reduce((acc, item) => acc + item.qty, 0);
+      cartCountBadge.textContent = count;
+
+      if (cart.length === 0) {
+        cartItemsList.innerHTML = `
+          <div style="text-align:center; padding: 40px 20px; color: var(--text-muted);">
+            <div style="font-size:2.5rem; margin-bottom:8px;">🛍️</div>
+            <p>Tu carrito está vacío.</p>
+            <p style="font-size:0.75rem; margin-top:4px;">Explora los 10 productos de temporada.</p>
+          </div>
+        `;
+        cartTotalText.textContent = '$0 MXN';
+        checkoutWaBtn.style.display = 'none';
+        checkoutShopifyBtn.style.display = 'none';
+        return;
+      }
+
+      let total = 0;
+      let html = '';
+      cart.forEach((item, idx) => {
+        const subtotal = item.price * item.qty;
+        total += subtotal;
+        html += `
+          <div class="cart-item-row">
+            <img src="${item.img}" class="cart-item-thumb" alt="${item.name}">
+            <div class="cart-item-details">
+              <div class="cart-item-name">${item.name}</div>
+              <div class="cart-item-price">$${item.price.toLocaleString('es-MX')} MXN</div>
+              <div class="cart-item-qty">
+                <button class="cart-qty-btn" onclick="adjustCartQty(${idx}, -1)">-</button>
+                <span style="font-size:0.8rem; font-weight:700;">${item.qty}</span>
+                <button class="cart-qty-btn" onclick="adjustCartQty(${idx}, 1)">+</button>
+              </div>
+            </div>
+            <span style="font-family:var(--display); font-size:0.9rem; font-weight:800;">$${subtotal.toLocaleString('es-MX')}</span>
+          </div>
+        `;
+      });
+
+      cartItemsList.innerHTML = html;
+      cartTotalText.textContent = `$${total.toLocaleString('es-MX')} MXN`;
+      checkoutWaBtn.style.display = 'flex';
+      checkoutShopifyBtn.style.display = 'flex';
+
+      // Update WhatsApp link with order text
+      const PHONE = '523321222772';
+      let msg = '🛍️ *Nuevo Pedido en AURA Store*\n\n';
+      cart.forEach(item => {
+        msg += `• ${item.name} × ${item.qty} — $${(item.price * item.qty).toLocaleString('es-MX')} MXN\n`;
+      });
+      msg += `\n💰 *Total: $${total.toLocaleString('es-MX')} MXN*\n`;
+      msg += '📦 *Envío Express a México*\n\nHola Alex, quiero completar mi compra de estos productos.';
+      checkoutWaBtn.href = `https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`;
+    }
+
+    window.adjustCartQty = function(index, delta) {
+      if (!cart[index]) return;
+      cart[index].qty += delta;
+      if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+      }
+      updateCartUI();
+    };
+
+    function openCartDrawer() {
+      cartOverlay.classList.add('open');
+      cartDrawer.classList.add('open');
+    }
+    function closeCartDrawer() {
+      cartOverlay.classList.remove('open');
+      cartDrawer.classList.remove('open');
+    }
+
+    openCartBtn.addEventListener('click', openCartDrawer);
+    closeCartBtn.addEventListener('click', closeCartDrawer);
+    cartOverlay.addEventListener('click', closeCartDrawer);
+
+    // Shopify checkout button click
+    checkoutShopifyBtn.addEventListener('click', () => {
+      alert('🛒 Conectando con Shopify Checkout seguro...\n\n(En tu tienda Shopify de $1 USD se asociará automáticamente a tu pasarela de Mercado Pago / Tarjeta). Redirigiendo a confirmación...');
+    });
+
+    // Countdown timer
+    function startCountdown() {
+      let seconds = 4 * 3600 + 28 * 60 + 15;
+      setInterval(() => {
+        if (seconds > 0) seconds--;
+        const h = Math.floor(seconds / 3600);
+        const m = Math.floor((seconds % 3600) / 60);
+        const s = seconds % 60;
+        document.getElementById('countdownTimer').textContent = 
+          `${h < 10 ? '0' : ''}${h}h : ${m < 10 ? '0' : ''}${m}m : ${s < 10 ? '0' : ''}${s}s`;
+      }, 1000);
+    }
+
+    // Init
+    renderProducts();
+    updateCartUI();
+    startCountdown();
+  </script>
+</body>
+</html>
