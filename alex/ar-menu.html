@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>ALEX · Menú 3D & Realidad Aumentada</title>
+  <meta name="description" content="Explora nuestros platillos en 3D y visualízalos en tu mesa con Realidad Aumentada. ALEX Artisanal Grill & Smokehouse.">
+  <meta property="og:title" content="ALEX · Menú 3D & AR Experience">
+  <meta property="og:description" content="Experiencia gastronómica inmersiva: ve cada platillo en 3D y proyéctalo en tu mesa con AR.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&auto=format&fit=crop&q=85">
+  <meta name="theme-color" content="#08080a">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3L5 27H11L13.5 21H18.5L21 27H27L16 3Z' fill='%23f59e0b'/%3E%3Cpath d='M16 11L14.4 16.5H17.6L16 11Z' fill='%2308080a'/%3E%3C/svg%3E">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Google Model Viewer v4.3.1 -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js"></script>
+
+  <style>
+    /* ═══════════════════════════════════════════════════════════════
+       CSS VARIABLES & RESET
+    ═══════════════════════════════════════════════════════════════ */
+    :root {
+      --bg-primary: #08080a;
+      --bg-secondary: #0f0f14;
+      --bg-card: #16161e;
+      --bg-elevated: #1c1c28;
+      --bg-glass: rgba(22, 22, 30, 0.85);
+
+      --neon-amber: #f59e0b;
+      --neon-amber-50: rgba(245, 158, 11, 0.5);
+      --neon-amber-20: rgba(245, 158, 11, 0.2);
+      --neon-amber-10: rgba(245, 158, 11, 0.1);
+      --crimson: #ef4444;
+      --emerald: #10b981;
+      --emerald-20: rgba(16, 185, 129, 0.2);
+
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+
+      --border-subtle: rgba(255, 255, 255, 0.06);
+      --border-glow: rgba(245, 158, 11, 0.3);
+
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --radius-full: 9999px;
+
+      --sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --display: 'Space Grotesk', var(--sans);
+
+      --shadow-glow: 0 0 20px rgba(245, 158, 11, 0.15), 0 0 60px rgba(245, 158, 11, 0.05);
+      --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
+      --shadow-elevated: 0 8px 40px rgba(0, 0, 0, 0.6);
+
+      --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-smooth: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100dvh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       PRELOADER
+    ═══════════════════════════════════════════════════════════════ */
+    #preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: var(--bg-primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+    #preloader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .preloader-logo {
+      font-family: var(--display);
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: var(--neon-amber);
+      text-shadow: 0 0 30px var(--neon-amber-50);
+    }
+    .preloader-bar {
+      width: 200px;
+      height: 3px;
+      background: var(--bg-elevated);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+    .preloader-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--neon-amber), #fbbf24);
+      border-radius: var(--radius-full);
+      animation: preloaderFill 2s ease-out forwards;
+    }
+    @keyframes preloaderFill {
+      to { width: 100%; }
+    }
+    .preloader-text {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       LAYOUT
+    ═══════════════════════════════════════════════════════════════ */
+    .app-container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100dvh;
+      max-width: 100vw;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       HEADER
+    ═══════════════════════════════════════════════════════════════ */
+    .app-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-glass);
+      backdrop-filter: blur(20px) saturate(1.8);
+      -webkit-backdrop-filter: blur(20px) saturate(1.8);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .header-back {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-subtle);
+      background: transparent;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition-fast);
+      text-decoration: none;
+    }
+    .header-back:hover {
+      border-color: var(--neon-amber);
+      color: var(--neon-amber);
+      box-shadow: var(--shadow-glow);
+    }
+    .header-brand {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      color: var(--neon-amber);
+    }
+    .header-subtitle {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .header-badge {
+      background: linear-gradient(135deg, var(--neon-amber), #fbbf24);
+      color: var(--bg-primary);
+      font-size: 0.6rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       CATEGORY NAV
+    ═══════════════════════════════════════════════════════════════ */
+    .category-nav {
+      padding: 12px 16px;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .category-nav::-webkit-scrollbar { display: none; }
+    .category-chip {
+      flex-shrink: 0;
+      padding: 8px 18px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-subtle);
+      background: transparent;
+      color: var(--text-secondary);
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      white-space: nowrap;
+    }
+    .category-chip:hover {
+      border-color: var(--neon-amber-50);
+      color: var(--text-primary);
+    }
+    .category-chip.active {
+      background: linear-gradient(135deg, var(--neon-amber), #fbbf24);
+      color: var(--bg-primary);
+      border-color: transparent;
+      font-weight: 700;
+      box-shadow: 0 0 20px var(--neon-amber-20);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       3D VIEWER SECTION
+    ═══════════════════════════════════════════════════════════════ */
+    .viewer-section {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      max-height: 55vh;
+      background: radial-gradient(ellipse at center, #1a1a2e 0%, var(--bg-primary) 70%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Ambient glow behind model */
+    .viewer-section::before {
+      content: '';
+      position: absolute;
+      width: 60%;
+      height: 60%;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--neon-amber-20) 0%, transparent 70%);
+      filter: blur(60px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    model-viewer {
+      width: 100%;
+      height: 100%;
+      --poster-color: transparent;
+      z-index: 1;
+      outline: none;
+    }
+    model-viewer::part(default-progress-bar) {
+      display: none;
+    }
+
+    /* Custom Loading Overlay */
+    .viewer-loading {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      z-index: 5;
+      background: rgba(8, 8, 10, 0.7);
+      backdrop-filter: blur(10px);
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    .viewer-loading.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .loading-spinner {
+      width: 48px;
+      height: 48px;
+      border: 3px solid var(--bg-elevated);
+      border-top-color: var(--neon-amber);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-text {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* Dish Info Overlay */
+    .dish-info-overlay {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      right: 16px;
+      z-index: 5;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      pointer-events: none;
+    }
+    .dish-info-text {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .dish-info-name {
+      font-family: var(--display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.7);
+    }
+    .dish-info-desc {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      max-width: 260px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.7);
+      line-height: 1.4;
+    }
+    .dish-info-price {
+      font-family: var(--display);
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--neon-amber);
+      text-shadow: 0 0 20px var(--neon-amber-50);
+      pointer-events: auto;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       HOTSPOT STYLES
+    ═══════════════════════════════════════════════════════════════ */
+    .hotspot {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2px solid var(--neon-amber);
+      background: var(--neon-amber-20);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition: var(--transition-fast);
+    }
+    .hotspot::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 2px solid var(--neon-amber);
+      animation: hotspotPulse 2s ease-out infinite;
+    }
+    @keyframes hotspotPulse {
+      0% { transform: scale(1); opacity: 0.8; }
+      100% { transform: scale(2.2); opacity: 0; }
+    }
+    .hotspot-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--neon-amber);
+      box-shadow: 0 0 8px var(--neon-amber);
+    }
+
+    /* Hotspot Annotation Card */
+    .hotspot-annotation {
+      position: absolute;
+      bottom: calc(100% + 12px);
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      background: var(--bg-card);
+      border: 1px solid var(--border-glow);
+      border-radius: var(--radius-md);
+      padding: 10px 14px;
+      min-width: 160px;
+      max-width: 220px;
+      box-shadow: var(--shadow-elevated);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: var(--transition-smooth);
+      z-index: 20;
+    }
+    .hotspot-annotation.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+    .hotspot-annotation-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--neon-amber);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .hotspot-annotation-text {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    /* Triangle pointer */
+    .hotspot-annotation::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: var(--bg-card);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       AR FLOATING BUTTON
+    ═══════════════════════════════════════════════════════════════ */
+    .ar-fab {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      z-index: 10;
+      padding: 10px 18px;
+      border-radius: var(--radius-full);
+      border: none;
+      background: linear-gradient(135deg, var(--neon-amber), #fbbf24);
+      color: var(--bg-primary);
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 20px var(--neon-amber-50);
+      transition: var(--transition-spring);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .ar-fab:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 30px var(--neon-amber-50);
+    }
+    .ar-fab:active {
+      transform: scale(0.97);
+    }
+    .ar-fab svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       DISH CAROUSEL
+    ═══════════════════════════════════════════════════════════════ */
+    .carousel-section {
+      padding: 16px;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-subtle);
+    }
+    .carousel-title {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 12px;
+    }
+    .carousel-track {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding-bottom: 4px;
+    }
+    .carousel-track::-webkit-scrollbar { display: none; }
+
+    .carousel-item {
+      flex-shrink: 0;
+      width: 110px;
+      cursor: pointer;
+      scroll-snap-align: start;
+      border-radius: var(--radius-md);
+      border: 2px solid transparent;
+      background: var(--bg-card);
+      padding: 8px;
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .carousel-item:hover {
+      border-color: var(--neon-amber-20);
+      transform: translateY(-2px);
+    }
+    .carousel-item.active {
+      border-color: var(--neon-amber);
+      box-shadow: 0 0 20px var(--neon-amber-20);
+    }
+    .carousel-thumb {
+      width: 80px;
+      height: 80px;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      background: var(--bg-elevated);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .carousel-thumb model-viewer {
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    .carousel-thumb-emoji {
+      font-size: 2.2rem;
+    }
+    .carousel-item-name {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-align: center;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+    .carousel-item-price {
+      font-size: 0.68rem;
+      color: var(--neon-amber);
+      font-weight: 700;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       ACTION BAR (Add to Order)
+    ═══════════════════════════════════════════════════════════════ */
+    .action-bar {
+      position: sticky;
+      bottom: 0;
+      z-index: 100;
+      background: var(--bg-glass);
+      backdrop-filter: blur(20px) saturate(1.8);
+      -webkit-backdrop-filter: blur(20px) saturate(1.8);
+      border-top: 1px solid var(--border-subtle);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .action-qty {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+    .action-qty-btn {
+      width: 38px;
+      height: 38px;
+      border: none;
+      background: transparent;
+      color: var(--text-primary);
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-fast);
+    }
+    .action-qty-btn:hover {
+      background: var(--neon-amber-10);
+      color: var(--neon-amber);
+    }
+    .action-qty-btn:active {
+      background: var(--neon-amber-20);
+    }
+    .action-qty-count {
+      width: 32px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+    .action-add-btn {
+      flex: 1;
+      height: 44px;
+      border: none;
+      border-radius: var(--radius-full);
+      background: linear-gradient(135deg, var(--neon-amber), #fbbf24);
+      color: var(--bg-primary);
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: var(--transition-spring);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .action-add-btn:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 20px var(--neon-amber-50);
+    }
+    .action-add-btn:active {
+      transform: scale(0.98);
+    }
+    .action-total {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      min-width: 70px;
+    }
+    .action-total-label {
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .action-total-value {
+      font-family: var(--display);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--neon-amber);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       TOAST NOTIFICATION
+    ═══════════════════════════════════════════════════════════════ */
+    .toast {
+      position: fixed;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-20px);
+      background: var(--bg-card);
+      border: 1px solid var(--border-glow);
+      border-radius: var(--radius-lg);
+      padding: 12px 24px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      box-shadow: var(--shadow-elevated);
+      z-index: 10000;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition-smooth);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .toast.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+    .toast-icon {
+      font-size: 1.2rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       ORDER DRAWER
+    ═══════════════════════════════════════════════════════════════ */
+    .order-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 500;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition-smooth);
+    }
+    .order-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+    .order-drawer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 501;
+      max-height: 80vh;
+      background: var(--bg-secondary);
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+      transform: translateY(100%);
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      display: flex;
+      flex-direction: column;
+    }
+    .order-drawer.open {
+      transform: translateY(0);
+    }
+    .order-drawer-handle {
+      width: 40px;
+      height: 4px;
+      background: var(--text-muted);
+      border-radius: var(--radius-full);
+      margin: 12px auto 0;
+    }
+    .order-drawer-header {
+      padding: 16px 20px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .order-drawer-title {
+      font-family: var(--display);
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    .order-drawer-close {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-subtle);
+      background: transparent;
+      color: var(--text-primary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+    .order-drawer-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .order-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+    }
+    .order-item-emoji {
+      font-size: 2rem;
+    }
+    .order-item-info {
+      flex: 1;
+    }
+    .order-item-name {
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+    .order-item-price {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .order-item-qty {
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--neon-amber);
+    }
+    .order-item-remove {
+      width: 28px;
+      height: 28px;
+      border-radius: var(--radius-full);
+      border: none;
+      background: rgba(239, 68, 68, 0.15);
+      color: var(--crimson);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      transition: var(--transition-fast);
+    }
+    .order-item-remove:hover {
+      background: rgba(239, 68, 68, 0.3);
+    }
+    .order-empty {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    .order-empty-icon {
+      font-size: 3rem;
+      margin-bottom: 12px;
+    }
+    .order-drawer-footer {
+      padding: 16px 20px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .order-footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .order-footer-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .order-footer-value {
+      font-family: var(--display);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--neon-amber);
+    }
+    .order-confirm-btn {
+      width: 100%;
+      height: 50px;
+      border: none;
+      border-radius: var(--radius-full);
+      background: linear-gradient(135deg, var(--emerald), #34d399);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: var(--transition-spring);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .order-confirm-btn:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 20px var(--emerald-20);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════════ */
+    @media (min-width: 768px) {
+      .app-container {
+        max-width: 480px;
+        margin: 0 auto;
+        box-shadow: var(--shadow-elevated);
+        border-left: 1px solid var(--border-subtle);
+        border-right: 1px solid var(--border-subtle);
+      }
+      .viewer-section {
+        aspect-ratio: 4 / 3;
+        max-height: 60vh;
+      }
+    }
+    @media (min-width: 1024px) {
+      .app-container {
+        max-width: 520px;
+      }
+      .viewer-section {
+        max-height: 65vh;
+      }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       ANIMATIONS
+    ═══════════════════════════════════════════════════════════════ */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-in {
+      animation: fadeInUp 0.5s ease-out both;
+    }
+    .animate-in-d1 { animation-delay: 0.1s; }
+    .animate-in-d2 { animation-delay: 0.2s; }
+    .animate-in-d3 { animation-delay: 0.3s; }
+
+    /* Safari model-viewer fix */
+    model-viewer {
+      --min-hotspot-opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PRELOADER
+═══════════════════════════════════════════════════════════════ -->
+<div id="preloader">
+  <div class="preloader-logo">ALEX</div>
+  <div class="preloader-bar">
+    <div class="preloader-bar-fill"></div>
+  </div>
+  <div class="preloader-text">Cargando experiencia 3D…</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     TOAST
+═══════════════════════════════════════════════════════════════ -->
+<div class="toast" id="toast">
+  <span class="toast-icon" id="toastIcon">✅</span>
+  <span id="toastText">Agregado al pedido</span>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     ORDER DRAWER
+═══════════════════════════════════════════════════════════════ -->
+<div class="order-overlay" id="orderOverlay"></div>
+<div class="order-drawer" id="orderDrawer">
+  <div class="order-drawer-handle"></div>
+  <div class="order-drawer-header">
+    <span class="order-drawer-title">🛒 Tu Pedido</span>
+    <button class="order-drawer-close" id="orderClose" aria-label="Cerrar pedido">&times;</button>
+  </div>
+  <div class="order-drawer-body" id="orderBody">
+    <div class="order-empty">
+      <div class="order-empty-icon">🍽️</div>
+      <p>Tu pedido está vacío.<br>Agrega platillos desde el menú 3D.</p>
+    </div>
+  </div>
+  <div class="order-drawer-footer">
+    <div class="order-footer-row">
+      <span class="order-footer-label">Total</span>
+      <span class="order-footer-value" id="orderTotalValue">$0</span>
+    </div>
+    <button class="order-confirm-btn" id="orderConfirmBtn">
+      <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="#fff"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" stroke="#fff" stroke-width="1.5" fill="none"/></svg>
+      Enviar por WhatsApp
+    </button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     MAIN APP
+═══════════════════════════════════════════════════════════════ -->
+<div class="app-container">
+
+  <!-- HEADER -->
+  <header class="app-header">
+    <div class="header-left">
+      <a href="index.html" class="header-back" aria-label="Volver al menú" title="Volver al menú">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <div>
+        <div class="header-brand">ALEX</div>
+        <div class="header-subtitle">Menú 3D &amp; AR</div>
+      </div>
+    </div>
+    <div class="header-badge" id="cartBadge" style="cursor: pointer;">
+      🛒 <span id="cartCount">0</span>
+    </div>
+  </header>
+
+  <!-- CATEGORY NAV -->
+  <nav class="category-nav animate-in animate-in-d1" id="categoryNav">
+    <button class="category-chip active" data-category="all">✨ Todos</button>
+    <button class="category-chip" data-category="Entradas">🥗 Entradas</button>
+    <button class="category-chip" data-category="Fuertes">🥩 Fuertes</button>
+    <button class="category-chip" data-category="Postres">🍰 Postres</button>
+    <button class="category-chip" data-category="Bebidas">🍹 Bebidas</button>
+  </nav>
+
+  <!-- 3D VIEWER -->
+  <section class="viewer-section animate-in animate-in-d2">
+    <!-- Custom Loading -->
+    <div class="viewer-loading" id="viewerLoading">
+      <div class="loading-spinner"></div>
+      <div class="loading-text">Renderizando modelo 3D…</div>
+    </div>
+
+    <!-- AR Button -->
+    <button class="ar-fab" id="arFab" title="Ver en tu mesa">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Ver en tu mesa
+    </button>
+
+    <model-viewer
+      id="mainViewer"
+      alt="Platillo 3D interactivo"
+      shadow-intensity="1.2"
+      shadow-softness="1"
+      camera-controls
+      touch-action="pan-y"
+      auto-rotate
+      auto-rotate-delay="3000"
+      rotation-per-second="20deg"
+      environment-image="neutral"
+      exposure="1.1"
+      ar
+      ar-modes="webxr scene-viewer quick-look"
+      ar-scale="auto"
+      loading="eager"
+    >
+      <!-- Hotspots will be injected via JS -->
+    </model-viewer>
+
+    <!-- Dish Info Overlay -->
+    <div class="dish-info-overlay">
+      <div class="dish-info-text">
+        <div class="dish-info-name" id="dishName">—</div>
+        <div class="dish-info-desc" id="dishDesc">Selecciona un platillo</div>
+      </div>
+      <div class="dish-info-price" id="dishPrice">$0</div>
+    </div>
+  </section>
+
+  <!-- CAROUSEL -->
+  <section class="carousel-section animate-in animate-in-d3">
+    <div class="carousel-title">Explora el Menú</div>
+    <div class="carousel-track" id="carouselTrack">
+      <!-- Injected via JS -->
+    </div>
+  </section>
+
+  <!-- ACTION BAR -->
+  <div class="action-bar">
+    <div class="action-qty">
+      <button class="action-qty-btn" id="qtyMinus" aria-label="Reducir cantidad">−</button>
+      <span class="action-qty-count" id="qtyCount">1</span>
+      <button class="action-qty-btn" id="qtyPlus" aria-label="Aumentar cantidad">+</button>
+    </div>
+    <button class="action-add-btn" id="addToOrderBtn">
+      🛒 Agregar al pedido
+    </button>
+    <div class="action-total">
+      <span class="action-total-label">Total</span>
+      <span class="action-total-value" id="totalValue">$0</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════════════════════ -->
+<script type="module">
+  // ═══════════════════════════════════════════════════════════════
+  // MENU DATA — Mock platillos con modelos Khronos glTF
+  // ═══════════════════════════════════════════════════════════════
+  const KHRONOS_BASE = 'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/main/Models';
+  
+  const menuItems = [
+    {
+      id: 'guacamole-artesanal',
+      name: 'Guacamole Artesanal',
+      price: 120,
+      category: 'Entradas',
+      emoji: '🥑',
+      description: 'Aguacate hass fresco, cebolla morada, cilantro, chile serrano, limón y sal de mar. Servido con totopos artesanales.',
+      modelGlb: `${KHRONOS_BASE}/Avocado/glTF-Binary/Avocado.glb`,
+      modelUsdz: '',
+      cameraOrbit: '30deg 75deg 0.035m',
+      cameraTarget: '0m 0.01m 0m',
+      fieldOfView: '30deg',
+      hotspots: [
+        {
+          name: 'Aguacate Hass',
+          position: '0.004 0.02 0.003',
+          normal: '0.2 1 0',
+          text: 'Aguacate Hass premium de Michoacán. Madurado al punto perfecto, textura cremosa.'
+        },
+        {
+          name: 'Base Artesanal',
+          position: '-0.003 0.005 0.005',
+          normal: '-0.5 0.5 1',
+          text: 'Cáscara con textura natural. Selección orgánica de huertos locales.'
+        }
+      ]
+    },
+    {
+      id: 'rib-eye-prime',
+      name: 'Rib-Eye Prime 450g',
+      price: 680,
+      category: 'Fuertes',
+      emoji: '🥩',
+      description: 'Corte USDA Prime de 450g al mesquite. Marmoleo excepcional, término al gusto. Acompañado de papas trufadas.',
+      modelGlb: `${KHRONOS_BASE}/DragonAttenuation/glTF-Binary/DragonAttenuation.glb`,
+      modelUsdz: '',
+      cameraOrbit: '150deg 80deg 3m',
+      cameraTarget: '0m 0.4m 0m',
+      fieldOfView: '35deg',
+      hotspots: [
+        {
+          name: 'Marmoleo Prime',
+          position: '0.3 0.8 0.2',
+          normal: '0 1 0.3',
+          text: 'Infiltración grasa de primera. Grado USDA Prime con marmoleo uniforme.'
+        },
+        {
+          name: 'Cocción al Mesquite',
+          position: '-0.5 0.3 0.4',
+          normal: '-0.5 0.5 1',
+          text: 'Sellado a 300°C sobre carbón de mesquite para caramelizado exterior perfecto.'
+        }
+      ]
+    },
+    {
+      id: 'tacos-birria',
+      name: 'Tacos de Birria Dorados',
+      price: 185,
+      category: 'Fuertes',
+      emoji: '🌮',
+      description: 'Tacos dorados en su jugo con res deshebrada, cebolla curtida, cilantro y consomé de la casa para dipping.',
+      modelGlb: `${KHRONOS_BASE}/SheenChair/glTF-Binary/SheenChair.glb`,
+      modelUsdz: '',
+      cameraOrbit: '40deg 70deg 1.8m',
+      cameraTarget: '0m 0.35m 0m',
+      fieldOfView: '38deg',
+      hotspots: [
+        {
+          name: 'Tortilla Dorada',
+          position: '0.1 0.5 0.2',
+          normal: '0 1 0',
+          text: 'Tortilla de maíz nixtamalizado, bañada y dorada en la grasa del consomé.'
+        },
+        {
+          name: 'Consomé de la Casa',
+          position: '-0.3 0.1 0.3',
+          normal: '-0.3 0 1',
+          text: 'Caldo de res con chiles guajillo, ancho y especias secretas. 8 horas de cocción lenta.'
+        }
+      ]
+    },
+    {
+      id: 'cheesecake-vainilla',
+      name: 'Cheesecake de Vainilla',
+      price: 135,
+      category: 'Postres',
+      emoji: '🍰',
+      description: 'Cheesecake cremoso de vainilla de Madagascar con base de galleta artesanal y coulis de frutos rojos.',
+      modelGlb: `${KHRONOS_BASE}/ToyCar/glTF-Binary/ToyCar.glb`,
+      modelUsdz: '',
+      cameraOrbit: '45deg 65deg 0.15m',
+      cameraTarget: '0m 0.01m 0m',
+      fieldOfView: '32deg',
+      hotspots: [
+        {
+          name: 'Crema de Vainilla',
+          position: '0.01 0.03 0.02',
+          normal: '0 1 0.2',
+          text: 'Queso crema Philadelphia con vainas de vainilla de Madagascar.'
+        },
+        {
+          name: 'Coulis Artesanal',
+          position: '-0.02 0.01 0.03',
+          normal: '-0.5 0 1',
+          text: 'Reducción de frambuesas, moras y fresas orgánicas con toque de limón.'
+        }
+      ]
+    },
+    {
+      id: 'mezcal-oaxaqueno',
+      name: 'Mezcal Oaxaqueño Premium',
+      price: 220,
+      category: 'Bebidas',
+      emoji: '🥃',
+      description: 'Mezcal espadín joven de Santiago Matatlán, Oaxaca. Servido con sal de gusano y naranja deshidratada.',
+      modelGlb: `${KHRONOS_BASE}/WaterBottle/glTF-Binary/WaterBottle.glb`,
+      modelUsdz: '',
+      cameraOrbit: '0deg 75deg 2.5m',
+      cameraTarget: '0m 0.3m 0m',
+      fieldOfView: '28deg',
+      hotspots: [
+        {
+          name: 'Destilación Artesanal',
+          position: '0.1 0.6 0.15',
+          normal: '0.3 1 0',
+          text: 'Doble destilación en alambique de cobre. Agave espadín de 8 años.'
+        },
+        {
+          name: 'Botella Premium',
+          position: '0 0.2 0.2',
+          normal: '0 0 1',
+          text: 'Servido en cristalería fina con sal de gusano de maguey artesanal.'
+        }
+      ]
+    },
+    {
+      id: 'ensalada-caesar',
+      name: 'Ensalada Caesar Clásica',
+      price: 145,
+      category: 'Entradas',
+      emoji: '🥗',
+      description: 'Lechuga romana baby, aderezo caesar artesanal, crutones al ajo, parmesano reggiano y anchoas del Cantábrico.',
+      modelGlb: `${KHRONOS_BASE}/MaterialsVariantsShoe/glTF-Binary/MaterialsVariantsShoe.glb`,
+      modelUsdz: '',
+      cameraOrbit: '160deg 75deg 0.2m',
+      cameraTarget: '0m 0.05m 0m',
+      fieldOfView: '30deg',
+      hotspots: [
+        {
+          name: 'Lechuga Baby',
+          position: '0.02 0.06 0.03',
+          normal: '0 1 0.5',
+          text: 'Lechuga romana baby hidropónica. Cosecha fresca diaria, textura crujiente.'
+        },
+        {
+          name: 'Parmesano Reggiano',
+          position: '-0.04 0.03 0.01',
+          normal: '-1 0.5 0',
+          text: 'D.O.P. 24 meses de maduración. Rallado al momento sobre la ensalada.'
+        }
+      ]
+    }
+  ];
+
+  // ═══════════════════════════════════════════════════════════════
+  // STATE
+  // ═══════════════════════════════════════════════════════════════
+  let currentDishIndex = 0;
+  let currentQty = 1;
+  let orderItems = []; // { id, name, emoji, price, qty }
+  let activeCategory = 'all';
+  let openHotspot = null;
+
+  // ═══════════════════════════════════════════════════════════════
+  // DOM REFS
+  // ═══════════════════════════════════════════════════════════════
+  const viewer       = document.getElementById('mainViewer');
+  const viewerLoad   = document.getElementById('viewerLoading');
+  const dishName     = document.getElementById('dishName');
+  const dishDesc     = document.getElementById('dishDesc');
+  const dishPrice    = document.getElementById('dishPrice');
+  const carousel     = document.getElementById('carouselTrack');
+  const qtyCount     = document.getElementById('qtyCount');
+  const totalValue   = document.getElementById('totalValue');
+  const cartCount    = document.getElementById('cartCount');
+  const cartBadge    = document.getElementById('cartBadge');
+  const arFab        = document.getElementById('arFab');
+  const toast        = document.getElementById('toast');
+  const toastIcon    = document.getElementById('toastIcon');
+  const toastText    = document.getElementById('toastText');
+  const orderOverlay = document.getElementById('orderOverlay');
+  const orderDrawer  = document.getElementById('orderDrawer');
+  const orderBody    = document.getElementById('orderBody');
+  const orderTotalV  = document.getElementById('orderTotalValue');
+  const orderClose   = document.getElementById('orderClose');
+  const orderConfirm = document.getElementById('orderConfirmBtn');
+  const categoryNav  = document.getElementById('categoryNav');
+
+  // ═══════════════════════════════════════════════════════════════
+  // PRELOADER
+  // ═══════════════════════════════════════════════════════════════
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('preloader').classList.add('hidden');
+    }, 1800);
+  });
+
+  // ═══════════════════════════════════════════════════════════════
+  // RENDER VIEWER — updates 3D model, info, hotspots
+  // ═══════════════════════════════════════════════════════════════
+  function renderViewer(dish, animate = true) {
+    // Show loading
+    viewerLoad.classList.remove('hidden');
+
+    // Update model source
+    viewer.setAttribute('src', dish.modelGlb);
+    if (dish.modelUsdz) {
+      viewer.setAttribute('ios-src', dish.modelUsdz);
+    } else {
+      viewer.removeAttribute('ios-src');
+    }
+
+    // Camera
+    if (dish.cameraOrbit) viewer.setAttribute('camera-orbit', dish.cameraOrbit);
+    if (dish.cameraTarget) viewer.setAttribute('camera-target', dish.cameraTarget);
+    if (dish.fieldOfView) viewer.setAttribute('field-of-view', dish.fieldOfView);
+
+    // Update info overlay
+    dishName.textContent = dish.name;
+    dishDesc.textContent = dish.description;
+    dishPrice.textContent = `$${dish.price}`;
+
+    // Reset quantity
+    currentQty = 1;
+    qtyCount.textContent = '1';
+    updateTotalDisplay();
+
+    // Hotspots
+    updateHotspots(dish.hotspots);
+
+    // Animate info
+    if (animate) {
+      dishName.style.animation = 'none';
+      dishName.offsetHeight; // reflow
+      dishName.style.animation = 'fadeInUp 0.4s ease-out both';
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  // HOTSPOTS
+  // ═══════════════════════════════════════════════════════════════
+  function updateHotspots(hotspots) {
+    // Remove existing hotspots
+    viewer.querySelectorAll('.hotspot').forEach(el => el.remove());
+    viewer.querySelectorAll('.hotspot-annotation').forEach(el => el.remove());
+    openHotspot = null;
+
+    // Add new hotspots
+    hotspots.forEach((hs, i) => {
+      // Hotspot button
+      const btn = document.createElement('button');
+      btn.className = 'hotspot';
+      btn.setAttribute('slot', `hotspot-${i}`);
+      btn.dataset.position = hs.position;
+      btn.dataset.normal = hs.normal;
+      btn.dataset.visibility = 'visible';
+      btn.innerHTML = '<div class="hotspot-dot"></div>';
+
+      // Annotation card
+      const card = document.createElement('div');
+      card.className = 'hotspot-annotation';
+      card.id = `annotation-${i}`;
+      card.innerHTML = `
+        <div class="hotspot-annotation-title">${hs.name}</div>
+        <div class="hotspot-annotation-text">${hs.text}</div>
+      `;
+
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleAnnotation(i, hotspots.length);
+      });
+
+      btn.appendChild(card);
+      viewer.appendChild(btn);
+    });
+  }
+
+  function toggleAnnotation(index, total) {
+    for (let i = 0; i < total; i++) {
+      const card = document.getElementById(`annotation-${i}`);
+      if (card) {
+        if (i === index && !card.classList.contains('visible')) {
+          card.classList.add('visible');
+          openHotspot = index;
+        } else {
+          card.classList.remove('visible');
+          if (i === index) openHotspot = null;
+        }
+      }
+    }
+  }
+
+  // Close annotations when clicking viewer background
+  viewer.addEventListener('click', () => {
+    if (openHotspot !== null) {
+      const dish = getFilteredItems()[currentDishIndex];
+      if (dish) {
+        dish.hotspots.forEach((_, i) => {
+          const card = document.getElementById(`annotation-${i}`);
+          if (card) card.classList.remove('visible');
+        });
+        openHotspot = null;
+      }
+    }
+  });
+
+  // ═══════════════════════════════════════════════════════════════
+  // MODEL LOADING STATE
+  // ═══════════════════════════════════════════════════════════════
+  viewer.addEventListener('load', () => {
+    viewerLoad.classList.add('hidden');
+  });
+  viewer.addEventListener('error', () => {
+    viewerLoad.classList.add('hidden');
+  });
+
+  // ═══════════════════════════════════════════════════════════════
+  // SWITCH DISH — no page reload
+  // ═══════════════════════════════════════════════════════════════
+  function switchDish(index) {
+    const items = getFilteredItems();
+    if (index < 0 || index >= items.length) return;
+    currentDishIndex = index;
+    renderViewer(items[index]);
+    updateCarouselActive();
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  // FILTER & CAROUSEL
+  // ═══════════════════════════════════════════════════════════════
+  function getFilteredItems() {
+    if (activeCategory === 'all') return menuItems;
+    return menuItems.filter(d => d.category === activeCategory);
+  }
+
+  function buildCarousel() {
+    const items = getFilteredItems();
+    carousel.innerHTML = '';
+    items.forEach((dish, i) => {
+      const el = document.createElement('div');
+      el.className = `carousel-item${i === currentDishIndex ? ' active' : ''}`;
+      el.dataset.index = i;
+      el.innerHTML = `
+        <div class="carousel-thumb">
+          <span class="carousel-thumb-emoji">${dish.emoji}</span>
+        </div>
+        <div class="carousel-item-name">${dish.name}</div>
+        <div class="carousel-item-price">$${dish.price}</div>
+      `;
+      el.addEventListener('click', () => switchDish(i));
+      carousel.appendChild(el);
+    });
+  }
+
+  function updateCarouselActive() {
+    carousel.querySelectorAll('.carousel-item').forEach((el, i) => {
+      el.classList.toggle('active', i === currentDishIndex);
+    });
+    // Scroll active item into view
+    const active = carousel.querySelector('.carousel-item.active');
+    if (active) {
+      active.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+  }
+
+  // Category chips
+  categoryNav.addEventListener('click', (e) => {
+    const chip = e.target.closest('.category-chip');
+    if (!chip) return;
+    
+    categoryNav.querySelectorAll('.category-chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    
+    activeCategory = chip.dataset.category;
+    currentDishIndex = 0;
+    
+    const items = getFilteredItems();
+    if (items.length > 0) {
+      buildCarousel();
+      renderViewer(items[0]);
+    } else {
+      carousel.innerHTML = '<div style="padding:20px;color:var(--text-muted);font-size:0.8rem;">No hay platillos en esta categoría.</div>';
+    }
+  });
+
+  // ═══════════════════════════════════════════════════════════════
+  // QUANTITY
+  // ═══════════════════════════════════════════════════════════════
+  document.getElementById('qtyMinus').addEventListener('click', () => {
+    if (currentQty > 1) {
+      currentQty--;
+      qtyCount.textContent = currentQty;
+      updateTotalDisplay();
+    }
+  });
+  document.getElementById('qtyPlus').addEventListener('click', () => {
+    if (currentQty < 20) {
+      currentQty++;
+      qtyCount.textContent = currentQty;
+      updateTotalDisplay();
+    }
+  });
+
+  function updateTotalDisplay() {
+    const dish = getFilteredItems()[currentDishIndex];
+    if (dish) {
+      totalValue.textContent = `$${(dish.price * currentQty).toLocaleString('es-MX')}`;
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  // ADD TO ORDER
+  // ═══════════════════════════════════════════════════════════════
+  document.getElementById('addToOrderBtn').addEventListener('click', () => {
+    const dish = getFilteredItems()[currentDishIndex];
+    if (!dish) return;
+
+    const existing = orderItems.find(o => o.id === dish.id);
+    if (existing) {
+      existing.qty += currentQty;
+    } else {
+      orderItems.push({
+        id: dish.id,
+        name: dish.name,
+        emoji: dish.emoji,
+        price: dish.price,
+        qty: currentQty
+      });
+    }
+
+    updateCartBadge();
+    showToast('✅', `${dish.emoji} ${dish.name} × ${currentQty} agregado`);
+
+    // Reset qty
+    currentQty = 1;
+    qtyCount.textContent = '1';
+    updateTotalDisplay();
+  });
+
+  function updateCartBadge() {
+    const total = orderItems.reduce((s, o) => s + o.qty, 0);
+    cartCount.textContent = total;
+    // Bounce animation
+    cartBadge.style.animation = 'none';
+    cartBadge.offsetHeight;
+    cartBadge.style.animation = 'fadeInUp 0.3s ease-out';
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  // ORDER DRAWER
+  // ═══════════════════════════════════════════════════════════════
+  function openOrderDrawer() {
+    renderOrderItems();
+    orderOverlay.classList.add('open');
+    orderDrawer.classList.add('open');
+  }
+  function closeOrderDrawer() {
+    orderOverlay.classList.remove('open');
+    orderDrawer.classList.remove('open');
+  }
+
+  cartBadge.addEventListener('click', openOrderDrawer);
+  orderOverlay.addEventListener('click', closeOrderDrawer);
+  orderClose.addEventListener('click', closeOrderDrawer);
+
+  function renderOrderItems() {
+    if (orderItems.length === 0) {
+      orderBody.innerHTML = `
+        <div class="order-empty">
+          <div class="order-empty-icon">🍽️</div>
+          <p>Tu pedido está vacío.<br>Agrega platillos desde el menú 3D.</p>
+        </div>
+      `;
+      orderTotalV.textContent = '$0';
+      return;
+    }
+
+    let html = '';
+    let grandTotal = 0;
+    orderItems.forEach((item, idx) => {
+      const subtotal = item.price * item.qty;
+      grandTotal += subtotal;
+      html += `
+        <div class="order-item">
+          <span class="order-item-emoji">${item.emoji}</span>
+          <div class="order-item-info">
+            <div class="order-item-name">${item.name}</div>
+            <div class="order-item-price">$${item.price} c/u</div>
+          </div>
+          <span class="order-item-qty">×${item.qty}</span>
+          <button class="order-item-remove" data-idx="${idx}" aria-label="Eliminar">✕</button>
+        </div>
+      `;
+    });
+    orderBody.innerHTML = html;
+    orderTotalV.textContent = `$${grandTotal.toLocaleString('es-MX')}`;
+
+    // Remove buttons
+    orderBody.querySelectorAll('.order-item-remove').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = parseInt(btn.dataset.idx);
+        orderItems.splice(idx, 1);
+        updateCartBadge();
+        renderOrderItems();
+      });
+    });
+  }
+
+  // WhatsApp confirm
+  orderConfirm.addEventListener('click', () => {
+    if (orderItems.length === 0) {
+      showToast('⚠️', 'Agrega platillos primero');
+      return;
+    }
+    const PHONE = '523321222772';
+    let msg = '🍽️ *Pedido desde Menú 3D AR — ALEX*\n\n';
+    let total = 0;
+    orderItems.forEach(item => {
+      const sub = item.price * item.qty;
+      total += sub;
+      msg += `${item.emoji} *${item.name}* × ${item.qty} — $${sub.toLocaleString('es-MX')}\n`;
+    });
+    msg += `\n💰 *Total: $${total.toLocaleString('es-MX')}*`;
+    msg += '\n\n📲 Enviado desde la experiencia WebAR 3D';
+
+    const url = `https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
+    closeOrderDrawer();
+  });
+
+  // ═══════════════════════════════════════════════════════════════
+  // AR BUTTON — programmatic AR activation
+  // ═══════════════════════════════════════════════════════════════
+  arFab.addEventListener('click', () => {
+    if (viewer.canActivateAR) {
+      viewer.activateAR();
+    } else {
+      showToast('📱', 'Abre en tu celular para usar AR');
+    }
+  });
+
+  // ═══════════════════════════════════════════════════════════════
+  // TOAST
+  // ═══════════════════════════════════════════════════════════════
+  let toastTimer = null;
+  function showToast(icon, text) {
+    if (toastTimer) clearTimeout(toastTimer);
+    toastIcon.textContent = icon;
+    toastText.textContent = text;
+    toast.classList.add('show');
+    toastTimer = setTimeout(() => {
+      toast.classList.remove('show');
+    }, 2500);
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  // KEYBOARD NAVIGATION
+  // ═══════════════════════════════════════════════════════════════
+  document.addEventListener('keydown', (e) => {
+    const items = getFilteredItems();
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      switchDish((currentDishIndex + 1) % items.length);
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      switchDish((currentDishIndex - 1 + items.length) % items.length);
+    }
+  });
+
+  // ═══════════════════════════════════════════════════════════════
+  // SWIPE GESTURE on viewer
+  // ═══════════════════════════════════════════════════════════════
+  let swipeStartX = 0;
+  let swipeStartY = 0;
+  const viewerSection = document.querySelector('.viewer-section');
+
+  viewerSection.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 1) {
+      swipeStartX = e.touches[0].clientX;
+      swipeStartY = e.touches[0].clientY;
+    }
+  }, { passive: true });
+
+  viewerSection.addEventListener('touchend', (e) => {
+    if (e.changedTouches.length === 1) {
+      const dx = e.changedTouches[0].clientX - swipeStartX;
+      const dy = e.changedTouches[0].clientY - swipeStartY;
+      // Only horizontal swipes (not 3D rotation gestures)
+      if (Math.abs(dx) > 80 && Math.abs(dy) < 50) {
+        const items = getFilteredItems();
+        if (dx < 0) {
+          // swipe left → next
+          switchDish((currentDishIndex + 1) % items.length);
+        } else {
+          // swipe right → prev
+          switchDish((currentDishIndex - 1 + items.length) % items.length);
+        }
+      }
+    }
+  }, { passive: true });
+
+  // ═══════════════════════════════════════════════════════════════
+  // INIT
+  // ═══════════════════════════════════════════════════════════════
+  function init() {
+    buildCarousel();
+    if (menuItems.length > 0) {
+      renderViewer(menuItems[0], false);
+    }
+  }
+
+  init();
+</script>
+</body>
+</html>
