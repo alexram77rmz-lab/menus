@@ -3,49 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-  <title>AURA · Future Goods | Los 10 Productos Más Deseados de la Temporada</title>
-  <meta name="description" content="Boutique exclusiva de gadgets de vanguardia, regalos emocionales y decoración mística para Día de Muertos, Buen Fin y Navidad. Envíos express a todo México.">
-  <meta property="og:title" content="AURA · Future Goods & Lifestyle">
-  <meta property="og:description" content="Los 10 productos más virales de la temporada en México. Envíos gratis y pago seguro.">
-  <meta property="og:image" content="images/volcano-diffuser.jpg">
-  <meta name="theme-color" content="#07070a">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%238b5cf6'/%3E%3Cpath d='M16 6L23 23H9L16 6Z' fill='%23ffffff'/%3E%3C/svg%3E">
+  <title>NOVA · Performance Goods | Gadgets Deportivos & Productos Ganadores</title>
+  <meta name="description" content="Tienda oficial de productos ganadores de alto rendimiento: recuperación muscular, smart tech, fitness y estilo de vida. Envíos express a todo México.">
+  <meta property="og:title" content="NOVA · Performance & Lifestyle Goods">
+  <meta property="og:description" content="Los productos más vendidos y recomendados por atletas y creadores en México.">
+  <meta property="og:image" content="images/hero-athlete-massage.jpg">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f172a'/%3E%3Cpath d='M9 22L16 7L23 22H18L16 16L14 22H9Z' fill='%232563eb'/%3E%3C/svg%3E">
 
+  <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
 
   <style>
     /* ═══════════════════════════════════════════════════════════════
-       DESIGN SYSTEM (SPATIAL DARK LUXURY)
+       CLEAN WHITE LUXURY DESIGN SYSTEM (APPLE & NIKE GRADE)
     ═══════════════════════════════════════════════════════════════ */
     :root {
-      --bg: #07070a;
-      --bg-card: #0f0f16;
-      --bg-elevated: #161622;
-      --bg-glass: rgba(15, 15, 22, 0.85);
+      --bg: #ffffff;
+      --bg-alt: #f8fafc;
+      --bg-surface: #f1f5f9;
+      --bg-card: #ffffff;
+      --bg-glass: rgba(255, 255, 255, 0.92);
 
-      --purple: #8b5cf6;
-      --purple-light: #a78bfa;
-      --purple-glow: rgba(139, 92, 246, 0.35);
+      --primary: #0f172a;
+      --primary-blue: #2563eb;
+      --primary-blue-glow: rgba(37, 99, 235, 0.25);
+      --accent-coral: #f43f5e;
+      --accent-amber: #d97706;
+      --accent-emerald: #059669;
 
-      --amber: #f59e0b;
-      --amber-glow: rgba(245, 158, 11, 0.25);
-      --emerald: #10b981;
-      --emerald-glow: rgba(16, 185, 129, 0.25);
-      --red: #ef4444;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --text-sub: #475569;
 
-      --text: #f8fafc;
-      --text-muted: #94a3b8;
-      --border: rgba(255, 255, 255, 0.08);
-      --border-glow: rgba(139, 92, 246, 0.4);
+      --border: rgba(15, 23, 42, 0.08);
+      --border-focus: rgba(37, 99, 235, 0.5);
 
-      --sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       --display: 'Space Grotesk', var(--sans);
 
-      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.4);
-      --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.7);
-      --shadow-glow: 0 0 35px var(--purple-glow);
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+      --shadow-card: 0 10px 30px rgba(15, 23, 42, 0.06), 0 2px 8px rgba(15, 23, 42, 0.03);
+      --shadow-hover: 0 20px 45px rgba(15, 23, 42, 0.12), 0 4px 12px rgba(15, 23, 42, 0.06);
 
       --radius-sm: 8px;
       --radius-md: 14px;
@@ -76,17 +77,16 @@
     }
 
     /* ═══════════════════════════════════════════════════════════════
-       ANNOUNCEMENT BAR
+       TOP ANNOUNCEMENT BAR
     ═══════════════════════════════════════════════════════════════ */
     .announcement-bar {
-      background: linear-gradient(90deg, #7c3aed, #ec4899, #f59e0b);
+      background: #0f172a;
       color: #ffffff;
       font-size: 0.72rem;
-      font-weight: 800;
+      font-weight: 700;
       text-align: center;
       padding: 8px 16px;
       letter-spacing: 0.04em;
-      text-transform: uppercase;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -95,17 +95,17 @@
     .announcement-dot {
       width: 6px;
       height: 6px;
-      background: #ffffff;
+      background: #10b981;
       border-radius: 50%;
-      animation: pulseDot 1.5s infinite;
+      animation: pulseGreen 1.5s infinite;
     }
-    @keyframes pulseDot {
+    @keyframes pulseGreen {
       0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(1.4); }
+      50% { opacity: 0.4; transform: scale(1.3); }
     }
 
     /* ═══════════════════════════════════════════════════════════════
-       HEADER & NAV
+       STICKY HEADER & NAV
     ═══════════════════════════════════════════════════════════════ */
     .site-header {
       position: sticky;
@@ -123,6 +123,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 16px;
     }
     .logo-group {
       display: flex;
@@ -131,32 +132,32 @@
       text-decoration: none;
       color: inherit;
     }
-    .logo-emblem {
+    .logo-badge {
       width: 34px;
       height: 34px;
-      background: linear-gradient(135deg, var(--purple), #c084fc);
+      background: #0f172a;
       border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
+      color: #ffffff;
       font-family: var(--display);
       font-weight: 900;
-      font-size: 1.1rem;
-      color: #ffffff;
-      box-shadow: 0 0 20px var(--purple-glow);
+      font-size: 1.15rem;
     }
     .logo-text {
       font-family: var(--display);
       font-weight: 800;
-      font-size: 1.25rem;
-      letter-spacing: 0.08em;
+      font-size: 1.3rem;
+      letter-spacing: -0.02em;
     }
-    .logo-subtitle {
-      font-size: 0.62rem;
+    .logo-tagline {
+      font-size: 0.65rem;
       color: var(--text-muted);
-      letter-spacing: 0.14em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       display: block;
+      font-weight: 600;
     }
 
     .header-actions {
@@ -166,67 +167,54 @@
     }
     .cart-btn {
       position: relative;
-      background: var(--bg-elevated);
-      border: 1px solid var(--border);
-      color: var(--text);
+      background: #0f172a;
+      border: none;
+      color: #ffffff;
       font-family: var(--sans);
       font-weight: 700;
       font-size: 0.82rem;
-      padding: 8px 16px;
+      padding: 9px 18px;
       border-radius: var(--radius-full);
       display: flex;
       align-items: center;
       gap: 8px;
       cursor: pointer;
-      transition: all 0.25s ease;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.2);
+      transition: all 0.2s ease;
     }
     .cart-btn:hover {
-      border-color: var(--purple);
-      box-shadow: 0 0 20px var(--purple-glow);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.3);
     }
     .cart-badge {
-      background: linear-gradient(135deg, var(--purple), #c084fc);
+      background: var(--primary-blue);
       color: #fff;
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       font-weight: 900;
-      padding: 2px 7px;
+      padding: 1px 7px;
       border-radius: var(--radius-full);
     }
 
     /* ═══════════════════════════════════════════════════════════════
-       HERO SHOWCASE
+       HERO: REAL ATHLETE & LIVING PRODUCT
     ═══════════════════════════════════════════════════════════════ */
     .hero-section {
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      padding: 30px 20px 20px;
       position: relative;
-      padding: 40px 20px 60px;
-      overflow: hidden;
-    }
-    .hero-glow {
-      position: absolute;
-      top: -100px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 400px;
-      background: radial-gradient(circle, var(--purple-glow) 0%, transparent 70%);
-      filter: blur(80px);
-      pointer-events: none;
-      z-index: 0;
     }
     .hero-container {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
-      position: relative;
-      z-index: 1;
       display: grid;
       grid-template-columns: 1fr;
-      gap: 36px;
+      gap: 32px;
       align-items: center;
     }
-    @media (min-width: 860px) {
+    @media (min-width: 900px) {
       .hero-container {
-        grid-template-columns: 1.1fr 0.9fr;
-        padding: 40px 0;
+        grid-template-columns: 1fr 1.15fr;
+        padding: 30px 0 20px;
       }
     }
 
@@ -234,95 +222,71 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(139, 92, 246, 0.12);
-      border: 1px solid rgba(139, 92, 246, 0.4);
+      background: rgba(37, 99, 235, 0.08);
+      border: 1px solid rgba(37, 99, 235, 0.25);
       padding: 6px 14px;
       border-radius: var(--radius-full);
       font-size: 0.75rem;
       font-weight: 800;
-      color: var(--purple-light);
+      color: var(--primary-blue);
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 16px;
+      letter-spacing: 0.06em;
+      margin-bottom: 14px;
     }
     .hero-title {
       font-family: var(--display);
-      font-size: 2.4rem;
+      font-size: 2.6rem;
       font-weight: 800;
-      line-height: 1.15;
+      line-height: 1.12;
+      color: #0f172a;
+      letter-spacing: -0.03em;
       margin-bottom: 16px;
-      letter-spacing: -0.02em;
     }
     .hero-title span {
-      background: linear-gradient(135deg, #c084fc, #f59e0b, #ec4899);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: var(--primary-blue);
     }
     .hero-desc {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      max-width: 520px;
+      font-size: 1.05rem;
+      color: var(--text-sub);
       line-height: 1.6;
       margin-bottom: 24px;
+      max-width: 480px;
     }
 
-    .hero-timer-card {
-      background: rgba(22, 22, 34, 0.7);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 12px 18px;
-      display: inline-flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-    .timer-label {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-    .timer-digits {
-      font-family: var(--display);
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: var(--amber);
-      letter-spacing: 0.04em;
-    }
-
-    .hero-cta-group {
+    .hero-cta-row {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
+      margin-bottom: 20px;
     }
-    .btn-hero-primary {
-      background: linear-gradient(135deg, var(--purple), #a855f7);
+    .btn-hero-buy {
+      background: var(--primary-blue);
       color: #ffffff;
       font-family: var(--sans);
-      font-size: 0.9rem;
       font-weight: 800;
+      font-size: 0.95rem;
       padding: 14px 28px;
       border-radius: var(--radius-full);
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      box-shadow: 0 8px 30px var(--purple-glow);
-      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px var(--primary-blue-glow);
+      transition: all 0.25s ease;
       border: none;
       cursor: pointer;
     }
-    .btn-hero-primary:hover {
+    .btn-hero-buy:hover {
+      background: #1d4ed8;
       transform: translateY(-2px);
-      box-shadow: 0 12px 40px var(--purple);
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
     }
-    .btn-hero-secondary {
-      background: var(--bg-card);
+    .btn-hero-explore {
+      background: #ffffff;
       color: var(--text);
       font-family: var(--sans);
-      font-size: 0.9rem;
       font-weight: 700;
+      font-size: 0.95rem;
       padding: 14px 24px;
       border-radius: var(--radius-full);
       text-decoration: none;
@@ -330,224 +294,264 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      transition: all 0.25s ease;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
     }
-    .btn-hero-secondary:hover {
-      border-color: rgba(255, 255, 255, 0.25);
-      background: var(--bg-elevated);
+    .btn-hero-explore:hover {
+      border-color: rgba(15, 23, 42, 0.2);
+      transform: translateY(-2px);
     }
 
-    /* Hero Card Visual */
-    .hero-visual-card {
+    /* Hero Media Container with 3D Float Frame */
+    .hero-media-wrap {
       position: relative;
       border-radius: var(--radius-xl);
       overflow: hidden;
-      background: var(--bg-card);
+      box-shadow: var(--shadow-card);
       border: 1px solid var(--border);
-      box-shadow: var(--shadow-lg), 0 0 50px var(--purple-glow);
-      aspect-ratio: 1 / 1;
-      max-width: 440px;
-      margin: 0 auto;
+      background: #f1f5f9;
+      aspect-ratio: 16 / 9;
+      transform-style: preserve-3d;
+      transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
-    .hero-visual-img {
+    .hero-media-wrap:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: var(--shadow-hover);
+    }
+    .hero-media-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
-    .hero-visual-card:hover .hero-visual-img {
-      transform: scale(1.04);
-    }
-    .hero-visual-overlay {
+    .hero-media-badge {
       position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(7,7,10,0.95) 0%, rgba(7,7,10,0.2) 50%, transparent 100%);
+      bottom: 16px;
+      left: 16px;
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(10px);
+      color: #ffffff;
+      padding: 10px 16px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+    .hero-badge-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 10px #10b981;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       CONTINUOUS MOVING LINE (LIVE SOCIAL PROOF TICKER)
+    ═══════════════════════════════════════════════════════════════ */
+    .ticker-section {
+      background: #0f172a;
+      color: #ffffff;
+      padding: 12px 0;
+      overflow: hidden;
+      position: relative;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .ticker-wrap {
+      display: flex;
+      width: max-content;
+      animation: marqueeScroll 35s linear infinite;
+    }
+    .ticker-wrap:hover {
+      animation-play-state: paused;
+    }
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 24px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      white-space: nowrap;
+      border-right: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .ticker-item strong {
+      color: #38bdf8;
+    }
+    .ticker-icon {
+      font-size: 1rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SEARCH & CATEGORIES BAR
+    ═══════════════════════════════════════════════════════════════ */
+    .catalog-bar-section {
+      max-width: 1200px;
+      margin: 36px auto 20px;
+      padding: 0 20px;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
-      padding: 24px;
+      gap: 16px;
     }
-    .hero-badge-tag {
-      background: var(--amber);
-      color: #000;
-      font-weight: 800;
-      font-size: 0.72rem;
-      padding: 4px 10px;
-      border-radius: var(--radius-full);
-      text-transform: uppercase;
-      align-self: flex-start;
-      margin-bottom: 8px;
-    }
-    .hero-card-title {
-      font-family: var(--display);
-      font-size: 1.35rem;
-      font-weight: 800;
-    }
-    .hero-card-price {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 4px;
-    }
-    .hero-price-now {
-      font-family: var(--display);
-      font-size: 1.5rem;
-      font-weight: 900;
-      color: var(--purple-light);
-    }
-    .hero-price-old {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      text-decoration: line-through;
+    @media (min-width: 768px) {
+      .catalog-bar-section {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
     }
 
-    /* ═══════════════════════════════════════════════════════════════
-       SEASONAL FILTER TABS
-    ═══════════════════════════════════════════════════════════════ */
-    .filter-section {
-      max-width: 1200px;
-      margin: 0 auto 30px;
-      padding: 0 20px;
+    .search-wrapper {
+      position: relative;
+      flex: 1;
+      max-width: 420px;
     }
-    .filter-track {
+    .search-input {
+      width: 100%;
+      height: 46px;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      padding: 0 20px 0 44px;
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      color: var(--text);
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    .search-input:focus {
+      background: #ffffff;
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+    .search-icon-svg {
+      position: absolute;
+      top: 50%;
+      left: 16px;
+      transform: translateY(-50%);
+      width: 18px;
+      height: 18px;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .category-chips-track {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       overflow-x: auto;
       scrollbar-width: none;
-      padding-bottom: 8px;
+      padding-bottom: 4px;
     }
-    .filter-track::-webkit-scrollbar { display: none; }
-    .filter-tab {
+    .category-chips-track::-webkit-scrollbar { display: none; }
+    .cat-chip {
       flex-shrink: 0;
-      background: var(--bg-card);
+      background: var(--bg-alt);
       border: 1px solid var(--border);
-      color: var(--text-muted);
+      color: var(--text-sub);
       font-family: var(--sans);
-      font-size: 0.84rem;
+      font-size: 0.82rem;
       font-weight: 700;
-      padding: 10px 20px;
+      padding: 10px 18px;
       border-radius: var(--radius-full);
       cursor: pointer;
-      transition: all 0.25s ease;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
     }
-    .filter-tab:hover {
-      border-color: rgba(255, 255, 255, 0.2);
+    .cat-chip:hover {
+      border-color: rgba(15, 23, 42, 0.2);
       color: var(--text);
     }
-    .filter-tab.active {
-      background: linear-gradient(135deg, var(--purple), #a855f7);
+    .cat-chip.active {
+      background: #0f172a;
       color: #ffffff;
-      border-color: transparent;
-      box-shadow: 0 4px 20px var(--purple-glow);
+      border-color: #0f172a;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
     }
 
     /* ═══════════════════════════════════════════════════════════════
-       PRODUCT GRID (10 WINNING PRODUCTS)
+       PRODUCT GRID
     ═══════════════════════════════════════════════════════════════ */
-    .products-section {
+    .products-container {
       max-width: 1200px;
-      margin: 0 auto 80px;
+      margin: 10px auto 80px;
       padding: 0 20px;
     }
-    .section-head {
-      margin-bottom: 24px;
-    }
-    .section-title {
-      font-family: var(--display);
-      font-size: 1.8rem;
-      font-weight: 800;
-      letter-spacing: -0.01em;
-    }
-    .section-subtitle {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
-
     .products-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 20px;
+      gap: 24px;
     }
-    @media (min-width: 580px) {
-      .products-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+    @media (min-width: 560px) {
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
     }
-    @media (min-width: 960px) {
-      .products-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
+    @media (min-width: 900px) {
+      .products-grid { grid-template-columns: repeat(3, 1fr); }
     }
-    @media (min-width: 1180px) {
-      .products-grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
+    @media (min-width: 1140px) {
+      .products-grid { grid-template-columns: repeat(4, 1fr); }
     }
 
     .product-card {
-      background: var(--bg-card);
+      background: #ffffff;
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       overflow: hidden;
       display: flex;
       flex-direction: column;
       transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
-      position: relative;
+      box-shadow: var(--shadow-sm);
+      transform-style: preserve-3d;
     }
     .product-card:hover {
-      border-color: var(--border-glow);
       transform: translateY(-6px);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), 0 0 30px var(--purple-glow);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(37, 99, 235, 0.3);
     }
 
-    .product-thumb-frame {
+    .card-thumb-frame {
       position: relative;
       aspect-ratio: 1 / 1;
       width: 100%;
-      background: var(--bg-elevated);
+      background: #f8fafc;
       overflow: hidden;
     }
-    .product-thumb-img {
+    .card-thumb-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
       transition: transform 0.5s ease;
     }
-    .product-card:hover .product-thumb-img {
-      transform: scale(1.06);
+    .product-card:hover .card-thumb-img {
+      transform: scale(1.05);
     }
 
-    .card-badge-top {
+    .badge-float {
       position: absolute;
       top: 12px;
       left: 12px;
-      background: rgba(7, 7, 10, 0.85);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: #fff;
       font-size: 0.65rem;
       font-weight: 800;
       padding: 4px 10px;
       border-radius: var(--radius-full);
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
     }
-    .card-badge-top.discount {
-      background: linear-gradient(135deg, var(--red), #f43f5e);
-      border: none;
+    .badge-float.hot {
+      background: #0f172a;
+      color: #ffffff;
     }
-    .card-badge-top.viral {
-      background: linear-gradient(135deg, var(--purple), #a855f7);
-      border: none;
+    .badge-float.discount {
+      background: var(--accent-coral);
+      color: #ffffff;
     }
 
-    .product-card-body {
+    .card-body {
       padding: 16px;
       display: flex;
       flex-direction: column;
@@ -555,73 +559,72 @@
       justify-content: space-between;
       gap: 12px;
     }
-    .product-cat-label {
+    .card-category-label {
       font-size: 0.68rem;
-      color: var(--purple-light);
       font-weight: 800;
+      color: var(--primary-blue);
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
     }
-    .product-name {
+    .card-title {
       font-family: var(--display);
       font-size: 1.05rem;
       font-weight: 700;
       line-height: 1.35;
+      color: #0f172a;
       margin-top: 2px;
     }
-    .product-rating {
+    .card-rating-row {
       display: flex;
       align-items: center;
       gap: 6px;
       font-size: 0.75rem;
-      color: var(--amber);
+      color: var(--accent-amber);
       margin-top: 4px;
     }
-    .product-reviews-count {
+    .card-reviews-count {
       color: var(--text-muted);
-      font-size: 0.7rem;
+      font-size: 0.72rem;
     }
 
-    .product-stock-bar {
-      margin-top: 6px;
-    }
-    .stock-label {
+    .card-stock-hint {
       font-size: 0.68rem;
-      color: var(--amber);
+      color: var(--accent-emerald);
       font-weight: 700;
       display: flex;
       align-items: center;
       gap: 4px;
+      margin-top: 4px;
     }
 
-    .product-price-row {
+    .card-price-row {
       display: flex;
       align-items: baseline;
       gap: 8px;
       margin-top: 6px;
     }
-    .price-current {
+    .card-price-now {
       font-family: var(--display);
       font-size: 1.3rem;
       font-weight: 800;
-      color: #ffffff;
+      color: #0f172a;
     }
-    .price-original {
+    .card-price-old {
       font-size: 0.85rem;
       color: var(--text-muted);
       text-decoration: line-through;
     }
 
-    .card-actions-row {
+    .card-btn-row {
       display: flex;
       gap: 8px;
       margin-top: 10px;
     }
-    .btn-quick-view {
+    .btn-card-quick {
       flex: 1;
       height: 38px;
+      background: var(--bg-alt);
       border: 1px solid var(--border);
-      background: var(--bg-elevated);
       color: var(--text);
       font-family: var(--sans);
       font-size: 0.78rem;
@@ -629,45 +632,36 @@
       border-radius: var(--radius-md);
       cursor: pointer;
       transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
     }
-    .btn-quick-view:hover {
-      border-color: rgba(255, 255, 255, 0.25);
-      background: rgba(255, 255, 255, 0.08);
+    .btn-card-quick:hover {
+      background: #e2e8f0;
     }
-    .btn-add-cart {
+    .btn-card-add {
       flex: 1.4;
       height: 38px;
+      background: var(--primary-blue);
       border: none;
-      background: linear-gradient(135deg, var(--purple), #a855f7);
       color: #ffffff;
       font-family: var(--sans);
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 800;
       border-radius: var(--radius-md);
       cursor: pointer;
       transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
     }
-    .btn-add-cart:hover {
-      box-shadow: 0 4px 15px var(--purple-glow);
-      transform: translateY(-1px);
+    .btn-card-add:hover {
+      background: #1d4ed8;
+      box-shadow: 0 4px 12px var(--primary-blue-glow);
     }
 
     /* ═══════════════════════════════════════════════════════════════
        QUICK VIEW MODAL
     ═══════════════════════════════════════════════════════════════ */
-    .modal-backdrop {
+    .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(10px);
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(8px);
       z-index: 1000;
       display: flex;
       align-items: center;
@@ -677,41 +671,39 @@
       visibility: hidden;
       transition: all 0.3s ease;
     }
-    .modal-backdrop.open {
+    .modal-overlay.open {
       opacity: 1;
       visibility: visible;
     }
-    .modal-window {
-      background: var(--bg-card);
-      border: 1px solid var(--border-glow);
+    .modal-content {
+      background: #ffffff;
       border-radius: var(--radius-xl);
-      max-width: 760px;
+      max-width: 740px;
       width: 100%;
       max-height: 90vh;
       overflow-y: auto;
-      box-shadow: var(--shadow-lg), 0 0 50px var(--purple-glow);
+      box-shadow: var(--shadow-hover);
       position: relative;
-      padding: 24px;
+      padding: 28px;
       display: grid;
       grid-template-columns: 1fr;
       gap: 24px;
     }
     @media (min-width: 680px) {
-      .modal-window {
+      .modal-content {
         grid-template-columns: 1fr 1fr;
-        padding: 32px;
       }
     }
-    .modal-close-btn {
+    .modal-close {
       position: absolute;
       top: 16px;
       right: 16px;
-      width: 34px;
-      height: 34px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
-      background: var(--bg-elevated);
-      border: 1px solid var(--border);
-      color: var(--text);
+      background: #f1f5f9;
+      border: none;
+      color: #0f172a;
       font-size: 1.2rem;
       cursor: pointer;
       display: flex;
@@ -719,133 +711,128 @@
       justify-content: center;
       z-index: 10;
     }
-    .modal-media-frame {
+    .modal-img-frame {
       aspect-ratio: 1 / 1;
       border-radius: var(--radius-lg);
       overflow: hidden;
-      background: var(--bg-elevated);
+      background: #f8fafc;
     }
-    .modal-media-img {
+    .modal-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-    .modal-info-col {
+    .modal-details {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 16px;
+      gap: 14px;
     }
-    .modal-title {
+    .modal-product-title {
       font-family: var(--display);
       font-size: 1.4rem;
       font-weight: 800;
       line-height: 1.25;
+      color: #0f172a;
     }
-    .modal-desc {
-      font-size: 0.85rem;
-      color: var(--text-muted);
+    .modal-product-desc {
+      font-size: 0.88rem;
+      color: var(--text-sub);
       line-height: 1.6;
     }
-    .bundle-offer-box {
-      background: rgba(139, 92, 246, 0.1);
-      border: 1px dashed var(--purple);
+    .modal-offer-box {
+      background: #f8fafc;
+      border: 1px dashed rgba(37, 99, 235, 0.4);
       border-radius: var(--radius-md);
-      padding: 12px 14px;
+      padding: 12px;
       font-size: 0.8rem;
-    }
-    .bundle-title {
-      font-weight: 800;
-      color: var(--purple-light);
-      margin-bottom: 4px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      color: var(--text-sub);
     }
 
     /* ═══════════════════════════════════════════════════════════════
-       CART SLIDE-OVER DRAWER
+       CART DRAWER
     ═══════════════════════════════════════════════════════════════ */
-    .cart-drawer-overlay {
+    .cart-drawer-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.65);
+      background: rgba(15, 23, 42, 0.5);
       backdrop-filter: blur(6px);
       z-index: 2000;
       opacity: 0;
       visibility: hidden;
       transition: all 0.3s ease;
     }
-    .cart-drawer-overlay.open {
+    .cart-drawer-backdrop.open {
       opacity: 1;
       visibility: visible;
     }
-    .cart-drawer {
+    .cart-drawer-panel {
       position: fixed;
       top: 0;
       right: 0;
       bottom: 0;
       width: 100%;
       max-width: 420px;
-      background: var(--bg-card);
+      background: #ffffff;
       border-left: 1px solid var(--border);
       z-index: 2001;
       transform: translateX(100%);
-      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+      transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
       display: flex;
       flex-direction: column;
+      box-shadow: var(--shadow-hover);
     }
-    .cart-drawer.open {
+    .cart-drawer-panel.open {
       transform: translateX(0);
     }
-    .cart-drawer-head {
+    .cart-head {
       padding: 20px;
       border-bottom: 1px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-    .cart-drawer-title {
+    .cart-head-title {
       font-family: var(--display);
       font-size: 1.2rem;
       font-weight: 800;
     }
-    .cart-drawer-body {
+    .cart-body-items {
       flex: 1;
       overflow-y: auto;
       padding: 20px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
     }
-    .cart-item-row {
+    .cart-row {
       display: flex;
       gap: 12px;
       align-items: center;
-      background: var(--bg-elevated);
+      background: #f8fafc;
       padding: 10px;
       border-radius: var(--radius-md);
       border: 1px solid var(--border);
     }
-    .cart-item-thumb {
+    .cart-row-thumb {
       width: 60px;
       height: 60px;
       border-radius: var(--radius-sm);
       object-fit: cover;
     }
-    .cart-item-details {
+    .cart-row-info {
       flex: 1;
     }
-    .cart-item-name {
+    .cart-row-title {
       font-size: 0.82rem;
       font-weight: 700;
     }
-    .cart-item-price {
+    .cart-row-price {
       font-size: 0.78rem;
-      color: var(--purple-light);
+      color: var(--primary-blue);
       font-weight: 800;
     }
-    .cart-item-qty {
+    .cart-qty-ctrl {
       display: flex;
       align-items: center;
       gap: 6px;
@@ -856,19 +843,19 @@
       height: 22px;
       border-radius: 4px;
       border: 1px solid var(--border);
-      background: var(--bg-card);
-      color: var(--text);
+      background: #ffffff;
+      color: #0f172a;
       cursor: pointer;
     }
-    .cart-drawer-foot {
+    .cart-foot {
       padding: 20px;
       border-top: 1px solid var(--border);
+      background: #f8fafc;
       display: flex;
       flex-direction: column;
       gap: 12px;
-      background: var(--bg-elevated);
     }
-    .cart-total-row {
+    .cart-total-line {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -877,11 +864,11 @@
       font-weight: 800;
     }
 
-    .btn-checkout-shopify {
+    .btn-pay-shopify {
       width: 100%;
-      height: 50px;
-      background: linear-gradient(135deg, var(--purple), #a855f7);
-      color: #fff;
+      height: 48px;
+      background: #0f172a;
+      color: #ffffff;
       font-family: var(--sans);
       font-size: 0.92rem;
       font-weight: 800;
@@ -892,25 +879,23 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      box-shadow: 0 6px 20px var(--purple-glow);
-      transition: all 0.25s ease;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25);
+      transition: all 0.2s ease;
     }
-    .btn-checkout-shopify:hover {
-      transform: scale(1.02);
-      box-shadow: 0 8px 30px var(--purple);
+    .btn-pay-shopify:hover {
+      background: #1e293b;
+      transform: translateY(-1px);
     }
-    .btn-checkout-wa {
+    .btn-pay-whatsapp {
       width: 100%;
       height: 44px;
-      background: #054c44;
-      border: 1px solid #128c7e;
-      color: #fff;
+      background: #059669;
+      color: #ffffff;
       font-family: var(--sans);
-      font-size: 0.82rem;
+      font-size: 0.85rem;
       font-weight: 700;
       border-radius: var(--radius-full);
+      border: none;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -918,73 +903,41 @@
       gap: 8px;
       text-decoration: none;
     }
+    .btn-pay-whatsapp:hover {
+      background: #047857;
+    }
 
     /* ═══════════════════════════════════════════════════════════════
-       TRUST BADGES & REVIEWS
+       FOOTER
     ═══════════════════════════════════════════════════════════════ */
-    .trust-strip {
-      background: var(--bg-card);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 30px 20px;
-      margin-bottom: 60px;
-    }
-    .trust-grid {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-    @media (min-width: 768px) {
-      .trust-grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
-    .trust-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .trust-icon {
-      font-size: 1.8rem;
-    }
-    .trust-title {
-      font-size: 0.85rem;
-      font-weight: 800;
-    }
-    .trust-sub {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-    }
-
-    /* Footer */
     .site-footer {
-      background: #050508;
-      border-top: 1px solid var(--border);
+      background: #0f172a;
+      color: #94a3b8;
       padding: 40px 20px;
       text-align: center;
       font-size: 0.8rem;
-      color: var(--text-muted);
+    }
+    .site-footer strong {
+      color: #ffffff;
     }
   </style>
 </head>
 <body>
 
-  <!-- ANNOUNCEMENT BAR -->
+  <!-- TOP ANNOUNCEMENT BAR -->
   <div class="announcement-bar">
     <span class="announcement-dot"></span>
-    <span>🚚 Envíos Gratis a todo México en compras mayores a $899 MXN · Entrega garantizada en 24-48 hrs</span>
+    <span>🚚 Envíos Express a todo México en 24-48 hrs por DHL · Envío gratis en órdenes mayores a $899 MXN</span>
   </div>
 
-  <!-- HEADER -->
+  <!-- STICKY HEADER -->
   <header class="site-header">
     <div class="header-inner">
       <a href="#" class="logo-group">
-        <div class="logo-emblem">A</div>
+        <div class="logo-badge">N</div>
         <div>
-          <div class="logo-text">AURA</div>
-          <span class="logo-subtitle">Future Goods · Q4 Boutique</span>
+          <div class="logo-text">NOVA</div>
+          <span class="logo-tagline">Performance Goods · México</span>
         </div>
       </a>
 
@@ -997,141 +950,126 @@
     </div>
   </header>
 
-  <!-- HERO SHOWCASE -->
+  <!-- HERO: REAL ATHLETE & HIGH PERFORMANCE PRODUCT -->
   <section class="hero-section">
-    <div class="hero-glow"></div>
     <div class="hero-container">
       <div>
         <div class="hero-pill-badge">
-          <span>🔥</span> Producto Estrella · Octubre Místico
+          <span>⚡</span> Producto Ganador #1 en Ventas
         </div>
         <h1 class="hero-title">
-          Objetos que despiertan <span>deseo y emoción.</span>
+          Rendimiento real. <span>Sin intermediarios.</span>
         </h1>
         <p class="hero-desc">
-          Los 10 productos más virales y deseados de la temporada para Día de Muertos, Buen Fin y regalos de Navidad. Curados con valor percibido y diseño espacial.
+          Los gadgets deportivos, de recuperación muscular y bienestar que realmente funcionan. Probados por atletas y diseñados para tu día a día.
         </p>
 
-        <div class="hero-timer-card">
-          <div>
-            <div class="timer-label">Oferta de Lanzamiento Termina En:</div>
-            <div class="timer-digits" id="countdownTimer">04h : 28m : 15s</div>
-          </div>
-        </div>
-
-        <div class="hero-cta-group">
-          <button class="btn-hero-primary" onclick="quickBuy(0)">
-            <span>⚡ Comprar Lámpara Volcano ($680 MXN)</span>
+        <div class="hero-cta-row">
+          <button class="btn-hero-buy" onclick="quickBuy('hypergun-pro')">
+            <span>⚡ Comprar HyperGun Pro ($890 MXN)</span>
           </button>
-          <a href="#catalogo" class="btn-hero-secondary">
-            <span>Explorar los 10 Productos ➔</span>
+          <a href="#catalogo" class="btn-hero-explore">
+            <span>Ver Colección Completa ➔</span>
           </a>
         </div>
+
+        <div style="font-size:0.75rem; color:var(--text-muted); display:flex; align-items:center; gap:8px;">
+          <span>⭐⭐⭐⭐⭐</span> <strong>4.9 / 5</strong> (+2,100 reseñas en México)
+        </div>
       </div>
 
-      <!-- Hero Visual Card -->
-      <div class="hero-visual-card">
-        <img src="images/volcano-diffuser.jpg" alt="Lámpara Volcano Flame" class="hero-visual-img">
-        <div class="hero-visual-overlay">
-          <span class="hero-badge-tag">🔥 41% OFF · Lanzamiento</span>
-          <div class="hero-card-title">Difusor & Lámpara de Llama Volcánica</div>
-          <div class="hero-card-price">
-            <span class="hero-price-now">$680 MXN</span>
-            <span class="hero-price-old">$1,150 MXN</span>
+      <!-- Hero Visual: Real Athlete in Action -->
+      <div class="hero-media-wrap">
+        <img src="images/hero-athlete-massage.jpg" alt="Atleta usando HyperGun Pro" class="hero-media-img">
+        <div class="hero-media-badge">
+          <span class="hero-badge-dot"></span>
+          <div>
+            <strong style="font-size:0.85rem; display:block;">HyperGun Pro Max 3200RPM</strong>
+            <span style="font-size:0.72rem; color:#94a3b8;">Recuperación muscular instantánea · 6 cabezales</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TRUST STRIP -->
-  <section class="trust-strip">
-    <div class="trust-grid">
-      <div class="trust-item">
-        <span class="trust-icon">⚡</span>
-        <div>
-          <div class="trust-title">Envíos Rápidos</div>
-          <div class="trust-sub">24-48 hrs por DHL/FedEx</div>
-        </div>
-      </div>
-      <div class="trust-item">
-        <span class="trust-icon">🔒</span>
-        <div>
-          <div class="trust-title">Pago 100% Seguro</div>
-          <div class="trust-sub">Shopify Pay, Mercado Pago & OXXO</div>
-        </div>
-      </div>
-      <div class="trust-item">
-        <span class="trust-icon">🛡️</span>
-        <div>
-          <div class="trust-title">Garantía 30 Días</div>
-          <div class="trust-sub">Reemplazo o devolución directa</div>
-        </div>
-      </div>
-      <div class="trust-item">
-        <span class="trust-icon">⭐</span>
-        <div>
-          <div class="trust-title">4.9 / 5 Estrellas</div>
-          <div class="trust-sub">+1,400 clientes felices en MX</div>
-        </div>
-      </div>
+  <!-- CONTINUOUS MOVING SOCIAL PROOF LINE (TICKER) -->
+  <div class="ticker-section">
+    <div class="ticker-wrap" id="tickerTrack">
+      <div class="ticker-item"><span class="ticker-icon">⚡</span> <strong>Carlos M. (Zapopan)</strong> compró HyperGun Pro hace 2 min</div>
+      <div class="ticker-item"><span class="ticker-icon">⭐</span> <strong>Valeria S. (CDMX):</strong> "La mejor inversión para mis entrenamientos de maratón" (5/5)</div>
+      <div class="ticker-item"><span class="ticker-icon">🏃</span> <strong>+2,480 atletas y usuarios activos</strong> en México este mes</div>
+      <div class="ticker-item"><span class="ticker-icon">📦</span> <strong>Envío Express</strong> entregado en Monterrey hace 8 min</div>
+      <div class="ticker-item"><span class="ticker-icon">⚡</span> <strong>Mariana P. (Guadalajara)</strong> compró PureBlend Sport 500ml</div>
+      <div class="ticker-item"><span class="ticker-icon">🛡️</span> <strong>Garantía de 1 año</strong> y reemplazo inmediato</div>
+      <div class="ticker-item"><span class="ticker-icon">⭐</span> <strong>Diego H. (Puebla):</strong> "Llegó en 24 horas y la potencia es brutal" (5/5)</div>
+      <div class="ticker-item"><span class="ticker-icon">⚡</span> <strong>Sofía L. (Querétaro)</strong> compró AirFold 3 en 1 MagSafe</div>
+      <!-- Duplicate for infinite scroll loop -->
+      <div class="ticker-item"><span class="ticker-icon">⚡</span> <strong>Carlos M. (Zapopan)</strong> compró HyperGun Pro hace 2 min</div>
+      <div class="ticker-item"><span class="ticker-icon">⭐</span> <strong>Valeria S. (CDMX):</strong> "La mejor inversión para mis entrenamientos de maratón" (5/5)</div>
+      <div class="ticker-item"><span class="ticker-icon">🏃</span> <strong>+2,480 atletas y usuarios activos</strong> en México este mes</div>
+      <div class="ticker-item"><span class="ticker-icon">📦</span> <strong>Envío Express</strong> entregado en Monterrey hace 8 min</div>
+      <div class="ticker-item"><span class="ticker-icon">⚡</span> <strong>Mariana P. (Guadalajara)</strong> compró PureBlend Sport 500ml</div>
+      <div class="ticker-item"><span class="ticker-icon">🛡️</span> <strong>Garantía de 1 año</strong> y reemplazo inmediato</div>
+    </div>
+  </div>
+
+  <!-- SEARCH & CATEGORIES BAR -->
+  <section class="catalog-bar-section" id="catalogo">
+    <!-- Live Search Input -->
+    <div class="search-wrapper">
+      <svg class="search-icon-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      </svg>
+      <input type="text" class="search-input" id="searchInput" placeholder="Buscar por producto, deporte o beneficio…">
+    </div>
+
+    <!-- Category Chips -->
+    <div class="category-chips-track">
+      <button class="cat-chip active" data-cat="all">✨ Todos los Ganadores</button>
+      <button class="cat-chip" data-cat="deportes">🏃 Deportes & Fitness</button>
+      <button class="cat-chip" data-cat="tech">⚡ Smart Tech & Gadgets</button>
+      <button class="cat-chip" data-cat="bienestar">🧘 Bienestar & Hogar</button>
     </div>
   </section>
 
-  <!-- SEASONAL FILTER TABS -->
-  <section class="filter-section" id="catalogo">
-    <div class="filter-track">
-      <button class="filter-tab active" data-filter="all">✨ Todos los Ganadores (10)</button>
-      <button class="filter-tab" data-filter="octubre">🕯️ Día de Muertos & Halloween</button>
-      <button class="filter-tab" data-filter="buenfin">⚡ Buen Fin Tech & Hogar</button>
-      <button class="filter-tab" data-filter="navidad">🎁 Especial Regalos de Navidad</button>
-    </div>
-  </section>
-
-  <!-- PRODUCT GRID -->
-  <section class="products-section">
-    <div class="section-head">
-      <h2 class="section-title">Colección Curada Q4 2026</h2>
-      <p class="section-subtitle">Seleccionados por su efecto visual WOW, viralidad y utilidad real.</p>
-    </div>
-
+  <!-- PRODUCTS GRID -->
+  <section class="products-container">
     <div class="products-grid" id="productsGrid">
       <!-- Injected via JavaScript -->
     </div>
   </section>
 
   <!-- QUICK VIEW MODAL -->
-  <div class="modal-backdrop" id="quickModal">
-    <div class="modal-window">
-      <button class="modal-close-btn" id="closeModalBtn">&times;</button>
-      <div class="modal-media-frame">
-        <img src="" id="modalImg" alt="Producto" class="modal-media-img">
+  <div class="modal-overlay" id="quickModal">
+    <div class="modal-content">
+      <button class="modal-close" id="closeModalBtn">&times;</button>
+      <div class="modal-img-frame">
+        <img src="" id="modalImg" alt="Producto" class="modal-img">
       </div>
-      <div class="modal-info-col">
+      <div class="modal-details">
         <div>
-          <span class="product-cat-label" id="modalCat">Categoría</span>
-          <h3 class="modal-title" id="modalTitle">Nombre del Producto</h3>
-          <div class="product-rating" style="margin: 8px 0;">
-            <span>⭐⭐⭐⭐⭐</span> <strong style="color:#fff;">4.9</strong>
-            <span class="product-reviews-count" id="modalReviews">(184 reseñas verificadas)</span>
+          <span class="card-category-label" id="modalCat">Categoría</span>
+          <h3 class="modal-product-title" id="modalTitle">Nombre</h3>
+          <div class="card-rating-row" style="margin: 8px 0;">
+            <span>⭐⭐⭐⭐⭐</span> <strong style="color:#0f172a;">4.9</strong>
+            <span class="card-reviews-count" id="modalReviews">(+200 reseñas verificadas)</span>
           </div>
-          <div class="product-price-row" style="margin-bottom: 12px;">
-            <span class="price-current" id="modalPrice">$0 MXN</span>
-            <span class="price-original" id="modalOldPrice">$0 MXN</span>
+          <div class="card-price-row" style="margin-bottom: 12px;">
+            <span class="card-price-now" id="modalPrice">$0 MXN</span>
+            <span class="card-price-old" id="modalOldPrice">$0 MXN</span>
           </div>
-          <p class="modal-desc" id="modalDesc">Descripción completa del producto.</p>
+          <p class="modal-product-desc" id="modalDesc">Descripción.</p>
         </div>
 
-        <div class="bundle-offer-box">
-          <div class="bundle-title">🎁 Oferta en Paquete (Ahorra más)</div>
-          <span>Lleva 2 piezas para regalo y obtén un <strong>15% de descuento adicional</strong> al finalizar pedido.</span>
+        <div class="modal-offer-box">
+          <strong>🎁 Paquete Ahorro:</strong> Lleva 2 piezas y obtén un <strong>15% OFF adicional</strong> al pagar.
         </div>
 
         <div style="display:flex; gap:10px;">
-          <button class="btn-add-cart" id="modalAddToCartBtn" style="height:48px; font-size:0.88rem;">
+          <button class="btn-card-add" id="modalAddToCartBtn" style="height:46px;">
             🛒 Añadir al Carrito
           </button>
-          <button class="btn-hero-primary" id="modalBuyNowBtn" style="height:48px; padding:0 20px; font-size:0.85rem;">
+          <button class="btn-hero-buy" id="modalBuyNowBtn" style="height:46px; padding:0 20px; font-size:0.85rem;">
             ⚡ Comprar Ahora
           </button>
         </div>
@@ -1140,28 +1078,28 @@
   </div>
 
   <!-- CART DRAWER -->
-  <div class="cart-drawer-overlay" id="cartOverlay"></div>
-  <div class="cart-drawer" id="cartDrawer">
-    <div class="cart-drawer-head">
-      <span class="cart-drawer-title">🛒 Tu Carrito</span>
-      <button class="modal-close-btn" id="closeCartBtn" style="position:static;">&times;</button>
+  <div class="cart-drawer-backdrop" id="cartOverlay"></div>
+  <div class="cart-drawer-panel" id="cartDrawer">
+    <div class="cart-head">
+      <span class="cart-head-title">🛒 Tu Carrito</span>
+      <button class="modal-close" id="closeCartBtn" style="position:static;">&times;</button>
     </div>
 
-    <div class="cart-drawer-body" id="cartItemsList">
+    <div class="cart-body-items" id="cartItemsList">
       <!-- Items dynamically populated -->
     </div>
 
-    <div class="cart-drawer-foot">
-      <div class="cart-total-row">
+    <div class="cart-foot">
+      <div class="cart-total-line">
         <span>Total:</span>
-        <span id="cartTotalText" style="color:var(--purple-light);">$0 MXN</span>
+        <span id="cartTotalText" style="color:var(--primary-blue);">$0 MXN</span>
       </div>
 
-      <button class="btn-checkout-shopify" id="checkoutShopifyBtn">
+      <button class="btn-pay-shopify" id="checkoutShopifyBtn">
         🔒 Pagar Seguro (Shopify Checkout)
       </button>
 
-      <a href="#" class="btn-checkout-wa" id="checkoutWaBtn" target="_blank">
+      <a href="#" class="btn-pay-whatsapp" id="checkoutWaBtn" target="_blank">
         📲 Pedir en 1 Clic por WhatsApp
       </a>
     </div>
@@ -1169,177 +1107,179 @@
 
   <!-- FOOTER -->
   <footer class="site-footer">
-    <p><strong>AURA · Future Goods & Lifestyle</strong></p>
-    <p style="margin-top: 6px;">Envíos asegurados a todo México · Pagos protegidos vía SSL</p>
+    <p><strong>NOVA · Performance Goods México</strong></p>
+    <p style="margin-top: 6px;">Envíos asegurados por DHL & FedEx · Garantía de satisfacción de 30 días</p>
     <p style="margin-top: 12px; font-size:0.7rem; color:#64748b;">
-      © 2026 AURA Concept Store. Conectado a la infraestructura de cobro de Shopify & WhatsApp Express.
+      © 2026 NOVA Concept Store. Conectado a la infraestructura de cobro seguro de Shopify & WhatsApp Express.
     </p>
   </footer>
 
   <!-- SCRIPT -->
   <script>
     // ═══════════════════════════════════════════════════════════════
-    // 10 WINNING PRODUCTS DATA (Q4 2026)
+    // 10 WINNING HIGH-PERFORMANCE PRODUCTS
     // ═══════════════════════════════════════════════════════════════
     const PRODUCTS = [
       {
-        id: 'volcano-diffuser',
-        name: 'Difusor & Lámpara de Llama Volcánica',
-        category: 'octubre',
-        catLabel: '🕯️ Día de Muertos & Halloween',
-        price: 680,
-        oldPrice: 1150,
-        badge: '🔥 MÁS VENDIDO TIKTOK',
-        badgeClass: 'viral',
-        stock: 5,
+        id: 'hypergun-pro',
+        name: 'HyperGun Pro Max 3200RPM',
+        category: 'deportes',
+        catLabel: '🏃 Recuperación Muscular',
+        price: 890,
+        oldPrice: 1490,
+        badge: '🔥 #1 MÁS VENDIDO',
+        badgeClass: 'hot',
+        stock: 6,
         rating: 4.9,
-        reviews: 320,
-        img: 'images/volcano-diffuser.jpg',
-        desc: 'Simula fuego volcánico con niebla aromática en tono ámbar y violeta. Crea una atmósfera relajante y mística. Ideal para ofrendas modernas, salas y dormitorios.'
+        reviews: 485,
+        img: 'images/hero-athlete-massage.jpg',
+        desc: 'Pistola de masaje percusivo profundo con motor silencioso brushless de 3200 RPM, 6 cabezales intercambiables y batería de litio de 6 horas. Alivia agujetas y contracturas al instante.'
       },
       {
-        id: 'cosmos-astronaut',
-        name: 'Proyector Galáctico Astronauta 4K 360°',
-        category: 'octubre',
-        catLabel: '✨ Atmósfera & Fiesta',
-        price: 790,
-        oldPrice: 1390,
-        badge: '⭐ VIRAL DEL MES',
-        badgeClass: 'viral',
-        stock: 8,
-        rating: 4.9,
-        reviews: 412,
-        img: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&auto=format&fit=crop&q=80',
-        desc: 'Proyecta estrellas y nebulosas vivas en techos y paredes con lente óptica 4K. Cabeza magnética giratoria 360° y control remoto con temporizador.'
-      },
-      {
-        id: 'rgbic-neon-strip',
-        name: 'Tira de Neón LED Flexible RGBIC con Sonido',
-        category: 'octubre',
-        catLabel: '🎨 Decoración Inteligente',
-        price: 540,
-        oldPrice: 890,
-        badge: '39% OFF',
-        badgeClass: 'discount',
-        stock: 12,
-        rating: 4.8,
-        reviews: 195,
-        img: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=800&auto=format&fit=crop&q=80',
-        desc: 'Silicón difuso flexible estilo neón real de 5 metros. Sincroniza luces al ritmo de la música y se moldea fácilmente para letreros o marcos de altares.'
-      },
-      {
-        id: 'crystal-ice-sphere',
-        name: 'Molde de Esferas de Hielo Cristalino de Lujo',
-        category: 'buenfin',
-        catLabel: '🥃 Bar Secreto & Mixología',
-        price: 520,
-        oldPrice: 850,
-        badge: '🥃 TENDENCIA GOURMET',
-        badgeClass: 'viral',
-        stock: 7,
-        rating: 4.9,
-        reviews: 260,
-        img: 'https://images.unsplash.com/photo-1527061011665-3652c757a4d4?w=800&auto=format&fit=crop&q=80',
-        desc: 'Hielo 100% transparente sin burbujas mediante congelación direccional. Eleva cualquier trago de whiskey o coctelería al nivel de bar clandestino de lujo.'
-      },
-      {
-        id: 'pureblend-ultra',
-        name: 'Licuadora Portátil Magnética PureBlend 500ml',
-        category: 'buenfin',
-        catLabel: '⚡ Estilo de Vida & Gym',
+        id: 'pureblend-sport',
+        name: 'Licuadora Portátil PureBlend Sport 500ml',
+        category: 'deportes',
+        catLabel: '🏃 Fitness & Nutrición',
         price: 650,
         oldPrice: 1100,
-        badge: '40% OFF',
+        badge: '⚡ TENDENCIA GYM',
         badgeClass: 'discount',
         stock: 9,
+        rating: 4.9,
+        reviews: 320,
+        img: 'images/athlete-portable-blender.jpg',
+        desc: 'Prepara tu proteína y smoothies frescos en cualquier lugar. Base de carga magnética, cuchillas 6D de titanio trituradoras de hielo y tapa hermética deportiva con popote.'
+      },
+      {
+        id: 'smartfit-band',
+        name: 'SmartFit Pulse Pro GPS & Oxímetro 5ATM',
+        category: 'deportes',
+        catLabel: '🏃 Smart Fitness',
+        price: 780,
+        oldPrice: 1350,
+        badge: '42% OFF',
+        badgeClass: 'discount',
+        stock: 11,
         rating: 4.8,
-        reviews: 178,
-        img: 'https://images.unsplash.com/photo-1570222094114-d054a817e56b?w=800&auto=format&fit=crop&q=80',
-        desc: 'Cuchillas 6D de titanio con base de carga inalámbrica por inducción. Bate smoothies, proteína y hielo en segundos. Diseño minimalista pastel.'
+        reviews: 215,
+        img: 'https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=800&auto=format&fit=crop&q=80',
+        desc: 'Monitor deportivo completo con pantalla AMOLED, GPS integrado, lectura continua de ritmo cardíaco, SpO2, más de 100 modos deportivos y batería de 14 días.'
       },
       {
-        id: 'pocketseal-pro',
-        name: 'Sellador Térmico Recargable 2 en 1 PocketSeal',
-        category: 'buenfin',
-        catLabel: '💡 Gadget Útil de Cocina',
-        price: 320,
-        oldPrice: 590,
-        badge: '🔥 IMPULSO POPULAR',
-        badgeClass: 'viral',
-        stock: 14,
-        rating: 4.7,
+        id: 'airfold-magsafe',
+        name: 'Estación 3 en 1 MagSafe Plegable AirFold',
+        category: 'tech',
+        catLabel: '⚡ Smart Tech',
+        price: 790,
+        oldPrice: 1350,
+        badge: '✈️ IDEAL VIAJES',
+        badgeClass: 'hot',
+        stock: 8,
+        rating: 4.9,
         reviews: 310,
-        img: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800&auto=format&fit=crop&q=80',
-        desc: 'Sella herméticamente cualquier bolsa de botanas en 1 segundo y cuenta con navaja oculta para abrir paquetes. Recargable por USB-C.'
-      },
-      {
-        id: 'memoryglow-frame',
-        name: 'Marco Acrílico Digital de Video Infinito HD',
-        category: 'navidad',
-        catLabel: '🎁 Regalo Emocional #1',
-        price: 1280,
-        oldPrice: 2100,
-        badge: '❤️ REGALO PAREJAS',
-        badgeClass: 'viral',
-        stock: 4,
-        rating: 5.0,
-        reviews: 480,
-        img: 'images/digital-frame.jpg',
-        desc: 'Placa de acrílico ultra-transparente con pantalla LCD IPS 1080p y bocinas. Sube tus videos favoritos desde la computadora y reprodúcelos en bucle eterno.'
+        img: 'https://images.unsplash.com/photo-1622445268462-349711fc588c?w=800&auto=format&fit=crop&q=80',
+        desc: 'Estructura plegable en aluminio aeroespacial. Carga simultáneamente tu iPhone con MagSafe 15W, Apple Watch y AirPods sin cables enredados.'
       },
       {
         id: 'gspeaker-matrix',
         name: 'Lámpara G-Speaker Matrix 4 en 1 con Carga 15W',
-        category: 'navidad',
-        catLabel: '🎵 Tech & Buró de Noche',
+        category: 'tech',
+        catLabel: '⚡ Smart Tech & Audio',
         price: 840,
         oldPrice: 1450,
         badge: '⭐ TOP VENTAS',
-        badgeClass: 'viral',
-        stock: 6,
+        badgeClass: 'hot',
+        stock: 7,
         rating: 4.9,
         reviews: 295,
         img: 'images/gspeaker-lamp.jpg',
-        desc: 'Lámpara ambiental con 256 colores, bocina Bluetooth de alta fidelidad, cargador inalámbrico rápido de 15W y reloj despertador con simulación de amanecer.'
+        desc: 'Lámpara ambiental con 256 modos de luz, bocina Bluetooth de alta fidelidad, cargador inalámbrico rápido de 15W y reloj despertador con simulación de amanecer.'
       },
       {
-        id: 'airfold-magsafe',
-        name: 'Estación de Carga 3 en 1 Plegable AirFold Pro',
-        category: 'navidad',
-        catLabel: '✈️ Apple & Viajes',
-        price: 790,
-        oldPrice: 1350,
-        badge: '41% OFF',
-        badgeClass: 'discount',
-        stock: 11,
+        id: 'volcano-diffuser',
+        name: 'Difusor & Lámpara de Llama Volcánica',
+        category: 'bienestar',
+        catLabel: '🧘 Bienestar & Atmósfera',
+        price: 680,
+        oldPrice: 1150,
+        badge: '🔥 VIRAL TIKTOK',
+        badgeClass: 'hot',
+        stock: 5,
         rating: 4.9,
-        reviews: 220,
-        img: 'https://images.unsplash.com/photo-1622445268462-349711fc588c?w=800&auto=format&fit=crop&q=80',
-        desc: 'Aluminio aeroespacial plegable que cabe en el bolsillo. Carga simultáneamente iPhone con MagSafe, Apple Watch y AirPods con un solo cable.'
+        reviews: 410,
+        img: 'images/volcano-diffuser.jpg',
+        desc: 'Simula fuego volcánico con niebla aromática en tono ámbar y violeta. Crea una atmósfera relajante de meditación y aromaterapia en salas y dormitorios.'
       },
       {
         id: 'pulse-relief-ems',
         name: 'Masajeador Cervical Térmico PulseRelief EMS',
-        category: 'navidad',
-        catLabel: '💆 Bienestar & Anti-Estrés',
+        category: 'bienestar',
+        catLabel: '🧘 Bienestar & Anti-Estrés',
         price: 690,
         oldPrice: 1200,
-        badge: '💆 REGALO MAMÁ / PAPÁ',
-        badgeClass: 'viral',
+        badge: '💆 ALIVIO EN 15 MIN',
+        badgeClass: 'hot',
         stock: 8,
         rating: 4.8,
-        reviews: 165,
+        reviews: 195,
         img: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&auto=format&fit=crop&q=80',
-        desc: 'Terapia de pulso electromagnético de baja frecuencia con calor constante a 42°C. Alivia la tensión del cuello y hombros en sesiones de 15 minutos.'
+        desc: 'Terapia de pulso electromagnético de baja frecuencia con calor infrarrojo constante a 42°C. Alivia la tensión del cuello y hombros en sesiones de 15 minutos.'
+      },
+      {
+        id: 'memoryglow-frame',
+        name: 'Marco Acrílico Digital de Video Infinito HD',
+        category: 'bienestar',
+        catLabel: '🎁 Regalo & Recuerdos',
+        price: 1280,
+        oldPrice: 2100,
+        badge: '❤️ REGALO #1',
+        badgeClass: 'hot',
+        stock: 4,
+        rating: 5.0,
+        reviews: 480,
+        img: 'images/digital-frame.jpg',
+        desc: 'Placa acrílica ultra-transparente con pantalla LCD IPS 1080p y bocinas. Sube tus videos favoritos desde la computadora y reprodúcelos en bucle continuo.'
+      },
+      {
+        id: 'crystal-ice-sphere',
+        name: 'Molde de Esferas de Hielo Cristalino de Lujo',
+        category: 'bienestar',
+        catLabel: '🥃 Mixología & Hogar',
+        price: 520,
+        oldPrice: 850,
+        badge: '38% OFF',
+        badgeClass: 'discount',
+        stock: 7,
+        rating: 4.9,
+        reviews: 260,
+        img: 'https://images.unsplash.com/photo-1527061011665-3652c757a4d4?w=800&auto=format&fit=crop&q=80',
+        desc: 'Hielo 100% transparente sin burbujas mediante congelación direccional. Eleva cualquier trago de whiskey o coctelería al nivel de bar de alta gama.'
+      },
+      {
+        id: 'pocketseal-pro',
+        name: 'Sellador Térmico Recargable PocketSeal Pro',
+        category: 'bienestar',
+        catLabel: '💡 Hogar Práctico',
+        price: 320,
+        oldPrice: 590,
+        badge: '45% OFF',
+        badgeClass: 'discount',
+        stock: 14,
+        rating: 4.7,
+        reviews: 310,
+        img: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800&auto=format&fit=crop&q=80',
+        desc: 'Sella herméticamente bolsas de alimentos en 1 segundo y cuenta con navaja oculta para abrir paquetes. Recargable por USB-C.'
       }
     ];
 
-    // Cart state
     let cart = [];
+    let currentFilter = 'all';
+    let searchQuery = '';
 
-    // DOM Elements
     const grid = document.getElementById('productsGrid');
-    const filterTabs = document.querySelectorAll('.filter-tab');
+    const catChips = document.querySelectorAll('.cat-chip');
+    const searchInput = document.getElementById('searchInput');
+
     const quickModal = document.getElementById('quickModal');
     const closeModalBtn = document.getElementById('closeModalBtn');
     const modalImg = document.getElementById('modalImg');
@@ -1362,66 +1302,102 @@
     const checkoutWaBtn = document.getElementById('checkoutWaBtn');
     const checkoutShopifyBtn = document.getElementById('checkoutShopifyBtn');
 
-    let currentSelectedProduct = null;
-
-    // Render Grid
-    function renderProducts(filter = 'all') {
+    function renderProducts() {
       grid.innerHTML = '';
-      const filtered = filter === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.category === filter);
+      const filtered = PRODUCTS.filter(p => {
+        const matchesCat = (currentFilter === 'all') || (p.category === currentFilter);
+        const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                              p.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                              p.catLabel.toLowerCase().includes(searchQuery.toLowerCase());
+        return matchesCat && matchesSearch;
+      });
 
-      filtered.forEach((p, idx) => {
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: var(--text-muted);">
+            <div style="font-size:2.5rem; margin-bottom:10px;">🔍</div>
+            <h3 style="font-size:1.1rem; color:var(--text);">No encontramos productos que coincidan</h3>
+            <p style="font-size:0.85rem; margin-top:4px;">Intenta buscando con otra palabra clave o categoría.</p>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach((p) => {
         const card = document.createElement('div');
         card.className = 'product-card';
         card.innerHTML = `
-          <div class="product-thumb-frame">
-            <span class="card-badge-top ${p.badgeClass}">${p.badge}</span>
-            <img src="${p.img}" alt="${p.name}" class="product-thumb-img" loading="lazy">
+          <div class="card-thumb-frame">
+            <span class="badge-float ${p.badgeClass}">${p.badge}</span>
+            <img src="${p.img}" alt="${p.name}" class="card-thumb-img" loading="lazy">
           </div>
-          <div class="product-card-body">
+          <div class="card-body">
             <div>
-              <span class="product-cat-label">${p.catLabel}</span>
-              <h3 class="product-name">${p.name}</h3>
-              <div class="product-rating">
-                <span>⭐⭐⭐⭐⭐</span> <strong style="color:#fff;">${p.rating}</strong>
-                <span class="product-reviews-count">(${p.reviews})</span>
+              <span class="card-category-label">${p.catLabel}</span>
+              <h3 class="card-title">${p.name}</h3>
+              <div class="card-rating-row">
+                <span>⭐⭐⭐⭐⭐</span> <strong style="color:#0f172a;">${p.rating}</strong>
+                <span class="card-reviews-count">(${p.reviews})</span>
               </div>
-              <div class="product-stock-bar">
-                <span class="stock-label">🔥 Solo quedan ${p.stock} piezas</span>
+              <div class="card-stock-hint">
+                <span>⚡ Solo quedan ${p.stock} piezas disponibles</span>
               </div>
-              <div class="product-price-row">
-                <span class="price-current">$${p.price.toLocaleString('es-MX')} MXN</span>
-                <span class="price-original">$${p.oldPrice.toLocaleString('es-MX')} MXN</span>
+              <div class="card-price-row">
+                <span class="card-price-now">$${p.price.toLocaleString('es-MX')} MXN</span>
+                <span class="card-price-old">$${p.oldPrice.toLocaleString('es-MX')} MXN</span>
               </div>
             </div>
 
-            <div class="card-actions-row">
-              <button class="btn-quick-view" onclick="openQuickView('${p.id}')">
+            <div class="card-btn-row">
+              <button class="btn-card-quick" onclick="openQuickView('${p.id}')">
                 👁️ Vista Rápida
               </button>
-              <button class="btn-add-cart" onclick="addToCart('${p.id}')">
+              <button class="btn-card-add" onclick="addToCart('${p.id}')">
                 + Añadir
               </button>
             </div>
           </div>
         `;
+
+        // 3D Card Tilt effect
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = ((y - centerY) / centerY) * -6;
+          const rotateY = ((x - centerX) / centerX) * 6;
+          card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0)';
+        });
+
         grid.appendChild(card);
       });
     }
 
-    // Filter clicks
-    filterTabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        filterTabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        renderProducts(tab.dataset.filter);
+    // Category Filter Clicks
+    catChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        catChips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        currentFilter = chip.dataset.cat;
+        renderProducts();
       });
+    });
+
+    // Live Search
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value.trim();
+      renderProducts();
     });
 
     // Quick View Modal
     window.openQuickView = function(productId) {
       const p = PRODUCTS.find(x => x.id === productId);
       if (!p) return;
-      currentSelectedProduct = p;
 
       modalImg.src = p.img;
       modalCat.textContent = p.catLabel;
@@ -1453,15 +1429,12 @@
     });
 
     // Quick Buy from Hero
-    window.quickBuy = function(index) {
-      const p = PRODUCTS[index];
-      if (p) {
-        addToCart(p.id);
-        openCartDrawer();
-      }
+    window.quickBuy = function(productId) {
+      addToCart(productId);
+      openCartDrawer();
     };
 
-    // Cart Management
+    // Cart Logic
     window.addToCart = function(productId) {
       const p = PRODUCTS.find(x => x.id === productId);
       if (!p) return;
@@ -1483,10 +1456,10 @@
 
       if (cart.length === 0) {
         cartItemsList.innerHTML = `
-          <div style="text-align:center; padding: 40px 20px; color: var(--text-muted);">
-            <div style="font-size:2.5rem; margin-bottom:8px;">🛍️</div>
-            <p>Tu carrito está vacío.</p>
-            <p style="font-size:0.75rem; margin-top:4px;">Explora los 10 productos de temporada.</p>
+          <div style="text-align:center; padding: 50px 20px; color: var(--text-muted);">
+            <div style="font-size:2.8rem; margin-bottom:8px;">🛍️</div>
+            <p style="font-weight:700; color:#0f172a;">Tu carrito está vacío</p>
+            <p style="font-size:0.8rem; margin-top:4px;">Explora los productos de alto rendimiento.</p>
           </div>
         `;
         cartTotalText.textContent = '$0 MXN';
@@ -1501,18 +1474,18 @@
         const subtotal = item.price * item.qty;
         total += subtotal;
         html += `
-          <div class="cart-item-row">
-            <img src="${item.img}" class="cart-item-thumb" alt="${item.name}">
-            <div class="cart-item-details">
-              <div class="cart-item-name">${item.name}</div>
-              <div class="cart-item-price">$${item.price.toLocaleString('es-MX')} MXN</div>
-              <div class="cart-item-qty">
+          <div class="cart-row">
+            <img src="${item.img}" class="cart-row-thumb" alt="${item.name}">
+            <div class="cart-row-info">
+              <div class="cart-row-title">${item.name}</div>
+              <div class="cart-row-price">$${item.price.toLocaleString('es-MX')} MXN</div>
+              <div class="cart-qty-ctrl">
                 <button class="cart-qty-btn" onclick="adjustCartQty(${idx}, -1)">-</button>
                 <span style="font-size:0.8rem; font-weight:700;">${item.qty}</span>
                 <button class="cart-qty-btn" onclick="adjustCartQty(${idx}, 1)">+</button>
               </div>
             </div>
-            <span style="font-family:var(--display); font-size:0.9rem; font-weight:800;">$${subtotal.toLocaleString('es-MX')}</span>
+            <span style="font-family:var(--display); font-size:0.95rem; font-weight:800; color:#0f172a;">$${subtotal.toLocaleString('es-MX')}</span>
           </div>
         `;
       });
@@ -1522,14 +1495,14 @@
       checkoutWaBtn.style.display = 'flex';
       checkoutShopifyBtn.style.display = 'flex';
 
-      // Update WhatsApp link with order text
+      // WhatsApp link
       const PHONE = '523321222772';
-      let msg = '🛍️ *Nuevo Pedido en AURA Store*\n\n';
+      let msg = '🛍️ *Nuevo Pedido en NOVA Performance Goods*\n\n';
       cart.forEach(item => {
-        msg += `• ${item.name} × ${item.qty} — $${(item.price * item.qty).toLocaleString('es-MX')} MXN\n`;
+        msg += `• *${item.name}* × ${item.qty} — $${(item.price * item.qty).toLocaleString('es-MX')} MXN\n`;
       });
       msg += `\n💰 *Total: $${total.toLocaleString('es-MX')} MXN*\n`;
-      msg += '📦 *Envío Express a México*\n\nHola Alex, quiero completar mi compra de estos productos.';
+      msg += '📦 *Envío Express a México*\n\nHola, quiero completar mi compra.';
       checkoutWaBtn.href = `https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`;
     }
 
@@ -1555,28 +1528,13 @@
     closeCartBtn.addEventListener('click', closeCartDrawer);
     cartOverlay.addEventListener('click', closeCartDrawer);
 
-    // Shopify checkout button click
     checkoutShopifyBtn.addEventListener('click', () => {
-      alert('🛒 Conectando con Shopify Checkout seguro...\n\n(En tu tienda Shopify de $1 USD se asociará automáticamente a tu pasarela de Mercado Pago / Tarjeta). Redirigiendo a confirmación...');
+      alert('🔒 Redirigiendo a pasarela segura Shopify Checkout (Mercado Pago, Tarjeta de Crédito/Débito y OXXO Pay)...');
     });
 
-    // Countdown timer
-    function startCountdown() {
-      let seconds = 4 * 3600 + 28 * 60 + 15;
-      setInterval(() => {
-        if (seconds > 0) seconds--;
-        const h = Math.floor(seconds / 3600);
-        const m = Math.floor((seconds % 3600) / 60);
-        const s = seconds % 60;
-        document.getElementById('countdownTimer').textContent = 
-          `${h < 10 ? '0' : ''}${h}h : ${m < 10 ? '0' : ''}${m}m : ${s < 10 ? '0' : ''}${s}s`;
-      }, 1000);
-    }
-
-    // Init
+    // Initialize
     renderProducts();
     updateCartUI();
-    startCountdown();
   </script>
 </body>
 </html>
