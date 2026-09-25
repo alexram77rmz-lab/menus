@@ -23,6 +23,8 @@
   <!-- GSAP 3 + ScrollTrigger para Física Anti-Gravity -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <!-- Three.js WebGL Engine para Inspección 3D Fotorrealista y Realidad Aumentada -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
   <style>
     :root, [data-theme="light"] {
@@ -2566,6 +2568,543 @@
       box-shadow: 0 0 8px #10b981;
       animation: pulseNeon 2s infinite ease-in-out;
     }
+
+    /* ========================================================================= */
+    /* ESTUDIO 3D GOURMET & AR TABLETOP (SANDYLABS / AWWWARDS GRADE)             */
+    /* ========================================================================= */
+    .btn-dish-3d-inspect {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      width: 100%;
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.16) 0%, rgba(217, 119, 6, 0.08) 100%);
+      border: 1px solid var(--border-glow);
+      color: var(--neon-amber);
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 9px 14px;
+      border-radius: 12px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    .btn-dish-3d-inspect:hover {
+      background: linear-gradient(135deg, var(--neon-amber) 0%, #d97706 100%);
+      color: #08080a;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px var(--neon-amber-glow);
+    }
+    .dish-pair-chip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px dashed var(--border-subtle);
+      border-radius: 10px;
+      padding: 6px 10px;
+      margin-top: 8px;
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .dish-pair-chip:hover {
+      background: rgba(245, 158, 11, 0.08);
+      border-color: var(--neon-amber);
+      color: var(--text-pure);
+    }
+    .chip-add-action {
+      font-weight: 800;
+      color: var(--neon-amber);
+      font-size: 0.72rem;
+    }
+
+    /* MODAL ESTUDIO 3D GOURMET */
+    .studio3d-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 300;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+    .studio3d-backdrop.open {
+      display: flex;
+      opacity: 1;
+    }
+    .studio3d-window {
+      background: linear-gradient(180deg, #13131a 0%, #09090d 100%);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      border-radius: 26px;
+      width: 100%;
+      max-width: 920px;
+      max-height: 92vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9), 0 0 40px rgba(245, 158, 11, 0.15);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .studio3d-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 20px 24px 14px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .studio3d-badge {
+      font-family: var(--mono, monospace);
+      font-size: 0.70rem;
+      font-weight: 800;
+      color: var(--neon-amber);
+      background: rgba(245, 158, 11, 0.14);
+      padding: 3px 10px;
+      border-radius: 6px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+    .studio3d-brand h3 {
+      font-family: var(--heading);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-top: 4px;
+    }
+    .studio3d-brand p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+    .studio3d-head-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .studio-head-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-subtle);
+      color: #cbd5e1;
+      padding: 8px 14px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .studio-head-btn:hover {
+      background: rgba(245, 158, 11, 0.15);
+      border-color: var(--neon-amber);
+      color: var(--neon-amber);
+    }
+    .studio-head-btn.active {
+      background: rgba(245, 158, 11, 0.25);
+      border-color: var(--neon-amber);
+      color: #fef08a;
+      box-shadow: 0 0 12px var(--neon-amber-glow);
+    }
+    .studio-close-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: none;
+      color: #ffffff;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+    .studio-close-btn:hover {
+      background: #ef4444;
+      transform: rotate(90deg);
+    }
+
+    /* ESCENARIO 3D */
+    .studio3d-stage {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      min-height: 320px;
+      background: radial-gradient(circle at 50% 45%, #1f1f28 0%, #0d0d12 65%, #050508 100%);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #studio3dCanvas {
+      width: 100%;
+      height: 100%;
+      cursor: grab;
+      touch-action: none;
+      position: relative;
+      z-index: 2;
+    }
+    #studio3dCanvas:active { cursor: grabbing; }
+
+    .ar-camera-feed {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+      display: none;
+    }
+
+    .studio3d-floating-overlay {
+      position: absolute;
+      top: 14px;
+      left: 18px;
+      right: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      pointer-events: none;
+      z-index: 10;
+    }
+    .studio-steam-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--mono, monospace);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #fef08a;
+      background: rgba(13, 13, 18, 0.75);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      padding: 4px 10px;
+      border-radius: 20px;
+      backdrop-filter: blur(8px);
+    }
+    .pulse-fire-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #f59e0b;
+      box-shadow: 0 0 8px #f59e0b;
+      animation: pulseNeon 1.5s infinite;
+    }
+    .studio-hint-pill {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      background: rgba(13, 13, 18, 0.7);
+      padding: 4px 10px;
+      border-radius: 20px;
+      backdrop-filter: blur(8px);
+    }
+
+    .studio3d-cam-controls {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 10;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 90%;
+      max-width: 600px;
+    }
+    .cam-preset-btn {
+      background: rgba(13, 13, 18, 0.85);
+      border: 1px solid var(--border-subtle);
+      color: #cbd5e1;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      transition: all 0.2s ease;
+    }
+    .cam-preset-btn:hover, .cam-preset-btn.active {
+      border-color: var(--neon-amber);
+      color: var(--neon-amber);
+      background: rgba(245, 158, 11, 0.15);
+    }
+    .btn-ar-mode {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.3) 0%, rgba(16, 185, 129, 0.3) 100%);
+      border-color: #38bdf8;
+      color: #ffffff;
+    }
+    .btn-ar-mode.ar-active {
+      background: #10b981;
+      border-color: #34d399;
+      color: #042f2e;
+      font-weight: 800;
+    }
+
+    /* DRAWER DE DETALLES DEL ESTUDIO 3D */
+    .studio3d-details-drawer {
+      padding: 22px 24px 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      background: #0d0d12;
+    }
+    .doneness-block {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 16px;
+    }
+    .doneness-label-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .doneness-label-row strong {
+      font-size: 0.88rem;
+      color: #ffffff;
+    }
+    .doneness-current-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--neon-amber);
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      padding: 3px 10px;
+      border-radius: 12px;
+    }
+    .doneness-buttons-track {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .doneness-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: #94a3b8;
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 9px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .doneness-btn:hover {
+      border-color: var(--neon-amber);
+      color: #ffffff;
+    }
+    .doneness-btn.active {
+      background: rgba(245, 158, 11, 0.2);
+      border-color: var(--neon-amber);
+      color: #fef08a;
+      box-shadow: 0 0 14px var(--neon-amber-glow);
+    }
+    .doneness-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+    .doneness-dot.red { background: #ef4444; }
+    .doneness-dot.pink { background: #f43f5e; }
+    .doneness-dot.orange { background: #f97316; }
+    .doneness-dot.brown { background: #854d0e; }
+    .doneness-desc-text {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      font-style: italic;
+    }
+
+    .studio-pairing-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      border-radius: 16px;
+      padding: 14px 18px;
+      flex-wrap: wrap;
+    }
+    .pairing-icon { font-size: 1.5rem; }
+    .pairing-content { flex: 1; min-width: 220px; }
+    .pairing-content strong {
+      display: block;
+      font-size: 0.84rem;
+      color: var(--neon-amber);
+      margin-bottom: 2px;
+    }
+    .pairing-content p {
+      font-size: 0.78rem;
+      color: #cbd5e1;
+    }
+    .btn-pair-bundle {
+      background: #d97706;
+      color: #ffffff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .btn-pair-bundle:hover {
+      background: #f59e0b;
+      color: #08080a;
+      box-shadow: 0 4px 14px var(--neon-amber-glow);
+    }
+
+    .studio-purchase-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 10px;
+      border-top: 1px solid var(--border-subtle);
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .studio-price-block { display: flex; flex-direction: column; }
+    .studio-price-lbl { font-size: 0.74rem; color: var(--text-muted); }
+    .studio-price-val { font-family: var(--heading); font-size: 1.5rem; font-weight: 800; color: #ffffff; }
+    .studio-order-actions { display: flex; align-items: center; gap: 12px; }
+    .btn-primary-studio-order {
+      background: linear-gradient(135deg, var(--neon-amber) 0%, #b45309 100%);
+      color: #08080a;
+      border: none;
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      font-weight: 800;
+      padding: 12px 22px;
+      border-radius: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 6px 20px var(--neon-amber-glow);
+      transition: all 0.2s ease;
+    }
+    .btn-primary-studio-order:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(245, 158, 11, 0.5);
+    }
+
+    /* ASMR TOGGLE BUTTON IN HEADER */
+    .asmr-toggle-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: #cbd5e1;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 7px 12px;
+      border-radius: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .asmr-toggle-btn.active {
+      background: rgba(245, 158, 11, 0.2);
+      border-color: var(--neon-amber);
+      color: #fef08a;
+      box-shadow: 0 0 12px var(--neon-amber-glow);
+    }
+
+    /* BILL SPLITTER IN CART */
+    .bill-splitter-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 12px 14px;
+      margin-top: 14px;
+    }
+    .splitter-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .split-stepper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .split-btn {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: #ffffff;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .split-result {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed rgba(255, 255, 255, 0.08);
+      font-size: 0.82rem;
+    }
+    .split-result strong {
+      font-family: var(--heading);
+      color: #38bdf8;
+      font-size: 0.95rem;
+    }
+
+    /* CORTES SECRETOS FUERA DE CARTA (MODAL VIP) */
+    .secret-cuts-banner {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(244, 63, 94, 0.08) 100%);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      border-radius: 16px;
+      padding: 16px 20px;
+      margin: 20px auto 0;
+      max-width: 1140px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .secret-cuts-btn {
+      background: var(--neon-amber);
+      color: #08080a;
+      border: none;
+      padding: 9px 18px;
+      border-radius: 12px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 15px var(--neon-amber-glow);
+    }
+    .table-speed-bar .speed-btn.highlight-gold {
+      background: rgba(245, 158, 11, 0.18);
+      border-color: var(--neon-amber);
+      color: var(--neon-amber);
+    }
   </style>
 </head>
 <body>
@@ -2655,6 +3194,11 @@
             <span>🌐</span> <span id="langBtnText">EN</span>
           </button>
 
+          <!-- ASMR BRASA & PARRILLA SOUND GENERATOR -->
+          <button type="button" class="asmr-toggle-btn" id="asmrBtn" onclick="toggleAsmrSound()" aria-label="Sonido ASMR Brasa" title="Activar/Silenciar Brasa ASMR">
+            <span id="asmrBtnIcon">🔥</span> <span id="asmrBtnText">ASMR Brasa</span>
+          </button>
+
           <div class="table-pill-indicator" id="tableBtn" onclick="promptTableChange()">
             <span class="radar-pulse-dot"></span>
             <span id="tableLabel">Mesa 4 · Terraza</span>
@@ -2719,11 +3263,31 @@
 
     <!-- QUICK SPEED-BAR -->
     <div class="table-speed-bar">
+      <button type="button" class="speed-btn highlight-gold" onclick="openStudio3D('tomahawk')">
+        <span>🥩</span> Estudio 3D en Mesa
+      </button>
+      <button type="button" class="speed-btn" onclick="openSecretCutsModal()">
+        <span>🔒</span> Cortes Fuera de Carta
+      </button>
       <button type="button" class="speed-btn" onclick="callWaiter()">
         <span>🛎️</span> Llamar al Mesero
       </button>
       <button type="button" class="speed-btn" onclick="requestBill()">
         <span>🧾</span> Solicitar la Cuenta
+      </button>
+    </div>
+
+    <!-- VIP SECRET CUTS BANNER -->
+    <div class="secret-cuts-banner">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span style="font-size: 1.8rem;">🔒</span>
+        <div>
+          <strong style="color: #ffffff; font-size: 0.95rem; display: block;">Reserva de Cava & Cortes de Selección Secreta</strong>
+          <span style="color: var(--text-muted); font-size: 0.78rem;">Wagyu A5 Miyazaki y Porterhouse con maduración 45 días disponibles hoy fuera de carta.</span>
+        </div>
+      </div>
+      <button type="button" class="secret-cuts-btn" onclick="openSecretCutsModal()">
+        <span>✨</span> Ver Cortes Exclusivos
       </button>
     </div>
 
@@ -2737,6 +3301,9 @@
         <div class="dish-mockup-frame">
           <span class="dish-floating-badge">⭐ Insignia del Chef</span>
           <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=900&auto=format&fit=crop&q=80" alt="Tomahawk Prime" class="dish-mockup-img" loading="lazy" decoding="async">
+          <button type="button" class="btn-dish-3d-inspect" onclick="openStudio3D('tomahawk')">
+            <span>🥩</span> Inspeccionar en 3D & Mesa
+          </button>
         </div>
         <div class="dish-card-body">
           <div>
@@ -2749,6 +3316,10 @@
               <span class="attribute-tag emerald">🌾 Sin Gluten</span>
               <span class="attribute-tag">🥩 95g Prot · 1,180 Kcal</span>
               <span class="attribute-tag">👥 Para 2-3 personas</span>
+            </div>
+            <div class="dish-pair-chip" onclick="addDishToCart('Gran Reserva Nebbiolo (Copa)', 190, 'maridaje-nebbiolo')">
+              <span>🍷 Maridaje: Gran Reserva Nebbiolo ($190)</span>
+              <span class="chip-add-action">+ Añadir</span>
             </div>
           </div>
           <div class="dish-purchase-row">
@@ -2768,6 +3339,9 @@
       <div class="anti-gravity-card float-speed-2" data-cat="cortes">
         <div class="dish-mockup-frame">
           <img src="https://images.unsplash.com/photo-1558030006-450675393462?w=900&auto=format&fit=crop&q=80" alt="Ribeye Prime" class="dish-mockup-img" loading="lazy" decoding="async">
+          <button type="button" class="btn-dish-3d-inspect" onclick="openStudio3D('ribeye')">
+            <span>🥩</span> Inspeccionar en 3D & Mesa
+          </button>
         </div>
         <div class="dish-card-body">
           <div>
@@ -2779,6 +3353,10 @@
             <div class="dish-attributes-cluster">
               <span class="attribute-tag emerald">🌾 Sin Gluten</span>
               <span class="attribute-tag">🥩 68g Prot · 740 Kcal</span>
+            </div>
+            <div class="dish-pair-chip" onclick="addDishToCart('Cabernet Sauvignon Roble (Copa)', 175, 'maridaje-cabernet')">
+              <span>🍷 Maridaje: Cabernet Sauvignon Roble ($175)</span>
+              <span class="chip-add-action">+ Añadir</span>
             </div>
           </div>
           <div class="dish-purchase-row">
@@ -2799,6 +3377,9 @@
         <div class="dish-mockup-frame">
           <span class="dish-floating-badge">🔥 Lo Más Pedido</span>
           <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&auto=format&fit=crop&q=80" alt="Brisket Burger" class="dish-mockup-img" loading="lazy" decoding="async">
+          <button type="button" class="btn-dish-3d-inspect" onclick="openStudio3D('brisket-burger')">
+            <span>🍔</span> Inspeccionar en 3D & Mesa
+          </button>
         </div>
         <div class="dish-card-body">
           <div>
@@ -2810,6 +3391,10 @@
             <div class="dish-attributes-cluster">
               <span class="attribute-tag">🥛 Lácteos</span>
               <span class="attribute-tag">🥩 48g Prot · 820 Kcal</span>
+            </div>
+            <div class="dish-pair-chip" onclick="addDishToCart('Cerveza Artesanal IPA Ahumada', 105, 'maridaje-ipa')">
+              <span>🍺 Maridaje: IPA Ahumada ($105)</span>
+              <span class="chip-add-action">+ Añadir</span>
             </div>
           </div>
           <div class="dish-purchase-row">
@@ -2829,6 +3414,9 @@
       <div class="anti-gravity-card float-speed-1" data-cat="burgers">
         <div class="dish-mockup-frame">
           <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=900&auto=format&fit=crop&q=80" alt="Costillas BBQ" class="dish-mockup-img" loading="lazy" decoding="async">
+          <button type="button" class="btn-dish-3d-inspect" onclick="openStudio3D('costillas')">
+            <span>🍖</span> Inspeccionar en 3D & Mesa
+          </button>
         </div>
         <div class="dish-card-body">
           <div>
@@ -2841,6 +3429,10 @@
               <span class="attribute-tag emerald">🌾 Sin Gluten</span>
               <span class="attribute-tag crimson">🌶️ Picor Suave</span>
               <span class="attribute-tag">🥩 62g Prot</span>
+            </div>
+            <div class="dish-pair-chip" onclick="addDishToCart('Cerveza Porter Tostada Artesanal', 110, 'maridaje-porter')">
+              <span>🍺 Maridaje: Porter Tostada ($110)</span>
+              <span class="chip-add-action">+ Añadir</span>
             </div>
           </div>
           <div class="dish-purchase-row">
@@ -2860,6 +3452,9 @@
       <div class="anti-gravity-card float-speed-2" data-cat="tacos">
         <div class="dish-mockup-frame">
           <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=900&auto=format&fit=crop&q=80" alt="Tacos Picaña" class="dish-mockup-img" loading="lazy" decoding="async">
+          <button type="button" class="btn-dish-3d-inspect" onclick="openStudio3D('tacos-picanha')">
+            <span>🌮</span> Inspeccionar en 3D & Mesa
+          </button>
         </div>
         <div class="dish-card-body">
           <div>
@@ -2872,6 +3467,10 @@
               <span class="attribute-tag emerald">🌾 Sin Gluten</span>
               <span class="attribute-tag crimson">🌶️🌶️ Picante Bravo</span>
               <span class="attribute-tag">🥩 38g Prot</span>
+            </div>
+            <div class="dish-pair-chip" onclick="addDishToCart('Mezcal Espadín Silvestre', 140, 'maridaje-mezcal')">
+              <span>🥃 Maridaje: Mezcal Espadín Silvestre ($140)</span>
+              <span class="chip-add-action">+ Añadir</span>
             </div>
           </div>
           <div class="dish-purchase-row">
@@ -2891,6 +3490,9 @@
       <div class="anti-gravity-card float-speed-3" data-cat="tacos">
         <div class="dish-mockup-frame">
           <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=900&auto=format&fit=crop&q=80" alt="Tuétanos" class="dish-mockup-img" loading="lazy" decoding="async">
+          <button type="button" class="btn-dish-3d-inspect" onclick="openStudio3D('tuetanos')">
+            <span>🔥</span> Inspeccionar en 3D & Mesa
+          </button>
         </div>
         <div class="dish-card-body">
           <div>
@@ -2902,6 +3504,10 @@
             <div class="dish-attributes-cluster">
               <span class="attribute-tag emerald">🌾 Sin Gluten</span>
               <span class="attribute-tag crimson">🌶️ Picor Medio</span>
+            </div>
+            <div class="dish-pair-chip" onclick="addDishToCart('Tequila Reposado Cristalino', 150, 'maridaje-tequila')">
+              <span>🥃 Maridaje: Tequila Reposado ($150)</span>
+              <span class="chip-add-action">+ Añadir</span>
             </div>
           </div>
           <div class="dish-purchase-row">
@@ -2922,6 +3528,9 @@
         <div class="dish-mockup-frame">
           <span class="dish-floating-badge">🍸 Coctel Insignia</span>
           <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=900&auto=format&fit=crop&q=80" alt="Smoked Mezcalita" class="dish-mockup-img" loading="lazy" decoding="async">
+          <button type="button" class="btn-dish-3d-inspect" onclick="openStudio3D('mezcalita')">
+            <span>🍸</span> Inspeccionar en 3D & Mesa
+          </button>
         </div>
         <div class="dish-card-body">
           <div>
@@ -2933,6 +3542,10 @@
             <div class="dish-attributes-cluster">
               <span class="attribute-tag emerald">🌾 Sin Gluten</span>
               <span class="attribute-tag">💨 Humo en Mesa</span>
+            </div>
+            <div class="dish-pair-chip" onclick="addDishToCart('Botana de Cecina Crujiente', 95, 'maridaje-cecina')">
+              <span>🥓 Maridaje: Cecina Crujiente ($95)</span>
+              <span class="chip-add-action">+ Añadir</span>
             </div>
           </div>
           <div class="dish-purchase-row">
@@ -2952,6 +3565,9 @@
       <div class="anti-gravity-card float-speed-2" data-cat="postres">
         <div class="dish-mockup-frame">
           <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=900&auto=format&fit=crop&q=80" alt="Volcán de Chocolate" class="dish-mockup-img" loading="lazy" decoding="async">
+          <button type="button" class="btn-dish-3d-inspect" onclick="openStudio3D('volcan')">
+            <span>🍫</span> Inspeccionar en 3D & Mesa
+          </button>
         </div>
         <div class="dish-card-body">
           <div>
@@ -2963,6 +3579,10 @@
             <div class="dish-attributes-cluster">
               <span class="attribute-tag">🥛 Lácteos</span>
               <span class="attribute-tag">🥜 Frutos Secos</span>
+            </div>
+            <div class="dish-pair-chip" onclick="addDishToCart('Carajillo al Carbón Flameado', 160, 'maridaje-carajillo')">
+              <span>☕ Maridaje: Carajillo al Carbón ($160)</span>
+              <span class="chip-add-action">+ Añadir</span>
             </div>
           </div>
           <div class="dish-purchase-row">
@@ -3201,6 +3821,22 @@
         <div class="order-summary-total">
           <span>Total a Pagar:</span>
           <span id="totalVal">$0 MXN</span>
+        </div>
+
+        <!-- BILL SPLITTER EN MESA -->
+        <div class="bill-splitter-card">
+          <div class="splitter-head">
+            <span>👥 Dividir la cuenta en mesa</span>
+            <div class="split-stepper">
+              <button type="button" class="split-btn" onclick="adjustSplit(-1)">-</button>
+              <span id="splitPeopleCount" style="font-weight: 800; color: #ffffff; min-width: 16px; text-align: center;">1</span>
+              <button type="button" class="split-btn" onclick="adjustSplit(1)">+</button>
+            </div>
+          </div>
+          <div class="split-result">
+            <span>Por persona (con propina):</span>
+            <strong id="splitPerPersonVal">$0 MXN</strong>
+          </div>
         </div>
 
         <button type="button" class="btn-fire-whatsapp-order" onclick="dispatchOrderWhatsApp()">
@@ -3593,6 +4229,140 @@
       </div>
     </div>
 
+    <!-- ======================================================================= -->
+    <!-- ESTUDIO 3D GOURMET & AR TABLETOP PROJECTION MODAL                        -->
+    <!-- ======================================================================= -->
+    <div class="studio3d-backdrop" id="studio3dModal" onclick="if(event.target === this) closeStudio3D();">
+      <div class="studio3d-window">
+        <!-- Encabezado del Estudio 3D -->
+        <div class="studio3d-head">
+          <div class="studio3d-brand">
+            <span class="studio3d-badge" id="studio3dBadge">Estudio 3D · WebGL PBR</span>
+            <h3 id="studio3dDishTitle">Tomahawk Prime Asado al Mezquite</h3>
+            <p id="studio3dDishSub">Inspección gastronómica 360° en plato de pizarra volcánica con humo vivo y maridaje sugerido.</p>
+          </div>
+          <div class="studio3d-head-actions">
+            <button type="button" class="studio-close-btn" onclick="closeStudio3D()" aria-label="Cerrar Estudio 3D">&times;</button>
+          </div>
+        </div>
+
+        <!-- Escenario 3D con Three.js y AR Cámara -->
+        <div class="studio3d-stage">
+          <video id="arVideoFeed" class="ar-camera-feed" autoplay playsinline muted></video>
+          <canvas id="studio3dCanvas"></canvas>
+
+          <div class="studio3d-floating-overlay">
+            <div class="studio-steam-indicator">
+              <span class="pulse-fire-dot"></span>
+              <span id="steamStatusText">Vapor Térmico Activo (55°C - 71°C)</span>
+            </div>
+            <span class="studio-hint-pill">🖐️ Arrastra 360° · Pellizca para zoom</span>
+          </div>
+
+          <div class="studio3d-cam-controls">
+            <button type="button" class="cam-preset-btn active" id="btnCamOrbit" onclick="setStudioCamView('orbit')">🔄 Centrar</button>
+            <button type="button" class="cam-preset-btn" id="btnCamTop" onclick="setStudioCamView('top')">📐 Cenital</button>
+            <button type="button" class="cam-preset-btn" id="btnCamClose" onclick="setStudioCamView('close')">🔍 Detalle</button>
+            <button type="button" class="cam-preset-btn btn-ar-mode" id="btnArMode" onclick="toggleArMode()">
+              <span>📱</span> <span id="arModeLabel">Ver en mi Mesa (AR)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Detalles, Selector de Término, Maridaje y Compra -->
+        <div class="studio3d-details-drawer">
+          <!-- Bloque de Término de Cocción (solo carnes) -->
+          <div class="doneness-block" id="donenessBlock">
+            <div class="doneness-label-row">
+              <strong>Término de Cocción en Brasa de Mezquite:</strong>
+              <span class="doneness-current-badge" id="donenessLabel">Término Medio (Recomendado del Chef)</span>
+            </div>
+            <div class="doneness-buttons-track">
+              <button type="button" class="doneness-btn active" id="btn-term-medio" onclick="setMeatDoneness('medio')">
+                <span class="doneness-dot pink"></span> Término Medio (55°C)
+              </button>
+              <button type="button" class="doneness-btn" id="btn-term-tres-cuartos" onclick="setMeatDoneness('tres-cuartos')">
+                <span class="doneness-dot orange"></span> Tres Cuartos (63°C)
+              </button>
+              <button type="button" class="doneness-btn" id="btn-term-bien-cocido" onclick="setMeatDoneness('bien-cocido')">
+                <span class="doneness-dot brown"></span> Bien Cocido (71°C)
+              </button>
+            </div>
+            <div class="doneness-desc-text" id="donenessDesc">
+              Centro rosado jugoso con costra caramelizada al mezquite y cristales de sal ahumada.
+            </div>
+          </div>
+
+          <!-- Maridaje Recomendado -->
+          <div class="studio-pairing-box" id="studioPairingBox">
+            <div class="pairing-icon">🍷</div>
+            <div class="pairing-content">
+              <strong id="studioPairingTitle">Maridaje Sommelier: Gran Reserva Nebbiolo 2020</strong>
+              <p id="studioPairingText">18 meses en barrica de roble francés. Sus taninos sedosos potencian el marmoleo del corte.</p>
+            </div>
+            <button type="button" class="btn-pair-bundle" id="btnPairBundle" onclick="addStudioPairing()">
+              + Añadir Copa ($190)
+            </button>
+          </div>
+
+          <!-- Barra de Compra Directa -->
+          <div class="studio-purchase-bar">
+            <div class="studio-price-block">
+              <span class="studio-price-lbl">Precio del platillo:</span>
+              <span class="studio-price-val" id="studioDishPrice">$890 MXN</span>
+            </div>
+            <div class="studio-order-actions">
+              <button type="button" class="btn-primary-studio-order" onclick="addCurrentStudioDishToCart()">
+                <span>🥩</span> Agregar a la Comanda
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL VIP: CORTES FUERA DE CARTA -->
+    <div class="wallet-dialog-backdrop" id="modalSecretCuts" onclick="if(event.target === this) closeSecretCutsModal();">
+      <div class="wallet-card-container" style="max-width: 520px; border-color: rgba(245, 158, 11, 0.4);">
+        <button type="button" class="assistant-drawer-close" style="position: absolute; top: 16px; right: 16px;" onclick="closeSecretCutsModal()">&times;</button>
+        <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 12px;">
+          <span style="font-size: 1.6rem;">🔒</span>
+          <div>
+            <h3 style="font-family: var(--heading); font-size: 1.25rem; color: #fff; margin: 0;">Cortes Fuera de Carta</h3>
+            <p style="font-size: 0.75rem; color: var(--neon-amber); margin: 2px 0 0 0;">Exclusivos para comensales en mesa · Stock diario limitado</p>
+          </div>
+        </div>
+        <p style="font-size: 0.82rem; color: var(--text-warm); line-height: 1.5; margin-bottom: 16px;">
+          Piezas de edición especial añejadas en cámara de sal del Himalaya y maduración seca de 45 días. Disponibles hoy hasta agotar existencias:
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px;">
+          <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 12px 14px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <strong style="color: #fff; font-size: 0.92rem;">Wagyu A5 Miyazaki (350g)</strong>
+              <div style="font-size: 0.72rem; color: var(--text-muted);">Certificado japonés BMS 11 · 3 piezas disponibles hoy</div>
+            </div>
+            <div style="text-align: right;">
+              <span style="color: var(--neon-amber); font-weight: 800; font-size: 0.95rem;">$1,650</span>
+              <button type="button" class="role-nav-btn" style="margin-left: 8px; padding: 4px 10px; font-size: 0.72rem;" onclick="addDishToCart('Wagyu A5 Miyazaki (350g)', 1650, 'wagyu'); closeSecretCutsModal();">Pedir</button>
+            </div>
+          </div>
+          <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 12px 14px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <strong style="color: #fff; font-size: 0.92rem;">Porterhouse Dry-Aged 45 Días (950g)</strong>
+              <div style="font-size: 0.72rem; color: var(--text-muted);">Añejamiento en mantequilla de trufa negra · 2 piezas</div>
+            </div>
+            <div style="text-align: right;">
+              <span style="color: var(--neon-amber); font-weight: 800; font-size: 0.95rem;">$1,120</span>
+              <button type="button" class="role-nav-btn" style="margin-left: 8px; padding: 4px 10px; font-size: 0.72rem;" onclick="addDishToCart('Porterhouse Dry-Aged 45D (950g)', 1120, 'porterhouse'); closeSecretCutsModal();">Pedir</button>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="cta-ver-menu-btn" style="width: 100%; justify-content: center; padding: 12px;" onclick="closeSecretCutsModal()">
+          <span>Continuar Viendo la Carta</span>
+        </button>
+      </div>
+    </div>
+
   </div>
 
   <!-- ======================================================================= -->
@@ -3871,15 +4641,36 @@
           }
 
           const tip = Math.round(totalPrice * 0.10);
+          const grandTotal = totalPrice + tip;
           if (subtotalVal) subtotalVal.textContent = '$' + totalPrice.toLocaleString('es-MX') + ' MXN';
           if (tipVal) tipVal.textContent = '$' + tip.toLocaleString('es-MX') + ' MXN';
-          if (totalVal) totalVal.textContent = '$' + (totalPrice + tip).toLocaleString('es-MX') + ' MXN';
+          if (totalVal) totalVal.textContent = '$' + grandTotal.toLocaleString('es-MX') + ' MXN';
+          updateSplitCalculation(grandTotal);
         } else {
           if (bar) bar.style.display = 'none';
           if (dockBadge) dockBadge.style.display = 'none';
+          updateSplitCalculation(0);
           toggleComandaDrawer(false);
         }
       }
+
+      // Bill Splitter Calculation
+      let splitPeople = 1;
+      let lastGrandTotal = 0;
+      function updateSplitCalculation(grandTotal) {
+        if (typeof grandTotal === 'number') lastGrandTotal = grandTotal;
+        const splitCountEl = document.getElementById('splitPeopleCount');
+        const splitValEl = document.getElementById('splitPerPersonVal');
+        if (splitCountEl) splitCountEl.textContent = splitPeople;
+        if (splitValEl) {
+          const perPerson = splitPeople > 0 ? Math.round(lastGrandTotal / splitPeople) : 0;
+          splitValEl.textContent = '$' + perPerson.toLocaleString('es-MX') + ' MXN';
+        }
+      }
+      window.adjustSplit = function(delta) {
+        splitPeople = Math.max(1, Math.min(20, splitPeople + delta));
+        updateSplitCalculation(lastGrandTotal);
+      };
 
       window.modifyCartLine = function(name, delta) {
         if (cart[name]) {
@@ -4358,6 +5149,1042 @@
           setTimeout(() => p.remove(), 600);
         }
       }, 2500);
+
+      // =========================================================================
+      // CORTES FUERA DE CARTA (VIP SECRET CUTS MODAL)
+      // =========================================================================
+      window.openSecretCutsModal = function() {
+        const m = document.getElementById('modalSecretCuts');
+        if (m) m.classList.add('open');
+      };
+      window.closeSecretCutsModal = function() {
+        const m = document.getElementById('modalSecretCuts');
+        if (m) m.classList.remove('open');
+      };
+
+      // =========================================================================
+      // ASMR GRILL SOUND GENERATOR (WEB AUDIO API - ZERO ASSET DEPENDENCY)
+      // =========================================================================
+      let asmrAudioCtx = null;
+      let asmrGainNode = null;
+      let asmrIsPlaying = false;
+      let asmrCrackleTimer = null;
+
+      window.toggleAsmrSound = function() {
+        if (!asmrIsPlaying) {
+          startAsmrSound();
+        } else {
+          stopAsmrSound();
+        }
+      };
+
+      function startAsmrSound() {
+        try {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (!AudioContext) {
+            showToast('Audio Web no soportado en este navegador');
+            return;
+          }
+          if (!asmrAudioCtx) {
+            asmrAudioCtx = new AudioContext();
+          }
+          if (asmrAudioCtx.state === 'suspended') {
+            asmrAudioCtx.resume();
+          }
+
+          // Master volume gain
+          asmrGainNode = asmrAudioCtx.createGain();
+          asmrGainNode.gain.setValueAtTime(0.01, asmrAudioCtx.currentTime);
+          asmrGainNode.gain.exponentialRampToValueAtTime(0.20, asmrAudioCtx.currentTime + 1.2);
+          asmrGainNode.connect(asmrAudioCtx.destination);
+
+          // 1. Soft mesquite draft rumble (Lowpass filtered pink noise)
+          const bufferSize = asmrAudioCtx.sampleRate * 2;
+          const noiseBuffer = asmrAudioCtx.createBuffer(1, bufferSize, asmrAudioCtx.sampleRate);
+          const output = noiseBuffer.getChannelData(0);
+          let b0 = 0, b1 = 0, b2 = 0;
+          for (let i = 0; i < bufferSize; i++) {
+            const white = Math.random() * 2 - 1;
+            b0 = 0.99 * b0 + white * 0.05;
+            b1 = 0.95 * b1 + white * 0.1;
+            b2 = 0.85 * b2 + white * 0.2;
+            output[i] = (b0 + b1 + b2) * 0.25;
+          }
+
+          const whiteNoise = asmrAudioCtx.createBufferSource();
+          whiteNoise.buffer = noiseBuffer;
+          whiteNoise.loop = true;
+
+          const filter = asmrAudioCtx.createBiquadFilter();
+          filter.type = 'lowpass';
+          filter.frequency.setValueAtTime(320, asmrAudioCtx.currentTime);
+
+          whiteNoise.connect(filter);
+          filter.connect(asmrGainNode);
+          whiteNoise.start();
+
+          // 2. Popping Embers & Sizzling Droplets (Random impulses)
+          function scheduleCrackle() {
+            if (!asmrIsPlaying || !asmrAudioCtx) return;
+            const now = asmrAudioCtx.currentTime;
+            const crackleGain = asmrAudioCtx.createGain();
+            crackleGain.gain.setValueAtTime(0, now);
+            crackleGain.gain.linearRampToValueAtTime(0.04 + Math.random() * 0.08, now + 0.003);
+            crackleGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.035 + Math.random() * 0.04);
+
+            const crackleFilter = asmrAudioCtx.createBiquadFilter();
+            crackleFilter.type = 'bandpass';
+            crackleFilter.frequency.setValueAtTime(1400 + Math.random() * 3000, now);
+            crackleFilter.Q.setValueAtTime(4.0, now);
+
+            const clickBuf = asmrAudioCtx.createBuffer(1, asmrAudioCtx.sampleRate * 0.08, asmrAudioCtx.sampleRate);
+            const clickData = clickBuf.getChannelData(0);
+            for (let i = 0; i < clickData.length; i++) {
+              clickData[i] = (Math.random() * 2 - 1) * Math.exp(-i / 300);
+            }
+            const clickSource = asmrAudioCtx.createBufferSource();
+            clickSource.buffer = clickBuf;
+            clickSource.connect(crackleFilter);
+            crackleFilter.connect(crackleGain);
+            crackleGain.connect(asmrGainNode);
+
+            clickSource.start(now);
+            clickSource.stop(now + 0.08);
+
+            const nextDelay = 70 + Math.random() * 280;
+            asmrCrackleTimer = setTimeout(scheduleCrackle, nextDelay);
+          }
+
+          asmrIsPlaying = true;
+          scheduleCrackle();
+
+          const btn = document.getElementById('asmrBtn');
+          if (btn) btn.classList.add('active');
+          const txt = document.getElementById('asmrBtnText');
+          if (txt) txt.textContent = 'Brasa ON 🔥';
+          showToast('🔥 Sonido ASMR de brasa de mezquite activado');
+        } catch (err) {
+          console.warn('ASMR audio failed:', err);
+        }
+      }
+
+      function stopAsmrSound() {
+        if (asmrGainNode && asmrAudioCtx) {
+          asmrGainNode.gain.exponentialRampToValueAtTime(0.0001, asmrAudioCtx.currentTime + 0.5);
+          setTimeout(() => {
+            if (asmrAudioCtx) asmrAudioCtx.close();
+            asmrAudioCtx = null;
+          }, 600);
+        }
+        if (asmrCrackleTimer) clearTimeout(asmrCrackleTimer);
+        asmrIsPlaying = false;
+        const btn = document.getElementById('asmrBtn');
+        if (btn) btn.classList.remove('active');
+        const txt = document.getElementById('asmrBtnText');
+        if (txt) txt.textContent = 'ASMR Brasa';
+        showToast('🔇 Brasa silenciada');
+      }
+
+      // =========================================================================
+      // ESTUDIO 3D GOURMET & AR TABLETOP ENGINE (THREE.JS WEBGL PBR + CAMERA AR)
+      // =========================================================================
+      const DISH_3D_REGISTRY = {
+        'tomahawk': {
+          title: 'Tomahawk Prime Asado al Mezquite (1.2 kg)',
+          sub: 'Inspección 360° en plato de pizarra volcánica con humo real y maridaje sugerido.',
+          price: '$890 MXN',
+          priceNum: 890,
+          key: 'tomahawk',
+          pairingTitle: 'Maridaje Sommelier: Gran Reserva Nebbiolo 2020',
+          pairingText: '18 meses en barrica de roble francés. Sus taninos sedosos y notas de ciruela negra potencian el marmoleo de la carne.',
+          pairingItem: 'Gran Reserva Nebbiolo (Copa)',
+          pairingPrice: 190,
+          hasDoneness: true,
+          defaultDoneness: 'medio',
+          modelType: 'tomahawk'
+        },
+        'ribeye': {
+          title: 'Ribeye Mezquite (400g) a la Leña',
+          sub: 'Marmoleo Prime con costra de cuatro pimientas, mantequilla de ajo y papas rústicas.',
+          price: '$490 MXN',
+          priceNum: 490,
+          key: 'ribeye',
+          pairingTitle: 'Maridaje Sommelier: Cabernet Sauvignon Roble Francés',
+          pairingText: 'Cuerpo estructurado con aromas a grosella negra y cedro ahumado.',
+          pairingItem: 'Cabernet Sauvignon Roble (Copa)',
+          pairingPrice: 175,
+          hasDoneness: true,
+          defaultDoneness: 'tres-cuartos',
+          modelType: 'ribeye'
+        },
+        'brisket-burger': {
+          title: 'Brisket Burger 14h en Brioche Artesanal',
+          sub: 'Doble smash Angus con láminas de brisket ahumado, gouda derretido y cebolla al bourbon.',
+          price: '$260 MXN',
+          priceNum: 260,
+          key: 'brisket-burger',
+          pairingTitle: 'Maridaje Cerveza: IPA Artesanal Ahumada',
+          pairingText: 'El lúpulo cítrico corta la grasa untuosa del brisket ahumado.',
+          pairingItem: 'Cerveza Artesanal IPA Ahumada',
+          pairingPrice: 105,
+          hasDoneness: false,
+          modelType: 'burger'
+        },
+        'costillas': {
+          title: 'Costillas St. Louis Glaseadas BBQ',
+          sub: 'Costillar tierno glaseado con salsa BBQ de ciruela pasa y piquín ahumado.',
+          price: '$340 MXN',
+          priceNum: 340,
+          key: 'costillas',
+          pairingTitle: 'Maridaje Cerveza: Porter Tostada Artesanal',
+          pairingText: 'Notas de malta tostada y café que complementan el caramelo de la salsa BBQ.',
+          pairingItem: 'Cerveza Porter Tostada Artesanal',
+          pairingPrice: 110,
+          hasDoneness: false,
+          modelType: 'ribs'
+        },
+        'tacos-picanha': {
+          title: 'Tacos Picaña Maíz Azul Nixtamalizado (3)',
+          sub: 'Picaña al carbón sobre costra de queso manchego, aguacate y salsa macha de habanero.',
+          price: '$195 MXN',
+          priceNum: 195,
+          key: 'tacos-picanha',
+          pairingTitle: 'Maridaje Destilado: Mezcal Espadín Silvestre',
+          pairingText: 'Destilado en alambique de cobre con notas minerales y agave cocido al humo.',
+          pairingItem: 'Mezcal Espadín Silvestre',
+          pairingPrice: 140,
+          hasDoneness: true,
+          defaultDoneness: 'medio',
+          modelType: 'tacos'
+        },
+        'tuetanos': {
+          title: 'Tuétanos Asados con Chicharrón de Ribeye',
+          sub: 'Canal de tuétano a la brasa con costra crujiente de chicharrón y tortillas calientes.',
+          price: '$220 MXN',
+          priceNum: 220,
+          key: 'tuetanos',
+          pairingTitle: 'Maridaje Destilado: Tequila Reposado Cristalino',
+          pairingText: 'Agave azul con notas de roble blanco y vainilla que limpian el paladar.',
+          pairingItem: 'Tequila Reposado Cristalino',
+          pairingPrice: 150,
+          hasDoneness: false,
+          modelType: 'tuetanos'
+        },
+        'mezcalita': {
+          title: 'Smoked Mezcalita Oaxaqueña en Mesa',
+          sub: 'Mezcal artesanal, licor de mandarina tatemada y sal de chapulín servida bajo campana de humo.',
+          price: '$170 MXN',
+          priceNum: 170,
+          key: 'mezcalita',
+          pairingTitle: 'Botana de Autor: Cecina Crujiente de Yecapixtla',
+          pairingText: 'Tiras deshidratadas al chile de árbol que potencian el perfil ahumado del cóctel.',
+          pairingItem: 'Botana de Cecina Crujiente',
+          pairingPrice: 95,
+          hasDoneness: false,
+          modelType: 'cocktail'
+        },
+        'volcan': {
+          title: 'Volcán de Chocolate 70% con Lava Líquida',
+          sub: 'Bizcocho tibio de cacao con corazón fundido de avellana y helado de vainilla Papantla.',
+          price: '$150 MXN',
+          priceNum: 150,
+          key: 'volcan',
+          pairingTitle: 'Maridaje Digestivo: Carajillo al Carbón Flameado',
+          pairingText: 'Licor 43 batido a mano y espresso caliente flameado con corteza de naranja.',
+          pairingItem: 'Carajillo al Carbón Flameado',
+          pairingPrice: 160,
+          hasDoneness: false,
+          modelType: 'volcan'
+        }
+      };
+
+      let studioRenderer = null;
+      let studioScene = null;
+      let studioCamera = null;
+      let studioDishGroup = null;
+      let studioSteamSystem = null;
+      let studioMeatCoreMaterial = null;
+      let studioCurrentDishKey = 'tomahawk';
+      let studioCurrentDoneness = 'medio';
+      let studioArActive = false;
+      let studioArStream = null;
+
+      let studioIsDragging = false;
+      let studioPrevPointerX = 0, studioPrevPointerY = 0;
+      let studioRotX = 0.35, studioRotY = -0.4;
+      let studioTargetRotX = 0.35, studioTargetRotY = -0.4;
+      let studioZoom = 7.2;
+      let studioTargetZoom = 7.2;
+      let studioPinchDistance = 0;
+      let studioAnimFrameId = null;
+
+      // Soft procedural smoke particle texture generator
+      function createProceduralSmokeTexture() {
+        const size = 128;
+        const c = document.createElement('canvas');
+        c.width = size;
+        c.height = size;
+        const ctx = c.getContext('2d');
+        const grad = ctx.createRadialGradient(size/2, size/2, 0, size/2, size/2, size/2);
+        grad.addColorStop(0, 'rgba(255, 255, 255, 0.75)');
+        grad.addColorStop(0.35, 'rgba(240, 240, 245, 0.35)');
+        grad.addColorStop(0.7, 'rgba(215, 215, 225, 0.09)');
+        grad.addColorStop(1, 'rgba(200, 200, 210, 0)');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, size, size);
+        return new THREE.CanvasTexture(c);
+      }
+
+      function initStudio3DEngine() {
+        const canvas = document.getElementById('studio3dCanvas');
+        if (!canvas || typeof THREE === 'undefined') return false;
+
+        const w = canvas.parentElement.clientWidth || 800;
+        const h = canvas.parentElement.clientHeight || 380;
+
+        studioRenderer = new THREE.WebGLRenderer({
+          canvas: canvas,
+          alpha: true,
+          antialias: true,
+          powerPreference: 'high-performance'
+        });
+        studioRenderer.setSize(w, h);
+        studioRenderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+        studioRenderer.toneMapping = THREE.ACESFilmicToneMapping;
+        studioRenderer.toneMappingExposure = 1.25;
+        studioRenderer.shadowMap.enabled = true;
+        studioRenderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+        studioScene = new THREE.Scene();
+        studioCamera = new THREE.PerspectiveCamera(40, w / h, 0.1, 100);
+
+        // Lighting suite
+        const ambientLight = new THREE.AmbientLight(0xffeedd, 0.85);
+        studioScene.add(ambientLight);
+
+        const dirLight = new THREE.DirectionalLight(0xfff3e0, 2.3);
+        dirLight.position.set(5, 9, 6);
+        dirLight.castShadow = true;
+        studioScene.add(dirLight);
+
+        const rimLight = new THREE.DirectionalLight(0xf59e0b, 1.4);
+        rimLight.position.set(-6, 4, -4);
+        studioScene.add(rimLight);
+
+        const emberLight = new THREE.PointLight(0xff6600, 1.5, 10);
+        emberLight.position.set(0, -0.3, 0);
+        studioScene.add(emberLight);
+
+        // Volcanic Slate Platter Base
+        const plateGroup = new THREE.Group();
+        const slateMat = new THREE.MeshStandardMaterial({
+          color: 0x151518,
+          roughness: 0.85,
+          metalness: 0.15
+        });
+        const plateGeo = new THREE.CylinderGeometry(4.3, 4.45, 0.22, 64);
+        const plateMesh = new THREE.Mesh(plateGeo, slateMat);
+        plateMesh.position.y = -0.11;
+        plateMesh.receiveShadow = true;
+        plateGroup.add(plateMesh);
+
+        // Slate juice rim bevel
+        const rimGeo = new THREE.TorusGeometry(3.9, 0.06, 16, 64);
+        const rimMesh = new THREE.Mesh(rimGeo, new THREE.MeshStandardMaterial({ color: 0x0d0d10, roughness: 0.9 }));
+        rimMesh.rotation.x = Math.PI / 2;
+        rimMesh.position.y = 0.005;
+        plateGroup.add(rimMesh);
+
+        studioScene.add(plateGroup);
+
+        // Dish items container
+        studioDishGroup = new THREE.Group();
+        studioScene.add(studioDishGroup);
+
+        // Rising Steam / Smoke Particle Plume (THREE.Points)
+        const steamCount = 65;
+        const steamGeo = new THREE.BufferGeometry();
+        const steamPos = new Float32Array(steamCount * 3);
+        const steamVelocities = [];
+        for (let i = 0; i < steamCount; i++) {
+          steamPos[i * 3 + 0] = (Math.random() - 0.5) * 2.2;
+          steamPos[i * 3 + 1] = 0.2 + Math.random() * 2.8;
+          steamPos[i * 3 + 2] = (Math.random() - 0.5) * 1.8;
+          steamVelocities.push({
+            y: 0.012 + Math.random() * 0.016,
+            phaseX: Math.random() * Math.PI * 2,
+            phaseZ: Math.random() * Math.PI * 2,
+            freqX: 1.5 + Math.random() * 2.0,
+            freqZ: 1.5 + Math.random() * 2.0
+          });
+        }
+        steamGeo.setAttribute('position', new THREE.BufferAttribute(steamPos, 3));
+        const steamMat = new THREE.PointsMaterial({
+          size: 1.45,
+          map: createProceduralSmokeTexture(),
+          transparent: true,
+          opacity: 0.34,
+          depthWrite: false,
+          blending: THREE.AdditiveBlending
+        });
+        studioSteamSystem = new THREE.Points(steamGeo, steamMat);
+        studioSteamSystem.userData = { velocities: steamVelocities, count: steamCount };
+        studioScene.add(studioSteamSystem);
+
+        // Event listeners for Orbit and Zoom
+        bindStudioControls(canvas);
+
+        // Window resize
+        window.addEventListener('resize', onStudioResize);
+
+        // Start render loop
+        animateStudio3D();
+        return true;
+      }
+
+      function onStudioResize() {
+        if (!studioRenderer || !studioCamera) return;
+        const canvas = document.getElementById('studio3dCanvas');
+        if (!canvas || !canvas.parentElement) return;
+        const w = canvas.parentElement.clientWidth;
+        const h = canvas.parentElement.clientHeight || 380;
+        studioCamera.aspect = w / h;
+        studioCamera.updateProjectionMatrix();
+        studioRenderer.setSize(w, h);
+      }
+
+      function bindStudioControls(canvas) {
+        // Pointer down
+        canvas.addEventListener('pointerdown', e => {
+          studioIsDragging = true;
+          studioPrevPointerX = e.clientX;
+          studioPrevPointerY = e.clientY;
+          canvas.setPointerCapture(e.pointerId);
+        });
+
+        // Pointer move
+        canvas.addEventListener('pointermove', e => {
+          if (!studioIsDragging) return;
+          const deltaX = e.clientX - studioPrevPointerX;
+          const deltaY = e.clientY - studioPrevPointerY;
+          studioPrevPointerX = e.clientX;
+          studioPrevPointerY = e.clientY;
+
+          studioTargetRotY += deltaX * 0.009;
+          studioTargetRotX += deltaY * 0.007;
+          studioTargetRotX = Math.max(0.12, Math.min(1.50, studioTargetRotX));
+        });
+
+        // Pointer up / cancel
+        const endDrag = e => {
+          studioIsDragging = false;
+          try { canvas.releasePointerCapture(e.pointerId); } catch(ex){}
+        };
+        canvas.addEventListener('pointerup', endDrag);
+        canvas.addEventListener('pointercancel', endDrag);
+
+        // Mouse wheel zoom
+        canvas.addEventListener('wheel', e => {
+          e.preventDefault();
+          studioTargetZoom += e.deltaY * 0.005;
+          studioTargetZoom = Math.max(4.5, Math.min(10.5, studioTargetZoom));
+        }, { passive: false });
+
+        // Touch pinch zoom
+        canvas.addEventListener('touchstart', e => {
+          if (e.touches.length === 2) {
+            const dx = e.touches[0].clientX - e.touches[1].clientX;
+            const dy = e.touches[0].clientY - e.touches[1].clientY;
+            studioPinchDistance = Math.hypot(dx, dy);
+          }
+        }, { passive: true });
+
+        canvas.addEventListener('touchmove', e => {
+          if (e.touches.length === 2) {
+            const dx = e.touches[0].clientX - e.touches[1].clientX;
+            const dy = e.touches[0].clientY - e.touches[1].clientY;
+            const dist = Math.hypot(dx, dy);
+            if (studioPinchDistance > 0) {
+              const delta = (studioPinchDistance - dist) * 0.015;
+              studioTargetZoom = Math.max(4.5, Math.min(10.5, studioTargetZoom + delta));
+            }
+            studioPinchDistance = dist;
+          }
+        }, { passive: true });
+
+        canvas.addEventListener('touchend', () => { studioPinchDistance = 0; }, { passive: true });
+      }
+
+      function animateStudio3D() {
+        studioAnimFrameId = requestAnimationFrame(animateStudio3D);
+
+        // Inertial damping
+        studioRotX += (studioTargetRotX - studioRotX) * 0.09;
+        studioRotY += (studioTargetRotY - studioRotY) * 0.09;
+        studioZoom += (studioTargetZoom - studioZoom) * 0.09;
+
+        // Auto rotate gently if not dragging and not in AR
+        if (!studioIsDragging && !studioArActive) {
+          studioTargetRotY += 0.0035;
+        }
+
+        // Camera position
+        if (studioCamera) {
+          studioCamera.position.x = studioZoom * Math.sin(studioRotY) * Math.cos(studioRotX);
+          studioCamera.position.y = studioZoom * Math.sin(studioRotX);
+          studioCamera.position.z = studioZoom * Math.cos(studioRotY) * Math.cos(studioRotX);
+          studioCamera.lookAt(0, 0.45, 0);
+        }
+
+        // Animate steam particles
+        if (studioSteamSystem) {
+          const pos = studioSteamSystem.geometry.attributes.position.array;
+          const vels = studioSteamSystem.userData.velocities;
+          const count = studioSteamSystem.userData.count;
+          const elapsed = performance.now() * 0.001;
+
+          for (let i = 0; i < count; i++) {
+            const v = vels[i];
+            pos[i * 3 + 1] += v.y;
+            pos[i * 3 + 0] += Math.sin(elapsed * v.freqX + v.phaseX) * 0.0035;
+            pos[i * 3 + 2] += Math.cos(elapsed * v.freqZ + v.phaseZ) * 0.0035;
+
+            if (pos[i * 3 + 1] > 3.4) {
+              pos[i * 3 + 1] = 0.25 + Math.random() * 0.15;
+              pos[i * 3 + 0] = (Math.random() - 0.5) * 1.6;
+              pos[i * 3 + 2] = (Math.random() - 0.5) * 1.4;
+            }
+          }
+          studioSteamSystem.geometry.attributes.position.needsUpdate = true;
+        }
+
+        if (studioRenderer && studioScene && studioCamera) {
+          studioRenderer.render(studioScene, studioCamera);
+        }
+      }
+
+      // =========================================================================
+      // PROCEDURAL 3D CULINARY MODELS BUILDER (PBR FIDELITY)
+      // =========================================================================
+      function build3DDishModel(modelType) {
+        if (!studioDishGroup) return;
+
+        // Clear existing model
+        while (studioDishGroup.children.length > 0) {
+          const obj = studioDishGroup.children[0];
+          studioDishGroup.remove(obj);
+        }
+
+        // Initialize materials
+        studioMeatCoreMaterial = new THREE.MeshStandardMaterial({
+          color: 0xb33a3a,
+          roughness: 0.65,
+          metalness: 0.12,
+          emissive: 0x1f0606
+        });
+
+        const crustMaterial = new THREE.MeshStandardMaterial({
+          color: 0x22130e,
+          roughness: 0.88,
+          metalness: 0.05
+        });
+
+        const boneMaterial = new THREE.MeshStandardMaterial({
+          color: 0xe6decb,
+          roughness: 0.60
+        });
+
+        const saltMaterial = new THREE.MeshStandardMaterial({
+          color: 0xffffff,
+          roughness: 0.15,
+          metalness: 0.25
+        });
+
+        const herbMaterial = new THREE.MeshStandardMaterial({
+          color: 0x2e6f40,
+          roughness: 0.70
+        });
+
+        if (modelType === 'tomahawk' || modelType === 'ribeye') {
+          // Curved prime meat cut
+          const steakGroup = new THREE.Group();
+          const steakGeo = new THREE.CylinderGeometry(1.65, 1.75, 0.55, 32);
+          steakGeo.scale(1.35, 1.0, 0.95);
+          const steakMesh = new THREE.Mesh(steakGeo, studioMeatCoreMaterial);
+          steakMesh.position.set(0, 0.32, 0);
+          steakMesh.castShadow = true;
+          steakGroup.add(steakMesh);
+
+          // Top charred crust disc with crosshatch grill marks
+          const searCapGeo = new THREE.CircleGeometry(1.7, 32);
+          searCapGeo.scale(1.32, 0.93, 1.0);
+          const searCap = new THREE.Mesh(searCapGeo, crustMaterial);
+          searCap.rotation.x = -Math.PI / 2;
+          searCap.position.set(0, 0.60, 0);
+          steakGroup.add(searCap);
+
+          if (modelType === 'tomahawk') {
+            // Elongated rib bone
+            const boneGeo = new THREE.CylinderGeometry(0.24, 0.32, 4.2, 16);
+            const boneMesh = new THREE.Mesh(boneGeo, boneMaterial);
+            boneMesh.rotation.z = Math.PI / 3.4;
+            boneMesh.rotation.y = 0.2;
+            boneMesh.position.set(2.4, 1.4, -0.4);
+            boneMesh.castShadow = true;
+            steakGroup.add(boneMesh);
+          }
+
+          // Sea salt flakes
+          for (let i = 0; i < 18; i++) {
+            const saltGeo = new THREE.OctahedronGeometry(0.045);
+            const flake = new THREE.Mesh(saltGeo, saltMaterial);
+            flake.position.set(
+              (Math.random() - 0.5) * 2.2,
+              0.61,
+              (Math.random() - 0.5) * 1.5
+            );
+            flake.rotation.set(Math.random(), Math.random(), Math.random());
+            steakGroup.add(flake);
+          }
+
+          // Rosemary sprig
+          const stemGeo = new THREE.CylinderGeometry(0.04, 0.05, 1.8, 8);
+          const stemMesh = new THREE.Mesh(stemGeo, herbMaterial);
+          stemMesh.rotation.z = Math.PI / 2.3;
+          stemMesh.rotation.y = 0.5;
+          stemMesh.position.set(-0.2, 0.63, 0.3);
+          steakGroup.add(stemMesh);
+
+          // Melting herb butter quenelle
+          const butterGeo = new THREE.SphereGeometry(0.28, 16, 16);
+          butterGeo.scale(1.4, 0.6, 0.8);
+          const butterMat = new THREE.MeshStandardMaterial({ color: 0xedd685, roughness: 0.3, metalness: 0.05 });
+          const butterMesh = new THREE.Mesh(butterGeo, butterMat);
+          butterMesh.position.set(0.1, 0.66, 0);
+          steakGroup.add(butterMesh);
+
+          // Roasted rustic potato halves (Ribeye)
+          if (modelType === 'ribeye') {
+            const potMat = new THREE.MeshStandardMaterial({ color: 0xc8963e, roughness: 0.8 });
+            for (let i = 0; i < 3; i++) {
+              const potGeo = new THREE.SphereGeometry(0.42, 16, 16);
+              potGeo.scale(1.2, 0.7, 1.0);
+              const potMesh = new THREE.Mesh(potGeo, potMat);
+              potMesh.position.set(-2.0 + i * 0.7, 0.22, 1.2 - i * 0.4);
+              potMesh.castShadow = true;
+              steakGroup.add(potMesh);
+            }
+          }
+
+          studioDishGroup.add(steakGroup);
+
+        } else if (modelType === 'burger') {
+          const burgerGroup = new THREE.Group();
+          const bunMat = new THREE.MeshStandardMaterial({ color: 0xb46b2b, roughness: 0.65 });
+          const pattyMat = new THREE.MeshStandardMaterial({ color: 0x2c1711, roughness: 0.85 });
+          const cheeseMat = new THREE.MeshStandardMaterial({ color: 0xf59e0b, roughness: 0.35 });
+          const lettuceMat = new THREE.MeshStandardMaterial({ color: 0x22c55e, roughness: 0.8 });
+
+          // Bottom bun
+          const bBunGeo = new THREE.CylinderGeometry(1.6, 1.5, 0.45, 32);
+          const bBun = new THREE.Mesh(bBunGeo, bunMat);
+          bBun.position.y = 0.23;
+          burgerGroup.add(bBun);
+
+          // Crisp Lettuce
+          const letGeo = new THREE.CylinderGeometry(1.8, 1.7, 0.12, 16);
+          const letMesh = new THREE.Mesh(letGeo, lettuceMat);
+          letMesh.position.y = 0.52;
+          burgerGroup.add(letMesh);
+
+          // Angus Patty
+          const patGeo = new THREE.CylinderGeometry(1.65, 1.65, 0.55, 32);
+          const patMesh = new THREE.Mesh(patGeo, pattyMat);
+          patMesh.position.y = 0.85;
+          patMesh.castShadow = true;
+          burgerGroup.add(patMesh);
+
+          // Melted Cheese Drapes
+          const chGeo = new THREE.CylinderGeometry(1.75, 1.75, 0.15, 32);
+          const chMesh = new THREE.Mesh(chGeo, cheeseMat);
+          chMesh.position.y = 1.15;
+          burgerGroup.add(chMesh);
+
+          // Top Brioche Bun Dome
+          const tBunGeo = new THREE.SphereGeometry(1.65, 32, 16, 0, Math.PI * 2, 0, Math.PI / 2);
+          tBunGeo.scale(1.0, 0.75, 1.0);
+          const tBun = new THREE.Mesh(tBunGeo, bunMat);
+          tBun.position.y = 1.25;
+          tBun.castShadow = true;
+          burgerGroup.add(tBun);
+
+          // Sesame Seeds
+          for (let i = 0; i < 28; i++) {
+            const sesGeo = new THREE.OctahedronGeometry(0.035);
+            const sesMesh = new THREE.Mesh(sesGeo, new THREE.MeshStandardMaterial({ color: 0xfef08a, roughness: 0.5 }));
+            const phi = Math.random() * (Math.PI / 2.5);
+            const theta = Math.random() * Math.PI * 2;
+            sesMesh.position.set(
+              1.65 * Math.sin(phi) * Math.cos(theta),
+              1.25 + 1.25 * Math.cos(phi),
+              1.65 * Math.sin(phi) * Math.sin(theta)
+            );
+            burgerGroup.add(sesMesh);
+          }
+
+          studioDishGroup.add(burgerGroup);
+
+        } else if (modelType === 'ribs') {
+          const ribsGroup = new THREE.Group();
+          const glazeMat = new THREE.MeshStandardMaterial({
+            color: 0x3d0f0c,
+            roughness: 0.18,
+            metalness: 0.15
+          });
+
+          for (let i = 0; i < 4; i++) {
+            const ribSlabGeo = new THREE.CylinderGeometry(0.48, 0.48, 2.6, 16);
+            ribSlabGeo.scale(1.2, 0.7, 1.0);
+            const ribSlab = new THREE.Mesh(ribSlabGeo, glazeMat);
+            ribSlab.rotation.z = Math.PI / 2;
+            ribSlab.position.set(0, 0.45, -1.2 + i * 0.8);
+            ribSlab.castShadow = true;
+            ribsGroup.add(ribSlab);
+
+            // Bone tips protruding
+            const tipGeo = new THREE.CylinderGeometry(0.14, 0.14, 0.5, 12);
+            const tipL = new THREE.Mesh(tipGeo, boneMaterial);
+            tipL.rotation.z = Math.PI / 2;
+            tipL.position.set(-1.45, 0.45, -1.2 + i * 0.8);
+            ribsGroup.add(tipL);
+
+            const tipR = new THREE.Mesh(tipGeo, boneMaterial);
+            tipR.rotation.z = Math.PI / 2;
+            tipR.position.set(1.45, 0.45, -1.2 + i * 0.8);
+            ribsGroup.add(tipR);
+          }
+          studioDishGroup.add(ribsGroup);
+
+        } else if (modelType === 'tacos') {
+          const tacosGroup = new THREE.Group();
+          const tortillaMat = new THREE.MeshStandardMaterial({ color: 0x3d4b5c, roughness: 0.9 });
+          const meatMat = new THREE.MeshStandardMaterial({ color: 0x421b18, roughness: 0.75 });
+          const avoMat = new THREE.MeshStandardMaterial({ color: 0x84cc16, roughness: 0.4 });
+
+          for (let i = 0; i < 3; i++) {
+            const tacoG = new THREE.Group();
+            const tortGeo = new THREE.CylinderGeometry(1.1, 1.1, 0.08, 24, 1, true, 0, Math.PI);
+            tortGeo.scale(1.0, 0.8, 1.3);
+            const tortMesh = new THREE.Mesh(tortGeo, tortillaMat);
+            tortMesh.rotation.z = Math.PI / 2;
+            tortMesh.position.y = 0.35;
+            tacoG.add(tortMesh);
+
+            // Meat chunks filling
+            for (let j = 0; j < 6; j++) {
+              const chunkGeo = new THREE.BoxGeometry(0.28, 0.28, 0.28);
+              const chunk = new THREE.Mesh(chunkGeo, meatMat);
+              chunk.position.set((Math.random() - 0.5) * 0.3, 0.45, (Math.random() - 0.5) * 1.0);
+              tacoG.add(chunk);
+            }
+
+            // Avocado slice
+            const avoGeo = new THREE.BoxGeometry(0.18, 0.14, 0.7);
+            const avoMesh = new THREE.Mesh(avoGeo, avoMat);
+            avoMesh.position.set(0.1, 0.58, 0);
+            tacoG.add(avoMesh);
+
+            tacoG.position.set(-1.6 + i * 1.6, 0, 0);
+            tacosGroup.add(tacoG);
+          }
+          studioDishGroup.add(tacosGroup);
+
+        } else if (modelType === 'tuetanos') {
+          const marrowGroup = new THREE.Group();
+          const marrowMat = new THREE.MeshStandardMaterial({ color: 0xc49752, roughness: 0.35, metalness: 0.1 });
+          const chicharonMat = new THREE.MeshStandardMaterial({ color: 0x854d0e, roughness: 0.9 });
+
+          for (let i = 0; i < 2; i++) {
+            const boneCutGeo = new THREE.CylinderGeometry(0.85, 0.95, 2.8, 24, 1, false, 0, Math.PI);
+            const boneCut = new THREE.Mesh(boneCutGeo, boneMaterial);
+            boneCut.rotation.z = Math.PI / 2;
+            boneCut.position.set(0, 0.40, -0.9 + i * 1.8);
+            marrowGroup.add(boneCut);
+
+            // Bubbling marrow center
+            const marrowGeo = new THREE.PlaneGeometry(2.6, 0.75);
+            const marrowMesh = new THREE.Mesh(marrowGeo, marrowMat);
+            marrowMesh.rotation.x = -Math.PI / 2;
+            marrowMesh.position.set(0, 0.41, -0.9 + i * 1.8);
+            marrowGroup.add(marrowMesh);
+
+            // Chicharron crumbs
+            for (let j = 0; j < 12; j++) {
+              const crGeo = new THREE.DodecahedronGeometry(0.08);
+              const crMesh = new THREE.Mesh(crGeo, chicharonMat);
+              crMesh.position.set((Math.random() - 0.5) * 2.2, 0.46, -0.9 + i * 1.8 + (Math.random() - 0.5) * 0.4);
+              marrowGroup.add(crMesh);
+            }
+          }
+          studioDishGroup.add(marrowGroup);
+
+        } else if (modelType === 'cocktail') {
+          const glassGroup = new THREE.Group();
+          const glassMat = new THREE.MeshPhysicalMaterial({
+            color: 0xffffff,
+            transmission: 0.92,
+            opacity: 0.45,
+            transparent: true,
+            roughness: 0.08,
+            ior: 1.5
+          });
+          const liquidMat = new THREE.MeshStandardMaterial({
+            color: 0xd97706,
+            roughness: 0.15,
+            metalness: 0.1
+          });
+
+          // Rocks Glass
+          const glassGeo = new THREE.CylinderGeometry(1.2, 1.0, 2.2, 32);
+          const glassMesh = new THREE.Mesh(glassGeo, glassMat);
+          glassMesh.position.y = 1.1;
+          glassMesh.castShadow = true;
+          glassGroup.add(glassMesh);
+
+          // Cocktail liquid inside
+          const liqGeo = new THREE.CylinderGeometry(1.15, 0.95, 1.7, 32);
+          const liqMesh = new THREE.Mesh(liqGeo, liquidMat);
+          liqMesh.position.y = 0.9;
+          glassGroup.add(liqMesh);
+
+          // Artisan ice cube
+          const iceGeo = new THREE.BoxGeometry(0.85, 0.85, 0.85);
+          const iceMesh = new THREE.Mesh(iceGeo, glassMat);
+          iceMesh.rotation.set(0.3, 0.5, 0.2);
+          iceMesh.position.set(0, 1.0, 0);
+          glassGroup.add(iceMesh);
+
+          // Dehydrated Orange wheel
+          const orangeGeo = new THREE.CylinderGeometry(0.7, 0.7, 0.06, 16);
+          const orangeMat = new THREE.MeshStandardMaterial({ color: 0xea580c, roughness: 0.7 });
+          const orangeMesh = new THREE.Mesh(orangeGeo, orangeMat);
+          orangeMesh.rotation.set(0.4, 0.2, 0.8);
+          orangeMesh.position.set(0.3, 1.75, 0.1);
+          glassGroup.add(orangeMesh);
+
+          studioDishGroup.add(glassGroup);
+
+        } else if (modelType === 'volcan') {
+          const cakeGroup = new THREE.Group();
+          const cakeMat = new THREE.MeshStandardMaterial({ color: 0x1f120c, roughness: 0.85 });
+          const lavaMat = new THREE.MeshStandardMaterial({ color: 0x120805, roughness: 0.12, metalness: 0.2 });
+
+          // Fluted cake
+          const cakeGeo = new THREE.CylinderGeometry(1.2, 1.6, 1.3, 24);
+          const cakeMesh = new THREE.Mesh(cakeGeo, cakeMat);
+          cakeMesh.position.y = 0.65;
+          cakeMesh.castShadow = true;
+          cakeGroup.add(cakeMesh);
+
+          // Molten Center pool
+          const lavaGeo = new THREE.CircleGeometry(0.65, 16);
+          const lavaMesh = new THREE.Mesh(lavaGeo, lavaMat);
+          lavaMesh.rotation.x = -Math.PI / 2;
+          lavaMesh.position.y = 1.31;
+          cakeGroup.add(lavaMesh);
+
+          // Vanilla ice cream scoop
+          const iceCreamGeo = new THREE.SphereGeometry(0.65, 24, 24);
+          const iceCreamMat = new THREE.MeshStandardMaterial({ color: 0xfffae5, roughness: 0.75 });
+          const iceMesh = new THREE.Mesh(iceCreamGeo, iceCreamMat);
+          iceMesh.position.set(1.5, 0.65, 0.4);
+          iceMesh.castShadow = true;
+          cakeGroup.add(iceMesh);
+
+          studioDishGroup.add(cakeGroup);
+        }
+      }
+
+      // =========================================================================
+      // STUDIO 3D PUBLIC INTERFACE
+      // =========================================================================
+      window.openStudio3D = function(dishKey) {
+        studioCurrentDishKey = dishKey || 'tomahawk';
+        const data = DISH_3D_REGISTRY[studioCurrentDishKey] || DISH_3D_REGISTRY['tomahawk'];
+
+        // Populate modal text
+        const titleEl = document.getElementById('studio3dDishTitle');
+        const subEl = document.getElementById('studio3dDishSub');
+        const priceEl = document.getElementById('studioDishPrice');
+        const pairingBox = document.getElementById('studioPairingBox');
+        const pairingTitleEl = document.getElementById('studioPairingTitle');
+        const pairingTextEl = document.getElementById('studioPairingText');
+        const pairBundleBtn = document.getElementById('btnPairBundle');
+        const donenessBlock = document.getElementById('donenessBlock');
+
+        if (titleEl) titleEl.textContent = data.title;
+        if (subEl) subEl.textContent = data.sub;
+        if (priceEl) priceEl.textContent = data.price;
+
+        if (pairingTitleEl) pairingTitleEl.textContent = data.pairingTitle;
+        if (pairingTextEl) pairingTextEl.textContent = data.pairingText;
+        if (pairBundleBtn) pairBundleBtn.textContent = '+ Añadir Copa ($' + data.pairingPrice + ')';
+
+        if (donenessBlock) {
+          donenessBlock.style.display = data.hasDoneness ? 'block' : 'none';
+        }
+
+        // Open modal
+        const modal = document.getElementById('studio3dModal');
+        if (modal) modal.classList.add('open');
+
+        // Init or resize engine
+        setTimeout(() => {
+          if (!studioRenderer) {
+            initStudio3DEngine();
+          } else {
+            onStudioResize();
+          }
+          build3DDishModel(data.modelType);
+          if (data.hasDoneness) {
+            setMeatDoneness(data.defaultDoneness || 'medio');
+          }
+        }, 50);
+      };
+
+      window.closeStudio3D = function() {
+        const modal = document.getElementById('studio3dModal');
+        if (modal) modal.classList.remove('open');
+        if (studioArActive) {
+          toggleArMode();
+        }
+      };
+
+      window.setMeatDoneness = function(term) {
+        studioCurrentDoneness = term;
+        document.querySelectorAll('.doneness-btn').forEach(btn => btn.classList.remove('active'));
+
+        const targetBtn = document.getElementById('btn-term-' + term);
+        if (targetBtn) targetBtn.classList.add('active');
+
+        const labelEl = document.getElementById('donenessLabel');
+        const descEl = document.getElementById('donenessDesc');
+
+        let meatColor = 0xb33a3a;
+        let emissiveColor = 0x1f0606;
+
+        if (term === 'medio') {
+          if (labelEl) labelEl.textContent = 'Término Medio (Recomendado del Chef)';
+          if (descEl) descEl.textContent = 'Centro rosado jugoso (55°C) con costra caramelizada al mezquite y cristales de sal ahumada.';
+          meatColor = 0xb33a3a;
+          emissiveColor = 0x1f0606;
+        } else if (term === 'tres-cuartos') {
+          if (labelEl) labelEl.textContent = 'Tres Cuartos (Punto Dorado)';
+          if (descEl) descEl.textContent = 'Centro ligeramente rosado (63°C), textura firme y caramelización profunda a la brasa.';
+          meatColor = 0x6e2f23;
+          emissiveColor = 0x110202;
+        } else if (term === 'bien-cocido') {
+          if (labelEl) labelEl.textContent = 'Bien Cocido (Sellado Profundo)';
+          if (descEl) descEl.textContent = 'Cocción total uniforme (71°C) con corteza crocante al carbón sin jugos rojos.';
+          meatColor = 0x3a1b15;
+          emissiveColor = 0x000000;
+        }
+
+        if (studioMeatCoreMaterial) {
+          studioMeatCoreMaterial.color.setHex(meatColor);
+          studioMeatCoreMaterial.emissive.setHex(emissiveColor);
+        }
+      };
+
+      window.setStudioCamView = function(viewMode) {
+        document.querySelectorAll('.cam-preset-btn:not(.btn-ar-mode)').forEach(b => b.classList.remove('active'));
+
+        if (viewMode === 'orbit') {
+          studioTargetRotX = 0.35;
+          studioTargetRotY = -0.4;
+          studioTargetZoom = 7.2;
+          const b = document.getElementById('btnCamOrbit');
+          if (b) b.classList.add('active');
+        } else if (viewMode === 'top') {
+          studioTargetRotX = 1.48;
+          studioTargetRotY = 0;
+          studioTargetZoom = 8.0;
+          const b = document.getElementById('btnCamTop');
+          if (b) b.classList.add('active');
+        } else if (viewMode === 'close') {
+          studioTargetRotX = 0.22;
+          studioTargetRotY = -0.55;
+          studioTargetZoom = 4.8;
+          const b = document.getElementById('btnCamClose');
+          if (b) b.classList.add('active');
+        }
+      };
+
+      window.toggleArMode = function() {
+        const videoEl = document.getElementById('arVideoFeed');
+        const arBtn = document.getElementById('btnArMode');
+        const arLabel = document.getElementById('arModeLabel');
+
+        if (!studioArActive) {
+          // Activar proyección en mesa
+          if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({
+              video: { facingMode: { ideal: 'environment' } },
+              audio: false
+            }).then(stream => {
+              studioArStream = stream;
+              if (videoEl) {
+                videoEl.srcObject = stream;
+                videoEl.style.display = 'block';
+              }
+              studioArActive = true;
+              if (arBtn) arBtn.classList.add('ar-active');
+              if (arLabel) arLabel.textContent = 'Desactivar AR Mesa';
+              setStudioCamView('orbit');
+              showToast('📱 Modo AR activo: Apunta a tu mesa para proyectar el platillo en vivo');
+            }).catch(err => {
+              console.warn('Camera AR unavailable:', err);
+              showToast('⚠️ Permiso de cámara denegado. Manteniendo vista 3D de alta fidelidad.');
+            });
+          } else {
+            showToast('⚠️ Proyección AR no soportada en este navegador');
+          }
+        } else {
+          // Desactivar
+          if (studioArStream) {
+            studioArStream.getTracks().forEach(t => t.stop());
+            studioArStream = null;
+          }
+          if (videoEl) {
+            videoEl.style.display = 'none';
+            videoEl.srcObject = null;
+          }
+          studioArActive = false;
+          if (arBtn) arBtn.classList.remove('ar-active');
+          if (arLabel) arLabel.textContent = 'Ver en mi Mesa (AR)';
+          showToast('✓ Proyección en mesa finalizada');
+        }
+      };
+
+      window.addCurrentStudioDishToCart = function() {
+        const data = DISH_3D_REGISTRY[studioCurrentDishKey] || DISH_3D_REGISTRY['tomahawk'];
+        let finalTitle = data.title;
+        if (data.hasDoneness) {
+          let donenessName = 'Término Medio';
+          if (studioCurrentDoneness === 'tres-cuartos') donenessName = 'Tres Cuartos';
+          if (studioCurrentDoneness === 'bien-cocido') donenessName = 'Bien Cocido';
+          finalTitle += ` [${donenessName}]`;
+        }
+        addDishToCart(finalTitle, data.priceNum, data.key);
+        closeStudio3D();
+        showToast('✓ ' + finalTitle + ' añadido a tu comanda');
+      };
+
+      window.addStudioPairing = function() {
+        const data = DISH_3D_REGISTRY[studioCurrentDishKey] || DISH_3D_REGISTRY['tomahawk'];
+        addDishToCart(data.pairingItem, data.pairingPrice, 'maridaje-' + data.key);
+        showToast('🍷 ' + data.pairingItem + ' añadido a tu comanda');
+      };
 
     })();
   </script>
