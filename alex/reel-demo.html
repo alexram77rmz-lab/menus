@@ -3,21 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>ALEX · Reel de 60 Segundos | Simulador Publicitario</title>
-  <meta name="description" content="Simulador y reproductor interactivo de 60 segundos del anuncio para Instagram Reels y TikTok de MenuExpress.">
+  <title>ALEX · Reel Publicitario 20s & 60s | MenuExpress</title>
+  <meta name="description" content="Simulador y reproductor publicitario de alta conversión para Instagram Reels y TikTok de MenuExpress.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #09090d;
-      --card: #13131b;
+      --bg: #09090f;
+      --card: #13131e;
+      --purple: #8b5cf6;
+      --purple-glow: rgba(139, 92, 246, 0.35);
+      --google-blue: #4285f4;
+      --google-red: #ea4335;
+      --google-yellow: #fbbc05;
+      --google-green: #34a853;
       --amber: #f59e0b;
-      --amber-glow: rgba(245, 158, 11, 0.35);
-      --red: #ef4444;
-      --emerald: #10b981;
-      --text: #f8fafc;
+      --text: #ffffff;
       --muted: #94a3b8;
       --sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       --display: 'Space Grotesk', sans-serif;
@@ -25,7 +28,7 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background: var(--bg);
+      background: radial-gradient(circle at 50% 20%, #17152b 0%, var(--bg) 80%);
       color: var(--text);
       font-family: var(--sans);
       min-height: 100vh;
@@ -37,59 +40,56 @@
       overflow-x: hidden;
     }
 
-    /* Container */
     .simulator-container {
       width: 100%;
       max-width: 440px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
     }
 
-    /* Top Bar */
-    .top-badge-bar {
+    /* Mode Switcher Tabs */
+    .mode-switcher {
       width: 100%;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 8px 14px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 4px;
       border-radius: 999px;
-      font-size: 0.78rem;
     }
-    .badge-live {
+    .mode-tab {
+      flex: 1;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.25s ease;
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 6px;
-      color: var(--amber);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
     }
-    .live-dot {
-      width: 8px;
-      height: 8px;
-      background: var(--red);
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--red);
-      animation: pulseLive 1.5s infinite;
-    }
-    @keyframes pulseLive {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(1.3); }
+    .mode-tab.active {
+      background: linear-gradient(135deg, var(--purple), #a855f7);
+      color: #ffffff;
+      box-shadow: 0 4px 15px var(--purple-glow);
     }
 
     /* Phone Frame 9:16 */
     .phone-frame {
       width: 100%;
       aspect-ratio: 9 / 16;
-      max-height: 78vh;
+      max-height: 75vh;
       background: #000000;
-      border-radius: 36px;
-      border: 3px solid rgba(255, 255, 255, 0.15);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px var(--amber-glow);
+      border-radius: 38px;
+      border: 3.5px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), 0 0 45px var(--purple-glow);
       position: relative;
       overflow: hidden;
       display: flex;
@@ -111,7 +111,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 10px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
     .island-cam {
       width: 9px;
@@ -124,7 +124,7 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: #0c1a2e;
+      background: #1e1b4b;
     }
 
     /* Scene Views */
@@ -133,12 +133,12 @@
       inset: 0;
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+      transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
       transform: scale(0.96);
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 24px 20px 48px;
+      padding: 24px 20px 50px;
       background-size: cover;
       background-position: center;
     }
@@ -148,54 +148,71 @@
       transform: scale(1);
     }
 
-    /* Scene 1: Bad PDF */
+    /* Scene 1: Dead PDF */
     #scene1 {
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=900&auto=format&fit=crop&q=80');
+      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.88)), url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=900&auto=format&fit=crop&q=80');
       background-size: cover;
     }
     .pdf-mockup-sheet {
       background: #ffffff;
       color: #1e293b;
       padding: 16px;
-      border-radius: 12px;
+      border-radius: 14px;
       margin-bottom: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-      transform: rotate(-3deg) scale(0.95);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.6);
+      transform: rotate(-3deg);
       border: 2px dashed #cbd5e1;
       animation: shakePdf 3s ease-in-out infinite;
     }
     @keyframes shakePdf {
-      0%, 100% { transform: rotate(-3deg) scale(0.95); }
-      50% { transform: rotate(-1deg) scale(0.97); }
-    }
-    .pdf-header {
-      font-size: 0.85rem;
-      font-weight: 800;
-      border-bottom: 2px solid #e2e8f0;
-      padding-bottom: 6px;
-      margin-bottom: 8px;
-      display: flex;
-      justify-content: space-between;
-    }
-    .pdf-line {
-      font-size: 0.65rem;
-      color: #64748b;
-      line-height: 1.4;
-      filter: blur(0.5px);
-    }
-    .pdf-alert-tag {
-      display: inline-block;
-      background: #fee2e2;
-      color: #b91c1c;
-      font-size: 0.65rem;
-      font-weight: 800;
-      padding: 2px 8px;
-      border-radius: 4px;
-      margin-top: 8px;
+      0%, 100% { transform: rotate(-3deg) scale(0.96); }
+      50% { transform: rotate(-1deg) scale(0.98); }
     }
 
-    /* Scene 2: Sizzling Steak with Video */
+    /* Scene 2: Airplane to NFC Burst */
     #scene2 {
+      background: url('avioncito-nfc-burst.jpg') center/cover no-repeat;
+    }
+    .burst-overlay-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 65% 55%, rgba(139, 92, 246, 0.3) 0%, rgba(0,0,0,0.7) 70%);
+      z-index: 1;
+    }
+    .burst-tag {
+      position: relative;
+      z-index: 2;
+      background: linear-gradient(135deg, var(--purple), #c084fc);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 0.72rem;
+      padding: 5px 12px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 0 20px var(--purple);
+      margin-bottom: 8px;
+    }
+
+    /* Scene 3: Waiter Serving Dish */
+    #scene3 {
+      background: url('mesero-servicio-gourmet.jpg') center/cover no-repeat;
+    }
+    .waiter-card-info {
+      position: relative;
+      z-index: 2;
+      background: rgba(15, 13, 29, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(139, 92, 246, 0.4);
+      padding: 14px 16px;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+      margin-bottom: 20px;
+    }
+
+    /* Scene 4: Sizzling Video */
+    #scene4 {
       background: #000;
     }
     .scene-video-bg {
@@ -204,94 +221,12 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.9;
-    }
-    .scene-overlay-gradient {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.6) 100%);
-      z-index: 1;
+      opacity: 0.95;
     }
 
-    /* Scene 3: Upsell & Pairing */
-    #scene3 {
-      background: linear-gradient(to top, #09090d 20%, rgba(9,9,13,0.7) 100%), url('https://images.unsplash.com/photo-1544025162-d76694265947?w=900&auto=format&fit=crop&q=80');
-      background-size: cover;
-    }
-    .upsell-card {
-      background: rgba(22, 22, 30, 0.92);
-      border: 1px solid var(--amber);
-      border-radius: 16px;
-      padding: 14px;
-      box-shadow: 0 10px 30px var(--amber-glow);
-      margin-bottom: 20px;
-      animation: bounceCard 2s ease-in-out infinite;
-    }
-    @keyframes bounceCard {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
-    .upsell-title {
-      font-size: 0.75rem;
-      color: var(--amber);
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 6px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .upsell-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.88rem;
-      font-weight: 700;
-    }
-
-    /* Scene 4: Bill Split & WhatsApp */
-    #scene4 {
-      background: linear-gradient(to top, #09090d 15%, rgba(9,9,13,0.8) 100%), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900&auto=format&fit=crop&q=80');
-      background-size: cover;
-    }
-    .split-card {
-      background: rgba(22, 22, 30, 0.95);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 16px;
-      padding: 14px;
-      margin-bottom: 16px;
-    }
-    .split-row {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-    .split-total {
-      font-size: 1.2rem;
-      font-weight: 800;
-      color: var(--emerald);
-      font-family: var(--display);
-    }
-    .whatsapp-bubble {
-      background: #054c44;
-      border: 1px solid #128c7e;
-      border-radius: 12px;
-      padding: 12px;
-      color: #fff;
-      font-size: 0.78rem;
-      line-height: 1.4;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-    }
-
-    /* Scene 5: Call to Action */
+    /* Scene 5: CTA */
     #scene5 {
-      background: radial-gradient(circle at center, #1e1b4b 0%, #09090d 80%);
+      background: radial-gradient(circle at center, #2e1065 0%, #09090f 85%);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -300,23 +235,23 @@
       padding: 24px;
     }
     .cta-big-badge {
-      background: linear-gradient(135deg, var(--amber), #fbbf24);
-      color: #000;
+      background: linear-gradient(135deg, #a855f7, var(--purple));
+      color: #ffffff;
       font-family: var(--display);
-      font-size: 1.8rem;
+      font-size: 1.7rem;
       font-weight: 900;
-      padding: 10px 24px;
+      padding: 10px 26px;
       border-radius: 999px;
-      box-shadow: 0 0 35px var(--amber);
-      margin-bottom: 16px;
-      animation: pulseCta 1.2s infinite;
+      box-shadow: 0 0 35px var(--purple);
+      margin-bottom: 14px;
+      animation: pulseCta 1.3s infinite;
     }
     @keyframes pulseCta {
       0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.06); }
+      50% { transform: scale(1.05); }
     }
 
-    /* Kinetic Hormozi Subtitles */
+    /* Kinetic Subtitles */
     .caption-box {
       position: absolute;
       bottom: 24px;
@@ -328,66 +263,34 @@
     }
     .caption-text {
       display: inline-block;
-      background: rgba(0, 0, 0, 0.85);
-      border: 2px solid var(--amber);
+      background: rgba(0, 0, 0, 0.88);
+      border: 2px solid var(--purple);
       color: #ffffff;
       font-family: var(--display);
       font-weight: 900;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       text-transform: uppercase;
       padding: 8px 16px;
       border-radius: 12px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
       line-height: 1.3;
       letter-spacing: 0.04em;
     }
     .caption-text span.highlight {
-      color: var(--amber);
-      text-shadow: 0 0 15px var(--amber);
+      color: #c084fc;
+      text-shadow: 0 0 15px var(--purple);
     }
 
-    /* Social Overlay (Instagram style) */
-    .insta-sidebar {
-      position: absolute;
-      right: 12px;
-      bottom: 110px;
-      z-index: 15;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      align-items: center;
-    }
-    .insta-btn {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 3px;
-      font-size: 0.65rem;
-      color: #fff;
-      font-weight: 700;
-    }
-    .insta-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(8px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-    }
-
-    /* Controls Bar */
+    /* Controls Panel */
     .controls-panel {
       width: 100%;
       background: var(--card);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 20px;
+      border-radius: 22px;
       padding: 14px 18px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
     .timeline-row {
       display: flex;
@@ -408,15 +311,15 @@
       width: 16px;
       height: 16px;
       border-radius: 50%;
-      background: var(--amber);
-      box-shadow: 0 0 10px var(--amber);
+      background: var(--purple);
+      box-shadow: 0 0 12px var(--purple);
       cursor: pointer;
     }
     .timer-text {
       font-family: var(--display);
       font-size: 0.85rem;
       font-weight: 700;
-      color: var(--amber);
+      color: #c084fc;
       min-width: 45px;
       text-align: right;
     }
@@ -439,33 +342,34 @@
       justify-content: center;
       gap: 6px;
       transition: all 0.2s ease;
+      text-decoration: none;
     }
     .action-btn-primary {
-      background: linear-gradient(135deg, var(--amber), #fbbf24);
-      color: #000;
+      background: linear-gradient(135deg, var(--purple), #a855f7);
+      color: #ffffff;
+      box-shadow: 0 4px 15px var(--purple-glow);
     }
     .action-btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px var(--amber-glow);
+      box-shadow: 0 6px 25px var(--purple);
     }
     .action-btn-secondary {
       background: rgba(255, 255, 255, 0.08);
       color: var(--text);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.12);
     }
     .action-btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.15);
     }
 
-    /* Voice toggle */
-    .toggle-voice {
+    .bottom-info-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: var(--muted);
-      padding-top: 4px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 6px;
     }
   </style>
 </head>
@@ -473,16 +377,17 @@
 
 <div class="simulator-container">
 
-  <!-- Top Badge -->
-  <div class="top-badge-bar">
-    <div class="badge-live">
-      <span class="live-dot"></span>
-      Simulador Reel 60s
-    </div>
-    <span style="color: var(--muted);">Target: Dueños de Restaurantes</span>
+  <!-- Mode Switcher -->
+  <div class="mode-switcher">
+    <button class="mode-tab active" id="tab20s" onclick="switchMode(20)">
+      ⚡ Anuncio Rápido (20 Segundos)
+    </button>
+    <button class="mode-tab" id="tab60s" onclick="switchMode(60)">
+      ⏱️ Modo Detallado (60s)
+    </button>
   </div>
 
-  <!-- Phone Mockup 9:16 -->
+  <!-- Phone Frame 9:16 -->
   <div class="phone-frame">
     <!-- Dynamic Island -->
     <div class="dynamic-island">
@@ -490,205 +395,143 @@
       <div class="island-sensor"></div>
     </div>
 
-    <!-- SCENE 1 (0:00 - 0:08): The Pain / Dead PDF -->
+    <!-- SCENE 1: The Pain / Dead PDF -->
     <div class="scene-view active" id="scene1">
       <div class="pdf-mockup-sheet">
-        <div class="pdf-header">
-          <span>MENU_RESTAURANTE_FINAL_v3.pdf</span>
-          <span>1.8 MB</span>
+        <div style="font-weight: 800; font-size: 0.85rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 6px; margin-bottom: 8px; display: flex; justify-content: space-between;">
+          <span>CARTA_MENU_2024.pdf</span>
+          <span style="color: #ef4444;">PESADO</span>
         </div>
-        <div class="pdf-line">Pellizca con dos dedos para leer el texto borroso...</div>
-        <div class="pdf-line">Cortes al carbón ........... $480.00 (sin foto)</div>
-        <div class="pdf-line">Bebidas y coctelería ...... $120.00 (no carga)</div>
-        <span class="pdf-alert-tag">⚠️ 42% DE COMENSALES ABANDONA EL PDF</span>
+        <div style="font-size: 0.65rem; color: #64748b; line-height: 1.4;">Haciendo zoom para ver qué hay de comer...</div>
+        <div style="display: inline-block; background: #fee2e2; color: #b91c1c; font-size: 0.65rem; font-weight: 800; padding: 2px 8px; border-radius: 4px; margin-top: 8px;">
+          ⚠️ 35% DE VENTAS PERDIDAS EN PDF
+        </div>
       </div>
     </div>
 
-    <!-- SCENE 2 (0:08 - 0:22): Sizzling Video & Meat -->
+    <!-- SCENE 2: Airplane to NFC Explosion -->
     <div class="scene-view" id="scene2">
-      <video class="scene-video-bg" id="reelBgVideo" loop muted playsinline poster="https://images.unsplash.com/photo-1544025162-d76694265947?w=900&auto=format&fit=crop&q=80">
-        <source src="grill-fire.mp4" type="video/mp4">
-      </video>
-      <div class="scene-overlay-gradient"></div>
-      <div style="position: relative; z-index: 2; margin-bottom: 24px;">
-        <span style="background: var(--amber); color: #000; font-weight: 800; font-size: 0.72rem; padding: 4px 10px; border-radius: 999px; text-transform: uppercase;">
-          🥩 Tomahawk Prime 1.2kg
+      <div class="burst-overlay-glow"></div>
+      <div style="position: relative; z-index: 2; margin-bottom: 20px;">
+        <span class="burst-tag">
+          <span>✨</span> Transformación Mágica
         </span>
-        <h2 style="font-family: var(--display); font-size: 1.6rem; font-weight: 800; margin-top: 6px;">
-          FUEGO & BRASA EN VIVO
+        <h2 style="font-family: var(--display); font-size: 1.5rem; font-weight: 800; text-shadow: 0 2px 10px rgba(0,0,0,0.8);">
+          DEL PAPEL AL NFC
         </h2>
-        <p style="font-size: 0.78rem; color: #cbd5e1; margin-top: 4px;">
-          Video cinematográfico + Sonido ASMR de carbón de mezquite
+        <p style="font-size: 0.75rem; color: #e2e8f0; margin-top: 4px; text-shadow: 0 1px 6px rgba(0,0,0,0.8);">
+          Un toque con el teléfono y el menú cobra vida
         </p>
       </div>
     </div>
 
-    <!-- SCENE 3 (0:22 - 0:35): Automatic Upselling -->
+    <!-- SCENE 3: Waiter Serving Dish -->
     <div class="scene-view" id="scene3">
-      <div class="upsell-card">
-        <div class="upsell-title">
-          <span>🍷</span> Maridaje Sugerido Automático
+      <div class="waiter-card-info">
+        <div style="font-size: 0.7rem; color: #c084fc; font-weight: 800; text-transform: uppercase;">
+          🍽️ Experiencia en Mesa
         </div>
-        <div class="upsell-item">
-          <span>Gran Reserva Nebbiolo</span>
-          <span style="color: var(--amber); font-weight: 800;">+$190 MXN</span>
+        <div style="font-size: 1.1rem; font-weight: 800; font-family: var(--display); margin-top: 2px;">
+          Comensales Enamorados
         </div>
-        <div style="font-size: 0.72rem; color: #94a3b8; margin-top: 6px;">
-          ✓ El 40% de los clientes añade la copa con 1 tap
-        </div>
+        <p style="font-size: 0.72rem; color: #cbd5e1; margin-top: 4px;">
+          Ven el platillo en video antes de ordenar. Cero dudas para el mesero.
+        </p>
       </div>
     </div>
 
-    <!-- SCENE 4 (0:35 - 0:48): Bill Split & WhatsApp -->
+    <!-- SCENE 4: Sizzling Video -->
     <div class="scene-view" id="scene4">
-      <div class="split-card">
-        <div class="split-row">
-          <span>Cuenta Mesa 4 (4 comensales)</span>
-          <span>Total: $1,280</span>
-        </div>
-        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 8px;">
-          <div>
-            <div style="font-size: 0.7rem; color: var(--muted);">Cada uno paga:</div>
-            <div class="split-total">$320 MXN</div>
-          </div>
-          <span style="background: rgba(16, 185, 129, 0.2); color: var(--emerald); font-weight: 700; font-size: 0.7rem; padding: 4px 8px; border-radius: 6px;">
-            ✓ Dividida con propina
-          </span>
-        </div>
-      </div>
-
-      <div class="whatsapp-bubble">
-        <span style="font-size: 1.4rem;">📲</span>
-        <div>
-          <strong>Comanda enviada a WhatsApp</strong><br>
-          Cocina recibe orden exacta sin intermediarios.
-        </div>
+      <video class="scene-video-bg" id="reelBgVideo" loop muted playsinline poster="https://images.unsplash.com/photo-1544025162-d76694265947?w=900&auto=format&fit=crop&q=80">
+        <source src="grill-fire.mp4" type="video/mp4">
+      </video>
+      <div style="position: absolute; inset:0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent 60%); z-index:1;"></div>
+      <div style="position: relative; z-index: 2; margin-bottom: 20px;">
+        <span style="background: var(--amber); color: #000; font-weight: 800; font-size: 0.72rem; padding: 4px 10px; border-radius: 999px;">
+          🔥 COMANDA DIRECTA A WHATSAPP
+        </span>
       </div>
     </div>
 
-    <!-- SCENE 5 (0:48 - 1:00): CTA -->
+    <!-- SCENE 5: Call to Action -->
     <div class="scene-view" id="scene5">
       <div style="font-size: 0.85rem; color: #cbd5e1; margin-bottom: 8px;">
-        ¿Quieres probarlo en tu restaurante?
+        Prueba gratuita para tu restaurante
       </div>
       <div class="cta-big-badge">
         COMENTA "MESA"
       </div>
-      <p style="font-size: 0.8rem; color: var(--amber); font-weight: 700;">
-        🎁 Demo gratuita personalizada en 24 hrs
+      <p style="font-size: 0.85rem; color: #c084fc; font-weight: 700;">
+        🎁 Demo personalizada lista en 24 hrs
       </p>
       <div style="font-size: 0.72rem; color: var(--muted); margin-top: 10px;">
-        O manda WhatsApp al +52 33 2122 2772
+        WhatsApp: +52 33 2122 2772
       </div>
     </div>
 
-    <!-- Dynamic Hormozi Subtitles -->
+    <!-- Dynamic Subtitles -->
     <div class="caption-box">
       <div class="caption-text" id="captionText">
         ¿SIGUES USANDO <span class="highlight">MENÚS EN PDF?</span>
       </div>
     </div>
-
-    <!-- Social Sidebar -->
-    <div class="insta-sidebar">
-      <div class="insta-btn">
-        <div class="insta-icon">❤️</div>
-        <span>2.4k</span>
-      </div>
-      <div class="insta-btn">
-        <div class="insta-icon">💬</div>
-        <span>489</span>
-      </div>
-      <div class="insta-btn">
-        <div class="insta-icon">↗️</div>
-        <span>1.1k</span>
-      </div>
-    </div>
   </div>
 
-  <!-- Interactive Controls Panel -->
-  <audio id="neuralVoiceAudio" src="locucion_reel_60s.mp3" preload="auto"></audio>
+  <!-- Audio Elements -->
+  <audio id="audio20s" src="locucion_reel_20s.mp3" preload="auto"></audio>
+  <audio id="audio60s" src="locucion_reel_60s.mp3" preload="auto"></audio>
+
+  <!-- Controls Panel -->
   <div class="controls-panel">
     <div class="timeline-row">
-      <input type="range" class="timeline-slider" id="timelineSlider" min="0" max="60" value="0" step="0.1">
+      <input type="range" class="timeline-slider" id="timelineSlider" min="0" max="20" value="0" step="0.1">
       <span class="timer-text" id="timerText">0:00</span>
     </div>
 
     <div class="btn-row">
       <button class="action-btn action-btn-primary" id="playBtn">
-        <span id="playIcon">▶</span> <span id="playLabel">Reproducir con Voz Real</span>
+        <span id="playIcon">▶</span> <span id="playLabel">Reproducir (20s Rápido)</span>
       </button>
       <button class="action-btn action-btn-secondary" id="restartBtn">
-        <span>🔄</span> Reiniciar
+        <span>🔄</span>
       </button>
-      <a href="locucion_reel_60s.mp3" download="locucion_reel_60s.mp3" class="action-btn action-btn-secondary" style="text-decoration:none; display:flex; align-items:center; justify-content:center;">
-        <span>🎙️</span> Descargar MP3
+      <a id="downloadAudioBtn" href="locucion_reel_20s.mp3" download="locucion_reel_20s.mp3" class="action-btn action-btn-secondary" title="Descargar MP3 de locución">
+        <span>🎙️</span> MP3
       </a>
+      <button class="action-btn action-btn-secondary" id="copyScriptBtn" title="Copiar guión al portapapeles">
+        <span>📋</span>
+      </button>
     </div>
 
-    <div class="toggle-voice">
+    <div class="bottom-info-row">
       <span style="display:flex; align-items:center; gap:6px;">
         <span style="width:8px; height:8px; border-radius:50%; background:#10b981;"></span>
-        Voz Neural Locutor (Jorge MX - TikTok/CapCut)
+        Voz Neural Rápida (+22% velocidad comercial)
       </span>
-      <button id="copyScriptBtn" style="background:transparent; border:none; color:var(--amber); font-size:0.75rem; font-weight:700; cursor:pointer;">
-        📋 Copiar Guión
-      </button>
+      <span id="durationBadge">Duración: 20s</span>
     </div>
   </div>
 
 </div>
 
 <script>
-  // ════════════════════════════════════════════════════════════════
-  // SCRIPT DEFINITIONS (60 SECONDS TIMELINE)
-  // ════════════════════════════════════════════════════════════════
-  const SCRIPT_CUES = [
-    {
-      start: 0,
-      end: 7.5,
-      scene: 1,
-      caption: '¿SIGUES USANDO <span class="highlight">MENÚS EN PDF?</span>',
-      voiceText: 'Si tienes un restaurante y tus clientes siguen leyendo un PDF en su celular... estás perdiendo hasta el 35% de tus ventas y ni cuenta te has dado.'
-    },
-    {
-      start: 7.5,
-      end: 15,
-      scene: 2,
-      caption: 'LA GENTE COMPRA CON <span class="highlight">EL ANTOJO VISUAL</span>',
-      voiceText: 'La gente ya no lee texto aburrido. Compra con el antojo visual. Mira cómo se ve este corte con video de brasa real y humo activo.'
-    },
-    {
-      start: 15,
-      end: 22,
-      scene: 2,
-      caption: 'FUEGO REAL + <span class="highlight">SONIDO DE BRASA</span>',
-      voiceText: 'El cliente ve el fuego vivo y escucha el carbón chisporrotear. El apetito se despierta en un segundo.'
-    },
-    {
-      start: 22,
-      end: 34,
-      scene: 3,
-      caption: 'MARIDAJE AUTOMÁTICO <span class="highlight">+$190 POR PERSONA</span>',
-      voiceText: 'El sistema le sugiere automáticamente el maridaje con vino o coctelería. Cuatro de cada diez comensales lo añaden al momento, subiendo tu ticket promedio.'
-    },
-    {
-      start: 34,
-      end: 47,
-      scene: 4,
-      caption: 'DIVIDIR CUENTA + <span class="highlight">COMANDA POR WHATSAPP</span>',
-      voiceText: 'Tus comensales dividen la cuenta en la mesa con un clic y el pedido entra directo a tu WhatsApp de cocina, sin errores ni comisiones.'
-    },
-    {
-      start: 47,
-      end: 60,
-      scene: 5,
-      caption: 'COMENTA <span class="highlight">"MESA"</span> PARA TU DEMO GRATIS',
-      voiceText: 'Comenta la palabra MESA aquí abajo o mándame un mensaje, y te armo una demo gratuita con tu logo y tu menú en menos de 24 horas.'
-    }
+  let currentMaxDuration = 20; // 20 or 60
+
+  const CUES_20S = [
+    { start: 0, end: 4.5, scene: 1, caption: '¿SIGUES PERDIENDO VENTAS <span class="highlight">CON PDF?</span>' },
+    { start: 4.5, end: 9.5, scene: 2, caption: 'ADIÓS AL PAPEL · <span class="highlight">HOLA NFC & VIDEO</span>' },
+    { start: 9.5, end: 15.0, scene: 3, caption: 'SERVICIO REAL · <span class="highlight">EL ANTOJO VENDE</span>' },
+    { start: 15.0, end: 20.0, scene: 5, caption: 'COMENTA <span class="highlight">"MESA"</span> PARA TU PRUEBA GRATIS' }
   ];
 
-  // DOM Elements
+  const CUES_60S = [
+    { start: 0, end: 8, scene: 1, caption: '¿SIGUES USANDO <span class="highlight">MENÚS EN PDF?</span>' },
+    { start: 8, end: 22, scene: 4, caption: 'FUEGO REAL + <span class="highlight">VIDEO EN BRASA</span>' },
+    { start: 22, end: 35, scene: 2, caption: 'TRANSFORMACIÓN <span class="highlight">A TARJETA NFC</span>' },
+    { start: 35, end: 48, scene: 3, caption: 'SERVICIO REAL + <span class="highlight">COMANDA WHATSAPP</span>' },
+    { start: 48, end: 60, scene: 5, caption: 'COMENTA <span class="highlight">"MESA"</span> PARA TU DEMO GRATIS' }
+  ];
+
   const timelineSlider = document.getElementById('timelineSlider');
   const timerText = document.getElementById('timerText');
   const playBtn = document.getElementById('playBtn');
@@ -697,8 +540,11 @@
   const restartBtn = document.getElementById('restartBtn');
   const copyScriptBtn = document.getElementById('copyScriptBtn');
   const captionText = document.getElementById('captionText');
-  const voiceToggle = document.getElementById('voiceToggle');
   const reelBgVideo = document.getElementById('reelBgVideo');
+  const audio20 = document.getElementById('audio20s');
+  const audio60 = document.getElementById('audio60s');
+  const downloadAudioBtn = document.getElementById('downloadAudioBtn');
+  const durationBadge = document.getElementById('durationBadge');
 
   let currentTime = 0;
   let isPlaying = false;
@@ -706,78 +552,73 @@
   let lastTimestamp = null;
   let currentCueIndex = -1;
 
-  // Speech Synth
-  let synth = window.speechSynthesis;
-  let spanishVoice = null;
-
-  function loadVoices() {
-    if (!synth) return;
-    const voices = synth.getVoices();
-    spanishVoice = voices.find(v => v.lang.startsWith('es-MX') || v.lang.startsWith('es')) || voices[0];
-  }
-  if (synth) {
-    synth.onvoiceschanged = loadVoices;
-    loadVoices();
+  function getActiveAudio() {
+    return currentMaxDuration === 20 ? audio20 : audio60;
   }
 
-  function speakText(text) {
-    if (!voiceToggle.checked || !synth) return;
-    synth.cancel();
-    const utter = new SpeechSynthesisUtterance(text);
-    utter.rate = 1.12;
-    utter.pitch = 1.0;
-    if (spanishVoice) utter.voice = spanishVoice;
-    synth.speak(utter);
+  function getActiveCues() {
+    return currentMaxDuration === 20 ? CUES_20S : CUES_60S;
   }
 
-  // Update Visuals based on Time
+  function switchMode(duration) {
+    pause();
+    currentMaxDuration = duration;
+    currentTime = 0;
+    currentCueIndex = -1;
+
+    document.getElementById('tab20s').classList.toggle('active', duration === 20);
+    document.getElementById('tab60s').classList.toggle('active', duration === 60);
+
+    timelineSlider.max = duration;
+    durationBadge.textContent = `Duración: ${duration}s`;
+    playLabel.textContent = `Reproducir (${duration}s)`;
+
+    if (duration === 20) {
+      downloadAudioBtn.href = 'locucion_reel_20s.mp3';
+      downloadAudioBtn.download = 'locucion_reel_20s.mp3';
+    } else {
+      downloadAudioBtn.href = 'locucion_reel_60s.mp3';
+      downloadAudioBtn.download = 'locucion_reel_60s.mp3';
+    }
+
+    renderTime(0);
+  }
+
   function renderTime(t) {
-    currentTime = Math.max(0, Math.min(60, t));
+    currentTime = Math.max(0, Math.min(currentMaxDuration, t));
     timelineSlider.value = currentTime;
 
-    // Timer display
     const mins = Math.floor(currentTime / 60);
     const secs = Math.floor(currentTime % 60);
-    const ms = Math.floor((currentTime % 1) * 10);
     timerText.textContent = `${mins}:${secs < 10 ? '0' : ''}${secs}`;
 
-    // Find cue
-    const cueIndex = SCRIPT_CUES.findIndex(c => currentTime >= c.start && currentTime < c.end);
+    const cues = getActiveCues();
+    const cueIndex = cues.findIndex(c => currentTime >= c.start && currentTime < c.end);
     if (cueIndex !== -1 && cueIndex !== currentCueIndex) {
       currentCueIndex = cueIndex;
-      const cue = SCRIPT_CUES[cueIndex];
+      const cue = cues[cueIndex];
 
-      // Switch scene
-      document.querySelectorAll('.scene-view').forEach(s => s.classList.remove('active'));
-      const activeScene = document.getElementById('scene' + cue.scene);
-      if (activeScene) activeScene.classList.add('active');
+      for (let i = 1; i <= 5; i++) {
+        const s = document.getElementById('scene' + i);
+        if (s) s.classList.toggle('active', i === cue.scene);
+      }
 
-      // Video play/pause
-      if (cue.scene === 2) {
+      if (cue.scene === 4) {
         reelBgVideo.play().catch(() => {});
       } else {
         reelBgVideo.pause();
       }
 
-      // Update caption
       captionText.innerHTML = cue.caption;
-
-      // Speak voiceover
-      if (isPlaying) {
-        speakText(cue.voiceText);
-      }
     }
   }
 
-  // Playback Loop
-  const neuralAudio = document.getElementById('neuralVoiceAudio');
-
   function tick(timestamp) {
     if (!isPlaying) return;
-    
-    // Sync strictly with real neural MP3 if active
-    if (neuralAudio && !neuralAudio.paused && !neuralAudio.ended) {
-      currentTime = neuralAudio.currentTime;
+    const aud = getActiveAudio();
+
+    if (aud && !aud.paused && !aud.ended) {
+      currentTime = aud.currentTime;
     } else {
       if (!lastTimestamp) lastTimestamp = timestamp;
       const dt = (timestamp - lastTimestamp) / 1000;
@@ -785,10 +626,10 @@
       currentTime += dt;
     }
 
-    if (currentTime >= 60 || (neuralAudio && neuralAudio.ended)) {
-      currentTime = 60;
+    if (currentTime >= currentMaxDuration || (aud && aud.ended)) {
+      currentTime = currentMaxDuration;
       pause();
-      renderTime(60);
+      renderTime(currentMaxDuration);
       return;
     }
 
@@ -801,11 +642,12 @@
     playIcon.textContent = '⏸';
     playLabel.textContent = 'Pausar';
     lastTimestamp = null;
-    currentCueIndex = -1; // force trigger
+    currentCueIndex = -1;
 
-    if (neuralAudio) {
-      neuralAudio.currentTime = currentTime;
-      neuralAudio.play().catch(e => console.log('Audio autoplay policy:', e));
+    const aud = getActiveAudio();
+    if (aud) {
+      aud.currentTime = currentTime;
+      aud.play().catch(e => console.log('Audio play blocked:', e));
     }
 
     renderTime(currentTime);
@@ -815,9 +657,9 @@
   function pause() {
     isPlaying = false;
     playIcon.textContent = '▶';
-    playLabel.textContent = 'Reproducir con Voz Real';
-    if (neuralAudio) neuralAudio.pause();
-    if (synth) synth.cancel();
+    playLabel.textContent = `Reproducir (${currentMaxDuration}s)`;
+    const aud = getActiveAudio();
+    if (aud) aud.pause();
     if (animFrame) cancelAnimationFrame(animFrame);
     reelBgVideo.pause();
   }
@@ -826,7 +668,7 @@
     if (isPlaying) {
       pause();
     } else {
-      if (currentTime >= 60) currentTime = 0;
+      if (currentTime >= currentMaxDuration) currentTime = 0;
       play();
     }
   });
@@ -834,7 +676,8 @@
   restartBtn.addEventListener('click', () => {
     pause();
     currentTime = 0;
-    if (neuralAudio) neuralAudio.currentTime = 0;
+    const aud = getActiveAudio();
+    if (aud) aud.currentTime = 0;
     currentCueIndex = -1;
     renderTime(0);
     play();
@@ -842,44 +685,24 @@
 
   timelineSlider.addEventListener('input', (e) => {
     const val = parseFloat(e.target.value);
-    if (neuralAudio) neuralAudio.currentTime = val;
-    if (synth) synth.cancel();
+    const aud = getActiveAudio();
+    if (aud) aud.currentTime = val;
     renderTime(val);
   });
 
-  // Copy full script
   copyScriptBtn.addEventListener('click', () => {
-    const fullText = `🎬 GUIÓN DE REEL 60 SEGUNDOS — MENUEXPRESS
+    const script20 = `🎬 GUIÓN REEL 20 SEGUNDOS (ALTA CONVERSIÓN) — MENUEXPRESS:
+[0 - 4.5s] "¿Sigues perdiendo clientes con menús en PDF o papel viejo?" (Visual: Menú PDF roto)
+[4.5 - 9.5s] "Dile adiós al papel. Con MenuExpress, un toque en la tarjeta NFC o el código QR y tu menú cobra vida con video real en la mesa." (Visual: Avioncito de menú chocando y explotando en tarjeta NFC)
+[9.5 - 15.0s] "Tus clientes se enamoran del platillo antes de pedirlo y la orden entra directa a tu WhatsApp de cocina." (Visual: Mesero elegante sirviendo platillo gourmet humeante en restaurante)
+[15.0 - 20.0s] "Comenta la palabra MESA y te armamos tu prueba gratis hoy mismo." (Visual: Badge COMENTA MESA + WhatsApp)`;
 
-[0:00 - 0:08] HOOK:
-"Si tienes un restaurante y tus clientes siguen leyendo un PDF en su celular... estás perdiendo hasta el 35% de tus ventas y ni cuenta te has dado."
-(Visual: Menú PDF arrugado y borroso)
-
-[0:08 - 0:22] EL CONTRASTE & FUEGO REAL:
-"La gente ya no lee texto aburrido. Compra con el antojo visual. Mira cómo se ve este corte con video de brasa real y humo activo. El cliente ve el fuego vivo y escucha el carbón chisporrotear. El apetito se despierta en un segundo."
-(Visual: Video de Tomahawk a la brasa con grill-fire.mp4 y sonido)
-
-[0:22 - 0:35] UPSELLING AUTOMÁTICO:
-"El sistema le sugiere automáticamente el maridaje con vino o coctelería. Cuatro de cada diez comensales lo añaden al momento, subiendo tu ticket promedio entre 150 y 200 pesos por mesa."
-(Visual: Chip de copa Nebbiolo Gran Reserva +$190)
-
-[0:35 - 0:47] DIVISIÓN DE CUENTA Y WHATSAPP:
-"Tus comensales dividen la cuenta en la mesa con un clic y el pedido entra directo a tu WhatsApp de cocina, sin errores ni comisiones."
-(Visual: Calculadora de división de cuenta y comanda directa)
-
-[0:47 - 1:00] LLAMADO A LA ACCIÓN:
-"Comenta la palabra MESA aquí abajo o mándame un mensaje, y te armo una demo gratuita con tu logo y tu menú en menos de 24 horas."
-(Visual: CTA gigante COMENTA MESA + WhatsApp +52 33 2122 2772)`;
-
-    navigator.clipboard.writeText(fullText).then(() => {
-      copyScriptBtn.innerHTML = '<span>✅</span> ¡Copiado!';
-      setTimeout(() => {
-        copyScriptBtn.innerHTML = '<span>📋</span> Copiar Guión';
-      }, 2000);
+    navigator.clipboard.writeText(script20).then(() => {
+      copyScriptBtn.innerHTML = '<span>✅</span>';
+      setTimeout(() => { copyScriptBtn.innerHTML = '<span>📋</span>'; }, 2000);
     });
   });
 
-  // Initial render
   renderTime(0);
 </script>
 </body>
