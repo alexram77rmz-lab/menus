@@ -1228,10 +1228,17 @@
         let orders = JSON.parse(localStorage.getItem('rova_orders_queue') || '[]');
         orders.unshift(order);
         localStorage.setItem('rova_orders_queue', JSON.stringify(orders));
+
+        // Disparo automático a Webhook del Agente de Telegram / Make / n8n
+        fetch('http://localhost:3000/webhook/order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(order)
+        }).catch(() => { /* silencioso si el agente no está corriendo */ });
       } catch(e){}
 
-      // Dispara Toast de Sincronización con Obsidian / HiFly
-      showToast('⚡ Webhook Sincronizado', `Orden #${order.orderId} enviada a Obsidian y canal de rastreo.`);
+      // Dispara Toast de Sincronización con Obsidian / HiFly / Telegram
+      showToast('⚡ Webhook Sincronizado', `Orden #${order.orderId} enviada a Telegram, Obsidian y despacho.`);
     }
 
     /* =========================================================================
