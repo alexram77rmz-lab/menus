@@ -513,22 +513,8 @@
         margin-top: 2px !important;
       }
 
-      /* Hoja 2: fotos compactas en tira de 4 horizontal + sticker */
+      /* Hojas 2 y 3: fotos compactas en tira de 4 horizontal simétricas */
       .sheet2-gallery,
-      div[style*="grid-template-columns: 1fr 1fr 1fr 1fr 110px"] {
-        display: grid !important;
-        grid-template-columns: repeat(4, 1fr) !important;
-        gap: 6px !important;
-        margin-top: 8px !important;
-      }
-      .sheet2-sticker,
-      div[style*="grid-template-columns: 1fr 1fr 1fr 1fr 110px"] > div:last-child {
-        grid-column: 1 / -1 !important;
-        text-align: center !important;
-        margin-top: 4px !important;
-      }
-
-      /* Hoja 3: fotos compactas en tira de 4 horizontal (no gigantes) */
       .sheet3-gallery,
       div[style*="grid-template-columns: repeat(4, 1fr)"] {
         display: grid !important;
@@ -868,13 +854,12 @@
           </div>
         </div>
 
-        <!-- Fotos Reales y Sticker -->
-        <div class="sheet2-gallery" style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 90px; gap: 8px; align-items: center; margin-top: auto;">
-          <div class="photo-card" style="height: 95px;"><img src="img/limoncito_especial_real.jpg" alt="Especial Limoncito"></div>
-          <div class="photo-card" style="height: 95px;"><img src="img/coctel_camaron_pulpo_real.jpg" alt="Coctel Especial"></div>
-          <div class="photo-card" style="height: 95px;"><img src="img/el_guero_real.jpg" alt="Botana de Mariscos"></div>
-          <div class="photo-card" style="height: 95px;"><img src="img/callo_de_hacha_real.jpg" alt="Callo de Hacha"></div>
-          <div class="sheet2-sticker"><img src="img/logo.png" alt="Sticker Oficial" class="sticker-limoncito" style="width: 80px;"></div>
+        <!-- 4 Fotos Reales montadas horizontalmente (igual a Hoja 3) -->
+        <div class="sheet2-gallery" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: auto;">
+          <div class="photo-card" style="height: 100px;"><img src="img/limoncito_especial_real.jpg" alt="Especial Limoncito"></div>
+          <div class="photo-card" style="height: 100px;"><img src="img/coctel_camaron_pulpo_real.jpg" alt="Coctel Especial"></div>
+          <div class="photo-card" style="height: 100px;"><img src="img/el_guero_real.jpg" alt="Botana de Mariscos"></div>
+          <div class="photo-card" style="height: 100px;"><img src="img/callo_de_hacha_real.jpg" alt="Callo de Hacha"></div>
         </div>
 
       </div>
@@ -1034,14 +1019,20 @@
               </div>
             </div>
 
-            <div class="dish-row">
-              <div class="dish-main"><span class="dish-name-orange">PHILADELPHIA</span><span class="dish-dots"></span><span class="dish-price">$150</span></div>
-              <p class="dish-desc">Por dentro: pollo, aguacate y pepino.<br>Por fuera: philadelphia y camarón.</p>
+            <div class="dish-row dish-with-thumb">
+              <div class="dish-thumb"><img src="img/philadelphia_roll_real.jpg" alt="Philadelphia Roll"></div>
+              <div class="dish-body">
+                <div class="dish-main"><span class="dish-name-orange">PHILADELPHIA</span><span class="dish-dots"></span><span class="dish-price">$150</span></div>
+                <p class="dish-desc">Por dentro: pollo, aguacate y pepino.<br>Por fuera: philadelphia y camarón.</p>
+              </div>
             </div>
 
-            <div class="dish-row">
-              <div class="dish-main"><span class="dish-name-orange">MAZATLÁN</span><span class="dish-dots"></span><span class="dish-price">$189</span></div>
-              <p class="dish-desc">Por dentro: medallón de atún, salmón y pepino.<br>Por fuera: aguacate y sriracha.</p>
+            <div class="dish-row dish-with-thumb">
+              <div class="dish-thumb"><img src="img/mazatlan_roll_real.jpg" alt="Mazatlán Roll"></div>
+              <div class="dish-body">
+                <div class="dish-main"><span class="dish-name-orange">MAZATLÁN</span><span class="dish-dots"></span><span class="dish-price">$189</span></div>
+                <p class="dish-desc">Por dentro: medallón de atún, salmón y pepino.<br>Por fuera: aguacate y sriracha.</p>
+              </div>
             </div>
 
             <div class="dish-row">
