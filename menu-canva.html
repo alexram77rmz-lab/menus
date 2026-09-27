@@ -324,10 +324,10 @@
        FOTOGRAFÍAS REALES DEL MENÚ (ALTA CALIDAD & BRILLO GASTRONÓMICO)
        ═══════════════════════════════════════════════════════════════ */
     .photo-card {
-      border-radius: 12px;
+      border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.2), 0 1px 3px rgba(0,0,0,0.1);
-      border: 2.5px solid #FFFFFF;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.18), 0 1px 3px rgba(0,0,0,0.08);
+      border: 2px solid #FFFFFF;
       background: #EAEAEA;
     }
 
@@ -341,7 +341,7 @@
 
     /* Sticker oficial del Limoncito con sombrero vaquero */
     .sticker-limoncito {
-      width: 115px;
+      width: 85px;
       filter: drop-shadow(2px 3px 6px rgba(0,0,0,0.3));
     }
 
@@ -357,24 +357,21 @@
 
     /* ═══════════════════════════════════════════════════════════════
        OPTIMIZACIÓN ULTRA ADAPTABLE PARA CELULAR (MOBILE-FIRST)
-       ═══════════════════════════════════════════════════════════════ */
-    /* ═══════════════════════════════════════════════════════════════
-       OPTIMIZACIÓN ULTRA ADAPTABLE PARA CELULAR (MOBILE-FIRST)
-       Compacto, sin scroll infinito y perfectamente proporcionado
+       Fotos compactas, sin desbordes y proporcionadas
        ═══════════════════════════════════════════════════════════════ */
     @media screen and (max-width: 680px) {
       body {
-        padding: 10px 6px;
+        padding: 8px 4px;
         background-color: #1a1e24;
       }
       .menu-wrapper {
-        gap: 16px;
+        gap: 14px;
         width: 100%;
         max-width: 100%;
       }
       .menu-sheet {
         border-width: 6px;
-        padding: 14px 12px 16px 12px;
+        padding: 12px 10px 14px 10px;
         min-height: auto;
         border-radius: 8px;
         box-shadow: 0 4px 16px rgba(0,0,0,0.3);
@@ -384,62 +381,62 @@
         display: none;
       }
       .bg-mascot {
-        width: 250px;
-        height: 250px;
-        opacity: 0.14;
-      }
-      .bg-script-text {
-        font-size: 56px;
-        left: -10px;
+        width: 210px;
+        height: 210px;
         opacity: 0.12;
       }
+      .bg-script-text {
+        font-size: 48px;
+        left: -10px;
+        opacity: 0.10;
+      }
       .canva-brand-title {
-        font-size: 24px;
+        font-size: 22px;
         line-height: 0.95;
       }
       .canva-brand-sub {
-        font-size: 8.5px;
-        letter-spacing: 1.8px;
+        font-size: 8px;
+        letter-spacing: 1.5px;
       }
       .section-title-orange {
-        font-size: 18px;
-        margin-bottom: 6px;
+        font-size: 17px;
+        margin-bottom: 5px;
         letter-spacing: 1px;
       }
       .section-subtitle-grey {
-        font-size: 18px;
-        margin-bottom: 8px;
+        font-size: 17px;
+        margin-bottom: 6px;
       }
       .section-pill {
-        font-size: 14px;
-        padding: 3px 12px;
-        margin-bottom: 8px;
+        font-size: 13px;
+        padding: 3px 10px;
+        margin-bottom: 6px;
       }
 
       /* Platillos y textos compactos para celular */
       .dish-row {
-        margin-bottom: 5px;
+        margin-bottom: 4px;
       }
       .dish-name-orange, .dish-name-dark {
-        font-size: 12.5px;
+        font-size: 12px;
       }
       .dish-price {
-        font-size: 13.5px;
+        font-size: 12.8px;
       }
       .dish-desc {
-        font-size: 10px;
-        line-height: 1.22;
+        font-size: 9.8px;
+        line-height: 1.2;
         max-width: 100%;
       }
       .multi-dish-item {
-        margin-bottom: 6px;
+        margin-bottom: 5px;
       }
       .multi-dish-prices {
-        font-size: 12px;
+        font-size: 11.5px;
         gap: 6px;
       }
       .th-cell, .td-cell {
-        width: 44px;
+        width: 42px;
       }
 
       /* Colapso de grillas de 2 columnas a 1 columna */
@@ -452,35 +449,36 @@
       .sheet-content > div[style*="grid-template-columns: 1.35fr 0.65fr"],
       .sheet-content > div[style*="grid-template-columns: 1fr 1fr"] {
         grid-template-columns: 1fr !important;
-        gap: 12px !important;
+        gap: 10px !important;
       }
 
       .sheet6-grid,
       .sheet-content > div[style*="grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 35px; flex: 1;"] {
         margin-top: 10px !important;
-        gap: 18px !important;
+        gap: 14px !important;
       }
 
-      /* Hoja 1: fotos en tira horizontal de 3 + sticker centrado */
+      /* Hoja 1: fotos pequeñas en tira de 3 horizontal + sticker */
       .sheet1-photos {
         display: grid !important;
         grid-template-columns: repeat(3, 1fr) !important;
-        gap: 8px !important;
+        gap: 6px !important;
         width: 100% !important;
-        margin-top: 8px !important;
+        margin-top: 6px !important;
       }
       .sheet1-sticker {
         grid-column: 1 / -1 !important;
         text-align: center !important;
-        margin-top: 4px !important;
+        margin-top: 2px !important;
       }
 
-      /* Hoja 2: fotos en cuadrícula 2x2 + sticker centrado */
+      /* Hoja 2: fotos compactas en tira de 4 horizontal + sticker */
       .sheet2-gallery,
       div[style*="grid-template-columns: 1fr 1fr 1fr 1fr 110px"] {
-        grid-template-columns: 1fr 1fr !important;
-        gap: 8px !important;
-        margin-top: 12px !important;
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 6px !important;
+        margin-top: 8px !important;
       }
       .sheet2-sticker,
       div[style*="grid-template-columns: 1fr 1fr 1fr 1fr 110px"] > div:last-child {
@@ -489,56 +487,60 @@
         margin-top: 4px !important;
       }
 
-      /* Hoja 3: fotos en cuadrícula 2x2 */
+      /* Hoja 3: fotos compactas en tira de 4 horizontal (no gigantes) */
       .sheet3-gallery,
       div[style*="grid-template-columns: repeat(4, 1fr)"] {
-        grid-template-columns: 1fr 1fr !important;
-        gap: 8px !important;
-        margin-top: 12px !important;
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 6px !important;
+        margin-top: 8px !important;
       }
 
       /* Hoja 4: kawaii sushi compacto + fotos en tira de 3 */
       .sheet4-kawaii {
-        margin: 4px auto 8px auto !important;
+        margin: 2px auto 6px auto !important;
       }
       .sheet4-kawaii svg {
-        width: 90px !important;
+        width: 75px !important;
       }
       .sheet4-gallery,
       div[style*="grid-template-columns: repeat(3, 1fr)"] {
+        display: grid !important;
         grid-template-columns: repeat(3, 1fr) !important;
-        gap: 8px !important;
-        margin-top: 12px !important;
+        gap: 6px !important;
+        margin-top: 8px !important;
       }
 
       /* Hoja 5: fotos en tira de 3 y caja de extras abajo */
       .sheet5-sidebar {
         display: flex !important;
         flex-direction: column !important;
-        gap: 10px !important;
-        margin-top: 10px !important;
+        gap: 8px !important;
+        margin-top: 8px !important;
       }
       .sheet5-photos {
         display: grid !important;
         grid-template-columns: repeat(3, 1fr) !important;
-        gap: 8px !important;
+        gap: 6px !important;
       }
 
+      /* Tarjetas de fotos: tamaño pequeño y controlado (65px de alto) */
       .photo-card {
-        height: auto !important;
-        aspect-ratio: 4 / 3 !important;
-        border-radius: 8px !important;
-        border-width: 2px !important;
+        height: 65px !important;
+        max-height: 75px !important;
+        width: 100% !important;
+        border-radius: 6px !important;
+        border-width: 1.5px !important;
       }
 
       .sticker-limoncito {
-        width: 85px !important;
+        width: 65px !important;
         display: inline-block !important;
         margin: 0 auto !important;
       }
 
       .marine-svg {
-        opacity: 0.18 !important;
+        opacity: 0.15 !important;
       }
     }
 
@@ -675,20 +677,20 @@
           </div>
 
           <!-- Columna Derecha: Fotos Reales y Sticker -->
-          <div class="sheet1-photos" style="display: flex; flex-direction: column; justify-content: space-between; align-items: center; gap: 14px;">
-            <div class="photo-card" style="width: 100%; height: 180px;">
+          <div class="sheet1-photos" style="display: flex; flex-direction: column; justify-content: space-between; align-items: center; gap: 10px;">
+            <div class="photo-card" style="width: 100%; height: 105px;">
               <img src="img/culichi_peppers.jpg" alt="Culichi Peppers">
             </div>
 
-            <div class="photo-card" style="width: 100%; height: 190px;">
+            <div class="photo-card" style="width: 100%; height: 105px;">
               <img src="img/pate_camaron.jpg" alt="Paté de Camarón">
             </div>
 
-            <div class="photo-card" style="width: 100%; height: 165px;">
+            <div class="photo-card" style="width: 100%; height: 100px;">
               <img src="img/ostiones_frescos.jpg" alt="Ostiones Frescos en Concha">
             </div>
 
-            <div class="sheet1-sticker" style="text-align: right; width: 100%; margin-top: 5px;">
+            <div class="sheet1-sticker" style="text-align: right; width: 100%; margin-top: 4px;">
               <img src="img/logo.png" alt="Sticker Oficial El Limoncito Culichi" class="sticker-limoncito">
             </div>
           </div>
@@ -814,12 +816,12 @@
         </div>
 
         <!-- Fotos Reales y Sticker -->
-        <div class="sheet2-gallery" style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 110px; gap: 8px; align-items: center; margin-top: auto;">
-          <div class="photo-card" style="height: 110px;"><img src="img/aguachile_verde.jpg" alt="Aguachile Verde"></div>
-          <div class="photo-card" style="height: 110px;"><img src="img/aguachile_negro.jpg" alt="Aguachile Negro"></div>
-          <div class="photo-card" style="height: 110px;"><img src="img/ostiones_frescos.jpg" alt="Molcajete"></div>
-          <div class="photo-card" style="height: 110px;"><img src="img/tostiaguachile.jpg" alt="Tostiaguachile"></div>
-          <div class="sheet2-sticker"><img src="img/logo.png" alt="Sticker Oficial" class="sticker-limoncito" style="width: 100px;"></div>
+        <div class="sheet2-gallery" style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 90px; gap: 8px; align-items: center; margin-top: auto;">
+          <div class="photo-card" style="height: 95px;"><img src="img/aguachile_verde.jpg" alt="Aguachile Verde"></div>
+          <div class="photo-card" style="height: 95px;"><img src="img/aguachile_negro.jpg" alt="Aguachile Negro"></div>
+          <div class="photo-card" style="height: 95px;"><img src="img/ostiones_frescos.jpg" alt="Molcajete"></div>
+          <div class="photo-card" style="height: 95px;"><img src="img/tostiaguachile.jpg" alt="Tostiaguachile"></div>
+          <div class="sheet2-sticker"><img src="img/logo.png" alt="Sticker Oficial" class="sticker-limoncito" style="width: 80px;"></div>
         </div>
 
       </div>
@@ -920,10 +922,10 @@
 
         <!-- 4 Fotos de Ceviches montadas horizontalmente -->
         <div class="sheet3-gallery" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: auto;">
-          <div class="photo-card" style="height: 160px;"><img src="img/ceviche_camaron.jpg" alt="Ceviche de Camarón"></div>
-          <div class="photo-card" style="height: 160px;"><img src="img/aguachile_verde.jpg" alt="Ceviche Tropical"></div>
-          <div class="photo-card" style="height: 160px;"><img src="img/ostiones_frescos.jpg" alt="Ceviche con Aguacate"></div>
-          <div class="photo-card" style="height: 160px;"><img src="img/tostiaguachile.jpg" alt="Tosticeviche"></div>
+          <div class="photo-card" style="height: 100px;"><img src="img/ceviche_camaron.jpg" alt="Ceviche de Camarón"></div>
+          <div class="photo-card" style="height: 100px;"><img src="img/aguachile_verde.jpg" alt="Ceviche Tropical"></div>
+          <div class="photo-card" style="height: 100px;"><img src="img/ostiones_frescos.jpg" alt="Ceviche con Aguacate"></div>
+          <div class="photo-card" style="height: 100px;"><img src="img/tostiaguachile.jpg" alt="Tosticeviche"></div>
         </div>
 
       </div>
@@ -1005,10 +1007,10 @@
         </div>
 
         <!-- 3 Fotos de Rollos Reales -->
-        <div class="sheet4-gallery" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: auto;">
-          <div class="photo-card" style="height: 155px;"><img src="img/flaming_roll.jpg" alt="Flaming Roll"></div>
-          <div class="photo-card" style="height: 155px;"><img src="img/sushi_empanizado.jpg" alt="Rollos Fríos Especiales"></div>
-          <div class="photo-card" style="height: 155px;"><img src="img/culichi_peppers.jpg" alt="Sashimi Roll"></div>
+        <div class="sheet4-gallery" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: auto;">
+          <div class="photo-card" style="height: 100px;"><img src="img/flaming_roll.jpg" alt="Flaming Roll"></div>
+          <div class="photo-card" style="height: 100px;"><img src="img/sushi_empanizado.jpg" alt="Rollos Fríos Especiales"></div>
+          <div class="photo-card" style="height: 100px;"><img src="img/culichi_peppers.jpg" alt="Sashimi Roll"></div>
         </div>
 
       </div>
@@ -1106,10 +1108,10 @@
 
           <!-- Fotos y Cuadro de Extras Limpio -->
           <div class="sheet5-sidebar" style="display: flex; flex-direction: column; justify-content: space-between; gap: 10px;">
-            <div class="sheet5-photos" style="display: flex; flex-direction: column; gap: 10px;">
-              <div class="photo-card" style="height: 125px;"><img src="img/sushi_empanizado.jpg" alt="Greñudo Roll"></div>
-              <div class="photo-card" style="height: 125px;"><img src="img/flaming_roll.jpg" alt="Rollos Empanizados"></div>
-              <div class="photo-card" style="height: 130px;"><img src="img/culichi_peppers.jpg" alt="Sushi Gratinado"></div>
+            <div class="sheet5-photos" style="display: flex; flex-direction: column; gap: 8px;">
+              <div class="photo-card" style="height: 95px;"><img src="img/sushi_empanizado.jpg" alt="Greñudo Roll"></div>
+              <div class="photo-card" style="height: 95px;"><img src="img/flaming_roll.jpg" alt="Rollos Empanizados"></div>
+              <div class="photo-card" style="height: 95px;"><img src="img/culichi_peppers.jpg" alt="Sushi Gratinado"></div>
             </div>
 
             <div class="sheet5-extras-box" style="background: #FFFFFF; border: 2px solid #E26D45; border-radius: 10px; padding: 8px 12px; margin-top: 4px;">
