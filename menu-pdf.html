@@ -57,6 +57,7 @@
       box-shadow: 0 14px 35px rgba(0, 0, 0, 0.45);
       padding: 20px 24px 18px 24px;
       min-height: 1080px;
+      height: 1080px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -404,6 +405,8 @@
         border-width: 6px;
         padding: 12px 10px 14px 10px;
         min-height: auto;
+        height: auto !important;
+        max-height: none !important;
         border-radius: 8px;
         box-shadow: 0 4px 16px rgba(0,0,0,0.3);
         box-sizing: border-box;
@@ -671,77 +674,77 @@
         </header>
 
         <!-- Dos Columnas Adaptables -->
-        <div class="sheet1-grid" style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 18px; flex: 1; align-content: space-between;">
+        <div class="sheet1-grid" style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 18px; flex: 1; align-content: space-between; height: 100%;">
           
           <!-- Columna Izquierda: Entradas y Ostras -->
-          <div style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
             <div>
-              <h2 class="section-title-orange" style="margin-bottom: 10px;">ENTRADAS</h2>
+              <h2 class="section-title-orange" style="margin-bottom: 12px;">ENTRADAS</h2>
               
-              <div class="dish-row" style="margin-bottom: 11px;">
+              <div class="dish-row" style="margin-bottom: 13px;">
                 <div class="dish-main"><span class="dish-name-orange" style="font-size: 14px;">CULICHI PEPPER</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$110</span></div>
                 <p class="dish-desc">Chile caribe empanizado relleno de surimi y philadelphia coronado con salsa anguila y aderezo de chipotle.</p>
               </div>
 
-              <div class="dish-row" style="margin-bottom: 11px;">
+              <div class="dish-row" style="margin-bottom: 13px;">
                 <div class="dish-main"><span class="dish-name-orange" style="font-size: 14px;">ORDEN BONELESS</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$180</span></div>
                 <p class="dish-desc">Trozos de pechuga de pollo empanizada bañados en tu salsa a elegir.</p>
               </div>
 
-              <div class="dish-row" style="margin-bottom: 11px;">
+              <div class="dish-row" style="margin-bottom: 13px;">
                 <div class="dish-main"><span class="dish-name-orange" style="font-size: 14px;">ORDEN ALITAS</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$190</span></div>
                 <p class="dish-desc">Alitas de pollo fritas y bañadas con salsa a elegir.</p>
               </div>
 
-              <div class="dish-row" style="margin-bottom: 11px;">
+              <div class="dish-row" style="margin-bottom: 13px;">
                 <div class="dish-main"><span class="dish-name-orange" style="font-size: 14px;">ORDEN DE NUGGETS</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$110</span></div>
                 <p class="dish-desc">Alitas de pollo fritas y bañadas con salsa a elegir.</p>
               </div>
 
-              <div class="dish-row" style="margin-bottom: 11px;">
+              <div class="dish-row" style="margin-bottom: 13px;">
                 <div class="dish-main"><span class="dish-name-orange" style="font-size: 14px;">PAPAS A LA FRANCESA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$100</span></div>
               </div>
 
-              <div class="dish-row" style="margin-bottom: 11px;">
+              <div class="dish-row" style="margin-bottom: 13px;">
                 <div class="dish-main"><span class="dish-name-orange" style="font-size: 14px;">GUACAMOLE ESPECIAL</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$250</span></div>
                 <p class="dish-desc">Guacamole con tomate, cebolla, chile serrano, cilantro con camarón, pulpo coronado con filete de pescado frito.</p>
               </div>
 
-              <div class="dish-row" style="margin-bottom: 11px;">
+              <div class="dish-row" style="margin-bottom: 13px;">
                 <div class="dish-main"><span class="dish-name-orange" style="font-size: 14px;">PATÉ DE CAMARÓN 1/4</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$120</span></div>
                 <p class="dish-desc">El tradicional paté de camarón al estilo limoncito culichi.</p>
               </div>
 
-              <div class="dish-row" style="margin-bottom: 14px;">
+              <div class="dish-row" style="margin-bottom: 16px;">
                 <div class="dish-main"><span class="dish-name-orange" style="font-size: 14px;">LA GILBERTONA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$195</span></div>
                 <p class="dish-desc">Tostada con Paté de camarón, medallón de atún en cubos, camarón tempura con un aderezo especial de la casa y cebolla frita.</p>
               </div>
             </div>
 
             <!-- Ostras -->
-            <div>
-              <h2 class="section-title-orange" style="margin-top: 6px; margin-bottom: 10px;">OSTRAS <span style="font-size: 11px; font-weight: 500; text-transform: none; color: #555;">(sujeto a disponibilidad)</span></h2>
+            <div style="margin-top: auto;">
+              <h2 class="section-title-orange" style="margin-top: 8px; margin-bottom: 12px;">OSTRAS <span style="font-size: 11px; font-weight: 500; text-transform: none; color: #555;">(sujeto a disponibilidad)</span></h2>
 
-              <div class="dish-row dish-with-thumb" style="margin-bottom: 10px;">
+              <div class="dish-row dish-with-thumb" style="margin-bottom: 12px;">
                 <div class="dish-thumb"><img src="img/ostiones_preparados_real.jpg" alt="Ostiones Limoncito"></div>
                 <div class="dish-body">
                   <div class="dish-main"><span class="dish-name-orange" style="font-size: 14px;">OSTIONES</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 14.5px;">6: $100 | 10: $150</span></div>
                 </div>
               </div>
 
-              <div class="dish-row" style="margin-bottom: 10px;">
+              <div class="dish-row" style="margin-bottom: 12px;">
                 <div class="dish-main"><span class="dish-name-orange" style="font-size: 14px;">ALMEJA CHOCOLATA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 14.5px;">6: $120 | 10: $180</span></div>
               </div>
 
-              <div class="dish-row" style="margin-bottom: 10px;">
+              <div class="dish-row" style="margin-bottom: 12px;">
                 <div class="dish-main"><span class="dish-name-orange" style="font-size: 14px;">ALMEJA REYNA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 14.5px;">Pieza: $150</span></div>
               </div>
 
-              <div class="dish-row" style="margin-bottom: 10px;">
+              <div class="dish-row" style="margin-bottom: 12px;">
                 <div class="dish-main"><span class="dish-name-orange" style="font-size: 14px;">PATAS DE MULA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 14.5px;">6: $100 | 10: $150</span></div>
               </div>
 
-              <div class="dish-row dish-with-thumb" style="margin-bottom: 6px;">
+              <div class="dish-row dish-with-thumb" style="margin-bottom: 0;">
                 <div class="dish-thumb"><img src="img/vergazo_real.jpg" alt="Vergazo"></div>
                 <div class="dish-body">
                   <div class="dish-main"><span class="dish-name-orange" style="font-size: 14px;">VERGAZO</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$160</span></div>
@@ -754,20 +757,20 @@
 
           <!-- Columna Derecha: Fotos Reales y Sticker (Especialidades de la Casa) -->
           <div class="sheet1-photos" style="display: flex; flex-direction: column; justify-content: space-between; align-items: center; gap: 14px; height: 100%;">
-            <div class="photo-card" style="width: 100%; height: 195px;">
+            <div class="photo-card" style="width: 100%; height: 215px;">
               <img src="img/culichi_soup_real.jpg" alt="Culichi Soup">
             </div>
 
-            <div class="photo-card" style="width: 100%; height: 195px;">
+            <div class="photo-card" style="width: 100%; height: 215px;">
               <img src="img/camarones_al_guajillo_real.jpg" alt="Camarones al Guajillo">
             </div>
 
-            <div class="photo-card" style="width: 100%; height: 195px;">
+            <div class="photo-card" style="width: 100%; height: 215px;">
               <img src="img/pescado_zarandeado_real.jpg" alt="Pescado Zarandeado">
             </div>
 
-            <div class="sheet1-sticker" style="text-align: right; width: 100%; margin-top: auto;">
-              <img src="img/logo.png" alt="Sticker Oficial El Limoncito Culichi" class="sticker-limoncito" style="width: 95px;">
+            <div class="sheet1-sticker" style="text-align: right; width: 100%; margin-top: auto; display: flex; justify-content: flex-end; align-items: flex-end;">
+              <img src="img/logo.png" alt="Sticker Oficial El Limoncito Culichi" class="sticker-limoncito" style="width: 105px;">
             </div>
           </div>
 
@@ -795,19 +798,19 @@
           </div>
         </header>
 
-        <div style="display: flex; flex-direction: column; justify-content: space-between; flex: 1;">
+        <div style="display: flex; flex-direction: column; justify-content: space-between; flex: 1; height: 100%;">
           
           <!-- Sección Aguachiles -->
           <div>
-            <h2 class="section-title-orange" style="margin-bottom: 8px;">AGUACHILES</h2>
+            <h2 class="section-title-orange" style="margin-bottom: 10px;">AGUACHILES</h2>
 
-            <div class="table-header-row" style="margin-right: 2px; margin-bottom: 8px;">
-              <div class="th-cell" style="font-size: 12px;">TOSTADA</div>
-              <div class="th-cell" style="font-size: 12px;">1/2 ORD.</div>
-              <div class="th-cell" style="font-size: 12px;">ORDEN</div>
+            <div class="table-header-row" style="margin-right: 2px; margin-bottom: 14px;">
+              <div class="th-cell" style="font-size: 13px;">TOSTADA</div>
+              <div class="th-cell" style="font-size: 13px;">1/2 ORD.</div>
+              <div class="th-cell" style="font-size: 13px;">ORDEN</div>
             </div>
 
-            <div class="multi-dish-item" style="margin-bottom: 12px;">
+            <div class="multi-dish-item" style="margin-bottom: 20px;">
               <div class="multi-dish-info">
                 <div class="dish-name-orange" style="font-size: 14.5px;">AGUACHILE VERDE</div>
                 <p class="dish-desc" style="font-size: 11.5px;">Camarón, Pepino, Cebolla, Salsa verde de la casa.</p>
@@ -819,7 +822,7 @@
               </div>
             </div>
 
-            <div class="multi-dish-item" style="margin-bottom: 12px;">
+            <div class="multi-dish-item" style="margin-bottom: 20px;">
               <div class="multi-dish-info">
                 <div class="dish-name-orange" style="font-size: 14.5px;">AGUACHILE ROJO</div>
                 <p class="dish-desc" style="font-size: 11.5px;">Camarón, Pepino, Cebolla, Salsa roja de la casa.</p>
@@ -831,9 +834,9 @@
               </div>
             </div>
 
-            <div class="multi-dish-item" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <div class="multi-dish-item" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
               <div style="display: flex; align-items: center; gap: 10px;">
-                <div class="dish-thumb" style="width: 50px; height: 50px;"><img src="img/aguachile_negro_real.jpg" alt="Aguachile Negro"></div>
+                <div class="dish-thumb" style="width: 52px; height: 52px;"><img src="img/aguachile_negro_real.jpg" alt="Aguachile Negro"></div>
                 <div class="multi-dish-info">
                   <div class="dish-name-orange" style="font-size: 14.5px;">AGUACHILE NEGRO</div>
                   <p class="dish-desc" style="font-size: 11.5px;">Camarón, Pepino, Cebolla, Salsa Negra de la casa.</p>
@@ -846,7 +849,7 @@
               </div>
             </div>
 
-            <div class="multi-dish-item" style="margin-bottom: 12px;">
+            <div class="multi-dish-item" style="margin-bottom: 20px;">
               <div class="multi-dish-info">
                 <div class="dish-name-orange" style="font-size: 14.5px;">AGUACHILE CULICHI</div>
                 <p class="dish-desc" style="font-size: 11.5px;">Camarón, Pepino, Cebolla, Salsa de chile chiltepín molcajeteado de la casa.</p>
@@ -858,7 +861,7 @@
               </div>
             </div>
 
-            <div class="multi-dish-item" style="margin-bottom: 12px;">
+            <div class="multi-dish-item" style="margin-bottom: 20px;">
               <div class="multi-dish-info">
                 <div class="dish-name-orange" style="font-size: 14.5px;">TOSTIAGUACHILE</div>
                 <p class="dish-desc" style="font-size: 11.5px;">Cama de Tostitos acompañada de aguachile negro con salsas de la casa.</p>
@@ -870,20 +873,20 @@
               </div>
             </div>
 
-            <div class="dish-row" style="margin-bottom: 14px;">
+            <div class="dish-row" style="margin-bottom: 22px;">
               <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">SASHIMI DE ATÚN</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$190</span></div>
               <p class="dish-desc" style="font-size: 11.5px;">Láminas de atún en una salsa de aceite de ajonjolí con salsa de soya.</p>
             </div>
           </div>
 
           <!-- Cocteles Especiales en 2 Columnas Fiel al Menú Original -->
-          <div style="margin-top: 10px; border-top: 2px dashed #E26D45; padding-top: 12px;">
-            <h2 class="section-title-orange" style="margin-bottom: 12px;">COCTELES ESPECIALES</h2>
+          <div style="margin-top: auto; border-top: 2px dashed #E26D45; padding-top: 18px;">
+            <h2 class="section-title-orange" style="margin-bottom: 14px;">COCTELES ESPECIALES</h2>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: end;">
               <!-- Columna 1 -->
-              <div>
-                <div class="dish-row dish-with-thumb" style="margin-bottom: 14px;">
+              <div style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="dish-row dish-with-thumb" style="margin-bottom: 16px;">
                   <div class="dish-thumb" style="width: 52px; height: 52px;"><img src="img/el_guero_real.jpg" alt="Tumba Tontos El Güero"></div>
                   <div class="dish-body">
                     <div class="dish-main"><span class="dish-name-orange" style="font-size: 14px;">TUMBA TONTOS</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$340</span></div>
@@ -891,7 +894,7 @@
                   </div>
                 </div>
 
-                <div class="dish-row dish-with-thumb">
+                <div class="dish-row dish-with-thumb" style="margin-bottom: 0;">
                   <div class="dish-thumb" style="width: 52px; height: 52px;"><img src="img/limoncito_especial_real.jpg" alt="Especial Limoncito"></div>
                   <div class="dish-body">
                     <div class="dish-main"><span class="dish-name-orange" style="font-size: 14px;">LIMONCITO</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$290</span></div>
@@ -901,13 +904,13 @@
               </div>
 
               <!-- Columna 2 -->
-              <div>
-                <div class="dish-row" style="margin-bottom: 14px;">
+              <div style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="dish-row" style="margin-bottom: 16px; min-height: 52px; display: flex; flex-direction: column; justify-content: center;">
                   <div class="dish-main"><span class="dish-name-orange" style="font-size: 14px;">DE CAMARÓN</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 14px;">CH: $150 | GDE: $215</span></div>
                   <p class="dish-desc" style="font-size: 11px;">Camarones cocidos mezclados en jugo de la casa, tomate, cebolla, pepino, coronado con aguacate y salsas de la casa.</p>
                 </div>
 
-                <div class="dish-row dish-with-thumb">
+                <div class="dish-row dish-with-thumb" style="margin-bottom: 0;">
                   <div class="dish-thumb" style="width: 52px; height: 52px;"><img src="img/coctel_camaron_pulpo_real.jpg" alt="Coctel Camarón y Pulpo"></div>
                   <div class="dish-body">
                     <div class="dish-main"><span class="dish-name-orange" style="font-size: 14px;">CAMARÓN Y PULPO</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 14px;">CH: $190 | GDE: $260</span></div>
@@ -943,87 +946,91 @@
           </div>
         </header>
 
-        <h2 class="section-title-orange" style="font-size: 24px; margin-bottom: 12px;">CEVICHES</h2>
+        <div style="display: flex; flex-direction: column; justify-content: space-between; flex: 1; height: 100%;">
+          <div>
+            <h2 class="section-title-orange" style="font-size: 24px; margin-bottom: 12px;">CEVICHES</h2>
 
-        <div class="table-header-row" style="margin-right: 2px; margin-bottom: 12px;">
-          <div class="th-cell" style="font-size: 12.5px; font-weight: 800;">TOSTADA</div>
-          <div class="th-cell" style="font-size: 12.5px; font-weight: 800;">1/2 ORD.</div>
-          <div class="th-cell" style="font-size: 12.5px; font-weight: 800;">ORDEN</div>
-        </div>
+            <div class="table-header-row" style="margin-right: 2px; margin-bottom: 14px;">
+              <div class="th-cell" style="font-size: 13px; font-weight: 800;">TOSTADA</div>
+              <div class="th-cell" style="font-size: 13px; font-weight: 800;">1/2 ORD.</div>
+              <div class="th-cell" style="font-size: 13px; font-weight: 800;">ORDEN</div>
+            </div>
 
-        <div class="multi-dish-item" style="margin-bottom: 22px;">
-          <div class="multi-dish-info">
-            <div class="dish-name-orange" style="font-size: 16px;">DE PESCADO</div>
-            <p class="dish-desc" style="font-size: 12px; line-height: 1.35;">Pescado en cubos curtido, tomate, cebolla, pepino, cilantro, coronado con aguacate y salsas de la casa.</p>
-          </div>
-          <div class="multi-dish-prices" style="font-size: 15.5px;">
-            <div class="td-cell">$70</div>
-            <div class="td-cell">$130</div>
-            <div class="td-cell">$190</div>
-          </div>
-        </div>
+            <div class="multi-dish-item" style="margin-bottom: 30px;">
+              <div class="multi-dish-info">
+                <div class="dish-name-orange" style="font-size: 16.5px;">DE PESCADO</div>
+                <p class="dish-desc" style="font-size: 12.5px; line-height: 1.35;">Pescado en cubos curtido, tomate, cebolla, pepino, cilantro, coronado con aguacate y salsas de la casa.</p>
+              </div>
+              <div class="multi-dish-prices" style="font-size: 16px;">
+                <div class="td-cell">$70</div>
+                <div class="td-cell">$130</div>
+                <div class="td-cell">$190</div>
+              </div>
+            </div>
 
-        <div class="multi-dish-item" style="margin-bottom: 22px;">
-          <div class="multi-dish-info">
-            <div class="dish-name-orange" style="font-size: 16px;">CAMARÓN</div>
-            <p class="dish-desc" style="font-size: 12px; line-height: 1.35;">Camarón crudo o cocido, tomate, cebolla, pepino, cilantro, coronado con aguacate y salsas de la casa.</p>
-          </div>
-          <div class="multi-dish-prices" style="font-size: 15.5px;">
-            <div class="td-cell">$90</div>
-            <div class="td-cell">$155</div>
-            <div class="td-cell">$220</div>
-          </div>
-        </div>
+            <div class="multi-dish-item" style="margin-bottom: 30px;">
+              <div class="multi-dish-info">
+                <div class="dish-name-orange" style="font-size: 16.5px;">CAMARÓN</div>
+                <p class="dish-desc" style="font-size: 12.5px; line-height: 1.35;">Camarón crudo o cocido, tomate, cebolla, pepino, cilantro, coronado con aguacate y salsas de la casa.</p>
+              </div>
+              <div class="multi-dish-prices" style="font-size: 16px;">
+                <div class="td-cell">$90</div>
+                <div class="td-cell">$155</div>
+                <div class="td-cell">$220</div>
+              </div>
+            </div>
 
-        <div class="multi-dish-item" style="margin-bottom: 22px;">
-          <div class="multi-dish-info">
-            <div class="dish-name-orange" style="font-size: 16px;">CAMARÓN CON PULPO</div>
-            <p class="dish-desc" style="font-size: 12px; line-height: 1.35;">Camarón crudo o cocido, pulpo, tomate, cebolla, pepino, cilantro, coronado con aguacate y salsas de la casa.</p>
-          </div>
-          <div class="multi-dish-prices" style="font-size: 15.5px;">
-            <div class="td-cell">$110</div>
-            <div class="td-cell">$190</div>
-            <div class="td-cell">$260</div>
-          </div>
-        </div>
+            <div class="multi-dish-item" style="margin-bottom: 30px;">
+              <div class="multi-dish-info">
+                <div class="dish-name-orange" style="font-size: 16.5px;">CAMARÓN CON PULPO</div>
+                <p class="dish-desc" style="font-size: 12.5px; line-height: 1.35;">Camarón crudo o cocido, pulpo, tomate, cebolla, pepino, cilantro, coronado con aguacate y salsas de la casa.</p>
+              </div>
+              <div class="multi-dish-prices" style="font-size: 16px;">
+                <div class="td-cell">$110</div>
+                <div class="td-cell">$190</div>
+                <div class="td-cell">$260</div>
+              </div>
+            </div>
 
-        <div class="multi-dish-item" style="margin-bottom: 22px;">
-          <div class="multi-dish-info">
-            <div class="dish-name-orange" style="font-size: 16px;">CAMARÓN TROPICAL</div>
-            <p class="dish-desc" style="font-size: 12px; line-height: 1.35;">Camarón crudo o cocido, mango, cebolla, jícama, pepino, cilantro, coronado con aguacate y salsas de la casa.</p>
-          </div>
-          <div class="multi-dish-prices" style="font-size: 15.5px;">
-            <div class="td-cell">$90</div>
-            <div class="td-cell">$170</div>
-            <div class="td-cell">$230</div>
-          </div>
-        </div>
+            <div class="multi-dish-item" style="margin-bottom: 30px;">
+              <div class="multi-dish-info">
+                <div class="dish-name-orange" style="font-size: 16.5px;">CAMARÓN TROPICAL</div>
+                <p class="dish-desc" style="font-size: 12.5px; line-height: 1.35;">Camarón crudo o cocido, mango, cebolla, jícama, pepino, cilantro, coronado con aguacate y salsas de la casa.</p>
+              </div>
+              <div class="multi-dish-prices" style="font-size: 16px;">
+                <div class="td-cell">$90</div>
+                <div class="td-cell">$170</div>
+                <div class="td-cell">$230</div>
+              </div>
+            </div>
 
-        <div class="multi-dish-item" style="margin-bottom: 22px;">
-          <div class="multi-dish-info">
-            <div class="dish-name-orange" style="font-size: 16px;">MEDALLÓN TROPICAL</div>
-            <p class="dish-desc" style="font-size: 12px; line-height: 1.35;">Medallón de atún fresco, mango, cebolla, jícama, pepino, cilantro, coronado con aguacate y salsas de la casa.</p>
-          </div>
-          <div class="multi-dish-prices" style="font-size: 15.5px;">
-            <div class="td-cell">$105</div>
-            <div class="td-cell">$185</div>
-            <div class="td-cell">$240</div>
-          </div>
-        </div>
+            <div class="multi-dish-item" style="margin-bottom: 30px;">
+              <div class="multi-dish-info">
+                <div class="dish-name-orange" style="font-size: 16.5px;">MEDALLÓN TROPICAL</div>
+                <p class="dish-desc" style="font-size: 12.5px; line-height: 1.35;">Medallón de atún fresco, mango, cebolla, jícama, pepino, cilantro, coronado con aguacate y salsas de la casa.</p>
+              </div>
+              <div class="multi-dish-prices" style="font-size: 16px;">
+                <div class="td-cell">$105</div>
+                <div class="td-cell">$185</div>
+                <div class="td-cell">$240</div>
+              </div>
+            </div>
 
-        <div class="dish-row" style="margin-top: 10px; margin-bottom: 28px;">
-          <div class="dish-main"><span class="dish-name-orange" style="font-size: 16px;">TOSTICEVICHE</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">1/2 ORD: $180 | ORD: $240</span></div>
-          <p class="dish-desc" style="font-size: 12px; line-height: 1.35;">Cama de Tostitos acompañada de un ceviche con salsas de la casa.</p>
-        </div>
-
-        <!-- Sello de Calidad y Tradición Sinaloense al pie -->
-        <div style="background: rgba(255, 255, 255, 0.92); border: 2px dashed #DE5D35; border-radius: 12px; padding: 18px 22px; text-align: center; margin-top: auto; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-          <div style="font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 700; color: #DE5D35; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 6px;">
-            🦐 ¡EL AUTÉNTICO CEVICHE ESTILO CULICHI! 🍋
+            <div class="dish-row" style="margin-top: 10px; margin-bottom: 30px;">
+              <div class="dish-main"><span class="dish-name-orange" style="font-size: 16.5px;">TOSTICEVICHE</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 16px;">1/2 ORD: $180 | ORD: $240</span></div>
+              <p class="dish-desc" style="font-size: 12.5px; line-height: 1.35;">Cama de Tostitos acompañada de un ceviche con salsas de la casa.</p>
+            </div>
           </div>
-          <p style="font-family: 'Montserrat', sans-serif; font-size: 11.8px; font-weight: 600; color: #444444; line-height: 1.45; margin: 0;">
-            Elaborados al momento con mariscos frescos de primera calidad.<br>Acompañados con sus tostadas crujientes, galletas saladas y nuestras exclusivas salsas de la casa.
-          </p>
+
+          <!-- Sello de Calidad y Tradición Sinaloense al pie -->
+          <div style="background: rgba(255, 255, 255, 0.95); border: 2.5px dashed #DE5D35; border-radius: 14px; padding: 24px 28px; text-align: center; margin-top: auto; box-shadow: 0 4px 15px rgba(0,0,0,0.06);">
+            <div style="font-family: 'Oswald', sans-serif; font-size: 20px; font-weight: 700; color: #DE5D35; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px;">
+              🦐 ¡EL AUTÉNTICO CEVICHE ESTILO CULICHI! 🍋
+            </div>
+            <p style="font-family: 'Montserrat', sans-serif; font-size: 12.5px; font-weight: 600; color: #333333; line-height: 1.5; margin: 0;">
+              Elaborados al momento con mariscos frescos de primera calidad.<br>Acompañados con sus tostadas crujientes, galletas saladas y nuestras exclusivas salsas de la casa.
+            </p>
+          </div>
         </div>
 
 
@@ -1053,9 +1060,9 @@
           </div>
         </header>
 
-        <div class="sheet4-grid" style="display: grid; grid-template-columns: 1.35fr 0.65fr; gap: 18px; flex: 1; align-content: space-between;">
-          <div style="display: flex; flex-direction: column; justify-content: space-between;">
-            <div class="dish-row dish-with-thumb" style="margin-bottom: 20px;">
+        <div class="sheet4-grid" style="display: grid; grid-template-columns: 1.35fr 0.65fr; gap: 20px; flex: 1; align-content: space-between; height: 100%;">
+          <div style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+            <div class="dish-row dish-with-thumb" style="margin-bottom: 24px;">
               <div class="dish-thumb" style="width: 52px; height: 52px;"><img src="img/enchilocito_roll_real.jpg" alt="Enchilocito Roll"></div>
               <div class="dish-body">
                 <div class="dish-main"><span class="dish-name-orange" style="font-size: 16px;">ENCHILOCITO</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 16px;">$180</span></div>
@@ -1063,17 +1070,17 @@
               </div>
             </div>
 
-            <div class="dish-row" style="margin-bottom: 20px;">
+            <div class="dish-row" style="margin-bottom: 24px;">
               <div class="dish-main"><span class="dish-name-orange" style="font-size: 16px;">AGUACHILE ROLL</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 16px;">$250</span></div>
               <p class="dish-desc" style="font-size: 12px; line-height: 1.35;">Por dentro: camarón tempura, philadelphia y pepino.<br>Por fuera: aguacate y aguachile.</p>
             </div>
 
-            <div class="dish-row" style="margin-bottom: 20px;">
+            <div class="dish-row" style="margin-bottom: 24px;">
               <div class="dish-main"><span class="dish-name-orange" style="font-size: 16px;">FLAMING ROLL</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 16px;">$140</span></div>
               <p class="dish-desc" style="font-size: 12px; line-height: 1.35;">Por dentro: camarón tempura y ensalada de surimi.<br>Por fuera: forrado de cheto flaming, salsa anguila y spicy.</p>
             </div>
 
-            <div class="dish-row dish-with-thumb" style="margin-bottom: 20px;">
+            <div class="dish-row dish-with-thumb" style="margin-bottom: 24px;">
               <div class="dish-thumb" style="width: 52px; height: 52px;"><img src="img/culiacancito_hot_real.jpg" alt="Culiacancito Hot"></div>
               <div class="dish-body">
                 <div class="dish-main"><span class="dish-name-orange" style="font-size: 16px;">CULIACANCITO HOT</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 16px;">$160</span></div>
@@ -1081,7 +1088,7 @@
               </div>
             </div>
 
-            <div class="dish-row dish-with-thumb" style="margin-bottom: 20px;">
+            <div class="dish-row dish-with-thumb" style="margin-bottom: 24px;">
               <div class="dish-thumb" style="width: 52px; height: 52px;"><img src="img/philadelphia_roll_real.jpg" alt="Philadelphia Roll"></div>
               <div class="dish-body">
                 <div class="dish-main"><span class="dish-name-orange" style="font-size: 16px;">PHILADELPHIA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 16px;">$150</span></div>
@@ -1089,7 +1096,7 @@
               </div>
             </div>
 
-            <div class="dish-row dish-with-thumb" style="margin-bottom: 20px;">
+            <div class="dish-row dish-with-thumb" style="margin-bottom: 24px;">
               <div class="dish-thumb" style="width: 52px; height: 52px;"><img src="img/mazatlan_roll_real.jpg" alt="Mazatlán Roll"></div>
               <div class="dish-body">
                 <div class="dish-main"><span class="dish-name-orange" style="font-size: 16px;">MAZATLÁN</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 16px;">$189</span></div>
@@ -1097,7 +1104,7 @@
               </div>
             </div>
 
-            <div class="dish-row" style="margin-bottom: 10px;">
+            <div class="dish-row" style="margin-bottom: 0;">
               <div class="dish-main"><span class="dish-name-orange" style="font-size: 16px;">MARINERO ROLL</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 16px;">$189</span></div>
               <p class="dish-desc" style="font-size: 12px; line-height: 1.35;">Por dentro: camarón, pulpo y pepino.<br>Por fuera: aguacate y sriracha.</p>
             </div>
@@ -1105,7 +1112,7 @@
 
           <!-- Sushi Kawaii con Palillos & Banner Estilo Sinaloa -->
           <div class="sheet4-kawaii" style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; height: 100%;">
-            <div style="margin-top: 25px;">
+            <div style="margin-top: 15px;">
               <svg viewBox="0 0 160 220" style="width: 165px; height: auto;">
                 <line x1="150" y1="180" x2="30" y2="40" stroke="#E65100" stroke-width="6" stroke-linecap="round"/>
                 <line x1="160" y1="195" x2="10" y2="90" stroke="#F57C00" stroke-width="6" stroke-linecap="round"/>
@@ -1118,8 +1125,12 @@
               </svg>
             </div>
 
+            <div style="text-align: center; margin: 15px 0;">
+              <img src="img/logo.png" alt="El Limoncito Culichi" style="width: 95px; opacity: 0.92; filter: drop-shadow(2px 3px 6px rgba(0,0,0,0.25));">
+            </div>
+
             <!-- Banner Sushi Culichi al pie -->
-            <div style="background: rgba(255, 255, 255, 0.95); border: 2px dashed #33691E; border-radius: 12px; padding: 18px 20px; text-align: center; margin-top: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+            <div style="background: rgba(255, 255, 255, 0.95); border: 2px dashed #33691E; border-radius: 12px; padding: 18px 20px; text-align: center; margin-top: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.05); width: 100%;">
               <div style="font-family: 'Oswald', sans-serif; font-size: 16.5px; font-weight: 700; color: #1B5E20; text-transform: uppercase; margin-bottom: 4px;">
                 🥢 SUSHI CULICHI
               </div>
@@ -1157,60 +1168,63 @@
 
         <h2 class="section-subtitle-grey">ROLLOS EMPANIZADOS</h2>
 
-        <div class="sheet5-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; flex: 1; align-content: space-between;">
+        <div class="sheet5-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; flex: 1; align-content: space-between; height: 100%;">
           <!-- Columna 1: 7 Rollos -->
-          <div style="display: flex; flex-direction: column; justify-content: space-between;">
-            <div class="dish-row dish-with-thumb" style="margin-bottom: 14px;">
-              <div class="dish-thumb" style="width: 50px; height: 50px;"><img src="img/mar_y_tierra_real.jpg" alt="Mar y Tierra"></div>
-              <div class="dish-body">
-                <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">MAR Y TIERRA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$180</span></div>
-                <p class="dish-desc" style="font-size: 11.2px;">Por dentro: camarón, carne de res, pepino, philadelphia y aguacate.</p>
+          <div style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+            <div>
+              <div class="dish-row dish-with-thumb" style="margin-bottom: 22px;">
+                <div class="dish-thumb" style="width: 50px; height: 50px;"><img src="img/mar_y_tierra_real.jpg" alt="Mar y Tierra"></div>
+                <div class="dish-body">
+                  <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">MAR Y TIERRA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$180</span></div>
+                  <p class="dish-desc" style="font-size: 11.2px;">Por dentro: camarón, carne de res, pepino, philadelphia y aguacate.</p>
+                </div>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 22px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">CIELO, MAR Y TIERRA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$180</span></div>
+                <p class="dish-desc" style="font-size: 11.2px;">Por dentro: Pollo, res, camarón, philadelphia, pepino y aguacate.</p>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 22px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">CORDON BLUE</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$180</span></div>
+                <p class="dish-desc" style="font-size: 11.2px;">Por dentro: pollo, tocino, aguacate, philadelphia.<br>Por fuera: tocino y queso gratinado.</p>
+              </div>
+
+              <div class="dish-row dish-with-thumb" style="margin-bottom: 22px;">
+                <div class="dish-thumb" style="width: 50px; height: 50px;"><img src="img/camaron_blue_real.jpg" alt="Camarón Blue"></div>
+                <div class="dish-body">
+                  <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">CAMARÓN BLUE</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$180</span></div>
+                  <p class="dish-desc" style="font-size: 11.2px;">Por dentro: camarón, pepino, philadelphia.<br>Por fuera: tocino y queso gratinado.</p>
+                </div>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 22px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">CAMARONCITO ROLL</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$130</span></div>
+                <p class="dish-desc" style="font-size: 11.2px;">Por dentro: camarón, philadelphia, pepino.<br>Por fuera: aguacate, mayonesa, salsa anguila.</p>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 22px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">ROLCITO</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$160</span></div>
+                <p class="dish-desc" style="font-size: 11.2px;">Por dentro: camarón, philadelphia y pepino.<br>Por fuera: ensalada de surimi y salsa anguila.</p>
               </div>
             </div>
 
-            <div class="dish-row" style="margin-bottom: 14px;">
-              <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">CIELO, MAR Y TIERRA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$180</span></div>
-              <p class="dish-desc" style="font-size: 11.2px;">Por dentro: Pollo, res, camarón, philadelphia, pepino y aguacate.</p>
-            </div>
-
-            <div class="dish-row" style="margin-bottom: 14px;">
-              <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">CORDON BLUE</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$180</span></div>
-              <p class="dish-desc" style="font-size: 11.2px;">Por dentro: pollo, tocino, aguacate, philadelphia.<br>Por fuera: tocino y queso gratinado.</p>
-            </div>
-
-            <div class="dish-row dish-with-thumb" style="margin-bottom: 14px;">
-              <div class="dish-thumb" style="width: 50px; height: 50px;"><img src="img/camaron_blue_real.jpg" alt="Camarón Blue"></div>
-              <div class="dish-body">
-                <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">CAMARÓN BLUE</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$180</span></div>
-                <p class="dish-desc" style="font-size: 11.2px;">Por dentro: camarón, pepino, philadelphia.<br>Por fuera: tocino y queso gratinado.</p>
-              </div>
-            </div>
-
-            <div class="dish-row" style="margin-bottom: 14px;">
-              <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">CAMARONCITO ROLL</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$130</span></div>
-              <p class="dish-desc" style="font-size: 11.2px;">Por dentro: camarón, philadelphia, pepino.<br>Por fuera: aguacate, mayonesa, salsa anguila.</p>
-            </div>
-
-            <div class="dish-row" style="margin-bottom: 14px;">
-              <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">ROLCITO</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$160</span></div>
-              <p class="dish-desc" style="font-size: 11.2px;">Por dentro: camarón, philadelphia y pepino.<br>Por fuera: ensalada de surimi y salsa anguila.</p>
-            </div>
-
-            <div class="dish-row" style="margin-bottom: 10px;">
+            <!-- Sushito Roll destacado al pie alineado con Extras -->
+            <div class="dish-row" style="background: rgba(255, 255, 255, 0.85); border: 2.2px solid #E26D45; border-radius: 10px; padding: 14px 16px; margin-top: auto; margin-bottom: 0; box-shadow: 0 4px 10px rgba(0,0,0,0.06);">
               <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">SUSHITO ROLL</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$160</span></div>
-              <p class="dish-desc" style="font-size: 11.2px;">Por dentro: pollo, res, pepino.<br>Por fuera: aguacate, salsa anguila.</p>
+              <p class="dish-desc" style="font-size: 11.2px; margin-top: 3px;">Por dentro: pollo, res, pepino.<br>Por fuera: aguacate, salsa anguila.</p>
             </div>
           </div>
 
           <!-- Columna 2: 6 Rollos + Caja de Extras -->
-          <div style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
             <div>
-              <div class="dish-row" style="margin-bottom: 14px;">
+              <div class="dish-row" style="margin-bottom: 18px;">
                 <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">CANGREJITO</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$130</span></div>
                 <p class="dish-desc" style="font-size: 11.2px;">Por dentro: surimi, pepino, philadelphia.<br>Por fuera: ensalada de surimi y salsa anguila.</p>
               </div>
 
-              <div class="dish-row dish-with-thumb" style="margin-bottom: 14px;">
+              <div class="dish-row dish-with-thumb" style="margin-bottom: 18px;">
                 <div class="dish-thumb" style="width: 50px; height: 50px;"><img src="img/crispy_chiken_real.jpg" alt="Crispy Chiken Roll"></div>
                 <div class="dish-body">
                   <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">CRISPY CHIKEN</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$160</span></div>
@@ -1218,29 +1232,29 @@
                 </div>
               </div>
 
-              <div class="dish-row" style="margin-bottom: 14px;">
+              <div class="dish-row" style="margin-bottom: 18px;">
                 <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">CULICHI ROLL</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$180</span></div>
                 <p class="dish-desc" style="font-size: 11.2px;">Por dentro: res, philadelphia, aguacate y pepino.<br>Por fuera: gratinado de chipotle y tocino.</p>
               </div>
 
-              <div class="dish-row" style="margin-bottom: 14px;">
+              <div class="dish-row" style="margin-bottom: 18px;">
                 <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">MEXICANITO ROLL</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$160</span></div>
                 <p class="dish-desc" style="font-size: 11.2px;">Por dentro: res, pepino, philadelphia.<br>Por fuera: aguacate, philadelphia y ensalada surimi.</p>
               </div>
 
-              <div class="dish-row" style="margin-bottom: 14px;">
+              <div class="dish-row" style="margin-bottom: 18px;">
                 <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">GREÑUDO ROLL</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$180</span></div>
                 <p class="dish-desc" style="font-size: 11.2px;">Por dentro: camarón, aguacate, philadelphia, pepino.<br>Por fuera: Ensalada de cangrejo y camarón empanizado.</p>
               </div>
 
-              <div class="dish-row" style="margin-bottom: 16px;">
+              <div class="dish-row" style="margin-bottom: 18px;">
                 <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">EL PATRÓN</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$199</span></div>
                 <p class="dish-desc" style="font-size: 11.2px;">Por dentro: Philadelphia, pepino, camarón tempura.<br>Por fuera: Alga, topping kanikama y atún spicy, salsa anguila y ajonjolí.</p>
               </div>
             </div>
 
             <!-- Cuadro de Extras al pie -->
-            <div class="sheet5-extras-box" style="background: #FFFFFF; border: 2.2px solid #E26D45; border-radius: 10px; padding: 12px 14px; margin-top: auto; box-shadow: 0 4px 10px rgba(0,0,0,0.06);">
+            <div class="sheet5-extras-box" style="background: #FFFFFF; border: 2.2px solid #E26D45; border-radius: 10px; padding: 14px 16px; margin-top: auto; margin-bottom: 0; box-shadow: 0 4px 10px rgba(0,0,0,0.06);">
               <div style="display: flex; justify-content: space-between; font-family: 'Oswald', sans-serif; font-size: 14px; font-weight: 700; color: #DE5D35; border-bottom: 1.5px solid #E26D45; padding-bottom: 4px; margin-bottom: 8px;">
                 <span>EXTRAS</span>
                 <span>PRECIO</span>
@@ -1296,10 +1310,10 @@
           </svg>
         </div>
 
-        <div class="sheet6-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 20px; flex: 1; align-content: space-between;">
+        <div class="sheet6-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 20px; flex: 1; align-content: space-between; height: 100%;">
           
           <!-- Extras Mariscos -->
-          <div style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
             <div>
               <h2 class="section-title-orange" style="margin-bottom: 12px;">EXTRAS MARISCOS</h2>
 
@@ -1335,8 +1349,8 @@
               <div class="dish-row" style="margin-bottom: 12px;"><div class="dish-main"><span class="dish-name-dark" style="font-size: 14.5px;">ENSALADA DE VERDURAS</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$22</span></div></div>
             </div>
 
-            <!-- Pez grabado abajo a la izquierda -->
-            <div style="margin-top: 15px; width: 150px;">
+            <!-- Pez grabado abajo a la izquierda alineado a la base -->
+            <div style="margin-top: auto; display: flex; align-items: flex-end; width: 155px;">
               <svg viewBox="0 0 160 80" class="marine-svg" style="width: 100%; height: auto;">
                 <path d="M10 40 C35 15, 95 15, 135 40 C110 50, 100 65, 135 75 C95 65, 35 65, 10 40 Z"/>
                 <path d="M135 40 L155 25 L150 40 L155 55 Z"/>
@@ -1349,17 +1363,17 @@
           </div>
 
           <!-- Bebidas -->
-          <div style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
             <div>
               <h2 class="section-title-orange" style="margin-bottom: 12px;">BEBIDAS</h2>
 
-              <div class="dish-row" style="margin-bottom: 18px;">
+              <div class="dish-row" style="margin-bottom: 24px;">
                 <div class="dish-main"><span class="dish-name-dark" style="font-size: 15px;">REFRESCOS COCACOLA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">$35</span></div>
                 <p class="dish-desc" style="font-size: 11.5px;">Coca-Cola, Sprite, Sidral Mundet, Fanta, Fresca.</p>
               </div>
 
               <!-- Botella Coca-Cola con Burbujas -->
-              <div style="margin: 12px 0 18px 0; display: flex; align-items: center; gap: 8px;">
+              <div style="margin: 12px 0 20px 0; display: flex; align-items: center; gap: 8px;">
                 <svg viewBox="0 0 100 30" style="width: 120px; height: 35px;">
                   <path d="M10 12 H22 L26 8 H70 L74 12 H88 Q92 12 92 15 Q92 18 88 18 H74 L70 22 H26 L22 18 H10 Z" fill="#111111"/>
                   <circle cx="8" cy="9" r="2" fill="#DE5D35"/>
@@ -1368,26 +1382,26 @@
                 </svg>
               </div>
 
-              <div class="dish-row" style="margin-bottom: 18px;">
+              <div class="dish-row" style="margin-bottom: 24px;">
                 <div class="dish-main"><span class="dish-name-dark" style="font-size: 15px;">AGUA FRESCA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">$45</span></div>
               </div>
 
-              <div class="dish-row" style="margin-bottom: 18px;">
+              <div class="dish-row" style="margin-bottom: 24px;">
                 <div class="dish-main"><span class="dish-name-dark" style="font-size: 15px;">AGUA MINERAL</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">$35</span></div>
               </div>
 
-              <div class="dish-row" style="margin-bottom: 18px;">
+              <div class="dish-row" style="margin-bottom: 24px;">
                 <div class="dish-main"><span class="dish-name-dark" style="font-size: 15px;">VASO PREPARADO</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">$30</span></div>
                 <p class="dish-desc" style="font-size: 11.5px;">Vaso escarchado con chamoy, salsa de la casa y jugo de camarón.</p>
               </div>
 
-              <div class="dish-row" style="margin-bottom: 18px;">
+              <div class="dish-row" style="margin-bottom: 24px;">
                 <div class="dish-main"><span class="dish-name-dark" style="font-size: 15px;">MICHELADA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">$89</span></div>
               </div>
             </div>
 
-            <!-- Medusa Marina grabada abajo a la derecha -->
-            <div style="margin-top: 15px; display: flex; justify-content: flex-end;">
+            <!-- Medusa Marina grabada abajo a la derecha alineada a la base -->
+            <div style="margin-top: auto; display: flex; justify-content: flex-end; align-items: flex-end;">
               <svg viewBox="0 0 140 180" class="marine-svg" style="width: 140px; height: auto;">
                 <path d="M20 70 C20 20, 120 20, 120 70 C120 85, 20 85, 20 70 Z"/>
                 <path d="M35 85 Q25 125 40 170"/>
