@@ -596,29 +596,46 @@
       }
       .menu-sheet {
         box-shadow: none !important;
-        border-width: 6mm !important;
+        border-width: 5mm !important;
         page-break-after: always !important;
         break-after: page !important;
         page-break-inside: avoid !important;
         break-inside: avoid !important;
-        height: 279.4mm !important;
-        max-height: 279.4mm !important;
+        height: 279mm !important;
+        max-height: 279mm !important;
+        min-height: 0 !important;
         width: 215.9mm !important;
+        max-width: 215.9mm !important;
         box-sizing: border-box !important;
-        padding: 8mm 12mm !important;
-        margin: 0 auto !important;
+        padding: 6mm 10mm !important;
+        margin: 0 !important;
+        overflow: hidden !important;
       }
       .menu-sheet:last-child {
         page-break-after: avoid !important;
         break-after: avoid !important;
       }
-      .side-handle {
-        display: block !important;
+      .print-bar-no-print {
+        display: none !important;
       }
     }
   </style>
 </head>
 <body>
+
+  <!-- Barra de Descarga Directa para Papelería / Impresión -->
+  <div class="print-bar-no-print" style="position: sticky; top: 0; z-index: 9999; background: #1B5E20; color: #FFFFFF; padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.3); font-family: 'Montserrat', sans-serif;">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <span style="font-size: 22px;">📄</span>
+      <div>
+        <strong style="font-size: 14px; display: block; letter-spacing: 0.5px;">Menú Oficial "El Limoncito Culichi"</strong>
+        <span style="font-size: 11px; opacity: 0.9;">Archivo PDF oficial de 6 hojas a color listo para papelería</span>
+      </div>
+    </div>
+    <a href="menu_el_limoncito_culichi.pdf" download="Menu_El_Limoncito_Culichi.pdf" style="background: #E26D45; color: #FFFFFF; font-weight: 800; font-size: 12px; text-decoration: none; padding: 9px 16px; border-radius: 8px; box-shadow: 0 3px 8px rgba(0,0,0,0.25); display: inline-flex; align-items: center; gap: 6px; text-transform: uppercase;">
+      ⬇ DESCARGAR PDF (6 HOJAS)
+    </a>
+  </div>
 
   <div class="menu-wrapper">
 
