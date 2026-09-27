@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>Menú El Limoncito Culichi | Mariscos & Sushi (Formato B&W Imprimible)</title>
-  <meta name="description" content="Menú oficial en blanco y negro de El Limoncito Culichi. 6 páginas completas optimizadas para impresión en papelería (tamaño carta) y lectura fluida en celular.">
+  <title>Menú El Limoncito Culichi | Mariscos & Sushi (B&W Minimalista con Fotos a Color)</title>
+  <meta name="description" content="Menú oficial de El Limoncito Culichi. 6 páginas en diseño editorial blanco y negro minimalista con fotografía real y colorida de los platillos. Listo para imprimir en papelería y visualizar en celular.">
   
   <!-- Google Fonts: Editorial Serif & Clean Modern Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,7 +13,7 @@
 
   <style>
     /* ═══════════════════════════════════════════════════════════════
-       VARIABLES Y RESET EN BLANCO Y NEGRO PURO
+       ESTILO MINIMALISTA BLANCO Y NEGRO CON PLATILLOS A COLOR
        ═══════════════════════════════════════════════════════════════ */
     :root {
       --font-title: 'Cinzel', serif;
@@ -37,7 +37,7 @@
       color: var(--color-ink);
       line-height: 1.3;
       -webkit-font-smoothing: antialiased;
-      padding: 20px 10px 40px;
+      padding: 16px 8px 36px;
     }
 
     /* ═══════════════════════════════════════════════════════════════
@@ -48,14 +48,14 @@
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 30px;
+      gap: 28px;
     }
 
     .menu-page {
       background: #ffffff;
       width: 100%;
-      min-height: 1050px;
-      padding: 28px 30px;
+      min-height: 1060px;
+      padding: 26px 28px;
       position: relative;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
       border: 1px solid #d4d4d8;
@@ -68,7 +68,7 @@
     .menu-page-border {
       border: 1.5px solid #000000;
       height: 100%;
-      padding: 18px 20px;
+      padding: 16px 18px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -94,7 +94,7 @@
       text-align: center;
       border-bottom: 2px solid #000000;
       padding-bottom: 10px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -128,7 +128,7 @@
       display: inline-block;
       border: 1.5px solid #000000;
       padding: 3px 16px;
-      margin-top: 6px;
+      margin-top: 5px;
       background: #000000;
       color: #ffffff;
       font-family: var(--font-title);
@@ -142,7 +142,7 @@
        ELEMENTOS DE LISTA Y PRECIOS TABULADOS
        ═══════════════════════════════════════════════════════════════ */
     .item-row {
-      margin-bottom: 9px;
+      margin-bottom: 8.5px;
       page-break-inside: avoid;
     }
     .item-header {
@@ -208,7 +208,7 @@
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      margin-bottom: 11px;
+      margin-bottom: 10px;
       gap: 10px;
       page-break-inside: avoid;
     }
@@ -244,10 +244,56 @@
       letter-spacing: 0.1em;
       border-bottom: 1.5px solid #000000;
       padding-bottom: 3px;
-      margin-bottom: 9px;
+      margin-bottom: 8px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       FOTOGRAFÍA REAL DE PLATILLOS (100% COLOR VIBRANTE & APETITOSO)
+       ═══════════════════════════════════════════════════════════════ */
+    .photo-grid-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 10px;
+      border-top: 1.5px solid #000000;
+      padding-top: 8px;
+    }
+    .photo-box {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border: 1.5px solid #000000;
+      background: #f4f4f5;
+      position: relative;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    /* La imagen real del platillo se muestra en su color original y apetitoso */
+    .photo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .photo-box:hover img {
+      transform: scale(1.04);
+    }
+    .photo-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.85);
+      color: #ffffff;
+      font-family: var(--font-sans);
+      font-size: 0.62rem;
+      font-weight: 800;
+      padding: 2.5px 4px;
+      text-transform: uppercase;
+      text-align: center;
+      letter-spacing: 0.05em;
     }
 
     /* ═══════════════════════════════════════════════════════════════
@@ -268,50 +314,12 @@
     }
 
     /* ═══════════════════════════════════════════════════════════════
-       TIRAS FOTOGRÁFICAS EN BLANCO Y NEGRO
-       ═══════════════════════════════════════════════════════════════ */
-    .photo-grid-strip {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      margin-top: 10px;
-      border-top: 1px solid #000000;
-      padding-top: 8px;
-    }
-    .photo-box {
-      aspect-ratio: 4 / 3;
-      overflow: hidden;
-      border: 1px solid #000000;
-      background: #f4f4f5;
-      position: relative;
-    }
-    .photo-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: grayscale(100%) contrast(120%);
-    }
-    .photo-caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(0, 0, 0, 0.85);
-      color: #ffffff;
-      font-size: 0.6rem;
-      font-weight: 700;
-      padding: 1.5px 4px;
-      text-transform: uppercase;
-      text-align: center;
-    }
-
-    /* ═══════════════════════════════════════════════════════════════
        PIE DE PÁGINA EDITORIAL
        ═══════════════════════════════════════════════════════════════ */
     .page-footer {
       border-top: 1px solid #000000;
       padding-top: 6px;
-      margin-top: 12px;
+      margin-top: 10px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -327,33 +335,36 @@
     }
 
     /* ═══════════════════════════════════════════════════════════════
-       AJUSTES PARA CELULAR (PANTALLAS CHICAS)
+       RESPONSIVE EN CELULARES
        ═══════════════════════════════════════════════════════════════ */
     @media screen and (max-width: 640px) {
       body {
-        padding: 8px 4px;
+        padding: 6px 3px;
       }
       .menu-page {
         min-height: auto;
-        padding: 12px 10px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        padding: 10px 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
       }
       .menu-page-border {
-        padding: 12px 10px;
+        padding: 10px 8px;
       }
       .grid-2col {
         grid-template-columns: 1fr;
-        gap: 16px;
+        gap: 14px;
       }
       .rollos-2col {
         grid-template-columns: 1fr !important;
       }
       .multi-price-row {
         flex-direction: column;
-        gap: 4px;
+        gap: 3px;
       }
       .multi-price-vals {
         align-self: flex-end;
+      }
+      .photo-grid-strip {
+        gap: 5px;
       }
     }
 
@@ -389,10 +400,11 @@
       }
       .menu-page-border {
         border: 1.5px solid #000000 !important;
-        padding: 16px 18px !important;
+        padding: 14px 16px !important;
       }
+      /* Fotos a color en impresión de alta calidad */
       .photo-box img {
-        filter: grayscale(100%) contrast(130%) !important;
+        filter: none !important;
       }
       .brand-logo-img {
         filter: grayscale(100%) contrast(140%) !important;
@@ -472,7 +484,7 @@
           </div>
 
           <!-- OSTRAS Y MARISCOS EN CONCHA -->
-          <div class="col-subtitle" style="margin-top: 14px;">
+          <div class="col-subtitle" style="margin-top: 12px;">
             <span>OSTRAS & MARISCOS EN CONCHA</span>
             <span style="font-size: 0.65rem; font-weight: 600;">(SUJETO A DISPONIBILIDAD)</span>
           </div>
@@ -500,24 +512,24 @@
           </div>
 
           <!-- Especial Vergazo -->
-          <div class="item-row" style="border: 1.5px solid #000000; padding: 6px 10px; margin-top: 6px;">
+          <div class="item-row" style="border: 1.5px solid #000000; padding: 5px 9px; margin-top: 5px;">
             <div class="item-header"><span class="item-name">VERGAZO ESPECIAL</span><span class="item-dots"></span><span class="item-price">$160</span></div>
             <p class="item-desc">Orden de pulpo, cam. cocido, cam. crudo, callito de hacha, callito de filete, cebolla y salsas de la casa. (Se añade ostión y pata de mula según disponibilidad).</p>
           </div>
 
-          <!-- Tira de Fotos -->
+          <!-- TIRA DE FOTOS REALES Y COLORIDAS -->
           <div class="photo-grid-strip">
             <div class="photo-box">
-              <img src="img/foto_entradas_ostras.jpg" alt="Culichi Pepper" style="object-position: 70% 20%;">
-              <div class="photo-caption">Culichi Pepper</div>
+              <img src="img/culichi_peppers.jpg" alt="Culichi Peppers Reales">
+              <div class="photo-caption">Culichi Peppers</div>
             </div>
             <div class="photo-box">
-              <img src="img/foto_entradas_ostras.jpg" alt="Paté de Camarón" style="object-position: 60% 70%;">
+              <img src="img/pate_camaron.jpg" alt="Paté de Camarón Real">
               <div class="photo-caption">Paté de Camarón</div>
             </div>
             <div class="photo-box">
-              <img src="img/foto_entradas_ostras.jpg" alt="Mariscos en Concha" style="object-position: 20% 50%;">
-              <div class="photo-caption">Ostras & Conchas</div>
+              <img src="img/ostiones_frescos.jpg" alt="Ostiones Frescos en Concha">
+              <div class="photo-caption">Ostiones en Concha</div>
             </div>
           </div>
         </div>
@@ -607,12 +619,12 @@
           </div>
 
           <!-- COCTELES ESPECIALES -->
-          <div class="col-subtitle" style="margin-top: 10px;">
+          <div class="col-subtitle" style="margin-top: 8px;">
             <span>COCTELES ESPECIALES DE LA CASA</span>
             <span style="font-size: 0.65rem; font-weight: 600;">CALDO & PREPARACIÓN CULICHI</span>
           </div>
 
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px;" class="rollos-2col">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 7px 16px;" class="rollos-2col">
             <div class="item-row">
               <div class="item-header"><span class="item-name">TUMBA TONTOS</span><span class="item-dots"></span><span class="item-price">$340</span></div>
               <p class="item-desc">Callo de hacha, camarón crudo y pulpo en jugo de la casa con chile chiltepín, tomate, cebolla, pepino y aguacate.</p>
@@ -634,18 +646,18 @@
             </div>
           </div>
 
-          <!-- Tira de Fotos -->
+          <!-- TIRA DE FOTOS REALES Y COLORIDAS -->
           <div class="photo-grid-strip">
             <div class="photo-box">
-              <img src="img/foto_aguachiles_cocteles.jpg" alt="Aguachile Verde" style="object-position: 70% 70%;">
+              <img src="img/aguachile_verde.jpg" alt="Aguachile Verde Sinaloense">
               <div class="photo-caption">Aguachile Verde</div>
             </div>
             <div class="photo-box">
-              <img src="img/foto_aguachiles_cocteles.jpg" alt="Aguachile Negro" style="object-position: 60% 85%;">
+              <img src="img/aguachile_negro.jpg" alt="Aguachile Negro Sinaloense">
               <div class="photo-caption">Aguachile Negro</div>
             </div>
             <div class="photo-box">
-              <img src="img/foto_aguachiles_cocteles.jpg" alt="Tostiaguachile" style="object-position: 40% 80%;">
+              <img src="img/tostiaguachile.jpg" alt="Tostiaguachile Auténtico">
               <div class="photo-caption">Tostiaguachile</div>
             </div>
           </div>
@@ -741,18 +753,18 @@
             <div class="multi-price-vals"><span class="val-cell">$240</span><span class="val-cell">$180</span><span class="val-cell">—</span></div>
           </div>
 
-          <!-- Tira de Fotos -->
+          <!-- TIRA DE FOTOS REALES Y COLORIDAS -->
           <div class="photo-grid-strip">
             <div class="photo-box">
-              <img src="img/foto_ceviches.jpg" alt="Ceviche de Camarón" style="object-position: 80% 50%;">
+              <img src="img/ceviche_camaron.jpg" alt="Ceviche de Camarón Fresco">
               <div class="photo-caption">Ceviche Camarón</div>
             </div>
             <div class="photo-box">
-              <img src="img/foto_ceviches.jpg" alt="Ceviche Tropical" style="object-position: 50% 50%;">
-              <div class="photo-caption">Medallón Tropical</div>
+              <img src="img/aguachile_verde.jpg" alt="Ceviche y Mariscos Preparados">
+              <div class="photo-caption">Ceviche Especial</div>
             </div>
             <div class="photo-box">
-              <img src="img/foto_ceviches.jpg" alt="Tosticeviche" style="object-position: 10% 50%;">
+              <img src="img/tostiaguachile.jpg" alt="Tosticeviche con Tostitos">
               <div class="photo-caption">Tosticeviche</div>
             </div>
           </div>
@@ -828,19 +840,19 @@
             <p class="item-desc"><strong>Por dentro:</strong> Camarón, pulpo cocido y pepino. <br><strong>Por fuera:</strong> Aguacate y aderezo sriracha.</p>
           </div>
 
-          <!-- Tira de Fotos -->
+          <!-- TIRA DE FOTOS REALES Y COLORIDAS -->
           <div class="photo-grid-strip">
             <div class="photo-box">
-              <img src="img/foto_rollos_frios.jpg" alt="Rollo Frío" style="object-position: 25% 50%;">
+              <img src="img/flaming_roll.jpg" alt="Flaming Roll con Cheetos">
+              <div class="photo-caption">Flaming Roll</div>
+            </div>
+            <div class="photo-box">
+              <img src="img/aguachile_verde.jpg" alt="Aguachile Roll Preparado">
               <div class="photo-caption">Aguachile Roll</div>
             </div>
             <div class="photo-box">
-              <img src="img/foto_rollos_frios.jpg" alt="Flaming Roll" style="object-position: 50% 50%;">
-              <div class="photo-caption">Flaming Hot</div>
-            </div>
-            <div class="photo-box">
-              <img src="img/foto_rollos_frios.jpg" alt="Marinero" style="object-position: 80% 50%;">
-              <div class="photo-caption">Marinero Roll</div>
+              <img src="img/sushi_empanizado.jpg" alt="Sashimi & Rollos Especiales">
+              <div class="photo-caption">Marinero & Mazatlán</div>
             </div>
           </div>
         </div>
@@ -943,8 +955,8 @@
           </div>
 
           <!-- Extras para Rollos -->
-          <div style="margin-top: 10px; border-top: 1.5px solid #000000; padding-top: 8px;">
-            <div class="col-subtitle" style="font-size: 0.8rem; margin-bottom: 6px;">
+          <div style="margin-top: 8px; border-top: 1.5px solid #000000; padding-top: 6px;">
+            <div class="col-subtitle" style="font-size: 0.8rem; margin-bottom: 5px;">
               <span>EXTRAS PARA ROLLOS</span>
               <span style="font-size: 0.65rem; font-weight: normal;">PERSONALIZA TU ORDEN</span>
             </div>
@@ -955,18 +967,18 @@
             </div>
           </div>
 
-          <!-- Tira de Fotos -->
+          <!-- TIRA DE FOTOS REALES Y COLORIDAS -->
           <div class="photo-grid-strip">
             <div class="photo-box">
-              <img src="img/foto_rollos_empanizados.jpg" alt="Cordon Blue" style="object-position: 25% 50%;">
+              <img src="img/sushi_empanizado.jpg" alt="Cordon Blue Gratinado">
               <div class="photo-caption">Cordon Blue</div>
             </div>
             <div class="photo-box">
-              <img src="img/foto_rollos_empanizados.jpg" alt="Culichi Roll" style="object-position: 50% 50%;">
+              <img src="img/culichi_peppers.jpg" alt="Culichi Roll Gratinado">
               <div class="photo-caption">Culichi Roll</div>
             </div>
             <div class="photo-box">
-              <img src="img/foto_rollos_empanizados.jpg" alt="Greñudo" style="object-position: 80% 50%;">
+              <img src="img/sushi_empanizado.jpg" alt="El Patrón Empanizado Especial">
               <div class="photo-caption">El Patrón</div>
             </div>
           </div>
@@ -1073,7 +1085,7 @@
               </div>
 
               <!-- Grabados en Línea Negra -->
-              <div class="sketch-frame" style="margin-top: 18px; display: flex; gap: 16px;">
+              <div class="sketch-frame" style="margin-top: 14px; display: flex; gap: 16px;">
                 <svg width="60" height="80" viewBox="0 0 100 120" class="sketch-svg">
                   <path d="M45 10 h10 v15 l10 12 v65 h-30 v-65 l10 -12 z"/>
                   <line x1="42" y1="20" x2="58" y2="20"/>
@@ -1090,10 +1102,26 @@
                 </svg>
               </div>
 
-              <div style="border: 1.5px solid #000000; padding: 8px; margin-top: 14px; text-align: center;">
+              <div style="border: 1.5px solid #000000; padding: 7px; margin-top: 12px; text-align: center;">
                 <span style="font-family: var(--font-title); font-size: 0.74rem; font-weight: 800; letter-spacing: 0.08em; display: block;">¡PREGUNTA POR NUESTRA COCTELERÍA!</span>
                 <span style="font-size: 0.65rem; color: #555555;">Salsas negras artesanales estilo Sinaloa.</span>
               </div>
+            </div>
+          </div>
+
+          <!-- TIRA DE FOTOS REALES Y COLORIDAS EN PÁGINA 6 -->
+          <div class="photo-grid-strip" style="margin-top: 12px;">
+            <div class="photo-box">
+              <img src="img/ostiones_frescos.jpg" alt="Mariscos Frescos en Concha">
+              <div class="photo-caption">Mariscos de Bahía</div>
+            </div>
+            <div class="photo-box">
+              <img src="img/ceviche_camaron.jpg" alt="Preparaciones Frías">
+              <div class="photo-caption">Ceviches & Copas</div>
+            </div>
+            <div class="photo-box">
+              <img src="img/aguachile_negro.jpg" alt="Salsas Negras & Clamatos">
+              <div class="photo-caption">Salsas & Micheladas</div>
             </div>
           </div>
         </div>
