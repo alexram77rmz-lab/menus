@@ -520,35 +520,21 @@
     }
 
     .curved-orange-text {
-      font-family: 'Pacifico', cursive;
-      font-size: 52px;
-      fill: #FF7018;
+      font-family: 'Lilita One', cursive, sans-serif;
+      font-size: 54px;
+      fill: #FF7518;
       stroke: #182230;
-      stroke-width: 9px;
+      stroke-width: 10px;
       paint-order: stroke fill;
       stroke-linejoin: round;
-      stroke-linecap: round;
-      letter-spacing: 1px;
+      letter-spacing: 2px;
     }
 
     .curved-orange-inner {
-      font-family: 'Pacifico', cursive;
-      font-size: 52px;
+      font-family: 'Lilita One', cursive, sans-serif;
+      font-size: 54px;
       fill: #FFA100;
-      letter-spacing: 1px;
-    }
-
-    .curved-bot-text {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 21px;
-      font-weight: 900;
-      fill: #144B5B;
-      stroke: #FFFFFF;
-      stroke-width: 6px;
-      paint-order: stroke fill;
-      stroke-linejoin: round;
-      letter-spacing: 6px;
-      text-transform: uppercase;
+      letter-spacing: 2px;
     }
   </style>
 </head>
@@ -570,15 +556,17 @@
 
       <!-- Emblema Digital Oficial Ampliado con Letras Naranjas Curvadas Rodeando la Marca -->
       <div class="badge-container">
-        <svg class="badge-svg" viewBox="0 0 740 660">
+        <svg class="badge-svg" viewBox="0 0 740 680">
           <defs>
-            <!-- Curva arqueada superior que rodea el sombrero y la marca del limón -->
-            <path id="top-curve" d="M 50,310 A 335,250 0 0,1 690,310" fill="none" />
+            <!-- Curva superior arqueada que corona el sombrero rodeándolo limpiamente -->
+            <path id="top-curve" d="M 65,245 A 330,225 0 0,1 675,245" fill="none" />
             
-            <!-- Curva arqueada inferior bajo las olas -->
-            <path id="bot-curve" d="M 195,430 A 210,210 0 0,0 545,430" fill="none" />
-            
-            <!-- Halo radial suave detrás del emblema -->
+            <linearGradient id="ocean-grad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#248FAE" />
+              <stop offset="45%" stop-color="#1B6F88" />
+              <stop offset="100%" stop-color="#103B49" />
+            </linearGradient>
+
             <radialGradient id="halo-glow" cx="50%" cy="48%" r="48%">
               <stop offset="65%" stop-color="#FFFFFF" stop-opacity="1" />
               <stop offset="85%" stop-color="#FFFFFF" stop-opacity="0.85" />
@@ -586,80 +574,77 @@
             </radialGradient>
 
             <filter id="badge-shadow" x="-15%" y="-15%" width="130%" height="130%">
-              <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000" flood-opacity="0.22" />
+              <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000" flood-opacity="0.20" />
             </filter>
           </defs>
 
-          <!-- Arte Central del Limoncito Vaquero Ampliado (Digital Vector sin texto cursivo) -->
+          <!-- Resplandor blanco suave detrás del emblema -->
+          <circle cx="370" cy="335" r="305" fill="url(#halo-glow)" />
+
+          <!-- Arte del Limoncito Vaquero en el centro -->
           <g filter="url(#badge-shadow)">
-            <image href="img/logo_mascot_clean.png" x="60" y="70" width="620" height="520" />
+            <image href="img/logo_mascot_clean.png" x="60" y="80" width="620" height="520" />
           </g>
 
-          <!-- Olas Oceánicas Auténticas y Espuma bajo la barbilla del limón -->
-          <g id="authentic-waves" filter="url(#badge-shadow)">
-            <!-- 1. Fondo de agua profunda -->
-            <path d="M 182,410 
-                     C 215,385 250,408 285,390 
-                     C 320,380 355,406 390,390 
-                     C 425,380 460,408 495,390 
-                     C 525,385 550,405 558,418 
-                     A 214,214 0 0,1 182,410 Z" fill="#134C5E" />
-
-            <!-- 2. Cuerpo de ola turquesa -->
-            <path d="M 186,416 
-                     C 220,394 255,414 290,396 
-                     C 325,386 360,412 395,396 
-                     C 430,386 465,412 500,396 
-                     C 525,392 546,408 554,422 
-                     A 208,208 0 0,1 186,416 Z" fill="#248FAE" />
-
-            <!-- 3. Destellos de corrientes marinas -->
-            <path d="M 210,424 Q 260,408 310,426 Q 360,412 410,426 Q 460,410 520,424" stroke="#4BC2E0" stroke-width="2.5" fill="none" stroke-linecap="round" />
-            <path d="M 235,434 Q 285,420 340,435 Q 395,422 450,435 Q 485,426 510,432" stroke="#103F4E" stroke-width="2" fill="none" stroke-linecap="round" />
-
-            <!-- 4. Rompiente y espuma izquierda (bajo camarón izquierdo) -->
-            <path d="M 182,414 
-                     C 192,398 212,392 228,398 
-                     C 238,388 256,385 270,394 
-                     C 280,400 274,408 292,406 
-                     C 305,404 312,414 320,418 
-                     C 298,414 285,424 264,420 
-                     C 242,416 225,426 182,414 Z" fill="#FFFFFF" />
-            <circle cx="218" cy="392" r="2.5" fill="#FFFFFF" />
-            <circle cx="236" cy="386" r="2" fill="#FFFFFF" />
-            <circle cx="254" cy="384" r="2.5" fill="#FFFFFF" />
-
-            <!-- 5. Rompiente y espuma central (bajo la sonrisa del limón) -->
-            <path d="M 312,410 
-                     C 326,398 342,404 354,398 
-                     C 366,392 374,404 386,398 
-                     C 398,392 408,404 422,410 
-                     C 405,406 392,416 374,412 
-                     C 356,416 340,406 312,410 Z" fill="#FFFFFF" />
-            <circle cx="346" cy="392" r="2" fill="#FFFFFF" />
-            <circle cx="368" cy="388" r="2.5" fill="#FFFFFF" />
-            <circle cx="394" cy="392" r="2" fill="#FFFFFF" />
-
-            <!-- 6. Rompiente y espuma derecha (bajo camarón derecho) -->
-            <path d="M 558,418 
-                     C 548,398 528,392 512,398 
-                     C 502,388 484,385 470,394 
-                     C 460,400 466,408 448,406 
-                     C 435,404 428,414 420,418 
-                     C 442,414 455,424 476,420 
-                     C 498,416 515,426 558,418 Z" fill="#FFFFFF" />
-            <circle cx="522" cy="392" r="2.5" fill="#FFFFFF" />
-            <circle cx="504" cy="386" r="2" fill="#FFFFFF" />
-            <circle cx="486" cy="384" r="2.5" fill="#FFFFFF" />
+          <!-- 1. Fondo de agua marina en la base circular del emblema (sin huecos blancos) -->
+          <g id="ocean-base" filter="url(#badge-shadow)">
+            <path d="M 190,410 
+                     A 190,190 0 0,0 550,410 
+                     L 550,395 
+                     C 500,408 440,412 370,412 
+                     C 300,412 240,408 190,395 Z" fill="url(#ocean-grad)" />
+            <path d="M 190,410 A 190,190 0 0,0 550,410" fill="none" stroke="#182230" stroke-width="4.5" />
           </g>
 
-          <!-- Camarones dibujados en la capa superior sobre el oleaje -->
+          <!-- 2. LAS DOS OLAS AUTÉNTICAS (Solo 2 olas bajo la barbilla del limón) -->
+          <g id="two-authentic-waves" filter="url(#badge-shadow)">
+            <!-- OLA IZQUIERDA -->
+            <path d="M 190,405 
+                     C 230,420 270,422 310,410 
+                     C 330,404 345,394 350,386 
+                     C 342,380 330,390 318,398 
+                     C 285,410 240,412 190,405 Z" fill="#248FAE" stroke="#182230" stroke-width="2.2" stroke-linejoin="round" />
+            
+            <!-- Espuma blanca con rizo de ola izquierda -->
+            <path d="M 255,406 
+                     C 280,410 305,404 324,394 
+                     C 334,388 348,386 352,392 
+                     C 348,400 336,404 322,406 
+                     C 302,409 276,409 255,406 Z" fill="#FFFFFF" stroke="#182230" stroke-width="2" stroke-linejoin="round" />
+            
+            <!-- Líneas de corriente izquierda -->
+            <path d="M 220,410 Q 270,416 318,404" fill="none" stroke="#4BC2E0" stroke-width="2" stroke-linecap="round" />
+            <path d="M 240,415 Q 282,419 320,410" fill="none" stroke="#0E3846" stroke-width="2" stroke-linecap="round" />
+
+            <!-- OLA DERECHA -->
+            <path d="M 550,405 
+                     C 510,420 470,422 430,410 
+                     C 410,404 395,394 390,386 
+                     C 398,380 410,390 422,398 
+                     C 455,410 500,412 550,405 Z" fill="#248FAE" stroke="#182230" stroke-width="2.2" stroke-linejoin="round" />
+            
+            <!-- Espuma blanca con rizo de ola derecha -->
+            <path d="M 485,406 
+                     C 460,410 435,404 416,394 
+                     C 406,388 392,386 388,392 
+                     C 392,400 404,404 418,406 
+                     C 438,409 464,409 485,406 Z" fill="#FFFFFF" stroke="#182230" stroke-width="2" stroke-linejoin="round" />
+
+            <!-- Líneas de corriente derecha -->
+            <path d="M 520,410 Q 470,416 422,404" fill="none" stroke="#4BC2E0" stroke-width="2" stroke-linecap="round" />
+            <path d="M 500,415 Q 458,419 420,410" fill="none" stroke="#0E3846" stroke-width="2" stroke-linecap="round" />
+
+            <!-- Conector de espuma bajo la barbilla central -->
+            <path d="M 330,400 C 348,394 360,393 370,393 C 380,393 392,394 410,400 C 392,404 370,405 348,404 Z" fill="#FFFFFF" stroke="#182230" stroke-width="1.8" stroke-linejoin="round" />
+          </g>
+
+          <!-- Camarones encima del agua -->
           <g filter="url(#badge-shadow)">
             <image href="img/shrimp_left.png" x="141.5" y="337.8" width="155.8" height="107.1" />
             <image href="img/shrimp_right.png" x="449.7" y="337.8" width="155.8" height="107.1" />
           </g>
 
-          <!-- Letras Naranjas Arqueadas: El Limoncito Culichi rodeando la marca del limón en Cursiva -->
+          <!-- Letras Naranjas Arqueadas: El Limoncito Culichi rodeando el sombrero -->
           <text class="curved-orange-text">
             <textPath href="#top-curve" startOffset="50%" text-anchor="middle">
               El Limoncito Culichi
@@ -668,13 +653,6 @@
           <text class="curved-orange-inner">
             <textPath href="#top-curve" startOffset="50%" text-anchor="middle">
               El Limoncito Culichi
-            </textPath>
-          </text>
-
-          <!-- Subtítulo Arqueado Inferior: CEVICHE & AGUACHILE -->
-          <text class="curved-bot-text">
-            <textPath href="#bot-curve" startOffset="50%" text-anchor="middle">
-              CEVICHE &amp; AGUACHILE
             </textPath>
           </text>
         </svg>
