@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="136" height="68" viewBox="0 0 136 68">
+  <defs>
+    <style>
+      .ray { stroke: #DFAD39; stroke-width: 1.25; stroke-linecap: round; }
+      .arc-out { fill: none; stroke: #4B9BBD; stroke-width: 1.6; }
+      .arc-mid { fill: none; stroke: #4B9BBD; stroke-width: 1.15; }
+      .arc-in  { fill: none; stroke: #4B9BBD; stroke-width: 0.95; }
+    </style>
+    <g id="fan">
+      <!-- Radiating straight rays from (0,0) upwards in semi-circle -->
+      <line x1="0" y1="0" x2="-58" y2="-20" class="ray" />
+      <line x1="0" y1="0" x2="-51" y2="-35" class="ray" />
+      <line x1="0" y1="0" x2="-39" y2="-48" class="ray" />
+      <line x1="0" y1="0" x2="-23" y2="-57" class="ray" />
+      <line x1="0" y1="0" x2="-8"  y2="-61" class="ray" />
+      <line x1="0" y1="0" x2="8"   y2="-61" class="ray" />
+      <line x1="0" y1="0" x2="23"  y2="-57" class="ray" />
+      <line x1="0" y1="0" x2="39"  y2="-48" class="ray" />
+      <line x1="0" y1="0" x2="51"  y2="-35" class="ray" />
+      <line x1="0" y1="0" x2="58"  y2="-20" class="ray" />
+      
+      <!-- Concentric semi-circular arcs -->
+      <path d="M -63 0 A 63 63 0 0 1 63 0" class="arc-out" />
+      <path d="M -56 0 A 56 56 0 0 1 56 0" class="arc-mid" />
+      <path d="M -49 0 A 49 49 0 0 1 49 0" class="arc-in" />
+    </g>
+  </defs>
+  
+  <!-- Solid pristine white background -->
+  <rect width="136" height="68" fill="#FFFFFF" />
+  
+  <!-- Row 1: at y = 68 -->
+  <use href="#fan" x="68" y="68" />
+  <use href="#fan" x="-68" y="68" />
+  <use href="#fan" x="204" y="68" />
+  
+  <!-- Row 2: at y = 0 (offset by 68 horizontally) -->
+  <use href="#fan" x="0" y="0" />
+  <use href="#fan" x="136" y="0" />
+</svg>
