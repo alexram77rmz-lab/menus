@@ -1,131 +1,109 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="130" height="96" viewBox="0 0 130 96">
   <defs>
-    <!-- Clip path for Center Diamond -->
+    <!-- Clip strictly to each diamond polygon so lines NEVER cross or divide other diamonds -->
     <clipPath id="clip-center">
       <polygon points="65,0 130,48 65,96 0,48" />
     </clipPath>
-    
-    <!-- Clip path for Top Diamond -->
-    <clipPath id="clip-top">
-      <polygon points="65,-96 130,-48 65,0 0,-48" />
+    <clipPath id="clip-top-left">
+      <polygon points="0,0 65,0 0,48" />
     </clipPath>
-    <!-- Clip path for Bottom Diamond -->
-    <clipPath id="clip-bottom">
-      <polygon points="65,0 130,48 65,96 0,48" />
+    <clipPath id="clip-top-right">
+      <polygon points="130,0 65,0 130,48" />
     </clipPath>
-
-    <!-- Clip paths for Left / Right Diamonds -->
-    <clipPath id="clip-left">
-      <polygon points="0,-48 65,0 0,48 -65,0" />
+    <clipPath id="clip-bot-left">
+      <polygon points="0,96 65,96 0,48" />
     </clipPath>
-    <clipPath id="clip-left-bot">
-      <polygon points="0,48 65,96 0,144 -65,96" />
-    </clipPath>
-
-    <clipPath id="clip-right">
-      <polygon points="130,-48 195,0 130,48 65,0" />
-    </clipPath>
-    <clipPath id="clip-right-bot">
-      <polygon points="130,48 195,96 130,144 65,96" />
+    <clipPath id="clip-bot-right">
+      <polygon points="130,96 65,96 130,48" />
     </clipPath>
   </defs>
 
   <rect width="130" height="96" fill="#FFFFFF" />
 
-  <!-- Clean, Unbroken Rhombus Boundaries (No inner cross divisions!) -->
-  <g stroke="#D8A535" stroke-width="1.8" fill="none" stroke-linejoin="round" stroke-linecap="round">
-    <!-- Center Rhombus -->
-    <polygon points="65,0 130,48 65,96 0,48" />
-    <!-- Outer Corners forming neighboring rhombuses -->
-    <line x1="0" y1="0" x2="65" y2="48" />
-    <line x1="130" y1="0" x2="65" y2="48" />
-    <line x1="0" y1="96" x2="65" y2="48" />
-    <line x1="130" y1="96" x2="65" y2="48" />
-  </g>
+  <!-- Clean, Unbroken Rhombus Boundaries (ONLY the 4 diamond edges! Absolutely NO internal cross lines!) -->
+  <polygon points="65,0 130,48 65,96 0,48" stroke="#D8A535" stroke-width="1.8" fill="none" stroke-linejoin="round" />
 
-  <!-- Sliced Lime Fan inside each Rhombus -->
+  <!-- Sliced Lime Fans: strictly 1 per diamond, pointing upward -->
   <g clip-path="url(#clip-center)">
-    <line x1="65.0" y1="96.0" x2="16.3" y2="36.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="65.0" y1="96.0" x2="32.5" y2="24.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="65.0" y1="96.0" x2="48.8" y2="12.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="65.0" y1="96.0" x2="81.3" y2="12.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="65.0" y1="96.0" x2="97.5" y2="24.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="65.0" y1="96.0" x2="113.8" y2="36.0" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="65.0" y1="96.0" x2="9.8" y2="40.8" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="65.0" y1="96.0" x2="18.9" y2="34.1" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="65.0" y1="96.0" x2="28.0" y2="27.4" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="65.0" y1="96.0" x2="37.1" y2="20.6" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="65.0" y1="96.0" x2="46.2" y2="13.9" stroke="#D8A535" stroke-width="1.3" />
     <line x1="65.0" y1="96.0" x2="65.0" y2="0.0" stroke="#D8A535" stroke-width="1.3" />
-    <path d="M 21.5 75.7 A 48.0 48.0 0 0 1 108.5 75.7" stroke="#3C8FA6" stroke-width="1.5" fill="none" stroke-linecap="round" />
-    <path d="M -0.3 65.6 A 72.0 72.0 0 0 1 130.3 65.6" stroke="#3C8FA6" stroke-width="1.5" fill="none" stroke-linecap="round" />
+    <line x1="65.0" y1="96.0" x2="74.8" y2="7.2" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="65.0" y1="96.0" x2="83.8" y2="13.9" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="65.0" y1="96.0" x2="93.0" y2="20.6" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="65.0" y1="96.0" x2="102.1" y2="27.4" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="65.0" y1="96.0" x2="111.2" y2="34.1" stroke="#D8A535" stroke-width="1.3" />
+    <path d="M 21.5 75.7 A 48.0 48.0 0 0 1 108.5 75.7" stroke="#3C8FA6" stroke-width="1.6" fill="none" stroke-linecap="round" />
+    <path d="M -2.0 64.8 A 74.0 74.0 0 0 1 132.0 64.8" stroke="#3C8FA6" stroke-width="1.6" fill="none" stroke-linecap="round" />
   </g>
 
-  <g clip-path="url(#clip-top)">
-    <line x1="65.0" y1="0.0" x2="16.3" y2="-60.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="65.0" y1="0.0" x2="32.5" y2="-72.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="65.0" y1="0.0" x2="48.8" y2="-84.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="65.0" y1="0.0" x2="81.3" y2="-84.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="65.0" y1="0.0" x2="97.5" y2="-72.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="65.0" y1="0.0" x2="113.8" y2="-60.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="65.0" y1="0.0" x2="65.0" y2="-96.0" stroke="#D8A535" stroke-width="1.3" />
-    <path d="M 21.5 -20.3 A 48.0 48.0 0 0 1 108.5 -20.3" stroke="#3C8FA6" stroke-width="1.5" fill="none" stroke-linecap="round" />
-    <path d="M -0.3 -30.4 A 72.0 72.0 0 0 1 130.3 -30.4" stroke="#3C8FA6" stroke-width="1.5" fill="none" stroke-linecap="round" />
+  <g clip-path="url(#clip-top-left)">
+    <line x1="0.0" y1="48.0" x2="9.8" y2="-7.2" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="0.0" y1="48.0" x2="18.9" y2="-13.9" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="0.0" y1="48.0" x2="28.0" y2="-20.6" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="0.0" y1="48.0" x2="37.1" y2="-27.4" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="0.0" y1="48.0" x2="46.2" y2="-34.1" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="0.0" y1="48.0" x2="65.0" y2="0.0" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="0.0" y1="48.0" x2="-9.8" y2="-40.8" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="0.0" y1="48.0" x2="-18.9" y2="-34.1" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="0.0" y1="48.0" x2="-28.0" y2="-27.4" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="0.0" y1="48.0" x2="-37.1" y2="-20.6" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="0.0" y1="48.0" x2="-46.2" y2="-13.9" stroke="#D8A535" stroke-width="1.3" />
+    <path d="M -43.5 27.7 A 48.0 48.0 0 0 1 43.5 27.7" stroke="#3C8FA6" stroke-width="1.6" fill="none" stroke-linecap="round" />
+    <path d="M -67.0 16.8 A 74.0 74.0 0 0 1 67.0 16.8" stroke="#3C8FA6" stroke-width="1.6" fill="none" stroke-linecap="round" />
   </g>
 
-  <g clip-path="url(#clip-bottom)">
-    <line x1="65.0" y1="192.0" x2="16.3" y2="132.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="65.0" y1="192.0" x2="32.5" y2="120.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="65.0" y1="192.0" x2="48.8" y2="108.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="65.0" y1="192.0" x2="81.3" y2="108.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="65.0" y1="192.0" x2="97.5" y2="120.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="65.0" y1="192.0" x2="113.8" y2="132.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="65.0" y1="192.0" x2="65.0" y2="96.0" stroke="#D8A535" stroke-width="1.3" />
-    <path d="M 21.5 171.7 A 48.0 48.0 0 0 1 108.5 171.7" stroke="#3C8FA6" stroke-width="1.5" fill="none" stroke-linecap="round" />
-    <path d="M -0.3 161.6 A 72.0 72.0 0 0 1 130.3 161.6" stroke="#3C8FA6" stroke-width="1.5" fill="none" stroke-linecap="round" />
+  <g clip-path="url(#clip-top-right)">
+    <line x1="130.0" y1="48.0" x2="120.3" y2="-7.2" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="130.0" y1="48.0" x2="111.2" y2="-13.9" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="130.0" y1="48.0" x2="102.0" y2="-20.6" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="130.0" y1="48.0" x2="92.9" y2="-27.4" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="130.0" y1="48.0" x2="83.8" y2="-34.1" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="130.0" y1="48.0" x2="65.0" y2="0.0" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="130.0" y1="48.0" x2="139.8" y2="-40.8" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="130.0" y1="48.0" x2="148.8" y2="-34.1" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="130.0" y1="48.0" x2="157.9" y2="-27.4" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="130.0" y1="48.0" x2="167.1" y2="-20.6" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="130.0" y1="48.0" x2="176.2" y2="-13.9" stroke="#D8A535" stroke-width="1.3" />
+    <path d="M 86.5 27.7 A 48.0 48.0 0 0 1 173.5 27.7" stroke="#3C8FA6" stroke-width="1.6" fill="none" stroke-linecap="round" />
+    <path d="M 63.0 16.8 A 74.0 74.0 0 0 1 197.0 16.8" stroke="#3C8FA6" stroke-width="1.6" fill="none" stroke-linecap="round" />
   </g>
 
-  <g clip-path="url(#clip-left)">
-    <line x1="0.0" y1="48.0" x2="-48.8" y2="-12.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="0.0" y1="48.0" x2="-32.5" y2="-24.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="0.0" y1="48.0" x2="-16.3" y2="-36.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="0.0" y1="48.0" x2="16.3" y2="-36.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="0.0" y1="48.0" x2="32.5" y2="-24.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="0.0" y1="48.0" x2="48.8" y2="-12.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="0.0" y1="48.0" x2="0.0" y2="-48.0" stroke="#D8A535" stroke-width="1.3" />
-    <path d="M -43.5 27.7 A 48.0 48.0 0 0 1 43.5 27.7" stroke="#3C8FA6" stroke-width="1.5" fill="none" stroke-linecap="round" />
-    <path d="M -65.3 17.6 A 72.0 72.0 0 0 1 65.3 17.6" stroke="#3C8FA6" stroke-width="1.5" fill="none" stroke-linecap="round" />
-  </g>
-
-  <g clip-path="url(#clip-left-bot)">
-    <line x1="0.0" y1="144.0" x2="-48.8" y2="84.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="0.0" y1="144.0" x2="-32.5" y2="72.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="0.0" y1="144.0" x2="-16.3" y2="60.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="0.0" y1="144.0" x2="16.3" y2="60.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="0.0" y1="144.0" x2="32.5" y2="72.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="0.0" y1="144.0" x2="48.8" y2="84.0" stroke="#D8A535" stroke-width="1.3" />
+  <g clip-path="url(#clip-bot-left)">
+    <line x1="0.0" y1="144.0" x2="9.8" y2="55.2" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="0.0" y1="144.0" x2="18.9" y2="61.9" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="0.0" y1="144.0" x2="28.0" y2="68.6" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="0.0" y1="144.0" x2="37.1" y2="75.4" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="0.0" y1="144.0" x2="46.2" y2="82.1" stroke="#D8A535" stroke-width="1.3" />
     <line x1="0.0" y1="144.0" x2="0.0" y2="48.0" stroke="#D8A535" stroke-width="1.3" />
-    <path d="M -43.5 123.7 A 48.0 48.0 0 0 1 43.5 123.7" stroke="#3C8FA6" stroke-width="1.5" fill="none" stroke-linecap="round" />
-    <path d="M -65.3 113.6 A 72.0 72.0 0 0 1 65.3 113.6" stroke="#3C8FA6" stroke-width="1.5" fill="none" stroke-linecap="round" />
+    <line x1="0.0" y1="144.0" x2="65.0" y2="96.0" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="0.0" y1="144.0" x2="-9.8" y2="88.8" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="0.0" y1="144.0" x2="-18.9" y2="82.1" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="0.0" y1="144.0" x2="-28.0" y2="75.4" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="0.0" y1="144.0" x2="-37.1" y2="68.6" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="0.0" y1="144.0" x2="-46.2" y2="61.9" stroke="#D8A535" stroke-width="1.3" />
+    <path d="M -43.5 123.7 A 48.0 48.0 0 0 1 43.5 123.7" stroke="#3C8FA6" stroke-width="1.6" fill="none" stroke-linecap="round" />
+    <path d="M -67.0 112.8 A 74.0 74.0 0 0 1 67.0 112.8" stroke="#3C8FA6" stroke-width="1.6" fill="none" stroke-linecap="round" />
   </g>
 
-  <g clip-path="url(#clip-right)">
-    <line x1="130.0" y1="48.0" x2="81.3" y2="-12.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="130.0" y1="48.0" x2="97.5" y2="-24.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="130.0" y1="48.0" x2="113.8" y2="-36.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="130.0" y1="48.0" x2="146.3" y2="-36.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="130.0" y1="48.0" x2="162.5" y2="-24.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="130.0" y1="48.0" x2="178.8" y2="-12.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="130.0" y1="48.0" x2="130.0" y2="-48.0" stroke="#D8A535" stroke-width="1.3" />
-    <path d="M 86.5 27.7 A 48.0 48.0 0 0 1 173.5 27.7" stroke="#3C8FA6" stroke-width="1.5" fill="none" stroke-linecap="round" />
-    <path d="M 64.7 17.6 A 72.0 72.0 0 0 1 195.3 17.6" stroke="#3C8FA6" stroke-width="1.5" fill="none" stroke-linecap="round" />
-  </g>
-
-  <g clip-path="url(#clip-right-bot)">
-    <line x1="130.0" y1="144.0" x2="81.3" y2="84.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="130.0" y1="144.0" x2="97.5" y2="72.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="130.0" y1="144.0" x2="113.8" y2="60.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="130.0" y1="144.0" x2="146.3" y2="60.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="130.0" y1="144.0" x2="162.5" y2="72.0" stroke="#D8A535" stroke-width="1.3" />
-    <line x1="130.0" y1="144.0" x2="178.8" y2="84.0" stroke="#D8A535" stroke-width="1.3" />
+  <g clip-path="url(#clip-bot-right)">
+    <line x1="130.0" y1="144.0" x2="120.3" y2="55.2" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="130.0" y1="144.0" x2="111.2" y2="61.9" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="130.0" y1="144.0" x2="102.0" y2="68.6" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="130.0" y1="144.0" x2="92.9" y2="75.4" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="130.0" y1="144.0" x2="83.8" y2="82.1" stroke="#D8A535" stroke-width="1.3" />
     <line x1="130.0" y1="144.0" x2="130.0" y2="48.0" stroke="#D8A535" stroke-width="1.3" />
-    <path d="M 86.5 123.7 A 48.0 48.0 0 0 1 173.5 123.7" stroke="#3C8FA6" stroke-width="1.5" fill="none" stroke-linecap="round" />
-    <path d="M 64.7 113.6 A 72.0 72.0 0 0 1 195.3 113.6" stroke="#3C8FA6" stroke-width="1.5" fill="none" stroke-linecap="round" />
+    <line x1="130.0" y1="144.0" x2="65.0" y2="96.0" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="130.0" y1="144.0" x2="139.8" y2="88.8" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="130.0" y1="144.0" x2="148.8" y2="82.1" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="130.0" y1="144.0" x2="157.9" y2="75.4" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="130.0" y1="144.0" x2="167.1" y2="68.6" stroke="#D8A535" stroke-width="1.3" />
+    <line x1="130.0" y1="144.0" x2="176.2" y2="61.9" stroke="#D8A535" stroke-width="1.3" />
+    <path d="M 86.5 123.7 A 48.0 48.0 0 0 1 173.5 123.7" stroke="#3C8FA6" stroke-width="1.6" fill="none" stroke-linecap="round" />
+    <path d="M 63.0 112.8 A 74.0 74.0 0 0 1 197.0 112.8" stroke="#3C8FA6" stroke-width="1.6" fill="none" stroke-linecap="round" />
   </g>
 
 </svg>
