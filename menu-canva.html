@@ -463,6 +463,9 @@
         page-break-after: avoid !important;
         break-after: avoid !important;
       }
+      .cover-sheet {
+        padding: 0 !important;
+      }
       .sheet-content {
         display: flex !important;
         flex-direction: column !important;
@@ -498,86 +501,8 @@
     <!-- =====================================================================
          PÁGINA 1: PORTADA OFICIAL (COVER PAGE)
          ===================================================================== -->
-    <article class="menu-sheet cover-sheet">
-      <div class="bg-design-layer">
-        <div class="bg-glow" style="width: 800px; height: 800px;"></div>
-      </div>
-      <div class="side-handle">@ellimoncitoculichi</div>
-
-      <div class="sheet-content" style="display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center; width: 100%; height: 100%; padding: 12px 14px;">
-        
-        <!-- Header superior de portada con Tipografía Cursiva -->
-        <div style="margin-top: 4px;">
-          <div style="font-family: 'Oswald', sans-serif; font-size: 13.5px; font-weight: 700; letter-spacing: 4px; color: var(--canva-orange); text-transform: uppercase; margin-bottom: 4px;">
-            ★ MENÚ OFICIAL • CULIACÁN, SINALOA ★
-          </div>
-          <h1 style="font-family: 'Pacifico', cursive; font-size: 54px; line-height: 1.05; color: #78B82B; -webkit-text-stroke: 1.5px #1B5E20; text-shadow: 3px 3px 0 #1B5E20, 4px 4px 10px rgba(0,0,0,0.18); margin: 6px 0 4px 0;">
-            El Limoncito Culichi
-          </h1>
-          <div style="font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 900; letter-spacing: 4.5px; color: #231F20; text-transform: uppercase;">
-            MARISCOS & SUSHI • ESTILO SINALOA
-          </div>
-        </div>
-
-        <!-- Logotipo Oficial Central Destacado -->
-        <div style="margin: 8px 0; position: relative; display: flex; justify-content: center; align-items: center;">
-          <div style="position: absolute; width: 340px; height: 340px; background: radial-gradient(circle, rgba(120, 184, 43, 0.28) 0%, rgba(250, 247, 242, 0) 70%); border-radius: 50%; pointer-events: none;"></div>
-          <img src="img/logo_clean.png" alt="Logotipo Oficial El Limoncito Culichi" style="width: 330px; max-width: 85%; height: auto; filter: drop-shadow(0 14px 28px rgba(0,0,0,0.32)); position: relative; z-index: 2;">
-        </div>
-
-        <!-- Especialidades de la Casa en Formato Tarjetas de Autor (2x2) -->
-        <div style="width: 100%; max-width: 630px;">
-          <div class="section-pill" style="font-size: 16px; padding: 5px 26px; margin-bottom: 12px; background: #FFFFFF; border: 2.2px solid #222222; box-shadow: 3px 4px 0px rgba(0,0,0,0.12);">
-            ✦ TRADICIÓN, CALIDAD & SAZÓN CULICHI ✦
-          </div>
-
-          <!-- Cuadrícula 2x2 de Especialidades -->
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
-            <div style="background: rgba(255,255,255,0.92); border: 2px solid #DE5D35; border-radius: 12px; padding: 10px 14px; display: flex; align-items: center; gap: 12px; box-shadow: 0 3px 8px rgba(0,0,0,0.06); text-align: left;">
-              <span style="font-size: 30px;">🍤</span>
-              <div>
-                <strong style="font-family: 'Oswald', sans-serif; font-size: 13.5px; color: #DE5D35; display: block; text-transform: uppercase; letter-spacing: 0.5px;">AGUACHILES & CEVICHES</strong>
-                <span style="font-size: 11px; color: #555; font-weight: 600;">Camarón crudo, cocido, callos de hacha y salsas de la casa</span>
-              </div>
-            </div>
-
-            <div style="background: rgba(255,255,255,0.92); border: 2px solid #1B5E20; border-radius: 12px; padding: 10px 14px; display: flex; align-items: center; gap: 12px; box-shadow: 0 3px 8px rgba(0,0,0,0.06); text-align: left;">
-              <span style="font-size: 30px;">🐙</span>
-              <div>
-                <strong style="font-family: 'Oswald', sans-serif; font-size: 13.5px; color: #1B5E20; display: block; text-transform: uppercase; letter-spacing: 0.5px;">ESPECIALIDADES A LAS BRASAS</strong>
-                <span style="font-size: 11px; color: #555; font-weight: 600;">Pulpo zarandeado y pescados en adobo artesanal</span>
-              </div>
-            </div>
-
-            <div style="background: rgba(255,255,255,0.92); border: 2px solid #1B5E20; border-radius: 12px; padding: 10px 14px; display: flex; align-items: center; gap: 12px; box-shadow: 0 3px 8px rgba(0,0,0,0.06); text-align: left;">
-              <span style="font-size: 30px;">🥢</span>
-              <div>
-                <strong style="font-family: 'Oswald', sans-serif; font-size: 13.5px; color: #1B5E20; display: block; text-transform: uppercase; letter-spacing: 0.5px;">SUSHI CULICHI</strong>
-                <span style="font-size: 11px; color: #555; font-weight: 600;">Rollos naturales, empanizados y gratinados al momento</span>
-              </div>
-            </div>
-
-            <div style="background: rgba(255,255,255,0.92); border: 2px solid #DE5D35; border-radius: 12px; padding: 10px 14px; display: flex; align-items: center; gap: 12px; box-shadow: 0 3px 8px rgba(0,0,0,0.06); text-align: left;">
-              <span style="font-size: 30px;">🍹</span>
-              <div>
-                <strong style="font-family: 'Oswald', sans-serif; font-size: 13.5px; color: #DE5D35; display: block; text-transform: uppercase; letter-spacing: 0.5px;">COCTELERÍA & BEBIDAS</strong>
-                <span style="font-size: 11px; color: #555; font-weight: 600;">Tumba Tontos, cocteles preparados y micheladas</span>
-              </div>
-            </div>
-          </div>
-
-          <p style="font-family: 'Montserrat', sans-serif; font-size: 11.5px; font-weight: 600; color: #444444; line-height: 1.4; margin: 0;">
-            Elaborado al momento con mariscos frescos de primera calidad y recetas tradicionales 100% de Culiacán.
-          </p>
-        </div>
-
-        <!-- Footer de portada -->
-        <div style="border-top: 1.5px dashed #DE5D35; width: 100%; padding-top: 8px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; font-weight: 800; color: #555;">
-          <span>📍 CONSUMO EN RESTAURANTE & PARA LLEVAR</span>
-          <span style="color: var(--canva-orange);">@ellimoncitoculichi</span>
-        </div>
-
-      </div>
+    <article class="menu-sheet cover-sheet" style="padding: 0 !important; background: #FFFFFF; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+      <img src="img/portada_el_limoncito_culichi.png" alt="Portada Oficial El Limoncito Culichi - Mariscos y Sushi Estilo Sinaloa" style="width: 100%; height: 100%; object-fit: fill; display: block;">
     </article>
 
 
@@ -1291,18 +1216,18 @@
               </div>
             </div>
 
-            <!-- ESPECIALIDAD DE LA CASA: PULPO ZARANDEADO -->
+            <!-- PLATILLO ESPECIAL: LA BIRRIONDA -->
             <div style="background: rgba(255, 255, 255, 0.95); border: 2.2px solid #DE5D35; border-radius: 12px; padding: 12px 14px; margin: 8px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
               <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px;">
-                <span style="font-family: 'Oswald', sans-serif; font-size: 16.5px; font-weight: 800; color: #DE5D35; letter-spacing: 0.5px; text-transform: uppercase;">🐙 PULPO ZARANDEADO</span>
-                <span style="font-family: 'Oswald', sans-serif; font-size: 20px; font-weight: 900; color: #1B5E20;">$600</span>
+                <span style="font-family: 'Oswald', sans-serif; font-size: 16.5px; font-weight: 800; color: #DE5D35; letter-spacing: 0.5px; text-transform: uppercase;">✨ LA BIRRIONDA</span>
+                <span style="font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 700; color: #1B5E20; text-transform: uppercase;">ESPECIAL DE LA CASA</span>
               </div>
               <p style="font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600; color: #444; line-height: 1.35; margin: 0 0 8px 0;">
-                Pulpo entero marinado en adobo zarandeado y asado a las brasas estilo Sinaloa. Servido en tabla con arroz, ensalada, chiles toreados y limón.
+                Charola de mariscos compuesta por una torre de mariscos al centro, en los lados ceviche de medallón tropical, aguachile verde, aguachile negro y aguachile rojo. Todo bañado en salsas de la casa.
               </p>
               <div class="photo-card" style="width: 100%; height: 210px; margin: 0; border-width: 1.8px;">
-                <img src="img/pulpo_zarandeado_real.jpg" alt="Pulpo Zarandeado de la Casa">
-                <div style="background: rgba(0,0,0,0.78); color: #FFF; font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700; padding: 3px 0; text-align: center; text-transform: uppercase; letter-spacing: 0.8px;">ESPECIALIDAD A LAS BRASAS • $600</div>
+                <img src="img/la_birrionda_real.jpg" alt="Charola Especial La Birrionda">
+                <div style="background: rgba(0,0,0,0.78); color: #FFF; font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700; padding: 3px 0; text-align: center; text-transform: uppercase; letter-spacing: 0.8px;">CHAROLA ESPECIAL LA BIRRIONDA</div>
               </div>
             </div>
 
