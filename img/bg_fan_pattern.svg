@@ -1,142 +1,123 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="116" height="88" viewBox="0 0 116 88">
   <defs>
-    <style>
-      .diamond { stroke: #D4A029; stroke-width: 1.5; fill: none; stroke-linejoin: round; }
-      .ray { stroke: #D4A029; stroke-width: 1.15; stroke-linecap: round; }
-      .arc-out { fill: none; stroke: #4A9CBD; stroke-width: 1.6; }
-      .arc-in  { fill: none; stroke: #4A9CBD; stroke-width: 1.2; }
-    </style>
-    
-    <!-- ClipPath for Center Diamond -->
+    <!-- Clip paths for each diamond lattice position -->
     <clipPath id="clip-center">
       <polygon points="58,0 116,44 58,88 0,44" />
     </clipPath>
-    
-    <!-- ClipPaths for 4 corner half-diamonds -->
-    <clipPath id="clip-topleft">
-      <polygon points="0,0 58,0 0,44" />
+    <clipPath id="clip-top">
+      <polygon points="58,-88 116,-44 58,0 0,-44" />
     </clipPath>
-    <clipPath id="clip-topright">
-      <polygon points="116,0 58,0 116,44" />
+    <clipPath id="clip-bottom">
+      <polygon points="58,0 116,44 58,88 0,44" />
     </clipPath>
-    <clipPath id="clip-botleft">
-      <polygon points="0,88 58,88 0,44" />
+    <clipPath id="clip-left">
+      <polygon points="0,-44 58,0 0,44 -58,0" />
     </clipPath>
-    <clipPath id="clip-botright">
-      <polygon points="116,88 58,88 116,44" />
+    <clipPath id="clip-left-bot">
+      <polygon points="0,44 58,88 0,132 -58,88" />
+    </clipPath>
+    <clipPath id="clip-right">
+      <polygon points="116,-44 174,0 116,44 58,0" />
+    </clipPath>
+    <clipPath id="clip-right-bot">
+      <polygon points="116,44 174,88 116,132 58,88" />
     </clipPath>
   </defs>
-  
+
   <rect width="116" height="88" fill="#FFFFFF" />
-  
-  <!-- Center Diamond Unit -->
+
+  <!-- Diamond Grid Boundaries (Golden) -->
+  <g stroke="#DCA635" stroke-width="1.8" fill="none" stroke-linejoin="round" stroke-linecap="round">
+    <polygon points="58,0 116,44 58,88 0,44" />
+    <line x1="0" y1="0" x2="58" y2="44" />
+    <line x1="116" y1="0" x2="58" y2="44" />
+    <line x1="0" y1="88" x2="58" y2="44" />
+    <line x1="116" y1="88" x2="58" y2="44" />
+  </g>
+
+  <!-- Fans clipped inside each diamond -->
   <g clip-path="url(#clip-center)">
-    <line x1="58" y1="88" x2="21.8" y2="38.2" class="ray" />
-    <line x1="58" y1="88" x2="32.9" y2="31.7" class="ray" />
-    <line x1="58" y1="88" x2="45.2" y2="27.7" class="ray" />
-    <line x1="58" y1="88" x2="58.0" y2="26.4" class="ray" />
-    <line x1="58" y1="88" x2="70.8" y2="27.7" class="ray" />
-    <line x1="58" y1="88" x2="83.1" y2="31.7" class="ray" />
-    <line x1="58" y1="88" x2="94.2" y2="38.2" class="ray" />
-    <path d="M 33.9 64.8 A 33.4 33.4 0 0 1 82.1 64.8" class="arc-in" />
-    <path d="M 23.8 55.0 A 47.5 47.5 0 0 1 92.2 55.0" class="arc-out" />
-    <line x1="58" y1="0" x2="44.1" y2="28.5" class="ray" />
-    <line x1="58" y1="0" x2="50.9" y2="30.9" class="ray" />
-    <line x1="58" y1="0" x2="58.0" y2="31.7" class="ray" />
-    <line x1="58" y1="0" x2="65.1" y2="30.9" class="ray" />
-    <line x1="58" y1="0" x2="71.9" y2="28.5" class="ray" />
-
+    <line x1="58.0" y1="88.0" x2="14.5" y2="33.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="58.0" y1="88.0" x2="29.0" y2="22.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="58.0" y1="88.0" x2="43.5" y2="11.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="58.0" y1="88.0" x2="58.0" y2="0.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="58.0" y1="88.0" x2="72.5" y2="11.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="58.0" y1="88.0" x2="87.0" y2="22.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="58.0" y1="88.0" x2="101.5" y2="33.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <path d="M 16.5 68.7 A 45.8 45.8 0 0 1 99.5 68.7" stroke="#3C8CA2" stroke-width="1.6" fill="none" stroke-linecap="round" />
+    <path d="M -2.6 59.7 A 66.9 66.9 0 0 1 118.6 59.7" stroke="#3C8CA2" stroke-width="1.6" fill="none" stroke-linecap="round" />
   </g>
-  
-  <!-- Corner Replicas to tile seamlessly -->
-  <!-- Top Left corner (offset center is (0, 0)) -->
-  <g clip-path="url(#clip-topleft)">
-    <g transform="translate(-58, -44)">
-    <line x1="58" y1="88" x2="21.8" y2="38.2" class="ray" />
-    <line x1="58" y1="88" x2="32.9" y2="31.7" class="ray" />
-    <line x1="58" y1="88" x2="45.2" y2="27.7" class="ray" />
-    <line x1="58" y1="88" x2="58.0" y2="26.4" class="ray" />
-    <line x1="58" y1="88" x2="70.8" y2="27.7" class="ray" />
-    <line x1="58" y1="88" x2="83.1" y2="31.7" class="ray" />
-    <line x1="58" y1="88" x2="94.2" y2="38.2" class="ray" />
-    <path d="M 33.9 64.8 A 33.4 33.4 0 0 1 82.1 64.8" class="arc-in" />
-    <path d="M 23.8 55.0 A 47.5 47.5 0 0 1 92.2 55.0" class="arc-out" />
-    <line x1="58" y1="0" x2="44.1" y2="28.5" class="ray" />
-    <line x1="58" y1="0" x2="50.9" y2="30.9" class="ray" />
-    <line x1="58" y1="0" x2="58.0" y2="31.7" class="ray" />
-    <line x1="58" y1="0" x2="65.1" y2="30.9" class="ray" />
-    <line x1="58" y1="0" x2="71.9" y2="28.5" class="ray" />
 
-    </g>
+  <g clip-path="url(#clip-top)">
+    <line x1="58.0" y1="0.0" x2="14.5" y2="-55.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="58.0" y1="0.0" x2="29.0" y2="-66.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="58.0" y1="0.0" x2="43.5" y2="-77.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="58.0" y1="0.0" x2="58.0" y2="-88.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="58.0" y1="0.0" x2="72.5" y2="-77.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="58.0" y1="0.0" x2="87.0" y2="-66.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="58.0" y1="0.0" x2="101.5" y2="-55.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <path d="M 16.5 -19.3 A 45.8 45.8 0 0 1 99.5 -19.3" stroke="#3C8CA2" stroke-width="1.6" fill="none" stroke-linecap="round" />
+    <path d="M -2.6 -28.3 A 66.9 66.9 0 0 1 118.6 -28.3" stroke="#3C8CA2" stroke-width="1.6" fill="none" stroke-linecap="round" />
   </g>
-  
-  <!-- Top Right corner (offset center is (W, 0)) -->
-  <g clip-path="url(#clip-topright)">
-    <g transform="translate(58, -44)">
-    <line x1="58" y1="88" x2="21.8" y2="38.2" class="ray" />
-    <line x1="58" y1="88" x2="32.9" y2="31.7" class="ray" />
-    <line x1="58" y1="88" x2="45.2" y2="27.7" class="ray" />
-    <line x1="58" y1="88" x2="58.0" y2="26.4" class="ray" />
-    <line x1="58" y1="88" x2="70.8" y2="27.7" class="ray" />
-    <line x1="58" y1="88" x2="83.1" y2="31.7" class="ray" />
-    <line x1="58" y1="88" x2="94.2" y2="38.2" class="ray" />
-    <path d="M 33.9 64.8 A 33.4 33.4 0 0 1 82.1 64.8" class="arc-in" />
-    <path d="M 23.8 55.0 A 47.5 47.5 0 0 1 92.2 55.0" class="arc-out" />
-    <line x1="58" y1="0" x2="44.1" y2="28.5" class="ray" />
-    <line x1="58" y1="0" x2="50.9" y2="30.9" class="ray" />
-    <line x1="58" y1="0" x2="58.0" y2="31.7" class="ray" />
-    <line x1="58" y1="0" x2="65.1" y2="30.9" class="ray" />
-    <line x1="58" y1="0" x2="71.9" y2="28.5" class="ray" />
 
-    </g>
+  <g clip-path="url(#clip-bottom)">
+    <line x1="58.0" y1="176.0" x2="14.5" y2="121.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="58.0" y1="176.0" x2="29.0" y2="110.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="58.0" y1="176.0" x2="43.5" y2="99.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="58.0" y1="176.0" x2="58.0" y2="88.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="58.0" y1="176.0" x2="72.5" y2="99.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="58.0" y1="176.0" x2="87.0" y2="110.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="58.0" y1="176.0" x2="101.5" y2="121.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <path d="M 16.5 156.7 A 45.8 45.8 0 0 1 99.5 156.7" stroke="#3C8CA2" stroke-width="1.6" fill="none" stroke-linecap="round" />
+    <path d="M -2.6 147.7 A 66.9 66.9 0 0 1 118.6 147.7" stroke="#3C8CA2" stroke-width="1.6" fill="none" stroke-linecap="round" />
   </g>
-  
-  <!-- Bottom Left corner (offset center is (0, H)) -->
-  <g clip-path="url(#clip-botleft)">
-    <g transform="translate(-58, 44)">
-    <line x1="58" y1="88" x2="21.8" y2="38.2" class="ray" />
-    <line x1="58" y1="88" x2="32.9" y2="31.7" class="ray" />
-    <line x1="58" y1="88" x2="45.2" y2="27.7" class="ray" />
-    <line x1="58" y1="88" x2="58.0" y2="26.4" class="ray" />
-    <line x1="58" y1="88" x2="70.8" y2="27.7" class="ray" />
-    <line x1="58" y1="88" x2="83.1" y2="31.7" class="ray" />
-    <line x1="58" y1="88" x2="94.2" y2="38.2" class="ray" />
-    <path d="M 33.9 64.8 A 33.4 33.4 0 0 1 82.1 64.8" class="arc-in" />
-    <path d="M 23.8 55.0 A 47.5 47.5 0 0 1 92.2 55.0" class="arc-out" />
-    <line x1="58" y1="0" x2="44.1" y2="28.5" class="ray" />
-    <line x1="58" y1="0" x2="50.9" y2="30.9" class="ray" />
-    <line x1="58" y1="0" x2="58.0" y2="31.7" class="ray" />
-    <line x1="58" y1="0" x2="65.1" y2="30.9" class="ray" />
-    <line x1="58" y1="0" x2="71.9" y2="28.5" class="ray" />
 
-    </g>
+  <g clip-path="url(#clip-left)">
+    <line x1="0.0" y1="44.0" x2="-43.5" y2="-11.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="0.0" y1="44.0" x2="-29.0" y2="-22.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="0.0" y1="44.0" x2="-14.5" y2="-33.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="0.0" y1="44.0" x2="0.0" y2="-44.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="0.0" y1="44.0" x2="14.5" y2="-33.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="0.0" y1="44.0" x2="29.0" y2="-22.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="0.0" y1="44.0" x2="43.5" y2="-11.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <path d="M -41.5 24.7 A 45.8 45.8 0 0 1 41.5 24.7" stroke="#3C8CA2" stroke-width="1.6" fill="none" stroke-linecap="round" />
+    <path d="M -60.6 15.7 A 66.9 66.9 0 0 1 60.6 15.7" stroke="#3C8CA2" stroke-width="1.6" fill="none" stroke-linecap="round" />
   </g>
-  
-  <!-- Bottom Right corner (offset center is (W, H)) -->
-  <g clip-path="url(#clip-botright)">
-    <g transform="translate(58, 44)">
-    <line x1="58" y1="88" x2="21.8" y2="38.2" class="ray" />
-    <line x1="58" y1="88" x2="32.9" y2="31.7" class="ray" />
-    <line x1="58" y1="88" x2="45.2" y2="27.7" class="ray" />
-    <line x1="58" y1="88" x2="58.0" y2="26.4" class="ray" />
-    <line x1="58" y1="88" x2="70.8" y2="27.7" class="ray" />
-    <line x1="58" y1="88" x2="83.1" y2="31.7" class="ray" />
-    <line x1="58" y1="88" x2="94.2" y2="38.2" class="ray" />
-    <path d="M 33.9 64.8 A 33.4 33.4 0 0 1 82.1 64.8" class="arc-in" />
-    <path d="M 23.8 55.0 A 47.5 47.5 0 0 1 92.2 55.0" class="arc-out" />
-    <line x1="58" y1="0" x2="44.1" y2="28.5" class="ray" />
-    <line x1="58" y1="0" x2="50.9" y2="30.9" class="ray" />
-    <line x1="58" y1="0" x2="58.0" y2="31.7" class="ray" />
-    <line x1="58" y1="0" x2="65.1" y2="30.9" class="ray" />
-    <line x1="58" y1="0" x2="71.9" y2="28.5" class="ray" />
 
-    </g>
+  <g clip-path="url(#clip-left-bot)">
+    <line x1="0.0" y1="132.0" x2="-43.5" y2="77.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="0.0" y1="132.0" x2="-29.0" y2="66.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="0.0" y1="132.0" x2="-14.5" y2="55.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="0.0" y1="132.0" x2="0.0" y2="44.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="0.0" y1="132.0" x2="14.5" y2="55.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="0.0" y1="132.0" x2="29.0" y2="66.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="0.0" y1="132.0" x2="43.5" y2="77.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <path d="M -41.5 112.7 A 45.8 45.8 0 0 1 41.5 112.7" stroke="#3C8CA2" stroke-width="1.6" fill="none" stroke-linecap="round" />
+    <path d="M -60.6 103.7 A 66.9 66.9 0 0 1 60.6 103.7" stroke="#3C8CA2" stroke-width="1.6" fill="none" stroke-linecap="round" />
   </g>
-  
-  <!-- Interlocking Golden Diamond Outlines -->
-  <polygon points="58,0 116,44 58,88 0,44" class="diamond" />
-  <line x1="0" y1="0" x2="58" y2="44" class="diamond" />
-  <line x1="116" y1="0" x2="58" y2="44" class="diamond" />
-  <line x1="0" y1="88" x2="58" y2="44" class="diamond" />
-  <line x1="116" y1="88" x2="58" y2="44" class="diamond" />
+
+  <g clip-path="url(#clip-right)">
+    <line x1="116.0" y1="44.0" x2="72.5" y2="-11.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="116.0" y1="44.0" x2="87.0" y2="-22.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="116.0" y1="44.0" x2="101.5" y2="-33.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="116.0" y1="44.0" x2="116.0" y2="-44.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="116.0" y1="44.0" x2="130.5" y2="-33.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="116.0" y1="44.0" x2="145.0" y2="-22.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="116.0" y1="44.0" x2="159.5" y2="-11.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <path d="M 74.5 24.7 A 45.8 45.8 0 0 1 157.5 24.7" stroke="#3C8CA2" stroke-width="1.6" fill="none" stroke-linecap="round" />
+    <path d="M 55.4 15.7 A 66.9 66.9 0 0 1 176.6 15.7" stroke="#3C8CA2" stroke-width="1.6" fill="none" stroke-linecap="round" />
+  </g>
+
+  <g clip-path="url(#clip-right-bot)">
+    <line x1="116.0" y1="132.0" x2="72.5" y2="77.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="116.0" y1="132.0" x2="87.0" y2="66.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="116.0" y1="132.0" x2="101.5" y2="55.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="116.0" y1="132.0" x2="116.0" y2="44.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="116.0" y1="132.0" x2="130.5" y2="55.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="116.0" y1="132.0" x2="145.0" y2="66.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="116.0" y1="132.0" x2="159.5" y2="77.0" stroke="#DCA635" stroke-width="1.3" stroke-linecap="round" />
+    <path d="M 74.5 112.7 A 45.8 45.8 0 0 1 157.5 112.7" stroke="#3C8CA2" stroke-width="1.6" fill="none" stroke-linecap="round" />
+    <path d="M 55.4 103.7 A 66.9 66.9 0 0 1 176.6 103.7" stroke="#3C8CA2" stroke-width="1.6" fill="none" stroke-linecap="round" />
+  </g>
+
 </svg>
