@@ -8,7 +8,7 @@
   <!-- Tipografías de Canva -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Luckiest+Guy&family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500&family=Oswald:wght@600;700&family=Pacifico&family=Satisfy&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Lilita+One&family=Luckiest+Guy&family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500&family=Oswald:wght@600;700&family=Pacifico&family=Satisfy&display=swap" rel="stylesheet">
 
   <style>
     @page {
@@ -498,6 +498,55 @@
         min-width: 140px !important;
       }
     }
+
+    /* ═══════════════════════════════════════════════════════════════
+       ESTILOS PORTADA DIGITAL: TIPOGRAFÍA ARQUEADA Y EMBLEMA DEL LIMÓN
+       ═══════════════════════════════════════════════════════════════ */
+    .badge-container {
+      width: 740px;
+      max-width: 98%;
+      height: 660px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+    }
+
+    .badge-svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .curved-orange-text {
+      font-family: 'Lilita One', cursive, sans-serif;
+      font-size: 52px;
+      fill: #FF7018;
+      stroke: #182230;
+      stroke-width: 10px;
+      paint-order: stroke fill;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+      letter-spacing: 3px;
+    }
+
+    .curved-orange-inner {
+      font-family: 'Lilita One', cursive, sans-serif;
+      font-size: 52px;
+      fill: #FFA100;
+      letter-spacing: 3px;
+    }
+
+    .curved-bot-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 20px;
+      font-weight: 900;
+      fill: #1E293B;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      text-shadow: 1px 1px 0 #FFF, -1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF;
+    }
   </style>
 </head>
 <body>
@@ -505,25 +554,60 @@
   <div class="menu-wrapper">
 
     <!-- =====================================================================
-         PÁGINA 1: PORTADA OFICIAL 100% DIGITAL (DISEÑO SINALOA ORIGINAL)
+         PÁGINA 1: PORTADA OFICIAL 100% DIGITAL (RODAJAS DE LIMÓN Y MARCA AMPLIADA)
          ===================================================================== -->
-    <article class="menu-sheet cover-sheet digital-cover" style="position: relative; overflow: hidden; background-color: #FFFFFF; background-image: url('img/bg_fan_pattern.svg'); background-repeat: repeat; background-size: 136px 68px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center; padding: 50px 30px 42px 30px !important;">
+    <article class="menu-sheet cover-sheet digital-cover" style="position: relative; overflow: hidden; background-color: #FFFFFF; background-image: url('img/bg_fan_pattern.svg'); background-repeat: repeat; background-size: 136px 68px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center; padding: 40px 20px 32px 20px !important;">
       
       <!-- Título Superior Digital -->
-      <div style="width: 100%; z-index: 2; margin-top: 6px;">
-        <h2 style="font-family: 'Montserrat', sans-serif; font-size: 34px; font-weight: 800; letter-spacing: 14px; color: #475569; text-transform: uppercase; margin: 0; padding-left: 14px; text-shadow: 2px 2px 0 #FFFFFF, -2px -2px 0 #FFFFFF, 2px -2px 0 #FFFFFF, -2px 2px 0 #FFFFFF, 0 3px 6px rgba(255,255,255,0.9);">
+      <div style="width: 100%; z-index: 2; margin-top: 4px;">
+        <h2 style="font-family: 'Montserrat', sans-serif; font-size: 38px; font-weight: 900; letter-spacing: 16px; color: #243342; text-transform: uppercase; margin: 0; padding-left: 16px; text-shadow: 2px 2px 0 #FFFFFF, -2px -2px 0 #FFFFFF, 2px -2px 0 #FFFFFF, -2px 2px 0 #FFFFFF, 0 3px 8px rgba(255,255,255,0.95);">
           MARISCOS Y SUSHI
         </h2>
       </div>
 
-      <!-- Logotipo Oficial Digital Central en Alta Definición -->
-      <div style="z-index: 2; display: flex; justify-content: center; align-items: center; margin: 10px 0;">
-        <img src="img/logo_clean.png" alt="El Limoncito Culichi" style="width: 530px; max-width: 95%; height: auto; filter: drop-shadow(0 16px 32px rgba(0,0,0,0.22));">
+      <!-- Emblema Digital Oficial Ampliado con Letras Naranjas Curvadas Rodeando la Marca -->
+      <div class="badge-container">
+        <svg class="badge-svg" viewBox="0 0 740 660">
+          <defs>
+            <!-- Curva arqueada superior que rodea el sombrero y la marca del limón -->
+            <path id="top-curve" d="M 50,300 A 330,240 0 0,1 690,300" fill="none" />
+            <!-- Curva arqueada inferior bajo las olas -->
+            <path id="bot-curve" d="M 160,560 A 240,110 0 0,0 580,560" fill="none" />
+            
+            <filter id="badge-shadow" x="-15%" y="-15%" width="130%" height="130%">
+              <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000" flood-opacity="0.22" />
+            </filter>
+          </defs>
+
+          <!-- Arte Central del Limoncito Vaquero Ampliado en Alta Definición -->
+          <g filter="url(#badge-shadow)">
+            <image href="img/logo_clean.png" x="60" y="70" width="620" height="520" />
+          </g>
+
+          <!-- Letras Naranjas Arqueadas: El LIMONCITO CULICHI rodeando la marca del limón -->
+          <text class="curved-orange-text">
+            <textPath href="#top-curve" startOffset="50%" text-anchor="middle">
+              El LIMONCITO CULICHI
+            </textPath>
+          </text>
+          <text class="curved-orange-inner">
+            <textPath href="#top-curve" startOffset="50%" text-anchor="middle">
+              El LIMONCITO CULICHI
+            </textPath>
+          </text>
+
+          <!-- Subtítulo Arqueado Inferior: CEVICHE & AGUACHILE -->
+          <text class="curved-bot-text">
+            <textPath href="#bot-curve" startOffset="50%" text-anchor="middle">
+              CEVICHE &amp; AGUACHILE
+            </textPath>
+          </text>
+        </svg>
       </div>
 
       <!-- Título Inferior Digital: ESTILO SINALOA -->
       <div style="width: 100%; z-index: 2; margin-bottom: 6px;">
-        <div style="font-family: 'Montserrat', sans-serif; font-size: 42px; font-weight: 900; letter-spacing: 24px; color: #1E293B; text-transform: uppercase; line-height: 1.25; padding-left: 24px; text-shadow: 2.5px 2.5px 0 #FFFFFF, -2.5px -2.5px 0 #FFFFFF, 2.5px -2.5px 0 #FFFFFF, -2.5px 2.5px 0 #FFFFFF, 0 3px 6px rgba(255,255,255,0.9);">
+        <div style="font-family: 'Montserrat', sans-serif; font-size: 46px; font-weight: 900; letter-spacing: 24px; color: #111827; text-transform: uppercase; line-height: 1.25; padding-left: 24px; text-shadow: 2.5px 2.5px 0 #FFFFFF, -2.5px -2.5px 0 #FFFFFF, 2.5px -2.5px 0 #FFFFFF, -2.5px 2.5px 0 #FFFFFF, 0 4px 10px rgba(255,255,255,0.95);">
           ESTILO<br>SINALOA
         </div>
       </div>

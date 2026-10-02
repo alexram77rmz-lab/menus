@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 620" width="600" height="620">
+  <defs>
+    <!-- Curve for top text: arches over the hat -->
+    <path id="top-arc" d="M 65,270 A 235,215 0 0,1 535,270" fill="none" />
+    <!-- Curve for bottom text: arches along the waves -->
+    <path id="bot-arc" d="M 140,515 A 190,120 0 0,0 460,515" fill="none" />
+    
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity="0.25" />
+    </filter>
+  </defs>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lilita+One&amp;family=Montserrat:wght@900&amp;display=swap');
+    
+    .curved-orange-text {
+      font-family: 'Lilita One', cursive, sans-serif;
+      font-size: 46px;
+      font-weight: 900;
+      fill: #FF7711;
+      stroke: #1B2430;
+      stroke-width: 8px;
+      paint-order: stroke fill;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+      letter-spacing: 2px;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+    }
+    
+    .curved-orange-text-inner {
+      font-family: 'Lilita One', cursive, sans-serif;
+      font-size: 46px;
+      font-weight: 900;
+      fill: #FFA500;
+      letter-spacing: 2px;
+    }
+
+    .curved-bot-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 19px;
+      font-weight: 900;
+      fill: #1E293B;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+    }
+  </style>
+
+  <g filter="url(#shadow)">
+    <!-- Mascot Artwork in center -->
+    <image href="img/logo_clean.png" x="40" y="80" width="520" height="450" />
+  </g>
+
+  <!-- Top Arched Text: El LIMONCITO CULICHI -->
+  <!-- Outer thick dark stroke -->
+  <text class="curved-orange-text">
+    <textPath href="#top-arc" startOffset="50%" text-anchor="middle">
+      El LIMONCITO CULICHI
+    </textPath>
+  </text>
+  <!-- Inner bright orange fill -->
+  <text class="curved-orange-text-inner">
+    <textPath href="#top-arc" startOffset="50%" text-anchor="middle">
+      El LIMONCITO CULICHI
+    </textPath>
+  </text>
+
+  <!-- Bottom Arched Text: CEVICHE & AGUACHILE -->
+  <text class="curved-bot-text">
+    <textPath href="#bot-arc" startOffset="50%" text-anchor="middle">
+      CEVICHE &amp; AGUACHILE
+    </textPath>
+  </text>
+</svg>

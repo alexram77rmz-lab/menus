@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Montserrat:wght@800;900&family=Oswald:wght@700&display=swap');
+  
+  body { margin: 0; background: #222; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+  
+  .sheet {
+    width: 816px;
+    height: 1080px;
+    background-color: #FFFFFF;
+    background-image: url('img/bg_fan_pattern.svg');
+    background-repeat: repeat;
+    background-size: 136px 68px;
+    border: 16px solid #1E7582;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 35px 20px 30px 20px;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .top-title {
+    font-size: 38px;
+    font-weight: 900;
+    letter-spacing: 16px;
+    color: #243342;
+    text-transform: uppercase;
+    padding-left: 16px;
+    text-align: center;
+    text-shadow: 2px 2px 0 #FFF, -2px -2px 0 #FFF, 2px -2px 0 #FFF, -2px 2px 0 #FFF, 0 3px 8px rgba(255,255,255,0.95);
+    z-index: 2;
+  }
+
+  .badge-container {
+    width: 700px;
+    height: 680px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+  }
+
+  .badge-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .curved-orange-text {
+    font-family: 'Lilita One', cursive, sans-serif;
+    font-size: 52px;
+    fill: #FF7018;
+    stroke: #182230;
+    stroke-width: 10px;
+    paint-order: stroke fill;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    letter-spacing: 3px;
+  }
+
+  .curved-orange-inner {
+    font-family: 'Lilita One', cursive, sans-serif;
+    font-size: 52px;
+    fill: #FFA100;
+    letter-spacing: 3px;
+  }
+
+  .curved-bot-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    fill: #1E293B;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 0 #FFF, -1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF;
+  }
+
+  .bot-title {
+    font-size: 46px;
+    font-weight: 900;
+    letter-spacing: 24px;
+    color: #111827;
+    text-transform: uppercase;
+    line-height: 1.25;
+    padding-left: 24px;
+    text-align: center;
+    text-shadow: 2.5px 2.5px 0 #FFF, -2.5px -2.5px 0 #FFF, 2.5px -2.5px 0 #FFF, -2.5px 2.5px 0 #FFF, 0 4px 10px rgba(255,255,255,0.95);
+    z-index: 2;
+  }
+</style>
+</head>
+<body>
+  <div class="sheet">
+    <div class="top-title">MARISCOS Y SUSHI</div>
+    
+    <div class="badge-container">
+      <svg class="badge-svg" viewBox="0 0 740 660">
+        <defs>
+          <!-- Arched path hugging closely around the top of the cowboy hat & lime -->
+          <path id="top-curve" d="M 50,300 A 330,240 0 0,1 690,300" fill="none" />
+          <!-- Arched path under bottom curve -->
+          <path id="bot-curve" d="M 160,560 A 240,110 0 0,0 580,560" fill="none" />
+          
+          <filter id="badge-shadow" x="-15%" y="-15%" width="130%" height="130%">
+            <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000" flood-opacity="0.22" />
+          </filter>
+        </defs>
+
+        <!-- Mascot Artwork in Center - High Res & Crisp -->
+        <g filter="url(#badge-shadow)">
+          <image href="img/logo_clean.png" x="60" y="70" width="620" height="520" />
+        </g>
+
+        <!-- Arched Orange Text: El LIMONCITO CULICHI wrapping tightly around lime -->
+        <text class="curved-orange-text">
+          <textPath href="#top-curve" startOffset="50%" text-anchor="middle">
+            El LIMONCITO CULICHI
+          </textPath>
+        </text>
+        <text class="curved-orange-inner">
+          <textPath href="#top-curve" startOffset="50%" text-anchor="middle">
+            El LIMONCITO CULICHI
+          </textPath>
+        </text>
+
+        <!-- Arched Bottom Text: CEVICHE & AGUACHILE -->
+        <text class="curved-bot-text">
+          <textPath href="#bot-curve" startOffset="50%" text-anchor="middle">
+            CEVICHE &amp; AGUACHILE
+          </textPath>
+        </text>
+      </svg>
+    </div>
+
+    <div class="bot-title">ESTILO<br>SINALOA</div>
+  </div>
+</body>
+</html>
