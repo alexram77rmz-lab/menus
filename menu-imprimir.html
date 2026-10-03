@@ -2,164 +2,1418 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>El Limoncito Culichi - Menú Imprimible Papelería</title>
+  <meta name="viewport" content="width=860, user-scalable=yes">
+  <title>El Limoncito Culichi - Menú Oficial</title>
+  
+  <!-- Tipografías de Canva -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Oswald:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Lilita+One&family=Luckiest+Guy&family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500&family=Oswald:wght@600;700&family=Pacifico&family=Satisfy&display=swap" rel="stylesheet">
+
   <style>
+    @page {
+      size: letter portrait;
+      margin: 0;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       COLORES Y ESTILO EXACTO DE CANVA
+       ═══════════════════════════════════════════════════════════════ */
+    :root {
+      --canva-border: #32BFE2;       /* Marco turquesa / cyan exacto más claro */
+      --canva-bg: #FAF7F2;           /* Fondo crema pergamino cálido */
+      --canva-header-green: #78B82B; /* Verde lima 3D del logo */
+      --canva-orange: #DE5D35;       /* Naranja terracota de títulos */
+      --canva-text: #231F20;         /* Texto oscuro principal */
+      --canva-muted: #555555;        /* Descripción de ingredientes */
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
     body {
-      background-color: #212529;
+      background-color: #24292e;
+      color: var(--canva-text);
       font-family: 'Montserrat', sans-serif;
-      padding: 20px 10px;
+      padding: 24px 10px;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .menu-wrapper {
+      width: 816px;
+      max-width: 816px;
+      margin: 0 auto;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 30px;
+      gap: 32px;
     }
 
-    .top-notice {
-      max-width: 820px;
-      width: 100%;
-      background: #ffffff;
-      border-radius: 12px;
-      padding: 14px 20px;
+    /* ═══════════════════════════════════════════════════════════════
+       HOJA DE MENÚ (CARTA EXACTA CON MARCO Y DISEÑO DE ATRÁS)
+       ═══════════════════════════════════════════════════════════════ */
+    .menu-sheet {
+      width: 816px;
+      min-width: 816px;
+      max-width: 816px;
+      background-color: var(--canva-bg);
+      border: 16px solid var(--canva-border);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.45);
+      padding: 20px 24px 18px 24px;
+      min-height: 1080px;
+      height: 1080px;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: space-between;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      font-size: 13px;
+      box-sizing: border-box;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       DISEÑO DE ATRÁS (FONDO / MARCA DE AGUA DEL LIMONCITO CULICHI)
+       Visible, cálido y fiel al original de Canva
+       ═══════════════════════════════════════════════════════════════ */
+    .bg-design-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    /* Brillo cálido central */
+    .bg-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255, 237, 213, 0.65) 0%, rgba(250, 247, 242, 0) 70%);
+    }
+
+    /* Personaje Limoncito Vaquero grande centrado exactamente en todas las hojas */
+    .bg-mascot {
+      position: absolute;
+      top: 48%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 48%;
+      height: 48%;
+      background-image: url('img/logo_watermark.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      opacity: 0.20;
+      filter: saturate(125%) contrast(105%);
+      pointer-events: none;
+    }
+
+    /* Ocultar texto duplicado que jalaba la marca de agua al fondo */
+    .bg-script-text {
+      display: none !important;
+    }
+
+    .sheet-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    /* Handle vertical del lateral izquierdo */
+    .side-handle {
+      position: absolute;
+      left: -14px;
+      bottom: 60px;
+      transform: rotate(-90deg);
+      transform-origin: left bottom;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #777777;
+      text-transform: uppercase;
+      z-index: 5;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       HEADER ORIGINAL (LOGO EN CURSIVA COMO CARTA ORIGINAL + SINALOA)
+       ═══════════════════════════════════════════════════════════════ */
+    .sheet-header {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .canva-logo-box {
+      text-align: right;
+    }
+
+    .canva-brand-title {
+      font-family: 'Pacifico', cursive;
+      font-size: 27px;
+      line-height: 1.05;
+      color: var(--canva-header-green);
+      -webkit-text-stroke: 1px #1B5E20;
+      text-shadow: 2px 2px 0 #1B5E20, 2.5px 2.5px 0 rgba(0,0,0,0.15);
+      letter-spacing: 0.5px;
+      text-transform: none;
+    }
+
+    .canva-brand-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 2.5px;
+      color: #333333;
+      margin-top: 3px;
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       TÍTULOS DE SECCIÓN & PÍLDORAS
+       ═══════════════════════════════════════════════════════════════ */
+    .section-title-orange {
+      font-family: 'Oswald', sans-serif;
+      font-size: 21px;
+      font-weight: 700;
+      color: var(--canva-orange);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section-pill {
+      display: inline-block;
+      background: #FFFFFF;
+      border: 1.8px solid #222222;
+      border-radius: 20px;
+      padding: 4px 18px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 17px;
       font-weight: 700;
       color: #333333;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      box-shadow: 2px 2px 0px rgba(0,0,0,0.12);
     }
-    .top-notice span {
+
+    .section-subtitle-grey {
+      font-family: 'Oswald', sans-serif;
+      font-size: 21px;
+      font-weight: 700;
+      color: #6C7A89;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       PLATILLOS, DESCRIPCIONES Y PUNTOS GUÍA
+       ═══════════════════════════════════════════════════════════════ */
+    .dish-row {
+      margin-bottom: 7px;
+      page-break-inside: avoid;
+    }
+
+    /* Miniatura cuadrada al lado del platillo */
+    .dish-with-thumb {
       display: flex;
       align-items: center;
+      gap: 12px;
+    }
+
+    .dish-thumb {
+      width: 175px;
+      height: 135px;
+      min-width: 175px;
+      border-radius: 11px;
+      overflow: hidden;
+      border: 2.2px solid #DE5D35;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.22);
+      background: #FFFFFF;
+      flex-shrink: 0;
+    }
+
+    .dish-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .dish-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .dish-main {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 6px;
+    }
+
+    .dish-name-orange {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--canva-orange);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .dish-name-dark {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #2A2A2A;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .dish-dots {
+      flex: 1;
+      border-bottom: 2px dotted #8E8E8E;
+      margin: 0 4px;
+      position: relative;
+      top: -3px;
+    }
+
+    .dish-price {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14.5px;
+      font-weight: 900;
+      color: #111111;
+      white-space: nowrap;
+    }
+
+    .dish-desc {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--canva-muted);
+      line-height: 1.25;
+      margin-top: 1px;
+      max-width: 95%;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       TABLA MULTI-PRECIOS (TOSTADA / MEDIA / ORDEN)
+       ═══════════════════════════════════════════════════════════════ */
+    .table-header-row {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--canva-orange);
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    .th-cell {
+      width: 58px;
+      text-align: right;
+    }
+
+    .multi-dish-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 8px;
       gap: 8px;
     }
-    .badge-ok {
-      background: #28a745;
-      color: #ffffff;
-      padding: 3px 10px;
-      border-radius: 20px;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+
+    .multi-dish-info {
+      flex: 1;
     }
 
-    .menu-page-wrapper {
-      max-width: 820px;
-      width: 100%;
-      background: #ffffff;
+    .multi-dish-prices {
+      display: flex;
+      gap: 12px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #111111;
+    }
+
+    .td-cell {
+      width: 58px;
+      text-align: right;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       FOTOGRAFÍAS REALES DEL MENÚ (ALTA CALIDAD & BRILLO GASTRONÓMICO)
+       ═══════════════════════════════════════════════════════════════ */
+    .photo-card {
       border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.5);
-      position: relative;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.18), 0 1px 3px rgba(0,0,0,0.08);
+      border: 2px solid #FFFFFF;
+      background: #EAEAEA;
+      display: flex;
+      flex-direction: column;
     }
 
-    .menu-page-img {
+    .photo-card img {
       width: 100%;
-      height: auto;
+      flex: 1;
+      min-height: 0;
+      object-fit: cover;
       display: block;
+      transition: transform 0.3s ease;
+    }
+
+    /* Sticker oficial del Limoncito con sombrero vaquero */
+    .sticker-limoncito {
+      width: 85px;
+      filter: drop-shadow(2px 3px 6px rgba(0,0,0,0.3));
+    }
+
+    /* Ilustraciones Marinas */
+    .marine-svg {
+      fill: none;
+      stroke: #222222;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      opacity: 0.85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       VISOR ADAPTABLE PARA PANTALLAS Y MÓVILES (CONSERVA DISEÑO EXACTO)
+       ═══════════════════════════════════════════════════════════════ */
+    @media screen and (max-width: 860px) {
+      body {
+        padding: 10px 0;
+        background-color: #1a1e24;
+      }
+      .menu-wrapper {
+        width: 816px;
+        max-width: 816px;
+        margin: 0 auto;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+      }
+      .menu-sheet {
+        width: 816px !important;
+        min-width: 816px !important;
+        max-width: 816px !important;
+        margin: 0 auto !important;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      }
     }
 
     /* ═══════════════════════════════════════════════════════════════
        REGLAS ESTRICTAS DE IMPRESIÓN PARA PAPELERÍA (DIRECT TO PDF)
        ═══════════════════════════════════════════════════════════════ */
     @media print {
-      @page {
-        size: letter portrait;
-        margin: 0;
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
       }
       body {
-        background: #ffffff !important;
+        background: #FFFFFF !important;
         padding: 0 !important;
-        gap: 0 !important;
+        margin: 0 !important;
       }
-      .top-notice {
-        display: none !important;
-      }
-      .menu-page-wrapper {
-        border-radius: 0 !important;
-        box-shadow: none !important;
+      .menu-wrapper {
         max-width: 100% !important;
-        width: 100% !important;
-        height: 100vh !important;
+        gap: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      .menu-sheet {
+        box-shadow: none !important;
+        border-width: 5mm !important;
         page-break-after: always !important;
         break-after: page !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        height: 279mm !important;
+        max-height: 279mm !important;
+        min-height: 279mm !important;
+        width: 215.9mm !important;
+        max-width: 215.9mm !important;
+        box-sizing: border-box !important;
+        padding: 8mm 12mm 8mm 12mm !important;
+        margin: 0 !important;
+        overflow: hidden !important;
         display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        background: #ffffff !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
       }
-      .menu-page-wrapper:last-child {
+      .menu-sheet:last-child {
         page-break-after: avoid !important;
         break-after: avoid !important;
       }
-      .menu-page-img {
-        width: 100% !important;
+      .cover-sheet {
+        padding: 14mm 8mm 12mm 8mm !important;
+        background-color: #FFFFFF !important;
+        background-image: url('img/bg_fan_pattern.svg') !important;
+        background-repeat: repeat !important;
+        background-size: 130px 96px !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .sheet-content {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
         height: 100% !important;
-        object-fit: fill !important;
+        flex: 1 !important;
+      }
+      .bg-mascot {
+        width: 48% !important;
+        height: 48% !important;
+        top: 48% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        opacity: 0.20 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .bg-script-text {
+        display: none !important;
+      }
+      .dish-thumb {
+        width: 175px !important;
+        height: 135px !important;
+        min-width: 175px !important;
       }
     }
 
-    @media screen and (max-width: 600px) {
-      body {
-        padding: 10px 4px;
-        gap: 16px;
-      }
-      .top-notice {
-        flex-direction: column;
-        gap: 8px;
-        text-align: center;
-        font-size: 12px;
-      }
+    /* ═══════════════════════════════════════════════════════════════
+       ESTILOS PORTADA DIGITAL: TIPOGRAFÍA ARQUEADA Y EMBLEMA DEL LIMÓN
+       ═══════════════════════════════════════════════════════════════ */
+    .badge-container {
+      width: 740px;
+      max-width: 98%;
+      height: 660px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+    }
+
+    .badge-svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .curved-orange-text {
+      font-family: 'Pacifico', cursive;
+      font-size: 50px;
+      fill: #FF7018;
+      stroke: #182230;
+      stroke-width: 9px;
+      paint-order: stroke fill;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+      letter-spacing: 1px;
+    }
+
+    .curved-orange-inner {
+      font-family: 'Pacifico', cursive;
+      font-size: 50px;
+      fill: #FFA100;
+      letter-spacing: 1px;
     }
   </style>
 </head>
 <body>
 
-  <div class="top-notice">
-    <span>
-      <span class="badge-ok">Listo para Papelería</span>
-      Las 6 Hojas Originales Limpias, Encuadradas y sin Arillos
-    </span>
-    <span style="color: #666; font-size: 11px;">Presiona Ctrl + P para guardar PDF o imprimir</span>
-  </div>
+  <div class="menu-wrapper">
 
-  <!-- PÁGINA 1: ENTRADAS & OSTRAS -->
-  <div class="menu-page-wrapper">
-    <img src="img/carta_01_entradas.jpg" alt="Página 1: Entradas y Ostras" class="menu-page-img">
-  </div>
+    <!-- =====================================================================
+         PÁGINA 1: PORTADA OFICIAL 100% DIGITAL (RODAJAS DE LIMÓN Y MARCA AMPLIADA)
+         ===================================================================== -->
+    <article class="menu-sheet cover-sheet digital-cover" style="position: relative; overflow: hidden; background-color: #FFFFFF; background-image: url('img/bg_fan_pattern.svg'); background-repeat: repeat; background-size: 130px 96px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center; padding: 40px 20px 32px 20px !important;">
+      
+      <!-- Título Superior Digital -->
+      <div style="width: 100%; z-index: 2; margin-top: 4px;">
+        <h2 style="font-family: 'Montserrat', sans-serif; font-size: 38px; font-weight: 900; letter-spacing: 16px; color: #243342; text-transform: uppercase; margin: 0; padding-left: 16px; text-shadow: 2px 2px 0 #FFFFFF, -2px -2px 0 #FFFFFF, 2px -2px 0 #FFFFFF, -2px 2px 0 #FFFFFF, 0 3px 8px rgba(255,255,255,0.95);">
+          MARISCOS Y SUSHI
+        </h2>
+      </div>
 
-  <!-- PÁGINA 2: AGUACHILES & COCTELES -->
-  <div class="menu-page-wrapper">
-    <img src="img/carta_02_aguachiles.jpg" alt="Página 2: Aguachiles y Cocteles Especiales" class="menu-page-img">
-  </div>
+      <!-- Emblema Digital Oficial Ampliado con Letras Naranjas Curvadas Rodeando la Marca -->
+      <div class="badge-container">
+        <svg class="badge-svg" viewBox="0 -40 740 720">
+          <defs>
+            <!-- Curva superior arqueada en forma de medio arcoíris rodeando el logotipo hacia arriba -->
+            <path id="top-curve" d="M 95,250 A 280,230 0 0,1 645,250" fill="none" />
+            
+            <linearGradient id="ocean-grad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#8CE8FC" />
+              <stop offset="50%" stop-color="#4ED5F6" />
+              <stop offset="100%" stop-color="#28C2E7" />
+            </linearGradient>
 
-  <!-- PÁGINA 3: CEVICHES -->
-  <div class="menu-page-wrapper">
-    <img src="img/carta_03_ceviches.jpg" alt="Página 3: Ceviches" class="menu-page-img">
-  </div>
+            <filter id="badge-shadow" x="-15%" y="-15%" width="130%" height="130%">
+              <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000" flood-opacity="0.20" />
+            </filter>
+          </defs>
 
-  <!-- PÁGINA 4: ROLLOS FRÍOS -->
-  <div class="menu-page-wrapper">
-    <img src="img/carta_04_rollos_frios.jpg" alt="Página 4: Rollos Fríos" class="menu-page-img">
-  </div>
+          <!-- Arte del Limoncito Vaquero en el centro -->
+          <g filter="url(#badge-shadow)">
+            <image href="img/logo_mascot_clean.png" x="60" y="80" width="620" height="520" />
+          </g>
 
-  <!-- PÁGINA 5: ROLLOS EMPANIZADOS & EXTRAS -->
-  <div class="menu-page-wrapper">
-    <img src="img/carta_05_rollos_empanizados.jpg" alt="Página 5: Rollos Empanizados" class="menu-page-img">
-  </div>
+          <!-- 1. Fondo de agua marina en la base circular del emblema (azul claro tropical oficial) -->
+          <g id="ocean-base" filter="url(#badge-shadow)">
+            <path d="M 190,410 
+                     A 190,190 0 0,0 550,410 
+                     L 550,395 
+                     C 500,408 440,412 370,412 
+                     C 300,412 240,408 190,395 Z" fill="url(#ocean-grad)" />
+            <path d="M 190,410 A 190,190 0 0,0 550,410" fill="none" stroke="#1BA4C4" stroke-width="3" />
+          </g>
 
-  <!-- PÁGINA 6: EXTRAS MARISCOS & BEBIDAS -->
-  <div class="menu-page-wrapper">
-    <img src="img/carta_06_extras_bebidas.jpg" alt="Página 6: Extras Mariscos y Bebidas" class="menu-page-img">
+          <!-- 2. LAS DOS OLAS AUTÉNTICAS (Color azul clarito del logotipo original) -->
+          <g id="two-authentic-waves" filter="url(#badge-shadow)">
+            <!-- OLA IZQUIERDA -->
+            <path d="M 190,405 
+                     C 230,420 270,422 310,410 
+                     C 330,404 345,394 350,386 
+                     C 342,380 330,390 318,398 
+                     C 285,410 240,412 190,405 Z" fill="#4ED5F6" stroke="#1BA4C4" stroke-width="2.2" stroke-linejoin="round" />
+            
+            <!-- Espuma blanca con rizo de ola izquierda -->
+            <path d="M 255,406 
+                     C 280,410 305,404 324,394 
+                     C 334,388 348,386 352,392 
+                     C 348,400 336,404 322,406 
+                     C 302,409 276,409 255,406 Z" fill="#FFFFFF" stroke="#1BA4C4" stroke-width="1.8" stroke-linejoin="round" />
+            
+            <!-- Líneas de corriente izquierda -->
+            <path d="M 220,410 Q 270,416 318,404" fill="none" stroke="#BAF3FE" stroke-width="2.2" stroke-linecap="round" />
+            <path d="M 240,415 Q 282,419 320,410" fill="none" stroke="#168BAE" stroke-width="2" stroke-linecap="round" />
+
+            <!-- OLA DERECHA -->
+            <path d="M 550,405 
+                     C 510,420 470,422 430,410 
+                     C 410,404 395,394 390,386 
+                     C 398,380 410,390 422,398 
+                     C 455,410 500,412 550,405 Z" fill="#4ED5F6" stroke="#1BA4C4" stroke-width="2.2" stroke-linejoin="round" />
+            
+            <!-- Espuma blanca con rizo de ola derecha -->
+            <path d="M 485,406 
+                     C 460,410 435,404 416,394 
+                     C 406,388 392,386 388,392 
+                     C 392,400 404,404 418,406 
+                     C 438,409 464,409 485,406 Z" fill="#FFFFFF" stroke="#1BA4C4" stroke-width="1.8" stroke-linejoin="round" />
+
+            <!-- Líneas de corriente derecha -->
+            <path d="M 520,410 Q 470,416 422,404" fill="none" stroke="#BAF3FE" stroke-width="2.2" stroke-linecap="round" />
+            <path d="M 500,415 Q 458,419 420,410" fill="none" stroke="#168BAE" stroke-width="2" stroke-linecap="round" />
+
+            <!-- Conector de espuma bajo la barbilla central -->
+            <path d="M 330,400 C 348,394 360,393 370,393 C 380,393 392,394 410,400 C 392,404 370,405 348,404 Z" fill="#FFFFFF" stroke="#1BA4C4" stroke-width="1.8" stroke-linejoin="round" />
+          </g>
+
+          <!-- Camarones encima del agua -->
+          <g filter="url(#badge-shadow)">
+            <image href="img/shrimp_left.png" x="141.5" y="337.8" width="155.8" height="107.1" />
+            <image href="img/shrimp_right.png" x="449.7" y="337.8" width="155.8" height="107.1" />
+          </g>
+
+          <!-- Letras Naranjas Arqueadas: El Limoncito Culichi rodeando el sombrero -->
+          <text class="curved-orange-text">
+            <textPath href="#top-curve" startOffset="50%" text-anchor="middle">
+              El Limoncito Culichi
+            </textPath>
+          </text>
+          <text class="curved-orange-inner">
+            <textPath href="#top-curve" startOffset="50%" text-anchor="middle">
+              El Limoncito Culichi
+            </textPath>
+          </text>
+        </svg>
+      </div>
+
+      <!-- Título Inferior Digital: ESTILO SINALOA -->
+      <div style="width: 100%; z-index: 2; margin-bottom: 6px;">
+        <div style="font-family: 'Montserrat', sans-serif; font-size: 46px; font-weight: 900; letter-spacing: 24px; color: #111827; text-transform: uppercase; line-height: 1.25; padding-left: 24px; text-shadow: 2.5px 2.5px 0 #FFFFFF, -2.5px -2.5px 0 #FFFFFF, 2.5px -2.5px 0 #FFFFFF, -2.5px 2.5px 0 #FFFFFF, 0 4px 10px rgba(255,255,255,0.95);">
+          ESTILO<br>SINALOA
+        </div>
+      </div>
+
+    </article>
+
+
+    <!-- =====================================================================
+         PÁGINA 2: ENTRADAS & OSTRAS / MARISCOS EN CONCHA
+         ===================================================================== -->
+    <article class="menu-sheet">
+      <!-- Diseño de atrás (Limoncito Vaquero centrado) -->
+      <div class="bg-design-layer">
+        <div class="bg-glow"></div>
+        <div class="bg-mascot"></div>
+      </div>
+      <div class="side-handle">@ellimoncitoculichi</div>
+
+      <div class="sheet-content">
+        <!-- Header -->
+        <header class="sheet-header">
+          <div class="canva-logo-box">
+            <h1 class="canva-brand-title">El Limoncito<br>Culichi</h1>
+            <div class="canva-brand-sub">MARISCOS Y SUSHI<br>ESTILO SINALOA</div>
+          </div>
+        </header>
+
+        <!-- Dos Columnas Adaptables -->
+        <div class="sheet1-grid" style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 18px; flex: 1; align-content: space-between; height: 100%;">
+          
+          <!-- Columna Izquierda: Entradas y Ostras -->
+          <div style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+            <div>
+              <h2 class="section-title-orange" style="margin-bottom: 10px;">ENTRADAS</h2>
+              
+              <div class="dish-row" style="margin-bottom: 7px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 13.5px;">CULICHI PEPPER</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 14.5px;">$110</span></div>
+                <p class="dish-desc">Chile caribe empanizado relleno de surimi y philadelphia coronado con salsa anguila y aderezo de chipotle.</p>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 7px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 13.5px;">ORDEN BONELESS</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 14.5px;">$180</span></div>
+                <p class="dish-desc">Trozos de pechuga de pollo empanizada bañados en tu salsa a elegir.</p>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 7px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 13.5px;">ORDEN ALITAS</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 14.5px;">$190</span></div>
+                <p class="dish-desc">Alitas de pollo fritas y bañadas con salsa a elegir.</p>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 7px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 13.5px;">ORDEN DE NUGGETS</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 14.5px;">$110</span></div>
+                <p class="dish-desc">Alitas de pollo fritas y bañadas con salsa a elegir.</p>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 7px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 13.5px;">PAPAS A LA FRANCESA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 14.5px;">$100</span></div>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 7px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 13.5px;">GUACAMOLE ESPECIAL</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 14.5px;">$250</span></div>
+                <p class="dish-desc">Guacamole con tomate, cebolla, chile serrano, cilantro con camarón, pulpo coronado con filete de pescado frito.</p>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 7px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 13.5px;">PATÉ DE CAMARÓN 1/4</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 14.5px;">$120</span></div>
+                <p class="dish-desc">El tradicional paté de camarón al estilo limoncito culichi.</p>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 8px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 13.5px;">LA GILBERTONA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 14.5px;">$195</span></div>
+                <p class="dish-desc">Tostada con Paté de camarón, medallón de atún en cubos, camarón tempura con un aderezo especial de la casa y cebolla frita.</p>
+              </div>
+            </div>
+
+            <!-- Ostras -->
+            <div style="margin-top: auto;">
+              <h2 class="section-title-orange" style="margin-top: 4px; margin-bottom: 8px;">OSTRAS <span style="font-size: 11px; font-weight: 500; text-transform: none; color: #555;">(sujeto a disponibilidad)</span></h2>
+
+              <div class="dish-row" style="margin-bottom: 7px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 13.5px;">OSTIONES</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 14px;">6: $100 | 10: $150</span></div>
+                <p class="dish-desc" style="font-size: 10.5px;">Ostiones frescos en su concha con salsas de la casa y limón.</p>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 7px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 13.5px;">OSTIONES LIMONCITO (10 PZS)</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 14.5px;">$180</span></div>
+                <p class="dish-desc" style="font-size: 10.5px;">De ostión fresco con trozos de camarón cocido, pulpo, medallón de atún y callo de hacha.</p>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 7px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 13.5px;">BALAZOS</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 14px;">6: $100 | 12: $180</span></div>
+                <p class="dish-desc" style="font-size: 10.5px;">Shot de ostión con camarón cocido y salsa de la casa.</p>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 7px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 13.5px;">ALMEJA CHOCOLATA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 14px;">6: $120 | 10: $180</span></div>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 7px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 13.5px;">ALMEJA REYNA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 14px;">Pieza: $150</span></div>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 7px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 13.5px;">PATAS DE MULA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 14px;">6: $100 | 10: $150</span></div>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 0;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 13.5px;">VERGAZO</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 14.5px;">$160</span></div>
+                <p class="dish-desc" style="font-size: 10.5px;">Orden de pulpo, cam. cocido, cam. crudo, callito de hacha, callito de filete, cebolla y salsas de la casa. (Se le añade ostión y pata de mula sujeto a disponibilidad).</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Columna Derecha: Fotos Reales Correspondientes a Entradas y Ostras -->
+          <div class="sheet1-photos" style="display: flex; flex-direction: column; justify-content: space-between; align-items: center; gap: 14px; height: 100%;">
+            <div class="photo-card" style="width: 100%; height: 238px;">
+              <img src="img/ostiones_limoncito_platter.jpg" alt="Ostiones Limoncito de la Casa">
+              <div style="background: rgba(0,0,0,0.78); color: #FFF; font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700; padding: 3px 0; text-align: center; text-transform: uppercase; letter-spacing: 0.8px;">OSTIONES LIMONCITO DE LA CASA</div>
+            </div>
+
+            <div class="photo-card" style="width: 100%; height: 238px;">
+              <img src="img/orden_boneless_real.jpg" alt="Orden Boneless Crujientes">
+              <div style="background: rgba(0,0,0,0.78); color: #FFF; font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700; padding: 3px 0; text-align: center; text-transform: uppercase; letter-spacing: 0.8px;">ORDEN BONELESS CRUJIENTES</div>
+            </div>
+
+            <div class="photo-card" style="width: 100%; height: 238px;">
+              <img src="img/ostiones_preparados_real.jpg" alt="Ostiones Preparados de la Casa">
+              <div style="background: rgba(0,0,0,0.78); color: #FFF; font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700; padding: 3px 0; text-align: center; text-transform: uppercase; letter-spacing: 0.8px;">OSTIONES PREPARADOS DE LA CASA</div>
+            </div>
+
+            <div class="sheet1-sticker" style="text-align: right; width: 100%; margin-top: auto; display: flex; justify-content: flex-end; align-items: flex-end;">
+              <img src="img/logo_clean.png" alt="Sticker Oficial El Limoncito Culichi" class="sticker-limoncito" style="width: 105px;">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </article>
+
+
+    <!-- =====================================================================
+         PÁGINA 3: AGUACHILES & COCTELES ESPECIALES
+         ===================================================================== -->
+    <article class="menu-sheet">
+      <div class="bg-design-layer">
+        <div class="bg-glow"></div>
+        <div class="bg-mascot"></div>
+      </div>
+      <div class="side-handle">@ellimoncitoculichi</div>
+
+      <div class="sheet-content">
+        <header class="sheet-header">
+          <div class="canva-logo-box">
+            <h1 class="canva-brand-title">El Limoncito<br>Culichi</h1>
+            <div class="canva-brand-sub">MARISCOS Y SUSHI<br>ESTILO SINALOA</div>
+          </div>
+        </header>
+
+        <div style="display: flex; flex-direction: column; justify-content: space-between; flex: 1; height: 100%;">
+          
+          <!-- Sección Aguachiles en 2 columnas con fotos medianas -->
+          <div>
+            <h2 class="section-title-orange" style="margin-bottom: 10px;">AGUACHILES</h2>
+
+            <div style="display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 16px; align-items: start;">
+              <!-- Lista de Aguachiles -->
+              <div>
+                <div class="table-header-row" style="margin-right: 2px; margin-bottom: 12px;">
+                  <div class="th-cell" style="font-size: 13px;">TOSTADA</div>
+                  <div class="th-cell" style="font-size: 13px;">1/2 ORD.</div>
+                  <div class="th-cell" style="font-size: 13px;">ORDEN</div>
+                </div>
+
+                <div class="multi-dish-item" style="margin-bottom: 11px;">
+                  <div class="multi-dish-info">
+                    <div class="dish-name-orange" style="font-size: 14.5px;">AGUACHILE VERDE</div>
+                    <p class="dish-desc" style="font-size: 11.5px;">Camarón, Pepino, Cebolla, Salsa verde de la casa.</p>
+                  </div>
+                  <div class="multi-dish-prices" style="font-size: 14.5px;">
+                    <div class="td-cell">$90</div>
+                    <div class="td-cell">$150</div>
+                    <div class="td-cell">$215</div>
+                  </div>
+                </div>
+
+                <div class="multi-dish-item" style="margin-bottom: 11px;">
+                  <div class="multi-dish-info">
+                    <div class="dish-name-orange" style="font-size: 14.5px;">AGUACHILE ROJO</div>
+                    <p class="dish-desc" style="font-size: 11.5px;">Camarón, Pepino, Cebolla, Salsa roja de la casa.</p>
+                  </div>
+                  <div class="multi-dish-prices" style="font-size: 14.5px;">
+                    <div class="td-cell">$90</div>
+                    <div class="td-cell">$150</div>
+                    <div class="td-cell">$215</div>
+                  </div>
+                </div>
+
+                <div class="multi-dish-item" style="margin-bottom: 11px;">
+                  <div class="multi-dish-info">
+                    <div class="dish-name-orange" style="font-size: 14.5px;">AGUACHILE NEGRO</div>
+                    <p class="dish-desc" style="font-size: 11.5px;">Camarón, Pepino, Cebolla, Salsa Negra de la casa.</p>
+                  </div>
+                  <div class="multi-dish-prices" style="font-size: 14.5px;">
+                    <div class="td-cell">$90</div>
+                    <div class="td-cell">$150</div>
+                    <div class="td-cell">$215</div>
+                  </div>
+                </div>
+
+                <div class="multi-dish-item" style="margin-bottom: 11px;">
+                  <div class="multi-dish-info">
+                    <div class="dish-name-orange" style="font-size: 14.5px;">AGUACHILE CULICHI</div>
+                    <p class="dish-desc" style="font-size: 11.5px;">Camarón, Pepino, Cebolla, Salsa de chile chiltepín molcajeteado de la casa.</p>
+                  </div>
+                  <div class="multi-dish-prices" style="font-size: 14.5px;">
+                    <div class="td-cell">$105</div>
+                    <div class="td-cell">$160</div>
+                    <div class="td-cell">$230</div>
+                  </div>
+                </div>
+
+                <div class="multi-dish-item" style="margin-bottom: 11px;">
+                  <div class="multi-dish-info">
+                    <div class="dish-name-orange" style="font-size: 14.5px;">TOSTIAGUACHILE</div>
+                    <p class="dish-desc" style="font-size: 11.5px;">Cama de Tostitos acompañada de aguachile negro con salsas de la casa.</p>
+                  </div>
+                  <div class="multi-dish-prices" style="font-size: 14.5px;">
+                    <div class="td-cell">-</div>
+                    <div class="td-cell">$175</div>
+                    <div class="td-cell">$235</div>
+                  </div>
+                </div>
+
+                <div class="dish-row" style="margin-bottom: 0;">
+                  <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">SASHIMI DE ATÚN</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$190</span></div>
+                  <p class="dish-desc" style="font-size: 11.5px;">Láminas de atún en una salsa de aceite de ajonjolí con salsa de soya.</p>
+                </div>
+              </div>
+
+              <!-- Fotos Medianas de Aguachiles a la derecha -->
+              <div style="display: flex; flex-direction: column; gap: 14px; height: 100%;">
+                <div class="photo-card" style="width: 100%; height: 232px;">
+                  <img src="img/aguachile_fresco_real.jpg" alt="Aguachile Fresco Especial">
+                  <div style="background: rgba(0,0,0,0.78); color: #FFF; font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700; padding: 3px 0; text-align: center; text-transform: uppercase; letter-spacing: 0.8px;">AGUACHILE FRESCO ESPECIAL</div>
+                </div>
+                <div class="photo-card" style="width: 100%; height: 232px;">
+                  <img src="img/sashimi_atun_real.jpg" alt="Sashimi de Atún Fresco">
+                  <div style="background: rgba(0,0,0,0.78); color: #FFF; font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700; padding: 3px 0; text-align: center; text-transform: uppercase; letter-spacing: 0.8px;">SASHIMI DE ATÚN FRESCO • $190</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cocteles Especiales en 2 Columnas con miniaturas ampliadas -->
+          <div style="margin-top: auto; border-top: 2px dashed #E26D45; padding-top: 10px;">
+            <h2 class="section-title-orange" style="margin-bottom: 10px;">COCTELES ESPECIALES</h2>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start;">
+              <!-- Columna 1 -->
+              <div style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="dish-row dish-with-thumb" style="margin-bottom: 8px;">
+                  <div class="dish-thumb" style="width: 175px; height: 135px; min-width: 175px;"><img src="img/el_guero_real.jpg" alt="Tumba Tontos El Güero"></div>
+                  <div class="dish-body">
+                    <div class="dish-main"><span class="dish-name-orange" style="font-size: 13px;">TUMBA TONTOS</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 14px;">$340</span></div>
+                    <p class="dish-desc" style="font-size: 10px;">Callo de hacha, camarón crudo y pulpo mezclados en jugo de la casa con chile chiltepín, tomate, cebolla, pepino, coronado con aguacate y salsas de la casa.</p>
+                  </div>
+                </div>
+
+                <div class="dish-row" style="margin-bottom: 8px;">
+                  <div class="dish-main"><span class="dish-name-orange" style="font-size: 13.5px;">LIMONCITO</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 14px;">$290</span></div>
+                  <p class="dish-desc" style="font-size: 10px;">Camarones cocidos, pulpo, callo almeja mezclados en jugo de la casa, tomate, cebolla, pepino, aguacate y salsas de la casa.</p>
+                </div>
+
+                <div class="dish-row" style="margin-bottom: 0;">
+                  <div class="dish-main"><span class="dish-name-orange" style="font-size: 13.5px;">LA BIRRIONDA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 14px;">$699</span></div>
+                  <p class="dish-desc" style="font-size: 9.5px; line-height: 1.25;">Torre de mariscos al centro con ceviche tropical, aguachiles verde, negro y rojo bañados en salsas de la casa.</p>
+                </div>
+              </div>
+
+              <!-- Columna 2 -->
+              <div style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="dish-row dish-with-thumb" style="margin-bottom: 8px;">
+                  <div class="dish-thumb" style="width: 175px; height: 135px; min-width: 175px;"><img src="img/culichi_soup_real.jpg" alt="Coctel de Camarón"></div>
+                  <div class="dish-body">
+                    <div class="dish-main"><span class="dish-name-orange" style="font-size: 13px;">DE CAMARÓN</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 13px;">CH: $150 | G: $215</span></div>
+                    <p class="dish-desc" style="font-size: 10px;">Camarones cocidos mezclados en jugo de la casa, tomate, cebolla, pepino, coronado con aguacate y salsas de la casa.</p>
+                  </div>
+                </div>
+
+                <div class="dish-row dish-with-thumb" style="margin-bottom: 0;">
+                  <div class="dish-thumb" style="width: 175px; height: 135px; min-width: 175px;"><img src="img/coctel_camaron_pulpo_real.jpg" alt="Coctel Camarón y Pulpo"></div>
+                  <div class="dish-body">
+                    <div class="dish-main"><span class="dish-name-orange" style="font-size: 13px;">CAMARÓN Y PULPO</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 13px;">CH: $190 | G: $260</span></div>
+                    <p class="dish-desc" style="font-size: 10px;">Camarones cocidos con pulpo mezclados en jugo de la casa, tomate, cebolla, pepino, coronado con aguacate y salsas de la casa.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </article>
+
+
+    <!-- =====================================================================
+         PÁGINA 4: CEVICHES
+         ===================================================================== -->
+    <article class="menu-sheet">
+      <div class="bg-design-layer">
+        <div class="bg-glow"></div>
+        <div class="bg-mascot"></div>
+      </div>
+      <div class="side-handle">@ellimoncitoculichi</div>
+
+      <div class="sheet-content">
+        <header class="sheet-header">
+          <div class="canva-logo-box">
+            <h1 class="canva-brand-title">El Limoncito<br>Culichi</h1>
+            <div class="canva-brand-sub">MARISCOS Y SUSHI<br>ESTILO SINALOA</div>
+          </div>
+        </header>
+
+        <!-- Dos Columnas: Ceviches a la izquierda y 3 Fotos Grandes a la derecha -->
+        <div class="sheet3-grid" style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 18px; flex: 1; align-content: space-between; height: 100%;">
+          
+          <!-- Columna Izquierda: Ceviches + Sello -->
+          <div style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+            <div>
+              <h2 class="section-title-orange" style="margin-bottom: 12px;">CEVICHES</h2>
+
+              <div class="table-header-row" style="margin-right: 2px; margin-bottom: 12px;">
+                <div class="th-cell" style="font-size: 13px; font-weight: 800;">TOSTADA</div>
+                <div class="th-cell" style="font-size: 13px; font-weight: 800;">1/2 ORD.</div>
+                <div class="th-cell" style="font-size: 13px; font-weight: 800;">ORDEN</div>
+              </div>
+
+              <div class="multi-dish-item" style="margin-bottom: 18px;">
+                <div class="multi-dish-info">
+                  <div class="dish-name-orange" style="font-size: 14.5px;">DE PESCADO</div>
+                  <p class="dish-desc" style="font-size: 11.2px; line-height: 1.35;">Pescado en cubos curtido, tomate, cebolla, pepino, cilantro, coronado con aguacate y salsas de la casa.</p>
+                </div>
+                <div class="multi-dish-prices" style="font-size: 14.5px;">
+                  <div class="td-cell">$70</div>
+                  <div class="td-cell">$130</div>
+                  <div class="td-cell">$190</div>
+                </div>
+              </div>
+
+              <div class="multi-dish-item" style="margin-bottom: 18px;">
+                <div class="multi-dish-info">
+                  <div class="dish-name-orange" style="font-size: 14.5px;">CAMARÓN</div>
+                  <p class="dish-desc" style="font-size: 11.2px; line-height: 1.35;">Camarón crudo o cocido, tomate, cebolla, pepino, cilantro, coronado con aguacate y salsas de la casa.</p>
+                </div>
+                <div class="multi-dish-prices" style="font-size: 14.5px;">
+                  <div class="td-cell">$99</div>
+                  <div class="td-cell">$155</div>
+                  <div class="td-cell">$220</div>
+                </div>
+              </div>
+
+              <div class="multi-dish-item" style="margin-bottom: 18px;">
+                <div class="multi-dish-info">
+                  <div class="dish-name-orange" style="font-size: 14.5px;">CAMARÓN CON PULPO</div>
+                  <p class="dish-desc" style="font-size: 11.2px; line-height: 1.35;">Camarón crudo o cocido, pulpo, tomate, cebolla, pepino, cilantro, coronado con aguacate y salsas de la casa.</p>
+                </div>
+                <div class="multi-dish-prices" style="font-size: 14.5px;">
+                  <div class="td-cell">$110</div>
+                  <div class="td-cell">$190</div>
+                  <div class="td-cell">$260</div>
+                </div>
+              </div>
+
+              <div class="multi-dish-item" style="margin-bottom: 18px;">
+                <div class="multi-dish-info">
+                  <div class="dish-name-orange" style="font-size: 14.5px;">CAMARÓN TROPICAL</div>
+                  <p class="dish-desc" style="font-size: 11.2px; line-height: 1.35;">Camarón crudo o cocido, mango, cebolla, jícama, pepino, cilantro, coronado con aguacate y salsas de la casa.</p>
+                </div>
+                <div class="multi-dish-prices" style="font-size: 14.5px;">
+                  <div class="td-cell">$99</div>
+                  <div class="td-cell">$170</div>
+                  <div class="td-cell">$230</div>
+                </div>
+              </div>
+
+              <div class="multi-dish-item" style="margin-bottom: 18px;">
+                <div class="multi-dish-info">
+                  <div class="dish-name-orange" style="font-size: 14.5px;">MEDALLÓN TROPICAL</div>
+                  <p class="dish-desc" style="font-size: 11.2px; line-height: 1.35;">Medallón de atún fresco, mango, cebolla, jícama, pepino, cilantro, coronado con aguacate y salsas de la casa.</p>
+                </div>
+                <div class="multi-dish-prices" style="font-size: 14.5px;">
+                  <div class="td-cell">$105</div>
+                  <div class="td-cell">$185</div>
+                  <div class="td-cell">$240</div>
+                </div>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 16px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">TOSTICEVICHE</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">1/2 ORD: $180 | ORD: $240</span></div>
+                <p class="dish-desc" style="font-size: 11.2px; line-height: 1.35;">Cama de Tostitos acompañada de un ceviche con salsas de la casa.</p>
+              </div>
+            </div>
+
+            <!-- Sello de Calidad y Tradición Sinaloense al pie -->
+            <div style="background: rgba(255, 255, 255, 0.95); border: 2.2px dashed #DE5D35; border-radius: 12px; padding: 16px 18px; text-align: center; margin-top: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
+              <div style="font-family: 'Oswald', sans-serif; font-size: 14.5px; font-weight: 700; color: #DE5D35; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 4px; white-space: nowrap;">
+                🦐 ¡EL AUTÉNTICO CEVICHE ESTILO CULICHI! 🍋
+              </div>
+              <p style="font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600; color: #333333; line-height: 1.45; margin: 0;">
+                Elaborados al momento con mariscos frescos de primera calidad.<br>Acompañados con tostadas crujientes y nuestras salsas de la casa.
+              </p>
+            </div>
+          </div>
+
+          <!-- Columna Derecha: 3 Fotos Reales Grandes de Ceviches y Sticker -->
+          <div class="sheet3-photos" style="display: flex; flex-direction: column; justify-content: space-between; align-items: center; gap: 14px; height: 100%;">
+            <div class="photo-card" style="width: 100%; height: 238px;">
+              <img src="img/callo_de_hacha_real.jpg" alt="Callo de Hacha Fresco">
+              <div style="background: rgba(0,0,0,0.78); color: #FFF; font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700; padding: 3px 0; text-align: center; text-transform: uppercase; letter-spacing: 0.8px;">CALLO DE HACHA CULICHI</div>
+            </div>
+
+            <div class="photo-card" style="width: 100%; height: 238px;">
+              <img src="img/la_malilla_dish_only.jpg" alt="Botana La Malilla">
+              <div style="background: rgba(0,0,0,0.78); color: #FFF; font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700; padding: 3px 0; text-align: center; text-transform: uppercase; letter-spacing: 0.8px;">BOTANA LA MALILLA</div>
+            </div>
+
+            <div class="photo-card" style="width: 100%; height: 238px;">
+              <img src="img/ceviche_camaron.jpg" alt="Ceviche de Camarón de la Casa">
+              <div style="background: rgba(0,0,0,0.78); color: #FFF; font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700; padding: 3px 0; text-align: center; text-transform: uppercase; letter-spacing: 0.8px;">CEVICHE DE CAMARÓN DE LA CASA</div>
+            </div>
+
+            <div class="sheet3-sticker" style="text-align: right; width: 100%; margin-top: auto; display: flex; justify-content: flex-end; align-items: flex-end;">
+              <img src="img/logo_clean.png" alt="Sticker Oficial El Limoncito Culichi" class="sticker-limoncito" style="width: 105px;">
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </article>
+
+
+    <!-- =====================================================================
+         PÁGINA 5: ROLLOS FRÍOS
+         ===================================================================== -->
+    <article class="menu-sheet">
+      <div class="bg-design-layer">
+        <div class="bg-glow"></div>
+        <div class="bg-mascot"></div>
+      </div>
+      <div class="side-handle">@ellimoncitoculichi</div>
+
+      <div class="sheet-content">
+        <header class="sheet-header" style="justify-content: space-between; align-items: flex-end; margin-bottom: 8px;">
+          <h2 class="section-title-orange" style="margin-bottom: 0; font-size: 26px;">SUSHI NATURAL</h2>
+          
+          <div class="canva-logo-box">
+            <h1 class="canva-brand-title">El Limoncito<br>Culichi</h1>
+            <div class="canva-brand-sub">MARISCOS Y SUSHI<br>ESTILO SINALOA</div>
+          </div>
+        </header>
+
+        <div class="sheet4-grid" style="display: grid; grid-template-columns: 1.14fr 0.86fr; gap: 18px; flex: 1; align-content: space-between; height: 100%;">
+          <!-- Columna Izquierda: 7 Rollos Naturales -->
+          <div style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+            <div class="dish-row" style="margin-bottom: 12px;">
+              <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">ENCHILOCITO</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$180</span></div>
+              <p class="dish-desc" style="font-size: 11px; line-height: 1.35;">Por dentro: medallón de atún, pepino y salsa macha.<br>Por fuera: aguacate y medallón de atún.</p>
+            </div>
+
+            <div class="dish-row" style="margin-bottom: 12px;">
+              <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">AGUACHILE ROLL</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$250</span></div>
+              <p class="dish-desc" style="font-size: 11px; line-height: 1.35;">Por dentro: camarón tempura, philadelphia y pepino.<br>Por fuera: aguacate y aguachile.</p>
+            </div>
+
+            <div class="dish-row" style="margin-bottom: 12px;">
+              <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">FLAMING ROLL</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$140</span></div>
+              <p class="dish-desc" style="font-size: 11px; line-height: 1.35;">Por dentro: camarón tempura y ensalada de surimi.<br>Por fuera: forrado de cheto flaming, salsa anguila y spicy.</p>
+            </div>
+
+            <div class="dish-row dish-with-thumb" style="margin-bottom: 12px;">
+              <div class="dish-thumb" style="width: 175px; height: 135px; min-width: 175px;"><img src="img/culiacancito_hot_real.jpg" alt="Culiacancito Hot"></div>
+              <div class="dish-body">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">CULIACANCITO HOT</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$160</span></div>
+                <p class="dish-desc" style="font-size: 11px; line-height: 1.35;">Por dentro: camarón, carne de res, philadelphia y pepino.<br>Por fuera: aguacate, ensalada de surimi y salsa anguila.</p>
+              </div>
+            </div>
+
+            <div class="dish-row dish-with-thumb" style="margin-bottom: 12px;">
+              <div class="dish-thumb" style="width: 175px; height: 135px; min-width: 175px;"><img src="img/philadelphia_roll_real.jpg" alt="Philadelphia Roll"></div>
+              <div class="dish-body">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">PHILADELPHIA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$150</span></div>
+                <p class="dish-desc" style="font-size: 11px; line-height: 1.35;">Por dentro: pollo, aguacate y pepino.<br>Por fuera: philadelphia y camarón.</p>
+              </div>
+            </div>
+
+            <div class="dish-row" style="margin-bottom: 12px;">
+              <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">MAZATLÁN</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$189</span></div>
+              <p class="dish-desc" style="font-size: 11px; line-height: 1.35;">Por dentro: medallón de atún, salmón y pepino.<br>Por fuera: aguacate y sriracha.</p>
+            </div>
+
+            <div class="dish-row" style="margin-bottom: 0;">
+              <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">MARINERO ROLL</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$189</span></div>
+              <p class="dish-desc" style="font-size: 11px; line-height: 1.35;">Por dentro: camarón, pulpo y pepino.<br>Por fuera: aguacate y sriracha.</p>
+            </div>
+          </div>
+
+          <!-- Columna Derecha: Fotos Reales Grandes de Rollos Naturales y Sticker -->
+          <div class="sheet4-photos" style="display: flex; flex-direction: column; justify-content: space-between; align-items: center; gap: 16px; height: 100%;">
+            <div class="photo-card" style="width: 100%; height: 360px;">
+              <img src="img/enchilocito_roll_real.jpg" alt="Enchilocito Roll Especial">
+              <div style="background: rgba(0,0,0,0.78); color: #FFF; font-family: 'Oswald', sans-serif; font-size: 11.5px; font-weight: 700; padding: 4px 0; text-align: center; text-transform: uppercase; letter-spacing: 0.8px;">ENCHILOCITO ROLL</div>
+            </div>
+
+            <div class="photo-card" style="width: 100%; height: 360px;">
+              <img src="img/mazatlan_roll_real.jpg" alt="Mazatlán Roll Especial">
+              <div style="background: rgba(0,0,0,0.78); color: #FFF; font-family: 'Oswald', sans-serif; font-size: 11.5px; font-weight: 700; padding: 4px 0; text-align: center; text-transform: uppercase; letter-spacing: 0.8px;">MAZATLÁN ROLL</div>
+            </div>
+
+            <div class="sheet4-sticker" style="text-align: right; width: 100%; margin-top: auto; display: flex; justify-content: flex-end; align-items: flex-end;">
+              <img src="img/logo_clean.png" alt="Sticker Oficial El Limoncito Culichi" class="sticker-limoncito" style="width: 105px;">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+
+    <!-- =====================================================================
+         PÁGINA 6: ROLLOS EMPANIZADOS & EXTRAS
+         ===================================================================== -->
+    <article class="menu-sheet">
+      <div class="bg-design-layer">
+        <div class="bg-glow"></div>
+        <div class="bg-mascot"></div>
+      </div>
+      <div class="side-handle">@ellimoncitoculichi</div>
+
+      <div class="sheet-content">
+        <header class="sheet-header">
+          <div class="canva-logo-box">
+            <h1 class="canva-brand-title">El Limoncito<br>Culichi</h1>
+            <div class="canva-brand-sub">MARISCOS Y SUSHI<br>ESTILO SINALOA</div>
+          </div>
+        </header>
+
+        <h2 class="section-subtitle-grey">ROLLOS EMPANIZADOS</h2>
+
+        <div class="sheet5-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; flex: 1; align-content: space-between; height: 100%;">
+          <!-- Columna 1: 7 Rollos -->
+          <div style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+            <div>
+              <div class="dish-row" style="margin-bottom: 11px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">EL VAKIA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$250</span></div>
+                <p class="dish-desc" style="font-size: 11.2px;">Por dentro: Philadelphia y aguacate.<br>Por fuera: Gratinado, carne de res y chile rojo en cubitos.</p>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 11px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">MAR Y TIERRA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$149</span></div>
+                <p class="dish-desc" style="font-size: 11.2px;">Por dentro: camarón, carne de res, pepino, philadelphia y aguacate.</p>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 11px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">CIELO, MAR Y TIERRA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$180</span></div>
+                <p class="dish-desc" style="font-size: 11.2px;">Por dentro: Pollo, res, camarón, philadelphia, pepino y aguacate.</p>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 11px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">CORDON BLUE</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$180</span></div>
+                <p class="dish-desc" style="font-size: 11.2px;">Por dentro: pollo, tocino, aguacate, philadelphia.<br>Por fuera: tocino y queso gratinado.</p>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 11px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">CAMARÓN BLUE</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$180</span></div>
+                <p class="dish-desc" style="font-size: 11.2px;">Por dentro: camarón, pepino, philadelphia.<br>Por fuera: tocino y queso gratinado.</p>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 11px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">CAMARONCITO ROLL</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$130</span></div>
+                <p class="dish-desc" style="font-size: 11.2px;">Por dentro: camarón, philadelphia, pepino.<br>Por fuera: aguacate, mayonesa, salsa anguila.</p>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 11px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">ROLCITO</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$160</span></div>
+                <p class="dish-desc" style="font-size: 11.2px;">Por dentro: camarón, philadelphia y pepino.<br>Por fuera: ensalada de surimi y salsa anguila.</p>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 0;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">SUSHITO ROLL</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$160</span></div>
+                <p class="dish-desc" style="font-size: 11.2px;">Por dentro: pollo, res, pepino.<br>Por fuera: aguacate, salsa anguila.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Columna 2: 6 Rollos + Foto Mediana + Caja de Extras -->
+          <div style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+            <div>
+              <div class="dish-row" style="margin-bottom: 10px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 14px;">CANGREJITO</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 14.5px;">$130</span></div>
+                <p class="dish-desc" style="font-size: 10.5px;">Por dentro: surimi, pepino, philadelphia.<br>Por fuera: ensalada de surimi y salsa anguila.</p>
+              </div>
+
+              <div class="dish-row dish-with-thumb" style="margin-bottom: 10px;">
+                <div class="dish-thumb" style="width: 175px; height: 135px; min-width: 175px;"><img src="img/crispy_chiken_real.jpg" alt="Crispy Chiken Roll"></div>
+                <div class="dish-body">
+                  <div class="dish-main"><span class="dish-name-orange" style="font-size: 14px;">CRISPY CHIKEN</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 14.5px;">$160</span></div>
+                  <p class="dish-desc" style="font-size: 10.5px;">Por dentro: aguacate, pepino, philadelphia.<br>Por fuera: topping de pollo teriyaki, salsa anguila, ajonjolí.</p>
+                </div>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 10px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 14px;">CULICHI ROLL</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 14.5px;">$180</span></div>
+                <p class="dish-desc" style="font-size: 10.5px;">Por dentro: res, philadelphia, aguacate y pepino.<br>Por fuera: gratinado de chipotle y tocino.</p>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 10px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 14px;">MEXICANITO ROLL</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 14.5px;">$160</span></div>
+                <p class="dish-desc" style="font-size: 10.5px;">Por dentro: res, pepino, philadelphia.<br>Por fuera: aguacate, philadelphia y ensalada surimi.</p>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 10px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 14px;">GREÑUDO ROLL</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 14.5px;">$180</span></div>
+                <p class="dish-desc" style="font-size: 10.5px;">Por dentro: camarón, aguacate, philadelphia, pepino.<br>Por fuera: Ensalada de cangrejo y camarón empanizado.</p>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 8px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 14px;">EL PATRÓN</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 14.5px;">$199</span></div>
+                <p class="dish-desc" style="font-size: 10.5px;">Por dentro: Philadelphia, pepino, camarón tempura.<br>Por fuera: Alga, topping kanikama y atún spicy, salsa anguila y ajonjolí.</p>
+              </div>
+            </div>
+
+            <!-- Foto Mediana de Sushi Empanizado Ampliada -->
+            <div class="photo-card" style="width: 100%; height: 270px; margin: 8px 0;">
+              <img src="img/camaron_blue_real.jpg" alt="Camarón Blue Gratinado">
+              <div style="background: rgba(0,0,0,0.78); color: #FFF; font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700; padding: 3px 0; text-align: center; text-transform: uppercase; letter-spacing: 0.8px;">CAMARÓN BLUE GRATINADO</div>
+            </div>
+
+            <!-- Cuadro de Extras al pie -->
+            <div class="sheet5-extras-box" style="background: #FFFFFF; border: 2.2px solid #E26D45; border-radius: 10px; padding: 12px 14px; margin-top: auto; margin-bottom: 0; box-shadow: 0 4px 10px rgba(0,0,0,0.06);">
+              <div style="display: flex; justify-content: space-between; font-family: 'Oswald', sans-serif; font-size: 13.5px; font-weight: 700; color: #DE5D35; border-bottom: 1.5px solid #E26D45; padding-bottom: 3px; margin-bottom: 6px;">
+                <span>EXTRAS</span>
+                <span>PRECIO</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 12.5px; font-weight: 800; margin-bottom: 5px;">
+                <span>Gratinado blue</span><span style="color: #1B5E20; font-weight: 900;">$50</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 12.5px; font-weight: 800; margin-bottom: 5px;">
+                <span>Ensalada de surimi</span><span style="color: #1B5E20; font-weight: 900;">$30</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 12.5px; font-weight: 800;">
+                <span>Salsa anguila</span><span style="color: #1B5E20; font-weight: 900;">$20</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+
+    <!-- =====================================================================
+         PÁGINA 7: EXTRAS MARISCOS & BEBIDAS
+         ===================================================================== -->
+    <article class="menu-sheet">
+      <div class="bg-design-layer">
+        <div class="bg-glow"></div>
+        <div class="bg-mascot"></div>
+      </div>
+      <div class="side-handle">@ellimoncitoculichi</div>
+
+      <div class="sheet-content">
+        <header class="sheet-header">
+          <div class="canva-logo-box">
+            <h1 class="canva-brand-title">El Limoncito<br>Culichi</h1>
+            <div class="canva-brand-sub">MARISCOS Y SUSHI<br>ESTILO SINALOA</div>
+          </div>
+        </header>
+
+        <div class="sheet6-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 10px; flex: 1; align-content: space-between; height: 100%;">
+          
+          <!-- Extras Mariscos -->
+          <div style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+            <div>
+              <h2 class="section-title-orange" style="margin-bottom: 8px;">EXTRAS MARISCOS<br><span style="font-size: 11px; font-weight: 600; text-transform: none; color: #555; display: inline-block; margin-top: 1px;">(Porciones extras para complementar)</span></h2>
+
+              <div class="dish-row" style="margin-bottom: 11px;"><div class="dish-main"><span class="dish-name-dark" style="font-size: 14.5px;">CAMARÓN</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$69</span></div></div>
+              <div class="dish-row" style="margin-bottom: 11px;"><div class="dish-main"><span class="dish-name-dark" style="font-size: 14.5px;">PULPO</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$99</span></div></div>
+              <div class="dish-row" style="margin-bottom: 11px;"><div class="dish-main"><span class="dish-name-dark" style="font-size: 14.5px;">CALLO DE HACHA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$150</span></div></div>
+              <div class="dish-row" style="margin-bottom: 11px;"><div class="dish-main"><span class="dish-name-dark" style="font-size: 14.5px;">MEDALLÓN DE ATÚN</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$89</span></div></div>
+              <div class="dish-row" style="margin-bottom: 11px;"><div class="dish-main"><span class="dish-name-dark" style="font-size: 14.5px;">CALLO DE ALMEJA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$40</span></div></div>
+              <div class="dish-row" style="margin-bottom: 11px;"><div class="dish-main"><span class="dish-name-dark" style="font-size: 14.5px;">MANGO</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$29</span></div></div>
+              <div class="dish-row" style="margin-bottom: 11px;"><div class="dish-main"><span class="dish-name-dark" style="font-size: 14.5px;">JÍCAMA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$19</span></div></div>
+              <div class="dish-row" style="margin-bottom: 11px;"><div class="dish-main"><span class="dish-name-dark" style="font-size: 14.5px;">SURIMI</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$30</span></div></div>
+              <div class="dish-row" style="margin-bottom: 11px;"><div class="dish-main"><span class="dish-name-dark" style="font-size: 14.5px;">SALSA DE ANGUILA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$30</span></div></div>
+              <div class="dish-row" style="margin-bottom: 11px;"><div class="dish-main"><span class="dish-name-dark" style="font-size: 14.5px;">AGUACATE</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$29</span></div></div>
+              <div class="dish-row" style="margin-bottom: 11px;"><div class="dish-main"><span class="dish-name-dark" style="font-size: 14.5px;">ARROZ</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$19</span></div></div>
+              <div class="dish-row" style="margin-bottom: 11px;"><div class="dish-main"><span class="dish-name-dark" style="font-size: 14.5px;">ENSALADA DE VERDURAS</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$22</span></div></div>
+            </div>
+
+            <div style="margin-top: auto; padding-top: 10px;">
+              <p style="font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600; color: #666; line-height: 1.4;">
+                * Todas nuestras porciones extras son preparadas al momento para complementar tus platillos favoritos.
+              </p>
+            </div>
+          </div>
+
+          <!-- Bebidas -->
+          <div style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+            <div>
+              <h2 class="section-title-orange" style="margin-bottom: 12px;">BEBIDAS</h2>
+
+              <div class="dish-row" style="margin-bottom: 20px;">
+                <div class="dish-main"><span class="dish-name-dark" style="font-size: 15px;">REFRESCOS COCACOLA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">$35</span></div>
+                <p class="dish-desc" style="font-size: 11.5px;">Coca-Cola, Sprite, Sidral Mundet, Fanta, Fresca.</p>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 20px;">
+                <div class="dish-main"><span class="dish-name-dark" style="font-size: 15px;">AGUA FRESCA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">$45</span></div>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 20px;">
+                <div class="dish-main"><span class="dish-name-dark" style="font-size: 15px;">AGUA MINERAL</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">$35</span></div>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 20px;">
+                <div class="dish-main"><span class="dish-name-dark" style="font-size: 15px;">VASO PREPARADO</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">$40</span></div>
+                <p class="dish-desc" style="font-size: 11.5px;">Vaso escarchado con chamoy, salsa de la casa y jugo de camarón.</p>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 0;">
+                <div class="dish-main"><span class="dish-name-dark" style="font-size: 15px;">MICHELADA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">$89</span></div>
+              </div>
+            </div>
+
+            <!-- Sello de Redes y Tradición Sinaloense al pie -->
+            <div style="background: rgba(255, 255, 255, 0.95); border: 2.2px dashed #DE5D35; border-radius: 12px; padding: 16px 18px; text-align: center; margin-top: auto; margin-bottom: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
+              <div style="font-family: 'Oswald', sans-serif; font-size: 14.5px; font-weight: 700; color: #DE5D35; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 4px;">
+                🍋 ¡MARISCOS Y SUSHI ESTILO SINALOA! 🦐
+              </div>
+              <p style="font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600; color: #333333; line-height: 1.45; margin: 0;">
+                Síguenos en nuestras redes sociales:<br>
+                <strong style="color: #DE5D35; font-size: 12.5px;">@ellimoncitoculichi</strong><br>
+                ¡El auténtico sabor de Culiacán en tu mesa!
+              </p>
+            </div>
+
+            <!-- Sticker Oficial Limoncito Culichi -->
+            <div style="margin-top: 0; display: flex; justify-content: flex-end; align-items: flex-end;">
+              <img src="img/logo_clean.png" alt="Sticker Oficial El Limoncito Culichi" style="width: 105px;">
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </article>
+
   </div>
 
 </body>
