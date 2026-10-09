@@ -660,6 +660,15 @@
   <div class="categories-bar" id="categoryBar">
     <button class="cat-btn active" data-cat-target="all" onclick="filterCategory('all', this)">Todos</button>
     
+      
+      <button class="cat-btn" data-cat-target="Especiales de la Casa" onclick="filterCategory('Especiales de la Casa', this)">
+        👑 Especiales de la Casa
+      </button>
+
+      <button class="cat-btn" data-cat-target="Barra Caliente" onclick="filterCategory('Barra Caliente', this)">
+        🔥 Barra Caliente
+      </button>
+
       <button class="cat-btn"  data-cat-target="Aguachiles (Estilo Culichi)" onclick="filterCategory('Aguachiles (Estilo Culichi)', this)">
         🌶️ Aguachiles (Estilo Culichi)
       </button>
@@ -699,6 +708,305 @@
   </div>
 
   <main class="menu-container">
+
+      <!-- =======================================================
+           SECCIÓN: ESPECIALES DE LA CASA (PÁGINA 5 DEL MENÚ)
+           ======================================================= -->
+      <section class="category-section" data-category="Especiales de la Casa">
+        <h2 class="category-title">👑 Especiales de la Casa</h2>
+        <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">👑 Mariscos fríos, torres monumentales y botaneros exclusivos estilo Sinaloa:</p>
+        
+        <div class="item-card" data-name="el culichi" data-desc="aguachile mixto con medallón de atún, mango, pepino y cebolla, coronado con aguacate y salsas de la casa orden." data-category="especiales de la casa">
+          <div class="item-info">
+            <span class="item-badge">Especial ⭐</span>
+            <div class="item-name">El Culichi</div>
+            <p class="item-desc">Aguachile mixto con medallón de atún, mango, pepino y cebolla, coronado con aguacate y salsas de la casa orden.</p>
+            <div class="item-price">$279.00 MXN</div>
+          </div>
+          <div class="item-stepper">
+            <button class="step-btn" onclick="updateQty('Especiales_de_la_Casa_0', 'El Culichi', 279, -1)">-</button>
+            <span class="step-count" id="count_Especiales_de_la_Casa_0">0</span>
+            <button class="step-btn" onclick="updateQty('Especiales_de_la_Casa_0', 'El Culichi', 279, 1)">+</button>
+          </div>
+        </div>
+
+        <div class="item-card" data-name="el limoncito" data-desc="aguachile mixto con pulpo, mango, pepino, cebolla, coronado con aguacate y salsas de la casa." data-category="especiales de la casa">
+          <div class="item-info">
+            <span class="item-badge">De la Casa 🍋</span>
+            <div class="item-name">El Limoncito</div>
+            <p class="item-desc">Aguachile mixto con pulpo, mango, pepino, cebolla, coronado con aguacate y salsas de la casa.</p>
+            <div class="item-price">$299.00 MXN</div>
+          </div>
+          <div class="item-stepper">
+            <button class="step-btn" onclick="updateQty('Especiales_de_la_Casa_1', 'El Limoncito', 299, -1)">-</button>
+            <span class="step-count" id="count_Especiales_de_la_Casa_1">0</span>
+            <button class="step-btn" onclick="updateQty('Especiales_de_la_Casa_1', 'El Limoncito', 299, 1)">+</button>
+          </div>
+        </div>
+
+        <div class="item-card" data-name="el karma" data-desc="aguachile mixto con medallón de atún, callo de hacha, pepino, cebolla, cama de tostitos, coronado con aguacate y salsas de la casa." data-category="especiales de la casa">
+          <div class="item-info">
+            <span class="item-badge">Con Tostitos 🌶️</span>
+            <div class="item-name">El Karma</div>
+            <p class="item-desc">Aguachile mixto con medallón de atún, callo de hacha, pepino, cebolla, cama de tostitos, coronado con aguacate y salsas de la casa.</p>
+            <div class="item-price">$399.00 MXN</div>
+          </div>
+          <div class="item-stepper">
+            <button class="step-btn" onclick="updateQty('Especiales_de_la_Casa_2', 'El Karma', 399, -1)">-</button>
+            <span class="step-count" id="count_Especiales_de_la_Casa_2">0</span>
+            <button class="step-btn" onclick="updateQty('Especiales_de_la_Casa_2', 'El Karma', 399, 1)">+</button>
+          </div>
+        </div>
+
+        <div class="item-card" data-name="el compadre" data-desc="aguachile de camarón con tostada de ceviche al centro, callo de hacha, pepino, cebolla, coronado con aguacate y salsas de la casa." data-category="especiales de la casa">
+          <div class="item-info">
+            <span class="item-badge">El Más Pedido 👑</span>
+            <div class="item-name">El Compadre</div>
+            <p class="item-desc">Aguachile de camarón con tostada de ceviche al centro, callo de hacha, pepino, cebolla, coronado con aguacate y salsas de la casa.</p>
+            <div class="item-price">$399.00 MXN</div>
+          </div>
+          <div class="item-stepper">
+            <button class="step-btn" onclick="updateQty('Especiales_de_la_Casa_3', 'El Compadre', 399, -1)">-</button>
+            <span class="step-count" id="count_Especiales_de_la_Casa_3">0</span>
+            <button class="step-btn" onclick="updateQty('Especiales_de_la_Casa_3', 'El Compadre', 399, 1)">+</button>
+          </div>
+        </div>
+
+        <div class="item-card" data-name="callo culichi" data-desc="callo de hacha, camarón en aguachile en salsa de chile chiltepín, pepino, cebolla y salsas de la casa." data-category="especiales de la casa">
+          <div class="item-info">
+            <span class="item-badge">Callo de Hacha 🌊</span>
+            <div class="item-name">Callo Culichi</div>
+            <p class="item-desc">Callo de hacha, camarón en aguachile en salsa de chile chiltepín, pepino, cebolla y salsas de la casa.</p>
+            <div class="item-price">$499.00 MXN</div>
+          </div>
+          <div class="item-stepper">
+            <button class="step-btn" onclick="updateQty('Especiales_de_la_Casa_4', 'Callo Culichi', 499, -1)">-</button>
+            <span class="step-count" id="count_Especiales_de_la_Casa_4">0</span>
+            <button class="step-btn" onclick="updateQty('Especiales_de_la_Casa_4', 'Callo Culichi', 499, 1)">+</button>
+          </div>
+        </div>
+
+        <div class="item-card" data-name="torre de mariscos" data-desc="la tradicional torre monumental de mariscos al estilo limoncito culichi." data-category="especiales de la casa">
+          <div class="item-info">
+            <span class="item-badge">Torre Monumental 🏆</span>
+            <div class="item-name">Torre de Mariscos</div>
+            <p class="item-desc">La tradicional torre monumental de mariscos al estilo Limoncito Culichi.</p>
+            <div class="item-price">$410.00 MXN</div>
+          </div>
+          <div class="item-stepper">
+            <button class="step-btn" onclick="updateQty('Especiales_de_la_Casa_5', 'Torre de Mariscos', 410, -1)">-</button>
+            <span class="step-count" id="count_Especiales_de_la_Casa_5">0</span>
+            <button class="step-btn" onclick="updateQty('Especiales_de_la_Casa_5', 'Torre de Mariscos', 410, 1)">+</button>
+          </div>
+        </div>
+
+        <div class="item-card" data-name="campechana" data-desc="callo de pescado, pulpo, camarón mixto y callo de hacha." data-category="especiales de la casa">
+          <div class="item-info">
+            <span class="item-badge">Mixta Especial 🦐</span>
+            <div class="item-name">Campechana</div>
+            <p class="item-desc">Callo de pescado, pulpo, camarón mixto y callo de hacha.</p>
+            <div class="item-price">$370.00 MXN</div>
+          </div>
+          <div class="item-stepper">
+            <button class="step-btn" onclick="updateQty('Especiales_de_la_Casa_6', 'Campechana', 370, -1)">-</button>
+            <span class="step-count" id="count_Especiales_de_la_Casa_6">0</span>
+            <button class="step-btn" onclick="updateQty('Especiales_de_la_Casa_6', 'Campechana', 370, 1)">+</button>
+          </div>
+        </div>
+
+        <div class="item-card" data-name="botana la malilla" data-desc="orden de callo de hacha en salsa de chiltepín y salsas especiales de la casa." data-category="especiales de la casa">
+          <div class="item-info">
+            <span class="item-badge">Botanero VIP 🔥</span>
+            <div class="item-name">Botana La Malilla</div>
+            <p class="item-desc">Orden de callo de hacha en salsa de chiltepín y salsas especiales de la casa.</p>
+            <div class="item-price">$650.00 MXN</div>
+          </div>
+          <div class="item-stepper">
+            <button class="step-btn" onclick="updateQty('Especiales_de_la_Casa_7', 'Botana La Malilla', 650, -1)">-</button>
+            <span class="step-count" id="count_Especiales_de_la_Casa_7">0</span>
+            <button class="step-btn" onclick="updateQty('Especiales_de_la_Casa_7', 'Botana La Malilla', 650, 1)">+</button>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- =======================================================
+           SECCIÓN: BARRA CALIENTE (PÁGINA 6 DEL MENÚ)
+           ======================================================= -->
+      <section class="category-section" data-category="Barra Caliente">
+        <h2 class="category-title">🔥 Barra Caliente</h2>
+        <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">🔥 Pescados zarandeados, camarones a las brasas, caldos humeantes y tacos gobernador:</p>
+
+        <div class="item-card" data-name="camarones zarandeados" data-desc="bañados con adobos de la casa cocinados a las brasas." data-category="barra caliente">
+          <div class="item-info">
+            <span class="item-badge">A las Brasas 🔥</span>
+            <div class="item-name">Camarones Zarandeados</div>
+            <p class="item-desc">Bañados con adobos de la casa cocinados a las brasas.</p>
+            <div class="item-price">$249.00 MXN</div>
+          </div>
+          <div class="item-stepper">
+            <button class="step-btn" onclick="updateQty('Barra_Caliente_0', 'Camarones Zarandeados', 249, -1)">-</button>
+            <span class="step-count" id="count_Barra_Caliente_0">0</span>
+            <button class="step-btn" onclick="updateQty('Barra_Caliente_0', 'Camarones Zarandeados', 249, 1)">+</button>
+          </div>
+        </div>
+
+        <div class="item-card" data-name="camarones a la diabla" data-desc="camarones bañados con salsa de chiles rojos, al estilo limoncito culichi." data-category="barra caliente">
+          <div class="item-info">
+            <span class="item-badge">Picante 🌶️</span>
+            <div class="item-name">Camarones a la Diabla</div>
+            <p class="item-desc">Camarones bañados con salsa de chiles rojos, al estilo Limoncito Culichi.</p>
+            <div class="item-price">$239.00 MXN</div>
+          </div>
+          <div class="item-stepper">
+            <button class="step-btn" onclick="updateQty('Barra_Caliente_1', 'Camarones a la Diabla', 239, -1)">-</button>
+            <span class="step-count" id="count_Barra_Caliente_1">0</span>
+            <button class="step-btn" onclick="updateQty('Barra_Caliente_1', 'Camarones a la Diabla', 239, 1)">+</button>
+          </div>
+        </div>
+
+        <div class="item-card" data-name="camarones al mojo de ajo" data-desc="camarones salteados en mantequilla y ajo." data-category="barra caliente">
+          <div class="item-info">
+            <span class="item-badge">Clásico 🧄</span>
+            <div class="item-name">Camarones al Mojo de Ajo</div>
+            <p class="item-desc">Camarones salteados en mantequilla y ajo.</p>
+            <div class="item-price">$239.00 MXN</div>
+          </div>
+          <div class="item-stepper">
+            <button class="step-btn" onclick="updateQty('Barra_Caliente_2', 'Camarones al Mojo de Ajo', 239, -1)">-</button>
+            <span class="step-count" id="count_Barra_Caliente_2">0</span>
+            <button class="step-btn" onclick="updateQty('Barra_Caliente_2', 'Camarones al Mojo de Ajo', 239, 1)">+</button>
+          </div>
+        </div>
+
+        <div class="item-card" data-name="camarones empanizados" data-desc="crujientes camarones cubiertos con un empanizado de la casa." data-category="barra caliente">
+          <div class="item-info">
+            <span class="item-badge">Crujientes 🍤</span>
+            <div class="item-name">Camarones Empanizados</div>
+            <p class="item-desc">Crujientes camarones cubiertos con un empanizado de la casa.</p>
+            <div class="item-price">$220.00 MXN</div>
+          </div>
+          <div class="item-stepper">
+            <button class="step-btn" onclick="updateQty('Barra_Caliente_3', 'Camarones Empanizados', 220, -1)">-</button>
+            <span class="step-count" id="count_Barra_Caliente_3">0</span>
+            <button class="step-btn" onclick="updateQty('Barra_Caliente_3', 'Camarones Empanizados', 220, 1)">+</button>
+          </div>
+        </div>
+
+        <div class="item-card" data-name="camarones al chipotle" data-desc="camarones bañados en salsa de chipotle de la casa." data-category="barra caliente">
+          <div class="item-info">
+            <span class="item-badge">Cremoso 🧀</span>
+            <div class="item-name">Camarones al Chipotle</div>
+            <p class="item-desc">Camarones bañados en salsa de chipotle de la casa.</p>
+            <div class="item-price">$239.00 MXN</div>
+          </div>
+          <div class="item-stepper">
+            <button class="step-btn" onclick="updateQty('Barra_Caliente_4', 'Camarones al Chipotle', 239, -1)">-</button>
+            <span class="step-count" id="count_Barra_Caliente_4">0</span>
+            <button class="step-btn" onclick="updateQty('Barra_Caliente_4', 'Camarones al Chipotle', 239, 1)">+</button>
+          </div>
+        </div>
+
+        <div class="item-card" data-name="pescado zarandeado personal" data-desc="pescado fresco del día, bañado con adobo de la casa cocinado a las brasas." data-category="barra caliente">
+          <div class="item-info">
+            <span class="item-badge">Especialidad 🐟</span>
+            <div class="item-name">Pescado Zarandeado Personal</div>
+            <p class="item-desc">Pescado fresco del día, bañado con adobo de la casa cocinado a las brasas.</p>
+            <div class="item-price">$249.00 MXN</div>
+          </div>
+          <div class="item-stepper">
+            <button class="step-btn" onclick="updateQty('Barra_Caliente_5', 'Pescado Zarandeado Personal', 249, -1)">-</button>
+            <span class="step-count" id="count_Barra_Caliente_5">0</span>
+            <button class="step-btn" onclick="updateQty('Barra_Caliente_5', 'Pescado Zarandeado Personal', 249, 1)">+</button>
+          </div>
+        </div>
+
+        <div class="item-card" data-name="pescado zarandeado (1 kilo)" data-desc="pescado fresco entero del día, bañado con adobo de la casa a las brasas." data-category="barra caliente">
+          <div class="item-info">
+            <span class="item-badge">Para Compartir 🐟</span>
+            <div class="item-name">Pescado Zarandeado (1 Kilo)</div>
+            <p class="item-desc">Pescado fresco entero del día, bañado con adobo de la casa a las brasas.</p>
+            <div class="item-price">$369.00 MXN</div>
+          </div>
+          <div class="item-stepper">
+            <button class="step-btn" onclick="updateQty('Barra_Caliente_6', 'Pescado Zarandeado (1 Kilo)', 369, -1)">-</button>
+            <span class="step-count" id="count_Barra_Caliente_6">0</span>
+            <button class="step-btn" onclick="updateQty('Barra_Caliente_6', 'Pescado Zarandeado (1 Kilo)', 369, 1)">+</button>
+          </div>
+        </div>
+
+        <div class="item-card" data-name="filete de pescado frito" data-desc="filete fresco de pescado dorado en la sartén." data-category="barra caliente">
+          <div class="item-info">
+            <span class="item-badge">Dorado 🍽️</span>
+            <div class="item-name">Filete de Pescado Frito</div>
+            <p class="item-desc">Filete fresco de pescado dorado en la sartén.</p>
+            <div class="item-price">$149.00 MXN</div>
+          </div>
+          <div class="item-stepper">
+            <button class="step-btn" onclick="updateQty('Barra_Caliente_7', 'Filete de Pescado Frito', 149, -1)">-</button>
+            <span class="step-count" id="count_Barra_Caliente_7">0</span>
+            <button class="step-btn" onclick="updateQty('Barra_Caliente_7', 'Filete de Pescado Frito', 149, 1)">+</button>
+          </div>
+        </div>
+
+        <div class="item-card" data-name="pescado empanizado" data-desc="crujientes filetes cubiertos con empanizado de la casa, con papas fritas." data-category="barra caliente">
+          <div class="item-info">
+            <span class="item-badge">Con Papas 🍟</span>
+            <div class="item-name">Pescado Empanizado</div>
+            <p class="item-desc">Crujientes filetes cubiertos con empanizado de la casa, con papas fritas.</p>
+            <div class="item-price">$149.00 MXN</div>
+          </div>
+          <div class="item-stepper">
+            <button class="step-btn" onclick="updateQty('Barra_Caliente_8', 'Pescado Empanizado', 149, -1)">-</button>
+            <span class="step-count" id="count_Barra_Caliente_8">0</span>
+            <button class="step-btn" onclick="updateQty('Barra_Caliente_8', 'Pescado Empanizado', 149, 1)">+</button>
+          </div>
+        </div>
+
+        <div class="item-card" data-name="pulpo zarandeado" data-desc="pulpo fresco, bañado con adobo de la casa cocinado a las brasas." data-category="barra caliente">
+          <div class="item-info">
+            <span class="item-badge">Gourmet 🐙</span>
+            <div class="item-name">Pulpo Zarandeado</div>
+            <p class="item-desc">Pulpo fresco, bañado con adobo de la casa cocinado a las brasas.</p>
+            <div class="item-price">$499.00 MXN</div>
+          </div>
+          <div class="item-stepper">
+            <button class="step-btn" onclick="updateQty('Barra_Caliente_9', 'Pulpo Zarandeado', 499, -1)">-</button>
+            <span class="step-count" id="count_Barra_Caliente_9">0</span>
+            <button class="step-btn" onclick="updateQty('Barra_Caliente_9', 'Pulpo Zarandeado', 499, 1)">+</button>
+          </div>
+        </div>
+
+        <div class="item-card" data-name="culichi soup" data-desc="sopa de la casa con filetes de pescado y camarones, chayote y zanahoria." data-category="barra caliente">
+          <div class="item-info">
+            <span class="item-badge">Caldo Calientito 🍲</span>
+            <div class="item-name">Culichi Soup</div>
+            <p class="item-desc">Sopa de la casa con filetes de pescado y camarones, chayote y zanahoria.</p>
+            <div class="item-price">$189.00 MXN</div>
+          </div>
+          <div class="item-stepper">
+            <button class="step-btn" onclick="updateQty('Barra_Caliente_10', 'Culichi Soup', 189, -1)">-</button>
+            <span class="step-count" id="count_Barra_Caliente_10">0</span>
+            <button class="step-btn" onclick="updateQty('Barra_Caliente_10', 'Culichi Soup', 189, 1)">+</button>
+          </div>
+        </div>
+
+        <div class="item-card" data-name="tacos gobernador (orden)" data-desc="camarones salteados con pulpo, cebolla, tomate y chile poblano." data-category="barra caliente">
+          <div class="item-info">
+            <span class="item-badge">Favorito Sinaloa 🌮</span>
+            <div class="item-name">Tacos Gobernador (Orden)</div>
+            <p class="item-desc">Camarones salteados con pulpo, cebolla, tomate y chile poblano.</p>
+            <div class="item-price">$199.00 MXN</div>
+          </div>
+          <div class="item-stepper">
+            <button class="step-btn" onclick="updateQty('Barra_Caliente_11', 'Tacos Gobernador (Orden)', 199, -1)">-</button>
+            <span class="step-count" id="count_Barra_Caliente_11">0</span>
+            <button class="step-btn" onclick="updateQty('Barra_Caliente_11', 'Tacos Gobernador (Orden)', 199, 1)">+</button>
+          </div>
+        </div>
+
+      </section>
+
     
       <section class="category-section"  data-category="Aguachiles (Estilo Culichi)">
         <h2 class="category-title">🌶️ Aguachiles (Estilo Culichi)</h2>
@@ -1276,6 +1584,35 @@
       <section class="category-section"  data-category="Rollos Empanizados (Sushi)">
         <h2 class="category-title">🍣 Rollos Empanizados (Sushi)</h2>
         <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">🍣 Rollos de sushi empanizados calientitos con el auténtico sazón de Culiacán:</p>
+
+          <div class="item-card" data-name="sushi vima especial 1.5kg" data-desc="por dentro: alga, philadelphia, aguacate, boneless. por fuera: gratinado especial de 3carnes coronado con surimi, con salsa anguila." data-category="rollos empanizados (sushi)">
+            <div class="item-info">
+              <span class="item-badge">Monstruoso 1.5 Kg 🏆</span>
+              <div class="item-name">Sushi Vima Especial 1.5Kg</div>
+              <p class="item-desc">Por dentro: Alga, Philadelphia, aguacate, boneless. Por fuera: Gratinado especial de 3Carnes coronado con surimi, con salsa anguila.</p>
+              <div class="item-price">$599.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Rollos_Empanizados__vima_esp', 'Sushi Vima Especial 1.5Kg', 599, -1)">-</button>
+              <span class="step-count" id="count_Rollos_Empanizados__vima_esp">0</span>
+              <button class="step-btn" onclick="updateQty('Rollos_Empanizados__vima_esp', 'Sushi Vima Especial 1.5Kg', 599, 1)">+</button>
+            </div>
+          </div>
+
+          <div class="item-card" data-name="sushi 3q empanizado" data-desc="por dentro: alga, philadelphia, aguacate, res y camarón. por fuera: 3 quesos, con salsa anguila." data-category="rollos empanizados (sushi)">
+            <div class="item-info">
+              <span class="item-badge">3 Quesos 🧀</span>
+              <div class="item-name">Sushi 3Q Empanizado</div>
+              <p class="item-desc">Por dentro: Alga, Philadelphia, aguacate, res y camarón. Por fuera: 3 Quesos, con salsa anguila.</p>
+              <div class="item-price">$189.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Rollos_Empanizados__3q', 'Sushi 3Q Empanizado', 189, -1)">-</button>
+              <span class="step-count" id="count_Rollos_Empanizados__3q">0</span>
+              <button class="step-btn" onclick="updateQty('Rollos_Empanizados__3q', 'Sushi 3Q Empanizado', 189, 1)">+</button>
+            </div>
+          </div>
+  
         
           <div class="item-card" data-name="mar y tierra" data-desc="por dentro: camarón, carne de res, pepino, philadelphia y aguacate." data-category="rollos empanizados (sushi)">
             
@@ -1477,6 +1814,21 @@
       <section class="category-section"  data-category="Rollos Fríos (Sushi)">
         <h2 class="category-title">🍱 Rollos Fríos (Sushi)</h2>
         <p class="category-desc" style="font-size: 0.84rem; color: #64748b; margin: -6px 0 14px 4px; font-weight: 500; line-height: 1.35;">🍱 Rollos de sushi naturales y frescos estilo Sinaloa:</p>
+
+          <div class="item-card" data-name="sushi vima frío" data-desc="por dentro: alga, philadelphia, pepino, camarón empanizado. por fuera: forrado de aguacate, coronado con kanikama, con salsa anguila." data-category="rollos fríos (sushi)">
+            <div class="item-info">
+              <span class="item-badge">Especial 🥑</span>
+              <div class="item-name">Sushi Vima Frío</div>
+              <p class="item-desc">Por dentro: Alga, Philadelphia, pepino, camarón empanizado. Por fuera: Forrado de aguacate, coronado con Kanikama, con salsa anguila.</p>
+              <div class="item-price">$199.00 MXN</div>
+            </div>
+            <div class="item-stepper">
+              <button class="step-btn" onclick="updateQty('Rollos_Fr_os__Sushi__vima', 'Sushi Vima Frío', 199, -1)">-</button>
+              <span class="step-count" id="count_Rollos_Fr_os__Sushi__vima">0</span>
+              <button class="step-btn" onclick="updateQty('Rollos_Fr_os__Sushi__vima', 'Sushi Vima Frío', 199, 1)">+</button>
+            </div>
+          </div>
+  
         
           <div class="item-card" data-name="enchilocito" data-desc="por dentro: medallón de atún, pepino y salsa macha. por fuera: aguacate y medallón de atún." data-category="rollos fríos (sushi)">
             
