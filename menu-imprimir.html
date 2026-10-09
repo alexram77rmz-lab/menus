@@ -12,7 +12,7 @@
 
   <style>
     @page {
-      size: letter portrait;
+      size: 8.5in 13in;
       margin: 0;
     }
 
@@ -54,7 +54,7 @@
     }
 
     /* ═══════════════════════════════════════════════════════════════
-       HOJA DE MENÚ (CARTA EXACTA CON MARCO Y DISEÑO DE ATRÁS)
+       HOJA DE MENÚ (TAMAÑO OFICIO CON MARCO Y DISEÑO DE ATRÁS)
        ═══════════════════════════════════════════════════════════════ */
     .menu-sheet {
       width: 816px;
@@ -65,13 +65,14 @@
       position: relative;
       overflow: hidden;
       box-shadow: 0 14px 35px rgba(0, 0, 0, 0.45);
-      padding: 20px 24px 18px 24px;
-      min-height: 1080px;
-      height: 1080px;
+      padding: 24px 26px 20px 26px;
+      min-height: 1248px;
+      height: 1248px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       box-sizing: border-box;
+      page-break-after: always;
     }
 
     /* ═══════════════════════════════════════════════════════════════
@@ -446,9 +447,9 @@
         break-after: page !important;
         page-break-inside: avoid !important;
         break-inside: avoid !important;
-        height: 279mm !important;
-        max-height: 279mm !important;
-        min-height: 279mm !important;
+        height: 330.2mm !important;
+        max-height: 330.2mm !important;
+        min-height: 330.2mm !important;
         width: 215.9mm !important;
         max-width: 215.9mm !important;
         box-sizing: border-box !important;
@@ -609,132 +610,126 @@
 
       <div class="sheet-content">
         <!-- Header -->
-        <header class="sheet-header" style="justify-content: flex-end; align-items: flex-end; margin-bottom: 8px;">
-          <div class="canva-logo-box">
-            <h1 class="canva-brand-title">El Limoncito<br>Culichi</h1>
-            <div class="canva-brand-sub">MARISCOS Y SUSHI<br>ESTILO SINALOA</div>
+        <header class="sheet-header" style="justify-content: flex-end; align-items: center; margin-bottom: 8px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <img src="img/logo_clean.png" alt="Limoncito Logo" style="width: 55px; height: 55px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));">
+            <div class="canva-logo-box" style="text-align: right;">
+              <h1 class="canva-brand-title" style="line-height: 1.1;">El Limoncito<br>Culichi</h1>
+              <div class="canva-brand-sub">MARISCOS Y SUSHI<br>ESTILO SINALOA</div>
+            </div>
           </div>
         </header>
 
         <div style="display: flex; flex-direction: column; justify-content: space-between; flex: 1; height: 100%;">
           
-          <!-- SECCIÓN 1: ENTRADAS (Sin recuadro, letra mayúscula naranja, ocupando el mayor espacio posible) -->
-          <div>
-            <h2 class="section-title-orange" style="margin-bottom: 10px; font-size: 24px; letter-spacing: 2.2px;">ENTRADAS</h2>
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 28px;">
-              <!-- Columna 1 de Entradas (4 platillos) -->
-              <div>
-                <div class="dish-row" style="margin-bottom: 11px;">
-                  <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.8px;">CULICHI PEPPER</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">$110</span></div>
-                  <p class="dish-desc" style="font-size: 11px; line-height: 1.35;">Chile caribe empanizado relleno de surimi y philadelphia coronado con salsa anguila y aderezo de chipotle.</p>
-                </div>
-
-                <div class="dish-row" style="margin-bottom: 11px;">
-                  <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.8px;">ORDEN BONELESS</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">$180</span></div>
-                  <p class="dish-desc" style="font-size: 11px; line-height: 1.35;">Trozos de pechuga de pollo empanizada bañados en tu salsa a elegir.</p>
-                </div>
-
-                <div class="dish-row" style="margin-bottom: 11px;">
-                  <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.8px;">ORDEN ALITAS</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">$190</span></div>
-                  <p class="dish-desc" style="font-size: 11px; line-height: 1.35;">Alitas de pollo fritas y bañadas con salsa a elegir.</p>
-                </div>
-
-                <div class="dish-row" style="margin-bottom: 0;">
-                  <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.8px;">ORDEN DE NUGGETS</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">$110</span></div>
-                  <p class="dish-desc" style="font-size: 11px; line-height: 1.35;">Nuggets crujientes acompañados con papas.</p>
-                </div>
+          <!-- SECCIÓN 1: ENTRADAS (Letras a la izquierda, Foto Culichi Pepper a la derecha) -->
+          <div style="display: grid; grid-template-columns: 1.08fr 0.92fr; gap: 24px; align-items: center;">
+            <!-- Columna Izquierda: Lista de los 8 platillos de Entradas -->
+            <div>
+              <h2 class="section-title-orange" style="margin-bottom: 14px; font-size: 27px; letter-spacing: 2px;">ENTRADAS</h2>
+              
+              <div class="dish-row" style="margin-bottom: 12px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 15px;">CULICHI PEPPER</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">$110</span></div>
+                <p class="dish-desc" style="font-size: 11px; line-height: 1.35;">Chile caribe empanizado relleno de surimi y philadelphia coronado con salsa anguila y aderezo de chipotle.</p>
               </div>
 
-              <!-- Columna 2 de Entradas (4 platillos) -->
-              <div>
-                <div class="dish-row" style="margin-bottom: 11px;">
-                  <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.8px;">PAPAS A LA FRANCESA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">$100</span></div>
-                </div>
+              <div class="dish-row" style="margin-bottom: 12px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 15px;">ORDEN BONELESS</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">$180</span></div>
+                <p class="dish-desc" style="font-size: 11px; line-height: 1.35;">Trozos de pechuga de pollo empanizada bañados en tu salsa a elegir.</p>
+              </div>
 
-                <div class="dish-row" style="margin-bottom: 11px;">
-                  <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.8px;">GUACAMOLE ESPECIAL</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">$250</span></div>
-                  <p class="dish-desc" style="font-size: 11px; line-height: 1.35;">Guacamole con tomate, cebolla, chile serrano, cilantro con camarón, pulpo coronado con filete de pescado frito.</p>
-                </div>
+              <div class="dish-row" style="margin-bottom: 12px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 15px;">ORDEN ALITAS</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">$190</span></div>
+                <p class="dish-desc" style="font-size: 11px; line-height: 1.35;">Alitas de pollo fritas y bañadas con salsa a elegir.</p>
+              </div>
 
-                <div class="dish-row" style="margin-bottom: 11px;">
-                  <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.8px;">PATÉ DE CAMARÓN 1/4</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">$120</span></div>
-                  <p class="dish-desc" style="font-size: 11px; line-height: 1.35;">El tradicional paté de camarón al estilo limoncito culichi.</p>
-                </div>
+              <div class="dish-row" style="margin-bottom: 12px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 15px;">ORDEN DE NUGGETS</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">$110</span></div>
+                <p class="dish-desc" style="font-size: 11px; line-height: 1.35;">Nuggets crujientes acompañados con papas.</p>
+              </div>
 
-                <div class="dish-row" style="margin-bottom: 0;">
-                  <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.8px;">LA GILBERTONA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">$195</span></div>
-                  <p class="dish-desc" style="font-size: 11px; line-height: 1.35;">Tostada con Paté de camarón, medallón de atún en cubos, camarón tempura con un aderezo especial de la casa y cebolla frita.</p>
+              <div class="dish-row" style="margin-bottom: 12px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 15px;">PAPAS A LA FRANCESA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">$100</span></div>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 12px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 15px;">GUACAMOLE ESPECIAL</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">$250</span></div>
+                <p class="dish-desc" style="font-size: 11px; line-height: 1.35;">Guacamole con tomate, cebolla, chile serrano, cilantro con camarón, pulpo coronado con filete de pescado frito.</p>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 12px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 15px;">PATÉ DE CAMARÓN 1/4</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">$120</span></div>
+                <p class="dish-desc" style="font-size: 11px; line-height: 1.35;">El tradicional paté de camarón al estilo limoncito culichi.</p>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 0;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 15px;">LA GILBERTONA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">$195</span></div>
+                <p class="dish-desc" style="font-size: 11px; line-height: 1.35;">Tostada con Paté de camarón, medallón de atún en cubos, camarón tempura con un aderezo especial de la casa y cebolla frita.</p>
+              </div>
+            </div>
+
+            <!-- Columna Derecha: Foto de Culichi Pepper Cuadrada Más Grande -->
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%;">
+              <div class="photo-card" style="width: 100%; height: 410px; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.18); border: 3.5px solid #DE5D35; position: relative;">
+                <img src="img/culichi_peppers.jpg" alt="Culichi Pepper" style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.85); color: #FFF; font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 700; padding: 7px 0; text-align: center; text-transform: uppercase; letter-spacing: 0.9px;">
+                  CULICHI PEPPER • $110
                 </div>
               </div>
             </div>
           </div>
 
-          <div style="border-top: 1.5px dashed rgba(222,93,53,0.35); margin: 12px 0 8px 0;"></div>
+          <!-- Separador elegante con estilo -->
+          <div style="border-top: 2.5px dashed #DE5D35; margin: 24px 0 20px 0; opacity: 0.85;"></div>
 
-          <!-- SECCIÓN 2: OSTRAS (Colocadas abajo de las entradas) -->
-          <div style="margin-top: auto;">
-            <h2 class="section-title-orange" style="margin-bottom: 10px; font-size: 24px; letter-spacing: 2.2px;">
-              OSTRAS <span style="font-size: 11.5px; font-weight: 600; text-transform: none; color: #555;">(sujeto a disponibilidad)</span>
-            </h2>
-
-            <div style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 24px; align-items: start;">
-              <!-- Columna 1: 7 Platillos de Ostras -->
-              <div>
-                <div class="dish-row" style="margin-bottom: 8px;">
-                  <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">OSTIONES</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.2px;">6: $100 | 10: $150</span></div>
-                  <p class="dish-desc" style="font-size: 10.8px; line-height: 1.3;">Ostiones frescos en su concha con salsas de la casa y limón.</p>
-                </div>
-
-                <div class="dish-row" style="margin-bottom: 8px;">
-                  <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">OSTIONES LIMONCITO (10 PZS)</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.2px;">$180</span></div>
-                  <p class="dish-desc" style="font-size: 10.8px; line-height: 1.3;">De ostión fresco con trozos de camarón cocido, pulpo, medallón de atún y callo de hacha.</p>
-                </div>
-
-                <div class="dish-row" style="margin-bottom: 8px;">
-                  <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">BALAZOS</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.2px;">6: $100 | 12: $180</span></div>
-                  <p class="dish-desc" style="font-size: 10.8px; line-height: 1.3;">Shot de ostión con camarón cocido y salsa de la casa.</p>
-                </div>
-
-                <div class="dish-row" style="margin-bottom: 8px;">
-                  <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">ALMEJA CHOCOLATA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.2px;">6: $120 | 10: $180</span></div>
-                </div>
-
-                <div class="dish-row" style="margin-bottom: 8px;">
-                  <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">ALMEJA REYNA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.2px;">Pieza: $150</span></div>
-                </div>
-
-                <div class="dish-row" style="margin-bottom: 8px;">
-                  <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">PATAS DE MULA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.2px;">6: $100 | 10: $150</span></div>
-                </div>
-
-                <div class="dish-row" style="margin-bottom: 0;">
-                  <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">VERGAZO</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.2px;">$160</span></div>
-                  <p class="dish-desc" style="font-size: 10.8px; line-height: 1.3;">Orden de pulpo, cam. cocido, cam. crudo, callito de hacha, callito de filete, cebolla y salsas de la casa.</p>
+          <!-- SECCIÓN 2: OSTRAS (Foto Ostiones a la izquierda, Letras a la derecha) -->
+          <div style="display: grid; grid-template-columns: 0.92fr 1.08fr; gap: 24px; align-items: center;">
+            <!-- Columna Izquierda: Foto de Ostiones Limoncito Cuadrada Más Grande -->
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%;">
+              <div class="photo-card" style="width: 100%; height: 410px; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.18); border: 3.5px solid #DE5D35; position: relative;">
+                <img src="img/ostiones_limoncito_platter.jpg" alt="Ostiones Limoncito de la Casa" style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.85); color: #FFF; font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 700; padding: 7px 0; text-align: center; text-transform: uppercase; letter-spacing: 0.9px;">
+                  OSTIONES LIMONCITO (10 PZS) • $180
                 </div>
               </div>
+            </div>
 
-              <!-- Columna 2: Fotos Reales de Ostiones Limoncito y Balazos + Sticker -->
-              <div style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; height: 215px;">
-                  <div class="photo-card" style="width: 100%; height: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.12);">
-                    <img src="img/ostiones_limoncito_platter.jpg" alt="Ostiones Limoncito de la Casa" style="width: 100%; height: 100%; object-fit: cover;">
-                    <div style="background: rgba(0,0,0,0.80); color: #FFF; font-family: 'Oswald', sans-serif; font-size: 9.5px; font-weight: 700; padding: 3px 0; text-align: center; text-transform: uppercase; letter-spacing: 0.5px;">
-                      OSTIONES LIMONCITO • $180
-                    </div>
-                  </div>
+            <!-- Columna Derecha: Lista de los 7 platillos de Ostras -->
+            <div>
+              <h2 class="section-title-orange" style="margin-bottom: 14px; font-size: 27px; letter-spacing: 2px;">
+                OSTRAS <span style="font-size: 12.5px; font-weight: 600; text-transform: none; color: #555;">(sujeto a disponibilidad)</span>
+              </h2>
 
-                  <div class="photo-card" style="width: 100%; height: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.12);">
-                    <img src="img/balazos_shots_real.jpg" alt="Balazos Shots de la Casa" style="width: 100%; height: 100%; object-fit: cover;">
-                    <div style="background: rgba(0,0,0,0.80); color: #FFF; font-family: 'Oswald', sans-serif; font-size: 9.5px; font-weight: 700; padding: 3px 0; text-align: center; text-transform: uppercase; letter-spacing: 0.5px;">
-                      BALAZOS (6 SHOTS) • $100
-                    </div>
-                  </div>
-                </div>
+              <div class="dish-row" style="margin-bottom: 13px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 15px;">OSTIONES</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">6: $100 | 10: $150</span></div>
+                <p class="dish-desc" style="font-size: 11px; line-height: 1.35;">Ostiones frescos en su concha con salsas de la casa y limón.</p>
+              </div>
 
-                <div style="text-align: right; width: 100%; margin-top: 10px; display: flex; justify-content: flex-end; align-items: flex-end;">
-                  <img src="img/logo_clean.png" alt="Sticker Oficial El Limoncito Culichi" class="sticker-limoncito" style="width: 85px;">
-                </div>
+              <div class="dish-row" style="margin-bottom: 13px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 15px;">OSTIONES LIMONCITO (10 PZS)</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">$180</span></div>
+                <p class="dish-desc" style="font-size: 11px; line-height: 1.35;">De ostión fresco con trozos de camarón cocido, pulpo, medallón de atún y callo de hacha.</p>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 13px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 15px;">BALAZOS</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">6: $100 | 12: $180</span></div>
+                <p class="dish-desc" style="font-size: 11px; line-height: 1.35;">Shot de ostión con camarón cocido y salsa de la casa.</p>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 13px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 15px;">ALMEJA CHOCOLATA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">6: $120 | 10: $180</span></div>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 13px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 15px;">ALMEJA REYNA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">Pieza: $150</span></div>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 13px;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 15px;">PATAS DE MULA</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">6: $100 | 10: $150</span></div>
+              </div>
+
+              <div class="dish-row" style="margin-bottom: 0;">
+                <div class="dish-main"><span class="dish-name-orange" style="font-size: 15px;">VERGAZO</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15.5px;">$160</span></div>
+                <p class="dish-desc" style="font-size: 11px; line-height: 1.35;">Orden de pulpo, cam. cocido, cam. crudo, callito de hacha, callito de filete, cebolla y salsas de la casa.</p>
               </div>
             </div>
           </div>
@@ -869,11 +864,11 @@
           <div style="margin-top: auto; border-top: 2px dashed #E26D45; padding-top: 10px;">
             <h2 class="section-title-orange" style="margin-bottom: 10px; font-size: 22px;">COCTELES ESPECIALES</h2>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start;">
+            <div style="display: grid; grid-template-columns: 0.96fr 1.04fr; gap: 14px; align-items: start;">
               <!-- Columna 1 -->
               <div style="display: flex; flex-direction: column; justify-content: space-between;">
                 <div class="dish-row dish-with-thumb" style="margin-bottom: 12px;">
-                  <div class="dish-thumb" style="width: 110px; height: 95px; min-width: 110px;"><img src="img/tumba_tontos_copa_real.jpg" alt="Tumba Tontos Copa de la Casa"></div>
+                  <div class="dish-thumb" style="width: 100px; height: 90px; min-width: 100px;"><img src="img/tumba_tontos_copa_real.jpg" alt="Tumba Tontos Copa de la Casa"></div>
                   <div class="dish-body">
                     <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">TUMBA TONTOS</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 15px;">$340</span></div>
                     <p class="dish-desc" style="font-size: 10.5px; line-height: 1.3;">Callo de hacha, camarón crudo y pulpo mezclados en jugo de la casa con chile chiltepín, tomate, cebolla, pepino, coronado con aguacate y salsas de la casa.</p>
@@ -887,17 +882,17 @@
               </div>
 
               <!-- Columna 2 -->
-              <div style="display: flex; flex-direction: column; justify-content: space-between;">
+              <div style="display: flex; flex-direction: column; justify-content: space-between; padding-right: 6px;">
                 <div class="dish-row dish-with-thumb" style="margin-bottom: 12px;">
-                  <div class="dish-thumb" style="width: 110px; height: 95px; min-width: 110px;"><img src="img/culichi_soup_real.jpg" alt="Coctel de Camarón"></div>
+                  <div class="dish-thumb" style="width: 100px; height: 90px; min-width: 100px;"><img src="img/culichi_soup_real.jpg" alt="Coctel de Camarón"></div>
                   <div class="dish-body">
-                    <div class="dish-main"><span class="dish-name-orange" style="font-size: 14px;">DE CAMARÓN</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 13.5px; white-space: nowrap;">CH: $150 | G: $215</span></div>
+                    <div class="dish-main"><span class="dish-name-orange" style="font-size: 13.5px;">DE CAMARÓN</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 13px; white-space: nowrap;">CH: $150 | G: $215</span></div>
                     <p class="dish-desc" style="font-size: 10.5px; line-height: 1.3;">Camarones cocidos mezclados en jugo de la casa, tomate, cebolla, pepino, coronado con aguacate y salsas de la casa.</p>
                   </div>
                 </div>
 
                 <div class="dish-row" style="margin-bottom: 0;">
-                  <div class="dish-main"><span class="dish-name-orange" style="font-size: 14.5px;">CAMARÓN Y PULPO</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 13.5px; white-space: nowrap;">CH: $190 | G: $260</span></div>
+                  <div class="dish-main"><span class="dish-name-orange" style="font-size: 14px;">CAMARÓN Y PULPO</span><span class="dish-dots"></span><span class="dish-price" style="font-size: 13px; white-space: nowrap;">CH: $190 | G: $260</span></div>
                   <p class="dish-desc" style="font-size: 10.5px; line-height: 1.3;">Camarones cocidos con pulpo mezclados en jugo de la casa, tomate, cebolla, pepino, coronado con aguacate y salsas de la casa.</p>
                 </div>
               </div>
